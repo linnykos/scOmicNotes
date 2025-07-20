@@ -9,16 +9,21 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
     - references.qmd
 
 bibliography: references.bib
 
+resources:
+  - fig           # tells Quarto to copy everything under fig/ into _site/
+
 format:
   html:
+    number-sections: true
+    toc: true
     theme:
       - cosmo
       - brand
+    css: styles.css
   pdf:
     documentclass: scrreprt
 

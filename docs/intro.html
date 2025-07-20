@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – scOmicNotes</title>
+<title>2&nbsp; Introduction – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -85,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -126,6 +91,7 @@ div.csl-indent {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -137,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,19 +131,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,15 +151,29 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-study-cell-biology-in-public-health" id="toc-why-study-cell-biology-in-public-health" class="nav-link active" data-scroll-target="#why-study-cell-biology-in-public-health"><span class="header-section-number">2.1</span> Why study cell biology in public health?</a>
+  <ul>
+  <li><a href="#what-are-omics" id="toc-what-are-omics" class="nav-link" data-scroll-target="#what-are-omics"><span class="header-section-number">2.1.1</span> What are “omics”?</a>
+  <ul class="collapse">
+  <li><a href="#some-examples-of-a-cell-biology-question" id="toc-some-examples-of-a-cell-biology-question" class="nav-link" data-scroll-target="#some-examples-of-a-cell-biology-question"><span class="header-section-number">2.1.1.1</span> Some examples of a “cell-biology” question</a></li>
+  </ul></li>
+  <li><a href="#how-omics-comes-into-the-picture" id="toc-how-omics-comes-into-the-picture" class="nav-link" data-scroll-target="#how-omics-comes-into-the-picture"><span class="header-section-number">2.1.2</span> How “omics” comes into the picture</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<p class="subtitle lead">Why study cell biology in public health?</p>
 </div>
 
 
@@ -216,21 +190,146 @@ div.csl-indent {
 </header>
 
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="why-study-cell-biology-in-public-health" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="why-study-cell-biology-in-public-health"><span class="header-section-number">2.1</span> Why study cell biology in public health?</h2>
+<section id="what-are-omics" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="what-are-omics"><span class="header-section-number">2.1.1</span> What are “omics”?</h3>
+<p>The term <strong>“omics”</strong> refers to a broad field of biology aimed at the comprehensive characterisation and quantification of biological molecules that translate into the structure, function, and dynamics of an organism. At its core, “omics” encapsulates the idea of studying biological systems at a global scale rather than focusing on individual components. This includes genomics (DNA), transcriptomics (RNA), proteomics (proteins), epigenomics, metabolomics (metabolites), and more. Each of these fields leverages high-throughput technologies to generate massive datasets that capture complex interactions within cells, tissues, or organisms.</p>
+<p>The rise of “omics” has revolutionised biology by enabling researchers to ask holistic questions such as how different genes, proteins, or metabolites interact in health and disease. It emphasises understanding systems as interconnected networks rather than isolated elements. This systems-level approach is particularly powerful in identifying biomarkers, understanding disease mechanisms, and tailoring precision-medicine strategies. In public health, “omics” provides tools to bridge molecular discoveries with population-level outcomes, offering new opportunities to tackle complex health challenges.</p>
+<section id="some-examples-of-a-cell-biology-question" class="level4" data-number="2.1.1.1">
+<h4 data-number="2.1.1.1" class="anchored" data-anchor-id="some-examples-of-a-cell-biology-question"><span class="header-section-number">2.1.1.1</span> Some examples of a “cell-biology” question</h4>
+<ul>
+<li>How the brain develops (i.e.&nbsp;the longitudinal sequence of events between birth and maturation), shown in <a href="#fig-brain-development" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.<br>
+</li>
+<li>How microglia in the brain gain or lose certain functions during ageing, shown in <a href="#fig-microglia" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>.<br>
+</li>
+<li>Why certain cells (i.e.&nbsp;cancer cells) divide uncontrollably, see <a href="#fig-cancer" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</li>
+</ul>
+<div class="block">
+<div id="fig-brain-development" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-brain-development-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/brain_development.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-brain-development-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: What is the sequence of cell types that emerge (and where) during human brain development? <span class="citation" data-cites="zhou2024genetics">(<a href="references.html#ref-zhou2024genetics" role="doc-biblioref">Zhou, Song, and Ming 2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-microglia" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-microglia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/microglia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-microglia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Microglia (immune cells of the brain) radically change shape during ageing.<br>
+What are the functional consequences of this? <span class="citation" data-cites="von2015microglial">(<a href="references.html#ref-von2015microglial" role="doc-biblioref">Von Bernhardi, Eugenı́n-von Bernhardi, and Eugenı́n 2015</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cancer" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/cancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Cancer is typically characterised by uncontrollable cell division. What drives this process, how can we detect it early, and how can we stop it? (Source: <a href="https://sites.duke.edu/seektobacco/2-the-role-of-tobacco-in-the-development-of-cancer/the-content/" class="uri">https://sites.duke.edu/seektobacco/2-the-role-of-tobacco-in-the-development-of-cancer/the-content/</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="how-omics-comes-into-the-picture" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="how-omics-comes-into-the-picture"><span class="header-section-number">2.1.2</span> How “omics” comes into the picture</h3>
+<p>To answer cell-biology questions we leverage different omics to learn clues about<br>
+1. the cellular functions of a biological system, and<br>
+2. how those functions change during disease, ageing, etc.</p>
+<p>All these omics are related:</p>
+<ul>
+<li>The <strong>central dogma</strong> of biology (DNA → RNA → protein) is illustrated in <a href="#fig-central-dogma1" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> and <a href="#fig-central-dogma2" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>, linking the three most fundamental omics.<br>
+</li>
+<li>The <strong>epigenome</strong>, shown in <a href="#fig-epigenetic" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>, comprises chemical modifications to DNA and histone proteins that regulate gene expression yet are <em>not</em> part of the DNA itself. The figure highlights three commonly studied features: DNA accessibility, DNA methylation, and histone modifications.</li>
+</ul>
+<p>These layers are summarised in <a href="#fig-omics1" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>.</p>
+<div class="block">
+<div id="fig-central-dogma1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-central-dogma1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/central_dogma.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-central-dogma1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Central dogma. (Source: <a href="https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation/translation/a/intro-to-gene-expression-central-dogma" class="uri">https://www.khanacademy.org/science/ap-biology/gene-expression-and-regulation/translation/a/intro-to-gene-expression-central-dogma</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-central-dogma2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-central-dogma2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/central_dogma2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-central-dogma2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Central dogma. (Source: <a href="https://researchfeatures.com/adding-structure-biologys-central-dogma-cancer-treatments-thyroid-cancer/" class="uri">https://researchfeatures.com/adding-structure-biologys-central-dogma-cancer-treatments-thyroid-cancer/</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-epigenetic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-epigenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/epigenetic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epigenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Epigenetics. (Source: <a href="https://en.wikipedia.org/wiki/Epigenetics" class="uri">https://en.wikipedia.org/wiki/Epigenetics</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-omics1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-omics1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/omics1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-omics1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: A non-exhaustive list of omics. <span class="citation" data-cites="wen2022single">(<a href="references.html#ref-wen2022single" role="doc-biblioref">Wen et al. 2022</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block2">
+<p><strong>Remark (Personal opinion: Biology is constantly revising the details).</strong><br>
+Statistical knowledge is rarely <strong>revised</strong>—mostly <strong>refined</strong>. We know properties that generalize to much broader settings (i.e., less statistical assumptions) and much more refined statistical rates for the settings studied two decades ago. (1) There’s little revisions, since once someone proves a statistical theorem, it is very unlikely for it to get disproven in the future. (2) Statistics generally focuses on what happens in an ``average/typical’’ scenario.</p>
+<p>Biology, in comparison, has many revisions and refinements. There’s a couple reasons for this: (1) Biology research is driven by technology. Hence, as we can image/sequence/profile new aspects of a cell, design new model organisms, or collect more data, we might revise a lot of understanding of how cells work. (2) While there are <em>broad</em> biological mechanisms that generally hold true, many diseases occur when the general biological principle no longer holds true. For this reasons, a lot of cell biology research is about these <em>exceptions</em>, which cause us to question how universally true a biological mechanism is. (As a simple example – we’re taught humans have 46 chromosomes. However, many conditions such as Down Syndrome, originate from having an abnormal number of chromosomes.)</p>
+</div>
+<div class="block">
+<p><strong>Remark (All the omics we will study in this course are matrices).</strong><br>
+One of major missions of this course is to answer the following question: Every omic is represented as a matrix (generally, where the rows are cells, and columns are certain features, depending on the omic). In that case, how come some statistical methods designed for one omic isn’t applicable for another omic?</p>
+<p>While there are certain statistical answers to this question, most of the answers are based on biology. Certain methods rely on a specific biological premise, and that premise becomes hard to justify as you switch from one omic to another.</p>
+<p>This is not too dissimilar from a causal analysis. In a causal analysis, the reason certain features get labeled as a confounder, treatment, outcome, instrumental variable, mediator, etc. relies on the <em>context</em>.</p>
 </div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<div id="ref-von2015microglial" class="csl-entry" role="listitem">
+Von Bernhardi, Rommy, Laura Eugenı́n-von Bernhardi, and Jaime Eugenı́n. 2015. <span>“Microglial Cell Dysregulation in Brain Aging and Neurodegeneration.”</span> <em>Frontiers in Aging Neuroscience</em> 7: 124.
+</div>
+<div id="ref-wen2022single" class="csl-entry" role="listitem">
+Wen, Lu, Guoqiang Li, Tao Huang, Wei Geng, Hao Pei, Jialiang Yang, Miao Zhu, et al. 2022. <span>“Single-Cell Technologies: From Research to Application.”</span> <em>The Innovation</em> 3 (6).
+</div>
+<div id="ref-zhou2024genetics" class="csl-entry" role="listitem">
+Zhou, Yi, Hongjun Song, and Guo-li Ming. 2024. <span>“Genetics of Human Brain Development.”</span> <em>Nature Reviews Genetics</em> 25 (1): 26–45.
 </div>
 </div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -635,12 +734,12 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
