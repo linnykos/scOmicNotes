@@ -21,7 +21,7 @@ The term **“omics”** refers to a broad field of biology aimed at the compreh
 
 The rise of “omics” has revolutionised biology by enabling researchers to ask holistic questions such as how different genes, proteins, or metabolites interact in health and disease. It emphasises understanding systems as interconnected networks rather than isolated elements. This systems-level approach is particularly powerful in identifying biomarkers, understanding disease mechanisms, and tailoring precision-medicine strategies. In public health, “omics” provides tools to bridge molecular discoveries with population-level outcomes, offering new opportunities to tackle complex health challenges.
 
-#### Some examples of a “cell-biology” question
+### Some examples of a “cell-biology” question
 
 -   How the brain develops (i.e. the longitudinal sequence of events between birth and maturation), shown in @fig-brain-development.\
 -   How microglia in the brain gain or lose certain functions during ageing, shown in @fig-microglia.\
@@ -229,10 +229,10 @@ Given so many players, what does a **biostatistician** contribute?
 ::: 
 
 ::: block2
-**Remark (Single-cell methods are largely an “associative” world).** Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.
+**Remark (Single-cell methods are largely an “associative” world)**: Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.
 ::: 
 
-**The research inquiry starts and ends with a method.**: (How to integrate modalities? learn a gene-regulatory network? perform valid post-clustering tests?) Start with a statistical model and a *parameter of interest* $\theta^*$, then typically:
+**The research inquiry starts and ends with a method**: (How to integrate modalities? learn a gene-regulatory network? perform valid post-clustering tests?) Start with a statistical model and a *parameter of interest* $\theta^*$, then typically:
 
   1.  **Develop a novel estimator** of $\theta^*$, explaining why current methods fail (e.g. lack robustness, accuracy, power, or are heuristic). *Focus on statistical logic:* A clear, simple mathematical intuition should show the gap and how the new method fills it.
 
@@ -250,7 +250,7 @@ Given so many players, what does a **biostatistician** contribute?
 
 **Experiments, experiments, experiments**: Carefully controlled—even if small—to make downstream analysis straightforward.
 
-**Causality**: cCmes from a chain of experiments. Suppose we study a gene’s role in disease:
+**Causality** comes from a chain of experiments. Suppose we study a gene’s role in disease:
 
   1.  **Temporal evidence**, such as change in gene expression preceding a change in cell phenotype. A causal mechanism should occur *before* the phenotype.
 
@@ -271,10 +271,10 @@ Given so many players, what does a **biostatistician** contribute?
 So how does a biostatistician develop computational / statistical methods for cell biology?
 
 ::: block
--   **Biological context** – What system and “north-star” question? Which premises are accepted, which are tested, and why does this mechanism matter?
--   **Technology, experiment, data** – How are data collected and why this *{technology, experiment, data}* trio? What technical artefacts arise?
--   **Boundaries of current tools** – Simple analyses first: what breaks? Is there preliminary evidence a new method would do better?
--   **Statistical model** – What insight can better interrogate the biology? (Here the statistics training begins.)
--   **Develop a method & show robustness** – Numerically (noise tolerance) and biologically (applicable across contexts). Often biology lacks a ground truth, so validity arguments lean on biological logic.
--   **Uncover new / refined biology** – Does the method advance understanding? How confident are we that findings generalise beyond the original *{technology, experiment, data}* trio? (Usually the paper’s highlight.)
+-   **Biological context** – What is the biological system and the “north-star” question? Which premises are accepted, which ones are to be tested, and why is it important to understand this mechanism better?
+-   **Technology, experiment, data** – How are data collected and why did you choose this particular *{technology, experiment, data}* trio? What technical artefacts arise?
+-   **Boundaries of current tools** – Simple analyses first: what "breaks" in existing workflows? Is there preliminary evidence a new computational method would do better?
+-   **Statistical model** – What is the insight that a different computational method could  interrogate the biology better? (Here the statistics training begins.)
+-   **Develop a method & show robustness** – Robustness can be defined numerically (i.e., noise tolerance) or biologically (i.e., applicable across contexts/environments). Often, the biological question you study lacks a ground truth, so validity arguments lean on biological logic.
+-   **Uncover new / refined biology** – Does the method advance our biological understanding? How confident are we that findings generalise beyond the original *{technology, experiment, data}* trio? (This is usually the crown-jewel of your computational biology paper -- it's not necessary your specific analyses, but the potential that your tool can be used on other biological studies beyond what you've demonstrated your method on.)
 :::
