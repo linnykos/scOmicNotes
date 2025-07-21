@@ -238,7 +238,7 @@ Given so many players, what does a **biostatistician** contribute?
 
   2.  **Prove theorems** showing the estimate $\hat\theta$ converges to $\theta^*$ under stated assumptions. *Focus on consistency & convergence:* More data should provably yield more accurate results (often the highlight of a statistics paper).
 
-  3.  **Simulations** demonstrating that when the true $\theta^\*$ is known, $\hat\theta$ beats competing estimators across many settings. *Illustration via benchmarking:* Empirically recover the correct answer more often than existing methods.
+  3.  **Simulations** demonstrating that when the true $\theta^*$ is known, $\hat\theta$ beats competing estimators across many settings. *Illustration via benchmarking:* Empirically recover the correct answer more often than existing methods.
 
   4.  **Real-data demonstration** showing results align with known biology or provide biologically sensible new insights. *Focus on practicality:* The method must work in real scenarios mirroring its target audience.
 
