@@ -90,6 +90,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -163,6 +192,22 @@ div.csl-indent {
   <li><a href="#some-examples-of-a-cell-biology-question" id="toc-some-examples-of-a-cell-biology-question" class="nav-link" data-scroll-target="#some-examples-of-a-cell-biology-question"><span class="header-section-number">2.1.1.1</span> Some examples of a “cell-biology” question</a></li>
   </ul></li>
   <li><a href="#how-omics-comes-into-the-picture" id="toc-how-omics-comes-into-the-picture" class="nav-link" data-scroll-target="#how-omics-comes-into-the-picture"><span class="header-section-number">2.1.2</span> How “omics” comes into the picture</a></li>
+  </ul></li>
+  <li><a href="#what-do-we-hope-to-learn-from-single-cell-data" id="toc-what-do-we-hope-to-learn-from-single-cell-data" class="nav-link" data-scroll-target="#what-do-we-hope-to-learn-from-single-cell-data"><span class="header-section-number">2.2</span> What do we hope to learn from single-cell data?</a>
+  <ul>
+  <li><a href="#basic-biology" id="toc-basic-biology" class="nav-link" data-scroll-target="#basic-biology"><span class="header-section-number">2.2.1</span> Basic biology</a></li>
+  <li><a href="#benchside-to-bedside-applications" id="toc-benchside-to-bedside-applications" class="nav-link" data-scroll-target="#benchside-to-bedside-applications"><span class="header-section-number">2.2.2</span> Benchside-to-bedside applications</a></li>
+  <li><a href="#what-existed-prior-to-single-cell-data" id="toc-what-existed-prior-to-single-cell-data" class="nav-link" data-scroll-target="#what-existed-prior-to-single-cell-data"><span class="header-section-number">2.2.3</span> What existed prior to single-cell data?</a></li>
+  </ul></li>
+  <li><a href="#when-did-single-cell-data-become-popular-and-how-has-the-technology-advanced" id="toc-when-did-single-cell-data-become-popular-and-how-has-the-technology-advanced" class="nav-link" data-scroll-target="#when-did-single-cell-data-become-popular-and-how-has-the-technology-advanced"><span class="header-section-number">2.3</span> When did single-cell data become popular, and how has the technology advanced?</a>
+  <ul>
+  <li><a href="#the-rise-of-single-cell-data" id="toc-the-rise-of-single-cell-data" class="nav-link" data-scroll-target="#the-rise-of-single-cell-data"><span class="header-section-number">2.3.1</span> The rise of single-cell data</a></li>
+  <li><a href="#expansion-into-other-omics-and-spatial-technologies" id="toc-expansion-into-other-omics-and-spatial-technologies" class="nav-link" data-scroll-target="#expansion-into-other-omics-and-spatial-technologies"><span class="header-section-number">2.3.2</span> Expansion into other omics and spatial technologies</a></li>
+  </ul></li>
+  <li><a href="#what-is-the-role-of-a-biostatistician-in-a-wet-lab-clinical-world" id="toc-what-is-the-role-of-a-biostatistician-in-a-wet-lab-clinical-world" class="nav-link" data-scroll-target="#what-is-the-role-of-a-biostatistician-in-a-wet-lab-clinical-world"><span class="header-section-number">2.4</span> What is the role of a biostatistician in a wet-lab / clinical world?</a>
+  <ul>
+  <li><a href="#how-a-biostatistician-perceives-the-world" id="toc-how-a-biostatistician-perceives-the-world" class="nav-link" data-scroll-target="#how-a-biostatistician-perceives-the-world"><span class="header-section-number">2.4.1</span> How a biostatistician perceives the world</a></li>
+  <li><a href="#how-a-wet-lab-biologist-clinician-perceives-the-world" id="toc-how-a-wet-lab-biologist-clinician-perceives-the-world" class="nav-link" data-scroll-target="#how-a-wet-lab-biologist-clinician-perceives-the-world"><span class="header-section-number">2.4.2</span> How a wet-lab biologist / clinician perceives the world</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -306,7 +351,7 @@ Figure&nbsp;2.7: A non-exhaustive list of omics. <span class="citation" data-cit
 </div>
 <div class="block2">
 <p><strong>Remark (Personal opinion: Biology is constantly revising the details).</strong><br>
-Statistical knowledge is rarely <strong>revised</strong>—mostly <strong>refined</strong>. We know properties that generalize to much broader settings (i.e., less statistical assumptions) and much more refined statistical rates for the settings studied two decades ago. (1) There’s little revisions, since once someone proves a statistical theorem, it is very unlikely for it to get disproven in the future. (2) Statistics generally focuses on what happens in an ``average/typical’’ scenario.</p>
+Statistical knowledge is rarely <strong>revised</strong> – its instead mostly <strong>refined</strong>. We know properties that generalize to much broader settings (i.e., less statistical assumptions) and much more refined statistical rates for the settings studied two decades ago. (1) There’s little revisions, since once someone proves a statistical theorem, it is very unlikely for it to get disproven in the future. (2) Statistics generally focuses on what happens in an “average/typical” scenario.</p>
 <p>Biology, in comparison, has many revisions and refinements. There’s a couple reasons for this: (1) Biology research is driven by technology. Hence, as we can image/sequence/profile new aspects of a cell, design new model organisms, or collect more data, we might revise a lot of understanding of how cells work. (2) While there are <em>broad</em> biological mechanisms that generally hold true, many diseases occur when the general biological principle no longer holds true. For this reasons, a lot of cell biology research is about these <em>exceptions</em>, which cause us to question how universally true a biological mechanism is. (As a simple example – we’re taught humans have 46 chromosomes. However, many conditions such as Down Syndrome, originate from having an abnormal number of chromosomes.)</p>
 </div>
 <div class="block">
@@ -315,9 +360,332 @@ One of major missions of this course is to answer the following question: Every 
 <p>While there are certain statistical answers to this question, most of the answers are based on biology. Certain methods rely on a specific biological premise, and that premise becomes hard to justify as you switch from one omic to another.</p>
 <p>This is not too dissimilar from a causal analysis. In a causal analysis, the reason certain features get labeled as a confounder, treatment, outcome, instrumental variable, mediator, etc. relies on the <em>context</em>.</p>
 </div>
+<hr>
+</section>
+</section>
+<section id="what-do-we-hope-to-learn-from-single-cell-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="what-do-we-hope-to-learn-from-single-cell-data"><span class="header-section-number">2.2</span> What do we hope to learn from single-cell data?</h2>
+<section id="basic-biology" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="basic-biology"><span class="header-section-number">2.2.1</span> Basic biology</h3>
+<p>Single-cell data offer a transformative lens to study the fundamental processes of life at unparalleled resolution. Unlike bulk data, which averages signals across populations of cells, single-cell technologies allow researchers to examine the diversity and complexity of individual cells within a tissue or organism. This level of detail provides insights into key biological phenomena, such as cellular differentiation during development, the plasticity of cell states in response to environmental cues, and the organization of complex tissues. For instance, single-cell RNA-sequencing (scRNA-seq) has uncovered new cell types in the brain and immune system, challenging traditional classifications and offering a more nuanced understanding of cellular identities and functions. These insights are essential for constructing more accurate models of how life operates at a cellular level.</p>
+<p>Many of the examples shown in Figs. <a href="#fig-brain-development" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>–<a href="#fig-microglia" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> are basic biology questions. Two additional examples are shown in <a href="#fig-resistance1" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> and <a href="#fig-resistance2" class="quarto-xref">Figure&nbsp;<span>2.9</span></a>.</p>
+<div class="block">
+<div id="fig-resistance1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-resistance1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/resistance.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resistance1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: How do cancer cells survive successive therapies? <span class="citation" data-cites="schaff2024clonal">(<a href="references.html#ref-schaff2024clonal" role="doc-biblioref">Schaff et al. 2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-resistance2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-resistance2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/aging.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resistance2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: What deteriorates in a cell as it ages <span class="citation" data-cites="da2021principles">(<a href="references.html#ref-da2021principles" role="doc-biblioref">Silva and Schumacher 2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="benchside-to-bedside-applications" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="benchside-to-bedside-applications"><span class="header-section-number">2.2.2</span> Benchside-to-bedside applications</h3>
+<p>Single-cell data have enormous potential to revolutionize clinical practice by bridging molecular biology and medicine. After learning basic biology, the next stage is to use our newfound understanding to advance treatments. (We typically call this <em>translation research</em>, to denote <em>translating</em> our basic biology knowledge to therapeutic improvements.) This is also called <em>benchside</em> (for the wet-bench, i.e.&nbsp;laboratory setting) to <em>bedside</em> (for the hospital setting).</p>
+<p>By mapping cellular heterogeneity in diseased and healthy tissues, researchers can identify specific cell populations driving disease progression and therapeutic resistance. For example, in cancer, single-cell analyses have uncovered rare tumor subclones that evade treatment, providing critical targets for drug development. Similarly, in autoimmune diseases like rheumatoid arthritis, single-cell profiling of synovial tissues has identified inflammatory cell states that correlate with disease severity and treatment response. Beyond diagnostics, this technology enables precision medicine by tailoring treatments to the molecular profiles of individual patients. As single-cell approaches continue to evolve, they are poised to refine drug-discovery pipelines, improve vaccine design, and ultimately transform how diseases are diagnosed and treated.</p>
+<p>There are a few ways this typically happens. <a href="#fig-crispr-treatment" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> shows one example, where single-cell research helps identify the specific cell types and specific edits needed to improve cellular function. <a href="#fig-ad-biomarker" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> shows another example, where understanding the cellular functions, we can improve how conventional methods can be used to measure more accurate biomarkers. Cancer research has been (by far) the biggest beneficiary of single-cell research, and <a href="#fig-benchside" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> illustrates how single-cell improves cancer therapies.</p>
+<div class="block">
+<div id="fig-crispr-treatment" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crispr-treatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/crispr-treatment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crispr-treatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: There are current single-cell therapies that involve extracting blood from a donor, altering the cells outside the body, and then infusing the altered blood back into the donor. (Source: <a href="https://www.cancer.gov/news-events/cancer-currents-blog/2020/crispr-cancer-research-treatment" class="uri">https://www.cancer.gov/news-events/cancer-currents-blog/2020/crispr-cancer-research-treatment</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ad-biomarker" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ad-biomarker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/ad-biomarker.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ad-biomarker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: After learning the causal mechanisms for specific cell types for Alzheimer’s disease that can be detected from blood draws, we can refine existing biomarkers to monitor Alzheimer’s. <span class="citation" data-cites="hansson2023blood">(<a href="references.html#ref-hansson2023blood" role="doc-biblioref">Hansson et al. 2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-benchside" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-benchside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/benchside.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-benchside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: Example of how insights from single-cell studies transform cancer therapies. <span class="citation" data-cites="gohil2021applying">(<a href="references.html#ref-gohil2021applying" role="doc-biblioref">Gohil et al. 2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+<section id="what-existed-prior-to-single-cell-data" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="what-existed-prior-to-single-cell-data"><span class="header-section-number">2.2.3</span> What existed prior to single-cell data?</h3>
+<p><strong>Western blots and flow cytometry.</strong><br>
+Before the advent of single-cell technologies, biological research relied heavily on methods like western blots and flow cytometry to study cells and molecules. Western blotting (shown in <a href="#fig-western1" class="quarto-xref">Figure&nbsp;<span>2.13</span></a> and <a href="#fig-western2" class="quarto-xref">Figure&nbsp;<span>2.14</span></a>), developed in the late 1970 s, enabled researchers to detect and quantify specific proteins in a sample, providing insights into cellular pathways and protein-expression levels. However, this technique required lysing entire tissues or cell populations, averaging the signals from thousands or millions of cells. Flow cytometry (shown in <a href="#fig-flow1" class="quarto-xref">Figure&nbsp;<span>2.15</span></a> and <a href="#fig-flow2" class="quarto-xref">Figure&nbsp;<span>2.16</span></a>), emerging in the 1980s, represented a major step forward by allowing researchers to analyse individual cells’ physical and chemical characteristics in suspension. While flow cytometry offered single-cell resolution, it was limited to analysing predefined markers and could not capture the full complexity of cellular states or gene expression.</p>
+<div class="block">
+<div id="fig-western1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-western1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/western1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-western1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: Illustration of the Western-blot technique. (Source: <a href="https://www.bio-rad.com/en-us/applications-technologies/western-blotting-electrophoresis-techniques" class="uri">https://www.bio-rad.com/en-us/applications-technologies/western-blotting-electrophoresis-techniques</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-western2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-western2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/western2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-western2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.14: Example Western-blot data. <span class="citation" data-cites="kepchia2020diverse">(<a href="references.html#ref-kepchia2020diverse" role="doc-biblioref">Kepchia et al. 2020</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-flow1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flow1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/flow1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flow1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.15: Illustration of flow-cytometry technique. (Source: <a href="https://www.streck.com/blog/principles-of-flow-cytometry/" class="uri">https://www.streck.com/blog/principles-of-flow-cytometry/</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-flow2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/flow2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flow2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.16: Example flow-cytometry data. <span class="citation" data-cites="verschoor2015introduction">(<a href="references.html#ref-verschoor2015introduction" role="doc-biblioref">Verschoor et al. 2015</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>Microarray technology.</strong><br>
+The 1990s marked the rise of microarray technology (shown in <a href="#fig-microarray1" class="quarto-xref">Figure&nbsp;<span>2.17</span></a> and <a href="#fig-microarray2" class="quarto-xref">Figure&nbsp;<span>2.18</span></a>), which allowed scientists to measure the expression levels of thousands of genes simultaneously. Microarrays revolutionised transcriptomics by enabling high-throughput studies of gene activity in various conditions, tissues, and diseases. Despite its transformative impact, microarray analysis was fundamentally a <em>bulk</em> method, averaging signals across all cells in a sample. It is also based on light intensity, which can be tricky to extract consistently. These limitations obscured cellular heterogeneity, especially in complex tissues where distinct cell types or states contribute uniquely to biological processes or disease mechanisms.</p>
+<div class="block">
+<div id="fig-microarray1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-microarray1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/microarray1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-microarray1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: Illustration of microarray technique. (Source: <a href="https://www.onlinebiologynotes.com/dna-microarray-principle-types-and-steps-involved-in-cdna-microarrays/" class="uri">https://www.onlinebiologynotes.com/dna-microarray-principle-types-and-steps-involved-in-cdna-microarrays/</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-microarray2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-microarray2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/microarray2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-microarray2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.18: Example microarray image prior to quantification. (Source: <a href="https://online.stat.psu.edu/stat555/node/28/" class="uri">https://online.stat.psu.edu/stat555/node/28/</a>)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block2">
+<p><strong>Remark (Personal opinion: the close history between microarrays and high-dimensional statistics).</strong><br>
+Historically, the rise of microarray data spurred advances in high-dimensional statistics — e.g.&nbsp;the Lasso <span class="citation" data-cites="tibshirani2005sparsity">(<a href="references.html#ref-tibshirani2005sparsity" role="doc-biblioref">Tibshirani et al. 2005</a>)</span>, gene-expression classification for leukaemia <span class="citation" data-cites="golub1999molecular">(<a href="references.html#ref-golub1999molecular" role="doc-biblioref">Golub et al. 1999</a>)</span>, and empirical-Bayes multiple testing <span class="citation" data-cites="efron2002empirical">(<a href="references.html#ref-efron2002empirical" role="doc-biblioref">Efron and Tibshirani 2002</a>)</span>.</p>
+</div>
+<p><strong>Bulk sequencing technologies.</strong><br>
+In the 2000s, bulk sequencing technologies for DNA and RNA emerged, further advancing the study of genomes and transcriptomes. RNA-sequencing (RNA-seq) became a powerful tool for capturing the entire transcriptome with greater accuracy and dynamic range than microarrays. Similarly, DNA sequencing enabled comprehensive studies of genetic variation, from point mutations to structural alterations. However, like microarrays, bulk sequencing aggregated signals across many cells, masking rare cell populations and the heterogeneity critical to understanding dynamic processes such as tumour evolution or immune responses. These bulk techniques laid the groundwork for single-cell methods by driving innovations in high-throughput sequencing and data analysis, which would later be adapted for single-cell resolution.</p>
+<hr>
+</section>
+</section>
+<section id="when-did-single-cell-data-become-popular-and-how-has-the-technology-advanced" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="when-did-single-cell-data-become-popular-and-how-has-the-technology-advanced"><span class="header-section-number">2.3</span> When did single-cell data become popular, and how has the technology advanced?</h2>
+<section id="the-rise-of-single-cell-data" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-rise-of-single-cell-data"><span class="header-section-number">2.3.1</span> The rise of single-cell data</h3>
+<p>Single-cell data began gaining prominence in the early 2010s, fuelled by advances in microfluidics and next-generation sequencing. Single-cell RNA-sequencing (scRNA-seq), pioneered around 2009 – 2011, was among the first methods to achieve widespread adoption. It enabled measurement of gene expression in individual cells, uncovering heterogeneity that bulk analyses masked. Early applications revealed new cell types and states, reshaped our understanding of development, and identified rare populations in cancers and neurodegenerative disorders. Popularity grew as throughput increased, costs fell, and workflows became standardised.</p>
+<p><a href="#fig-single-cell1a" class="quarto-xref">Figure&nbsp;<span>2.19</span></a> and <a href="#fig-single-cell1b" class="quarto-xref">Figure&nbsp;<span>2.20</span></a> contrasts bulk and single-cell sequencing. <a href="#fig-single-cell2" class="quarto-xref">Figure&nbsp;<span>2.21</span></a> shows how single-cell data tease apart different sources of heterogeneity.</p>
+<div class="block">
+<div id="fig-single-cell1a" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-cell1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/single-cell1a.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-cell1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.19: Illustrations of how single-cell sequencing improves resolution for studying cancer resistance. <span class="citation" data-cites="shalek2017single">(<a href="references.html#ref-shalek2017single" role="doc-biblioref">Shalek and Benson 2017</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-single-cell1b" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-cell1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/single-cell1b.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-cell1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.20: Illustrations of how single-cell sequencing improves resolution for studying cancer resistance. <span class="citation" data-cites="shalek2017single">(<a href="references.html#ref-shalek2017single" role="doc-biblioref">Shalek and Benson 2017</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-single-cell2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-cell2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/single-cell2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-cell2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.21: Single-cell insights disentangle underlying biological mechanisms. <span class="citation" data-cites="lei2021applications">(<a href="references.html#ref-lei2021applications" role="doc-biblioref">Lei et al. 2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="expansion-into-other-omics-and-spatial-technologies" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="expansion-into-other-omics-and-spatial-technologies"><span class="header-section-number">2.3.2</span> Expansion into other omics and spatial technologies</h3>
+<p>Building on single-cell transcriptomics, the field rapidly expanded into other omics. Single-cell proteomics allows detailed analysis of protein expression and signalling pathways. Single-cell ATAC-seq profiles chromatin accessibility; Hi-C and related methods reveal 3D genome architecture. Spatial transcriptomics connects gene expression with tissue context. CRISPR-based single-cell screens enable high-throughput perturbations, and lineage-tracing barcodes add a temporal dimension, charting cell ancestry in development and disease. Together, these advances transformed single-cell biology into a multi-dimensional, integrative discipline.</p>
+<p>Many of these technologies appear in <a href="#fig-multiomic" class="quarto-xref">Figure&nbsp;<span>2.22</span></a>.</p>
+<div class="block">
+<div id="fig-multiomic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-multiomic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap1/multiomic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multiomic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.22: Illustration (circa 2020) of technologies that pair various omics at single-cell resolution. <span class="citation" data-cites="teichmann2020method">(<a href="references.html#ref-teichmann2020method" role="doc-biblioref">Teichmann and Efremova 2020</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="what-is-the-role-of-a-biostatistician-in-a-wet-lab-clinical-world" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="what-is-the-role-of-a-biostatistician-in-a-wet-lab-clinical-world"><span class="header-section-number">2.4</span> What is the role of a biostatistician in a wet-lab / clinical world?</h2>
+<p>Cell biology is <em>vast</em> – especially for students trained primarily in statistics or biostatistics. Many disciplines intersect with cell biology. For example:</p>
+<ul>
+<li><strong>Statistics / Biostatistics</strong> – statistical models for complex biological processes; translation between maths and biology</li>
+<li><strong>Computational biology</strong> – scalable computation, leveraging public data</li>
+<li><strong>Bioinformatics / Genetics</strong> – tools that draw on large‐consortium resources</li>
+<li><strong>Epidemiology</strong> – population-level data and policy recommendations</li>
+<li><strong>Bioengineering</strong> – new laboratory technologies for cheaper/faster measurement or imaging</li>
+<li><strong>Biology</strong> – mechanistic studies in model organisms</li>
+<li><strong>Biochemistry / Molecular biology</strong> – structure, function, interactions of specific molecules</li>
+<li><strong>Wet-bench medicine</strong> – disease mechanisms via tissues, models, cell lines</li>
+<li><strong>Clinical-facing medicine</strong> – patient treatment and real-world sample collection</li>
+<li><strong>Pharmacology</strong> – integrating evidence to design new drugs and therapies</li>
+</ul>
+<p>Given so many players, what does a <strong>biostatistician</strong> contribute?</p>
+<section id="how-a-biostatistician-perceives-the-world" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="how-a-biostatistician-perceives-the-world"><span class="header-section-number">2.4.1</span> How a biostatistician perceives the world</h3>
+<p><strong>Give me a concrete (ideally cleaned) dataset</strong>: the larger the better—and I will analyse it from many angles.</p>
+<p><strong>Causality</strong>: A mathematically stricter notion than correlation, usually via (1) counterfactual reasoning, or (2) a directed-acyclic-graph picture of how variables relate.</p>
+<div class="block">
+<p><strong>Remark (Personal opinion: statistical causality for cell biology is extremely difficult).</strong> Obstacles: (i) tracking the <em>same</em> cell over time is impossible because sequencing lyses it; (ii) longitudinal human tissue samples are rare. Strong modelling assumptions can help but must withstand biological scrutiny. The bottleneck is often <em>data</em>, not maths—ambitious statisticians who learn enough biology still have a fighting chance.</p>
+</div>
+<div class="block2">
+<p><strong>Remark (Single-cell methods are largely an “associative” world).</strong> Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.</p>
+</div>
+<p><strong>The research inquiry starts and ends with a method.</strong>: (How to integrate modalities? learn a gene-regulatory network? perform valid post-clustering tests?) Start with a statistical model and a <em>parameter of interest</em> <span class="math inline">\(\theta^*\)</span>, then typically:</p>
+<ol type="1">
+<li><p><strong>Develop a novel estimator</strong> of <span class="math inline">\(\theta^*\)</span>, explaining why current methods fail (e.g.&nbsp;lack robustness, accuracy, power, or are heuristic). <em>Focus on statistical logic:</em> A clear, simple mathematical intuition should show the gap and how the new method fills it.</p></li>
+<li><p><strong>Prove theorems</strong> showing the estimate <span class="math inline">\(\hat\theta\)</span> converges to <span class="math inline">\(\theta^*\)</span> under stated assumptions. <em>Focus on consistency &amp; convergence:</em> More data should provably yield more accurate results (often the highlight of a statistics paper).</p></li>
+<li><p><strong>Simulations</strong> demonstrating that when the true <span class="math inline">\(\theta^\*\)</span> is known, <span class="math inline">\(\hat\theta\)</span> beats competing estimators across many settings. <em>Illustration via benchmarking:</em> Empirically recover the correct answer more often than existing methods.</p></li>
+<li><p><strong>Real-data demonstration</strong> showing results align with known biology or provide biologically sensible new insights. <em>Focus on practicality:</em> The method must work in real scenarios mirroring its target audience.</p></li>
+</ol>
+<p><strong>Mindset:</strong> deliver a <em>reliable tool</em> that others can trust as-is. Human validations are often impractical; guard-rails and diagnostics are vital.</p>
+<p><strong>Why biostatisticians need wet-lab biologists / clinicians:</strong> We rarely generate data ourselves, so collaborators supply (i) exciting data with novel questions, (ii) biological context for sensible assumptions, and (iii) experimental validation of statistical findings.</p>
+</section>
+<section id="how-a-wet-lab-biologist-clinician-perceives-the-world" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="how-a-wet-lab-biologist-clinician-perceives-the-world"><span class="header-section-number">2.4.2</span> How a wet-lab biologist / clinician perceives the world</h3>
+<p><strong>Experiments, experiments, experiments</strong>: Carefully controlled—even if small—to make downstream analysis straightforward.</p>
+<p><strong>Causality</strong>: cCmes from a chain of experiments. Suppose we study a gene’s role in disease:</p>
+<ol type="1">
+<li><p><strong>Temporal evidence</strong>, such as change in gene expression preceding a change in cell phenotype. A causal mechanism should occur <em>before</em> the phenotype.</p></li>
+<li><p><strong>Biological logic</strong> providing explanation of the underlying mechanism (binding factors, protein function, evolutionary rationale, etc.). For example, there must be a coherent pathway from gene → protein → phenotype.</p></li>
+<li><p><strong>Universality</strong> of how the described association persists across cell lines or organisms. A causal mechanism should be discoverable in other systems (extent depends on how general the logic is). This is offten the highlight of a biology paper.</p></li>
+<li><p><strong>Validation</strong>, such as knocking out the gene alters the outcome, whereas similar genes do not. For example, perturbing the specific gene (not its close counterparts) changes the outcome.</p></li>
+</ol>
+<p><strong>Inquiry starts and ends with a biological hypothesis</strong>: Large intellectual effort goes into proposing explanations and designing experiments to rule them in or out.</p>
+<p><strong>Mindset</strong>: Assemble <em>overwhelming evidence</em> for a mechanism, combining careful experiments and biological logic.</p>
+<p><strong>Why wet-lab scientists need biostatisticians</strong>: Data are now complex and plentiful; exhaustive experiments for every hypothesis are infeasible. Statistical methods can (i) account for data &amp; biological complexity and (ii) prioritise hypotheses worth experimental investment.</p>
+<hr>
+<p>So how does a biostatistician develop computational / statistical methods for cell biology?</p>
+<div class="block">
+<ul>
+<li><strong>Biological context</strong> – What system and “north-star” question? Which premises are accepted, which are tested, and why does this mechanism matter?</li>
+<li><strong>Technology, experiment, data</strong> – How are data collected and why this <em>{technology, experiment, data}</em> trio? What technical artefacts arise?</li>
+<li><strong>Boundaries of current tools</strong> – Simple analyses first: what breaks? Is there preliminary evidence a new method would do better?</li>
+<li><strong>Statistical model</strong> – What insight can better interrogate the biology? (Here the statistics training begins.)</li>
+<li><strong>Develop a method &amp; show robustness</strong> – Numerically (noise tolerance) and biologically (applicable across contexts). Often biology lacks a ground truth, so validity arguments lean on biological logic.</li>
+<li><strong>Uncover new / refined biology</strong> – Does the method advance understanding? How confident are we that findings generalise beyond the original <em>{technology, experiment, data}</em> trio? (Usually the paper’s highlight.)</li>
+</ul>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-efron2002empirical" class="csl-entry" role="listitem">
+Efron, Bradley, and Robert Tibshirani. 2002. <span>“Empirical Bayes Methods and False Discovery Rates for Microarrays.”</span> <em>Genetic Epidemiology</em> 23 (1): 70–86.
+</div>
+<div id="ref-gohil2021applying" class="csl-entry" role="listitem">
+Gohil, Satyen H, J Bryan Iorgulescu, David A Braun, Derin B Keskin, and Kenneth J Livak. 2021. <span>“Applying High-Dimensional Single-Cell Technologies to the Analysis of Cancer Immunotherapy.”</span> <em>Nature Reviews Clinical Oncology</em> 18 (4): 244–56.
+</div>
+<div id="ref-golub1999molecular" class="csl-entry" role="listitem">
+Golub, Todd R, Donna K Slonim, Pablo Tamayo, Christine Huard, Michelle Gaasenbeek, Jill P Mesirov, Hilary Coller, et al. 1999. <span>“Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring.”</span> <em>Science</em> 286 (5439): 531–37.
+</div>
+<div id="ref-hansson2023blood" class="csl-entry" role="listitem">
+Hansson, Oskar, Kaj Blennow, Henrik Zetterberg, and Jeffrey Dage. 2023. <span>“Blood Biomarkers for Alzheimer’s Disease in Clinical Practice and Trials.”</span> <em>Nature Aging</em> 3 (5): 506–19.
+</div>
+<div id="ref-kepchia2020diverse" class="csl-entry" role="listitem">
+Kepchia, Devin, Ling Huang, Richard Dargusch, Robert A Rissman, Maxim N Shokhirev, Wolfgang Fischer, and David Schubert. 2020. <span>“Diverse Proteins Aggregate in Mild Cognitive Impairment and Alzheimer’s Disease Brain.”</span> <em>Alzheimer’s Research &amp; Therapy</em> 12: 1–20.
+</div>
+<div id="ref-lei2021applications" class="csl-entry" role="listitem">
+Lei, Yalan, Rong Tang, Jin Xu, Wei Wang, Bo Zhang, Jiang Liu, Xianjun Yu, and Si Shi. 2021. <span>“Applications of Single-Cell Sequencing in Cancer Research: Progress and Perspectives.”</span> <em>Journal of Hematology &amp; Oncology</em> 14 (1): 91.
+</div>
+<div id="ref-schaff2024clonal" class="csl-entry" role="listitem">
+Schaff, Dylan L, Aria J Fasse, Phoebe E White, Robert J Vander Velde, and Sydney M Shaffer. 2024. <span>“Clonal Differences Underlie Variable Responses to Sequential and Prolonged Treatment.”</span> <em>Cell Systems</em> 15 (3): 213–26.
+</div>
+<div id="ref-shalek2017single" class="csl-entry" role="listitem">
+Shalek, Alex K, and Mikael Benson. 2017. <span>“Single-Cell Analyses to Tailor Treatments.”</span> <em>Science Translational Medicine</em> 9 (408): eaan4730.
+</div>
+<div id="ref-da2021principles" class="csl-entry" role="listitem">
+Silva, Paulo FL da, and Björn Schumacher. 2021. <span>“Principles of the Molecular and Cellular Mechanisms of Aging.”</span> <em>Journal of Investigative Dermatology</em> 141 (4): 951–60.
+</div>
+<div id="ref-teichmann2020method" class="csl-entry" role="listitem">
+Teichmann, Sarah, and Mirjana Efremova. 2020. <span>“Method of the Year 2019: Single-Cell Multimodal Omics.”</span> <em>Nature Methods</em> 17 (1): 2020.
+</div>
+<div id="ref-tibshirani2005sparsity" class="csl-entry" role="listitem">
+Tibshirani, Robert, Michael Saunders, Saharon Rosset, Ji Zhu, and Keith Knight. 2005. <span>“Sparsity and Smoothness via the Fused Lasso.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 67 (1): 91–108.
+</div>
+<div id="ref-verschoor2015introduction" class="csl-entry" role="listitem">
+Verschoor, Chris P, Alina Lelic, Jonathan L Bramson, and Dawn ME Bowdish. 2015. <span>“An Introduction to Automated Flow Cytometry Gating Tools and Their Implementation.”</span> <em>Frontiers in Immunology</em> 6: 380.
+</div>
 <div id="ref-von2015microglial" class="csl-entry" role="listitem">
 Von Bernhardi, Rommy, Laura Eugenı́n-von Bernhardi, and Jaime Eugenı́n. 2015. <span>“Microglial Cell Dysregulation in Brain Aging and Neurodegeneration.”</span> <em>Frontiers in Aging Neuroscience</em> 7: 124.
 </div>
