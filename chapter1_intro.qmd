@@ -111,7 +111,6 @@ By mapping cellular heterogeneity in diseased and healthy tissues, researchers c
 
 There are a few ways this typically happens. @fig-crispr-treatment shows one example, where single-cell research helps identify the specific cell types and specific edits needed to improve cellular function. @fig-ad-biomarker shows another example, where understanding the cellular functions, we can improve how conventional methods can be used to measure more accurate biomarkers. Cancer research has been (by far) the biggest beneficiary of single-cell research, and @fig-benchside illustrates how single-cell improves cancer therapies.
 
-
 ::: block
 ![There are current single-cell therapies that involve extracting blood from a donor, altering the cells outside the body, and then infusing the altered blood back into the donor. (Source: <https://www.cancer.gov/news-events/cancer-currents-blog/2020/crispr-cancer-research-treatment>)](fig/chap1/crispr-treatment.png){#fig-crispr-treatment width="100%" fig-align="center"}
 :::
@@ -136,7 +135,7 @@ Before the advent of single-cell technologies, biological research relied heavil
 :::
 
 ::: block
-![Example Western-blot data.  [@kepchia2020diverse]](fig/chap1/western2.png){#fig-western2 width="75%" fig-align="center"}
+![Example Western-blot data. [@kepchia2020diverse]](fig/chap1/western2.png){#fig-western2 width="75%" fig-align="center"}
 :::
 
 ::: block
@@ -194,7 +193,6 @@ Building on single-cell transcriptomics, the field rapidly expanded into other o
 
 Many of these technologies appear in @fig-multiomic.
 
-
 ::: block
 ![Illustration (circa 2020) of technologies that pair various omics at single-cell resolution. [@teichmann2020method]](fig/chap1/multiomic.png){#fig-multiomic width="100%" fig-align="center"}
 :::
@@ -226,21 +224,21 @@ Given so many players, what does a **biostatistician** contribute?
 
 ::: block
 **Remark (Personal opinion: statistical causality for cell biology is extremely difficult).** Obstacles: (i) tracking the *same* cell over time is impossible because sequencing lyses it; (ii) longitudinal human tissue samples are rare. Strong modelling assumptions can help but must withstand biological scrutiny. The bottleneck is often *data*, not maths—ambitious statisticians who learn enough biology still have a fighting chance.
-::: 
+:::
 
 ::: block2
 **Remark (Single-cell methods are largely an “associative” world)**: Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.
-::: 
+:::
 
 **The research inquiry starts and ends with a method**: (How to integrate modalities? learn a gene-regulatory network? perform valid post-clustering tests?) Start with a statistical model and a *parameter of interest* $\theta^*$, then typically:
 
-  1.  **Develop a novel estimator** of $\theta^*$, explaining why current methods fail (e.g. lack robustness, accuracy, power, or are heuristic). *Focus on statistical logic:* A clear, simple mathematical intuition should show the gap and how the new method fills it.
+1.  **Develop a novel estimator** of $\theta^*$, explaining why current methods fail (e.g. lack robustness, accuracy, power, or are heuristic). *Focus on statistical logic:* A clear, simple mathematical intuition should show the gap and how the new method fills it.
 
-  2.  **Prove theorems** showing the estimate $\hat\theta$ converges to $\theta^*$ under stated assumptions. *Focus on consistency & convergence:* More data should provably yield more accurate results (often the highlight of a statistics paper).
+2.  **Prove theorems** showing the estimate $\hat\theta$ converges to $\theta^*$ under stated assumptions. *Focus on consistency & convergence:* More data should provably yield more accurate results (often the highlight of a statistics paper).
 
-  3.  **Simulations** demonstrating that when the true $\theta^*$ is known, $\hat\theta$ beats competing estimators across many settings. *Illustration via benchmarking:* Empirically recover the correct answer more often than existing methods.
+3.  **Simulations** demonstrating that when the true $\theta^*$ is known, $\hat\theta$ beats competing estimators across many settings. *Illustration via benchmarking:* Empirically recover the correct answer more often than existing methods.
 
-  4.  **Real-data demonstration** showing results align with known biology or provide biologically sensible new insights. *Focus on practicality:* The method must work in real scenarios mirroring its target audience.
+4.  **Real-data demonstration** showing results align with known biology or provide biologically sensible new insights. *Focus on practicality:* The method must work in real scenarios mirroring its target audience.
 
 **Mindset:** deliver a *reliable tool* that others can trust as-is. Human validations are often impractical; guard-rails and diagnostics are vital.
 
@@ -252,13 +250,13 @@ Given so many players, what does a **biostatistician** contribute?
 
 **Causality** comes from a chain of experiments. Suppose we study a gene’s role in disease:
 
-  1.  **Temporal evidence**, such as change in gene expression preceding a change in cell phenotype. A causal mechanism should occur *before* the phenotype.
+1.  **Temporal evidence**, such as change in gene expression preceding a change in cell phenotype. A causal mechanism should occur *before* the phenotype.
 
-  2.  **Biological logic** providing explanation of the underlying mechanism (binding factors, protein function, evolutionary rationale, etc.). For example, there must be a coherent pathway from gene → protein → phenotype.
+2.  **Biological logic** providing explanation of the underlying mechanism (binding factors, protein function, evolutionary rationale, etc.). For example, there must be a coherent pathway from gene → protein → phenotype.
 
-  3.  **Universality** of how the described association persists across cell lines or organisms. A causal mechanism should be discoverable in other systems (extent depends on how general the logic is). This is offten the highlight of a biology paper. 
+3.  **Universality** of how the described association persists across cell lines or organisms. A causal mechanism should be discoverable in other systems (extent depends on how general the logic is). This is offten the highlight of a biology paper.
 
-  4.  **Validation**, such as knocking out the gene alters the outcome, whereas similar genes do not. For example, perturbing the specific gene (not its close counterparts) changes the outcome.
+4.  **Validation**, such as knocking out the gene alters the outcome, whereas similar genes do not. For example, perturbing the specific gene (not its close counterparts) changes the outcome.
 
 **Inquiry starts and ends with a biological hypothesis**: Large intellectual effort goes into proposing explanations and designing experiments to rule them in or out.
 
@@ -274,7 +272,7 @@ So how does a biostatistician develop computational / statistical methods for ce
 -   **Biological context** – What is the biological system and the “north-star” question? Which premises are accepted, which ones are to be tested, and why is it important to understand this mechanism better?
 -   **Technology, experiment, data** – How are data collected and why did you choose this particular *{technology, experiment, data}* trio? What technical artefacts arise?
 -   **Boundaries of current tools** – Simple analyses first: what "breaks" in existing workflows? Is there preliminary evidence a new computational method would do better?
--   **Statistical model** – What is the insight that a different computational method could  interrogate the biology better? (Here the statistics training begins.)
+-   **Statistical model** – What is the insight that a different computational method could interrogate the biology better? (Here the statistics training begins.)
 -   **Develop a method & show robustness** – Robustness can be defined numerically (i.e., noise tolerance) or biologically (i.e., applicable across contexts/environments). Often, the biological question you study lacks a ground truth, so validity arguments lean on biological logic.
 -   **Uncover new / refined biology** – Does the method advance our biological understanding? How confident are we that findings generalise beyond the original *{technology, experiment, data}* trio? (This is usually the crown-jewel of your computational biology paper -- it's not necessary your specific analyses, but the potential that your tool can be used on other biological studies beyond what you've demonstrated your method on.)
 :::
