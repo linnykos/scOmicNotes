@@ -15,7 +15,7 @@ bibliography: references.bib   # optional .bib file for citations
 
 ## The sparse count matrix and the negative binomial
 
-At the heart of single-cell sequencing data lies the sparse count matrix, where rows represent genes, columns represent cells, and entries capture the number of sequencing reads (or molecules) detected for each gene in each cell. This matrix is typically sparse because most genes are not expressed in any given cell, leading to a prevalence of zeros. The data's sparsity reflects both the biological reality of selective gene expression and technical limitations such as sequencing depth. To model the variability in these counts, the negative binomial distribution is often employed. This distribution accommodates overdispersion, where the observed variability in gene expression counts exceeds what would be expected under simpler models like the Poisson distribution. By accounting for both biological heterogeneity and technical noise, the negative binomial provides a robust framework for analyzing sparse single-cell data.
+ASDF ASDF ASDF ASDF At the heart of single-cell sequencing data lies the sparse count matrix, where rows represent genes, columns represent cells, and entries capture the number of sequencing reads (or molecules) detected for each gene in each cell. This matrix is typically sparse because most genes are not expressed in any given cell, leading to a prevalence of zeros. The data's sparsity reflects both the biological reality of selective gene expression and technical limitations such as sequencing depth. To model the variability in these counts, the negative binomial distribution is often employed. This distribution accommodates overdispersion, where the observed variability in gene expression counts exceeds what would be expected under simpler models like the Poisson distribution. By accounting for both biological heterogeneity and technical noise, the negative binomial provides a robust framework for analyzing sparse single-cell data.
 
 Let $X \in \mathbb{R}^{n\times p}$ denote the single-cell data matrix with $n$ cells (rows) and $p$ features (columns). In a single-cell RNA-seq data matrix, the $p$ features represent the $p$ genes.\
 Here are some basic statistics about these matrices (based mainly from my experience):
@@ -56,7 +56,7 @@ $$ {#eq-nb_2}
 
 (Compare these relations to the Poisson distribution, where both the mean and variance would be $\mu_{ij}$.)
 
-To relate equation @eq-nb_1} to @eq-nb_2, observe that we can derive,
+To relate equation @eq-nb_1 to @eq-nb_2, observe that we can derive,
 
 $$
 \mu_{ij} = \frac{r_j (1 - p_{ij})}{p_{ij}}.
