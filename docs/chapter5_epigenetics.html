@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -161,6 +181,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#primer-on-the-genome-epigenetics-and-enhancers" id="toc-primer-on-the-genome-epigenetics-and-enhancers" class="nav-link active" data-scroll-target="#primer-on-the-genome-epigenetics-and-enhancers"><span class="header-section-number">6.1</span> Primer on the genome, epigenetics, and enhancers</a></li>
+  <li><a href="#the-zoo-of-epigenetic-modalities" id="toc-the-zoo-of-epigenetic-modalities" class="nav-link" data-scroll-target="#the-zoo-of-epigenetic-modalities"><span class="header-section-number">6.2</span> The zoo of epigenetic modalities</a></li>
   </ul>
 </nav>
     </div>
@@ -198,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 <img src="fig/chap5/enhancer-promoter.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">(<a href="references.html#ref-ito2022factors" role="doc-biblioref"><strong>ito2022factors?</strong></a>)</span>.
+Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">Ito et al. (<a href="references.html#ref-ito2022factors" role="doc-biblioref">2022</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -210,13 +231,221 @@ Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">(<a hre
 <img src="fig/chap5/enhancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhancers">(<a href="references.html#ref-claringbould2021enhancers" role="doc-biblioref"><strong>claringbould2021enhancers?</strong></a>)</span>.
+Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhancers">Claringbould and Zaugg (<a href="references.html#ref-claringbould2021enhancers" role="doc-biblioref">2021</a>)</span>.
 </figcaption>
 </figure>
 </div>
 </div>
+</section>
+<section id="the-zoo-of-epigenetic-modalities" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-zoo-of-epigenetic-modalities"><span class="header-section-number">6.2</span> The zoo of epigenetic modalities</h2>
+<p>Epigenetics encompasses a vast array of molecular mechanisms that regulate gene expression without altering the underlying DNA sequence. These mechanisms include modifications to DNA, RNA, chromatin, and the spatial organization of the genome, collectively forming a complex regulatory landscape. Below are some of the key modalities studied in epigenetics:</p>
+<ul>
+<li><p><strong>DNA Accessibility</strong>: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we’ll focus on this chapter.)</p></li>
+<li><p><strong>DNA Methylation</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See <a href="#fig-methylation1-1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p></li>
+</ul>
+<div class="block">
+<div id="fig-methylation1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-methylation1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/methylation1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-methylation1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: (Left): From <span class="citation" data-cites="gauba2021immunomodulation">(<a href="references.html#ref-gauba2021immunomodulation" role="doc-biblioref"><strong>gauba2021immunomodulation?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="fig-methylation1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-methylation1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/methylation2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-methylation1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Hi-C and Genome Organization</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See <a href="#fig-hic1-1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</li>
+</ul>
+<div id="fig-hic1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hic1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/hic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hic1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5
+</figcaption>
+</figure>
+</div>
+<div id="fig-hic1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hic1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/hic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hic1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Histone Modifications</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut &amp; Tag method are used to map these modifications and their role in gene expression at the bulk level. See <a href="#fig-histone1" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>.</li>
+</ul>
+<div id="fig-histone1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histone1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/histone1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-histone1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.7
+</figcaption>
+</figure>
+</div>
+<div id="fig-histone2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histone2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/histone2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-histone2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8
+</figcaption>
+</figure>
+</div>
+<p>Some of you might be interested: Personally, I think one of the fascinating concepts based on histone modifications is <em>bivalent chromatin</em> (essentially, chromatin that is wrapped in such a way that is simultaneously activated and silenced), see <a href="#fig-bivalent1-1" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>. It’s a particularly curious phenomenon that entire labs dedicate themselves to studying. See <span class="citation" data-cites="blanco2020bivalent">(<a href="references.html#ref-blanco2020bivalent" role="doc-biblioref"><strong>blanco2020bivalent?</strong></a>)</span> for an overview why this mechanism might be “beneficial.”</p>
+<div id="fig-bivalent1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bivalent1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/bivalent1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-bivalent1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.9
+</figcaption>
+</figure>
+</div>
+<div id="fig-bivalent1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bivalent1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/bivalent2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-bivalent1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.10
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>RNA Modifications (m6A and Pseudouridine)</strong>: Modifications like N6-methyladenosine (m6A) and pseudouridine occur on RNA molecules and are involved in processes like splicing, translation, and mRNA decay. See <a href="#fig-pseudouridine" class="quarto-xref">Figure&nbsp;<span>6.11</span></a> for what pseudouridine is, i.e., “a rotation of the uridine molecule.” These modifications add an epitranscriptomic layer to gene regulation.</li>
+</ul>
+<div id="fig-pseudouridine" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pseudouridine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/pseudouridine.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-pseudouridine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.11
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Untranslated Regions (UTRs)</strong>: Before talking about UTRs, it’s probably good to review what an mRNA fragment “looks like” at the different stages of transcription and translation, see <a href="#fig-utr2" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation.</li>
+</ul>
+<div id="fig-utr2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-utr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/utr2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-utr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.12
+</figcaption>
+</figure>
+</div>
+<div id="fig-utr1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-utr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/utr1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-utr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.13
+</figcaption>
+</figure>
+</div>
+<div id="fig-utr3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-utr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/utr3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-utr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.14
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Alternative Splicing</strong>: This post-transcriptional process generates multiple mRNA isoforms from the same gene, expanding the proteomic diversity, see <a href="#fig-alternativesplicing1" class="quarto-xref">Figure&nbsp;<span>6.15</span></a>. <strong>This is a combinatorial explosion of isoforms.</strong> While not traditionally classified as epigenetic, splicing often intersects with chromatin modifications and RNA-binding proteins, blurring the lines between transcriptional and post-transcriptional regulation.</li>
+</ul>
+<div id="fig-alternativesplicing1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alternativesplicing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/alternativesplicing1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-alternativesplicing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Alternative Polyadenylation (APA)</strong>: APA generates transcript isoforms with different 3′ ends, affecting mRNA stability, localization, and translation, see <a href="#fig-apa1" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>. By selecting distinct cleavage sites, APA alters the <em>3′ UTR length</em> without affecting the poly-A tail itself, thereby modulating interactions with regulatory factors such as microRNAs and RNA-binding proteins.</li>
+</ul>
+<div id="fig-apa1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-apa1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/apa1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-apa1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.16
+</figcaption>
+</figure>
+</div>
+<p>Efforts like the ENCODE project (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7061942/" class="uri">https://pmc.ncbi.nlm.nih.gov/articles/PMC7061942/</a>) have systematically mapped these modalities across cell types and tissues, creating a comprehensive resource for understanding genome function. ENCODE has provided invaluable datasets on DNA accessibility, histone modifications, and RNA-binding proteins, enabling researchers to uncover how epigenetic and transcriptomic layers work together to drive cellular processes.</p>
+<p>Finally, tools like MPRA (Massively Parallel Reporter Assays) are revolutionizing how we study enhancers and regulatory sequences. MPRA allows researchers to test thousands of DNA fragments for their regulatory activity, providing functional validation for epigenetic marks. This growing zoo of modalities continues to expand our understanding of how the genome is dynamically regulated in health and disease.</p>
+<p>See <a href="#fig-epigenetic2-1" class="quarto-xref">Figure&nbsp;<span>6.17</span></a> for some courageous figures that try to display multiple types of epigenetic modifications all at once. See <span class="citation" data-cites="lim2024advances">(<a href="references.html#ref-lim2024advances" role="doc-biblioref"><strong>lim2024advances?</strong></a>)</span> for a broad overview about the different types of technologies to sequence different omics and layers of epigenetics, and how they are getting computationally put together.</p>
+<div id="fig-epigenetic2-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-epigenetic2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/epigenetic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-epigenetic2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.17
+</figcaption>
+</figure>
+</div>
+<div id="fig-epigenetic2-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-epigenetic2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/epigenetic3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-epigenetic2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.18
+</figcaption>
+</figure>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-claringbould2021enhancers" class="csl-entry" role="listitem">
+Claringbould, Annique, and Judith B Zaugg. 2021. <span>“Enhancers in Disease: Molecular Basis and Emerging Treatment Strategies.”</span> <em>Trends in Molecular Medicine</em> 27 (11): 1060–73.
+</div>
+<div id="ref-ito2022factors" class="csl-entry" role="listitem">
+Ito, Shinsuke, Nando Dulal Das, Takashi Umehara, and Haruhiko Koseki. 2022. <span>“Factors and Mechanisms That Influence Chromatin-Mediated Enhancer–Promoter Interactions and Transcriptional Regulation.”</span> <em>Cancers</em> 14 (21): 5404.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The technology to measure this at single-cell resolution is still being developed (see snmC-seq2 <span class="citation" data-cites="liu2021dna">(<a href="references.html#ref-liu2021dna" role="doc-biblioref"><strong>liu2021dna?</strong></a>)</span>), and is particularly interesting due to methylation’s relation to cellular memory <span class="citation" data-cites="kim2017dna">(<a href="references.html#ref-kim2017dna" role="doc-biblioref"><strong>kim2017dna?</strong></a>)</span> and molecular clocks <span class="citation" data-cites="hernando2019ageing">(<a href="references.html#ref-hernando2019ageing" role="doc-biblioref"><strong>hernando2019ageing?</strong></a>)</span>; <span class="citation" data-cites="trapp2021profiling">(<a href="references.html#ref-trapp2021profiling" role="doc-biblioref"><strong>trapp2021profiling?</strong></a>)</span>; <span class="citation" data-cites="gabbutt2022fluctuating">(<a href="references.html#ref-gabbutt2022fluctuating" role="doc-biblioref"><strong>gabbutt2022fluctuating?</strong></a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See Droplet-HiC <span class="citation" data-cites="chang2024droplet">(<a href="references.html#ref-chang2024droplet" role="doc-biblioref"><strong>chang2024droplet?</strong></a>)</span> for an example of single-cell Hi-C.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See Paired-tag <span class="citation" data-cites="zhu2021joint">(<a href="references.html#ref-zhu2021joint" role="doc-biblioref"><strong>zhu2021joint?</strong></a>)</span> for an example of single-cell histone modification.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
