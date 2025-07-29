@@ -1,0 +1,66 @@
+---
+title: "Single-cell RNA-sequencing"
+subtitle: "Cluster, differential expression, cell-typing, and trajectory analysis"
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    theme: cosmo      # pick any Bootstrap theme you like
+    css: styles.css   # provides the coloured ‘block’ boxes
+execute:
+  echo: false         # hide code by default
+bibliography: references.bib   # optional .bib file for citations
+---
+
+::: block2
+**Personal opinion: Most methods for single-cell RNA-sequencing “generalize” to other modalities**
+
+Most of the statistical logic discussed for scRNA-seq will work for any other sequencing technology, even if it’s for another omic. While the literal details might change (and might be repackaged as a different method), this high-level statistical logic has stood the test of time, at least over the 10+ years. This is why it is arguably more important to understand the reason *why* certain methods are used, compared to *how* the method works.
+:::
+
+## Some important nouns and verbs
+
+-   **Sequencing** *(verb)*: The process of determining the order of nucleotides (A, T, C, G) in a DNA or RNA molecule, providing the primary structure of these biomolecules. Sequencing technologies have evolved to be high-throughput, enabling the analysis of entire genomes or transcriptomes.
+
+-   **Sequencing depth, read depth, library size** *(noun; all synonyms)*: These terms refer to the number of times a specific nucleotide or region of the genome is sequenced in an experiment. Greater depth provides more accurate detection of rare variants or lowly expressed genes but requires increased computational and financial resources.
+
+-   **Chromosome, DNA, RNA, protein** *(noun)*:
+
+    -   **Chromosome**: A large, organized structure of DNA and associated proteins that contains many genes and regulatory elements.\
+    -   **DNA**: The molecule that encodes genetic information in a double-helical structure.\
+    -   **RNA**: A single-stranded molecule transcribed from DNA that can act as a messenger (mRNA), a structural component (rRNA), or a regulator (e.g., miRNA). When we talk about scRNA-seq, we are usually referring to exclusively measuring mRNA.\
+    -   **Protein**: The functional biomolecule synthesized from RNA via translation, performing structural, enzymatic, and regulatory roles in cells.
+
+-   **Genome vs. gene vs. intergenic region** *(noun)*:
+
+    -   **Genome**: The complete set of DNA in an organism, encompassing all of its genetic material, including coding genes, non-coding regions, and regulatory elements. The genome is the blueprint that defines the biological potential of the organism.\
+    -   **Gene**: A specific sequence within the genome that encodes a functional product, typically a protein or functional RNA. Genes include regions such as exons (coding sequences), introns (non-coding regions within a gene), and regulatory sequences (e.g., promoters and enhancers) that control gene expression. We will see more about the architecture of a gene in @sec-genetics_basics.\
+    -   **Intergenic region**: The stretches of DNA between genes that do not directly code for proteins or RNA. Intergenic regions were once considered “junk DNA,” but they often contain regulatory elements, such as enhancers and silencers, that influence the expression of nearby or distant genes. These regions also play roles in chromatin organization and genome stability.
+
+-   **Genetics vs. genomics** *(noun)*: Genetics typically focuses on the role of the DNA among large populations (of people, of species, etc.), while genomics can encapsulate any omic, and does not necessarily imply studies across a large population[^chapter3_rna-1].
+
+-   **“Next generation sequencing”** *(noun)*[^chapter3_rna-2]: A collection of high-throughput technologies that allow for the parallel sequencing of millions of DNA or RNA molecules. It has revolutionized biology by enabling large-scale studies of genomes, transcriptomes, and epigenomes.
+
+-   **Read fragment** *(noun)*: A short sequence of DNA or RNA produced as an output from high-throughput sequencing. Fragments are typically between 50 bp and 300 bp long, depending on the sequencing technology, and they represent segments of the original molecule being sequenced.
+
+-   **Reference genome** *(noun)*: A curated, complete assembly of the genomic sequence for a species, used as a template to align and interpret sequencing reads. It serves as a baseline for identifying genetic variations, such as mutations or structural changes, and for annotating functional elements.
+
+-   **Coding genes vs. non-coding genes** *(noun)*:
+
+    -   **Coding genes**: Genes that contain instructions for producing proteins. They are transcribed into mRNA, which is then translated into functional proteins that perform structural, enzymatic, or regulatory roles in cells.\
+    -   **Non-coding genes**: Genes that do not produce proteins but instead generate functional RNA molecules, such as rRNA, tRNA, miRNA, or lncRNA, which regulate gene expression, maintain genomic stability, or perform other cellular functions. Non-coding genes highlight the complexity of gene regulation and cellular processes beyond protein synthesis.
+
+-   **Epigenetics vs. epigenomics** *(noun)*: Epigenetics studies modifications to DNA and histones (e.g., methylation, acetylation) that regulate gene expression without altering the DNA sequence. Epigenomics examines these modifications across the entire genome.
+
+-   **Transcriptome** *(noun)*: The complete set of RNA transcripts expressed in a cell or tissue at a given time, reflecting dynamic gene activity.
+
+-   **Proteome** *(noun)*: The full complement of proteins expressed in a cell, tissue, or organism, representing functional output.
+
+-   **Single-cell sequencing** *(noun)*: Sequencing technologies applied at the resolution of individual cells, allowing for the study of heterogeneity in gene expression, epigenetics, or genetic variation across cell populations.
+
+-   **Bulk sequencing** *(noun)*: Sequencing technologies that aggregate material (e.g., RNA, DNA) from many cells, providing an average profile of the population but masking individual cell variability.
+
+[^chapter3_rna-1]: Technically, genomics (as a field) is a broader categorization and encapsulates genetics. But usually when people say they work on “genomics,” they are colloquially implying they work on biology that is *not* genetics (otherwise, they usually say they’re a geneticist).
+
+[^chapter3_rna-2]: This term is not very often used anymore. It was an umbrella label popularized in the mid-2000s. We instead typically refer to a more specific category of technology. For example, most of the data in this scRNA-seq chapter are referred to as “short-read 3′ single-cell RNA-sequencing.” (You could throw in “droplet-based” and “UMI” to be even more precise, but that’s usually not needed in most casual contexts.)

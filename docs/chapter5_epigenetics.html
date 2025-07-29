@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Single-cell sequencing – scOmicNotes</title>
+<title>6&nbsp; Single-cell epigenetics – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter3_rna.html" rel="next">
-<link href="./chapter1_intro.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./chapter4_protein.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -112,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter2_sequencing.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter5_epigenetics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -151,7 +122,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter2_sequencing.html" class="sidebar-item-text sidebar-link active">
+  <a href="./chapter2_sequencing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></span></a>
   </div>
 </li>
@@ -169,7 +140,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter5_epigenetics.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter5_epigenetics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span></a>
   </div>
 </li>
@@ -189,10 +160,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-sparse-count-matrix-and-the-negative-binomial" id="toc-the-sparse-count-matrix-and-the-negative-binomial" class="nav-link active" data-scroll-target="#the-sparse-count-matrix-and-the-negative-binomial"><span class="header-section-number">3.1</span> The sparse count matrix and the negative binomial</a>
-  <ul>
-  <li><a href="#how-do-you-estimate-the-overdispersion-parameter-in-practice" id="toc-how-do-you-estimate-the-overdispersion-parameter-in-practice" class="nav-link" data-scroll-target="#how-do-you-estimate-the-overdispersion-parameter-in-practice"><span class="header-section-number">3.1.0.1</span> How do you estimate the overdispersion parameter in practice?</a></li>
-  </ul></li>
+  <li><a href="#primer-on-the-genome-epigenetics-and-enhancers" id="toc-primer-on-the-genome-epigenetics-and-enhancers" class="nav-link active" data-scroll-target="#primer-on-the-genome-epigenetics-and-enhancers"><span class="header-section-number">6.1</span> Primer on the genome, epigenetics, and enhancers</a></li>
   </ul>
 </nav>
     </div>
@@ -201,8 +169,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></h1>
-<p class="subtitle lead">Overivew of single-cell sequencing data</p>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></h1>
+<p class="subtitle lead">Transcription factor scoring, diagonal integration, gene regulatory networks</p>
 </div>
 
 
@@ -219,98 +187,36 @@ window.Quarto = {
 </header>
 
 
-<section id="the-sparse-count-matrix-and-the-negative-binomial" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-sparse-count-matrix-and-the-negative-binomial"><span class="header-section-number">3.1</span> The sparse count matrix and the negative binomial</h2>
-<p>At the heart of single-cell sequencing data lies the sparse count matrix, where rows represent genes, columns represent cells, and entries capture the number of sequencing reads (or molecules) detected for each gene in each cell. This matrix is typically sparse because most genes are not expressed in any given cell, leading to a prevalence of zeros. The data’s sparsity reflects both the biological reality of selective gene expression and technical limitations such as sequencing depth. To model the variability in these counts, the negative binomial distribution is often employed. This distribution accommodates overdispersion, where the observed variability in gene expression counts exceeds what would be expected under simpler models like the Poisson distribution. By accounting for both biological heterogeneity and technical noise, the negative binomial provides a robust framework for analyzing sparse single-cell data.</p>
-<p>Let <span class="math inline">\(X \in \mathbb{R}^{n\times p}\)</span> denote the single-cell data matrix with <span class="math inline">\(n\)</span> cells (rows) and <span class="math inline">\(p\)</span> features (columns). In a single-cell RNA-seq data matrix, the <span class="math inline">\(p\)</span> features represent the <span class="math inline">\(p\)</span> genes.<br>
-Here are some basic statistics about these matrices (based mainly from my experience):</p>
-<ul>
-<li>For <span class="math inline">\(n\)</span>, we usually have 10,000 to 500,000 cells. These cells originate from a specific set of samples/donors/organisms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. See <span class="quarto-unresolved-ref">?fig-lupus</span> and <span class="quarto-unresolved-ref">?fig-zebrafish</span> for larger examples of single-cell datasets.<br>
-</li>
-<li>For <span class="math inline">\(p\)</span>, we usually have about 30,000 genes (but as you’ll see, we usually limit the analysis to 2000 to 5000 genes chosen from this full set).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><br>
-</li>
-<li>In a typical scRNA-seq matrix, more than 70% of the elements are exactly 0. (And among the remaining 30%, typically half are exactly 1. The maximum count can be in the hundreds, i.e., the distribution is <em>extremely</em> right-skewed.) This is illustrated in <a href="#fig-count1" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> and <a href="#fig-count2" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>. We’ll see later in <span class="quarto-unresolved-ref">?sec-scrnaseq_tech</span> where these ``counts’’ come from.</li>
-</ul>
-<p>Based on these observations, the negative binomial distribution is very commonly used.</p>
+<section id="primer-on-the-genome-epigenetics-and-enhancers" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="primer-on-the-genome-epigenetics-and-enhancers"><span class="header-section-number">6.1</span> Primer on the genome, epigenetics, and enhancers</h2>
+<p>The genome is the complete set of DNA within an organism, encoding the instructions for life. While every cell in an organism typically contains the same genome, different cells exhibit distinct phenotypes and functions. This diversity arises not from changes in the underlying DNA sequence but from epigenetic regulation—heritable modifications that influence gene expression without altering the DNA itself. Epigenetics includes processes like DNA methylation, histone modification, and chromatin accessibility, all of which contribute to the dynamic regulation of gene activity in response to developmental cues and environmental signals.</p>
+<p>Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See <a href="#fig-enhancer-promoter1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> and <a href="#fig-enhancer-promoter2" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> to appreciate how complex this machinery is.</p>
 <div class="block">
-<div id="fig-count1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-enhancer-promoter1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-count1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap2/count.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div aria-describedby="fig-enhancer-promoter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/enhancer-promoter.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Illustration of data from <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> showing a snippet of the count matrix
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">(<a href="references.html#ref-ito2022factors" role="doc-biblioref"><strong>ito2022factors?</strong></a>)</span>.
 </figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-count2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-enhancer-promoter2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-count2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap2/nonzero_hist.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div aria-describedby="fig-enhancer-promoter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap5/enhancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Illustration of data from <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> showing the percentage of cells with non-zero counts for each gene
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhancers">(<a href="references.html#ref-claringbould2021enhancers" role="doc-biblioref"><strong>claringbould2021enhancers?</strong></a>)</span>.
 </figcaption>
 </figure>
 </div>
 </div>
-<p>The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.</p>
-<p>Let us focus on the count for cell <span class="math inline">\(i\)</span> and gene <span class="math inline">\(j\)</span>, i.e., the value <span class="math inline">\(X_{ij}\)</span>. The probability mass function (pmf) of the NB distribution for a random variable ( X_{ij} ) is given by:</p>
-<p><span id="eq-nb_1"><span class="math display">\[
-P(X_{ij} = k) = \binom{k + r_j - 1}{k} p_{ij}^r (1 - p_{ij})^k, \quad k = 0, 1, 2, \ldots
-\tag{3.1}\]</span></span></p>
-<p>where ( r_j &gt; 0 ) is the dispersion (or “overdispersion”) parameter and ( p_{ij} (0, 1) ) is the probability of success. This is the “standard” parameterization, mentioned in <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution" class="uri">https://en.wikipedia.org/wiki/Negative_binomial_distribution</a>. This specific parameterization is actually not very commonly used.</p>
-<p>Alternatively, the NB distribution is most commonly parameterized in terms of the mean <span class="math inline">\(\mu_{ij}\)</span> and the dispersion parameter <span class="math inline">\(r_j\)</span>, which is often preferred in single-cell analysis:</p>
-<p><span id="eq-nb_2"><span class="math display">\[
-\text{Mean: } \mu_{ij}, \quad \text{Variance: } \mu_{ij} + \frac{\mu_{ij}^2}{r_j} = \mu_{ij}\left(1 + \frac{\mu_{ij}}{r_j}\right).
-\tag{3.2}\]</span></span></p>
-<p>(Compare these relations to the Poisson distribution, where both the mean and variance would be <span class="math inline">\(\mu_{ij}\)</span>.)</p>
-<p>To relate equation <a href="#eq-nb_1" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>} to <a href="#eq-nb_2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>, observe that we can derive,</p>
-<p><span class="math display">\[
-\mu_{ij} = \frac{r_j (1 - p_{ij})}{p_{ij}}.
-\]</span></p>
-<p>We typically use a different overdispersion parameter <span class="math inline">\(r_j\)</span> for each gene <span class="math inline">\(j \in \{1,\ldots,p\}\)</span>. Here, ( r_j ) controls the degree of overdispersion. When ( r_j ), the variance approaches the mean, and the NB distribution converges to the Poisson distribution. For single-cell RNA-seq data, the introduction of ( r_j ) allows the model to capture both the biological variability between cells and technical noise, making it robust to the sparse and overdispersed nature of gene expression data.</p>
-<div class="block2">
-<p><strong>Why would genes even have different overdispersions?</strong><br>
-We’re assuming in most statistical models that: 1) genes are modeled as a negative binomial random variable, and 2) genes have different overdispersion parameters <span class="math inline">\(r_j\)</span>. Why is this reasonable? Is there a biomolecular reason for this?</p>
-<p>We draw upon <span class="citation" data-cites="sarkar2021separating">(<a href="references.html#ref-sarkar2021separating" role="doc-biblioref"><strong>sarkar2021separating?</strong></a>)</span>, explaining how the NB distribution is justified (both theoretically and empirically) for scRNA-seq data.<br>
-After reading this paper, you’ll see that the overdispersion originates from the “biological noise” (i.e., the Gamma distribution). This differs from gene to gene because gene expression is subject to many aspects: transcriptomic bursting, the proximity between the gene and the promoter, the mRNA stability and degradation, copy number variation, the cell cycle stage, etc.</p>
-</div>
-<section id="how-do-you-estimate-the-overdispersion-parameter-in-practice" class="level4" data-number="3.1.0.1">
-<h4 data-number="3.1.0.1" class="anchored" data-anchor-id="how-do-you-estimate-the-overdispersion-parameter-in-practice"><span class="header-section-number">3.1.0.1</span> How do you estimate the overdispersion parameter in practice?</h4>
-<p>The easiest way is to use <code>MASS::glm.nb</code> in R.<br>
-However, this is very noisy for single-cell data (see <a href="#rem-nb_tricky" class="quarto-xref">Remark&nbsp;<span>3.1</span></a>).<br>
-Since we are estimate one dispersion parameter per gene, many methods use an Empirical Bayes framework to “smooth” the overdispersion parameters <span class="citation" data-cites="love2014moderated">(<a href="references.html#ref-love2014moderated" role="doc-biblioref"><strong>love2014moderated?</strong></a>)</span>.<br>
-More sophisticated methods (such as SCTransform <span class="citation" data-cites="hafemeister2019normalization">(<a href="references.html#ref-hafemeister2019normalization" role="doc-biblioref"><strong>hafemeister2019normalization?</strong></a>)</span>) use the Bioconductor R package called <code>glmGamPoi</code>.<br>
-Deep-learning methods simply incorporate estimating the dispersion parameter into the architecture and objective function, see scVI <span class="citation" data-cites="lopez2018deep">(<a href="references.html#ref-lopez2018deep" role="doc-biblioref"><strong>lopez2018deep?</strong></a>)</span>.</p>
-<p>Also, note that which we are assuming here that the overdispersion parameter <span class="math inline">\(r_j\)</span> is shared across all the cells for gene <span class="math inline">\(j\)</span>, there are methods that also use different overdispersion parameters for different cell populations. See <span class="citation" data-cites="chen2018umi">(<a href="references.html#ref-chen2018umi" role="doc-biblioref"><strong>chen2018umi?</strong></a>)</span> or the <code>dispersion</code> parameter in scVI (see <a href="https://docs.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.html#scvi.model.SCVI" class="uri">https://docs.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.html#scvi.model.SCVI</a>). In general, using different overdispersion parameters for the same gene across different cell populations is not common, so my suggestion is to: 1) have a diagnostic in mind on how would you know if need to use different overdispersion parameters for the same gene, and then 2) try analyzing the genes where each gene only has one overdispersion parameter and see if you have enough concrete evidence that such a model was too simplistic.</p>
-<div class="block2">
-<p><strong>Personal opinion: My preferred parameterization</strong><br>
-The formulation <a href="#eq-nb_2" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> by far is the most common way people write the NB distribution.<br>
-We typically call <span class="math inline">\(r_j\)</span> the “overdispersion” parameter, since the inclusion of <span class="math inline">\(r_j\)</span> in our modeling is typically to denote that there is more variance than a Poisson.<br>
-I personally don’t like it because I find it confusing that a larger <span class="math inline">\(r_j\)</span> denotes a distribution with smaller variance.<br>
-Hence, I usually write the variance as <span class="math inline">\(\mu_{ij}(1+\alpha_j \mu_{ij})\)</span> (where <span class="math inline">\(\alpha_j = 1/r_j\)</span>). This way, <span class="math inline">\(\alpha_j = 0\)</span> is a Poisson distribution. However, even though this makes more sense to me, it’s not commonly used. (It’s because this parameterization makes it confusing to work with the exponential-family distributions mathematically.)</p>
-<p>The main takeaway is to always pay close attention to each paper’s NB parameterization. You’re looking for the mean-variance relation written somewhere in the paper to ensure you understand the author’s notation.</p>
-</div>
-<div id="rem-nb_tricky" class="block2 proof remark">
-<p><span class="proof-title"><em>Remark 3.1</em>. </span><strong>What makes the negative binomial tricky</strong> Let me use an analogy that is based on the more familiar coin toss. Suppose 30 people each are given a weighted coin where the probability of heads is <span class="math inline">\(10^{-9}\)</span> (basically, it’s impossible to get a heads).<br>
-Everyone coerce and agree to a secret number <span class="math inline">\(N\)</span>, and everyone independently flips their own coin <span class="math inline">\(N\)</span> times and records the number of heads.<br>
-I (the moderator) do not know <span class="math inline">\(N\)</span>, but I get to see how many heads each person got during this experiment.<br>
-My goal is to estimate <span class="math inline">\(N\)</span>. What makes this problem very difficult?</p>
-<p>If <span class="math inline">\(N\)</span> were 10, or 100, or maybe even 10,000, almost everyone would get 0 heads. That is, we cannot reliably estimate <span class="math inline">\(N\)</span> since the log-likelihood function is very flat. The issue is because count data has a finite resolution — 0 is always the smallest possible value, and 1 is always the second smallest value. Hence, unlike continuous values (which have “infinite resolution” in some sense), non-negative integers “lose” information the smaller the range is.</p>
-</div>
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>You can have a simple hierarchical model in your head – each human donor contributes one (or more) tissue sample. Each tissue sample contains many cells.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>How many genes are there in the human body? This is not a well-defined questions. If you want to only ask about protein-coding genes, there’s probably about 24,000 of them <span class="citation" data-cites="salzberg2018open">(<a href="references.html#ref-salzberg2018open" role="doc-biblioref"><strong>salzberg2018open?</strong></a>)</span>. However, most gene callers (such as CellRanger <a href="https://www.10xgenomics.com/support/software/cell-ranger/latest" class="uri">https://www.10xgenomics.com/support/software/cell-ranger/latest</a>, which is what we usually use for 10x single-cell data) also label genes that don’t translate. We’ll talk about this in <span class="quarto-unresolved-ref">?sec-beyond_scrna</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -715,13 +621,13 @@ My goal is to estimate <span class="math inline">\(N\)</span>. What makes this p
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter1_intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./chapter4_protein.html" class="pagination-link" aria-label="'Single-cell' proteomics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter3_rna.html" class="pagination-link" aria-label="Single-cell RNA-sequencing">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

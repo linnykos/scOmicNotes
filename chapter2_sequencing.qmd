@@ -17,38 +17,36 @@ bibliography: references.bib   # optional .bib file for citations
 
 At the heart of single-cell sequencing data lies the sparse count matrix, where rows represent genes, columns represent cells, and entries capture the number of sequencing reads (or molecules) detected for each gene in each cell. This matrix is typically sparse because most genes are not expressed in any given cell, leading to a prevalence of zeros. The data's sparsity reflects both the biological reality of selective gene expression and technical limitations such as sequencing depth. To model the variability in these counts, the negative binomial distribution is often employed. This distribution accommodates overdispersion, where the observed variability in gene expression counts exceeds what would be expected under simpler models like the Poisson distribution. By accounting for both biological heterogeneity and technical noise, the negative binomial provides a robust framework for analyzing sparse single-cell data.
 
-Let $X \in \mathbb{R}^{n\times p}$ denote the single-cell data matrix with $n$ cells (rows) and $p$ features (columns). In a single-cell RNA-seq data matrix, the $p$ features represent the $p$ genes.  
+Let $X \in \mathbb{R}^{n\times p}$ denote the single-cell data matrix with $n$ cells (rows) and $p$ features (columns). In a single-cell RNA-seq data matrix, the $p$ features represent the $p$ genes.\
 Here are some basic statistics about these matrices (based mainly from my experience):
 
-- For $n$, we usually have 10,000 to 500,000 cells. These cells originate from a specific set of samples/donors/organisms[^1]. See @fig-lupus and @fig-zebrafish for larger examples of single-cell datasets.  
-- For $p$, we usually have about 30,000 genes (but as you'll see, we usually limit the analysis to 2000 to 5000 genes chosen from this full set).[^2]  
-- In a typical scRNA-seq matrix, more than 70\% of the elements are exactly 0. (And among the remaining 30\%, typically half are exactly 1. The maximum count can be in the hundreds, i.e., the distribution is *extremely* right-skewed.) This is illustrated in @fig-count1 and @fig-count2. 
-We'll see later in @sec-scrnaseq_tech where these ``counts'' come from.
+-   For $n$, we usually have 10,000 to 500,000 cells. These cells originate from a specific set of samples/donors/organisms[^chapter2_sequencing-1]. See @fig-lupus and @fig-zebrafish for larger examples of single-cell datasets.\
+-   For $p$, we usually have about 30,000 genes (but as you'll see, we usually limit the analysis to 2000 to 5000 genes chosen from this full set).[^chapter2_sequencing-2]\
+-   In a typical scRNA-seq matrix, more than 70% of the elements are exactly 0. (And among the remaining 30%, typically half are exactly 1. The maximum count can be in the hundreds, i.e., the distribution is *extremely* right-skewed.) This is illustrated in @fig-count1 and @fig-count2. We'll see later in @sec-scrnaseq_tech where these \`\`counts'' come from.
+
+[^chapter2_sequencing-1]: You can have a simple hierarchical model in your head -- each human donor contributes one (or more) tissue sample. Each tissue sample contains many cells.
+
+[^chapter2_sequencing-2]: How many genes are there in the human body? This is not a well-defined questions. If you want to only ask about protein-coding genes, there's probably about 24,000 of them [@salzberg2018open]. However, most gene callers (such as CellRanger <https://www.10xgenomics.com/support/software/cell-ranger/latest>, which is what we usually use for 10x single-cell data) also label genes that don't translate. We'll talk about this in @sec-beyond_scrna.
 
 Based on these observations, the negative binomial distribution is very commonly used.
 
-::: {.block}
+::: block
 ![Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix](fig/chap2/count.png){#fig-count1 width="100%" fig-align="center"}
 :::
 
-::: {.block}
+::: block
 ![Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing the percentage of cells with non-zero counts for each gene](fig/chap2/nonzero_hist.png){#fig-count2 width="100%" fig-align="center"}
 :::
 
-
-[^1]: You can have a simple hierarchical model in your head -- each human donor contributes one (or more) tissue sample. Each tissue sample contains many cells.
-
-[^2]: How many genes are there in the human body? This is not a well-defined questions. If you want to only ask about protein-coding genes, there's probably about 24,000 of them [@salzberg2018open]. However, most gene callers (such as CellRanger <https://www.10xgenomics.com/support/software/cell-ranger/latest>, which is what we usually use for 10x single-cell data) also label genes that don't translate. We'll talk about this in @sec-beyond_scrna.
-
 The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.
 
-Let us focus on the count for cell $i$ and gene $j$, i.e., the value $X_{ij}$. The probability mass function (pmf) of the NB distribution for a random variable \( X_{ij} \) is given by:
+Let us focus on the count for cell $i$ and gene $j$, i.e., the value $X_{ij}$. The probability mass function (pmf) of the NB distribution for a random variable ( X\_{ij} ) is given by:
 
 $$
 P(X_{ij} = k) = \binom{k + r_j - 1}{k} p_{ij}^r (1 - p_{ij})^k, \quad k = 0, 1, 2, \ldots
 $$ {#eq-nb_1}
 
-where \( r_j > 0 \) is the dispersion (or “overdispersion”) parameter and \( p_{ij} \in (0, 1) \) is the probability of success. This is the “standard” parameterization, mentioned in <https://en.wikipedia.org/wiki/Negative_binomial_distribution>. This specific parameterization is actually not very commonly used.
+where ( r_j \> 0 ) is the dispersion (or “overdispersion”) parameter and ( p\_{ij} \in (0, 1) ) is the probability of success. This is the “standard” parameterization, mentioned in <https://en.wikipedia.org/wiki/Negative_binomial_distribution>. This specific parameterization is actually not very commonly used.
 
 Alternatively, the NB distribution is most commonly parameterized in terms of the mean $\mu_{ij}$ and the dispersion parameter $r_j$, which is often preferred in single-cell analysis:
 
@@ -64,44 +62,41 @@ $$
 \mu_{ij} = \frac{r_j (1 - p_{ij})}{p_{ij}}.
 $$
 
-We typically use a different overdispersion parameter $r_j$ for each gene $j \in \{1,\ldots,p\}$. Here, \( r_j \) controls the degree of overdispersion. When \( r_j \to \infty \), the variance approaches the mean, and the NB distribution converges to the Poisson distribution. For single-cell RNA-seq data, the introduction of \( r_j \) allows the model to capture both the biological variability between cells and technical noise, making it robust to the sparse and overdispersed nature of gene expression data.
+We typically use a different overdispersion parameter $r_j$ for each gene $j \in \{1,\ldots,p\}$. Here, ( r_j ) controls the degree of overdispersion. When ( r_j \to \infty ), the variance approaches the mean, and the NB distribution converges to the Poisson distribution. For single-cell RNA-seq data, the introduction of ( r_j ) allows the model to capture both the biological variability between cells and technical noise, making it robust to the sparse and overdispersed nature of gene expression data.
 
-::: {.block2}
-**Why would genes even have different overdispersions?**  
-We're assuming in most statistical models that: 1) genes are modeled as a negative binomial random variable, and 2) genes have different overdispersion parameters $r_j$. Why is this reasonable? Is there a biomolecular reason for this?  
+::: block2
+**Why would genes even have different overdispersions?**\
+We're assuming in most statistical models that: 1) genes are modeled as a negative binomial random variable, and 2) genes have different overdispersion parameters $r_j$. Why is this reasonable? Is there a biomolecular reason for this?
 
-We draw upon @sarkar2021separating, explaining how the NB distribution is justified (both theoretically and empirically) for scRNA-seq data.  
+We draw upon @sarkar2021separating, explaining how the NB distribution is justified (both theoretically and empirically) for scRNA-seq data.\
 After reading this paper, you'll see that the overdispersion originates from the “biological noise” (i.e., the Gamma distribution). This differs from gene to gene because gene expression is subject to many aspects: transcriptomic bursting, the proximity between the gene and the promoter, the mRNA stability and degradation, copy number variation, the cell cycle stage, etc.
 :::
 
 #### How do you estimate the overdispersion parameter in practice?
 
-The easiest way is to use `MASS::glm.nb` in R.  
-However, this is very noisy for single-cell data (see @rem-nb_tricky).  
-Since we are estimate one dispersion parameter per gene, many methods use an Empirical Bayes framework to “smooth” the overdispersion parameters [@love2014moderated].  
-More sophisticated methods (such as SCTransform [@hafemeister2019normalization]) use the Bioconductor R package called `glmGamPoi`.  
-Deep-learning methods simply incorporate estimating the dispersion parameter into the architecture and objective function, see scVI [@lopez2018deep].  
+The easiest way is to use `MASS::glm.nb` in R.\
+However, this is very noisy for single-cell data (see @rem-nb_tricky).\
+Since we are estimate one dispersion parameter per gene, many methods use an Empirical Bayes framework to “smooth” the overdispersion parameters [@love2014moderated].\
+More sophisticated methods (such as SCTransform [@hafemeister2019normalization]) use the Bioconductor R package called `glmGamPoi`.\
+Deep-learning methods simply incorporate estimating the dispersion parameter into the architecture and objective function, see scVI [@lopez2018deep].
 
 Also, note that which we are assuming here that the overdispersion parameter $r_j$ is shared across all the cells for gene $j$, there are methods that also use different overdispersion parameters for different cell populations. See @chen2018umi or the `dispersion` parameter in scVI (see <https://docs.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.html#scvi.model.SCVI>). In general, using different overdispersion parameters for the same gene across different cell populations is not common, so my suggestion is to: 1) have a diagnostic in mind on how would you know if need to use different overdispersion parameters for the same gene, and then 2) try analyzing the genes where each gene only has one overdispersion parameter and see if you have enough concrete evidence that such a model was too simplistic.
 
-::: {.block2}
-**Personal opinion: My preferred parameterization**  
-The formulation @eq-nb_2 by far is the most common way people write the NB distribution.  
-We typically call $r_j$ the “overdispersion” parameter, since the inclusion of $r_j$ in our modeling is typically to denote that there is more variance than a Poisson.  
-I personally don't like it because I find it confusing that a larger $r_j$ denotes a distribution with smaller variance.  
-Hence, I usually write the variance as $\mu_{ij}(1+\alpha_j \mu_{ij})$ (where $\alpha_j = 1/r_j$). This way, $\alpha_j = 0$ is a Poisson distribution. However, even though this makes more sense to me, it's not commonly used. (It's because this parameterization makes it confusing to work with the exponential-family distributions mathematically.)  
+::: block2
+**Personal opinion: My preferred parameterization**\
+The formulation @eq-nb_2 by far is the most common way people write the NB distribution.\
+We typically call $r_j$ the “overdispersion” parameter, since the inclusion of $r_j$ in our modeling is typically to denote that there is more variance than a Poisson.\
+I personally don't like it because I find it confusing that a larger $r_j$ denotes a distribution with smaller variance.\
+Hence, I usually write the variance as $\mu_{ij}(1+\alpha_j \mu_{ij})$ (where $\alpha_j = 1/r_j$). This way, $\alpha_j = 0$ is a Poisson distribution. However, even though this makes more sense to me, it's not commonly used. (It's because this parameterization makes it confusing to work with the exponential-family distributions mathematically.)
 
 The main takeaway is to always pay close attention to each paper's NB parameterization. You're looking for the mean-variance relation written somewhere in the paper to ensure you understand the author's notation.
 :::
 
 ::: {#rem-nb_tricky .block2}
-**What makes the negative binomial tricky**
-Let me use an analogy that is based on the more familiar coin toss. Suppose 30 people each are given a weighted coin where the probability of heads is $10^{-9}$ (basically, it's impossible to get a heads).  
-Everyone coerce and agree to a secret number $N$, and everyone independently flips their own coin $N$ times and records the number of heads.  
-I (the moderator) do not know $N$, but I get to see how many heads each person got during this experiment.  
-My goal is to estimate $N$. What makes this problem very difficult?  
- 
+**What makes the negative binomial tricky** Let me use an analogy that is based on the more familiar coin toss. Suppose 30 people each are given a weighted coin where the probability of heads is $10^{-9}$ (basically, it's impossible to get a heads).\
+Everyone coerce and agree to a secret number $N$, and everyone independently flips their own coin $N$ times and records the number of heads.\
+I (the moderator) do not know $N$, but I get to see how many heads each person got during this experiment.\
+My goal is to estimate $N$. What makes this problem very difficult?
+
 If $N$ were 10, or 100, or maybe even 10,000, almost everyone would get 0 heads. That is, we cannot reliably estimate $N$ since the log-likelihood function is very flat. The issue is because count data has a finite resolution — 0 is always the smallest possible value, and 1 is always the second smallest value. Hence, unlike continuous values (which have “infinite resolution” in some sense), non-negative integers “lose” information the smaller the range is.
 :::
-
-

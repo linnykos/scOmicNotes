@@ -4,12 +4,15 @@ project:
 
 book:
   title: "scOmicNotes"
-  author: "Norah Jones"
+  author: "Kevin Z. Lin"
   date: "7/14/2025"
   chapters:
     - index.qmd
     - chapter1_intro.qmd
     - chapter2_sequencing.qmd
+    - chapter3_rna.qmd
+    - chapter4_protein.qmd
+    - chapter5_epigenetics.qmd
     - references.qmd
 
 bibliography: references.bib

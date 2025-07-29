@@ -1,0 +1,26 @@
+---
+title: "Single-cell epigenetics"
+subtitle: "Transcription factor scoring, diagonal integration, gene regulatory networks"
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    theme: cosmo      # pick any Bootstrap theme you like
+    css: styles.css   # provides the coloured ‘block’ boxes
+execute:
+  echo: false         # hide code by default
+bibliography: references.bib   # optional .bib file for citations
+---
+## Primer on the genome, epigenetics, and enhancers
+
+The genome is the complete set of DNA within an organism, encoding the instructions for life. While every cell in an organism typically contains the same genome, different cells exhibit distinct phenotypes and functions. This diversity arises not from changes in the underlying DNA sequence but from epigenetic regulation—heritable modifications that influence gene expression without altering the DNA itself. Epigenetics includes processes like DNA methylation, histone modification, and chromatin accessibility, all of which contribute to the dynamic regulation of gene activity in response to developmental cues and environmental signals.
+
+Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See @fig-enhancer-promoter1 and @fig-enhancer-promoter2 to appreciate how complex this machinery is.
+
+::: block
+![From @ito2022factors.](fig/chap5/enhancer-promoter.png){#fig-enhancer-promoter1 width="100%" fig-align="center"}
+:::
+::: block
+![From @claringbould2021enhancers.](fig/chap5/enhancer.png){#fig-enhancer-promoter2 width="100%" fig-align="center"}
+:::
