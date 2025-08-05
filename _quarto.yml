@@ -13,6 +13,7 @@ book:
     - chapter3_rna.qmd
     - chapter4_protein.qmd
     - chapter5_epigenetics.qmd
+    - chapter6_dna.qmd
     - references.qmd
 
 bibliography: references.bib

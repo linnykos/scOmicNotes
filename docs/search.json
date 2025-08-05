@@ -288,5 +288,25 @@
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Single-cell epigenetics</span>"
     ]
+  },
+  {
+    "objectID": "chapter6_dna.html",
+    "href": "chapter6_dna.html",
+    "title": "7  ‘Single-cell’ DNA",
+    "section": "",
+    "text": "7.1 Genetics 101\nUnderstanding the fundamental concepts of genetics is essential for studying genomic variation, including copy-number variations (CNVs) and single nucleotide polymorphisms (SNPs). This section provides an overview of genetic architecture, SNPs and their detection, commonly sequenced tissues, and genome annotation resources such as the UCSC Genome Browser.\nSingle Nucleotide Polymorphisms (SNPs) and Their Detection.\nA single nucleotide polymorphism (SNP) is a variation at a single base pair position in the genome that is present in a significant fraction of the population. SNPs are the most common type of genetic variation and can have functional consequences depending on their location. When an SNP occurs within a coding region, it may alter the resulting protein sequence if it leads to an amino acid substitution (nonsynonymous SNP) or have no effect if the change is synonymous. SNPs in noncoding regions can impact gene regulation by affecting transcription factor binding sites, splicing efficiency, or untranslated regions (UTRs). Since you have “two copies” of each of your 23 chromosomes, this means SNP data is a data matrix of \\(n\\) people by \\(p\\) SNP regions (think of a couple million – more on this technicality later), where each value is \\(\\{0,1,2\\}\\), see Figure 7.1. Typically, the major allele is defined as “0”, and a “1” or “2” means if how many copies of the minor allele do you have.\nSNPs are detected using high-throughput sequencing technologies, primarily whole-genome sequencing (WGS) and whole-exome sequencing (WES). In these approaches, DNA is extracted from a biological sample, fragmented, and sequenced to generate short or long reads. The raw sequencing reads are then aligned to a reference genome, and variant calling algorithms such as those implemented in GATK (mckenna2010genome?), bcftools, and FreeBayes (garrison2012haplotype?) identify SNPs by comparing observed nucleotide differences to the reference sequence. (See (zverinova2022variant?) for a overview). The sequencing depth, or coverage, at a given genomic position determines the confidence in an SNP call, with higher coverage reducing the likelihood of sequencing errors.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>'Single-cell' DNA</span>"
+    ]
+  },
+  {
+    "objectID": "chapter6_dna.html#sec-genetics_basics",
+    "href": "chapter6_dna.html#sec-genetics_basics",
+    "title": "7  ‘Single-cell’ DNA",
+    "section": "",
+    "text": "Figure 7.1: From https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>'Single-cell' DNA</span>"
+    ]
   }
 ]
