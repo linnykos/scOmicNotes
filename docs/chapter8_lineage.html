@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Z. Lin">
-<meta name="dcterms.date" content="2025-07-14">
 
-<title>scOmicNotes</title>
+<title>9&nbsp; Single-cell lineage tracing – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter1_intro.html" rel="next">
+<link href="./chapter9_spatial.html" rel="next">
+<link href="./chapter7_crispr.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter8_lineage.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
@@ -159,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter8_lineage.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter8_lineage.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></span></a>
   </div>
 </li>
@@ -180,34 +179,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-are-we-interested-in-learning-temporal-dynamics" id="toc-why-are-we-interested-in-learning-temporal-dynamics" class="nav-link active" data-scroll-target="#why-are-we-interested-in-learning-temporal-dynamics"><span class="header-section-number">9.1</span> Why are we interested in learning temporal dynamics?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">scOmicNotes</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kevin Z. Lin </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -217,9 +210,100 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto book made from the content of BIOST 545 (Biostatistical Methods for Big Omics Data), taught by Dr.&nbsp;Kevin Lin at the University of Washington, Winter 2025. The lecture notes in BIOST 545 are meant to ease you into reading these notes, and the notes are meant to be a gateway to many references where the course’s goal is for you 1) to determine for yourself what areas you find interesting and are relevant to your research goals, and 2) use the references as a portal to find many ideas to bolster your own research. This Quarto book is assembled with the help of many student volunteers at the University of Washington: [TBD].</p>
+<section id="why-are-we-interested-in-learning-temporal-dynamics" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="why-are-we-interested-in-learning-temporal-dynamics"><span class="header-section-number">9.1</span> Why are we interested in learning temporal dynamics?</h2>
+<p>Studying how cells change over time provides critical insight into the sequence of events driving biological processes. By observing changes in cell populations across multiple time points, researchers can pinpoint when specific transitions or bifurcations occur. Such temporal information reveals which factors influence a cell’s fate and how quickly new traits emerge.</p>
+<p>Moreover, understanding temporal dynamics can help us develop better interventions. If we can identify the earliest signs of disease or undesirable changes in cells, then targeted therapies can be designed to prevent or slow progression. Such strategies are especially powerful for complex, multi-stage diseases where later intervention might be less effective.</p>
+<ul>
+<li><strong>Cancer subclone evolution</strong>: Tumors consist of various subclones that compete and evolve. Observing which subclones become dominant over time helps illuminate how certain cells acquire and propagate new mutations, sometimes conferring resistance to treatments. See <a href="#fig-cancer_treatment1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> and <a href="#fig-cancer_treatment2" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>.</li>
+</ul>
+<div class="block">
+<div id="fig-cancer_treatment1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cancer_treatment1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: (Top) From <span class="citation" data-cites="ashouri2023decoding">(<a href="references.html#ref-ashouri2023decoding" role="doc-biblioref"><strong>ashouri2023decoding?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cancer_treatment2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cancer_treatment2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: (Bottom) From <span class="citation" data-cites="marine2020non">(<a href="references.html#ref-marine2020non" role="doc-biblioref"><strong>marine2020non?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Cancer metastasis</strong>: Cells that detach from the primary tumor site and successfully colonize new tissues undergo significant genetic and phenotypic changes. Understanding these changes in temporal sequence highlights the adaptations needed for invasion and survival in distant environments. See <a href="#fig-metastasis" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>.</li>
+</ul>
+<div class="block">
+<div id="fig-metastasis" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/metastasis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: From <span class="citation" data-cites="fu2023emerging">(<a href="references.html#ref-fu2023emerging" role="doc-biblioref"><strong>fu2023emerging?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Disease progression</strong>: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See <a href="#fig-covid" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> for an example of this investigated in COVID.</li>
+</ul>
+<div class="block">
+<div id="fig-covid" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/covid.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: From <span class="citation" data-cites="stephenson2021single">(<a href="references.html#ref-stephenson2021single" role="doc-biblioref"><strong>stephenson2021single?</strong></a>)</span>. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Embryonic/organ development and cell fate</strong>: During embryonic development, cells undergo a series of tightly regulated fate decisions that determine their final identity. These decisions are influenced by both intrinsic genetic programs and extrinsic signaling cues from the surrounding environment. Understanding the temporal dynamics of these transitions allows researchers to uncover the molecular mechanisms guiding differentiation and tissue formation. By tracking how cells commit to specific lineages, we gain insight into how organs form or how “cells make decisions”. See <a href="#fig-larry" class="quarto-xref">Figure&nbsp;<span>9.5</span></a>.</li>
+</ul>
+<div class="block">
+<div id="fig-larry" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/larry.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: From <span class="citation" data-cites="weinreb2020lineage">(<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref"><strong>weinreb2020lineage?</strong></a>)</span>. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What’s shown here are cells known to be in different lineages, but certain lineages don’t differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Stem cell research</strong>: Stem cells differentiate into specialized cell types following a tightly regulated timeline. Tracking these progressions uncovers the signals that guide each step and may inform regenerative medicine strategies for repairing damaged tissues. See <a href="#fig-ipsc" class="quarto-xref">Figure&nbsp;<span>9.6</span></a>.</li>
+</ul>
+<div class="block">
+<div id="fig-ipsc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ipsc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/ipsc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ipsc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: From <a href="https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/" class="uri">https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -623,10 +707,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./chapter7_crispr.html" class="pagination-link" aria-label="Single-cell CRISPR editting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter1_intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter9_spatial.html" class="pagination-link" aria-label="'Single-cell' spatial transcriptomics">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">‘Single-cell’ spatial transcriptomics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

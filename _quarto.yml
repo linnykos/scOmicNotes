@@ -13,6 +13,10 @@ book:
     - chapter3_rna.qmd
     - chapter4_protein.qmd
     - chapter5_epigenetics.qmd
+    - chapter6_dna.qmd
+    - chapter7_crispr.qmd
+    - chapter8_lineage.qmd
+    - chapter9_spatial.qmd
     - references.qmd
 
 bibliography: references.bib

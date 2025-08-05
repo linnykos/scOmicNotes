@@ -1,0 +1,34 @@
+---
+title: "Single-cell CRISPR editting"
+subtitle: ""
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    theme: cosmo      # pick any Bootstrap theme you like
+    css: styles.css   # provides the coloured ‘block’ boxes
+execute:
+  echo: false         # hide code by default
+bibliography: references.bib   # optional .bib file for citations
+---
+
+## Basics of how CRISPR works {#sec-chapter_7_basics}
+
+The CRISPR-Cas system[^chapter7_crispr-1] is a powerful genome-editing technology that allows for precise modifications of DNA in a wide range of biological systems. Originally derived from the bacterial adaptive immune system, CRISPR-Cas9 has been repurposed for genetic engineering by using a guide RNA (gRNA) to direct the Cas9 nuclease to a specific genomic locus for targeted DNA cleavage. This section discusses how CRISPR is performed in the wet lab, different functional applications of CRISPR, and how CRISPR-based perturbations are analyzed in single-cell gene expression studies.
+
+[^chapter7_crispr-1]: CRISPR stands for “clustered regularly interspaced short palindromic repeats,” but it’s not too important to know why exactly it’s called this for the purposes of this chapter.
+
+In a typical CRISPR screen experiment (mainly a CRISPR knockout), a library of lentivirus-packaged guide RNAs is introduced into cells under conditions designed to infect each cell with only one or a few sgRNAs (single guide RNA), see @fig-crispr-experiment1 and @fig-crispr-experiment2. After selection to ensure stable integration, the cells are subjected to a particular stimulus such as drug treatment or other environmental challenge. Researchers then track the abundance of each sgRNA at the start and after the stimulus (for example, at day 0 and day 28) through next-generation sequencing. By comparing which sgRNAs become enriched or depleted, it is possible to discover genes essential for viability, pathways governing drug resistance, or other critical biological functions relevant to the phenotype under study, see @fig-crispr-cancer.
+
+::: block
+![Original from @wei2019genome, but this is directly from <https://www.youtube.com/watch?v=JdCCl1uxCME>.](fig/chap7/crispr-experiment.png){#fig-crispr-experiment1 width="100%" fig-align="center"}
+:::
+
+::: block
+![From <https://www.idtdna.com/pages/education/decoded/article/overview-what-is-crispr-screening>.](fig/chap7/crispr-experiment2.png){#fig-crispr-experiment2 width="100%" fig-align="center"}
+:::
+
+::: block
+![From @esposito2019hacking.](fig/chap7/crispr-cancer.png){#fig-crispr-cancer width="100%" fig-align="center"}
+:::

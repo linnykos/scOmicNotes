@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Z. Lin">
-<meta name="dcterms.date" content="2025-07-14">
 
-<title>scOmicNotes</title>
+<title>8&nbsp; Single-cell CRISPR editting – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter1_intro.html" rel="next">
+<link href="./chapter8_lineage.html" rel="next">
+<link href="./chapter6_dna.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter7_crispr.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
@@ -153,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter7_crispr.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter7_crispr.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span></a>
   </div>
 </li>
@@ -180,34 +179,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-chapter_7_basics" id="toc-sec-chapter_7_basics" class="nav-link active" data-scroll-target="#sec-chapter_7_basics"><span class="header-section-number">8.1</span> Basics of how CRISPR works</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">scOmicNotes</h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kevin Z. Lin </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -217,9 +210,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto book made from the content of BIOST 545 (Biostatistical Methods for Big Omics Data), taught by Dr.&nbsp;Kevin Lin at the University of Washington, Winter 2025. The lecture notes in BIOST 545 are meant to ease you into reading these notes, and the notes are meant to be a gateway to many references where the course’s goal is for you 1) to determine for yourself what areas you find interesting and are relevant to your research goals, and 2) use the references as a portal to find many ideas to bolster your own research. This Quarto book is assembled with the help of many student volunteers at the University of Washington: [TBD].</p>
+<section id="sec-chapter_7_basics" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-chapter_7_basics"><span class="header-section-number">8.1</span> Basics of how CRISPR works</h2>
+<p>The CRISPR-Cas system<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is a powerful genome-editing technology that allows for precise modifications of DNA in a wide range of biological systems. Originally derived from the bacterial adaptive immune system, CRISPR-Cas9 has been repurposed for genetic engineering by using a guide RNA (gRNA) to direct the Cas9 nuclease to a specific genomic locus for targeted DNA cleavage. This section discusses how CRISPR is performed in the wet lab, different functional applications of CRISPR, and how CRISPR-based perturbations are analyzed in single-cell gene expression studies.</p>
+<p>In a typical CRISPR screen experiment (mainly a CRISPR knockout), a library of lentivirus-packaged guide RNAs is introduced into cells under conditions designed to infect each cell with only one or a few sgRNAs (single guide RNA), see <a href="#fig-crispr-experiment1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> and <a href="#fig-crispr-experiment2" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>. After selection to ensure stable integration, the cells are subjected to a particular stimulus such as drug treatment or other environmental challenge. Researchers then track the abundance of each sgRNA at the start and after the stimulus (for example, at day 0 and day 28) through next-generation sequencing. By comparing which sgRNAs become enriched or depleted, it is possible to discover genes essential for viability, pathways governing drug resistance, or other critical biological functions relevant to the phenotype under study, see <a href="#fig-crispr-cancer" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>.</p>
+<div class="block">
+<div id="fig-crispr-experiment1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crispr-experiment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap7/crispr-experiment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crispr-experiment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Original from <span class="citation" data-cites="wei2019genome">(<a href="references.html#ref-wei2019genome" role="doc-biblioref"><strong>wei2019genome?</strong></a>)</span>, but this is directly from <a href="https://www.youtube.com/watch?v=JdCCl1uxCME" class="uri">https://www.youtube.com/watch?v=JdCCl1uxCME</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-crispr-experiment2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crispr-experiment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap7/crispr-experiment2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crispr-experiment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: From <a href="https://www.idtdna.com/pages/education/decoded/article/overview-what-is-crispr-screening" class="uri">https://www.idtdna.com/pages/education/decoded/article/overview-what-is-crispr-screening</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-crispr-cancer" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-crispr-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap7/crispr-cancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crispr-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.3: From <span class="citation" data-cites="esposito2019hacking">(<a href="references.html#ref-esposito2019hacking" role="doc-biblioref"><strong>esposito2019hacking?</strong></a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>CRISPR stands for “clustered regularly interspaced short palindromic repeats,” but it’s not too important to know why exactly it’s called this for the purposes of this chapter.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -623,10 +662,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./chapter6_dna.html" class="pagination-link" aria-label="'Single-cell' DNA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter1_intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter8_lineage.html" class="pagination-link" aria-label="Single-cell lineage tracing">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

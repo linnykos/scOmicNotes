@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Z. Lin">
-<meta name="dcterms.date" content="2025-07-14">
 
-<title>scOmicNotes</title>
+<title>7&nbsp; ‘Single-cell’ DNA – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter1_intro.html" rel="next">
+<link href="./chapter7_crispr.html" rel="next">
+<link href="./chapter5_epigenetics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter6_dna.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
@@ -147,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter6_dna.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter6_dna.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></span></a>
   </div>
 </li>
@@ -180,34 +208,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-genetics_basics" id="toc-sec-genetics_basics" class="nav-link active" data-scroll-target="#sec-genetics_basics"><span class="header-section-number">7.1</span> Genetics 101</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">scOmicNotes</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kevin Z. Lin </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 14, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -217,9 +239,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto book made from the content of BIOST 545 (Biostatistical Methods for Big Omics Data), taught by Dr.&nbsp;Kevin Lin at the University of Washington, Winter 2025. The lecture notes in BIOST 545 are meant to ease you into reading these notes, and the notes are meant to be a gateway to many references where the course’s goal is for you 1) to determine for yourself what areas you find interesting and are relevant to your research goals, and 2) use the references as a portal to find many ideas to bolster your own research. This Quarto book is assembled with the help of many student volunteers at the University of Washington: [TBD].</p>
+<section id="sec-genetics_basics" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-genetics_basics"><span class="header-section-number">7.1</span> Genetics 101</h2>
+<p>Understanding the fundamental concepts of genetics is essential for studying genomic variation, including copy-number variations (CNVs) and single nucleotide polymorphisms (SNPs). This section provides an overview of genetic architecture, SNPs and their detection, commonly sequenced tissues, and genome annotation resources such as the UCSC Genome Browser.</p>
+<p><strong>Single Nucleotide Polymorphisms (SNPs) and Their Detection.</strong></p>
+<p>A single nucleotide polymorphism (SNP) is a variation at a single base pair position in the genome that is present in a significant fraction of the population. SNPs are the most common type of genetic variation and can have functional consequences depending on their location. When an SNP occurs within a coding region, it may alter the resulting protein sequence if it leads to an amino acid substitution (nonsynonymous SNP) or have no effect if the change is synonymous. SNPs in noncoding regions can impact gene regulation by affecting transcription factor binding sites, splicing efficiency, or untranslated regions (UTRs). Since you have “two copies” of each of your 23 chromosomes, this means SNP data is a data matrix of <span class="math inline">\(n\)</span> people by <span class="math inline">\(p\)</span> SNP regions (think of a couple million – more on this technicality later), where each value is <span class="math inline">\(\{0,1,2\}\)</span>, see <a href="#fig-snp" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>. Typically, the major allele is defined as “0”, and a “1” or “2” means if how many copies of the minor allele do you have.</p>
+<div class="block">
+<div id="fig-snp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/snp1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>SNPs are detected using high-throughput sequencing technologies, primarily whole-genome sequencing (WGS) and whole-exome sequencing (WES). In these approaches, DNA is extracted from a biological sample, fragmented, and sequenced to generate short or long reads. The raw sequencing reads are then aligned to a reference genome, and variant calling algorithms such as those implemented in <code>GATK</code> <span class="citation" data-cites="mckenna2010genome">(<a href="references.html#ref-mckenna2010genome" role="doc-biblioref"><strong>mckenna2010genome?</strong></a>)</span>, <code>bcftools</code>, and <code>FreeBayes</code> <span class="citation" data-cites="garrison2012haplotype">(<a href="references.html#ref-garrison2012haplotype" role="doc-biblioref"><strong>garrison2012haplotype?</strong></a>)</span> identify SNPs by comparing observed nucleotide differences to the reference sequence. (See <span class="citation" data-cites="zverinova2022variant">(<a href="references.html#ref-zverinova2022variant" role="doc-biblioref"><strong>zverinova2022variant?</strong></a>)</span> for a overview). The sequencing depth, or coverage, at a given genomic position determines the confidence in an SNP call, with higher coverage reducing the likelihood of sequencing errors.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -623,10 +663,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./chapter5_epigenetics.html" class="pagination-link" aria-label="Single-cell epigenetics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter1_intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter7_crispr.html" class="pagination-link" aria-label="Single-cell CRISPR editting">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
