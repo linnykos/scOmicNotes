@@ -1,0 +1,16 @@
+---
+title: "“Single-cell” spatial transcriptomics"
+subtitle: "????"
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    theme: cosmo      # pick any Bootstrap theme you like
+    css: styles.css   # provides the coloured ‘block’ boxes
+execute:
+  echo: false         # hide code by default
+bibliography: references.bib   # optional .bib file for citations
+---
+
+Single-cell spatial transcriptomics is an emerging technology that enables the measurement of gene expression while preserving the spatial organization of cells within a tissue. See Figure 201 for a useful schematic I like. Unlike traditional single-cell RNA sequencing, which dissociates cells and loses spatial context, spatial transcriptomics allows researchers to analyze gene expression in relation to cellular neighborhoods, tissue architecture, and microenvironments, see Figure 202.
