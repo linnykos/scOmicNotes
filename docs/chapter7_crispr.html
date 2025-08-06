@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -220,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <img src="fig/chap7/crispr-experiment.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crispr-experiment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Original from <span class="citation" data-cites="wei2019genome">(<a href="references.html#ref-wei2019genome" role="doc-biblioref"><strong>wei2019genome?</strong></a>)</span>, but this is directly from <a href="https://www.youtube.com/watch?v=JdCCl1uxCME" class="uri">https://www.youtube.com/watch?v=JdCCl1uxCME</a>.
+Figure&nbsp;8.1: Original from <span class="citation" data-cites="wei2019genome">Wei et al. (<a href="references.html#ref-wei2019genome" role="doc-biblioref">2019</a>)</span>, but this is directly from <a href="https://www.youtube.com/watch?v=JdCCl1uxCME" class="uri">https://www.youtube.com/watch?v=JdCCl1uxCME</a>.
 </figcaption>
 </figure>
 </div>
@@ -336,6 +356,11 @@ Figure&nbsp;8.8: <em>Right</em>: <a href="https://bpsbioscience.com/lentiviruses
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-wei2019genome" class="csl-entry" role="listitem">
+Wei, Lai, Derek Lee, Cheuk-Ting Law, Misty Shuo Zhang, Jialing Shen, Don Wai-Ching Chin, Allen Zhang, et al. 2019. <span>“Genome-Wide CRISPR/Cas9 Library Screening Identified PHGDH as a Critical Driver for Sorafenib Resistance in HCC.”</span> <em>Nature Communications</em> 10 (1): 4681.
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
