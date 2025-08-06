@@ -29,8 +29,8 @@ The spatial arrangement of cells is fundamental to understanding cell biology, a
 
 -   **Developmental biology**: Spatial positioning dictates lineage specification and organ formation, where disruptions in cell placement can lead to congenital defects. We can also overlay the gene expression at each spatial location with other imaging technologies or our current understanding of the structure of an organ, see @fig-spatial-anatomy. This can help us learn how the cells in different regions of an organ have different functions, even if they are all the "same cell type."
 
-::: block 
-![From .](fig/chap9/spatial-anatomy.png){#fig-spatial-anatomy width="100%" fig-align="center"} 
+::: block
+![From .](fig/chap9/spatial-anatomy.png){#fig-spatial-anatomy width="100%" fig-align="center"}
 :::
 
 -   **Disease**: In neurodegenerative diseases such as Alzheimer's, the spatial distribution of microglia and astrocytes based on their (spatial) proximity to pathological hallmarks like amyloid plaques and tau tangles provides critical insights into disease mechanisms.
@@ -38,3 +38,30 @@ The spatial arrangement of cells is fundamental to understanding cell biology, a
 As one concrete example of how spatial transcriptomics advances cell biology beyond what other sequencing technologies offers: spatial transcriptomics is particularly valuable for studying cell-cell communication, as it enables the identification of ligand-receptor interactions that mediate signaling between neighboring cells. By integrating spatial data with single-cell transcriptomics, researchers can infer functional relationships between different cell types, uncovering regulatory networks that drive biological processes.
 
 **Note**: Spatial information in cell biology has been studied for decades, long before single-cell sequencing became commercially feasible. Techniques like fluorescence in situ hybridization (FISH) have been used to visualize the spatial localization of specific RNA molecules within cells, providing crucial insights into gene expression patterns. Microscopy-based methods, including confocal and super-resolution imaging, have also been instrumental in understanding cellular structures and interactions. The key novelty of modern spatial transcriptomics is its ability to scale these analyses -- rather than measuring just a few genes at a time, we can now capture the spatial expression patterns of hundreds to thousands of genes simultaneously, enabling a much more comprehensive view of cellular organization and function.
+
+## The broad categorization of spatial transcriptomic technologies
+
+Spatial transcriptomic technologies can be broadly categorized into two main approaches: spot-based methods and imaging-based methods, see @fig-spatial-resolution1 and @fig-spatial-resolution2.
+
+::: block
+![Left: From <https://hutchdatascience.org/Choosing_Genomics_Tools/spatial-transcriptomics-1.html>](fig/chap9/spatial-resolution.png){#fig-spatial-resolution1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From <https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/>](fig/chap9/spatial-resolution2.png){#fig-spatial-resolution2 width="100%" fig-align="center"}
+:::
+
+- **Spot-based technologies** utilize sequencing-based approaches to capture gene expression across a tissue section. These methods typically involve placing spatially barcoded capture spots on a slide, allowing RNA molecules from the tissue to be sequenced while retaining their spatial information. Spot-based techniques offer broad coverage across the entire transcriptome, making them well-suited for large tissue sections and unbiased gene discovery. However, they have relatively low spatial resolution due to the size of the capture spots and may lack sufficient depth for detecting lowly expressed but biologically significant genes.
+
+- **Imaging-based technologies** rely on multiplexed imaging methods to visualize gene expression directly within tissues. These approaches build upon fluorescence in situ hybridization (FISH) and other imaging techniques, enabling subcellular resolution of RNA molecules. By using sequential hybridization cycles with fluorescent probes, imaging-based methods can measure the expression of dozens to hundreds of preselected genes. While this high-resolution approach provides detailed spatial maps at the single-molecule level, it requires prior selection of target genes and computationally intensive methods to delineate cell boundaries from dense tissue images.
+
+See @fig-spatial-comparison1, @fig-spatial-comparison2, and @fig-spatial-sidebyside for examples of what these datasets look like, and how spot- and imaging-based spatial transcriptomics could yield quite dramatically different datasets.
+
+::: block
+![Top: From <https://www.trillium.de/en/journals/trillium-pathology/archive/2024/tp-1/2024/ai-in-pathology/integration-of-spatially-resolved-transcriptomics-into-pathological-research-opportunities-and-challenges.html>](fig/chap9/spatial_comparison.png){#fig-spatial-comparison1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Bottom: From @figiel2024clinical](fig/chap9/spatial_comparison2.png){#fig-spatial-comparison2 width="100%" fig-align="center"}
+:::
+
