@@ -31,9 +31,11 @@ Enhancers play a critical role in this regulatory landscape. These are DNA seque
 
 Epigenetics encompasses a vast array of molecular mechanisms that regulate gene expression without altering the underlying DNA sequence. These mechanisms include modifications to DNA, RNA, chromatin, and the spatial organization of the genome, collectively forming a complex regulatory landscape. Below are some of the key modalities studied in epigenetics:
 
-- **DNA Accessibility**: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we'll focus on this chapter.)
+-   **DNA Accessibility**: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we'll focus on this chapter.)
 
-- **DNA Methylation**[^1]: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See @fig-methylation1-1.
+-   **DNA Methylation**[^chapter5_epigenetics-1]: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See @fig-methylation1-1.
+
+[^chapter5_epigenetics-1]: The technology to measure this at single-cell resolution is still being developed (see snmC-seq2 @liu2021dna), and is particularly interesting due to methylation's relation to cellular memory @kim2017dna and molecular clocks @hernando2019ageing; @trapp2021profiling; @gabbutt2022fluctuating.
 
 ::: block
 ![From @gauba2021immunomodulation.](fig/chap5/methylation1.png){#fig-methylation1-1 width="100%" fig-align="center"}
@@ -43,7 +45,9 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 ![From @bruggeman2008using.](fig/chap5/methylation2.png){#fig-methylation1-2 width="100%" fig-align="center"}
 :::
 
-- **Hi-C and Genome Organization**[^2]: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See @fig-hic1-1.
+-   **Hi-C and Genome Organization**[^chapter5_epigenetics-2]: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See @fig-hic1-1.
+
+[^chapter5_epigenetics-2]: See Droplet-HiC @chang2024droplet for an example of single-cell Hi-C.
 
 ::: block
 ![From @ea2015contribution.](fig/chap5/hic1.png){#fig-hic1-1 width="100%" fig-align="center"}
@@ -53,7 +57,9 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 ![From @liu2021seeing.](fig/chap5/hic2.png){#fig-hic1-2 width="100%" fig-align="center"}
 :::
 
-- **Histone Modifications**[^3]: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut & Tag method are used to map these modifications and their role in gene expression at the bulk level. See @fig-histone1.
+-   **Histone Modifications**[^chapter5_epigenetics-3]: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut & Tag method are used to map these modifications and their role in gene expression at the bulk level. See @fig-histone1.
+
+[^chapter5_epigenetics-3]: See Paired-tag @zhu2021joint for an example of single-cell histone modification.
 
 ::: block
 ![From <https://opened.cuny.edu/courseware/lesson/684/student/?section=2>.](fig/chap5/histone1.png){#fig-histone1 width="100%" fig-align="center"}
@@ -73,13 +79,13 @@ Some of you might be interested: Personally, I think one of the fascinating conc
 ![From @glancy2024bivalent.](fig/chap5/bivalent2.png){#fig-bivalent1-2 width="100%" fig-align="center"}
 :::
 
-- **RNA Modifications (m6A and Pseudouridine)**: Modifications like N6-methyladenosine (m6A) and pseudouridine occur on RNA molecules and are involved in processes like splicing, translation, and mRNA decay. See @fig-pseudouridine for what pseudouridine is, i.e., "a rotation of the uridine molecule." These modifications add an epitranscriptomic layer to gene regulation.
+-   **RNA Modifications (m6A and Pseudouridine)**: Modifications like N6-methyladenosine (m6A) and pseudouridine occur on RNA molecules and are involved in processes like splicing, translation, and mRNA decay. See @fig-pseudouridine for what pseudouridine is, i.e., "a rotation of the uridine molecule." These modifications add an epitranscriptomic layer to gene regulation.
 
 ::: block
 ![From @hamma2006pseudouridine about pseudouridine.](fig/chap5/pseudouridine.png){#fig-pseudouridine width="100%" fig-align="center"}
 :::
 
-- **Untranslated Regions (UTRs)**: Before talking about UTRs, it's probably good to review what an mRNA fragment "looks like" at the different stages of transcription and translation, see @fig-utr2. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation.
+-   **Untranslated Regions (UTRs)**: Before talking about UTRs, it's probably good to review what an mRNA fragment "looks like" at the different stages of transcription and translation, see @fig-utr2. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation.
 
 ::: block
 ![From @niazi2023rna. Notice the splicing (i.e., "removal" of the introns – see *Alternative Splicing* below) and that the protein-coding region is *not* the only part of the mRNA transcript – there are also the UTRs and poly-A tail. **NOTE**: The transcription start site (TSS) is *not* the same place as the promoter. The promoter is usually an un-transcribed region upstream of the TSS, while the TSS is where transcription actually starts.](fig/chap5/utr2.png){#fig-utr2 width="100%" fig-align="center"}
@@ -93,13 +99,13 @@ Some of you might be interested: Personally, I think one of the fascinating conc
 ![From <https://www.cambio.co.uk/9/257/applications/methods/in-vitro-transcription/mrna-therapeutics/>.](fig/chap5/utr3.png){#fig-utr3 width="100%" fig-align="center"}
 :::
 
-- **Alternative Splicing**: This post-transcriptional process generates multiple mRNA isoforms from the same gene, expanding the proteomic diversity, see @fig-alternativesplicing1. **This is a combinatorial explosion of isoforms.** While not traditionally classified as epigenetic, splicing often intersects with chromatin modifications and RNA-binding proteins, blurring the lines between transcriptional and post-transcriptional regulation.
+-   **Alternative Splicing**: This post-transcriptional process generates multiple mRNA isoforms from the same gene, expanding the proteomic diversity, see @fig-alternativesplicing1. **This is a combinatorial explosion of isoforms.** While not traditionally classified as epigenetic, splicing often intersects with chromatin modifications and RNA-binding proteins, blurring the lines between transcriptional and post-transcriptional regulation.
 
 ::: block
 ![From @chen2015alternative.](fig/chap5/alternativesplicing1.png){#fig-alternativesplicing1 width="100%" fig-align="center"}
 :::
 
-- **Alternative Polyadenylation (APA)**: APA generates transcript isoforms with different 3′ ends, affecting mRNA stability, localization, and translation, see @fig-apa1. By selecting distinct cleavage sites, APA alters the *3′ UTR length* without affecting the poly-A tail itself, thereby modulating interactions with regulatory factors such as microRNAs and RNA-binding proteins.
+-   **Alternative Polyadenylation (APA)**: APA generates transcript isoforms with different 3′ ends, affecting mRNA stability, localization, and translation, see @fig-apa1. By selecting distinct cleavage sites, APA alters the *3′ UTR length* without affecting the poly-A tail itself, thereby modulating interactions with regulatory factors such as microRNAs and RNA-binding proteins.
 
 ::: block
 ![From @li2022population.](fig/chap5/apa1.png){#fig-apa1 width="100%" fig-align="center"}
@@ -119,8 +125,116 @@ See @fig-epigenetic2-1 for some courageous figures that try to display multiple 
 ![From <https://www.whatisepigenetics.com/type-2-diabetes-mellitus-and-epigenetics>.](fig/chap5/epigenetic3.png){#fig-epigenetic2-2 width="100%" fig-align="center"}
 :::
 
-[^1]: The technology to measure this at single-cell resolution is still being developed (see snmC-seq2 @liu2021dna), and is particularly interesting due to methylation's relation to cellular memory @kim2017dna and molecular clocks @hernando2019ageing; @trapp2021profiling; @gabbutt2022fluctuating.  
+<!-- {\color{red}(DNA accessibility, methylation, Hi-C, histone modification, and a bit of APA. Mention Cut & Tag and MPRA. m6A and pseduouridine. Alternative splicing)} Talk about ENCODE <https://pmc.ncbi.nlm.nih.gov/articles/PMC7061942/>. -->
 
-[^2]: See Droplet-HiC @chang2024droplet for an example of single-cell Hi-C.  
-[^3]: See Paired-tag @zhu2021joint for an example of single-cell histone modification.
+**Some videos to look at for fun**
 
+-   "Why human brain cells grow so slowly" (Nature videos): <https://www.youtube.com/watch?v=lIJkc6tulus>
+-   "What is epigenetics? - Carlos Guerrero-Bosagna" (TED-Ed): <https://www.youtube.com/watch?v=_aAhcNjmvhc>
+
+## Glossary of terms that'll be useful throughout this chapter
+
+-   **Chromatin**: The complex of DNA and histone proteins that packages the genome, regulating accessibility for transcription factors and other regulatory elements.
+-   **Histone**: A protein that DNA wraps around to form nucleosomes, playing a key role in chromatin structure and epigenetic regulation through modifications such as methylation and acetylation. Eight histone proteins can come together to make up something called a *nucleosome*.
+-   **Enhancer**: A DNA region that enhances gene transcription, often located far from the transcription start site (TSS), and accessible in open chromatin regions detected by ATAC-seq.
+-   **Promoter**: A regulatory DNA region typically located upstream of a gene’s TSS, where RNA polymerase and transcription factors bind to initiate transcription.
+-   **Transcription Start Site (TSS)**: The location where RNA polymerase begins transcribing a gene, often marked by open chromatin and specific histone modifications.
+-   **Intron/Exon**: Exons are coding regions of a gene included in the mature mRNA, while introns are non-coding regions removed during splicing.
+-   **Spliced/Unspliced mRNA**: Spliced mRNA has undergone intron removal and is ready for translation, while unspliced mRNA still contains introns and provides insights into transcriptional dynamics in single-cell RNA-seq.
+-   **Peak**: A region of open chromatin identified in data such as ATAC-seq or ChIP-seq experiments, corresponding to accessible regulatory elements such as promoters and enhancers.
+-   **Motif**: A short, recurring DNA sequence recognized by transcription factors, often enriched in ATAC-seq peaks to infer regulatory activity.
+-   **Transcription Factor**: A protein that binds to DNA motifs to regulate gene expression, often influencing cell state and identity.
+-   **Pioneer Factor**: A specialized transcription factor capable of binding closed chromatin and initiating chromatin remodeling to make DNA accessible for transcription.
+
+## 10x Multiome -- Joint profiling of chromatin accessibility and RNA
+
+The 10x Multiome allows researchers to simultaneously profile **gene expression** (RNA) and **chromatin accessibility** (ATAC) at the single-cell level. This provides a comprehensive view of transcriptional and regulatory states within the same cells, enabling deeper insights into gene regulation and cell type characterization.
+
+### Primer on chromatin accessibility and "peaks"
+
+Chromatin accessibility refers to the degree to which DNA is physically accessible to regulatory proteins such as transcription factors, RNA polymerase, and other elements of the transcriptional machinery. In eukaryotic cells, DNA is wrapped around histone proteins to form chromatin, which can exist in a *closed* or *open* state. Open chromatin regions are more likely to contain active regulatory elements such as promoters and enhancers, while closed chromatin regions are generally associated with transcriptional repression. Profiling chromatin accessibility provides insights into which regulatory elements are active in a given cell state, offering a complementary perspective to RNA-seq data.
+
+In single-cell ATAC-seq experiments, accessible chromatin regions are identified as *peaks*, which represent DNA regions where the transposase enzyme preferentially inserts sequencing adapters. These peaks correspond to genomic loci where nucleosomes are absent or displaced, indicating active regulatory sites. Peaks are typically mapped to gene promoters, enhancers, or other functional elements to infer regulatory activity. By integrating chromatin accessibility with gene expression data from the same cells, 10x Multiome enables researchers to connect regulatory regions with their target genes, uncovering how chromatin structure influences transcriptional programs and cell fate decisions.
+
+The resulting data often looks like @fig-track-data-peak, where, for each genomic region, you can define "peaks" where there are regions of accessible DNA.
+
+::: block
+![From <https://stuartlab.org/signac/articles/mouse_brain_vignette>. The gray bars on the bottom (i.e., "Peaks") are derived based on the tracks shown up top (in different colors, based on the average accessibility at each base pair of the reference DNA for different cells of various cell types). The blue horizon bar (i.e., "Genes") tells you roughly where the introns and exons of a particular gene is.](fig/chap5/track-data-peak.png){#fig-track-data-peak width="100%" fig-align="center"}
+:::
+
+### Brief description of the technology
+
+The following are the high-level steps involved in performing single-cell multiome sequencing using the 10x Genomics Multiome ATAC + Gene Expression platform:
+
+::: block
+![From @buenrostro2015atac.](fig/chap5/atac2.png){#fig-atac-left width="100%" fig-align="center"}
+:::
+
+::: block
+![From <https://www.quickbiology.com/ngs-services/atac-seq-service>.](fig/chap5/atac1.png){#fig-atac-right width="100%" fig-align="center"}
+:::
+
+1.  **Tissue Dissociation and Cell Isolation**:\
+    Tissues are dissociated into a single-cell suspension using enzymatic or mechanical methods. Cells are isolated via fluorescence-activated cell sorting (FACS) or other methods to ensure viable, intact cells for profiling both RNA and chromatin.
+2.  **Transposition and RNA Capture**:\
+    Cells are incubated with a transposase enzyme that fragments DNA in open chromatin regions and tags them with sequencing adapters. Simultaneously, RNA is captured via hybridization to barcoded beads containing poly(dT) sequences, enabling downstream transcriptomic profiling.
+3.  **Droplet Generation**:\
+    Using the 10x Chromium instrument, individual cells are encapsulated into oil-based droplets along with barcoded gel beads. Each bead contains unique barcodes for both RNA and chromatin, ensuring that data from both modalities are linked to the same cell.
+4.  **Reverse Transcription and Transposition Amplification**:\
+    RNA is reverse-transcribed into complementary DNA (cDNA) within the droplets. Transposed DNA fragments are amplified via PCR to enrich for regions of open chromatin.
+5.  **Droplet Breakage and Cleanup**:\
+    Droplets are broken, and the barcoded nucleic acids are recovered. Separate workflows are used to process RNA-derived cDNA and transposed DNA fragments.
+6.  **Library Preparation**:\
+    The cDNA and DNA libraries are prepared in parallel:
+    -   **RNA Library**: Includes additional steps for amplification and adapter ligation to finalize the gene expression library.
+    -   **ATAC Library**: Focuses on chromatin accessibility, with library preparation steps optimized for sequencing transposed DNA.
+7.  **High-Throughput Sequencing**:\
+    The prepared RNA and ATAC libraries are sequenced on an Illumina platform, typically with paired-end reads to capture both transcriptomic and chromatin information.
+8.  **Data Alignment and Integration**:\
+    Sequencing reads are mapped to the genome, with RNA reads assigned to transcripts and ATAC reads aligned to open chromatin regions. Barcode information is used to link the RNA and chromatin profiles back to individual cells, enabling multi-modal analyses.
+
+**Brief note about peak-calling.**\
+Peak-calling is the computational process of identifying regions of open chromatin from ATAC-seq data, where transposase insertion events are enriched. These peaks represent accessible regulatory elements such as promoters, enhancers, and transcription factor binding sites. Peak-calling algorithms, such as MACS2 or the cellranger-atac pipeline (see @fig-peak-calling), detect significant enrichments in sequencing reads while accounting for background noise and sequencing biases. In single-cell ATAC-seq, peak-calling is often performed at the population level or adapted to sparse single-cell data by aggregating similar cells. Accurate peak-calling is essential for interpreting chromatin accessibility patterns and linking regulatory regions to gene expression.
+
+::: block
+![From <https://www.10xgenomics.com/support/software/cell-ranger-arc/latest/algorithms-overview/algorithms-overview>. You can see that ATAC-seq measures these DNA fragments, and a "peak" is a computational object that denotes a high concentration of overlapping fragments.](fig/chap5/peak-calling.png){#fig-peak-calling width="100%" fig-align="center"}
+:::
+
+**Further reading.**\
+See @mansisidor2022chromatin, @miao2021multi, @teichmann2020method for an in-depth dive on the biological insights from this omic (among many, many review papers). Two things are of note: 1) modeling scATAC-seq data is not as straight-forward as scRNA-seq (see @miao2024uniform, @martens2024modeling), 2) almost all the scRNA-seq methods we have discussed in [Chapter 2](chapter2.qmd) and [Chapter 3](chapter3.qmd) have a counterpart developed specifically to model scATAC-seq data. For example, peakVI @ashuach2022peakvi is a commonly used method to compute the low-dimensional embedding for scATAC-seq data.
+
+## ChromVAR: The most commonly used method to assess binding regions
+
+ChromVAR (short for Chromatin Variability Across Regions, @schep2017chromvar) is a computational tool designed to analyze chromatin accessibility data, such as those generated from ATAC-seq or single-cell ATAC-seq experiments. Its primary goal is to quantify variability in chromatin accessibility across predefined genomic regions, such as transcription factor binding motifs or enhancers, and link these patterns to regulatory factors that drive cell state differences.
+
+**What the heck is a motif?** A **motif** is a short, recurring DNA sequence pattern that is recognized and bound by specific transcription factors (TFs) to regulate gene expression, see @fig-motif. These motifs are typically found in promoters, enhancers, and other regulatory regions of the genome. Motifs are often represented as *position weight matrices (PWMs)*, which describe the probability of observing each nucleotide (A, T, C, G) at a given position in the sequence. Identifying motif enrichment in chromatin accessibility data helps infer which transcription factors are active in a given cell type or condition. ChromVAR leverages these motifs to assess whether specific transcription factors are driving chromatin accessibility changes, providing insights into cell-type-specific regulatory programs.
+
+::: block
+![From @habib2007analysis.](fig/chap5/motif.png){#fig-motif width="100%" fig-align="center"}
+:::
+
+**Sidenote about motifs.** If you work on scATAC-seq or ChIP-seq data long enough, you'll eventually need to learn about: 1) how to detect potential binding sites in your data, and 2) how to find a database of "known" motifs. For the first point, HOMER @heinz2010simple is a *very* common bioinformatics tool. It takes in a bunch of DNA regions, and then finds DNA motifs that are significantly enriched as well as which potential TF might match those motifs, see @fig-homer. For the second point, JASPAR is one of the more common databases of TFs, see <https://jaspar.elixir.no/> and @fornes2020jaspar. In R, the Bioconductor package is called `JASPAR2020`.
+
+::: block
+![From <http://homer.ucsd.edu/homer//motif/motifFinding.html>.](fig/chap5/homer.png){#fig-homer width="100%" fig-align="center"}
+:::
+
+**Details of ChromVAR.** ChromVAR works by computing **deviation scores**, which measure how much the accessibility of a given set of regions (e.g., those containing a specific transcription factor motif) varies across cells or samples. This enables the identification of transcription factors that are likely active and driving regulatory differences within the dataset. See @fig-chromvar.
+
+::: block3
+**Input/Output.** The input for a ChromVAR analysis is: 1) \$ \in \mathbb{Z}\_+\^{n\times p}\$ for the $n$ cells and $p$ peaks, 2) the specific locations of the $p$ peaks along the reference genome (for example, in humans, this could be the `hg38` reference genome, and in R, this is typically managed by the `GenomicRanges` BioConductor package, and 3) a database of TF motifs, such as JASPAR. (\*Technically\*), you don't actually pass Item #2 or #3 as input. ChromVAR already expects you to have matched peaks to motifs using some method, for instance, `motifmatchr`. This matching is where, technically, Item #2 and #3 are used.) The output is then a new matrix $Y \in \mathbb{R}^{n\times d}$ where $d$ is the number of TFs, and entry $Y_{ij}$ denotes the excess variability of the TF $j$'s accessibility in cell $i$, relative to a set of "background" DNA regions that have similar qualities as TF $j$.
+:::
+
+Here's how it works: 1. **Input Data**: The input consists of a **binary peak-by-cell matrix** (e.g., from single-cell ATAC-seq), where each entry indicates whether a specific genomic region (peak) is accessible in a given cell. A set of **motif annotations** (e.g., binding motifs for transcription factors) is provided to group peaks into motif-associated sets.
+
+**Importantly**: To run ChromVAR, you *must* have a reference genome. You are about to scan the genome for locations where a motif can bind to a particular DNA sequence in the reference genome. That is, you're thinking about the specific base pair sequence of the DNA. 2. **Region Set Aggregation**: Peaks are grouped into sets based on the motifs. For each cell $i$ and each motif-associated region set $k$, ChromVAR computes the **aggregate accessibility**: $$
+   A_{ik} = \sum_{j \in S_k} X_{ij},
+   $$ where $S_k$ is the set of peaks $j$'s associated with motif $k$.
+
+In simple terms, you're adding up all the peaks that contain a relevant motif.) This sum (for cell $i$) is normalized against all other cells (i.e., across all cells, how many counts were mapped to these peaks. 3. **Sampling a set of background peaks**: One of ChromVAR's most important steps is carefully choosing a set of "background peaks," i.e., peaks that are not the ones associated with motif $k$, but have similar biological qualities. ChromVAR typically controls for two important things to do this: the GC content of a peak region and the region's fragment length. (GC content is adjusted for since PCR tends to favor GC-rich regions.) Then, for every peak that contains motif $k$, it samples many different peaks that has similar GC content and fragment length to the particular peak. This loops over all the peaks associated with motif $k$, and the aggregate set of sampled peak is called the set of background peaks. 4. **Deviation Scores**: The **deviation score** quantifies how much the accessibility for a motif-associated region set deviates from what is expected under a background distribution. ChromVAR uses a binomial model to compute the expected accessibility, and the deviation score $D_{kj}$ is defined as the z-score: $$
+   Y_{ik} = \frac{A_{ik} - \mathbb{E}[A_{ik}]}{\text{SD}[A_{ik}]},
+   $$ where $\mathbb{E}[A_{ik}]$ and $\text{SD}[A_{ik}]$ are the expected mean and standard deviation of the accessibility for motif $k$ under the background model. This matrix $Y$ (over all the cells and all motifs) is the output.
+
+::: block
+![From @schep2017chromvar](fig/chap5/chromvar.png){#fig-chromvar width="100%" fig-align="center"}
+:::
