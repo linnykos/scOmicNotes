@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -69,6 +89,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -183,7 +232,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-broad-categorization-of-spatial-transcriptomic-technologies" id="toc-the-broad-categorization-of-spatial-transcriptomic-technologies" class="nav-link active" data-scroll-target="#the-broad-categorization-of-spatial-transcriptomic-technologies"><span class="header-section-number">10.1</span> The broad categorization of spatial transcriptomic technologies</a></li>
+  <li><a href="#the-broad-categorization-of-spatial-transcriptomic-technologies" id="toc-the-broad-categorization-of-spatial-transcriptomic-technologies" class="nav-link active" data-scroll-target="#the-broad-categorization-of-spatial-transcriptomic-technologies"><span class="header-section-number">10.1</span> The broad categorization of spatial transcriptomic technologies</a>
+  <ul>
+  <li><a href="#sequencing-based-visium-10x" id="toc-sequencing-based-visium-10x" class="nav-link" data-scroll-target="#sequencing-based-visium-10x"><span class="header-section-number">10.1.1</span> Sequencing-based: Visium (10x)</a></li>
+  <li><a href="#sequencing-based-visium-hd-10x" id="toc-sequencing-based-visium-hd-10x" class="nav-link" data-scroll-target="#sequencing-based-visium-hd-10x"><span class="header-section-number">10.1.2</span> Sequencing-based: Visium HD (10x)</a></li>
+  <li><a href="#imaging-based-merfishmerscope-vizgen" id="toc-imaging-based-merfishmerscope-vizgen" class="nav-link" data-scroll-target="#imaging-based-merfishmerscope-vizgen"><span class="header-section-number">10.1.3</span> Imaging-based: MERFISH/MERSCOPE (Vizgen)</a></li>
+  <li><a href="#imaging-based-xenium-10x" id="toc-imaging-based-xenium-10x" class="nav-link" data-scroll-target="#imaging-based-xenium-10x"><span class="header-section-number">10.1.4</span> Imaging-based: Xenium (10x)</a></li>
+  <li><a href="#so-what-should-i-use" id="toc-so-what-should-i-use" class="nav-link" data-scroll-target="#so-what-should-i-use"><span class="header-section-number">10.1.5</span> So, what should I use?</a></li>
+  </ul></li>
+  <li><a href="#a-whirlwind-of-other-tasks" id="toc-a-whirlwind-of-other-tasks" class="nav-link" data-scroll-target="#a-whirlwind-of-other-tasks"><span class="header-section-number">10.2</span> A whirlwind of other tasks</a>
+  <ul>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing"><span class="header-section-number">10.2.1</span> Preprocessing</a></li>
+  <li><a href="#statistical-analyses" id="toc-statistical-analyses" class="nav-link" data-scroll-target="#statistical-analyses"><span class="header-section-number">10.2.2</span> Statistical analyses</a></li>
+  </ul></li>
+  <li><a href="#cell-cell-communication" id="toc-cell-cell-communication" class="nav-link" data-scroll-target="#cell-cell-communication"><span class="header-section-number">10.3</span> Cell-cell communication</a>
+  <ul>
+  <li><a href="#how-do-cells-communicate-with-one-another" id="toc-how-do-cells-communicate-with-one-another" class="nav-link" data-scroll-target="#how-do-cells-communicate-with-one-another"><span class="header-section-number">10.3.1</span> How do cells communicate with one another?</a></li>
+  <li><a href="#brief-aside-ligand-receptor-pairs" id="toc-brief-aside-ligand-receptor-pairs" class="nav-link" data-scroll-target="#brief-aside-ligand-receptor-pairs"><span class="header-section-number">10.3.2</span> Brief aside: Ligand-receptor pairs</a></li>
+  <li><a href="#using-spatial-transcriptomics-to-study-cell-cell-communication" id="toc-using-spatial-transcriptomics-to-study-cell-cell-communication" class="nav-link" data-scroll-target="#using-spatial-transcriptomics-to-study-cell-cell-communication"><span class="header-section-number">10.3.3</span> Using spatial transcriptomics to study cell-cell communication</a>
+  <ul class="collapse">
+  <li><a href="#pause-weve-actually-been-studying-cell-cell-communication-long-before-spatial-transcriptomics-became-commercially-viable.-it-just-relied-on-some-leaps-of-faith." id="toc-pause-weve-actually-been-studying-cell-cell-communication-long-before-spatial-transcriptomics-became-commercially-viable.-it-just-relied-on-some-leaps-of-faith." class="nav-link" data-scroll-target="#pause-weve-actually-been-studying-cell-cell-communication-long-before-spatial-transcriptomics-became-commercially-viable.-it-just-relied-on-some-leaps-of-faith."><span class="header-section-number">10.3.3.1</span> Pause: We’ve actually been studying cell-cell communication long before spatial transcriptomics became commercially viable. It just relied on some leaps of faith.</a></li>
+  </ul></li>
+  <li><a href="#a-brief-note-on-other-approaches" id="toc-a-brief-note-on-other-approaches" class="nav-link" data-scroll-target="#a-brief-note-on-other-approaches"><span class="header-section-number">10.3.4</span> A brief note on other approaches</a></li>
+  </ul></li>
+  <li><a href="#integrationalignment-of-spatial-slices" id="toc-integrationalignment-of-spatial-slices" class="nav-link" data-scroll-target="#integrationalignment-of-spatial-slices"><span class="header-section-number">10.4</span> Integration/alignment of spatial slices</a>
+  <ul>
+  <li><a href="#brief-aside-image-registration-in-contexts-for-broader-biomedical-imaging" id="toc-brief-aside-image-registration-in-contexts-for-broader-biomedical-imaging" class="nav-link" data-scroll-target="#brief-aside-image-registration-in-contexts-for-broader-biomedical-imaging"><span class="header-section-number">10.4.1</span> Brief aside: Image registration (in contexts for broader biomedical imaging)</a></li>
+  <li><a href="#a-current-choice-for-aligning-slices-in-spatial-transcriptomics-santo" id="toc-a-current-choice-for-aligning-slices-in-spatial-transcriptomics-santo" class="nav-link" data-scroll-target="#a-current-choice-for-aligning-slices-in-spatial-transcriptomics-santo"><span class="header-section-number">10.4.2</span> A current choice for aligning slices in spatial transcriptomics: SANTO</a></li>
+  <li><a href="#a-brief-note-about-other-approaches" id="toc-a-brief-note-about-other-approaches" class="nav-link" data-scroll-target="#a-brief-note-about-other-approaches"><span class="header-section-number">10.4.3</span> A brief note about other approaches</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -229,7 +306,7 @@ Figure&nbsp;10.1: From <a href="https://www.mscience.com.au/supplier/10x-genomic
 <img src="fig/chap9/st-ngs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-st-ngs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.2: From <span class="citation" data-cites="kim2023single">(<a href="references.html#ref-kim2023single" role="doc-biblioref"><strong>kim2023single?</strong></a>)</span>.
+Figure&nbsp;10.2: From <span class="citation" data-cites="kim2023single">Kim, Choi, and Lee (<a href="references.html#ref-kim2023single" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -287,7 +364,7 @@ Figure&nbsp;10.5: Right: From <a href="https://geneviatechnologies.com/bioinform
 <li><p><strong>Spot-based technologies</strong> utilize sequencing-based approaches to capture gene expression across a tissue section. These methods typically involve placing spatially barcoded capture spots on a slide, allowing RNA molecules from the tissue to be sequenced while retaining their spatial information. Spot-based techniques offer broad coverage across the entire transcriptome, making them well-suited for large tissue sections and unbiased gene discovery. However, they have relatively low spatial resolution due to the size of the capture spots and may lack sufficient depth for detecting lowly expressed but biologically significant genes.</p></li>
 <li><p><strong>Imaging-based technologies</strong> rely on multiplexed imaging methods to visualize gene expression directly within tissues. These approaches build upon fluorescence in situ hybridization (FISH) and other imaging techniques, enabling subcellular resolution of RNA molecules. By using sequential hybridization cycles with fluorescent probes, imaging-based methods can measure the expression of dozens to hundreds of preselected genes. While this high-resolution approach provides detailed spatial maps at the single-molecule level, it requires prior selection of target genes and computationally intensive methods to delineate cell boundaries from dense tissue images.</p></li>
 </ul>
-<p>See <a href="#fig-spatial-comparison1" class="quarto-xref">Figure&nbsp;<span>10.6</span></a>, <a href="#fig-spatial-comparison2" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>, and <span class="quarto-unresolved-ref">?fig-spatial-sidebyside</span> for examples of what these datasets look like, and how spot- and imaging-based spatial transcriptomics could yield quite dramatically different datasets.</p>
+<p>See <a href="#fig-spatial-comparison1" class="quarto-xref">Figure&nbsp;<span>10.6</span></a>, <a href="#fig-spatial-comparison2" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>, and <a href="#fig-spatial-sidebyside" class="quarto-xref">Figure&nbsp;<span>10.9</span></a> for examples of what these datasets look like, and how spot- and imaging-based spatial transcriptomics could yield quite dramatically different datasets.</p>
 <div class="block">
 <div id="fig-spatial-comparison1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -307,13 +384,722 @@ Figure&nbsp;10.6: Top: From <a href="https://www.trillium.de/en/journals/trilliu
 <img src="fig/chap9/spatial_comparison2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-comparison2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.7: Bottom: From <span class="citation" data-cites="figiel2024clinical">(<a href="references.html#ref-figiel2024clinical" role="doc-biblioref"><strong>figiel2024clinical?</strong></a>)</span>
+Figure&nbsp;10.7: Bottom: From <span class="citation" data-cites="figiel2024clinical">Figiel et al. (<a href="references.html#ref-figiel2024clinical" role="doc-biblioref">2024</a>)</span>
 </figcaption>
 </figure>
 </div>
 </div>
+<div class="block">
+<div id="fig-spatial-comparison3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-comparison3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial_comparison3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-comparison3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.8: From <span class="citation" data-cites="longo2021integrating">Longo et al. (<a href="references.html#ref-longo2021integrating" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-sidebyside" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-sidebyside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial-sidebyside.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-sidebyside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.9: From <span class="citation" data-cites="rademacher2024comparison">Rademacher et al. (<a href="references.html#ref-rademacher2024comparison" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>See <a href="#fig-spatial-table" class="quarto-xref">Figure&nbsp;<span>10.10</span></a> for a table of many possible technologies to perform spatial transcriptomics.</p>
+<div class="block">
+<div id="fig-spatial-table" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial_table.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.10: From <a href="https://rubd.github.io/Giotto_site/" class="uri">https://rubd.github.io/Giotto_site/</a>. (This figure is rapidly becoming out-dated. I would argue and say this figure is already nearly unrepresentative of the field.)
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="rem-2D-slices" class="block2 proof remark">
+<p><span class="proof-title"><em>Remark 10.1</em>. </span><strong>These are all 2D tissue slices!</strong><br>
+Our body is three-dimensional (unsurprisingly). However, all the spatial information we are collecting is typically 2D. (Some really rich consortiums have sequenced many cross-sectional 2D slices to reconstruct the 3D organ, for example <span class="citation" data-cites="zhang2023molecularly">M. Zhang et al. (<a href="references.html#ref-zhang2023molecularly" role="doc-biblioref">2023</a>)</span>. However, most single-PI labs do not have the budget to do this. Therefore, it’s important you ask yourself: “Is it possible I am misleading myself by analyzing a 2D tissue slice when my question is about the 3D organ?”</p>
+<p>It’s entirely possible that the cellular organization/dynamics on a 2D tissue slice is representative of the overall tissue. It’s also entirely possible that it’s not. Knowing how the 2D tissue was selected (i.e., how did someone even choose this specific cross-section in the first place?) is an important question to answer before you can even start thinking mathematically on how your 2D findings relate back to the 3D shape.</p>
+</div>
+<section id="sequencing-based-visium-10x" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="sequencing-based-visium-10x"><span class="header-section-number">10.1.1</span> Sequencing-based: Visium (10x)</h3>
+<p>Visium by 10x Genomics is a widely used spot-based spatial transcriptomics technology. See <a href="#fig-visium-protocol" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> for a cartoon on how it works. Visium captures transcriptomic information within predefined spatial spots on a tissue section, allowing for spatially resolved gene expression profiling. However, each spot is relatively large (usually around 55 µm in diameter), often encompassing multiple cells. To infer cellular composition within each spot, computational deconvolution methods are typically applied. In addition to transcriptomic data, Visium also provides an H&amp;E (hematoxylin and eosin) stained image of the tissue, which is valuable for histological context, aiding in the interpretation of spatial gene expression patterns and tissue architecture. <span class="quarto-unresolved-ref">?fig-spatial-analyses</span> provides examples of this spot-based spatial transcriptomics.</p>
+<div class="block">
+<div id="fig-visium-protocol" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-visium-protocol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/visium_protocol.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visium-protocol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.11: From <span class="citation" data-cites="duan2023spatially">Duan, Cheng, and Cheng (<a href="references.html#ref-duan2023spatially" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-analyses1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/visium-spots2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.12: Left: From <span class="citation" data-cites="kim2023single">Kim, Choi, and Lee (<a href="references.html#ref-kim2023single" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-analyses2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/visium-spots.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.13: Right: From <a href="https://satijalab.org/seurat/articles/spatial_vignette" class="uri">https://satijalab.org/seurat/articles/spatial_vignette</a>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="sequencing-based-visium-hd-10x" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="sequencing-based-visium-hd-10x"><span class="header-section-number">10.1.2</span> Sequencing-based: Visium HD (10x)</h3>
+<p>Visium HD is an advanced version of Visium that significantly improves spatial resolution, see <a href="#fig-visium-hd1" class="quarto-xref">Figure&nbsp;<span>10.14</span></a> and <a href="#fig-visium-hd2" class="quarto-xref">Figure&nbsp;<span>10.15</span></a>. Unlike standard Visium, which has relatively large spots, Visium HD features smaller spots, allowing for higher spatial resolution and better separation of individual cells. This enhancement enables more precise mapping of transcriptomic data to tissue morphology. However, the increased resolution comes at a higher cost, as sequencing expenses rise due to the need for greater sequencing depth to capture the finer spatial granularity.</p>
+<div class="block">
+<div id="fig-visium-hd1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-visium-hd1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/visium-hd.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visium-hd1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.14: Left: From <a href="https://imaging.as.uky.edu/visium-hd-spatial-transcriptomics" class="uri">https://imaging.as.uky.edu/visium-hd-spatial-transcriptomics</a>. See more at <a href="https://www.10xgenomics.com/spatial-transcriptomics#what-is-spatial-transcriptomics" class="uri">https://www.10xgenomics.com/spatial-transcriptomics#what-is-spatial-transcriptomics</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-visium-hd2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-visium-hd2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/visium-hd2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visium-hd2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.15: Right: From <a href="https://x.com/AlbertVilella/status/1367028429300916225" class="uri">https://x.com/AlbertVilella/status/1367028429300916225</a>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="imaging-based-merfishmerscope-vizgen" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="imaging-based-merfishmerscope-vizgen"><span class="header-section-number">10.1.3</span> Imaging-based: MERFISH/MERSCOPE (Vizgen)</h3>
+<p>Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH) is an imaging-based spatial transcriptomics method that enables the detection of hundreds to thousands of preselected RNA transcripts in a tissue section. It operates by hybridizing barcoded probes to RNA molecules, followed by multiple rounds of imaging to decode the transcript identities, see <a href="#fig-merfish" class="quarto-xref">Figure&nbsp;<span>10.16</span></a>. Since MERFISH provides subcellular resolution, it allows precise localization of transcripts within individual cells, but it requires computational cell segmentation to assign transcripts to specific cells. MERSCOPE is a commercial platform for MERFISH, providing an integrated solution for sample preparation, imaging, and data analysis.<br>
+See <a href="#fig-merfish1" class="quarto-xref">Figure&nbsp;<span>10.17</span></a> and <a href="#fig-merfish2" class="quarto-xref">Figure&nbsp;<span>10.18</span></a> for examples of the data.</p>
+<div class="block">
+<div id="fig-merfish" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-merfish-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/merfish.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-merfish-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.16: From <span class="citation" data-cites="chen2015spatially">Chen et al. (<a href="references.html#ref-chen2015spatially" role="doc-biblioref">2015</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-merfish1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-merfish1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/merfish1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-merfish1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.17: Top: From <span class="citation" data-cites="zhang2023molecularly">M. Zhang et al. (<a href="references.html#ref-zhang2023molecularly" role="doc-biblioref">2023</a>)</span>. Here, each “dot” is a cell colored by its cell type (after a cell segmentation was run to determine which RNA transcripts belonged to which cell).
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-merfish2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-merfish2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/merfish2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-merfish2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.18: Bottom: From <span class="citation" data-cites="chen2015spatially">Chen et al. (<a href="references.html#ref-chen2015spatially" role="doc-biblioref">2015</a>)</span>. Here, each “dot” is an RNA transcript colored by the different genes that the RNA transcript came from. (This figure is more representative of what the “raw data” looks like.)
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="imaging-based-xenium-10x" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="imaging-based-xenium-10x"><span class="header-section-number">10.1.4</span> Imaging-based: Xenium (10x)</h3>
+<p>Xenium by 10x Genomics is another imaging-based spatial transcriptomics platform, designed to profile a targeted set of transcripts with subcellular resolution. Unlike sequencing-based approaches, Xenium relies on fluorescence imaging to detect preselected RNA targets within tissue sections. See <a href="#fig-xenium-visium" class="quarto-xref">Figure&nbsp;<span>10.19</span></a> for a comparison. It enables high-throughput spatial mapping of gene expression while preserving tissue morphology. As with other imaging-based methods, accurate cell segmentation is essential to delineate individual cells and associate detected transcripts with them. (There are many papers that try comparing Xenium and MERSCOPE. See <a href="#fig-cell-segmentation" class="quarto-xref">Figure&nbsp;<span>10.20</span></a> for one paper.)</p>
+<div class="block">
+<div id="fig-xenium-visium" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-xenium-visium-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/xenium-visium.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-xenium-visium-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.19: From <span class="citation" data-cites="lee2024profiling">Lee et al. (<a href="references.html#ref-lee2024profiling" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cell-segmentation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cell-segmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/cell-segmentation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cell-segmentation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.20: From <span class="citation" data-cites="hartman2024comparative">Hartman and Satija (<a href="references.html#ref-hartman2024comparative" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>See more at <a href="https://www.10xgenomics.com/blog/optimizing-your-spatial-transcriptomics-research-with-visium-hd-and-xenium-in-situ" class="uri">https://www.10xgenomics.com/blog/optimizing-your-spatial-transcriptomics-research-with-visium-hd-and-xenium-in-situ</a>.</p>
+</section>
+<section id="so-what-should-i-use" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="so-what-should-i-use"><span class="header-section-number">10.1.5</span> So, what should I use?</h3>
+<p>If you are about to collect spatial transcriptomics data yourself, it’s important to first consider what you’re trying to biologically investigate (since this data will be quite expensive to collect). Are you trying to explore the complexity of a tissue, or are you trying to definitively prove the existence (or lack thereof) of something? The nature of your biological question might make it apparent which technology best suits your needs. See <a href="#fig-st-hypothesis" class="quarto-xref">Figure&nbsp;<span>10.21</span></a>.</p>
+<div class="block">
+<div id="fig-st-hypothesis" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-st-hypothesis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/st-hypothesis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-st-hypothesis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.21: From <span class="citation" data-cites="williams2022introduction">Williams et al. (<a href="references.html#ref-williams2022introduction" role="doc-biblioref">2022</a>)</span>. (I think “CosMx” is incorrectly labeled in this figure? It is more of an imaging-based method.)
+</figcaption>
+</figure>
+</div>
+</div>
+<p>See a massive review of the benefits and drawbacks of different spatial transcriptomics technologies in <span class="citation" data-cites="lee2024profiling">Lee et al. (<a href="references.html#ref-lee2024profiling" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="liao2021uncovering">Liao et al. (<a href="references.html#ref-liao2021uncovering" role="doc-biblioref">2021</a>)</span>, <span class="citation" data-cites="duan2023spatially">Duan, Cheng, and Cheng (<a href="references.html#ref-duan2023spatially" role="doc-biblioref">2023</a>)</span>.</p>
+</section>
+</section>
+<section id="a-whirlwind-of-other-tasks" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="a-whirlwind-of-other-tasks"><span class="header-section-number">10.2</span> A whirlwind of other tasks</h2>
+<p>Beyond generating spatial transcriptomic data, a variety of computational tasks are necessary to ensure accurate interpretation and integration with other biological information. These tasks broadly fall into two categories: preprocessing and statistical analysis.</p>
+<section id="preprocessing" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="preprocessing"><span class="header-section-number">10.2.1</span> Preprocessing</h3>
+<p>Raw spatial transcriptomic data often require substantial preprocessing to correct for technical artifacts and enhance interpretability. One key step is <em>integration</em>, where spatial data are aligned with other tissue slides or combined with histological information, such as the H&amp;E stain, to provide morphological context. <em>Contamination removal</em> is another crucial step, as transcripts may originate from neighboring cells or ambient RNA, especially in spot-based approaches. Additionally, <em>imputation</em> techniques can be applied to recover missing gene expression values, particularly in spot-based methods where some spots may have low or undetectable expression due to sequencing depth limitations.</p>
+</section>
+<section id="statistical-analyses" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="statistical-analyses"><span class="header-section-number">10.2.2</span> Statistical analyses</h3>
+<p>Once preprocessed, spatial transcriptomic data can be analyzed using various statistical approaches to uncover biological insights. Identifying <em>spatially variable genes</em> helps determine which genes exhibit spatially structured expression patterns, highlighting key regulators of tissue organization. Another common analysis involves defining <em>spatial domains</em>, where clustering techniques identify tissue regions with distinct gene expression profiles while accounting for spatial proximity. For spot-based methods, <em>cell-type deconvolution</em> is used to estimate the composition of different cell types within each spot, given that multiple cells may contribute to a single measurement. In imaging-based methods, <em>cell segmentation</em> is a critical computational step, where individual cells are delineated based on transcript localization and morphological features to achieve single-cell resolution.</p>
+<p>See <a href="#fig-spatial-analyses1" class="quarto-xref">Figure&nbsp;<span>10.22</span></a>, <a href="#fig-spatial-analyses2" class="quarto-xref">Figure&nbsp;<span>10.23</span></a>, <a href="#fig-spatial-analyses3" class="quarto-xref">Figure&nbsp;<span>10.24</span></a>, and <a href="#fig-spatial-analyses4" class="quarto-xref">Figure&nbsp;<span>10.25</span></a> (and the papers these figures come from) for a broad overview of all the different types of analyses you can do with spatial transcriptomics.</p>
+<div class="block">
+<div id="fig-spatial-analyses1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial-analyses.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.22: Left: From <a href="https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/" class="uri">https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/</a>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-analyses2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial-analyses2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.23: Right: From <span class="citation" data-cites="kiessling2024spatial">Kiessling and Kuppe (<a href="references.html#ref-kiessling2024spatial" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-analyses3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial-analyses3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.24: Top: From <span class="citation" data-cites="park2023spatial">Park et al. (<a href="references.html#ref-park2023spatial" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-spatial-analyses4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-analyses4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/spatial-analyses4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-analyses4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.25: Bottom: From <span class="citation" data-cites="zhou2023spatial">(<a href="references.html#ref-zhou2023spatial" role="doc-biblioref"><strong>zhou2023spatial?</strong></a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="rem-population" class="block2 proof remark">
+<p><span class="proof-title"><em>Remark 10.2</em>. </span><strong>Remember, after we collect the tissue from a donor, we don’t <em>really</em> care about the donor anymore. We care about the biology</strong><br>
+One of the trickiest (statistical) philosophical roadblocks you’ll encounter when you work on spatial transcriptomics is: “What on earth is the ‘population’ I’m studying?” You’ll need to think really hard about variation that might occur within an individual or between different individuals. (Spatial transcriptomics by itself is currently financially unrealistic to be a reliable tool for biomarker detection, unlike other biomedical technologies such as MRI, PET scans, CT scans, staining of tissue slices, etc.)</p>
+<p>It’s not uncommon to only have one or two spatial transcriptomic tissue slices for an entire study. (This is really a reflection about how expensive and laborious getting this data is.) In that case, are you really just learning biology about this one specific person? How do you know that the donor’s biology is representative of overall human biology?</p>
+<p>Broadly speaking, there are two philosophical approaches to handle this:</p>
+<ul>
+<li><p><strong>You don’t</strong>: Some papers simply show “existence.” That is, they have a statement that is of the flavor, “Our paper demonstrates that this phenomenon can occur in tissue, because we have found evidence of it existing in our tissue.” The benefit of this strategy is that you can always claim this, and there is still room for scientific novelty. However, you cannot make any statement that generalizes beyond your specific tissue. Hence, it’s really important you pick really “interesting” tissue slices for this approach.</p></li>
+<li><p><strong>Relate everything back to the omics</strong>: It’s difficult to “integrate” tissue slices from two completely different people together. (You can think about how impossibly hard this is, especially if you have familiarity with MRI data. How would you “align” my lung tissue slice with your lung tissue slice? What if my lungs are slightly bigger/smaller in certain regions than yours?) Unlike single-cell data (where we can just combine the cells across many donors), in spatial transcriptomics, you are usually instead relating all your findings on</p></li>
+</ul>
+</div>
+<p>For examples of what type of analyses you can do with spatial transcriptomics data (beyond what we’ll discuss in these notes), see: <a href="https://hutchdatascience.org/Choosing_Genomics_Tools/spatial-transcriptomics-1.html" class="uri">https://hutchdatascience.org/Choosing_Genomics_Tools/spatial-transcriptomics-1.html</a>, <a href="https://squidpy.readthedocs.io/en/stable/" class="uri">https://squidpy.readthedocs.io/en/stable/</a>, and <a href="https://giottosuite.readthedocs.io/en/master/" class="uri">https://giottosuite.readthedocs.io/en/master/</a>.</p>
+</section>
+</section>
+<section id="cell-cell-communication" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="cell-cell-communication"><span class="header-section-number">10.3</span> Cell-cell communication</h2>
+<p>Cell-cell communication is a fundamental process in biology that enables cells to coordinate their behavior, maintain homeostasis, and respond to environmental stimuli. Through various signaling mechanisms, cells transmit biochemical signals that regulate development, immune responses, tissue repair, and disease progression. The ability to understand and map these communication networks is crucial for uncovering mechanisms underlying diseases such as cancer, neurodegenerative disorders, and immune dysfunctions. With advances in spatial transcriptomics and single-cell technologies, researchers can now investigate cell-cell communication at unprecedented resolution, allowing for insights into how cells interact in complex tissue environments.</p>
+<section id="how-do-cells-communicate-with-one-another" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="how-do-cells-communicate-with-one-another"><span class="header-section-number">10.3.1</span> How do cells communicate with one another?</h3>
+<p>Cells communicate using multiple signaling modalities, each suited for different biological contexts:</p>
+<ul>
+<li><strong>Autocrine signaling:</strong> A cell releases signaling molecules that bind to its own receptors, allowing it to regulate its own behavior. This is common in immune responses and cancer progression.<br>
+</li>
+<li><strong>Gap junction signaling:</strong> Cells directly exchange ions and small molecules through specialized intercellular channels called gap junctions. This form of communication is rapid and crucial in electrically excitable tissues like the heart and nervous system.<br>
+</li>
+<li><strong>Paracrine signaling:</strong> Cells secrete signaling molecules that diffuse over short distances to affect neighboring cells. This is commonly seen in tissue development and inflammation.<br>
+</li>
+<li><strong>Endocrine signaling:</strong> Hormones are released into the bloodstream and travel long distances to regulate distant target cells. This is a key mechanism in systemic physiological regulation, such as insulin signaling in metabolism.</li>
+</ul>
+<p>See these illustrated in <a href="#fig-cell-signaling" class="quarto-xref">Figure&nbsp;<span>10.26</span></a>.</p>
+<div class="block">
+<div id="fig-cell-signaling" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cell-signaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/cell-signaling.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cell-signaling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.26: From <a href="https://frontlinegenomics.com/methods-to-study-cell-cell-communication/" class="uri">https://frontlinegenomics.com/methods-to-study-cell-cell-communication/</a>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>What do we do with these results? There are many types of results we could publish. Visually, these are summarized in <a href="#fig-ccc-visualization" class="quarto-xref">Figure&nbsp;<span>10.27</span></a>.</p>
+<div class="block">
+<div id="fig-ccc-visualization" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-visualization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ccc-visualization.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-visualization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.27: From <span class="citation" data-cites="armingol2021deciphering">Armingol et al. (<a href="references.html#ref-armingol2021deciphering" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="brief-aside-ligand-receptor-pairs" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="brief-aside-ligand-receptor-pairs"><span class="header-section-number">10.3.2</span> Brief aside: Ligand-receptor pairs</h3>
+<p>Cell-cell communication often relies on ligand-receptor interactions. A <strong>ligand</strong> is a signaling molecule (such as a protein, peptide, or small molecule) that binds to a <strong>receptor</strong>, a transmembrane or intracellular protein that mediates a cellular response, see <a href="#fig-ligand-receptor" class="quarto-xref">Figure&nbsp;<span>10.28</span></a>, <a href="#fig-ccc-cartoon1" class="quarto-xref">Figure&nbsp;<span>10.29</span></a>, and <a href="#fig-ccc-cartoon2" class="quarto-xref">Figure&nbsp;<span>10.30</span></a>. Ligand-receptor interactions trigger cascades of intracellular signaling events, leading to diverse functional outcomes.</p>
+<div class="block">
+<div id="fig-ligand-receptor" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ligand-receptor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ligand-receptor.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ligand-receptor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.28: From <a href="https://commons.wikimedia.org/wiki/File:Ligand-receptor_interaction.png" class="uri">https://commons.wikimedia.org/wiki/File:Ligand-receptor_interaction.png</a>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ccc-cartoon1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-cartoon1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ccc-cartoon.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-cartoon1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.29: Top: From <a href="https://www.khanacademy.org/science/biology/cell-signaling/mechanisms-of-cell-signaling/a/introduction-to-cell-signaling" class="uri">https://www.khanacademy.org/science/biology/cell-signaling/mechanisms-of-cell-signaling/a/introduction-to-cell-signaling</a>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ccc-cartoon2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-cartoon2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/promiscuous.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-cartoon2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.30: Bottom: From <a href="https://biocircuits.github.io/chapters/13_promiscuous_binding.html" class="uri">https://biocircuits.github.io/chapters/13_promiscuous_binding.html</a>. Notice: Ligand-receptor pairs are <em>not</em> one to one! A ligand can bind to many different types of receptors, and vice versa.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>To systematically study these interactions, several databases compile known ligand-receptor pairs:</p>
+<ul>
+<li><strong>CellChatDB</strong> <span class="citation" data-cites="jin2021inference">Jin et al. (<a href="references.html#ref-jin2021inference" role="doc-biblioref">2021</a>)</span>: A curated database that includes signaling pathways and interactions inferred from literature and experimental data.<br>
+</li>
+<li><strong>CellPhoneDB</strong> <span class="citation" data-cites="efremova2020cellphonedb">(<a href="references.html#ref-efremova2020cellphonedb" role="doc-biblioref"><strong>efremova2020cellphonedb?</strong></a>)</span>: A database that maps ligand-receptor interactions based on transcriptomic data and protein complex structures, see <a href="#fig-cellphonedb" class="quarto-xref">Figure&nbsp;<span>10.31</span></a>. See <a href="https://cellphonedb.readthedocs.io/" class="uri">https://cellphonedb.readthedocs.io/</a>.<br>
+</li>
+<li><strong>FANTOM5</strong>: A large-scale functional annotation project that includes information on secreted ligands and their corresponding receptors.</li>
+</ul>
+<div class="block">
+<div id="fig-cellphonedb" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cellphonedb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/cellphonedb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cellphonedb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.31: From <span class="citation" data-cites="efremova2020cellphonedb">(<a href="references.html#ref-efremova2020cellphonedb" role="doc-biblioref"><strong>efremova2020cellphonedb?</strong></a>)</span>. Here, the rows represent different ligand-receptor pairs, and the columns represent different cell types.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Gene expression data plays a critical role in understanding cell-cell communication. By measuring the expression levels of ligands and receptors across different cell types, researchers can infer potential signaling interactions. Advances in spatial transcriptomics further enhance this analysis by preserving spatial context, allowing for the reconstruction of communication networks within tissues. Computational tools, such as COMMOT, integrate gene expression data with spatial information to infer cell-cell signaling and its functional consequences.</p>
+</section>
+<section id="using-spatial-transcriptomics-to-study-cell-cell-communication" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="using-spatial-transcriptomics-to-study-cell-cell-communication"><span class="header-section-number">10.3.3</span> Using spatial transcriptomics to study cell-cell communication</h3>
+<section id="pause-weve-actually-been-studying-cell-cell-communication-long-before-spatial-transcriptomics-became-commercially-viable.-it-just-relied-on-some-leaps-of-faith." class="level4" data-number="10.3.3.1">
+<h4 data-number="10.3.3.1" class="anchored" data-anchor-id="pause-weve-actually-been-studying-cell-cell-communication-long-before-spatial-transcriptomics-became-commercially-viable.-it-just-relied-on-some-leaps-of-faith."><span class="header-section-number">10.3.3.1</span> Pause: We’ve actually been studying cell-cell communication long before spatial transcriptomics became commercially viable. It just relied on some leaps of faith.</h4>
+<p>Before the advent of spatial transcriptomics, researchers inferred cell-cell communication primarily from single-cell RNA sequencing (scRNA-seq) data. By identifying which cells expressed specific ligands and which expressed corresponding receptors, computational methods could predict potential signaling interactions, see <a href="#fig-ccc-gene-expression1" class="quarto-xref">Figure&nbsp;<span>10.32</span></a> and <a href="#fig-ccc-gene-expression2" class="quarto-xref">Figure&nbsp;<span>10.33</span></a>. However, this approach required a key assumption: that interacting cells were in close spatial proximity, even though spatial relationships were not directly measured. Furthermore, we assumed that there was a close relation between high gene expression and high abundance of the corresponding ligand (or receptor).</p>
+<div class="block">
+<div id="fig-ccc-gene-expression1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-gene-expression1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ccc-gene_expression2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-gene-expression1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.32: Top: From <span class="citation" data-cites="armingol2021deciphering">Armingol et al. (<a href="references.html#ref-armingol2021deciphering" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ccc-gene-expression2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-gene-expression2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ccc-gene_expression.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-gene-expression2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.33: Bottom: From <span class="citation" data-cites="armingol2021deciphering">Armingol et al. (<a href="references.html#ref-armingol2021deciphering" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Additional information, such as histological staining or known tissue structures, sometimes provided indirect spatial context. For example, in well-characterized tissues like the intestine or brain, researchers could infer likely cell-cell interactions based on prior anatomical knowledge. However, these inferences were often imprecise and required validation through techniques like immunohistochemistry or in situ hybridization.</p>
+<p>With spatial transcriptomics, these leaps of faith are no longer necessary. We can now directly observe which cells are adjacent or within signaling range, making it possible to study cell-cell communication with much higher confidence, see <a href="#fig-ccc-types" class="quarto-xref">Figure&nbsp;<span>10.34</span></a> and <a href="#fig-st-cc" class="quarto-xref">Figure&nbsp;<span>10.35</span></a>. This allows researchers to investigate how signaling networks vary across different tissue regions, uncover spatially organized signaling niches, and refine our understanding of how tissue structure influences intercellular communication.</p>
+<div class="block">
+<div id="fig-ccc-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ccc-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/ccc-types.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccc-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.34: From <span class="citation" data-cites="almet2021landscape">Almet et al. (<a href="references.html#ref-almet2021landscape" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-st-cc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-st-cc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/st-cc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-st-cc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.35: From <span class="citation" data-cites="longo2021integrating">Longo et al. (<a href="references.html#ref-longo2021integrating" role="doc-biblioref">2021</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>COMMOT (COMMunication analysis by Optimal Transport) <span class="citation" data-cites="cang2023screening">Cang et al. (<a href="references.html#ref-cang2023screening" role="doc-biblioref">2023</a>)</span> is a computational framework designed to infer cell-cell communication (CCC) from spatial transcriptomic data. Unlike traditional methods that examine ligand-receptor interactions independently, COMMOT considers multiple ligand-receptor pairs simultaneously while incorporating spatial constraints. See <a href="#fig-commot" class="quarto-xref">Figure&nbsp;<span>10.36</span></a>.</p>
+<div id="commot-io" class="block3">
+<p><strong>Input/Output.</strong><br>
+The input to COMMOT is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) <span class="math inline">\(X \in \mathbb{R}^{n \times p}\)</span> for <span class="math inline">\(n\)</span> cells (or spots) and <span class="math inline">\(p\)</span> genes alongside <span class="math inline">\(Z \in \mathbb{R}^{n\times 2}\)</span> denoting the <span class="math inline">\((x,y)\)</span> spatial coordinates of each of the <span class="math inline">\(n\)</span> cells, and 2) a database of known ligand-receptor pairs for <span class="math inline">\(n_l\)</span> ligands and <span class="math inline">\(n_r\)</span> receptors (alongside which ligands are known to bind to which receptors), of which the <span class="math inline">\(n_l+n_r\)</span> ligand and receptors should correspond to some of the <span class="math inline">\(p\)</span> genes.<br>
+The output is: for each ligand <span class="math inline">\(i\)</span> and receptor <span class="math inline">\(j\)</span>, a map among the 2D tissue slice of how much “mass” of each ligand is transported to each receptor.</p>
+</div>
+<div class="block">
+<div id="fig-commot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/commot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.36: From <span class="citation" data-cites="cang2023screening">Cang et al. (<a href="references.html#ref-cang2023screening" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><p><strong>Optimal transport for a single ligand-receptor pair</strong>:<br>
+Given a ligand <span class="math inline">\(i\)</span> and receptor <span class="math inline">\(j\)</span>, COMMOT formulates the inference of CCC as an optimal transport problem. The goal is to determine the transport plan <span class="math inline">\(P_{\ell,r} \in \mathbb{R}^{n\times n}_+\)</span> for <span class="math inline">\(n\)</span> cells, where <span class="math inline">\([P_{\ell,r}]_{k,l}\)</span> quantifies the strength of signaling from sender cell <span class="math inline">\(i\)</span> to receiver cell <span class="math inline">\(j\)</span> through the ligand-receptor pair <span class="math inline">\((\ell,r)\)</span>. This is achieved by minimizing the transport cost:</p>
+<p><span id="eq-commot1"><span class="math display">\[
+\min_{P_{\ell,r} \in \Gamma_{\ell,r}} \langle P_{\ell,r}, C_{\ell,r} \rangle_F
+\tag{10.1}\]</span></span></p>
+<p>where <span class="math inline">\(C_{\ell,r} \in \mathbb{R}^{n \times n}_+\)</span> is a spatially constrained cost matrix encoding the physical distances between cells (think: Euclidean distance between any two cells along this 2D plane), and <span class="math inline">\(\Gamma_{\ell,r}\)</span> is the set of allowable transport plans:</p>
+<p><span id="eq-commot2"><span class="math display">\[
+\Gamma_{\ell,r} = \Big\{P_{\ell,r} :  \sum_{j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}, \quad \sum_{i} [P_{\ell,r}]_{i,j} \leq X_{j,r}\Big\}
+\tag{10.2}\]</span></span></p>
+<p>where <span class="math inline">\(X_{i,\ell}\)</span> and <span class="math inline">\(X_{j,r}\)</span> represent the expression levels of the ligand and receptor in the respective cells.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p><strong>Generalization to multiple ligand-receptor pairs</strong>:<br>
+COMMOT extends the optimal transport framework to simultaneously infer multiple ligand-receptor interactions, rather than treating them separately. This is formulated as a <em>collective optimal transport problem</em>, where multiple ligand and receptor species interact within spatial constraints while competing for signaling resources.</p>
+<p>Given <span class="math inline">\(n_l\)</span> ligand species and <span class="math inline">\(n_r\)</span> receptor species, the method optimizes a transport plan <span class="math inline">\(P \in \mathbb{R}^{n_l \times n_r \times n \times n}_+\)</span>, where <span class="math inline">\([P_{\ell,r}]_{k,l}\)</span> quantifies the signaling strength from sender cell <span class="math inline">\(i\)</span> to receiver cell <span class="math inline">\(j\)</span> through ligand <span class="math inline">\(\ell\)</span> and receptor <span class="math inline">\(r\)</span>. The optimization problem is formulated as:</p>
+<p><span id="eq-commot3"><span class="math display">\[
+\min_{P} \sum_{(\ell,r) \in I} \langle P_{\ell,r}, C_{\ell,r} \rangle_F + \rho (\|\mu\|_1 + \|\nu\|_1),
+\tag{10.3}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(C_{\ell,r} \in \mathbb{R}^{n \times n}_+\)</span> is a spatial cost matrix encoding distances between cells for ligand-receptor pair <span class="math inline">\((\ell,r)\)</span>,<br>
+</li>
+<li><span class="math inline">\(\mu_{i,\ell} = X_{i,\ell} - \sum_{r,j} [P_{\ell,r}]_{i,j}\)</span> represents the untransported mass of ligand <span class="math inline">\(\ell\)</span> at sender cell <span class="math inline">\(i\)</span>,<br>
+</li>
+<li><span class="math inline">\(\nu_{j,r} = X_{j,r} - \sum_{\ell,i} [P_{\ell,r}]_{i,j}\)</span> represents the untransported mass of receptor <span class="math inline">\(r\)</span> at receiver cell <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>The L1 penalty term <span class="math inline">\(\rho (\|\mu\|_1 + \|\nu\|_1)\)</span>, for some tuning parameter <span class="math inline">\(\rho\)</span>, discourages excessive untransported mass, ensuring that ligands and receptors are optimally assigned to communication pathways while allowing some flexibility when spatial constraints prevent full utilization.</p>
+<p>The feasible transport plans must satisfy:</p>
+<p><span id="eq-commot4"><span class="math display">\[
+\sum_{r,j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}, \quad \sum_{\ell,i} [P_{\ell,r}]_{i,j} \leq X_{j,r}
+\tag{10.4}\]</span></span></p>
+<p>ensuring that transported mass does not exceed ligand and receptor expression levels.</p>
+<p>This multi-species framework introduces competition between ligand-receptor interactions: when multiple ligands target the same receptor, or when a receptor has limited capacity, the transport plan balances the signaling mass across competing interactions.</p></li>
+</ul>
+<p>Just to give you some examples of what the result of a cell-cell communication analysis for spatial transcriptomics looks like, see <a href="#fig-starfysh-ccc1" class="quarto-xref">Figure&nbsp;<span>10.37</span></a> and <a href="#fig-starfysh-ccc2" class="quarto-xref">Figure&nbsp;<span>10.38</span></a>.</p>
+<div class="block">
+<div id="fig-starfysh-ccc1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-starfysh-ccc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/starfysh-ccc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starfysh-ccc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.37: Left: From <span class="citation" data-cites="he2024starfysh">He et al. (<a href="references.html#ref-he2024starfysh" role="doc-biblioref">2024</a>)</span>, for the signaling cascade starting from a particular T cell type.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-starfysh-ccc2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-starfysh-ccc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/santo-ccc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-starfysh-ccc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.38: Right: From <span class="citation" data-cites="li2024santo">H. Li et al. (<a href="references.html#ref-li2024santo" role="doc-biblioref">2024</a>)</span>, for the signaling originating from the tumor (“invasive”) to the receiving immune cells that are responding to the tumor.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="a-brief-note-on-other-approaches" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="a-brief-note-on-other-approaches"><span class="header-section-number">10.3.4</span> A brief note on other approaches</h3>
+<p>In a way, cell-cell communication is a particular flavor of spatial co-expression of certain genes (i.e., genes for the ligands and receptors), if you really are going to believe that a high expression of a gene means high abundance of the corresponding ligand or receptor. In this sense, there are many methods that can do cell-cell communication. See SpatialDM <span class="citation" data-cites="li2023spatialdm">Z. Li et al. (<a href="references.html#ref-li2023spatialdm" role="doc-biblioref">2023</a>)</span> as one example for this usage.</p>
+</section>
+</section>
+<section id="integrationalignment-of-spatial-slices" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="integrationalignment-of-spatial-slices"><span class="header-section-number">10.4</span> Integration/alignment of spatial slices</h2>
+<p>Integration in spatial transcriptomics is essential for ensuring accurate, comprehensive, and biologically meaningful analyses. One of the primary reasons for integration is to rigorously compare data across different donors, similar to batch correction in single-cell RNA sequencing. Variability introduced by differences in sample preparation, sequencing depth, and experimental conditions can obscure true biological signals. By aligning spatial transcriptomics data across donors, researchers can mitigate technical noise and ensure that observed patterns reflect genuine biological variation rather than artifacts of sample processing.</p>
+<div id="rem-large-cohorts" class="block2 proof remark">
+<p><span class="proof-title"><em>Remark 10.3</em>. </span><strong>We are still far from doing spatial transcriptomics analyses from large cohorts of donors!</strong><br>
+Despite recent advancements in spatial transcriptomics, we are still far from being able to perform large-scale analyses across cohorts of donors. One major limitation is the small size of tissue sections compared to whole-organ imaging modalities like PET, CT, or MRI. Unlike these imaging technologies, which allow for consistent anatomical registration across individuals, spatial transcriptomic data lacks a straightforward way to ensure alignment across different donors. Another fundamental challenge is the invasive nature of tissue collection, requiring surgical procedures that necessitate careful consideration of the timepoints at which samples are obtained. In diseases like neurodegeneration, where disease progression is highly dynamic, comparing spatial transcriptomic profiles across donors is going to make you go crazy. Even if multiple donors contribute tissue from the same anatomical region, variability in disease stage and molecular signaling could make direct comparisons unreliable. You <em>want</em> to say something along the lines of “the spatial signaling dynamics in Alzhemier’s disease is disrupted in this brain region,” but how are you so sure you’re finding similar spatial dynamics across all your donors?</p>
+<p>Additionally, the cost of generating spatial transcriptomic data remains prohibitively high, limiting large-scale studies.</p>
+</div>
+<p>Fortunately, there are two other big reasons to do integrations:</p>
+<ul>
+<li><p>Another critical application of integration is combining data from different spatial transcriptomics technologies, such as MERFISH and Visium. Each platform has its own strengths—MERFISH provides high-resolution, single-molecule imaging of a limited gene set, while Visium captures genome-wide expression but at lower spatial resolution. By integrating data across these platforms, researchers can leverage the strengths of both, enabling a more complete understanding of cellular organization, gene expression, and interactions within a tissue. This cross-modality alignment allows for deeper biological insights that would be difficult to achieve using a single technology alone.</p></li>
+<li><p>Integration is crucial for constructing three-dimensional spatial transcriptomics datasets from multiple tissue slices. Aligning and stitching tissue slices is essential for constructing three-dimensional molecular profiles.<br>
+Since spatial transcriptomics data is often collected as two-dimensional slices, aligning and stitching these slices together is necessary to reconstruct a holistic, 3D molecular map of a tissue. This process enables researchers to study tissue architecture in its native three-dimensional context, facilitating discoveries about developmental processes, tumor microenvironments, and disease progression. By integrating slices into a unified 3D model, researchers can more accurately analyze spatial relationships between cells, study molecular gradients, and gain a deeper understanding of how cellular interactions shape tissue function.<br>
+See <span class="quarto-unresolved-ref">?fig-commot-3d</span> and <a href="#fig-open-st" class="quarto-xref">Figure&nbsp;<span>10.41</span></a> as examples.</p></li>
+</ul>
+<div class="block">
+<div id="fig-commot-3d1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commot-3d1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/commot-3d.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commot-3d1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.39: Left: From <span class="citation" data-cites="cang2023screening">Cang et al. (<a href="references.html#ref-cang2023screening" role="doc-biblioref">2023</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-commot-3d2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commot-3d2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/merfish-mouse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commot-3d2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.40: Right: From <span class="citation" data-cites="moffitt2018molecular">Moffitt et al. (<a href="references.html#ref-moffitt2018molecular" role="doc-biblioref">2018</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-open-st" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-open-st-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/open-st.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-open-st-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.41: From <span class="citation" data-cites="schott2024open">Schott et al. (<a href="references.html#ref-schott2024open" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<section id="brief-aside-image-registration-in-contexts-for-broader-biomedical-imaging" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="brief-aside-image-registration-in-contexts-for-broader-biomedical-imaging"><span class="header-section-number">10.4.1</span> Brief aside: Image registration (in contexts for broader biomedical imaging)</h3>
+<p>Image registration is the process of aligning multiple images into a common coordinate system, allowing for meaningful comparisons across different imaging modalities, timepoints, or subjects. In biomedical imaging, registration is widely used in modalities such as MRI, CT, PET, and histological imaging to ensure that anatomical structures from different scans are spatially aligned. This is particularly important when integrating data from different sources, such as aligning a patient’s pre- and post-treatment scans or fusing anatomical (MRI) and functional (PET) imaging for comprehensive analysis.</p>
+<p>Registration is necessary because biological tissues can exhibit variations due to differences in patient positioning, tissue deformation, or even individual anatomical differences. In neuroimaging, for example, brain MRI scans from different individuals must be warped onto a standardized brain atlas to enable group-level statistical analysis. Similarly, in histopathology, adjacent tissue sections must be aligned to reconstruct a 3D representation of tissue morphology. Without accurate registration, direct comparisons across images would be unreliable, leading to misinterpretations in clinical diagnoses, disease progression studies, and biomarker discovery.</p>
+<div class="block">
+<div id="fig-image-registration" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-image-registration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/image-registration.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-image-registration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.42: From <span class="citation" data-cites="zhang2019linear">X. Zhang et al. (<a href="references.html#ref-zhang2019linear" role="doc-biblioref">2019</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="a-current-choice-for-aligning-slices-in-spatial-transcriptomics-santo" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="a-current-choice-for-aligning-slices-in-spatial-transcriptomics-santo"><span class="header-section-number">10.4.2</span> A current choice for aligning slices in spatial transcriptomics: SANTO</h3>
+<p>The SANTO (coarse-to-fine alignment and stitching) <span class="citation" data-cites="li2024santo">H. Li et al. (<a href="references.html#ref-li2024santo" role="doc-biblioref">2024</a>)</span> method aligns two spatial transcriptomics datasets in a two-step process: coarse alignment followed by fine alignment. (We’ll describe this for spot-level data, but this can be used for imaging data once you’ve done a cell segmentation.)</p>
+<div class="block">
+<div id="fig-santo" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-santo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap9/santo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-santo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.43: From <span class="citation" data-cites="schott2024open">Schott et al. (<a href="references.html#ref-schott2024open" role="doc-biblioref">2024</a>)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="santo-io" class="block3">
+<p><strong>Input/Output.</strong><br>
+The input to SANTO is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) <span class="math inline">\(X \in \mathbb{R}^{n_X \times p}\)</span> for <span class="math inline">\(n_X\)</span> cells (or spots) and <span class="math inline">\(p\)</span> genes alongside <span class="math inline">\(Z \in \mathbb{R}^{n_X\times 2}\)</span> denoting the <span class="math inline">\((x,y)\)</span> spatial coordinates of each of the <span class="math inline">\(n_X\)</span> cells, and 2) a second spatial transcriptomics dataset (can be spot-level or cell-segmented image data) <span class="math inline">\(Y \in \mathbb{R}^{n_Y \times p}\)</span> for <span class="math inline">\(n_Y\)</span> cells (or spots) and <span class="math inline">\(p\)</span> genes alongside <span class="math inline">\(Z \in \mathbb{R}^{n_Y\times 2}\)</span> denoting the <span class="math inline">\((x,y)\)</span> spatial coordinates of each of the <span class="math inline">\(n_Y\)</span> cells.<br>
+The output is a rotated and translated spatial transcriptomics dataset <span class="math inline">\(X'\)</span> where all the expression values among the <span class="math inline">\(n_X\)</span> cells in <span class="math inline">\(X\)</span> are the same, but now there’s a rotation and translation of all the spatial coordinates of these <span class="math inline">\(n_X\)</span> spots to best align with slice <span class="math inline">\(Y\)</span>.</p>
+</div>
+<ul>
+<li><p><strong>Coarse alignment</strong>:<br>
+SANTO first performs a coarse alignment by rapidly estimating the relative spatial positioning of two slices and identifying their overlapping regions. This is achieved by computing the Pearson Correlation Coefficient (PCC) of shared omics features:</p>
+<p><span id="eq-santo-pcc"><span class="math display">\[
+\text{PCC}(G_{X_i}, G_{Y_j}) = \frac{\sum (G_{X_i} - \bar{G}_X)(G_{Y_j} - \bar{G}_Y)}{\sqrt{\sum (G_{X_i} - \bar{G}_X)^2 \sum (G_{Y_j} - \bar{G}_Y)^2}}
+\tag{10.5}\]</span></span></p>
+<p>where <span class="math inline">\(G_{X_i}\)</span> and <span class="math inline">\(G_{Y_j}\)</span> denote the gene expression vectors of spots <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> in slices <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively.<br>
+Pairs with high PCC scores are used to estimate the transformation matrix via Singular Value Decomposition (SVD):</p>
+<p><span id="eq-santo-svd"><span class="math display">\[
+H = \sum (S_{X_i} - \bar{S}_X)(S_{Y_j} - \bar{S}_Y)^\top
+\tag{10.6}\]</span></span></p>
+<p>where <span class="math inline">\(S_X\)</span> and <span class="math inline">\(S_Y\)</span> represent spatial coordinates. The optimal rotation matrix <span class="math inline">\(R\)</span> and translation <span class="math inline">\(T\)</span> are computed as <span class="math inline">\(R = VU^\top\)</span> and <span class="math inline">\(T = \bar{S}_Y - R\bar{S}_X\)</span>. The new spatial coordinates of <span class="math inline">\(S_X\)</span> then get set to be <span class="math inline">\(S_X \leftarrow RS_X + T\)</span>.</p>
+<p>(You can think of this as: 1) using gene expression in both slides to find pairs of “anchors” (one anchor on each slide), and then 2) using the spatial coordinates of the anchor pairs, finding a shift and a rotation for slide <span class="math inline">\(X\)</span>.)</p></li>
+<li><p><strong>Fine alignment</strong>:<br>
+For fine alignment, SANTO iteratively improves the alignment by a more nuanced approach that accounts for a “soft mapping” between spots in different slices. This is implemented with a Dynamic Graph Convolutional Neural Network (DGCNN).</p>
+<p>During training, all the spots are combined into one batch, so if there are <span class="math inline">\(n_X\)</span> spots in slice <span class="math inline">\(X\)</span> and <span class="math inline">\(n_Y\)</span> spots in slice <span class="math inline">\(Y\)</span>, both slices are used in the network. The model learns spatial and expression embeddings, computes a probabilistic soft mapping</p>
+<p><span id="eq-santo-softmap"><span class="math display">\[
+m(X, Y) = \text{softmax}(F_Y F_X^\top)
+\tag{10.7}\]</span></span></p>
+<p>and uses this to derive <span class="math inline">\(X^{(Y)}\)</span>, a “counterpart” slice of <span class="math inline">\(X\)</span> generated via <span class="math inline">\(Y\)</span>. The network is trained with a loss function that balances omics similarity and spatial coordinate similarity:</p>
+<p><span id="eq-santo-loss"><span class="math display">\[
+\mathcal{L} = \frac{1}{n_X n_Y} \sum_{\text{spots } i \in X} \underset{j \in Y}{\text{softmin}} \left[ \alpha (1 - \text{PCC}(G_{X_i}, G_{Y_j})) + (1-\alpha) d(S_{X_i}, S_{Y_j}) \right]
+\tag{10.8}\]</span></span></p>
+<p>where <span class="math inline">\(d(S_{X_i}, S_{Y_j})\)</span> is the Euclidean distance between aligned spots, and <span class="math inline">\(\alpha\)</span> balances spatial and omics contributions.</p></li>
+</ul>
+</section>
+<section id="a-brief-note-about-other-approaches" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="a-brief-note-about-other-approaches"><span class="header-section-number">10.4.3</span> A brief note about other approaches</h3>
+<p>You’ll notice that SANTO did <em>not</em> ever “distort” the spatial coordinates. All it’s really doing is learning a global rotation and translation. If you want to see a procedure that can “shrink” and “stretch” spatial coordinates to better match slices, see STAlign <span class="citation" data-cites="clifton2023stalign">Clifton et al. (<a href="references.html#ref-clifton2023stalign" role="doc-biblioref">2023</a>)</span>, which relies on large deformation diffeomorphic metric mapping (LDDMM) (<a href="https://en.wikipedia.org/wiki/Large_deformation_diffeomorphic_metric_mapping" class="uri">https://en.wikipedia.org/wiki/Large_deformation_diffeomorphic_metric_mapping</a>).</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-almet2021landscape" class="csl-entry" role="listitem">
+Almet, Axel A, Zixuan Cang, Suoqin Jin, and Qing Nie. 2021. <span>“The Landscape of Cell–Cell Communication Through Single-Cell Transcriptomics.”</span> <em>Current Opinion in Systems Biology</em> 26: 12–23.
+</div>
+<div id="ref-armingol2021deciphering" class="csl-entry" role="listitem">
+Armingol, Erick, Adam Officer, Olivier Harismendy, and Nathan E Lewis. 2021. <span>“Deciphering Cell–Cell Interactions and Communication from Gene Expression.”</span> <em>Nature Reviews Genetics</em> 22 (2): 71–88.
+</div>
+<div id="ref-cang2023screening" class="csl-entry" role="listitem">
+Cang, Zixuan, Yanxiang Zhao, Axel A Almet, Adam Stabell, Raul Ramos, Maksim V Plikus, Scott X Atwood, and Qing Nie. 2023. <span>“Screening Cell-Cell Communication in Spatial Transcriptomics via Collective Optimal Transport.”</span> <em>Nature Methods</em>, 1–11.
+</div>
+<div id="ref-chen2015spatially" class="csl-entry" role="listitem">
+Chen, Kok Hao, Alistair N Boettiger, Jeffrey R Moffitt, Siyuan Wang, and Xiaowei Zhuang. 2015. <span>“Spatially Resolved, Highly Multiplexed RNA Profiling in Single Cells.”</span> <em>Science</em> 348 (6233): aaa6090.
+</div>
+<div id="ref-clifton2023stalign" class="csl-entry" role="listitem">
+Clifton, Kalen, Manjari Anant, Gohta Aihara, Lyla Atta, Osagie K Aimiuwu, Justus M Kebschull, Michael I Miller, Daniel Tward, and Jean Fan. 2023. <span>“STalign: Alignment of Spatial Transcriptomics Data Using Diffeomorphic Metric Mapping.”</span> <em>Nature Communications</em> 14 (1): 8123.
+</div>
+<div id="ref-duan2023spatially" class="csl-entry" role="listitem">
+Duan, Honglin, Tao Cheng, and Hui Cheng. 2023. <span>“Spatially Resolved Transcriptomics: Advances and Applications.”</span> <em>Blood Science</em> 5 (1): 1–14.
+</div>
+<div id="ref-figiel2024clinical" class="csl-entry" role="listitem">
+Figiel, Sandy, Anthony Bates, David A Braun, Renu Eapen, Markus Eckstein, Brandon J Manley, Matthew I Milowsky, et al. 2024. <span>“Clinical Implications of Basic Research: Exploring the Transformative Potential of Spatial’omics in Uro-Oncology.”</span> <em>European Urology</em>.
+</div>
+<div id="ref-hartman2024comparative" class="csl-entry" role="listitem">
+Hartman, Austin, and Rahul Satija. 2024. <span>“Comparative Analysis of Multiplexed in Situ Gene Expression Profiling Technologies.”</span> <em>bioRxiv</em>, 2024–01.
+</div>
+<div id="ref-he2024starfysh" class="csl-entry" role="listitem">
+He, Siyu, Yinuo Jin, Achille Nazaret, Lingting Shi, Xueer Chen, Sham Rampersaud, Bahawar S Dhillon, et al. 2024. <span>“Starfysh Integrates Spatial Transcriptomic and Histologic Data to Reveal Heterogeneous Tumor–Immune Hubs.”</span> <em>Nature Biotechnology</em>, 1–13.
+</div>
+<div id="ref-jin2021inference" class="csl-entry" role="listitem">
+Jin, Suoqin, Christian F Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V Plikus, and Qing Nie. 2021. <span>“Inference and Analysis of Cell-Cell Communication Using CellChat.”</span> <em>Nature Communications</em> 12 (1): 1088.
+</div>
+<div id="ref-kiessling2024spatial" class="csl-entry" role="listitem">
+Kiessling, Paul, and Christoph Kuppe. 2024. <span>“Spatial Multi-Omics: Novel Tools to Study the Complexity of Cardiovascular Diseases.”</span> <em>Genome Medicine</em> 16 (1): 14.
+</div>
+<div id="ref-kim2023single" class="csl-entry" role="listitem">
+Kim, Yoon-Seob, Jinyong Choi, and Sug Hyung Lee. 2023. <span>“Single-Cell and Spatial Sequencing Application in Pathology.”</span> <em>Journal of Pathology and Translational Medicine</em> 57 (1): 43–51.
+</div>
+<div id="ref-lee2024profiling" class="csl-entry" role="listitem">
+Lee, Colin YC, James McCaffrey, Dominic McGovern, and Menna R Clatworthy. 2024. <span>“Profiling Immune Cell Tissue Niches in the Spatial-Omics Era.”</span> <em>Journal of Allergy and Clinical Immunology</em>.
+</div>
+<div id="ref-li2024santo" class="csl-entry" role="listitem">
+Li, Haoyang, Yingxin Lin, Wenjia He, Wenkai Han, Xiaopeng Xu, Chencheng Xu, Elva Gao, Hongyu Zhao, and Xin Gao. 2024. <span>“SANTO: A Coarse-to-Fine Alignment and Stitching Method for Spatial Omics.”</span> <em>Nature Communications</em> 15 (1): 6048.
+</div>
+<div id="ref-li2023spatialdm" class="csl-entry" role="listitem">
+Li, Zhuoxuan, Tianjie Wang, Pentao Liu, and Yuanhua Huang. 2023. <span>“SpatialDM for Rapid Identification of Spatially Co-Expressed Ligand–Receptor and Revealing Cell–Cell Communication Patterns.”</span> <em>Nature Communications</em> 14 (1): 3995.
+</div>
+<div id="ref-liao2021uncovering" class="csl-entry" role="listitem">
+Liao, Jie, Xiaoyan Lu, Xin Shao, Ling Zhu, and Xiaohui Fan. 2021. <span>“Uncovering an Organ’s Molecular Architecture at Single-Cell Resolution by Spatially Resolved Transcriptomics.”</span> <em>Trends in Biotechnology</em> 39 (1): 43–58.
+</div>
+<div id="ref-longo2021integrating" class="csl-entry" role="listitem">
+Longo, Sophia K, Margaret G Guo, Andrew L Ji, and Paul A Khavari. 2021. <span>“Integrating Single-Cell and Spatial Transcriptomics to Elucidate Intercellular Tissue Dynamics.”</span> <em>Nature Reviews Genetics</em> 22 (10): 627–44.
+</div>
+<div id="ref-moffitt2018molecular" class="csl-entry" role="listitem">
+Moffitt, Jeffrey R, Dhananjay Bambah-Mukku, Stephen W Eichhorn, Eric Vaughn, Karthik Shekhar, Julio D Perez, Nimrod D Rubinstein, et al. 2018. <span>“Molecular, Spatial, and Functional Single-Cell Profiling of the Hypothalamic Preoptic Region.”</span> <em>Science</em> 362 (6416): eaau5324.
+</div>
+<div id="ref-park2023spatial" class="csl-entry" role="listitem">
+Park, Han-Eol, Song Hyun Jo, Rosalind H Lee, Christian P Macks, Taeyun Ku, Jihwan Park, Chung Whan Lee, Junho K Hur, and Chang Ho Sohn. 2023. <span>“Spatial Transcriptomics: Technical Aspects of Recent Developments and Their Applications in Neuroscience and Cancer Research.”</span> <em>Advanced Science</em> 10 (16): 2206939.
+</div>
+<div id="ref-rademacher2024comparison" class="csl-entry" role="listitem">
+Rademacher, Anne, Alik Huseynov, Michele Bortolomeazzi, Sina Jasmin Wille, Sabrina Schumacher, Pooja Sant, Denise Keitel, et al. 2024. <span>“Comparison of Spatial Transcriptomics Technologies Using Tumor Cryosections.”</span> <em>bioRxiv</em>, 2024–04.
+</div>
+<div id="ref-schott2024open" class="csl-entry" role="listitem">
+Schott, Marie, Daniel León-Periñán, Elena Splendiani, Leon Strenger, Jan Robin Licha, Tancredi Massimo Pentimalli, Simon Schallenberg, et al. 2024. <span>“Open-ST: High-Resolution Spatial Transcriptomics in 3D.”</span> <em>Cell</em> 187 (15): 3953–72.
+</div>
+<div id="ref-williams2022introduction" class="csl-entry" role="listitem">
+Williams, Cameron G, Hyun Jae Lee, Takahiro Asatsuma, Roser Vento-Tormo, and Ashraful Haque. 2022. <span>“An Introduction to Spatial Transcriptomics for Biomedical Research.”</span> <em>Genome Medicine</em> 14 (1): 68.
+</div>
+<div id="ref-zhang2023molecularly" class="csl-entry" role="listitem">
+Zhang, Meng, Xingjie Pan, Won Jung, Aaron Halpern, Stephen W Eichhorn, Zhiyun Lei, Limor Cohen, et al. 2023. <span>“A Molecularly Defined and Spatially Resolved Cell Atlas of the Whole Mouse Brain.”</span> <em>bioRxiv</em>, 2023–03.
+</div>
+<div id="ref-zhang2019linear" class="csl-entry" role="listitem">
+Zhang, Xinyuan, Yanqiu Feng, Wufan Chen, Xin Li, Andreia V Faria, Qianjin Feng, and Susumu Mori. 2019. <span>“Linear Registration of Brain Mri Using Knowledge-Based Multiple Intermediator Libraries.”</span> <em>Frontiers in Neuroscience</em> 13: 909.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The first constraint <span class="math inline">\(\sum_{j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}\)</span> says, “Given that cell <span class="math inline">\(i\)</span> has this much expression of ligand <span class="math inline">\(\ell\)</span>, it should not be sending more than <span class="math inline">\(X_{i,\ell}\)</span> to all the other <span class="math inline">\(n\)</span> cells.” The second constraint <span class="math inline">\(\sum_{i} [P_{\ell,r}]_{i,j} \leq X_{j,r}\)</span> says, “Given that cell <span class="math inline">\(j\)</span> has this much expression of receptor <span class="math inline">\(r\)</span>, it should not be receiving more than <span class="math inline">\(X_{j,r}\)</span> from all the other <span class="math inline">\(n\)</span> cells.”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

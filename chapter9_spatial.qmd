@@ -65,3 +65,381 @@ See @fig-spatial-comparison1, @fig-spatial-comparison2, and @fig-spatial-sidebys
 ![Bottom: From @figiel2024clinical](fig/chap9/spatial_comparison2.png){#fig-spatial-comparison2 width="100%" fig-align="center"}
 :::
 
+::: block
+![From @longo2021integrating](fig/chap9/spatial_comparison3.png){#fig-spatial-comparison3 width="100%" fig-align="center"}
+:::
+
+::: block
+![From @rademacher2024comparison](fig/chap9/spatial-sidebyside.png){#fig-spatial-sidebyside width="100%" fig-align="center"}
+:::
+
+See @fig-spatial-table for a table of many possible technologies to perform spatial transcriptomics.
+
+::: block
+![From <https://rubd.github.io/Giotto_site/>. (This figure is rapidly becoming out-dated. I would argue and say this figure is already nearly unrepresentative of the field.)](fig/chap9/spatial_table.png){#fig-spatial-table width="100%" fig-align="center"}
+:::
+
+::: {#rem-2D-slices .block2}
+**These are all 2D tissue slices!**  
+Our body is three-dimensional (unsurprisingly). However, all the spatial information we are collecting is typically 2D. (Some really rich consortiums have sequenced many cross-sectional 2D slices to reconstruct the 3D organ, for example @zhang2023molecularly. However, most single-PI labs do not have the budget to do this. Therefore, it's important you ask yourself: "Is it possible I am misleading myself by analyzing a 2D tissue slice when my question is about the 3D organ?"
+
+It's entirely possible that the cellular organization/dynamics on a 2D tissue slice is representative of the overall tissue. It's also entirely possible that it's not. Knowing how the 2D tissue was selected (i.e., how did someone even choose this specific cross-section in the first place?) is an important question to answer before you can even start thinking mathematically on how your 2D findings relate back to the 3D shape.
+:::
+
+### Sequencing-based: Visium (10x)
+
+Visium by 10x Genomics is a widely used spot-based spatial transcriptomics technology. See @fig-visium-protocol for a cartoon on how it works. Visium captures transcriptomic information within predefined spatial spots on a tissue section, allowing for spatially resolved gene expression profiling. However, each spot is relatively large (usually around 55 µm in diameter), often encompassing multiple cells. To infer cellular composition within each spot, computational deconvolution methods are typically applied. In addition to transcriptomic data, Visium also provides an H&E (hematoxylin and eosin) stained image of the tissue, which is valuable for histological context, aiding in the interpretation of spatial gene expression patterns and tissue architecture. @fig-spatial-analyses provides examples of this spot-based spatial transcriptomics.
+
+::: block
+![From @duan2023spatially](fig/chap9/visium_protocol.png){#fig-visium-protocol width="100%" fig-align="center"}
+:::
+
+::: block
+![Left: From @kim2023single](fig/chap9/visium-spots2.png){#fig-spatial-analyses1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From <https://satijalab.org/seurat/articles/spatial_vignette>](fig/chap9/visium-spots.png){#fig-spatial-analyses2 width="100%" fig-align="center"}
+:::
+
+### Sequencing-based: Visium HD (10x)
+
+Visium HD is an advanced version of Visium that significantly improves spatial resolution, see @fig-visium-hd1 and @fig-visium-hd2. Unlike standard Visium, which has relatively large spots, Visium HD features smaller spots, allowing for higher spatial resolution and better separation of individual cells. This enhancement enables more precise mapping of transcriptomic data to tissue morphology. However, the increased resolution comes at a higher cost, as sequencing expenses rise due to the need for greater sequencing depth to capture the finer spatial granularity.
+
+::: block
+![Left: From <https://imaging.as.uky.edu/visium-hd-spatial-transcriptomics>. See more at <https://www.10xgenomics.com/spatial-transcriptomics#what-is-spatial-transcriptomics>.](fig/chap9/visium-hd.png){#fig-visium-hd1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From <https://x.com/AlbertVilella/status/1367028429300916225>](fig/chap9/visium-hd2.png){#fig-visium-hd2 width="100%" fig-align="center"}
+:::
+
+### Imaging-based: MERFISH/MERSCOPE (Vizgen)
+
+Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH) is an imaging-based spatial transcriptomics method that enables the detection of hundreds to thousands of preselected RNA transcripts in a tissue section. It operates by hybridizing barcoded probes to RNA molecules, followed by multiple rounds of imaging to decode the transcript identities, see @fig-merfish. Since MERFISH provides subcellular resolution, it allows precise localization of transcripts within individual cells, but it requires computational cell segmentation to assign transcripts to specific cells. MERSCOPE is a commercial platform for MERFISH, providing an integrated solution for sample preparation, imaging, and data analysis.  
+See @fig-merfish1 and @fig-merfish2 for examples of the data.
+
+::: block
+![From @chen2015spatially](fig/chap9/merfish.png){#fig-merfish width="100%" fig-align="center"}
+:::
+
+::: block
+![Top: From @zhang2023molecularly. Here, each "dot" is a cell colored by its cell type (after a cell segmentation was run to determine which RNA transcripts belonged to which cell).](fig/chap9/merfish1.png){#fig-merfish1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Bottom: From @chen2015spatially. Here, each "dot" is an RNA transcript colored by the different genes that the RNA transcript came from. (This figure is more representative of what the "raw data" looks like.)](fig/chap9/merfish2.png){#fig-merfish2 width="100%" fig-align="center"}
+:::
+
+### Imaging-based: Xenium (10x)
+
+Xenium by 10x Genomics is another imaging-based spatial transcriptomics platform, designed to profile a targeted set of transcripts with subcellular resolution. Unlike sequencing-based approaches, Xenium relies on fluorescence imaging to detect preselected RNA targets within tissue sections. See @fig-xenium-visium for a comparison. It enables high-throughput spatial mapping of gene expression while preserving tissue morphology. As with other imaging-based methods, accurate cell segmentation is essential to delineate individual cells and associate detected transcripts with them. (There are many papers that try comparing Xenium and MERSCOPE. See @fig-cell-segmentation for one paper.)
+
+::: block
+![From @lee2024profiling](fig/chap9/xenium-visium.png){#fig-xenium-visium width="100%" fig-align="center"}
+:::
+
+::: block
+![From @hartman2024comparative](fig/chap9/cell-segmentation.png){#fig-cell-segmentation width="100%" fig-align="center"}
+:::
+
+See more at <https://www.10xgenomics.com/blog/optimizing-your-spatial-transcriptomics-research-with-visium-hd-and-xenium-in-situ>.
+
+### So, what should I use?
+
+If you are about to collect spatial transcriptomics data yourself, it's important to first consider what you're trying to biologically investigate (since this data will be quite expensive to collect). Are you trying to explore the complexity of a tissue, or are you trying to definitively prove the existence (or lack thereof) of something? The nature of your biological question might make it apparent which technology best suits your needs. See @fig-st-hypothesis.
+
+::: block
+![From @williams2022introduction. (I think "CosMx" is incorrectly labeled in this figure? It is more of an imaging-based method.)](fig/chap9/st-hypothesis.png){#fig-st-hypothesis width="100%" fig-align="center"}
+:::
+
+See a massive review of the benefits and drawbacks of different spatial transcriptomics technologies in @lee2024profiling, @liao2021uncovering, @duan2023spatially.
+
+## A whirlwind of other tasks
+
+Beyond generating spatial transcriptomic data, a variety of computational tasks are necessary to ensure accurate interpretation and integration with other biological information. These tasks broadly fall into two categories: preprocessing and statistical analysis.
+
+### Preprocessing
+
+Raw spatial transcriptomic data often require substantial preprocessing to correct for technical artifacts and enhance interpretability. One key step is *integration*, where spatial data are aligned with other tissue slides or combined with histological information, such as the H&E stain, to provide morphological context. *Contamination removal* is another crucial step, as transcripts may originate from neighboring cells or ambient RNA, especially in spot-based approaches. Additionally, *imputation* techniques can be applied to recover missing gene expression values, particularly in spot-based methods where some spots may have low or undetectable expression due to sequencing depth limitations.
+
+### Statistical analyses
+
+Once preprocessed, spatial transcriptomic data can be analyzed using various statistical approaches to uncover biological insights. Identifying *spatially variable genes* helps determine which genes exhibit spatially structured expression patterns, highlighting key regulators of tissue organization. Another common analysis involves defining *spatial domains*, where clustering techniques identify tissue regions with distinct gene expression profiles while accounting for spatial proximity. For spot-based methods, *cell-type deconvolution* is used to estimate the composition of different cell types within each spot, given that multiple cells may contribute to a single measurement. In imaging-based methods, *cell segmentation* is a critical computational step, where individual cells are delineated based on transcript localization and morphological features to achieve single-cell resolution.
+
+See @fig-spatial-analyses1, @fig-spatial-analyses2, @fig-spatial-analyses3, and @fig-spatial-analyses4 (and the papers these figures come from) for a broad overview of all the different types of analyses you can do with spatial transcriptomics.
+
+::: block
+![Left: From <https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/>](fig/chap9/spatial-analyses.png){#fig-spatial-analyses1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From @kiessling2024spatial](fig/chap9/spatial-analyses2.png){#fig-spatial-analyses2 width="100%" fig-align="center"}
+:::
+
+::: block
+![Top: From @park2023spatial](fig/chap9/spatial-analyses3.png){#fig-spatial-analyses3 width="100%" fig-align="center"}
+:::
+
+::: block
+![Bottom: From @zhou2023spatial](fig/chap9/spatial-analyses4.png){#fig-spatial-analyses4 width="100%" fig-align="center"}
+:::
+
+::: {#rem-population .block2}
+**Remember, after we collect the tissue from a donor, we don't *really* care about the donor anymore. We care about the biology**  
+One of the trickiest (statistical) philosophical roadblocks you'll encounter when you work on spatial transcriptomics is: "What on earth is the 'population' I'm studying?" You'll need to think really hard about variation that might occur within an individual or between different individuals. (Spatial transcriptomics by itself is currently financially unrealistic to be a reliable tool for biomarker detection, unlike other biomedical technologies such as MRI, PET scans, CT scans, staining of tissue slices, etc.)
+
+It's not uncommon to only have one or two spatial transcriptomic tissue slices for an entire study. (This is really a reflection about how expensive and laborious getting this data is.) In that case, are you really just learning biology about this one specific person? How do you know that the donor's biology is representative of overall human biology? 
+
+Broadly speaking, there are two philosophical approaches to handle this:
+
+- **You don't**: Some papers simply show "existence." That is, they have a statement that is of the flavor, "Our paper demonstrates that this phenomenon can occur in tissue, because we have found evidence of it existing in our tissue." The benefit of this strategy is that you can always claim this, and there is still room for scientific novelty. However, you cannot make any statement that generalizes beyond your specific tissue. Hence, it's really important you pick really "interesting" tissue slices for this approach.
+
+- **Relate everything back to the omics**: It's difficult to "integrate" tissue slices from two completely different people together. (You can think about how impossibly hard this is, especially if you have familiarity with MRI data. How would you "align" my lung tissue slice with your lung tissue slice? What if my lungs are slightly bigger/smaller in certain regions than yours?) Unlike single-cell data (where we can just combine the cells across many donors), in spatial transcriptomics, you are usually instead relating all your findings on 
+:::
+
+For examples of what type of analyses you can do with spatial transcriptomics data (beyond what we'll discuss in these notes), see: <https://hutchdatascience.org/Choosing_Genomics_Tools/spatial-transcriptomics-1.html>, <https://squidpy.readthedocs.io/en/stable/>, and <https://giottosuite.readthedocs.io/en/master/>.
+
+## Cell-cell communication
+
+Cell-cell communication is a fundamental process in biology that enables cells to coordinate their behavior, maintain homeostasis, and respond to environmental stimuli. Through various signaling mechanisms, cells transmit biochemical signals that regulate development, immune responses, tissue repair, and disease progression. The ability to understand and map these communication networks is crucial for uncovering mechanisms underlying diseases such as cancer, neurodegenerative disorders, and immune dysfunctions. With advances in spatial transcriptomics and single-cell technologies, researchers can now investigate cell-cell communication at unprecedented resolution, allowing for insights into how cells interact in complex tissue environments.
+
+### How do cells communicate with one another?
+
+Cells communicate using multiple signaling modalities, each suited for different biological contexts:
+
+- **Autocrine signaling:** A cell releases signaling molecules that bind to its own receptors, allowing it to regulate its own behavior. This is common in immune responses and cancer progression.  
+- **Gap junction signaling:** Cells directly exchange ions and small molecules through specialized intercellular channels called gap junctions. This form of communication is rapid and crucial in electrically excitable tissues like the heart and nervous system.  
+- **Paracrine signaling:** Cells secrete signaling molecules that diffuse over short distances to affect neighboring cells. This is commonly seen in tissue development and inflammation.  
+- **Endocrine signaling:** Hormones are released into the bloodstream and travel long distances to regulate distant target cells. This is a key mechanism in systemic physiological regulation, such as insulin signaling in metabolism.  
+
+See these illustrated in @fig-cell-signaling.
+
+::: block
+![From <https://frontlinegenomics.com/methods-to-study-cell-cell-communication/>](fig/chap9/cell-signaling.png){#fig-cell-signaling width="100%" fig-align="center"}
+:::
+
+What do we do with these results? There are many types of results we could publish. Visually, these are summarized in @fig-ccc-visualization.
+
+::: block
+![From @armingol2021deciphering](fig/chap9/ccc-visualization.png){#fig-ccc-visualization width="100%" fig-align="center"}
+:::
+
+### Brief aside: Ligand-receptor pairs
+
+Cell-cell communication often relies on ligand-receptor interactions. A **ligand** is a signaling molecule (such as a protein, peptide, or small molecule) that binds to a **receptor**, a transmembrane or intracellular protein that mediates a cellular response, see @fig-ligand-receptor, @fig-ccc-cartoon1, and @fig-ccc-cartoon2. Ligand-receptor interactions trigger cascades of intracellular signaling events, leading to diverse functional outcomes.
+
+::: block
+![From <https://commons.wikimedia.org/wiki/File:Ligand-receptor_interaction.png>](fig/chap9/ligand-receptor.png){#fig-ligand-receptor width="100%" fig-align="center"}
+:::
+
+::: block
+![Top: From <https://www.khanacademy.org/science/biology/cell-signaling/mechanisms-of-cell-signaling/a/introduction-to-cell-signaling>](fig/chap9/ccc-cartoon.png){#fig-ccc-cartoon1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Bottom: From <https://biocircuits.github.io/chapters/13_promiscuous_binding.html>. Notice: Ligand-receptor pairs are *not* one to one! A ligand can bind to many different types of receptors, and vice versa.](fig/chap9/promiscuous.png){#fig-ccc-cartoon2 width="100%" fig-align="center"}
+:::
+
+To systematically study these interactions, several databases compile known ligand-receptor pairs:
+
+- **CellChatDB** @jin2021inference: A curated database that includes signaling pathways and interactions inferred from literature and experimental data.  
+- **CellPhoneDB** @efremova2020cellphonedb: A database that maps ligand-receptor interactions based on transcriptomic data and protein complex structures, see @fig-cellphonedb. See <https://cellphonedb.readthedocs.io/>.  
+- **FANTOM5**: A large-scale functional annotation project that includes information on secreted ligands and their corresponding receptors.  
+
+::: block
+![From @efremova2020cellphonedb. Here, the rows represent different ligand-receptor pairs, and the columns represent different cell types.](fig/chap9/cellphonedb.png){#fig-cellphonedb width="100%" fig-align="center"}
+:::
+
+Gene expression data plays a critical role in understanding cell-cell communication. By measuring the expression levels of ligands and receptors across different cell types, researchers can infer potential signaling interactions. Advances in spatial transcriptomics further enhance this analysis by preserving spatial context, allowing for the reconstruction of communication networks within tissues. Computational tools, such as COMMOT, integrate gene expression data with spatial information to infer cell-cell signaling and its functional consequences.
+
+### Using spatial transcriptomics to study cell-cell communication
+
+#### Pause: We've actually been studying cell-cell communication long before spatial transcriptomics became commercially viable. It just relied on some leaps of faith.
+
+Before the advent of spatial transcriptomics, researchers inferred cell-cell communication primarily from single-cell RNA sequencing (scRNA-seq) data. By identifying which cells expressed specific ligands and which expressed corresponding receptors, computational methods could predict potential signaling interactions, see @fig-ccc-gene-expression1 and @fig-ccc-gene-expression2. However, this approach required a key assumption: that interacting cells were in close spatial proximity, even though spatial relationships were not directly measured. Furthermore, we assumed that there was a close relation between high gene expression and high abundance of the corresponding ligand (or receptor).
+
+::: block
+![Top: From @armingol2021deciphering](fig/chap9/ccc-gene_expression2.png){#fig-ccc-gene-expression1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Bottom: From @armingol2021deciphering](fig/chap9/ccc-gene_expression.png){#fig-ccc-gene-expression2 width="100%" fig-align="center"}
+:::
+
+Additional information, such as histological staining or known tissue structures, sometimes provided indirect spatial context. For example, in well-characterized tissues like the intestine or brain, researchers could infer likely cell-cell interactions based on prior anatomical knowledge. However, these inferences were often imprecise and required validation through techniques like immunohistochemistry or in situ hybridization.  
+
+With spatial transcriptomics, these leaps of faith are no longer necessary. We can now directly observe which cells are adjacent or within signaling range, making it possible to study cell-cell communication with much higher confidence, see @fig-ccc-types and @fig-st-cc. This allows researchers to investigate how signaling networks vary across different tissue regions, uncover spatially organized signaling niches, and refine our understanding of how tissue structure influences intercellular communication.
+
+::: block
+![From @almet2021landscape](fig/chap9/ccc-types.png){#fig-ccc-types width="100%" fig-align="center"}
+:::
+
+::: block
+![From @longo2021integrating](fig/chap9/st-cc.png){#fig-st-cc width="100%" fig-align="center"}
+:::
+
+COMMOT (COMMunication analysis by Optimal Transport) @cang2023screening is a computational framework designed to infer cell-cell communication (CCC) from spatial transcriptomic data. Unlike traditional methods that examine ligand-receptor interactions independently, COMMOT considers multiple ligand-receptor pairs simultaneously while incorporating spatial constraints. See @fig-commot.
+
+::: {#commot-io .block3}
+**Input/Output.**  
+The input to COMMOT is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n \times p}$ for $n$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n$ cells, and 2) a database of known ligand-receptor pairs for $n_l$ ligands and $n_r$ receptors (alongside which ligands are known to bind to which receptors), of which the $n_l+n_r$ ligand and receptors should correspond to some of the $p$ genes.  
+The output is: for each ligand $i$ and receptor $j$, a map among the 2D tissue slice of how much "mass" of each ligand is transported to each receptor.
+:::
+
+::: block
+![From @cang2023screening](fig/chap9/commot.png){#fig-commot width="100%" fig-align="center"}
+:::
+
+- **Optimal transport for a single ligand-receptor pair**:  
+  Given a ligand $i$ and receptor $j$, COMMOT formulates the inference of CCC as an optimal transport problem. The goal is to determine the transport plan $P_{\ell,r} \in \mathbb{R}^{n\times n}_+$ for $n$ cells, where $[P_{\ell,r}]_{k,l}$ quantifies the strength of signaling from sender cell $i$ to receiver cell $j$ through the ligand-receptor pair $(\ell,r)$. This is achieved by minimizing the transport cost:
+
+  $$
+  \min_{P_{\ell,r} \in \Gamma_{\ell,r}} \langle P_{\ell,r}, C_{\ell,r} \rangle_F
+  $$ {#eq-commot1}
+
+  where $C_{\ell,r} \in \mathbb{R}^{n \times n}_+$ is a spatially constrained cost matrix encoding the physical distances between cells (think: Euclidean distance between any two cells along this 2D plane), and $\Gamma_{\ell,r}$ is the set of allowable transport plans:
+
+  $$
+  \Gamma_{\ell,r} = \Big\{P_{\ell,r} :  \sum_{j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}, \quad \sum_{i} [P_{\ell,r}]_{i,j} \leq X_{j,r}\Big\}
+  $$ {#eq-commot2}
+
+  where $X_{i,\ell}$ and $X_{j,r}$ represent the expression levels of the ligand and receptor in the respective cells.[^1]
+
+- **Generalization to multiple ligand-receptor pairs**:  
+  COMMOT extends the optimal transport framework to simultaneously infer multiple ligand-receptor interactions, rather than treating them separately. This is formulated as a *collective optimal transport problem*, where multiple ligand and receptor species interact within spatial constraints while competing for signaling resources.
+
+  Given $n_l$ ligand species and $n_r$ receptor species, the method optimizes a transport plan $P \in \mathbb{R}^{n_l \times n_r \times n \times n}_+$, where $[P_{\ell,r}]_{k,l}$ quantifies the signaling strength from sender cell $i$ to receiver cell $j$ through ligand $\ell$ and receptor $r$. The optimization problem is formulated as:
+
+  $$
+  \min_{P} \sum_{(\ell,r) \in I} \langle P_{\ell,r}, C_{\ell,r} \rangle_F + \rho (\|\mu\|_1 + \|\nu\|_1),
+  $$ {#eq-commot3}
+
+  where:
+  - $C_{\ell,r} \in \mathbb{R}^{n \times n}_+$ is a spatial cost matrix encoding distances between cells for ligand-receptor pair $(\ell,r)$,  
+  - $\mu_{i,\ell} = X_{i,\ell} - \sum_{r,j} [P_{\ell,r}]_{i,j}$ represents the untransported mass of ligand $\ell$ at sender cell $i$,  
+  - $\nu_{j,r} = X_{j,r} - \sum_{\ell,i} [P_{\ell,r}]_{i,j}$ represents the untransported mass of receptor $r$ at receiver cell $j$.  
+
+  The L1 penalty term $\rho (\|\mu\|_1 + \|\nu\|_1)$, for some tuning parameter $\rho$, discourages excessive untransported mass, ensuring that ligands and receptors are optimally assigned to communication pathways while allowing some flexibility when spatial constraints prevent full utilization.
+
+  The feasible transport plans must satisfy:
+
+  $$
+  \sum_{r,j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}, \quad \sum_{\ell,i} [P_{\ell,r}]_{i,j} \leq X_{j,r}
+  $$ {#eq-commot4}
+
+  ensuring that transported mass does not exceed ligand and receptor expression levels.  
+
+  This multi-species framework introduces competition between ligand-receptor interactions: when multiple ligands target the same receptor, or when a receptor has limited capacity, the transport plan balances the signaling mass across competing interactions.
+
+[^1]: The first constraint $\sum_{j} [P_{\ell,r}]_{i,j} \leq X_{i,\ell}$ says, "Given that cell $i$ has this much expression of ligand $\ell$, it should not be sending more than $X_{i,\ell}$ to all the other $n$ cells." The second constraint $\sum_{i} [P_{\ell,r}]_{i,j} \leq X_{j,r}$ says, "Given that cell $j$ has this much expression of receptor $r$, it should not be receiving more than $X_{j,r}$ from all the other $n$ cells."
+
+Just to give you some examples of what the result of a cell-cell communication analysis for spatial transcriptomics looks like, see @fig-starfysh-ccc1 and @fig-starfysh-ccc2.
+
+::: block
+![Left: From @he2024starfysh, for the signaling cascade starting from a particular T cell type.](fig/chap9/starfysh-ccc.png){#fig-starfysh-ccc1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From @li2024santo, for the signaling originating from the tumor ("invasive") to the receiving immune cells that are responding to the tumor.](fig/chap9/santo-ccc.png){#fig-starfysh-ccc2 width="100%" fig-align="center"}
+:::
+
+### A brief note on other approaches
+
+In a way, cell-cell communication is a particular flavor of spatial co-expression of certain genes (i.e., genes for the ligands and receptors), if you really are going to believe that a high expression of a gene means high abundance of the corresponding ligand or receptor. In this sense, there are many methods that can do cell-cell communication. See SpatialDM @li2023spatialdm as one example for this usage.
+
+## Integration/alignment of spatial slices
+
+Integration in spatial transcriptomics is essential for ensuring accurate, comprehensive, and biologically meaningful analyses. One of the primary reasons for integration is to rigorously compare data across different donors, similar to batch correction in single-cell RNA sequencing. Variability introduced by differences in sample preparation, sequencing depth, and experimental conditions can obscure true biological signals. By aligning spatial transcriptomics data across donors, researchers can mitigate technical noise and ensure that observed patterns reflect genuine biological variation rather than artifacts of sample processing.
+
+::: {#rem-large-cohorts .block2}
+**We are still far from doing spatial transcriptomics analyses from large cohorts of donors!**  
+Despite recent advancements in spatial transcriptomics, we are still far from being able to perform large-scale analyses across cohorts of donors. One major limitation is the small size of tissue sections compared to whole-organ imaging modalities like PET, CT, or MRI. Unlike these imaging technologies, which allow for consistent anatomical registration across individuals, spatial transcriptomic data lacks a straightforward way to ensure alignment across different donors. Another fundamental challenge is the invasive nature of tissue collection, requiring surgical procedures that necessitate careful consideration of the timepoints at which samples are obtained. In diseases like neurodegeneration, where disease progression is highly dynamic, comparing spatial transcriptomic profiles across donors is going to make you go crazy. Even if multiple donors contribute tissue from the same anatomical region, variability in disease stage and molecular signaling could make direct comparisons unreliable. You *want* to say something along the lines of "the spatial signaling dynamics in Alzhemier's disease is disrupted in this brain region," but how are you so sure you're finding similar spatial dynamics across all your donors?  
+
+Additionally, the cost of generating spatial transcriptomic data remains prohibitively high, limiting large-scale studies.
+:::
+
+Fortunately, there are two other big reasons to do integrations:
+
+- Another critical application of integration is combining data from different spatial transcriptomics technologies, such as MERFISH and Visium. Each platform has its own strengths—MERFISH provides high-resolution, single-molecule imaging of a limited gene set, while Visium captures genome-wide expression but at lower spatial resolution. By integrating data across these platforms, researchers can leverage the strengths of both, enabling a more complete understanding of cellular organization, gene expression, and interactions within a tissue. This cross-modality alignment allows for deeper biological insights that would be difficult to achieve using a single technology alone.
+
+- Integration is crucial for constructing three-dimensional spatial transcriptomics datasets from multiple tissue slices. Aligning and stitching tissue slices is essential for constructing three-dimensional molecular profiles.  
+Since spatial transcriptomics data is often collected as two-dimensional slices, aligning and stitching these slices together is necessary to reconstruct a holistic, 3D molecular map of a tissue. This process enables researchers to study tissue architecture in its native three-dimensional context, facilitating discoveries about developmental processes, tumor microenvironments, and disease progression. By integrating slices into a unified 3D model, researchers can more accurately analyze spatial relationships between cells, study molecular gradients, and gain a deeper understanding of how cellular interactions shape tissue function.  
+See @fig-commot-3d and @fig-open-st as examples.
+
+::: block
+![Left: From @cang2023screening](fig/chap9/commot-3d.png){#fig-commot-3d1 width="100%" fig-align="center"}
+:::
+
+::: block
+![Right: From @moffitt2018molecular](fig/chap9/merfish-mouse.png){#fig-commot-3d2 width="100%" fig-align="center"}
+:::
+
+::: block
+![From @schott2024open](fig/chap9/open-st.png){#fig-open-st width="100%" fig-align="center"}
+:::
+
+### Brief aside: Image registration (in contexts for broader biomedical imaging)
+
+Image registration is the process of aligning multiple images into a common coordinate system, allowing for meaningful comparisons across different imaging modalities, timepoints, or subjects. In biomedical imaging, registration is widely used in modalities such as MRI, CT, PET, and histological imaging to ensure that anatomical structures from different scans are spatially aligned. This is particularly important when integrating data from different sources, such as aligning a patient’s pre- and post-treatment scans or fusing anatomical (MRI) and functional (PET) imaging for comprehensive analysis.
+
+Registration is necessary because biological tissues can exhibit variations due to differences in patient positioning, tissue deformation, or even individual anatomical differences. In neuroimaging, for example, brain MRI scans from different individuals must be warped onto a standardized brain atlas to enable group-level statistical analysis. Similarly, in histopathology, adjacent tissue sections must be aligned to reconstruct a 3D representation of tissue morphology. Without accurate registration, direct comparisons across images would be unreliable, leading to misinterpretations in clinical diagnoses, disease progression studies, and biomarker discovery.
+
+::: block
+![From @zhang2019linear](fig/chap9/image-registration.png){#fig-image-registration width="100%" fig-align="center"}
+:::
+
+### A current choice for aligning slices in spatial transcriptomics: SANTO
+
+The SANTO (coarse-to-fine alignment and stitching) @li2024santo method aligns two spatial transcriptomics datasets in a two-step process: coarse alignment followed by fine alignment. (We'll describe this for spot-level data, but this can be used for imaging data once you've done a cell segmentation.)
+
+::: block
+![From @schott2024open](fig/chap9/santo.png){#fig-santo width="100%" fig-align="center"}
+:::
+
+::: {#santo-io .block3}
+**Input/Output.**  
+The input to SANTO is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n_X \times p}$ for $n_X$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_X\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_X$ cells, and 2) a second spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $Y \in \mathbb{R}^{n_Y \times p}$ for $n_Y$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_Y\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_Y$ cells.  
+The output is a rotated and translated spatial transcriptomics dataset $X'$ where all the expression values among the $n_X$ cells in $X$ are the same, but now there's a rotation and translation of all the spatial coordinates of these $n_X$ spots to best align with slice $Y$.
+:::
+
+- **Coarse alignment**:  
+  SANTO first performs a coarse alignment by rapidly estimating the relative spatial positioning of two slices and identifying their overlapping regions. This is achieved by computing the Pearson Correlation Coefficient (PCC) of shared omics features:
+
+  $$
+  \text{PCC}(G_{X_i}, G_{Y_j}) = \frac{\sum (G_{X_i} - \bar{G}_X)(G_{Y_j} - \bar{G}_Y)}{\sqrt{\sum (G_{X_i} - \bar{G}_X)^2 \sum (G_{Y_j} - \bar{G}_Y)^2}}
+  $$ {#eq-santo-pcc}
+
+  where $G_{X_i}$ and $G_{Y_j}$ denote the gene expression vectors of spots $i$ and $j$ in slices $X$ and $Y$, respectively.  
+  Pairs with high PCC scores are used to estimate the transformation matrix via Singular Value Decomposition (SVD):
+
+  $$
+  H = \sum (S_{X_i} - \bar{S}_X)(S_{Y_j} - \bar{S}_Y)^\top
+  $$ {#eq-santo-svd}
+
+  where $S_X$ and $S_Y$ represent spatial coordinates. The optimal rotation matrix $R$ and translation $T$ are computed as $R = VU^\top$ and $T = \bar{S}_Y - R\bar{S}_X$. The new spatial coordinates of $S_X$ then get set to be $S_X \leftarrow RS_X + T$.  
+
+  (You can think of this as: 1) using gene expression in both slides to find pairs of "anchors" (one anchor on each slide), and then 2) using the spatial coordinates of the anchor pairs, finding a shift and a rotation for slide $X$.)
+
+- **Fine alignment**:  
+  For fine alignment, SANTO iteratively improves the alignment by a more nuanced approach that accounts for a "soft mapping" between spots in different slices. This is implemented with a Dynamic Graph Convolutional Neural Network (DGCNN).  
+
+  During training, all the spots are combined into one batch, so if there are $n_X$ spots in slice $X$ and $n_Y$ spots in slice $Y$, both slices are used in the network. The model learns spatial and expression embeddings, computes a probabilistic soft mapping  
+
+  $$
+  m(X, Y) = \text{softmax}(F_Y F_X^\top)
+  $$ {#eq-santo-softmap}
+
+  and uses this to derive $X^{(Y)}$, a "counterpart" slice of $X$ generated via $Y$. The network is trained with a loss function that balances omics similarity and spatial coordinate similarity:
+
+  $$
+  \mathcal{L} = \frac{1}{n_X n_Y} \sum_{\text{spots } i \in X} \underset{j \in Y}{\text{softmin}} \left[ \alpha (1 - \text{PCC}(G_{X_i}, G_{Y_j})) + (1-\alpha) d(S_{X_i}, S_{Y_j}) \right]
+  $$ {#eq-santo-loss}
+
+  where $d(S_{X_i}, S_{Y_j})$ is the Euclidean distance between aligned spots, and $\alpha$ balances spatial and omics contributions.
+
+### A brief note about other approaches
+
+You'll notice that SANTO did *not* ever "distort" the spatial coordinates. All it's really doing is learning a global rotation and translation. If you want to see a procedure that can "shrink" and "stretch" spatial coordinates to better match slices, see STAlign @clifton2023stalign, which relies on large deformation diffeomorphic metric mapping (LDDMM) (<https://en.wikipedia.org/wiki/Large_deformation_diffeomorphic_metric_mapping>).
+
+
