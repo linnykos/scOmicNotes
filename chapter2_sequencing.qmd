@@ -65,38 +65,25 @@ $$
 We typically use a different overdispersion parameter $r_j$ for each gene $j \in \{1,\ldots,p\}$. Here, $r_j$ controls the degree of overdispersion. When $r_j \to \infty$, the variance approaches the mean, and the NB distribution converges to the Poisson distribution. For single-cell RNA-seq data, the introduction of $r_j$ allows the model to capture both the biological variability between cells and technical noise, making it robust to the sparse and overdispersed nature of gene expression data.
 
 ::: block2
-**Why would genes even have different overdispersions?**
-We're assuming in most statistical models that: 1) genes are modeled as a negative binomial random variable, and 2) genes have different overdispersion parameters $r_j$. Why is this reasonable? Is there a biomolecular reason for this?
+**Why would genes even have different overdispersions?** We're assuming in most statistical models that: 1) genes are modeled as a negative binomial random variable, and 2) genes have different overdispersion parameters $r_j$. Why is this reasonable? Is there a biomolecular reason for this?
 
-We draw upon @sarkar2021separating, explaining how the NB distribution is justified (both theoretically and empirically) for scRNA-seq data.
-After reading this paper, you'll see that the overdispersion originates from the “biological noise” (i.e., the Gamma distribution). This differs from gene to gene because gene expression is subject to many aspects: transcriptomic bursting, the proximity between the gene and the promoter, the mRNA stability and degradation, copy number variation, the cell cycle stage, etc.
+We draw upon @sarkar2021separating, explaining how the NB distribution is justified (both theoretically and empirically) for scRNA-seq data. After reading this paper, you'll see that the overdispersion originates from the “biological noise” (i.e., the Gamma distribution). This differs from gene to gene because gene expression is subject to many aspects: transcriptomic bursting, the proximity between the gene and the promoter, the mRNA stability and degradation, copy number variation, the cell cycle stage, etc.
 :::
 
 #### How do you estimate the overdispersion parameter in practice?
 
-The easiest way is to use `MASS::glm.nb` in R.
-However, this is very noisy for single-cell data (see @rem-nb_tricky).
-Since we are estimate one dispersion parameter per gene, many methods use an Empirical Bayes framework to “smooth” the overdispersion parameters [@love2014moderated].
-More sophisticated methods (such as SCTransform [@hafemeister2019normalization]) use the Bioconductor R package called `glmGamPoi`.
-Deep-learning methods simply incorporate estimating the dispersion parameter into the architecture and objective function, see scVI [@lopez2018deep].
+The easiest way is to use `MASS::glm.nb` in R. However, this is very noisy for single-cell data (see @rem-nb_tricky). Since we are estimate one dispersion parameter per gene, many methods use an Empirical Bayes framework to “smooth” the overdispersion parameters [@love2014moderated]. More sophisticated methods (such as SCTransform [@hafemeister2019normalization]) use the Bioconductor R package called `glmGamPoi`. Deep-learning methods simply incorporate estimating the dispersion parameter into the architecture and objective function, see scVI [@lopez2018deep].
 
 Also, note that which we are assuming here that the overdispersion parameter $r_j$ is shared across all the cells for gene $j$, there are methods that also use different overdispersion parameters for different cell populations. See @chen2018umi or the `dispersion` parameter in scVI (see <https://docs.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.html#scvi.model.SCVI>). In general, using different overdispersion parameters for the same gene across different cell populations is not common, so my suggestion is to: 1) have a diagnostic in mind on how would you know if need to use different overdispersion parameters for the same gene, and then 2) try analyzing the genes where each gene only has one overdispersion parameter and see if you have enough concrete evidence that such a model was too simplistic.
 
 ::: block2
-**Personal opinion: My preferred parameterization**
-The formulation @eq-nb_2 by far is the most common way people write the NB distribution.
-We typically call $r_j$ the "overdispersion" parameter, since the inclusion of $r_j$ in our modeling is typically to denote that there is more variance than a Poisson.
-I personally don't like it because I find it confusing that a larger $r_j$ denotes a distribution with smaller variance.
-Hence, I usually write the variance as $\mu_{ij}(1+\alpha_j \mu_{ij})$ (where $\alpha_j = 1/r_j$). This way, $\alpha_j = 0$ is a Poisson distribution. However, even though this makes more sense to me, it's not commonly used. (It's because this parameterization makes it confusing to work with the exponential-family distributions mathematically.)
+**Personal opinion: My preferred parameterization** The formulation @eq-nb_2 by far is the most common way people write the NB distribution. We typically call $r_j$ the "overdispersion" parameter, since the inclusion of $r_j$ in our modeling is typically to denote that there is more variance than a Poisson. I personally don't like it because I find it confusing that a larger $r_j$ denotes a distribution with smaller variance. Hence, I usually write the variance as $\mu_{ij}(1+\alpha_j \mu_{ij})$ (where $\alpha_j = 1/r_j$). This way, $\alpha_j = 0$ is a Poisson distribution. However, even though this makes more sense to me, it's not commonly used. (It's because this parameterization makes it confusing to work with the exponential-family distributions mathematically.)
 
 The main takeaway is to always pay close attention to each paper's NB parameterization. You're looking for the mean-variance relation written somewhere in the paper to ensure you understand the author's notation.
 :::
 
 ::: {#rem-nb_tricky .block2}
-**What makes the negative binomial tricky** Let me use an analogy that is based on the more familiar coin toss. Suppose 30 people each are given a weighted coin where the probability of heads is $10^{-9}$ (basically, it's impossible to get a heads).
-Everyone coerce and agree to a secret number $N$, and everyone independently flips their own coin $N$ times and records the number of heads.
-I (the moderator) do not know $N$, but I get to see how many heads each person got during this experiment.
-My goal is to estimate $N$. What makes this problem very difficult?
+**What makes the negative binomial tricky** Let me use an analogy that is based on the more familiar coin toss. Suppose 30 people each are given a weighted coin where the probability of heads is $10^{-9}$ (basically, it's impossible to get a heads). Everyone coerce and agree to a secret number $N$, and everyone independently flips their own coin $N$ times and records the number of heads. I (the moderator) do not know $N$, but I get to see how many heads each person got during this experiment. My goal is to estimate $N$. What makes this problem very difficult?
 
 If $N$ were 10, or 100, or maybe even 10,000, almost everyone would get 0 heads. That is, we cannot reliably estimate $N$ since the log-likelihood function is very flat. The issue is because count data has a finite resolution — 0 is always the smallest possible value, and 1 is always the second smallest value. Hence, unlike continuous values (which have “infinite resolution” in some sense), non-negative integers “lose” information the smaller the range is.
 :::
