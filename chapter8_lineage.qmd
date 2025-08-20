@@ -85,7 +85,7 @@ Lineage tracing complements snapshot-based methods by providing a direct record 
 The goal in this section is to provide a high-level overview of how we can reconstruct phylogenetic trees from single-cell lineage tracing (scLT) dataset, if we are using mutating barcodes. Remember, in single-cell sequencing experiments, we never get to see anything "directly" aside from sequences (of RNA, DNA, etc.) So we need to "estimate" the phylogenetic tree itself using the barcode edits. See @fig-phylogenetic-goal1 for a conceptual illustration of this problem.
 
 ::: block
-![From \cite{li2023reconstructing}](fig/chap8/phylogenetic_goal1.png){#fig-phylogenetic-goal1 width="100%" fig-align="center"}
+![From \cite{li2024reconstructing}](fig/chap8/phylogenetic_goal1.png){#fig-phylogenetic-goal1 width="100%" fig-align="center"}
 :::
 
 Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a *claudogram* (i.e., the edge lengths do not carry "time-information." This is in contrast with a *phylogram*, where edge denote "amount of elapsed time since the branching event"). See @fig-tree1 and @fig-tree2.
@@ -227,7 +227,7 @@ Lentiviral approaches offer a more controlled way to label and track cell lineag
 ![From \cite{jones2023new}.](fig/chap8/lineage-tech1.png){#fig-barcode3 width="100%" fig-align="center"}
 :::
 
-See \cite{vanhorn2021next,li2023reconstructing,zhang2024advancements} for fantastic overviews on both types of technologies.
+See \cite{vanhorn2021next,li2024reconstructing,zhang2024advancements} for fantastic overviews on both types of technologies.
 
 [^1]: To quote \cite{jones2020inference}, "... the amount of missing data that is typical of lineage tracing experiments, which can be 'heritable' (resulting from either large Cas9-induced resections that remove target sites or transcriptional silencing) ..." See \cite{kosicki2022cas9} and \cite{mcvey2008mmej} for some additional context on how large deletions could happen.
 
