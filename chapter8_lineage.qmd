@@ -21,34 +21,34 @@ Moreover, understanding temporal dynamics can help us develop better interventio
 
 -   **Cancer subclone evolution**: Tumors consist of various subclones that compete and evolve. Observing which subclones become dominant over time helps illuminate how certain cells acquire and propagate new mutations, sometimes conferring resistance to treatments. See @fig-cancer_treatment1 and @fig-cancer_treatment2.
 
-::: block 
-![(Top) From @ashouri2023decoding.](fig/chap8/cancer_treatment1.png){#fig-cancer_treatment1 width="100%" fig-align="center"} 
+::: block
+![(Top) From @ashouri2023decoding.](fig/chap8/cancer_treatment1.png){#fig-cancer_treatment1 width="100%" fig-align="center"}
 :::
 
-::: block 
-![(Bottom) From @marine2020non.](fig/chap8/cancer_treatment2.png){#fig-cancer_treatment2 width="100%" fig-align="center"} 
+::: block
+![(Bottom) From @marine2020non.](fig/chap8/cancer_treatment2.png){#fig-cancer_treatment2 width="100%" fig-align="center"}
 :::
 
 -   **Cancer metastasis**: Cells that detach from the primary tumor site and successfully colonize new tissues undergo significant genetic and phenotypic changes. Understanding these changes in temporal sequence highlights the adaptations needed for invasion and survival in distant environments. See @fig-metastasis.
 
-::: block 
-![From @fu2023emerging.](fig/chap8/metastasis.png){#fig-metastasis width="100%" fig-align="center"} 
+::: block
+![From @fu2023emerging.](fig/chap8/metastasis.png){#fig-metastasis width="100%" fig-align="center"}
 :::
 
 -   **Disease progression**: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See @fig-covid for an example of this investigated in COVID.
 
-::: block 
-![From @stephenson2021single. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.](fig/chap8/covid.png){#fig-covid width="100%" fig-align="center"} 
+::: block
+![From @stephenson2021single. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.](fig/chap8/covid.png){#fig-covid width="100%" fig-align="center"}
 :::
 
 -   **Embryonic/organ development and cell fate**: During embryonic development, cells undergo a series of tightly regulated fate decisions that determine their final identity. These decisions are influenced by both intrinsic genetic programs and extrinsic signaling cues from the surrounding environment. Understanding the temporal dynamics of these transitions allows researchers to uncover the molecular mechanisms guiding differentiation and tissue formation. By tracking how cells commit to specific lineages, we gain insight into how organs form or how "cells make decisions". See @fig-larry.
 
-::: block 
-![From @weinreb2020lineage. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What's shown here are cells known to be in different lineages, but certain lineages don't differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.](fig/chap8/larry.png){#fig-larry width="100%" fig-align="center"} 
+::: block
+![From @weinreb2020lineage. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What's shown here are cells known to be in different lineages, but certain lineages don't differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.](fig/chap8/larry.png){#fig-larry width="100%" fig-align="center"}
 :::
 
 -   **Stem cell research**: Stem cells differentiate into specialized cell types following a tightly regulated timeline. Tracking these progressions uncovers the signals that guide each step and may inform regenerative medicine strategies for repairing damaged tissues. See @fig-ipsc.
 
-::: block 
-![From <https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/>.](fig/chap8/ipsc.png){#fig-ipsc width="100%" fig-align="center"} 
+::: block
+![From <https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/>.](fig/chap8/ipsc.png){#fig-ipsc width="100%" fig-align="center"}
 :::
