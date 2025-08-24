@@ -200,7 +200,7 @@ The Camin-Sokal maximum parsimony method is a phylogenetic reconstruction techni
 
 This method assumes that character states can only evolve in one direction, meaning once a trait is gained, it cannot be lost. Given a set of taxa and their character states, the algorithm constructs a tree that explains these states with the fewest evolutionary steps. While this method is computationally efficient for small datasets, it may oversimplify biological reality by enforcing irreversible character changes, limiting its applicability in cases where traits can reappear or revert.
 
-[^3]: You can approximate $n!$ by $n^n$. See <https://proofwiki.org/wiki/Lower_and_Upper_Bound_o_Factorial> or <https://en.wikipedia.org/wiki/Stirlings_approximation>.
+[^3]: You can approximate $n!$ by $n^n$. See <https://en.wikipedia.org/wiki/Stirlings_approximation>.
 
 
 ## Lentiviral lineage tracing
@@ -310,7 +310,7 @@ In contrast, at the third target site `r3`, we see `ATTCG[221:1D]GGAGG`. This me
 
 This character matrix is the input to Cassiopeia — it now knows the type of mutation at each of the target sites for every cell, and then it's going to try to estimate a phylogenetic tree from this.
 
-This character matrix is the input to Cassiopeia — it now knows the type of mutation at each of the target sites for every cell, and then it's going to try to estimate a phylogenetic tree from this.
+
 
 ### A brief note on other approaches
 
@@ -334,7 +334,7 @@ Another key advantage of using CNAs in cancer research is the ability to reconst
 Furthermore, once a phylogenetic tree is built from copy number data, the specific chromosomal regions that underwent duplication or deletion can yield insight into the biology of the tumor. Some genomic loci harbor oncogenes or tumor suppressors, so gains or losses in these regions can be especially detrimental—or beneficial, from the tumor’s perspective. Such events might correlate with faster growth, immune evasion, or other clinically significant traits. By focusing on these recurrently altered regions, researchers and clinicians can identify potential biomarkers for prognosis or drug targets for personalized therapy. See @fig-dna-phylogenetic as an example of what this workflow looks like.
 
 ::: block
-![From \cite{lu2025cancer}. Imagine we have longitudinal samples (bottom left) of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree (right middle), which is the focus for the type of tree we're discussing in these notes.](fig/chap8/dna_phylogenetic.png){#fig-dna-phylogenetic width="100%" fig-align="center"}
+![From \cite{lu2025cancer}. Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we're discussing in these notes.](fig/chap8/dna_phylogenetic.png){#fig-dna-phylogenetic width="100%" fig-align="center"}
 :::
 
 These output phylogenetic trees might look like the ones in @fig-dice1 and @fig-dice2.  
