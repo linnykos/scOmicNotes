@@ -15,13 +15,13 @@ bibliography: references.bib   # optional .bib file for citations
 
 ## Why study cell biology in public health?
 
-### What are “omics”?
+### What are "omics"?
 
-The term **“omics”** refers to a broad field of biology aimed at the comprehensive characterisation and quantification of biological molecules that translate into the structure, function, and dynamics of an organism. At its core, “omics” encapsulates the idea of studying biological systems at a global scale rather than focusing on individual components. This includes genomics (DNA), transcriptomics (RNA), proteomics (proteins), epigenomics, metabolomics (metabolites), and more. Each of these fields leverages high-throughput technologies to generate massive datasets that capture complex interactions within cells, tissues, or organisms.
+The term **"omics"** refers to a broad field of biology aimed at the comprehensive characterisation and quantification of biological molecules that translate into the structure, function, and dynamics of an organism. At its core, "omics" encapsulates the idea of studying biological systems at a global scale rather than focusing on individual components. This includes genomics (DNA), transcriptomics (RNA), proteomics (proteins), epigenomics, metabolomics (metabolites), and more. Each of these fields leverages high-throughput technologies to generate massive datasets that capture complex interactions within cells, tissues, or organisms.
 
-The rise of “omics” has revolutionised biology by enabling researchers to ask holistic questions such as how different genes, proteins, or metabolites interact in health and disease. It emphasises understanding systems as interconnected networks rather than isolated elements. This systems-level approach is particularly powerful in identifying biomarkers, understanding disease mechanisms, and tailoring precision-medicine strategies. In public health, “omics” provides tools to bridge molecular discoveries with population-level outcomes, offering new opportunities to tackle complex health challenges.
+The rise of "omics" has revolutionised biology by enabling researchers to ask holistic questions such as how different genes, proteins, or metabolites interact in health and disease. It emphasises understanding systems as interconnected networks rather than isolated elements. This systems-level approach is particularly powerful in identifying biomarkers, understanding disease mechanisms, and tailoring precision-medicine strategies. In public health, "omics" provides tools to bridge molecular discoveries with population-level outcomes, offering new opportunities to tackle complex health challenges.
 
-### Some examples of a “cell-biology” question
+### Some examples of a "cell-biology" question
 
 -   How the brain develops (i.e. the longitudinal sequence of events between birth and maturation), shown in @fig-brain-development.\
 -   How microglia in the brain gain or lose certain functions during ageing, shown in @fig-microglia.\
@@ -40,7 +40,7 @@ What are the functional consequences of this? [@von2015microglial]](fig/chap1/mi
 ![Cancer is typically characterised by uncontrollable cell division. What drives this process, how can we detect it early, and how can we stop it? (Source: <https://sites.duke.edu/seektobacco/2-the-role-of-tobacco-in-the-development-of-cancer/the-content/>)](fig/chap1/cancer.png){#fig-cancer width="75%" fig-align="center"}
 :::
 
-### How “omics” comes into the picture
+### How "omics" comes into the picture
 
 To answer cell-biology questions we leverage different omics to learn clues about\
 1. the cellular functions of a biological system, and\
@@ -93,7 +93,7 @@ This is not too dissimilar from a causal analysis. In a causal analysis, the rea
 
 Single-cell data offer a transformative lens to study the fundamental processes of life at unparalleled resolution. Unlike bulk data, which averages signals across populations of cells, single-cell technologies allow researchers to examine the diversity and complexity of individual cells within a tissue or organism. This level of detail provides insights into key biological phenomena, such as cellular differentiation during development, the plasticity of cell states in response to environmental cues, and the organization of complex tissues. For instance, single-cell RNA-sequencing (scRNA-seq) has uncovered new cell types in the brain and immune system, challenging traditional classifications and offering a more nuanced understanding of cellular identities and functions. These insights are essential for constructing more accurate models of how life operates at a cellular level.
 
-Many of the examples shown in Figs. @fig-brain-development–@fig-microglia are basic biology questions. Two additional examples are shown in @fig-resistance1 and @fig-resistance2.
+Many of the examples shown in Figs. @fig-brain-development--@fig-microglia are basic biology questions. Two additional examples are shown in @fig-resistance1 and @fig-resistance2.
 
 ::: block
 ![How do cancer cells survive successive therapies? [@schaff2024clonal]](fig/chap1/resistance.png){#fig-resistance1 width="75%" fig-align="center"}
@@ -116,7 +116,7 @@ There are a few ways this typically happens. @fig-crispr-treatment shows one exa
 :::
 
 ::: block
-![After learning the causal mechanisms for specific cell types for Alzheimer’s disease that can be detected from blood draws, we can refine existing biomarkers to monitor Alzheimer’s. [@hansson2023blood]](fig/chap1/ad-biomarker.png){#fig-ad-biomarker width="100%" fig-align="center"}
+![After learning the causal mechanisms for specific cell types for Alzheimer's disease that can be detected from blood draws, we can refine existing biomarkers to monitor Alzheimer's. [@hansson2023blood]](fig/chap1/ad-biomarker.png){#fig-ad-biomarker width="100%" fig-align="center"}
 :::
 
 ::: block
@@ -128,7 +128,7 @@ There are a few ways this typically happens. @fig-crispr-treatment shows one exa
 ### What existed prior to single-cell data?
 
 **Western blots and flow cytometry.**\
-Before the advent of single-cell technologies, biological research relied heavily on methods like western blots and flow cytometry to study cells and molecules. Western blotting (shown in @fig-western1 and @fig-western2), developed in the late 1970 s, enabled researchers to detect and quantify specific proteins in a sample, providing insights into cellular pathways and protein-expression levels. However, this technique required lysing entire tissues or cell populations, averaging the signals from thousands or millions of cells. Flow cytometry (shown in @fig-flow1 and @fig-flow2), emerging in the 1980s, represented a major step forward by allowing researchers to analyse individual cells’ physical and chemical characteristics in suspension. While flow cytometry offered single-cell resolution, it was limited to analysing predefined markers and could not capture the full complexity of cellular states or gene expression.
+Before the advent of single-cell technologies, biological research relied heavily on methods like western blots and flow cytometry to study cells and molecules. Western blotting (shown in @fig-western1 and @fig-western2), developed in the late 1970 s, enabled researchers to detect and quantify specific proteins in a sample, providing insights into cellular pathways and protein-expression levels. However, this technique required lysing entire tissues or cell populations, averaging the signals from thousands or millions of cells. Flow cytometry (shown in @fig-flow1 and @fig-flow2), emerging in the 1980s, represented a major step forward by allowing researchers to analyse individual cells' physical and chemical characteristics in suspension. While flow cytometry offered single-cell resolution, it was limited to analysing predefined markers and could not capture the full complexity of cellular states or gene expression.
 
 ::: block
 ![Illustration of the Western-blot technique. (Source: <https://www.bio-rad.com/en-us/applications-technologies/western-blotting-electrophoresis-techniques>)](fig/chap1/western1.png){#fig-western1 width="100%" fig-align="center"}
@@ -159,7 +159,7 @@ The 1990s marked the rise of microarray technology (shown in @fig-microarray1 an
 
 ::: block2
 **Remark (Personal opinion: the close history between microarrays and high-dimensional statistics).**\
-Historically, the rise of microarray data spurred advances in high-dimensional statistics — e.g. the Lasso [@tibshirani2005sparsity], gene-expression classification for leukaemia [@golub1999molecular], and empirical-Bayes multiple testing [@efron2002empirical].
+Historically, the rise of microarray data spurred advances in high-dimensional statistics --- e.g. the Lasso [@tibshirani2005sparsity], gene-expression classification for leukaemia [@golub1999molecular], and empirical-Bayes multiple testing [@efron2002empirical].
 :::
 
 **Bulk sequencing technologies.**\
@@ -171,7 +171,7 @@ In the 2000s, bulk sequencing technologies for DNA and RNA emerged, further adva
 
 ### The rise of single-cell data
 
-Single-cell data began gaining prominence in the early 2010s, fuelled by advances in microfluidics and next-generation sequencing. Single-cell RNA-sequencing (scRNA-seq), pioneered around 2009 – 2011, was among the first methods to achieve widespread adoption. It enabled measurement of gene expression in individual cells, uncovering heterogeneity that bulk analyses masked. Early applications revealed new cell types and states, reshaped our understanding of development, and identified rare populations in cancers and neurodegenerative disorders. Popularity grew as throughput increased, costs fell, and workflows became standardised.
+Single-cell data began gaining prominence in the early 2010s, fuelled by advances in microfluidics and next-generation sequencing. Single-cell RNA-sequencing (scRNA-seq), pioneered around 2009 -- 2011, was among the first methods to achieve widespread adoption. It enabled measurement of gene expression in individual cells, uncovering heterogeneity that bulk analyses masked. Early applications revealed new cell types and states, reshaped our understanding of development, and identified rare populations in cancers and neurodegenerative disorders. Popularity grew as throughput increased, costs fell, and workflows became standardised.
 
 @fig-single-cell1a and @fig-single-cell1b contrasts bulk and single-cell sequencing. @fig-single-cell2 shows how single-cell data tease apart different sources of heterogeneity.
 
@@ -203,31 +203,31 @@ Many of these technologies appear in @fig-multiomic.
 
 Cell biology is *vast* -- especially for students trained primarily in statistics or biostatistics. Many disciplines intersect with cell biology. For example:
 
--   **Statistics / Biostatistics** – statistical models for complex biological processes; translation between maths and biology
--   **Computational biology** – scalable computation, leveraging public data
--   **Bioinformatics / Genetics** – tools that draw on large‐consortium resources
--   **Epidemiology** – population-level data and policy recommendations
--   **Bioengineering** – new laboratory technologies for cheaper/faster measurement or imaging
--   **Biology** – mechanistic studies in model organisms
--   **Biochemistry / Molecular biology** – structure, function, interactions of specific molecules
--   **Wet-bench medicine** – disease mechanisms via tissues, models, cell lines
--   **Clinical-facing medicine** – patient treatment and real-world sample collection
--   **Pharmacology** – integrating evidence to design new drugs and therapies
+-   **Statistics / Biostatistics** -- statistical models for complex biological processes; translation between maths and biology
+-   **Computational biology** -- scalable computation, leveraging public data
+-   **Bioinformatics / Genetics** -- tools that draw on large‐consortium resources
+-   **Epidemiology** -- population-level data and policy recommendations
+-   **Bioengineering** -- new laboratory technologies for cheaper/faster measurement or imaging
+-   **Biology** -- mechanistic studies in model organisms
+-   **Biochemistry / Molecular biology** -- structure, function, interactions of specific molecules
+-   **Wet-bench medicine** -- disease mechanisms via tissues, models, cell lines
+-   **Clinical-facing medicine** -- patient treatment and real-world sample collection
+-   **Pharmacology** -- integrating evidence to design new drugs and therapies
 
 Given so many players, what does a **biostatistician** contribute?
 
 ### How a biostatistician perceives the world
 
-**Give me a concrete (ideally cleaned) dataset**: the larger the better—and I will analyse it from many angles.
+**Give me a concrete (ideally cleaned) dataset**: the larger the better---and I will analyse it from many angles.
 
 **Causality**: A mathematically stricter notion than correlation, usually via (1) counterfactual reasoning, or (2) a directed-acyclic-graph picture of how variables relate.
 
 ::: block
-**Remark (Personal opinion: statistical causality for cell biology is extremely difficult).** Obstacles: (i) tracking the *same* cell over time is impossible because sequencing lyses it; (ii) longitudinal human tissue samples are rare. Strong modelling assumptions can help but must withstand biological scrutiny. The bottleneck is often *data*, not maths—ambitious statisticians who learn enough biology still have a fighting chance.
+**Remark (Personal opinion: statistical causality for cell biology is extremely difficult).** Obstacles: (i) tracking the *same* cell over time is impossible because sequencing lyses it; (ii) longitudinal human tissue samples are rare. Strong modelling assumptions can help but must withstand biological scrutiny. The bottleneck is often *data*, not maths---ambitious statisticians who learn enough biology still have a fighting chance.
 :::
 
 ::: block2
-**Remark (Single-cell methods are largely an “associative” world)**: Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.
+**Remark (Single-cell methods are largely an "associative" world)**: Most single-cell analyses discover mechanisms that are statistically correlational; the causal proof comes from experiments and biology.
 :::
 
 **The research inquiry starts and ends with a method**: (How to integrate modalities? learn a gene-regulatory network? perform valid post-clustering tests?) Start with a statistical model and a *parameter of interest* $\theta^*$, then typically:
@@ -246,9 +246,9 @@ Given so many players, what does a **biostatistician** contribute?
 
 ### How a wet-lab biologist / clinician perceives the world
 
-**Experiments, experiments, experiments**: Carefully controlled—even if small—to make downstream analysis straightforward.
+**Experiments, experiments, experiments**: Carefully controlled---even if small---to make downstream analysis straightforward.
 
-**Causality** comes from a chain of experiments. Suppose we study a gene’s role in disease:
+**Causality** comes from a chain of experiments. Suppose we study a gene's role in disease:
 
 1.  **Temporal evidence**, such as change in gene expression preceding a change in cell phenotype. A causal mechanism should occur *before* the phenotype.
 
@@ -269,10 +269,10 @@ Given so many players, what does a **biostatistician** contribute?
 So how does a biostatistician develop computational / statistical methods for cell biology?
 
 ::: block
--   **Biological context** – What is the biological system and the “north-star” question? Which premises are accepted, which ones are to be tested, and why is it important to understand this mechanism better?
--   **Technology, experiment, data** – How are data collected and why did you choose this particular *{technology, experiment, data}* trio? What technical artefacts arise?
--   **Boundaries of current tools** – Simple analyses first: what "breaks" in existing workflows? Is there preliminary evidence a new computational method would do better?
--   **Statistical model** – What is the insight that a different computational method could interrogate the biology better? (Here the statistics training begins.)
--   **Develop a method & show robustness** – Robustness can be defined numerically (i.e., noise tolerance) or biologically (i.e., applicable across contexts/environments). Often, the biological question you study lacks a ground truth, so validity arguments lean on biological logic.
--   **Uncover new / refined biology** – Does the method advance our biological understanding? How confident are we that findings generalise beyond the original *{technology, experiment, data}* trio? (This is usually the crown-jewel of your computational biology paper -- it's not necessary your specific analyses, but the potential that your tool can be used on other biological studies beyond what you've demonstrated your method on.)
+-   **Biological context** -- What is the biological system and the "north-star" question? Which premises are accepted, which ones are to be tested, and why is it important to understand this mechanism better?
+-   **Technology, experiment, data** -- How are data collected and why did you choose this particular *{technology, experiment, data}* trio? What technical artefacts arise?
+-   **Boundaries of current tools** -- Simple analyses first: what "breaks" in existing workflows? Is there preliminary evidence a new computational method would do better?
+-   **Statistical model** -- What is the insight that a different computational method could interrogate the biology better? (Here the statistics training begins.)
+-   **Develop a method & show robustness** -- Robustness can be defined numerically (i.e., noise tolerance) or biologically (i.e., applicable across contexts/environments). Often, the biological question you study lacks a ground truth, so validity arguments lean on biological logic.
+-   **Uncover new / refined biology** -- Does the method advance our biological understanding? How confident are we that findings generalise beyond the original *{technology, experiment, data}* trio? (This is usually the crown-jewel of your computational biology paper -- it's not necessary your specific analyses, but the potential that your tool can be used on other biological studies beyond what you've demonstrated your method on.)
 :::
