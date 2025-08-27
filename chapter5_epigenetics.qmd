@@ -238,3 +238,409 @@ In simple terms, you're adding up all the peaks that contain a relevant motif.) 
 ::: block
 ![From @schep2017chromvar](fig/chap5/chromvar.png){#fig-chromvar width="100%" fig-align="center"}
 :::
+
+## Deep-learning integration and translation of RNA and ATAC {#sec-atac_integration}
+
+Single-cell multi-omic data integration is challenging due to the lack of one-to-one correspondence between cells across different assays. While many experimental technologies allow simultaneous measurement of multiple omics modalities (e.g., RNA and chromatin accessibility), most single-cell datasets include only one modality. This creates the challenge of integrating data from different omics layers with distinct feature spaces (e.g., genes in scRNA-seq vs. chromatin regions in scATAC-seq). We call this *diagonal integration* since we simultaneously have different cells in each dataset *and* different features (since these are two different omics). See @fig-integration-types.
+
+Our goal can be thought of as one of two things (which are essentially equivalent):
+
+-   **Matching**: How do we match a cell in the first omic to the "best" corresponding cell in the second omic, so we can "pretend" we were able able to sequence paired multi-omic data?
+
+-   **Imputation of missing omics**: For the cells where we only sequenced the first omic, can we predict what the expressions of these cells would had been if we sequenced the second omic? And vice versa, can we predict the first omic for the cells where we only sequenced the second omic?
+
+Upon first glance, it seems surprising that anyone can do you anything at all.
+
+::: block
+![From @argelaguet2021computational.](fig/chap5/integration-types.png){#fig-integration-types width="100%" fig-align="center"}
+:::
+
+### Strategy 1: Completely unsupervised approach to diagonal integration {#sec-diagonal_integration_unsupervised}
+
+In the first broad category we'll talk about here, we seek to diagonally integrate $X \in \mathbb{R}^{n_x \times p_x}$ and $Y \in \mathbb{R}^{n_y \times p_y}$, two single-cell datasets on different omics (i.e., the $p_x$ features in the first omic are different from the $p_y$ features in the second omic). Here, we are *not* willing to make any biological assumptions on how these two omics are related.
+
+**A typical choice: SCOT.**\
+SCOT (Single-Cell alignment with Optimal Transport) addresses diagonal integration using the Gromov-Wasserstein optimal transport framework @demetci2022scot. The key idea is to align datasets from different modalities while preserving their intrinsic geometric structures. SCOT constructs $k$-nearest neighbor (k-NN) graphs for each dataset and computes intra-domain pairwise distance matrices. The alignment is achieved by finding a probabilistic coupling matrix $\mathbf{G}$ that minimizes the discrepancy between these intra-domain distances.
+
+::: block3
+**Input/Output.** The inputs to SCOT are: 1) 2 different single-cell datasets $X \in \mathbb{R}^{n_x \times p_x}$ and $Y \in \mathbb{R}^{n_y \times p_y}$, each measuring a different omic (i.e., different features) on a different set of cells. The primary output is a matching between (not necessarily 1-to-1) cells in $X$ and $Y$ so you computationally pretend you have paired multi-omic data for your downstream procedures.
+:::
+
+::: block
+**Brief aside on Wasserstein distance**: The Wasserstein distance, rooted in optimal transport theory, measures the effort required to morph one probability distribution into another. This can be intuitively understood using the *"moving pile of sand"* analogy: given two distributions, we seek the most efficient way to move mass from one distribution to another while minimizing transportation cost.
+
+Mathematically, given two discrete distributions $\mu = \sum_{i=1}^{n} p_i \delta_{x_i}$ and $\nu = \sum_{j=1}^{m} q_j \delta_{y_j}$, the classic optimal transport problem finds a coupling matrix $\mathbf{G} \in \mathbb{R}^{n \times m}$ that minimizes the transport cost:
+
+$$
+W_c(\mu, \nu) = \min_{\mathbf{G} \in \Pi(\mu, \nu)} \sum_{i=1}^{n} \sum_{j=1}^{m} c(x_i, y_j) G_{ij},
+$$
+
+where $c(x_i, y_j)$ represents the cost of moving mass from $x_i$ to $y_j$, and $\Pi(\mu, \nu)$ is the set of all valid transport plans satisfying the marginal constraints:
+
+$$
+\sum_{j=1}^{m} G_{ij} = p_i, \quad \sum_{i=1}^{n} G_{ij} = q_j, \quad G_{ij} \geq 0.
+$$
+:::
+
+The Gromov-Wasserstein (GW) distance uses optimal transport by aligning the pairwise distances of cell *with* each omic. Given distance matrices $\mathbf{D}^{X}$ and $\mathbf{D}^{Y}$ for datasets $X$ and $Y$ (one for each omic), the GW problem is $$
+\operatorname{GW}(\mu, \nu) = \min_{\mathbf{G} \in \Pi(\mu, \nu)} \sum_{i,k} \sum_{j,l} L(D^X_{ik}, D^Y_{jl}) G_{ij} G_{kl},
+$$ where $L(D^X_{ik}, D^Y_{jl})$ quantifies how much the transport plan distorts local geometric structures. SCOT uses this framework to learn an alignment between single-cell datasets by computing the optimal $\mathbf{G}$, followed by a barycentric projection to bring the datasets into a common space.
+
+::: block
+![From @demetci2022scot.](fig/chap5/scot.png){#fig-glue width="100%" fig-align="center"}
+:::
+
+::: block2
+**A simple analogy**: To understand SCOT, consider the following analogy. Let's say in the first omic, we measured 4 cells: {A, B, C, D}, where we infer that cell-pairs {A,B}, {B,C}, and {A,D} are similar (based on their expression profiles in the first omic). In the second omic, we measured 4 cells: {I, II, III, IV}, where we infer that cell-pairs {II,IV}, {IV,III}, and {II,I} are similar (based on their expression profiles in the second omic). From this, we can infer that a reasonable matching is, {A, II}, {B, IV}, {C, III}, and {D,I}. You can imagine that the Wasserstein framework is apply this logic much more formally and robustly.
+:::
+
+**A brief note on other approaches.**\
+You're really driving in the dark with these approaches since you're blindly trusting that both omics have to stem "from the same manifold," loosely speaking. This flavor of diagonal integration essentially boils down to *manifold alignment* -- how can you "align" two different omics, where you trust that this computation alignment tells you how the two omics are aligned. (However, for certain pairs of omics, you really have no other choice, so this comment isn't necessarily a criticism. It is more of a cautionary warning for you to think carefully on how would you even know you had a sensible integration.) A common addition in recent years for these diagonal integration methods is *not* to require all cells to be matched, see @cao2022manifold. This addition complicates the computation, but enables you to allow for biological signal in one omic that is not recapitulated in the other. See @xu2022diagonal for more commentary.
+
+### Strategy 2: Leveraging more biological information for diagonal integration
+
+Unlike the methods in @sec-diagonal_integration_unsupervised, what if you *do* have biological insights about how the two omics are related? Then certainly, you should be able to perform a much more powerful diagonal integration if your biological insights are correct.
+
+**A typical choice: GLUE.**\
+Graph-Linked Unified Embedding (GLUE), as the name suggests, everages prior biological knowledge to construct a *guidance graph*, where nodes represent features (e.g., genes or ATAC peaks) and edges represent regulatory interactions (e.g., enhancer-promoter links) @cao2022multi. This graph links omics-specific feature spaces, enabling joint learning of regulatory relationships and cell embeddings. By combining the guidance graph with observed data, GLUE infers regulatory interactions in a Bayesian-like manner. This enables the identification of cis-regulatory relationships, such as enhancer-gene links, and provides insights into transcription factor (TF) activity.
+
+::: block3
+**Input/Output.** The inputs to GLUE are: 1) $K$ different single-cell datasets $X^{(k)} \in \mathbb{R}^{n_k \times p_k}$ for each $k \in \{1,\ldots,K\}$, each measuring a different omic (i.e., different features) on a different set of cells, and 2) a graph $\mathcal{G}$ that connects the ${p_k}_{k=1}^{K}$. (This is the guidance graph, and this gets treated as another "dataset" in some sense.) The primary output is $\hat{X}^{(k_1;k_2)} \in \mathbb{R}^{n_{k_1} \times p_{k_2}}$. That is, this is the "best guess" of expression in the $(k_2)$-th omic for the cells in $(k_1)$-th omic.
+:::
+
+Importantly, separate variational autoencoders (VAEs) are trained for each omics layer, producing omics-specific low-dimensional cell embeddings. A shared latent embedding is aligned across modalities through adversarial learning and guided by the regulatory graph.
+
+Some of the modeling details:
+
+1.  **Guidance Graph**: Let $p=\sum_{k=1}^{K}p_k$, which denotes the total number of features across all $K$ omics. The guidance graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ connects features across omics layers, with edges weighted by interaction confidence, where $\mathcal{V}$ denotes all $p$ features. The feature embeddings $V$ are learned to reconstruct this graph, roughly:
+
+$$
+\log p(\mathcal{G}  | V) = \sum_{(i, j) \in \mathcal{E} } \big[\log \sigma(s_{ij} v_i^\top v_j) + \sum_{j' : (i,j') \notin \mathcal{E}} \log\big(1-\sigma(s_{ij'}v_i^\top v_{j'}\big)\big],
+$$ where $\sigma$ is the sigmoid function, $s\_{ij}$ indicates edge polarity, and $v_i, v_j$ are feature embeddings. We'll need to learn the graph convolution network encoder to learn $V$ from $\mathcal{G}$ (please see the paper for this -- this is a bit complicated to explain concisely), as well as the parameters $\{s_{ij}\}_{i,j\in\{1,\ldots,p\}}$ (which is the "decoder" for the graph, in a sense).
+
+This $V$ is a matrix with number of rows equal to the total number of features in $\mathcal{G}$, and the number of columns equal to the latent dimension. We can subset the rows specific to the $k$-th omic to get the matrix (with less rows) $V^{(k)}$.
+
+2.  **Autoencoder for Cell Embeddings**: Each omics layer $k$ has its own autoencoder that generates cell embeddings $U$ from observed data $X^{(k)}$:
+
+$$
+p_{\text{decoder }k}(x^{(k)}_i | u_i, V^{(k)}) = \text{NB}(x^{(k)}_i; \text{mean vector}, \text{dispersion vector}), 
+$$
+
+where $\text{NB}$ is a negative binomial distribution for modeling count data. Here, $U$ is the "common" embedding across any of the $K$ omics. (I'm using the notation $x^{(k)}_i$ to denote the the $i$th cell in the $k$-th omic, which is a row in $X^{(k)}$ -- I apologize for this confusion notation, there's a lot of things flying around.) Importantly, this "decoder" takes in the cell embedding $U$ and the latent embeddings for all the features for the $k$-th omic, $V^{(k)}$. This is accompanied by a encoder for each omic to yield its posterior Gaussian distribution,
+
+$$ 
+q_{\text{encoder }k}(u_i | x^{(k)}_i) = \text{N}(\text{some mean}, \text{some covariance}). 
+$$
+
+We'll also need to train all $K$ encoders and "decoders".
+
+The important formula to see how this works is the Equation (9) in the paper, which, in the notation in the notes here, would be,
+
+$$
+\begin{aligned}
+&  \big\{\text{The imputed expected expression of feature $j$ in omic $k$}\big\} = \big\{\text{The $j$-th coordiate of: }\\
+& \text{SoftMax}\Big(\alpha \odot (V^{(k)})^\top u_i+ \beta \Big)\big\} \cdot \big\{\text{Observed library size of the cell in omic $k$}\big\}.
+\end{aligned}
+$$
+
+where $\odot$ denotes the Hadamard product[^chapter5_epigenetics-4], (i.e., entry-wise product). Note: 1) $V^{(k)}$ is a matrix that has rows equal to the number of features in the $k$-th omic, and columns equal to the latent dimension. $u_i$ is a vector of length equal to the number of latent dimensions. Therefore, $(V^{(k)})^\top u_i$ is a vector of length equal to the number of features in the $k$-th omic. 2) This isn't the decoder you might be familiar with hidden layers of linear transformations followed by activation functions. Instead, this is more-or-less a straightforward linear transformation that takes the feature embeddings and cell embeddings[^chapter5_epigenetics-5].
+
+[^chapter5_epigenetics-4]: If you plan on using Pando yourself (which has pretty well documented code and tutorials in R), please refer to the code directly to see how the method works: <https://github.com/quadbio/Pando/blob/main/R/grn.R>.
+
+[^chapter5_epigenetics-5]: <https://en.wikipedia.org/wiki/Simpsons_paradox>
+
+3.  **Adversarial Alignment**: A discriminator $D$ is trained to classify omics layers based on cell embeddings $u$. Encoders are updated to fool the discriminator, aligning embeddings across modalities:
+
+$$
+    - \sum_k \mathbb{E}_{X^{(K)}} \left[ \log D_k(\text{discriminator}(U)) \right], 
+$$
+
+where $D_k$ is the the multiclass classification cross entropy, and the discriminator is a function that is being adversarially trained to try to distinguish between the $K$ omics. The data encoders can then be trained in the opposite direction to fool the discriminator, ultimately leading to the alignment of cell embeddings from different omics layers.
+
+4.  **Overall Objective**: The total loss combines data reconstruction, graph reconstruction, and adversarial alignment. That is, the discriminator is training to minimize
+
+Error when predicting which omic the input data came from based on the embedding $U$, while, simultaneously, the encoders and decoders are trying to maximize
+
+$$
+    \begin{aligned}
+    &\lambda_{\mathcal{G}} \cdot \text{Log-likelihood of generating graph $\mathcal{G}$ based on feature embedding }V +\\
+    &\lambda_{D} \cdot \text{The confusion of discriminator $D$ predicting the omic based on }U +\\
+    &\Big[\sum_{k=1}^{K}\text{Log-likelihood of generating data from omic $k$ based on } U \text{ and }V\Big],
+    \end{aligned}
+$$
+
+where $\lambda_{\mathcal{G}}$ and $\lambda_{D}$ are hyperparameters.
+
+::: block
+![From @cao2022multi.](fig/chap5/glue.png){#fig-glue2 width="100%" fig-align="center"}
+:::
+
+Conceptually: 1) The adversarial discriminatory is working "against" you, and trying to predict if a cell's embedding comes from one omic or the other. The better the adversary can do this, the more it means that you (GLUE) did not yet properly align the two omics. 2) The guidance graph is (at a high level) about orienting this alignment. As opposed to unsupervised integration methods that purely rely on geometric relations, GLUE uses this guidance graph to help determine, "If there are multiple 'rotations' of the omics to align them, which particular 'rotation' makes the most sense?"
+
+**A brief note on other approaches.**\
+There are fewer methods in this category, and these methods are a lot harder for a third-party to benchmark since they heavily rely on the biological information you're using. However, for some examples, integrating single-cell RNA and proteins, you can look at @zhu2021robust, @chen2023integration. For single-cell RNA and ATAC, you can look at @zhang2022scdart in addition to GLUE.
+
+### Don't forget about all the usual multi-modal integration methods!
+
+Don't forget that, similar to how there's a TotalVI for CITE-seq data, there are *a lot* of vertical integration methods for RNA-ATAC multiome data. See the end of @sec-union_totalvi for some benchmarking papers. I've seen a couple more often than others: WNN @hao2020integrated and MultiVI @ashuach2023multivi (see @fig-multivi, a deep-learning method).
+
+::: block
+![From @ashuach2023multivi.](fig/chap5/multivi.png){#fig-multivi width="100%" fig-align="center"}
+:::
+
+**Translation between omics.**\
+A related task in paired multiome data is: given the RNA profile, can we use translate this into the ATAC profile, and vice versa? At a high level, this is not too different from using an integration of paired multiome data. You simply use one omic's encoder, and then another omic's decoder. There are some important engineering differences to facilitate this idea. You can see Polarbear (@zhang2022multimodal, see @fig-polarbear) and BABEL @wu2021babel for examples.
+
+::: block
+![From @zhang2022multimodal.](fig/chap5/polarbear.png){#fig-polarbear width="100%" fig-align="center"}
+:::
+
+Returning back to the idea of "union" or "intersection" of information in @rem-union-intersection, the ability to translate from one omic to another necessarily means you are conceptually more focused on learning the "intersection" of information.
+
+**Mosaic integration.**\
+What if you have many omics across many datasets, and some of your datasets are paired? We usually call this *mosaic integration*, where we essentially are "putting the mosaic together" using puzzle pieces of different datasets. In this task, we often have some mixture of paired multiome datasets and some single-omic datasets. See @fig-scmomat for an example. Two methods to look at as an example of this are scMoMaT @zhang2023scmomat and Cobalt @gong2021cobolt.
+
+::: block
+![From @zhang2023scmomat.](fig/chap5/scmomat.png){#fig-scmomat width="100%" fig-align="center"}
+:::
+
+## Brief aside: Transcription factors
+
+Transcription factors (TFs) are proteins that regulate gene expression by binding to specific DNA sequences, often within promoters or enhancers, to activate or repress transcription, see @fig-transcription-factor. They play a crucial role in controlling cellular identity, development, and response to environmental signals. TFs recognize distinct motifs, short DNA sequence patterns, and their binding can be influenced by chromatin accessibility, co-factors, and post-translational modifications. Some TFs act as pioneer factors, capable of binding to condensed chromatin and initiating the process of opening DNA for transcriptional activation. By integrating chromatin accessibility data with known TF motifs, methods like ChromVAR can infer which TFs are actively shaping regulatory landscapes in different cell states.
+
+This TFs will play a big role in the next section, when we start discussing gene regulatory networks.
+
+::: block
+![(Top): From @leiz2021technologies.\
+(Bottom left): From <https://en.wikipedia.org/wiki/Transcription_factor>.\
+(Bottom right): From <https://digfir-published.macmillanusa.com/life11e/life11e_ch16_11.html>.](fig/chap5/transcription-factor2.png){#fig-transcription-factor width="100%" fig-align="center"}
+:::
+
+## Gene regulatory networks (GRN)
+
+Gene regulatory networks (GRNs) describe the intricate interactions between genes, transcription factors, enhancers, and other regulatory elements that control gene expression. Understanding these networks is critical for deciphering how normal cellular functions are maintained and how dysregulation leads to disease. In the context of single-cell and multi-omics data, GRNs provide a framework for linking chromatin accessibility, transcription factor activity, and gene expression dynamics to uncover the molecular basis of health and disease. See @fig-grn-intro1 for the overarching theme of GRNs, where you might start building a GRN via a simple gene co-expression analysis (i.e., "connecting" genes that are correlated), but then later start leveraging biological insights (i.e., which genes are transcription factors, and where TFs bind to accessible chromatin regions, etc.) in later steps.
+
+::: block
+![From @badia2023gene](fig/chap5/grn-intro1.png){#fig-grn-intro1 width="100%" fig-align="center"}
+:::
+
+(Note about this section: We're going to use the words "enhancer," "cis-regulatory element" (CREs), and "peak" interchangeably.)
+
+### First: How we understand the elements that control a gene?
+
+A gene's expression is governed by multiple regulatory elements, including promoters, enhancers, and transcription factors. Promoters serve as the binding sites for RNA polymerase and general transcription factors, initiating transcription. Enhancers, often located far from the gene they regulate, recruit transcription factors and co-activators to increase transcriptional output.
+
+Typically, a GRN falls into two types: 1) how do TFs bind to certain enhancer regions that cause a change in the downstream gene's expression, or 2) how do enhancer regions themselves open and close to regulate a downstream gene's expression. (I know, this is about to get a bit wonky.)
+
+@fig-linked-peak-schematic shows the overall schematic of how to link enhancers (i.e., a peak region, sometimes also called a cis-regulatory element, CRE) to its target gene. See @fig-linked-peak for how results for linked-peaks is often reported, where the "height" of the arc is the p-value about testing if a peak is linked to a particular gene. See <https://stuartlab.org/signac/articles/pbmc_multiomic> and <https://www.archrproject.com/bookdown/peak2genelinkage-with-archr.html> for examples of how to do this analysis in practice. You can also check out <https://singlecell.broadinstitute.org/single_cell/features/2024-11-21-visualize-and-filter-multiome-atac-data> for web portals for this.
+
+::: block
+![(Left): From @xie2023robust. (Right): From @leblanc2023major.](fig/chap5/linked-peak-schematic1.png){#fig-linked-peak-schematic width="100%" fig-align="center"}
+:::
+
+::: block
+![(Left): From @adams2022single.\
+(Right): From @ma2020chromatin. (These types of plots usually focus on one particular element. When you see these plots, it's not usually immediately obvious if the plots are showing if: 1) a gene is being regulated by many CREs, or if 2) a CRE regulates many genes.)](fig/chap5/linked-peak1.png){#fig-linked-peak width="100%" fig-align="center"}
+:::
+
+**TF footprints.**\
+TF footprinting is a computational approach used to infer transcription factor (TF) binding at specific genomic loci by analyzing patterns of chromatin accessibility at single-nucleotide resolution, often using ATAC-seq or DNase-seq data, see @fig-tf-footprint. Unlike ChromVAR, which assesses motif activity by quantifying motif accessibility variation across cells or conditions, footprinting explicitly identifies regions where TFs are bound by detecting protected sites flanked by regions of high accessibility. This provides direct evidence of TF occupancy, distinguishing between motif presence and actual binding, thereby refining motif enrichment results from ChromVAR and uncovering context-specific regulatory interactions. See <https://www.archrproject.com/bookdown/footprinting-with-archr.html> and <https://stuartlab.org/signac/1.2.0/articles/footprint> for more details.
+
+::: block
+![(Left) From @siersbaek2014molecular.\
+(Right) From <https://www.archrproject.com/bookdown/footprinting-with-archr.html>.](fig/chap5/tf_footprint1.png){#fig-tf-footprint width="100%" fig-align="center"}
+:::
+
+**A conceptual way to understand our goal.**\
+What we are hoping to do is to, essentially, learn the relations peaks and genes across *all* the peaks and genes. By doing this, we can piece together a graph, which becomes our GRN. See @fig-grn-intro3.
+
+::: block
+![From @kim2023gene.](fig/chap5/grn-intro3.png){#fig-grn-intro3 width="100%" fig-align="center"}
+:::
+
+If you are interested in GRNs (which is popular topic for more statistical/computation-leaning students), be aware that there are almost an endless list of GRN methods, see @fig-grn-table. As we will discuss in @sec-grn_crazy, it is a nontrivial research question to even know "which method works the best."
+
+::: block
+![From @loers2024single. This is the list for methods at the time of the authors' writing for multi-omic GRNs. If you include the methods that were designed for solely scRNA-seq, the list becomes unbelievably long.](fig/chap5/grn_table.png){#fig-grn-table width="100%" fig-align="center"}
+:::
+
+### GRNs between genes and TFs
+
+Transcription factors serve as key regulators in GRNs by binding to DNA motifs and either activating or repressing gene expression. The strength and specificity of TF-gene interactions are influenced by chromatin accessibility, cooperative binding with other TFs, and post-translational modifications. The advantage of using GRNs that only model TFs and their target genes (which could involve other TFs) is that the graph is much more manageable to think about. Here, the peaks (measuring regions of chromatin accessibility) allow you to determine: 1) how a TF might bind a peak, and 2) how that peak might influence a gene. All the peaks nearby a gene get "merged" in the modeling as one element altogether.
+
+**A typical choice: Pando.**\
+Pando @fleck2023inferring infers GRNs by modeling the relationship between gene expression, transcription factor (TF) activity, and chromatin accessibility using a regression-based framework. See @fig-pando.
+
+::: block
+![From @fleck2023inferring](fig/chap5/pando1.png){#fig-pando width="100%" fig-align="center"}
+:::
+
+::: block3
+**Input/Output.** The inputs to Pando are: 1) a paired multiome dataset for $n$ cells, containing both RNA and ATAC features, and 2) a database of TFs and their motifs.\
+The primary output is a directed and weighted graph among genes (of which some genes are transcription factors).
+:::
+
+The inference procedure follows these steps:[^chapter5_epigenetics-6]
+
+[^chapter5_epigenetics-6]: If you plan on using Pando yourself (which has pretty well documented code and tutorials in R), please refer to the code directly to see how the method works: <https://github.com/quadbio/Pando/blob/main/R/grn.R>.
+
+1.  **Candidate Regulatory Regions**:\
+    Pando identifies candidate regulatory regions by linking chromatin peaks to nearby genes using either the `Signac` or `GREAT` @mclean2010great method. It considers a defined upstream and downstream distance relative to the gene’s transcription start site (TSS) or gene body. This gives a potential set of peaks for each gene.
+
+2.  **TF-Peak Associations**:\
+    It selects peaks that overlap TF binding motifs and computes correlations between peak accessibility and target gene expression. A threshold is applied to filter TF-gene and peak-gene pairs based on correlation strength. This filters down the list of possible peaks that might facilitate an interaction between a TF and its regulated gene.
+
+3.  **Regression Model**:\
+    Pando fits a regression model for each target gene $g_i$, estimating the relationship between gene expression and TF activity at its regulatory regions. The general model is: $$
+    g_i \approx \sum_{j} \beta_j (TF_j \circ P_j)
+    $$ {#eq-pando} where $TF_j$ is the expression of transcription factor $j$ (i.e., this is another gene's expression, but this particular gene is deemed a transcription factor based on a database), $P_j$ is the accessibility of the associated peaks, $\circ$ represents an interaction term (which can be additive, multiplicative, or both), and $\beta_j$ denotes the inferred regulatory coefficient. By default, Pando fits a linear regression (i.e., generalized linear model for the Gaussian family), where the all the involved data (i.e., gene expression, transcription factor, etc.) has been already log-normalized.
+
+    (Yes -- this is as straightforward statistically as it gets. More on this later in @sec-grn_crazy.)
+
+4.  **Statistical Filtering and Adjustment**:\
+    Pando applies a multiple-testing correction (e.g., false discovery rate (FDR) adjustment) to the estimated coefficients from the linear regression and removes insignificant regulatory interactions. The resulting network consists of target genes, TF regulators, and their associated regulatory elements, allowing for further functional analyses.
+
+See @fig-pando-graph for an example of the resulting graph (subsetted to a particular TF).
+
+::: block
+![From @fleck2023inferring. This is the sub-network focusing on the TF GLI3 and all its downstream TFs (other named genes) and other genes (in gray circles).](fig/chap5/pando_graph.png){#fig-pando-graph width="100%" fig-align="center"}
+:::
+
+### GRNs between genes, enhancers, and TFs
+
+If you want "higher resolution" and want to model the specific interactions between particular peaks and their intermediary role between the TF and gene, you might instead want to use a GRN that models the interactions between all 3 elements -- TFs, the peaks, and the target genes. (Recall, even though you might only be modeling the 2000 highly variable genes with many a couple hundred TFs, you have on the order of 300,000 peaks. So these graphs are incomprehensibly large, to the point you need to think carefully about why you want to learn such a large graph in the first place.)
+
+**A typical choice: SCENIC+.**\
+SCENIC+ @bravo2023scenic infers enhancer-driven gene regulatory networks (eGRNs) by integrating transcription factor (TF) binding motifs, chromatin accessibility, and gene expression data. See the workflow in @fig-scenic.
+
+::: block
+![From @bravo2023scenic.](fig/chap5/scenic.png){#fig-scenic width="100%" fig-align="center"}
+:::
+
+::: block3
+**Input/Output.** The inputs to SCENIC+ are: 1) a paired multiome dataset for $n$ cells, containing both RNA and ATAC features, and 2) a database of TFs and their motifs.\
+The primary output is a directed and weighted graph among enhancer regions and genes (of which some genes are transcription factors).
+:::
+
+The inference process follows these steps:
+
+-   **Identification of Candidate Enhancers**:\
+    SCENIC+ processes single-cell chromatin accessibility data (scATAC-seq) using `pycisTopic`, which identifies differentially accessible regions (DARs) and groups co-accessible regions into enhancer candidates. These candidate enhancers are expected to contain key transcription factor binding sites (TFBSs).
+
+-   **Motif Enrichment Analysis**:\
+    SCENIC+ uses a large curated database of over 30,000 TF motifs, implemented in `pycisTarget`, to identify significant motif enrichments within enhancer regions. Two motif enrichment methods are employed:
+
+    -   *cisTarget*: A ranking-based approach that scores each genomic region based on motif presence and selects the most significantly enriched motifs.\
+    -   *Differential Enrichment of Motifs (DEM)*: A statistical Wilcoxon rank-sum test to identify differentially enriched motifs across enhancer sets.
+
+-   **TF-Enhancer-Gene Association**:\
+    The next step links candidate enhancers to their target genes using correlation-based methods. A gradient-boosting regression model (`GRNBoost2`, @moerman2019grnboost2) is applied to quantify the importance of both TFs and enhancer candidates for each target gene. The model assigns importance scores to enhancer–gene pairs, refining direct regulatory interactions.
+
+-   **eRegulon Construction**:\
+    False discovery rate (FDR) correction is used to filter spurious TF-enhancer-gene associations. The final GRN consists of enhancer-driven regulons (eRegulons), where each TF is linked to a set of enhancer regions and target genes. The regulatory directionality (activation/repression) is inferred using correlation measures.
+
+See @fig-scenic-graph for an example of the resulting graph (subsetted to a particular TF).
+
+::: block
+![From @bravo2023scenic. This is the sub-network focusing particular TFs (all named in larger text), as well as the CREs (in diamonds) and other target genes (in circles, named with smaller text.)](fig/chap5/scenic_graph.png){#fig-scenic-graph width="100%" fig-align="center"}
+:::
+
+**A brief note about other methods.**\
+Most GRNs fall in this category nowadays. You can see LINGER (see @fig-linger), which basically follows the same logic as in SCENIC+ but instead uses a deep-learning approach to predict relations between TFs and enhancers on target genes, as one of many examples.
+
+::: block
+![From @yuan2024inferring.](fig/chap5/linger.png){#fig-linger width="100%" fig-align="center"}
+:::
+
+## So... what do you do with the GRN?
+
+-   **Generative modeling of cell types/states (Computational)**:\
+    In some sense, a GRN is a very fancy "correlation matrix" of sorts. This means if you had the GRN, you could hypothetically label cells better since you could: 1) see the cell's gene expression profile, and 2) know beforehand the "correlation" between genes. With these two ingredients, you could calculate a better "likelihood" a given cell corresponds to the cell type/state of this particular GRN.
+
+-   **Encoding longitudinal information about the cascading effect of perturbations (Computational, Biological)**:\
+    Since the gene network, in principle, encapsulates how events unfold in a cell, it (in some sense) contains longitudinal information. We typically call this a "cascade" (i.e., how changes in one genomic regions affect other genomic regions over time). See @ng2021cascading. This is one of the main reasons people study GRNs. For instance, @fleck2023inferring subset the overall GRN to learn how the GRN changes during brain development. @bravo2023scenic shows how using the GRN can improve upon our understanding of fate commitment during differentiation. @wang2023dictys explicitly models how time affects the GRN via an ordinary differential equation model (ODE). These are just to name a few methods that explicitly are thinking about how our learning of the GRN helps us better understand time dynamics.
+
+-   **Potential therapeutic targets (Biological)**:\
+    If you knew how the genomic cascade works, then *hypothetically*, you have roadmap on which genomic region to edit. This is basically the start of the motivation of CRISPR knockouts -- if I knew how a particular transcription factor influences many downstream genes, then if I silence or knock out the particular gene producing that TF, then I could manipulate a lot of the transcriptomic activity (and allegedly, a lot of proteomics and biological processes). So the GRN gives me a roadmap on which TF might be a good candidate to knock out in order to prevent any deleterious pathways from activating.
+
+-   **Understanding the functional impact of SNPs in non-coding regions (Computational, Biological)**:\
+    This will be a much bigger theme when we discuss SNPs in the next chapter, @sec-genetics_basics. Most of our SNPs are in non-coding regions, and we *know* that many of these SNPs have some potential effect on a disease from GWAS studies. However, it's hard to know *why* these SNPs have a regulatory effect. By learning a GRN, we learn how different enhancer regions affect genes, so we might suspect that if a particular genetic variation lies in that enhancer region, the role of that SNP *might* be to impact that regulatory effect. (Technically, you need to do a massively parallelized report assay (MPRA, a different wetlab experiment) to actually demonstrate that the SNP *actually* impacts regulation. We'll discuss this more later in @sec-genetics_basics.)
+
+-   **Cellular memory (Biological)**:\
+    There is a long history of trying to understand if GRNs contribute to the "memory" of a cell. After all, you might ask about: if I stimulate a cell, if a cell is infected by a pathogen, etc., after this event subsides, does the cell "remember" what it just went through? There is no "brain" for the cell, so either you think: 1) cells are Markovian in some sense -- they no memory of how it interacted with its environment, or 2) there is some long-term way for cells to alter something about itself to contribute to "memory." This gets pretty fascinating biologically pretty quick. How would a cell even store memory? It's likely not through the DNA is you don't expect cells to naturally acquire many mutations in the DNA over time (hold that thought when we discuss @sec-dna_structural_variation). It's likely not through the mRNA or proteins since both degrade, either on the time-scale of hours @wang2002precision or a couple days @rusilowicz2022protein, respectively. Then, we turn to possibly something epigenetic. After all, DNA methylation can be inherited from one generation to another (not just on the cell level, but also on the organism level) @zhang2021epigenetic. So it is possible that GRNs (not quite about DNA methylation, but still epigenetic in flavor) are also stable enough (without extreme external stimuli) that they hold information about a cell's memory? This is the premise of a lot of basic biology interest in GRNs, see @almeida2021employing for example. For instance, there is preliminary evidence that stress changes the GRN of certain brain cells @von2022multiomic. See @cha2020single for a review of GRN in relation to diseases, or a focus on Alzheimer's disease @gupta2022single.
+
+**Brief note about transcriptomic bursting.**\
+Gene expression is inherently stochastic, occurring in bursts rather than as a continuous process, due to the random activation and inactivation of transcriptional machinery. This transcriptomic bursting means that the expression levels of individual genes fluctuate over time, making it unreliable to infer stable co-expression patterns from a single time point, see @fig-bursting. Instead of focusing on transient expression snapshots, studying gene regulatory networks (GRNs) provides a more robust framework for understanding gene interactions over longer timescales. GRNs capture how transcription factors (TFs) regulate target genes by binding to enhancer regions, establishing regulatory relationships that persist beyond momentary transcriptional fluctuations. By analyzing GRNs, researchers can infer the underlying structure of transcriptional control, allowing for a deeper understanding of cellular processes that remain stable despite the randomness. See @tang2023modelling for an overview of modeling transcriptomic bursting from single-cell data.
+
+::: block
+![(Top) From @zhang2024transcriptional. (The figure shows that on average, transcription starts and stops on the time-scale of hours in humans.)\
+(Bottom) From @jiang2017scale.](fig/chap5/bursting2.png){#fig-bursting width="100%" fig-align="center"}
+:::
+
+## What makes the field of GRN crazy? {#sec-grn_crazy}
+
+::: block
+**NOTE: Everything in this section is Kevin's extremely opinionated opinions.**
+:::
+
+There's a lot of side notes I need to make about GRNs, since a lot of students become interested in GRNs from many different angles. First off, a couple notes about how I think about GRNs:
+
+-   **Direction of causality is dictated by biology**:\
+    Part of the reason a lot of GRNs can "get away" with such simple statistics is that the directionality of edges is dictated by biology, not math. After all, we have a pretty reasonable understanding that TFs need to bind to certain regions to modulate a gene's expression.
+
+-   **Keeping in mind the time-scale of cells used when learning the GRN**:\
+    Which cells did you use to train the GRN? Did you use cells of many different cell types/states, or many different stages of progression? If so, then your GRN might be capturing *any* possible interaction between TFs and genes, and not be specific to a particular cellular state. This is to say -- you need to think hard about what your GRN represents in terms of time. Does your GRN represent something more *instantaneous* (i.e., specific to a cell or a meta-cell), and you think the GRN itself is changing as the cells change? Or does your GRN represent any possible interaction between any TF or any gene, but if you were given a particular cell, you can't quite determine if the specific TF is regulating a specific gene at that moment?
+
+    *Sidenote 1*: Even if you wanted to interpret your GRN with no time context, you'll be in trouble. First, you need variation in your data to learn GRNs. (If all your cells literally had the same expression in RNA and ATAC, you would no ability to learn the GRN.) So you *must* have some variation among your cells. So the real question is: is that variation due to some underlying biological dynamics?
+
+    *Sidenote 2*: This means you should be aware of Simpson's paradox[^chapter5_epigenetics-7] when working with GRNs. See @li2024dissecting for a cell-biology specific example of Simpon's paradox.
+
+[^chapter5_epigenetics-7]: <https://en.wikipedia.org/wiki/Simpsons_paradox>
+
+As a sidenote, it is important that different methods assume (by default) a different distance between a peak and its regulated gene, see @fig-peak-gene-length. Also note that this distance isn't even necessarily distance (since often, you might expect more enhancers to be upstream of a gene's TSS than downstream). Also, the way different methods "weigh" the total regulatory effect of all the CREs on a gene might differ.
+
+::: block
+![From @loers2024single](fig/chap5/peak-gene-length.png){#fig-peak-gene-length width="100%" fig-align="center"}
+:::
+
+**Why do we (as a field) focus on "causal" edges, instead of simply "correlation" edges?**
+
+A *lot* of the methods I noted are placing edges between 2 elements simply based on correlation. If you are statistics-leaning student, this might leave a bad taste in your mouth since either: 1) you are aware of the differences between correlation and conditional independence, and/or 2) you are aware of the differences between correlation and causation (say, in the counterfactual sense).
+
+As for conditional independence, methods to learn gene regulatory networks via conditional independence have fallen out of favor, *not* because the statistical goal is not worthwhile, but (in my impression), the scientific improvement in our biological understanding hasn't been substantially large enough to warrant such a massively more complicated estimation procedure. (If you can figure out a way to convincingly articulate that conditional independence networks starkly gives you a more accurate picture of biology, there is a lot of reward. However, to do this, you need to have a very rigorous biological understand on how you'll do this, likely with a lot of wetlab experiments to back you up.
+
+As for causality, an ideal goal might be to only place edges if perturbing one element necessarily *causes* a change in the downstream element. We will return back to this when we discuss CRISPR knockouts in @sec-chapter_7. However, suffice to say, for now, this is extremely challenging for many aspects:
+
+-   **Limitations of data collection**:\
+    Unlike a clinical trial, in single-cell biology, we are measuring everything at once, *and* we kill the cell to sequence the cell. This means: 1) we cannot accurately be sure about the direction of causality, since we need to estimate the "age" of a cell and the "timeline" of a cell. (After all, a foundation of causal inference is that you can say definitely someone got a treatment *before* you measure the outcome.) In our cell biology setting, you are measuring all the peaks and gene expression at the same time, so how can you be so definitive on the direction of causality?
+
+    Even if you retort and set up a longitudinal CRISPR experiment, since you have to kill (lyse) the cell to sequence it, you can only get longitudinal information about the overall petri dish, not longitudinal information about specific cells. (Technically, this aspect isn't the worst limitation. After all, in an observational study, if you analyze enough people, you can know if a drug caused a change in someone's blood pressure even if you didn't measure someone's blood pressure before they took the drug. *However*, in our single-cell context, since we can never observe *both* pre-treatment and post-treatment, it is hard to stratify the "treatment effect" of a CRISPR knockout, unless you're working with a mostly homogeneous cell line where there's basically no variation among the cells.
+
+-   **Are we really learning causal effects if we don't know all the middle-men in transcription?**\
+    Even if you say that a particular TF "causes" a change in downstream gene's expression, does this *really* make sense unless you are honing in on the specific pathway and mechanisms? After all, the grand holy grail of cell biology is to articulate the specific set of events. If your hard work of causal inference is only amounts to stating two things are causally related, but you are not able to say explicitly how (in a bio-mechanistic sense), is your finding advancing biology, or is it just a slight improvement in the statistics?
+
+    See @fig-apoptosis for an example of the type of mechanisms a cell biologists wants to uncover at the end of the day. It's a very literal sequence of events of how certain biological processes unfold.
+
+::: block
+![From @taylor2008apoptosis](fig/chap5/apoptosis.png){#fig-apoptosis width="100%" fig-align="center"}
+:::
+
+-   **What is exactly is the "treatment"?**\
+    This is more of a philosophical aspect -- if you do not have a way to actually perturb a biological element (i.e., we do not have the technology to actually safely alter a particular cell element), is it even that important to learn the true causality? For instance, if I tell you that learning how to fly will definitely cause you to live past 100 years, would you really be that interested in my finding?
+
+-   **Do CRISPR knockouts actually recapitulate what naturally happens?**\
+    The most common way to validate a GRN is to perform a CRISPR knockout and measure what happens to the resulting cells. (We'll discuss this more in @sec-chapter_7.) This is great to validate a computational method's GRN. However, it doesn't necessarily recapitulate what happens naturally in the body during differentiation or a disease's progression. For example, if I gave you a drug that cured cancer but caused you to turn into a vampire, would this be a viable discovery?
+
+::: block2
+**So what does this mean for me?**\
+Despite this shortcomings of existing GRNs, technological limitations have never stopped ambitious researchers to find creative solutions. When you work on GRNs, the biggest question is to have a research plan on how to validate your GRN (nowadays, it's typically done with a CRISPR knockout experiment, but it can also involve some computational validation) and what you are planning to demonstrate its importance downstream for new biological insights.
+:::
+
+**A brief note on related topics.**\
+See @loers2024single and @kim2023gene for *fantastic* overviews on GRNs learned from multi-omic data. Remember that GRNs have existed way before paired multiome data has been around. See @karamveer2024approaches, @stock2024topological for overviews not specific to learning GRNs from multi-omic data. See @garbulowski2024genespider2, @cannoodt2021spearheading, @pratapa2020benchmarking for an example of how to synthetically generate a gene regulatory network and the corresponding scRNA-seq data (to benchmark methods).
+
+Also, note that there are some network methods that have nodes for each genomic feature *and* cells, see @fig-simba. Some example of methods are SIMBA @chen2024simba and CellWalker2 @hu2024cellwalker2.
+
+::: block
+![From @chen2024simba](fig/chap5/simba.png){#fig-simba width="100%" fig-align="center"}
+:::
