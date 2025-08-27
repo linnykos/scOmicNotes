@@ -115,7 +115,7 @@ Efforts like the ENCODE project (<https://pmc.ncbi.nlm.nih.gov/articles/PMC70619
 
 Finally, tools like MPRA (Massively Parallel Reporter Assays) are revolutionizing how we study enhancers and regulatory sequences. MPRA allows researchers to test thousands of DNA fragments for their regulatory activity, providing functional validation for epigenetic marks. This growing zoo of modalities continues to expand our understanding of how the genome is dynamically regulated in health and disease.
 
-See @fig-epigenetic2-1 for some courageous figures that try to display multiple types of epigenetic modifications all at once. See @lim2024advances for a broad overview about the different types of technologies to sequence different omics and layers of epigenetics, and how they are getting computationally put together.
+See @fig-epigenetic2-1 and @fig-epigenetic2-2 for some courageous figures that try to display multiple types of epigenetic modifications all at once. See @lim2024advances for a broad overview about the different types of technologies to sequence different omics and layers of epigenetics, and how they are getting computationally put together.
 
 ::: block
 ![From <https://www.sc-best-practices.org/chromatin_accessibility/introduction.html>.](fig/chap5/epigenetic2.png){#fig-epigenetic2-1 width="100%" fig-align="center"}
@@ -222,18 +222,34 @@ ChromVAR (short for Chromatin Variability Across Regions, @schep2017chromvar) is
 **Details of ChromVAR.** ChromVAR works by computing **deviation scores**, which measure how much the accessibility of a given set of regions (e.g., those containing a specific transcription factor motif) varies across cells or samples. This enables the identification of transcription factors that are likely active and driving regulatory differences within the dataset. See @fig-chromvar.
 
 ::: block3
-**Input/Output.** The input for a ChromVAR analysis is: 1) \$ \in \mathbb{Z}\_+\^{n\times p}\$ for the $n$ cells and $p$ peaks, 2) the specific locations of the $p$ peaks along the reference genome (for example, in humans, this could be the `hg38` reference genome, and in R, this is typically managed by the `GenomicRanges` BioConductor package, and 3) a database of TF motifs, such as JASPAR. (\*Technically\*), you don't actually pass Item #2 or #3 as input. ChromVAR already expects you to have matched peaks to motifs using some method, for instance, `motifmatchr`. This matching is where, technically, Item #2 and #3 are used.) The output is then a new matrix $Y \in \mathbb{R}^{n\times d}$ where $d$ is the number of TFs, and entry $Y_{ij}$ denotes the excess variability of the TF $j$'s accessibility in cell $i$, relative to a set of "background" DNA regions that have similar qualities as TF $j$.
+**Input/Output.** The input for a ChromVAR analysis is: 1) $\in \mathbb{Z}_{+}^{n \times p}$ for the $n$ cells and $p$ peaks, 2) the specific locations of the $p$ peaks along the reference genome (for example, in humans, this could be the `hg38` reference genome, and in R, this is typically managed by the `GenomicRanges` BioConductor package, and 3) a database of TF motifs, such as JASPAR. (\*Technically\*), you don't actually pass Item #2 or #3 as input. ChromVAR already expects you to have matched peaks to motifs using some method, for instance, `motifmatchr`. This matching is where, technically, Item #2 and #3 are used.) The output is then a new matrix $Y \in \mathbb{R}^{n\times d}$ where $d$ is the number of TFs, and entry $Y_{ij}$ denotes the excess variability of the TF $j$'s accessibility in cell $i$, relative to a set of "background" DNA regions that have similar qualities as TF $j$.
 :::
 
-Here's how it works: 1. **Input Data**: The input consists of a **binary peak-by-cell matrix** (e.g., from single-cell ATAC-seq), where each entry indicates whether a specific genomic region (peak) is accessible in a given cell. A set of **motif annotations** (e.g., binding motifs for transcription factors) is provided to group peaks into motif-associated sets.
+Here's how it works:
 
-**Importantly**: To run ChromVAR, you *must* have a reference genome. You are about to scan the genome for locations where a motif can bind to a particular DNA sequence in the reference genome. That is, you're thinking about the specific base pair sequence of the DNA. 2. **Region Set Aggregation**: Peaks are grouped into sets based on the motifs. For each cell $i$ and each motif-associated region set $k$, ChromVAR computes the **aggregate accessibility**: $$
-   A_{ik} = \sum_{j \in S_k} X_{ij},
-   $$ where $S_k$ is the set of peaks $j$'s associated with motif $k$.
+1.  **Input Data**: The input consists of a **binary peak-by-cell matrix** (e.g., from single-cell ATAC-seq), where each entry indicates whether a specific genomic region (peak) is accessible in a given cell. A set of **motif annotations** (e.g., binding motifs for transcription factors) is provided to group peaks into motif-associated sets.
 
-In simple terms, you're adding up all the peaks that contain a relevant motif.) This sum (for cell $i$) is normalized against all other cells (i.e., across all cells, how many counts were mapped to these peaks. 3. **Sampling a set of background peaks**: One of ChromVAR's most important steps is carefully choosing a set of "background peaks," i.e., peaks that are not the ones associated with motif $k$, but have similar biological qualities. ChromVAR typically controls for two important things to do this: the GC content of a peak region and the region's fragment length. (GC content is adjusted for since PCR tends to favor GC-rich regions.) Then, for every peak that contains motif $k$, it samples many different peaks that has similar GC content and fragment length to the particular peak. This loops over all the peaks associated with motif $k$, and the aggregate set of sampled peak is called the set of background peaks. 4. **Deviation Scores**: The **deviation score** quantifies how much the accessibility for a motif-associated region set deviates from what is expected under a background distribution. ChromVAR uses a binomial model to compute the expected accessibility, and the deviation score $D_{kj}$ is defined as the z-score: $$
-   Y_{ik} = \frac{A_{ik} - \mathbb{E}[A_{ik}]}{\text{SD}[A_{ik}]},
-   $$ where $\mathbb{E}[A_{ik}]$ and $\text{SD}[A_{ik}]$ are the expected mean and standard deviation of the accessibility for motif $k$ under the background model. This matrix $Y$ (over all the cells and all motifs) is the output.
+**Importantly**: To run ChromVAR, you *must* have a reference genome. You are about to scan the genome for locations where a motif can bind to a particular DNA sequence in the reference genome. That is, you're thinking about the specific base pair sequence of the DNA.
+
+2.  **Region Set Aggregation**: Peaks are grouped into sets based on the motifs. For each cell $i$ and each motif-associated region set $k$, ChromVAR computes the **aggregate accessibility**:
+
+$$
+A_{ik} = \sum_{j \in S_k} X_{ij},
+$$
+
+where $S_k$ is the set of peaks $j$'s associated with motif $k$.
+
+In simple terms, you're adding up all the peaks that contain a relevant motif.) This sum (for cell $i$) is normalized against all other cells (i.e., across all cells, how many counts were mapped to these peaks.
+
+3.  **Sampling a set of background peaks**: One of ChromVAR's most important steps is carefully choosing a set of "background peaks," i.e., peaks that are not the ones associated with motif $k$, but have similar biological qualities. ChromVAR typically controls for two important things to do this: the GC content of a peak region and the region's fragment length. (GC content is adjusted for since PCR tends to favor GC-rich regions.) Then, for every peak that contains motif $k$, it samples many different peaks that has similar GC content and fragment length to the particular peak. This loops over all the peaks associated with motif $k$, and the aggregate set of sampled peak is called the set of background peaks.
+
+4.  **Deviation Scores**: The **deviation score** quantifies how much the accessibility for a motif-associated region set deviates from what is expected under a background distribution. ChromVAR uses a binomial model to compute the expected accessibility, and the deviation score $D_{kj}$ is defined as the z-score:
+
+$$
+    Y_{ik} = \frac{A_{ik} - \mathbb{E}[A_{ik}]}{\text{SD}[A_{ik}]},
+$$
+
+where $\mathbb{E}[A_{ik}]$ and $\text{SD}[A_{ik}]$ are the expected mean and standard deviation of the accessibility for motif $k$ under the background model. This matrix $Y$ (over all the cells and all motifs) is the output.
 
 ::: block
 ![From @schep2017chromvar](fig/chap5/chromvar.png){#fig-chromvar width="100%" fig-align="center"}
@@ -282,9 +298,13 @@ $$
 $$
 :::
 
-The Gromov-Wasserstein (GW) distance uses optimal transport by aligning the pairwise distances of cell *with* each omic. Given distance matrices $\mathbf{D}^{X}$ and $\mathbf{D}^{Y}$ for datasets $X$ and $Y$ (one for each omic), the GW problem is $$
+The Gromov-Wasserstein (GW) distance uses optimal transport by aligning the pairwise distances of cell *with* each omic. Given distance matrices $\mathbf{D}^{X}$ and $\mathbf{D}^{Y}$ for datasets $X$ and $Y$ (one for each omic), the GW problem is
+
+$$
 \operatorname{GW}(\mu, \nu) = \min_{\mathbf{G} \in \Pi(\mu, \nu)} \sum_{i,k} \sum_{j,l} L(D^X_{ik}, D^Y_{jl}) G_{ij} G_{kl},
-$$ where $L(D^X_{ik}, D^Y_{jl})$ quantifies how much the transport plan distorts local geometric structures. SCOT uses this framework to learn an alignment between single-cell datasets by computing the optimal $\mathbf{G}$, followed by a barycentric projection to bring the datasets into a common space.
+$$
+
+where $L(D^X_{ik}, D^Y_{jl})$ quantifies how much the transport plan distorts local geometric structures. SCOT uses this framework to learn an alignment between single-cell datasets by computing the optimal $\mathbf{G}$, followed by a barycentric projection to bring the datasets into a common space.
 
 ::: block
 ![From @demetci2022scot.](fig/chap5/scot.png){#fig-glue width="100%" fig-align="center"}
@@ -316,7 +336,9 @@ Some of the modeling details:
 
 $$
 \log p(\mathcal{G}  | V) = \sum_{(i, j) \in \mathcal{E} } \big[\log \sigma(s_{ij} v_i^\top v_j) + \sum_{j' : (i,j') \notin \mathcal{E}} \log\big(1-\sigma(s_{ij'}v_i^\top v_{j'}\big)\big],
-$$ where $\sigma$ is the sigmoid function, $s\_{ij}$ indicates edge polarity, and $v_i, v_j$ are feature embeddings. We'll need to learn the graph convolution network encoder to learn $V$ from $\mathcal{G}$ (please see the paper for this -- this is a bit complicated to explain concisely), as well as the parameters $\{s_{ij}\}_{i,j\in\{1,\ldots,p\}}$ (which is the "decoder" for the graph, in a sense).
+$$
+
+where $\sigma$ is the sigmoid function, $s_{ij}$ indicates edge polarity, and $v_i, v_j$ are feature embeddings. We'll need to learn the graph convolution network encoder to learn $V$ from $\mathcal{G}$ (please see the paper for this -- this is a bit complicated to explain concisely), as well as the parameters $\{s_{ij}\}_{i,j\in\{1,\ldots,p\}}$ (which is the "decoder" for the graph, in a sense).
 
 This $V$ is a matrix with number of rows equal to the total number of features in $\mathcal{G}$, and the number of columns equal to the latent dimension. We can subset the rows specific to the $k$-th omic to get the matrix (with less rows) $V^{(k)}$.
 
@@ -338,8 +360,9 @@ The important formula to see how this works is the Equation (9) in the paper, wh
 
 $$
 \begin{aligned}
-&  \big\{\text{The imputed expected expression of feature $j$ in omic $k$}\big\} = \big\{\text{The $j$-th coordiate of: }\\
-& \text{SoftMax}\Big(\alpha \odot (V^{(k)})^\top u_i+ \beta \Big)\big\} \cdot \big\{\text{Observed library size of the cell in omic $k$}\big\}.
+&\big\{\text{The imputed expected expression of feature $j$ in omic $k$}\big\} = \\
+&\big\{\text{The $j$-th coordiate of: SoftMax}\Big(\alpha \odot (V^{(k)})^\top u_i+ \beta \Big)\big\} \cdot \\
+&\big\{\text{Observed library size of the cell in omic $k$}\big\}.
 \end{aligned}
 $$
 
@@ -369,7 +392,9 @@ $$
     \end{aligned}
 $$
 
+       
 where $\lambda_{\mathcal{G}}$ and $\lambda_{D}$ are hyperparameters.
+
 
 ::: block
 ![From @cao2022multi.](fig/chap5/glue.png){#fig-glue2 width="100%" fig-align="center"}
