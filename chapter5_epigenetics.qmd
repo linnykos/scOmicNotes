@@ -33,7 +33,7 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 
 -   **DNA Accessibility**: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we'll focus on this chapter.)
 
--   **DNA Methylation**[^chapter5_epigenetics-1]: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See @fig-methylation1-1.
+-   **DNA Methylation**[^chapter5_epigenetics-1]: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See @fig-methylation1-1 and @fig-methylation1-2.
 
 [^chapter5_epigenetics-1]: The technology to measure this at single-cell resolution is still being developed (see snmC-seq2 @liu2021dna), and is particularly interesting due to methylation's relation to cellular memory @kim2017dna and molecular clocks @hernando2019ageing; @trapp2021profiling; @gabbutt2022fluctuating.
 
@@ -45,7 +45,7 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 ![From @bruggeman2008using.](fig/chap5/methylation2.png){#fig-methylation1-2 width="100%" fig-align="center"}
 :::
 
--   **Hi-C and Genome Organization**[^chapter5_epigenetics-2]: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See @fig-hic1-1.
+-   **Hi-C and Genome Organization**[^chapter5_epigenetics-2]: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See @fig-hic1-1 and @fig-hic1-2.
 
 [^chapter5_epigenetics-2]: See Droplet-HiC @chang2024droplet for an example of single-cell Hi-C.
 
@@ -57,7 +57,7 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 ![From @liu2021seeing.](fig/chap5/hic2.png){#fig-hic1-2 width="100%" fig-align="center"}
 :::
 
--   **Histone Modifications**[^chapter5_epigenetics-3]: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut & Tag method are used to map these modifications and their role in gene expression at the bulk level. See @fig-histone1.
+-   **Histone Modifications**[^chapter5_epigenetics-3]: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut & Tag method are used to map these modifications and their role in gene expression at the bulk level. See @fig-histone1 and @fig-histone2.
 
 [^chapter5_epigenetics-3]: See Paired-tag @zhu2021joint for an example of single-cell histone modification.
 
@@ -69,7 +69,7 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 ![From @steinbach2017pten. (Note: This is an example of the "canonical" functions of common histone modifications. This is by no means exhaustive and guaranteed to hold true for all biological systems.)](fig/chap5/histone2.png){#fig-histone2 width="100%" fig-align="center"}
 :::
 
-Some of you might be interested: Personally, I think one of the fascinating concepts based on histone modifications is *bivalent chromatin* (essentially, chromatin that is wrapped in such a way that is simultaneously activated and silenced), see @fig-bivalent1-1. It's a particularly curious phenomenon that entire labs dedicate themselves to studying. See @blanco2020bivalent for an overview why this mechanism might be "beneficial."
+Some of you might be interested: Personally, I think one of the fascinating concepts based on histone modifications is *bivalent chromatin* (essentially, chromatin that is wrapped in such a way that is simultaneously activated and silenced), see @fig-bivalent1-1 and @fig-bivalent1-2. It's a particularly curious phenomenon that entire labs dedicate themselves to studying. See @blanco2020bivalent for an overview why this mechanism might be "beneficial."
 
 ::: block
 ![From @macrae2023regulation.](fig/chap5/bivalent1.png){#fig-bivalent1-1 width="100%" fig-align="center"}
@@ -85,14 +85,14 @@ Some of you might be interested: Personally, I think one of the fascinating conc
 ![From @hamma2006pseudouridine about pseudouridine.](fig/chap5/pseudouridine.png){#fig-pseudouridine width="100%" fig-align="center"}
 :::
 
--   **Untranslated Regions (UTRs)**: Before talking about UTRs, it's probably good to review what an mRNA fragment "looks like" at the different stages of transcription and translation, see @fig-utr2. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation.
+-   **Untranslated Regions (UTRs)**: Before talking about UTRs, it's probably good to review what an mRNA fragment "looks like" at the different stages of transcription and translation, see @fig-utr1. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation (@fig-utr2 and @fig-utr3).
 
 ::: block
-![From @niazi2023rna. Notice the splicing (i.e., "removal" of the introns – see *Alternative Splicing* below) and that the protein-coding region is *not* the only part of the mRNA transcript – there are also the UTRs and poly-A tail. **NOTE**: The transcription start site (TSS) is *not* the same place as the promoter. The promoter is usually an un-transcribed region upstream of the TSS, while the TSS is where transcription actually starts.](fig/chap5/utr2.png){#fig-utr2 width="100%" fig-align="center"}
+![From @niazi2023rna. Notice the splicing (i.e., "removal" of the introns – see *Alternative Splicing* below) and that the protein-coding region is *not* the only part of the mRNA transcript – there are also the UTRs and poly-A tail. **NOTE**: The transcription start site (TSS) is *not* the same place as the promoter. The promoter is usually an un-transcribed region upstream of the TSS, while the TSS is where transcription actually starts.](fig/chap5/utr2.png){#fig-utr1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @mignone2002untranslated.](fig/chap5/utr1.png){#fig-utr1 width="100%" fig-align="center"}
+![From @mignone2002untranslated.](fig/chap5/utr1.png){#fig-utr2 width="100%" fig-align="center"}
 :::
 
 ::: block
