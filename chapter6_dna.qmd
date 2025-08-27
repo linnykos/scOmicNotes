@@ -26,8 +26,6 @@ A single nucleotide polymorphism (SNP) is a variation at a single base pair posi
 :::
 
 SNPs are detected using high-throughput sequencing technologies, primarily whole-genome sequencing (WGS) and whole-exome sequencing (WES). In these approaches, DNA is extracted from a biological sample, fragmented, and sequenced to generate short or long reads. The raw sequencing reads are then aligned to a reference genome, and variant calling algorithms such as those implemented in `GATK` [@mckenna2010genome], `bcftools`, and `FreeBayes` [@garrison2012haplotype] identify SNPs by comparing observed nucleotide differences to the reference sequence. (See @zverinova2022variant for a overview). The sequencing depth, or coverage, at a given genomic position determines the confidence in an SNP call, with higher coverage reducing the likelihood of sequencing errors.
-<<<<<<< HEAD
-=======
 
 
 #### Tissues Used for DNA Sequencing
@@ -616,5 +614,3 @@ Short Tandem Repeats (STRs) are a hot topic in current genomics research because
 
 See @chintalaphani2021update for tables of which STRs have been discovered to be associated with which diseases. See @tanudisastro2024sequencing, @hannan2018tandem for more details on how STR occur, what their functional role is, and how they are studied.
 
-
->>>>>>> 1a05854d5f73581e40eb6d9173d4e5c6e11aa71a
