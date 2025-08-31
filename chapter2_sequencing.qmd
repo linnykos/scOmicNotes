@@ -30,15 +30,15 @@ Here are some basic statistics about these matrices (based mainly from my experi
 
 Based on these observations, the negative binomial distribution is very commonly used.
 
-::: block
-::: {layout-ncol=2}
+:::: block
+::: {layout-ncol="2"}
 ![](fig/chap2/count.png){width="80%"}
 
 ![](fig/chap2/nonzero_hist.png){width="23%"}
 :::
 
 Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). [@satijalab_tutorial]
-:::
+::::
 
 The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.
 
@@ -189,6 +189,8 @@ Cell filtering is a crucial preprocessing step in single-cell sequencing analysi
 
 This is commonly using the `subset` function in R, where we commonly filter based on `nFeature_RNA` (i.e., the number of genes that are expressed in a cell) and `percent.mt` (i.e., the fraction of counts that are originating from mitochondrial genes). The latter is usually computed using `Seurat::PercentageFeatureSet`[^chapter2_sequencing-3]. See @fig-filtering for an illustration. There is no commonly used threshold for these filters, but it typically depends on removing the extreme quantiles in your dataset. If this simple filter isn't sophisticated enough to detect doublets (and you have good biological/technical reasons to suspect doublets, typically due to either the cell isolation or droplet formulation step), the doublet detection method I've seen used is DoubletFinder [@mcginnis2019doubletfinder].
 
+[^chapter2_sequencing-3]: Typically, the feature selection step doesn't use the normalized matrix even though normalization happens before feature selection. See <https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995>. This is because it's preferable to normalize using *all* the reads, even from genes you don't actually include in your analysis.
+
 **Note**: In `Seurat`, the cells are denoted as *columns* and features (such as genes) as *rows*. This is the transpose of the typical statistical notation.
 
 ::: block
@@ -196,6 +198,8 @@ This is commonly using the `subset` function in R, where we commonly filter base
 :::
 
 We usually filter based on `nFeature_RNA` because cells with too few genes are potentially deemed as empty droplets, and cells with too many genes are potentially deemed as doublets. High percentage of gene expression from mitochondrial genes is typically an indicator of poor sample quality[^chapter2_sequencing-4].
+
+[^chapter2_sequencing-4]: See <https://en.wikipedia.org/wiki/Low-rank_approximation>.
 
 ### A brief note on other approaches
 
@@ -241,6 +245,8 @@ Feature selection is a critical step in single-cell sequencing analysis that foc
 ::: block3
 **Input/Output.** The input to feature selection is a count matrix $X\in \mathbb{Z}_+^{n\times p}$ for $n$ cells and $p$ features (i.e., genes)[^chapter2_sequencing-5], and the output is $X'\in \mathbb{R}^{n\times p'}$ where $p' \leq p$, whose columns are a strict subset of those in $X$.
 :::
+
+[^chapter2_sequencing-5]: Typically, the feature selection step doesn't use the normalized matrix even though normalization happens before feature selection. See <https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995>. This is because it's preferable to normalize using *all* the reads, even from genes you don't actually include in your analysis.
 
 ### The standard procedure: Variance Stabilizing Transformation
 
@@ -340,6 +346,8 @@ Some remarks:
 
 -   **Relation to eigen-decompositions**: PCA is fundamentally tied to eigen-decompositions due to the Low-Rank Approximation theorem[^chapter2_sequencing-6] (more formally, the Eckart-Young-Mirsky theorem). Specifically, $\hat{W}$ is the eigenvalues of $\hat{\Sigma}$, the covariance matrix. See @fig-pca-illustration2 (right).
 
+[^chapter2_sequencing-6]: See <https://en.wikipedia.org/wiki/Low-rank_approximation>.
+
 (If you are familiar with how to manipulate eigen-decompositions, you can convince yourself that Formulation 2 is most directly related to the Low-Rank Approximation.)
 
 -   **Interpretation of Formulation #1**: In Formulation 1, we want to project the data $X$ onto a lower-dimensional subspace defined by $\hat{W}$ such the low-dimensional data $\hat{Z}$ has as much variance as possible. This is by far the most common explanation of PCA. Part of its appeal is that it's easy to explain what the "population model's target quantity" is through this interpretation, but 1) it requires you to intrinsically understand why preserving covariance is something useful when we're more interested in about the cells themselves, and 2) does not give insight to the more popular extensions of PCA.
@@ -356,6 +364,8 @@ Some remarks:
 2.  We consider *all* pairs of points.
 
 These two aspects combined yield the qualitative statement that "PCA favors a global embedding that preserve far-away points".[^chapter2_sequencing-7] In some sense, this is the exact opposite of what we want -- qualitatively, we probably care more about getting the relative distances of each points and its immediate/local neighbors (so we can accurately see the subtle shifts in cells, as in trajectory inference).
+
+[^chapter2_sequencing-7]: Sometimes, people use the word "overcrowding" to refer to the fact that embedding methods might collapse nearby points too aggressively.
 
 **Adjustable aspects to obtain other dimension-reduction methods**: 1) How we're measuring distance in $X$ or in $Z$ we're using (perhaps using a distance that adapts to the geometry of the data), 2) how to measure the "distortion" in the pairwise distances, 3) which pairs of cells do we care about preserving their distances?
 
@@ -405,8 +415,8 @@ Batch correction is a vital step in single-cell sequencing analysis that address
 
 We will talk about this a bit more when we discuss integration methods for cell-type labeling @sec-celltype_labeling.
 
-::: block
-::: {layout-ncol=3}
+:::: block
+::: {layout-ncol="3"}
 ![](fig/chap2/batch1.png){width="100%"}
 
 ![](fig/chap2/batch2.png){width="100%"}
@@ -415,7 +425,7 @@ We will talk about this a bit more when we discuss integration methods for cell-
 :::
 
 Illustration of what the goal of batch correction is. All these are UMAPs (see @sec-visualization). The top row colors cells by their batch, and the bottom row colors cells by cell type. (Left) Original data showing batch effects. (Middle) Intermediate processing. (Right) The batch-corrected data. [@tran2020benchmark]
-:::
+::::
 
 ::: block3
 **Input/Output.** The input to batch correction is (1) either the normalized matrix $X \in \mathbb{R}^{n\times p}$ or the score matrix $Z \in \mathbb{R}^{n\times k}$ and (2) an categorical vector $C \in \{1,\ldots,B\}^n$ which denotes which cell belongs to which batch. (Certain batch correction methods might require more information.) In a literal sense, both $X$ and $Z$ are technically row-wise concatenations of many datasets.
@@ -456,6 +466,8 @@ Harmony [@korsunsky2019fast] is one of the most commonly used methods to integra
 ### How to do this in practice
 
 There is no standardize default for batch correction. The usual practice is to: 1) decide upfront (with your collaborators) on how you would deem what is a "successful" batch correction. This usually involves understanding the data generation protocol and the biology question of interest. This will involve a blend of biological logic (i.e., statements that should be true, given the biological context), qualitative evaluations (i.e., based on plots), and numerical metrics (i.e., based on some score where you decide upfront how the score relates to a desirable batch correction). Then, 2) you try many batch correction methods[^chapter2_sequencing-8].
+
+[^chapter2_sequencing-8]: See Seurat's recommendation in <https://satijalab.org/seurat/articles/seurat5_integration>.
 
 ::: {#rem-batch .block}
 **Remark (Personal opinion: Batch correction is single-handedly the most precarious step in almost every analysis).** While a cautious statistician might be doubtful for "cherry-picking" a good batch-correction method, the reality is that there is no guaranteed procedure to always work. This is because there are so many types of "batches," and the underlying data generation pipeline, technology, and biology differs from lab to lab. Also, doing a "bad" batch correction is extremely detrimental. Unlike many other steps in a single-cell analysis where most choices of how to perform a step are "reasonable" (but some methods might have slightly better power or slightly more robust), a bad batch correction can single-handedly invalidate almost all other aspects of a single-cell analysis regardless of how sophisticated those methods are.
@@ -531,17 +543,4 @@ See the `Seurat::RunUMAP` function, illustrated in @fig-umap. The resulting visu
 
 Because visualizing high-dimensional data will always be a need, and there's never going to be an "optimal" way to do it, the visualization method of choice is going to change based on the community's desires every 5-10 years. While currently UMAP is king (which dethroned t-SNE, who was the previous king), there's definitely methods trying to dethrone UMAP. The method I've seen the most popularity to dethrone UMAP so far is PaCMAP, but as of 2024-25, UMAP is still by far the most common visualization method. See [@huang2022towards] for a broad benchmarking of such methods.
 
-There are two lines of work I'll mention that might be of interest for the statistical students. One is developing methods to assess how "distorted" the visualization is, see [@johnson2022embedr; @xia2024statistical]. Another is to trying to prove (using a formal statistical model) how well these visualization methods actually "cluster" the cells, see [@arora2018analysis; @cai2022theoretical].
-::::::::::::::::::::::::::::::::::::::::
-
-[^chapter2_sequencing-3]: Typically, the feature selection step doesn't use the normalized matrix even though normalization happens before feature selection. See <https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995>. This is because it's preferable to normalize using *all* the reads, even from genes you don't actually include in your analysis.
-
-[^chapter2_sequencing-4]: See <https://en.wikipedia.org/wiki/Low-rank_approximation>.
-
-[^chapter2_sequencing-5]: Typically, the feature selection step doesn't use the normalized matrix even though normalization happens before feature selection. See <https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995>. This is because it's preferable to normalize using *all* the reads, even from genes you don't actually include in your analysis.
-
-[^chapter2_sequencing-6]: See <https://en.wikipedia.org/wiki/Low-rank_approximation>.
-
-[^chapter2_sequencing-7]: Sometimes, people use the word "overcrowding" to refer to the fact that embedding methods might collapse nearby points too aggressively.
-
-[^chapter2_sequencing-8]: See Seurat's recommendation in <https://satijalab.org/seurat/articles/seurat5_integration>.
+There are two lines of work I'll mention that might be of interest for the statistical students. One is developing methods to assess how "distorted" the visualization is, see [@johnson2022embedr; @xia2024statistical]. Another is to trying to prove (using a formal statistical model) how well these visualization methods actually "cluster" the cells, see [@arora2018analysis; @cai2022theoretical]. ::::::::::::::::::::::::::::::::::::::::
