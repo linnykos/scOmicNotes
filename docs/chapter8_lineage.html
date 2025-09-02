@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -246,7 +226,6 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></h1>
-<p class="subtitle lead">[]</p>
 </div>
 
 
@@ -277,7 +256,7 @@ window.Quarto = {
 <img src="fig/chap8/cancer_treatment1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.1: (Top) From <span class="citation" data-cites="ashouri2023decoding">Ashouri, Zhang, and Gaiti (<a href="references.html#ref-ashouri2023decoding" role="doc-biblioref">2023</a>)</span>.
+Figure&nbsp;7.1: From .
 </figcaption>
 </figure>
 </div>
@@ -289,7 +268,7 @@ Figure&nbsp;7.1: (Top) From <span class="citation" data-cites="ashouri2023decodi
 <img src="fig/chap8/cancer_treatment2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.2: (Bottom) From <span class="citation" data-cites="marine2020non">Marine, Dawson, and Dawson (<a href="references.html#ref-marine2020non" role="doc-biblioref">2020</a>)</span>.
+Figure&nbsp;7.2: From .
 </figcaption>
 </figure>
 </div>
@@ -304,7 +283,7 @@ Figure&nbsp;7.2: (Bottom) From <span class="citation" data-cites="marine2020non"
 <img src="fig/chap8/metastasis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.3: From <span class="citation" data-cites="fu2023emerging">(<a href="references.html#ref-fu2023emerging" role="doc-biblioref"><strong>fu2023emerging?</strong></a>)</span>.
+Figure&nbsp;7.3: From .
 </figcaption>
 </figure>
 </div>
@@ -319,7 +298,7 @@ Figure&nbsp;7.3: From <span class="citation" data-cites="fu2023emerging">(<a hre
 <img src="fig/chap8/covid.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.4: From <span class="citation" data-cites="stephenson2021single">Stephenson et al. (<a href="references.html#ref-stephenson2021single" role="doc-biblioref">2021</a>)</span>. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
+Figure&nbsp;7.4: From . You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
 </figcaption>
 </figure>
 </div>
@@ -334,7 +313,7 @@ Figure&nbsp;7.4: From <span class="citation" data-cites="stephenson2021single">S
 <img src="fig/chap8/larry.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.5: From <span class="citation" data-cites="weinreb2020lineage">Weinreb et al. (<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref">2020</a>)</span>. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What’s shown here are cells known to be in different lineages, but certain lineages don’t differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.
+Figure&nbsp;7.5: From . This dataset was recorded longitudinally, with cells sequenced at Days 2, 4, and 6. The figure shows cells known to belong to different lineages, revealing that some lineages do not differentiate by Day 6, some differentiate into multiple cell types, and others differentiate into only one cell type.
 </figcaption>
 </figure>
 </div>
@@ -389,9 +368,30 @@ Figure&nbsp;7.7: From
 </figure>
 </div>
 </div>
-<p>Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a <em>claudogram</em> (i.e., the edge lengths do not carry “time-information.” This is in contrast with a <em>phylogram</em>, where edge denote “amount of elapsed time since the branching event”). See <span class="quarto-unresolved-ref">?fig-tree1</span> and <span class="quarto-unresolved-ref">?fig-tree2</span>.</p>
+<p>Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a <em>claudogram</em> (i.e., the edge lengths do not carry “time-information.” This is in contrast with a <em>phylogram</em>, where edge denote “amount of elapsed time since the branching event”). See <a href="#fig-tree1" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> and <a href="#fig-tree2" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>.</p>
 <div class="block">
-<p><img src="fig/chap8/tree.png" id="fig-tree1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From https://microbenotes.com/phylogenetic-tree/"> <img src="fig/chap8/cladogram.png" id="fig-tree2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From https://microbenotes.com/phylogenetic-tree/"></p>
+<div id="fig-tree1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tree1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/tree.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tree1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-tree2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tree2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cladogram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tree2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a>
+</figcaption>
+</figure>
+</div>
 </div>
 <section id="brief-review-number-of-rooted-trees" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="brief-review-number-of-rooted-trees"><span class="header-section-number">7.4.1</span> Brief review: Number of rooted trees</h3>
@@ -409,7 +409,7 @@ Figure&nbsp;7.7: From
 <img src="fig/chap8/unrooted-rooted.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unrooted-rooted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.8: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a>
+Figure&nbsp;7.10: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a>
 </figcaption>
 </figure>
 </div>
@@ -450,7 +450,7 @@ T_3 &amp;= (2 \times 3 - 3) \times \underbrace{T_2}_{=1} = 3, \\
 T_4 &amp;= (2 \times 4 - 3) \times \underbrace{T_3}_{=3} = (2 \times 4 - 3) \times (2 \times 3 - 3) \times 1 = 15.
 \end{aligned}
 \]</span></p>
-<p>See <a href="#fig-tree-enumerate" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> for the trees enumerated.<br>
+<p>See <a href="#fig-tree-enumerate" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> for the trees enumerated.<br>
 Using the base case <span class="math inline">\(T_2 = 1\)</span>, repeated application of this recurrence gives</p>
 <p><span class="math display">\[
 T_n = (2n - 3)!!.
@@ -463,13 +463,13 @@ T_n = (2n - 3)!!.
 <img src="fig/chap8/tree-enumerate.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tree-enumerate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.9: From <a href="https://www.megasoftware.net/mega1_manual/Phylogeny.html" class="uri">https://www.megasoftware.net/mega1_manual/Phylogeny.html</a>
+Figure&nbsp;7.11: From <a href="https://www.megasoftware.net/mega1_manual/Phylogeny.html" class="uri">https://www.megasoftware.net/mega1_manual/Phylogeny.html</a>
 </figcaption>
 </figure>
 </div>
 </div>
 <p>See (and related papers) for more context.<br>
-So… why is this result important? Observe that <span class="math inline">\(n!!\)</span> is <em>super exponential</em> (i.e., it grows faster than an exponential<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>). So if you have <span class="math inline">\(n=1000\)</span> cells, the number of possible trees you’ll try to enumerate is on the order of <span class="math inline">\(1000^{1000} = 10^{3000}\)</span>, which is way too many. See <a href="#fig-num-trees" class="quarto-xref">Figure&nbsp;<span>7.10</span></a>.</p>
+So… why is this result important? Observe that <span class="math inline">\(n!!\)</span> is <em>super exponential</em> (i.e., it grows faster than an exponential<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>). So if you have <span class="math inline">\(n=1000\)</span> cells, the number of possible trees you’ll try to enumerate is on the order of <span class="math inline">\(1000^{1000} = 10^{3000}\)</span>, which is way too many. See <a href="#fig-num-trees" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>.</p>
 <p>Therefore, when constructing phylogenetic trees, we need to be mathematically clever (probably with the help of some heuristic). Can we use some heuristic to drastically reduce the number of trees we’re going to even consider, and we can use our sequencing data of these <span class="math inline">\(n\)</span> cells to help us in this endeavor?</p>
 <div class="block">
 <div id="fig-num-trees" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -478,7 +478,7 @@ So… why is this result important? Observe that <span class="math inline">\(n!!
 <img src="fig/chap8/num_trees.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-num-trees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.10: From <a href="https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf" class="uri">https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf</a>
+Figure&nbsp;7.12: From <a href="https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf" class="uri">https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf</a>
 </figcaption>
 </figure>
 </div>
@@ -494,7 +494,7 @@ Figure&nbsp;7.10: From <a href="https://calla.rnet.missouri.edu/cheng_courses/sl
 <h2 data-number="7.5" class="anchored" data-anchor-id="lentiviral-lineage-tracing"><span class="header-section-number">7.5</span> Lentiviral lineage tracing</h2>
 <section id="sec-lentiviral_lineage" class="level3" data-number="7.5.1">
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="sec-lentiviral_lineage"><span class="header-section-number">7.5.1</span> About the technology and application</h3>
-<p>Lentiviral approaches offer a more controlled way to label and track cell lineages. By inserting a known genetic barcode into cells, scientists can reliably follow how these labeled cells expand and diversify over time. See <span class="quarto-unresolved-ref">?fig-barcode1</span>, <span class="quarto-unresolved-ref">?fig-barcode2</span>, and <span class="quarto-unresolved-ref">?fig-barcode3</span>.</p>
+<p>Lentiviral approaches offer a more controlled way to label and track cell lineages. By inserting a known genetic barcode into cells, scientists can reliably follow how these labeled cells expand and diversify over time. See <a href="#fig-barcode1" class="quarto-xref">Figure&nbsp;<span>7.13</span></a>, <a href="#fig-barcode2" class="quarto-xref">Figure&nbsp;<span>7.14</span></a>, and <a href="#fig-barcode3" class="quarto-xref">Figure&nbsp;<span>7.15</span></a>.</p>
 <ul>
 <li><p><strong>In static lineage barcoding</strong>, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell’s DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.</p>
 <p>(This won’t be the focus of the following sections. In static lineage barcoding, there is no phylogenetic tree. All the cell lineage information is relative to when the lentivirus was introduced to your cells.)</p></li>
@@ -510,10 +510,43 @@ This creates barcodes as “genetic scars” in descendant cells. This dynamic a
 </ol></li>
 </ul>
 <div class="block">
-<p><img src="fig/chap8/larry-barcode.png" id="fig-barcode1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From , an example of static barcode."> <img src="fig/chap8/cassiopeia_evolving.png" id="fig-barcode2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From , an example of evolving barcode."> <img src="fig/chap8/lineage-tech1.png" id="fig-barcode3" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From ."></p>
+<div id="fig-barcode1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-barcode1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/larry-barcode.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: From , an example of static barcode.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-barcode2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-barcode2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cassiopeia_evolving.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: From , an example of evolving barcode.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-barcode3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-barcode3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/lineage-tech1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: From .
+</figcaption>
+</figure>
+</div>
 </div>
 <p>See for fantastic overviews on both types of technologies.</p>
-<p>What can we do with this? As shown in <a href="#fig-lineage-application" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>, in the cancer setting, we can use lineage barcoding to directly observe many qualities of cancer cells. See <a href="#fig-lineage-tech2" class="quarto-xref">Figure&nbsp;<span>7.12</span></a> for a broader overview of different technologies and what biological insights they can reveal (based on what kind of information we can reconstruct from the barcode).</p>
+<p>What can we do with this? As shown in <a href="#fig-lineage-application" class="quarto-xref">Figure&nbsp;<span>7.16</span></a>, in the cancer setting, we can use lineage barcoding to directly observe many qualities of cancer cells. See <a href="#fig-lineage-tech2" class="quarto-xref">Figure&nbsp;<span>7.17</span></a> for a broader overview of different technologies and what biological insights they can reveal (based on what kind of information we can reconstruct from the barcode).</p>
 <div class="block">
 <div id="fig-lineage-application" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -521,7 +554,7 @@ This creates barcodes as “genetic scars” in descendant cells. This dynamic a
 <img src="fig/chap8/lineage-application.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-application-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.11: From
+Figure&nbsp;7.16: From
 </figcaption>
 </figure>
 </div>
@@ -533,7 +566,7 @@ Figure&nbsp;7.11: From
 <img src="fig/chap8/lineage-tech2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-tech2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.12: From
+Figure&nbsp;7.17: From
 </figcaption>
 </figure>
 </div>
@@ -555,19 +588,42 @@ Figure&nbsp;7.12: From
 <ul>
 <li><p><strong>Cassiopeia-ILP (Steiner Tree Formulation)</strong>:<br>
 First, Cassiopeia-ILP constructs a directed acyclic “potential graph” whose vertices represent all plausible ancestral states (including the <span class="math inline">\(n\)</span> observed leaves), and edges represent possible single-step mutations. The algorithm repeatedly merges pairs of nodes with a shared ancestor if they differ by a valid mutation, generating internal vertices. A user-defined parameter controls how large this potential graph may grow (to avoid excessive computational cost).</p>
-<p>Once the potential graph <span class="math inline">\(G\)</span> is built, the algorithm solves the <em>Steiner tree problem</em> on <span class="math inline">\(G\)</span> with a flow-based integer linear programming (ILP). The ILP ensures each observed cell is reached from the root (the unmutated state) by a minimal set of edges, minimizing the total number of mutation events. This method is exact but can be computationally slow for large <span class="math inline">\(n\)</span>.</p>
+<p>Once the potential graph <span class="math inline">\(G\)</span> is built, the algorithm solves the <em>Steiner tree problem</em> on <span class="math inline">\(G\)</span> with a flow-based integer linear programming (ILP). The ILP ensures each observed cell is reached from the root (the unmutated state) by a minimal set of edges, minimizing the total number of mutation events. This method is exact but can be computationally slow for large <span class="math inline">\(n\)</span>.</p></li>
+</ul>
 <div class="block2">
 <p>The Steiner tree problem is a combinatorial optimization problem that seeks the shortest possible network connecting a given set of points (terminals) while allowing additional intermediate points (Steiner nodes) to reduce the total length. In the context of evolutionary biology and phylogenetics, the Steiner tree approach can be used to infer ancestral relationships by identifying the most parsimonious connections between observed species. The problem is NP-hard, meaning exact solutions are computationally infeasible for large datasets. However, various heuristic and approximation algorithms have been developed to efficiently construct near-optimal Steiner trees in practical applications.</p>
-<p>This is different from computing the minimal spanning tree because we don’t need the Steiner tree to include every node in <span class="math inline">\(G\)</span>. We just need it to contain the <span class="math inline">\(n\)</span> leaves (i.e., the cells we actually observed). There might be hypothetical intermediate nodes (i.e., ancestral cells) in <span class="math inline">\(G\)</span> that are not deemed necessary to be included in the output Steiner tree. See <span class="quarto-unresolved-ref">?fig-cassiopeia1</span> and <span class="quarto-unresolved-ref">?fig-cassiopeia2</span>.</p>
+<p>This is different from computing the minimal spanning tree because we don’t need the Steiner tree to include every node in <span class="math inline">\(G\)</span>. We just need it to contain the <span class="math inline">\(n\)</span> leaves (i.e., the cells we actually observed). There might be hypothetical intermediate nodes (i.e., ancestral cells) in <span class="math inline">\(G\)</span> that are not deemed necessary to be included in the output Steiner tree. See <a href="#fig-cassiopeia1" class="quarto-xref">Figure&nbsp;<span>7.18</span></a> and <a href="#fig-cassiopeia2" class="quarto-xref">Figure&nbsp;<span>7.19</span></a>.</p>
 </div>
-<p>(In short, you can imagine the first step of forming the potential graph <span class="math inline">\(G\)</span> is to limit the space of possible phylogenetic trees — the returned tree must be a tree formed by the edges in <span class="math inline">\(G\)</span>. Then, in the second step, we formulate an ILP reminiscent of the Steiner tree problem to find the most “appropriate” tree.)</p></li>
+<p>(In short, you can imagine the first step of forming the potential graph <span class="math inline">\(G\)</span> is to limit the space of possible phylogenetic trees — the returned tree must be a tree formed by the edges in <span class="math inline">\(G\)</span>. Then, in the second step, we formulate an ILP reminiscent of the Steiner tree problem to find the most “appropriate” tree.)</p>
+<ul>
 <li><p><strong>Cassiopeia-Greedy</strong>:<br>
 This algorithm builds the tree top-down, repeatedly choosing the most “frequent” or highest-priority mutation (unmutated <span class="math inline">\(\to\)</span> indel) to partition the cells into two subsets: those that carry that mutation vs.&nbsp;those that do not (i.e., it’s “greedy”).</p>
 <p>Because CRISPR edits are irreversible, each multi-state site behaves effectively like a one-time event from an uncut state. Thus, one can treat each new indel as a potential splitting event. Cells with missing values at the chosen splitting site are assigned to whichever subset their non-missing edits best match. This step recurses until subsets become single cells or until all characters are used.</p>
 <p>Greedy is fast and scales to tens of thousands of cells, but may produce suboptimal solutions if extensive parallel evolution exists.</p></li>
 </ul>
 <div class="block">
-<p><img src="fig/chap8/cassiopeia1.png" id="fig-cassiopeia1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From "> <img src="fig/chap8/cassiopeia2.png" id="fig-cassiopeia2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From "></p>
+<div id="fig-cassiopeia1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cassiopeia1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cassiopeia1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.18: From
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cassiopeia2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cassiopeia2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/cassiopeia2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.19: From
+</figcaption>
+</figure>
+</div>
 </div>
 </section>
 <section id="some-implementation-notes" class="level3" data-number="7.5.4">
@@ -580,7 +636,7 @@ This algorithm builds the tree top-down, repeatedly choosing the most “frequen
 <section id="im-very-confused.-can-you-give-me-some-more-details" class="level3" data-number="7.5.5">
 <h3 data-number="7.5.5" class="anchored" data-anchor-id="im-very-confused.-can-you-give-me-some-more-details"><span class="header-section-number">7.5.5</span> I’m very confused. Can you give me some more details?</h3>
 <p>There’s a lot of moving components since the lineage barcode data for mutating barcodes is quite unlike anything else we’ve seen in this course so far. Let me go through an example from <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a> (the Cassiopeia tutorial itself) to tell you what the “input data” for Cassiopeia is. (Once you understand the input data and how it was preprocessed, it’ll become clear what the output is.)</p>
-<p>In a typical mutating lineage barcoding experiment, you get a bunch of gDNA or gRNA reads about the sequences of the barcodes that integrated into each cell. Then, you run bioinformatics code to align these sequences to a known reference genome to determine what happened at each target site of a cell’s barcode (i.e., did a mutation happen, if so, what was the insertion or deletion event, etc.). This is described in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>. The output of this is an allele table that might look like <a href="#fig-cassiopeia-bc1" class="quarto-xref">Figure&nbsp;<span>7.13</span></a>.</p>
+<p>In a typical mutating lineage barcoding experiment, you get a bunch of gDNA or gRNA reads about the sequences of the barcodes that integrated into each cell. Then, you run bioinformatics code to align these sequences to a known reference genome to determine what happened at each target site of a cell’s barcode (i.e., did a mutation happen, if so, what was the insertion or deletion event, etc.). This is described in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>. The output of this is an allele table that might look like <a href="#fig-cassiopeia-bc1" class="quarto-xref">Figure&nbsp;<span>7.20</span></a>.</p>
 <div class="block">
 <div id="fig-cassiopeia-bc1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -588,7 +644,7 @@ This algorithm builds the tree top-down, repeatedly choosing the most “frequen
 <img src="fig/chap8/cassiopeia_bc1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia-bc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.13: From <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a>. We are showing 10 different integrated barcodes <code>intBC</code> (each with three target sites, <code>r1</code> to <code>r3</code>) for the cell with <code>RW.TTTGCGCCAAGAAAGG</code>.<br>
+Figure&nbsp;7.20: From <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a>. We are showing 10 different integrated barcodes <code>intBC</code> (each with three target sites, <code>r1</code> to <code>r3</code>) for the cell with <code>RW.TTTGCGCCAAGAAAGG</code>.<br>
 So you should expect every unique cell (i.e., unique <code>cellBC</code>) to have one or more integrated barcodes (for example, 10, as shown here). Furthermore, you hope that many different cells have the same integrated barcode, such as <code>CTAGGGCATCTACG</code>. (This is because you’re going to compare what happened at different target sites for cells that have the same integrated barcode to determine how these cells are related.)<br>
 For instance, in integrated barcode <code>CTAGGGCATCTACG</code>, we see at the first target site, <code>CCGAA[None]AAATG</code>, the <code>None</code> means there was no insertion or deletion event found at this site (relative to all the other sequences at the <code>r1</code> region of this integrated barcode in the other cells).<br>
 In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D]GGAGG</code>. This means at relative position 221 in this target site, there was a deletion that resulted in 1 base pair being deleted. (You can see in this screenshot that some of the deletion events can go up to 80+ base pairs, such as <code>TGGCG[86:81D]CTCTG</code>.) This large deletion event is okay (as long as it didn’t result in the deletion of a different target site) if the sequence alignment step could still determine that the flanking sequences to the deletion (in this case, <code>TGGCG</code> to the left and <code>CTCTG</code> to the right) still aligned to the reasonable positions to the target site for this barcode. Remember, <em>you</em> know what the full sequences of all these integrated barcodes are because these are all sequences you designed to be integrated into the cell’s DNA. See <code>PCT48.ref.fasta</code> in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>.
@@ -596,7 +652,6 @@ In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D
 </figure>
 </div>
 </div>
-<p>This character matrix is the input to Cassiopeia — it now knows the type of mutation at each of the target sites for every cell, and then it’s going to try to estimate a phylogenetic tree from this.</p>
 <p>This character matrix is the input to Cassiopeia — it now knows the type of mutation at each of the target sites for every cell, and then it’s going to try to estimate a phylogenetic tree from this.</p>
 </section>
 <section id="a-brief-note-on-other-approaches" class="level3" data-number="7.5.6">
@@ -614,7 +669,7 @@ In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D
 <p>One of the goals of why studying copy number variation in <a href="#sec-dna_structural_variation">Section 8.3</a> was to understand cellular dynamics. So… how is this done?<br>
 Copy number alterations (CNAs) are a hallmark of many cancers and arise due to genomic instability within tumor cells (refer back to <span class="quarto-unresolved-ref">?fig-copy-number-cancer</span>). Because cancer is often driven by such genomic instabilities, CNAs serve as a natural “barcode” of lineage. By tracking which genes or regions of chromosomes have been duplicated or lost over time, researchers can infer how subclones evolve and expand. These aberrations not only reveal how aggressive a tumor might be, but can also hint at its capacity for metastasis. Indeed, it is quite common to see particular copy number events that are associated with advanced disease states or resistance to therapy.</p>
 <p>Another key advantage of using CNAs in cancer research is the ability to reconstruct phylogenetic trees of tumor evolution at single-cell resolution. Traditional bulk sequencing can obscure the heterogeneity of a tumor by averaging out signals across thousands or millions of cells, making it difficult to identify rare but important subpopulations. By examining individual cells, we can trace how specific lineages emerged, which mutations or copy number changes appeared first, and how these have proliferated. This level of detail helps us pinpoint the subclones that might be the most aggressive or metastatic, and may reveal new therapeutic targets based on the genetic changes that drove each lineage.</p>
-<p>Furthermore, once a phylogenetic tree is built from copy number data, the specific chromosomal regions that underwent duplication or deletion can yield insight into the biology of the tumor. Some genomic loci harbor oncogenes or tumor suppressors, so gains or losses in these regions can be especially detrimental—or beneficial, from the tumor’s perspective. Such events might correlate with faster growth, immune evasion, or other clinically significant traits. By focusing on these recurrently altered regions, researchers and clinicians can identify potential biomarkers for prognosis or drug targets for personalized therapy. See <a href="#fig-dna-phylogenetic" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> as an example of what this workflow looks like.</p>
+<p>Furthermore, once a phylogenetic tree is built from copy number data, the specific chromosomal regions that underwent duplication or deletion can yield insight into the biology of the tumor. Some genomic loci harbor oncogenes or tumor suppressors, so gains or losses in these regions can be especially detrimental—or beneficial, from the tumor’s perspective. Such events might correlate with faster growth, immune evasion, or other clinically significant traits. By focusing on these recurrently altered regions, researchers and clinicians can identify potential biomarkers for prognosis or drug targets for personalized therapy. See <a href="#fig-dna-phylogenetic" class="quarto-xref">Figure&nbsp;<span>7.21</span></a> as an example of what this workflow looks like.</p>
 <div class="block">
 <div id="fig-dna-phylogenetic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -622,15 +677,36 @@ Copy number alterations (CNAs) are a hallmark of many cancers and arise due to g
 <img src="fig/chap8/dna_phylogenetic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dna-phylogenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.14: From . Imagine we have longitudinal samples (bottom left) of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree (right middle), which is the focus for the type of tree we’re discussing in these notes.
+Figure&nbsp;7.21: From . Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we’re discussing in these notes.
 </figcaption>
 </figure>
 </div>
 </div>
-<p>These output phylogenetic trees might look like the ones in <span class="quarto-unresolved-ref">?fig-dice1</span> and <span class="quarto-unresolved-ref">?fig-dice2</span>.<br>
+<p>These output phylogenetic trees might look like the ones in <a href="#fig-dice1" class="quarto-xref">Figure&nbsp;<span>7.22</span></a> and <a href="#fig-dice2" class="quarto-xref">Figure&nbsp;<span>7.23</span></a>.<br>
 (As a sidenote: be sure to understand what the branch lengths mean in a phylogenetic tree. Here, these branch lengths denote the “distance” between two cells’ CNA profiles. (The longer the branch, the more it’s different.) Other methods use the branch length to denote time, i.e., the longer the branch, the more time has elapsed since the branching event. Most methods (in my experience) do not give you branch lengths relative to time, since this would require you (the data analyst) to provide the method with more biological information. For example, how fast do certain CNA events happen? You would need to provide this additional information to your phylogenetic method for it to know how to estimate branch lengths that denote time.)</p>
 <div class="block">
-<p><img src="fig/chap8/dice.png" id="fig-dice1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From "> <img src="fig/chap8/medicc2.png" id="fig-dice2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From "></p>
+<div id="fig-dice1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dice1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/dice.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dice1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.22: From
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-dice2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dice2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap8/medicc2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dice2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.23: From
+</figcaption>
+</figure>
+</div>
 </div>
 </section>
 <section id="sec-dna_phylogenetic" class="level3" data-number="7.6.2">
@@ -644,8 +720,7 @@ Figure&nbsp;7.14: From . Imagine we have longitudinal samples (bottom left) of a
 <img src="fig/chap8/compass_alg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compass-alg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.15: From .<br>
-Some basic terminology: 1) <strong>SNV (Single Nucleotide Variant):</strong> A change in a single nucleotide of the DNA sequence.<br>
+Figure&nbsp;7.24: From . Some basic terminology: 1) <strong>SNV (Single Nucleotide Variant):</strong> A change in a single nucleotide of the DNA sequence.<br>
 2) <strong>Loss:</strong> (Not shown in this figure) A deletion of one copy of a chromosomal region. For instance, in the usual 23 pairs of human chromosomes, one region could be deleted from one copy of Chromosome 1, while remaining intact on the other copy.<br>
 3) <strong>CNLOH (Copy-Neutral Loss of Heterozygosity):</strong> A copy number alteration that preserves the total number of chromosome copies but still removes heterozygosity. In other words, the cell ends up with the same number of copies overall, yet the two copies become identical (losing heterozygosity).<br>
 4) <strong>Gain:</strong> The opposite of a “loss.” This could involve duplicating a specific chromosomal region (thus elongating that chromosome) or duplicating the entire chromosome (leading to three copies of Chromosome 1, instead of the usual two).
@@ -704,7 +779,7 @@ Simulated annealing is a useful statistical technique for reconstructing a phylo
 </ul>
 <p>This EM routine is invoked each time we propose or accept a new tree in the simulated annealing.<br>
 (The EM algorithm is another useful statistical technique whenever you’re dealing with a model with unobserved variables. Here, our unobserved variable is whether or not a cell <span class="math inline">\(i\)</span> is attached to node <span class="math inline">\(k\)</span>.)</p>
-<p>See <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>7.16</span></a> for an illustration of what the results could look like.</p>
+<p>See <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>7.25</span></a> for an illustration of what the results could look like.</p>
 <div class="block">
 <div id="fig-compass" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -712,7 +787,7 @@ Simulated annealing is a useful statistical technique for reconstructing a phylo
 <img src="fig/chap8/compass.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.16: From .
+Figure&nbsp;7.25: From .
 </figcaption>
 </figure>
 </div>
@@ -721,8 +796,8 @@ Figure&nbsp;7.16: From .
 <section id="a-brief-note-on-other-approaches-1" class="level3" data-number="7.6.3">
 <h3 data-number="7.6.3" class="anchored" data-anchor-id="a-brief-note-on-other-approaches-1"><span class="header-section-number">7.6.3</span> A brief note on other approaches</h3>
 <p>So… what exactly are these trees good for?<br>
-As we’ve mentioned, you can see in <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>7.16</span></a> that COMPASS is trying to learn the mutation event that happened at each node. (This gives us a clue on how deleterious the mutation event is. As a simple example, if there was a loss in copy number in a region that contains a cancer suppressive gene, we might expect rapid proliferation of this cancer cell.)</p>
-<p>On the other hand, what we will talk more about in <a href="chapter9_spatial.qmd">Chapter 9</a> is combining these phylogenetic trees with spatial information about these cells. See <a href="#fig-cancer-phylogenetic-sc" class="quarto-xref">Figure&nbsp;<span>7.17</span></a>.</p>
+As we’ve mentioned, you can see in <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>7.25</span></a> that COMPASS is trying to learn the mutation event that happened at each node. (This gives us a clue on how deleterious the mutation event is. As a simple example, if there was a loss in copy number in a region that contains a cancer suppressive gene, we might expect rapid proliferation of this cancer cell.)</p>
+<p>On the other hand, what we will talk more about in <a href="chapter9_spatial.qmd">Chapter 9</a> is combining these phylogenetic trees with spatial information about these cells. See <a href="#fig-cancer-phylogenetic-sc" class="quarto-xref">Figure&nbsp;<span>7.26</span></a>.</p>
 <div class="block">
 <div id="fig-cancer-phylogenetic-sc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -730,27 +805,13 @@ As we’ve mentioned, you can see in <a href="#fig-compass" class="quarto-xref">
 <img src="fig/chap8/cancer-phylogenetic-sc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer-phylogenetic-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.17: From . Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.
+Figure&nbsp;7.26: From . Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.
 </figcaption>
 </figure>
 </div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-ashouri2023decoding" class="csl-entry" role="listitem">
-Ashouri, Arghavan, Chufan Zhang, and Federico Gaiti. 2023. <span>“Decoding Cancer Evolution: Integrating Genetic and Non-Genetic Insights.”</span> <em>Genes</em> 14 (10): 1856.
-</div>
-<div id="ref-marine2020non" class="csl-entry" role="listitem">
-Marine, Jean-Christophe, Sarah-Jane Dawson, and Mark A Dawson. 2020. <span>“Non-Genetic Mechanisms of Therapeutic Resistance in Cancer.”</span> <em>Nature Reviews Cancer</em> 20 (12): 743–56.
-</div>
-<div id="ref-stephenson2021single" class="csl-entry" role="listitem">
-Stephenson, Emily, Gary Reynolds, Rachel A Botting, Fernando J Calero-Nieto, Michael D Morgan, Zewen Kelvin Tuong, Karsten Bach, et al. 2021. <span>“Single-Cell Multi-Omics Analysis of the Immune Response in COVID-19.”</span> <em>Nature Medicine</em> 27 (5): 904–16.
-</div>
-<div id="ref-weinreb2020lineage" class="csl-entry" role="listitem">
-Weinreb, Caleb, Alejo Rodriguez-Fraticelli, Fernando D Camargo, and Allon M Klein. 2020. <span>“Lineage Tracing on Transcriptional Landscapes Links State to Fate During Differentiation.”</span> <em>Science</em> 367 (6479).
-</div>
-</div>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
@@ -758,7 +819,7 @@ Weinreb, Caleb, Alejo Rodriguez-Fraticelli, Fernando D Camargo, and Allon M Klei
 <ol>
 <li id="fn1"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Formally, you would also need to prove that all the unique <span class="math inline">\(n\)</span>-leaf trees formed this way from one particular <span class="math inline">\((n-1)\)</span>-leaf tree is distinct from any possible <span class="math inline">\(n\)</span>-leaf tree formed from a different <span class="math inline">\((n-1)\)</span>-leaf tree.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>You can approximate <span class="math inline">\(n!\)</span> by <span class="math inline">\(n^n\)</span>. See <a href="https://proofwiki.org/wiki/Lower_and_Upper_Bound_o_Factorial" class="uri">https://proofwiki.org/wiki/Lower_and_Upper_Bound_o_Factorial</a> or <a href="https://en.wikipedia.org/wiki/Stirlings_approximation" class="uri">https://en.wikipedia.org/wiki/Stirlings_approximation</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You can approximate <span class="math inline">\(n!\)</span> by <span class="math inline">\(n^n\)</span>. See <a href="https://en.wikipedia.org/wiki/Stirlings_approximation" class="uri">https://en.wikipedia.org/wiki/Stirlings_approximation</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
