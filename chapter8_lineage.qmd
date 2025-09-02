@@ -258,7 +258,9 @@ The Steiner tree problem is a combinatorial optimization problem that seeks the 
 This is different from computing the minimal spanning tree because we don't need the Steiner tree to include every node in $G$. We just need it to contain the $n$ leaves (i.e., the cells we actually observed). There might be hypothetical intermediate nodes (i.e., ancestral cells) in $G$ that are not deemed necessary to be included in the output Steiner tree. See @fig-cassiopeia1 and @fig-cassiopeia2.
 :::
 
-    (In short, you can imagine the first step of forming the potential graph $G$ is to limit the space of possible phylogenetic trees — the returned tree must be a tree formed by the edges in $G$. Then, in the second step, we formulate an ILP reminiscent of the Steiner tree problem to find the most "appropriate" tree.)
+```         
+(In short, you can imagine the first step of forming the potential graph $G$ is to limit the space of possible phylogenetic trees — the returned tree must be a tree formed by the edges in $G$. Then, in the second step, we formulate an ILP reminiscent of the Steiner tree problem to find the most "appropriate" tree.)
+```
 
 -   **Cassiopeia-Greedy**:\
     This algorithm builds the tree top-down, repeatedly choosing the most "frequent" or highest-priority mutation (unmutated $\to$ indel) to partition the cells into two subsets: those that carry that mutation vs. those that do not (i.e., it's "greedy").
@@ -268,7 +270,7 @@ This is different from computing the minimal spanning tree because we don't need
     Greedy is fast and scales to tens of thousands of cells, but may produce suboptimal solutions if extensive parallel evolution exists.
 
 ::: block
-![From ](fig/chap8/cassiopeia1.png){#fig-cassiopeia1 width="100%" fig-align="center"} ![From ](fig/chap8/cassiopeia2.png){#fig-cassiopeia2 width="100%" fig-align="center"}
+![From](fig/chap8/cassiopeia1.png){#fig-cassiopeia1 width="100%" fig-align="center"} ![From](fig/chap8/cassiopeia2.png){#fig-cassiopeia2 width="100%" fig-align="center"}
 :::
 
 ### Some implementation notes
@@ -318,7 +320,7 @@ These output phylogenetic trees might look like the ones in @fig-dice1 and @fig-
 (As a sidenote: be sure to understand what the branch lengths mean in a phylogenetic tree. Here, these branch lengths denote the "distance" between two cells' CNA profiles. (The longer the branch, the more it's different.) Other methods use the branch length to denote time, i.e., the longer the branch, the more time has elapsed since the branching event. Most methods (in my experience) do not give you branch lengths relative to time, since this would require you (the data analyst) to provide the method with more biological information. For example, how fast do certain CNA events happen? You would need to provide this additional information to your phylogenetic method for it to know how to estimate branch lengths that denote time.)
 
 ::: block
-![From ](fig/chap8/dice.png){#fig-dice1 width="100%" fig-align="center"} ![From ](fig/chap8/medicc2.png){#fig-dice2 width="100%" fig-align="center"}
+![From](fig/chap8/dice.png){#fig-dice1 width="100%" fig-align="center"} ![From](fig/chap8/medicc2.png){#fig-dice2 width="100%" fig-align="center"}
 :::
 
 ### COMPASS, for scDNA copy number: Illustrating a probabilistic approach {#sec-dna_phylogenetic}
