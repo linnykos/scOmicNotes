@@ -296,12 +296,12 @@ A fundamental computational challenge in single-cell perturbation studies is pre
 
 #### Hold on... Why do we need this again?
 
-Remember: If we use a low MOI (ex: MOI of 0.3) experiment, we need *many* cells to receive each guide, and we *even more* cells because most cells won't receive a guide. To quote @bock2022high, 
+Remember: If we use a low MOI (ex: MOI of 0.3) experiment, we need *many* cells to receive each guide, and we *even more* cells because most cells won't receive a guide. To quote @bock2022high,
 
-::: block 
+::: block
 "For both genome-scale and focused CRISPR knockout (CRISPRko) screens, it is advisable to include at least four different gRNAs for each target gene, although carefully designed and validated gRNA libraries with fewer gRNAs per gene can provide reliable results. All gRNA libraries should include gRNAs for application-specific positive and negative control genes, which are important to validate the screen. In addition, they should include control gRNAs that target known safe harbour loci or other genomic regions where no specific effects of gene editing are expected, in order to account for the DNA damage response and for non-specific reduction in cell proliferation caused by CRISPRko. ...
 
-As a guideline, we recommend a coverage of 100-200 cells per target gene for positive selection screens and 500-1,000 cells per target gene for negative selection screens." 
+As a guideline, we recommend a coverage of 100-200 cells per target gene for positive selection screens and 500-1,000 cells per target gene for negative selection screens."
 :::
 
 (The reason negative selection screens need more cells is because these cells will die from the stressor after the CRISPRko integration. So you need to be confident these cells really "died" (instead of you happening by bad luck to miss these cells during sequencing).)
