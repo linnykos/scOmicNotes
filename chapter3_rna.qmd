@@ -11,7 +11,6 @@ format:
 execute:
   echo: false         # hide code by default
 bibliography: references.bib   # optional .bib file for citations
----=
 ---
 
 ::: block2
@@ -88,11 +87,9 @@ See @fig-10x-protocol for an illustration of how the 10x protocol works. We'll e
 
 2.  **Droplet formation**: Cells are encapsulated into tiny droplets along with barcoded beads. Each bead contains unique molecular identifiers (UMIs) and cell-specific barcodes to label RNA molecules from individual cells. This step is the how we can keep track and eventually figure out which data came from which cell.[^chapter3_rna-4]
 
-[^chapter3_rna-4]: See <https://www.qiagen.com/us/resources/faq?id=06a192c2-e72d-42e8-9b40-3171e1eb4cb8>.
-
-<!-- -->
-
 3.  **Cell lysis and RNA capture**: Cells are lysed within the droplets, and the released RNA molecules hybridize to oligonucleotides on the barcoded beads. This step ensures that all RNA from a single cell is tagged with the same cell-specific barcode.
+
+[^chapter3_rna-4]: See <https://www.qiagen.com/us/resources/faq?id=06a192c2-e72d-42e8-9b40-3171e1eb4cb8>.
 
 ::: block
 **Remark (Lysing prevents longitudinal profile).** This step is why, by default, scRNA-seq cannot do longitudinal experiments on literally the same cells. You have to destroy the cell to sequence it.
@@ -723,7 +720,7 @@ There is no standardized way for trajectory analysis. However, Monocle[^chapter3
 
 ### A highly active area of research: How much biology does your premise assume is true?
 
-Methods such as Monocle intrinsically assume that two cells in gene expression is a good proxy of both cells at a similar biological stage. In general, this is a *huge* assumption, and it has been shown to not hold in various settings. For instance, see [@saunders2023embryo], or multi-omics in [Chapter 5](chapter5.qmd) and lineage-tracing in [Chapter 8](chapter8.qmd). (It's possible that the transcriptome is not the most accurate omic to track cell development/response.)
+Methods such as Monocle intrinsically assume that two cells in gene expression is a good proxy of both cells at a similar biological stage. In general, this is a *huge* assumption, and it has been shown to not hold in various settings. For instance, see [@saunders2023embryo], or multi-omics in [Chapter 5](chapter5_epigenetics.qmd) and lineage-tracing in [Chapter 8](chapter8_lineage.qmd). (It's possible that the transcriptome is not the most accurate omic to track cell development/response.)
 
 However, other methods based on the transcriptome could rely on different assumptions on how the biology relates to the math. Just to give some examples, Slingshot [@street2018slingshot] assumes the biological premise of Monocle *and* adds that the trajectory must be strictly branching. CytoTRACE [@gulati2020single] instead assumes that as cells develop, there are less genes that are expressed. RNA velocity methods such as velocyto [@la2018rna] assume there is spliced/unspliced relation in mRNA fragments that can be used to learn a cell's developmental stage, which offers a potentially more mechanistic perspective on how to learn the cell trajectories.
 

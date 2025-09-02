@@ -80,8 +80,7 @@ See @fig-spatial-table for a table of many possible technologies to perform spat
 :::
 
 ::: {#rem-2D-slices .block2}
-**These are all 2D tissue slices!**
-Our body is three-dimensional (unsurprisingly). However, all the spatial information we are collecting is typically 2D. (Some really rich consortiums have sequenced many cross-sectional 2D slices to reconstruct the 3D organ, for example @zhang2023molecularly. However, most single-PI labs do not have the budget to do this. Therefore, it's important you ask yourself: "Is it possible I am misleading myself by analyzing a 2D tissue slice when my question is about the 3D organ?"
+**These are all 2D tissue slices!** Our body is three-dimensional (unsurprisingly). However, all the spatial information we are collecting is typically 2D. (Some really rich consortiums have sequenced many cross-sectional 2D slices to reconstruct the 3D organ, for example @zhang2023molecularly. However, most single-PI labs do not have the budget to do this. Therefore, it's important you ask yourself: "Is it possible I am misleading myself by analyzing a 2D tissue slice when my question is about the 3D organ?"
 
 It's entirely possible that the cellular organization/dynamics on a 2D tissue slice is representative of the overall tissue. It's also entirely possible that it's not. Knowing how the 2D tissue was selected (i.e., how did someone even choose this specific cross-section in the first place?) is an important question to answer before you can even start thinking mathematically on how your 2D findings relate back to the 3D shape.
 :::
@@ -116,8 +115,7 @@ Visium HD is an advanced version of Visium that significantly improves spatial r
 
 ### Imaging-based: MERFISH/MERSCOPE (Vizgen)
 
-Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH) is an imaging-based spatial transcriptomics method that enables the detection of hundreds to thousands of preselected RNA transcripts in a tissue section. It operates by hybridizing barcoded probes to RNA molecules, followed by multiple rounds of imaging to decode the transcript identities, see @fig-merfish. Since MERFISH provides subcellular resolution, it allows precise localization of transcripts within individual cells, but it requires computational cell segmentation to assign transcripts to specific cells. MERSCOPE is a commercial platform for MERFISH, providing an integrated solution for sample preparation, imaging, and data analysis.
-See @fig-merfish1 and @fig-merfish2 for examples of the data.
+Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH) is an imaging-based spatial transcriptomics method that enables the detection of hundreds to thousands of preselected RNA transcripts in a tissue section. It operates by hybridizing barcoded probes to RNA molecules, followed by multiple rounds of imaging to decode the transcript identities, see @fig-merfish. Since MERFISH provides subcellular resolution, it allows precise localization of transcripts within individual cells, but it requires computational cell segmentation to assign transcripts to specific cells. MERSCOPE is a commercial platform for MERFISH, providing an integrated solution for sample preparation, imaging, and data analysis. See @fig-merfish1 and @fig-merfish2 for examples of the data.
 
 ::: block
 ![From @chen2015spatially](fig/chap9/merfish.png){#fig-merfish width="100%" fig-align="center"}
@@ -186,8 +184,7 @@ See @fig-spatial-analyses1, @fig-spatial-analyses2, @fig-spatial-analyses3, and 
 :::
 
 ::: {#rem-population .block2}
-**Remember, after we collect the tissue from a donor, we don't *really* care about the donor anymore. We care about the biology**
-One of the trickiest (statistical) philosophical roadblocks you'll encounter when you work on spatial transcriptomics is: "What on earth is the 'population' I'm studying?" You'll need to think really hard about variation that might occur within an individual or between different individuals. (Spatial transcriptomics by itself is currently financially unrealistic to be a reliable tool for biomarker detection, unlike other biomedical technologies such as MRI, PET scans, CT scans, staining of tissue slices, etc.)
+**Remember, after we collect the tissue from a donor, we don't *really* care about the donor anymore. We care about the biology** One of the trickiest (statistical) philosophical roadblocks you'll encounter when you work on spatial transcriptomics is: "What on earth is the 'population' I'm studying?" You'll need to think really hard about variation that might occur within an individual or between different individuals. (Spatial transcriptomics by itself is currently financially unrealistic to be a reliable tool for biomarker detection, unlike other biomedical technologies such as MRI, PET scans, CT scans, staining of tissue slices, etc.)
 
 It's not uncommon to only have one or two spatial transcriptomic tissue slices for an entire study. (This is really a reflection about how expensive and laborious getting this data is.) In that case, are you really just learning biology about this one specific person? How do you know that the donor's biology is representative of overall human biology?
 
@@ -282,17 +279,14 @@ With spatial transcriptomics, these leaps of faith are no longer necessary. We c
 COMMOT (COMMunication analysis by Optimal Transport) @cang2023screening is a computational framework designed to infer cell-cell communication (CCC) from spatial transcriptomic data. Unlike traditional methods that examine ligand-receptor interactions independently, COMMOT considers multiple ligand-receptor pairs simultaneously while incorporating spatial constraints. See @fig-commot.
 
 ::: {#commot-io .block3}
-**Input/Output.**
-The input to COMMOT is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n \times p}$ for $n$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n$ cells, and 2) a database of known ligand-receptor pairs for $n_l$ ligands and $n_r$ receptors (alongside which ligands are known to bind to which receptors), of which the $n_l+n_r$ ligand and receptors should correspond to some of the $p$ genes.
-The output is: for each ligand $i$ and receptor $j$, a map among the 2D tissue slice of how much "mass" of each ligand is transported to each receptor.
+**Input/Output.** The input to COMMOT is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n \times p}$ for $n$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n$ cells, and 2) a database of known ligand-receptor pairs for $n_l$ ligands and $n_r$ receptors (alongside which ligands are known to bind to which receptors), of which the $n_l+n_r$ ligand and receptors should correspond to some of the $p$ genes. The output is: for each ligand $i$ and receptor $j$, a map among the 2D tissue slice of how much "mass" of each ligand is transported to each receptor.
 :::
 
 ::: block
 ![From @cang2023screening](fig/chap9/commot.png){#fig-commot width="100%" fig-align="center"}
 :::
 
--   **Optimal transport for a single ligand-receptor pair**:
-    Given a ligand $i$ and receptor $j$, COMMOT formulates the inference of CCC as an optimal transport problem. The goal is to determine the transport plan $P_{\ell,r} \in \mathbb{R}^{n\times n}_+$ for $n$ cells, where $[P_{\ell,r}]_{k,l}$ quantifies the strength of signaling from sender cell $i$ to receiver cell $j$ through the ligand-receptor pair $(\ell,r)$. This is achieved by minimizing the transport cost:
+-   **Optimal transport for a single ligand-receptor pair**: Given a ligand $i$ and receptor $j$, COMMOT formulates the inference of CCC as an optimal transport problem. The goal is to determine the transport plan $P_{\ell,r} \in \mathbb{R}^{n\times n}_+$ for $n$ cells, where $[P_{\ell,r}]_{k,l}$ quantifies the strength of signaling from sender cell $i$ to receiver cell $j$ through the ligand-receptor pair $(\ell,r)$. This is achieved by minimizing the transport cost:
 
     $$
     \min_{P_{\ell,r} \in \Gamma_{\ell,r}} \langle P_{\ell,r}, C_{\ell,r} \rangle_F
@@ -306,8 +300,7 @@ The output is: for each ligand $i$ and receptor $j$, a map among the 2D tissue s
 
     where $X_{i,\ell}$ and $X_{j,r}$ represent the expression levels of the ligand and receptor in the respective cells.[^chapter9_spatial-1]
 
--   **Generalization to multiple ligand-receptor pairs**:
-    COMMOT extends the optimal transport framework to simultaneously infer multiple ligand-receptor interactions, rather than treating them separately. This is formulated as a *collective optimal transport problem*, where multiple ligand and receptor species interact within spatial constraints while competing for signaling resources.
+-   **Generalization to multiple ligand-receptor pairs**: COMMOT extends the optimal transport framework to simultaneously infer multiple ligand-receptor interactions, rather than treating them separately. This is formulated as a *collective optimal transport problem*, where multiple ligand and receptor species interact within spatial constraints while competing for signaling resources.
 
     Given $n_l$ ligand species and $n_r$ receptor species, the method optimizes a transport plan $P \in \mathbb{R}^{n_l \times n_r \times n \times n}_+$, where $[P_{\ell,r}]_{k,l}$ quantifies the signaling strength from sender cell $i$ to receiver cell $j$ through ligand $\ell$ and receptor $r$. The optimization problem is formulated as:
 
@@ -364,9 +357,7 @@ Fortunately, there are two other big reasons to do integrations:
 
 -   Another critical application of integration is combining data from different spatial transcriptomics technologies, such as MERFISH and Visium. Each platform has its own strengths—MERFISH provides high-resolution, single-molecule imaging of a limited gene set, while Visium captures genome-wide expression but at lower spatial resolution. By integrating data across these platforms, researchers can leverage the strengths of both, enabling a more complete understanding of cellular organization, gene expression, and interactions within a tissue. This cross-modality alignment allows for deeper biological insights that would be difficult to achieve using a single technology alone.
 
--   Integration is crucial for constructing three-dimensional spatial transcriptomics datasets from multiple tissue slices. Aligning and stitching tissue slices is essential for constructing three-dimensional molecular profiles.
-    Since spatial transcriptomics data is often collected as two-dimensional slices, aligning and stitching these slices together is necessary to reconstruct a holistic, 3D molecular map of a tissue. This process enables researchers to study tissue architecture in its native three-dimensional context, facilitating discoveries about developmental processes, tumor microenvironments, and disease progression. By integrating slices into a unified 3D model, researchers can more accurately analyze spatial relationships between cells, study molecular gradients, and gain a deeper understanding of how cellular interactions shape tissue function.
-    See @fig-commot-3d and @fig-open-st as examples.
+-   Integration is crucial for constructing three-dimensional spatial transcriptomics datasets from multiple tissue slices. Aligning and stitching tissue slices is essential for constructing three-dimensional molecular profiles. Since spatial transcriptomics data is often collected as two-dimensional slices, aligning and stitching these slices together is necessary to reconstruct a holistic, 3D molecular map of a tissue. This process enables researchers to study tissue architecture in its native three-dimensional context, facilitating discoveries about developmental processes, tumor microenvironments, and disease progression. By integrating slices into a unified 3D model, researchers can more accurately analyze spatial relationships between cells, study molecular gradients, and gain a deeper understanding of how cellular interactions shape tissue function. See @fig-commot-3d1, @fig-commot-3d2, and @fig-open-st as examples.
 
 ::: block
 ![Left: From @cang2023screening](fig/chap9/commot-3d.png){#fig-commot-3d1 width="100%" fig-align="center"}
@@ -399,20 +390,16 @@ The SANTO (coarse-to-fine alignment and stitching) @li2024santo method aligns tw
 :::
 
 ::: {#santo-io .block3}
-**Input/Output.**
-The input to SANTO is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n_X \times p}$ for $n_X$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_X\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_X$ cells, and 2) a second spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $Y \in \mathbb{R}^{n_Y \times p}$ for $n_Y$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_Y\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_Y$ cells.
-The output is a rotated and translated spatial transcriptomics dataset $X'$ where all the expression values among the $n_X$ cells in $X$ are the same, but now there's a rotation and translation of all the spatial coordinates of these $n_X$ spots to best align with slice $Y$.
+**Input/Output.** The input to SANTO is 1) a spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $X \in \mathbb{R}^{n_X \times p}$ for $n_X$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_X\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_X$ cells, and 2) a second spatial transcriptomics dataset (can be spot-level or cell-segmented image data) $Y \in \mathbb{R}^{n_Y \times p}$ for $n_Y$ cells (or spots) and $p$ genes alongside $Z \in \mathbb{R}^{n_Y\times 2}$ denoting the $(x,y)$ spatial coordinates of each of the $n_Y$ cells. The output is a rotated and translated spatial transcriptomics dataset $X'$ where all the expression values among the $n_X$ cells in $X$ are the same, but now there's a rotation and translation of all the spatial coordinates of these $n_X$ spots to best align with slice $Y$.
 :::
 
--   **Coarse alignment**:
-    SANTO first performs a coarse alignment by rapidly estimating the relative spatial positioning of two slices and identifying their overlapping regions. This is achieved by computing the Pearson Correlation Coefficient (PCC) of shared omics features:
+-   **Coarse alignment**: SANTO first performs a coarse alignment by rapidly estimating the relative spatial positioning of two slices and identifying their overlapping regions. This is achieved by computing the Pearson Correlation Coefficient (PCC) of shared omics features:
 
     $$
     \text{PCC}(G_{X_i}, G_{Y_j}) = \frac{\sum (G_{X_i} - \bar{G}_X)(G_{Y_j} - \bar{G}_Y)}{\sqrt{\sum (G_{X_i} - \bar{G}_X)^2 \sum (G_{Y_j} - \bar{G}_Y)^2}}
     $$ {#eq-santo-pcc}
 
-    where $G_{X_i}$ and $G_{Y_j}$ denote the gene expression vectors of spots $i$ and $j$ in slices $X$ and $Y$, respectively.
-    Pairs with high PCC scores are used to estimate the transformation matrix via Singular Value Decomposition (SVD):
+    where $G_{X_i}$ and $G_{Y_j}$ denote the gene expression vectors of spots $i$ and $j$ in slices $X$ and $Y$, respectively. Pairs with high PCC scores are used to estimate the transformation matrix via Singular Value Decomposition (SVD):
 
     $$
     H = \sum (S_{X_i} - \bar{S}_X)(S_{Y_j} - \bar{S}_Y)^\top
@@ -422,8 +409,7 @@ The output is a rotated and translated spatial transcriptomics dataset $X'$ wher
 
     (You can think of this as: 1) using gene expression in both slides to find pairs of "anchors" (one anchor on each slide), and then 2) using the spatial coordinates of the anchor pairs, finding a shift and a rotation for slide $X$.)
 
--   **Fine alignment**:
-    For fine alignment, SANTO iteratively improves the alignment by a more nuanced approach that accounts for a "soft mapping" between spots in different slices. This is implemented with a Dynamic Graph Convolutional Neural Network (DGCNN).
+-   **Fine alignment**: For fine alignment, SANTO iteratively improves the alignment by a more nuanced approach that accounts for a "soft mapping" between spots in different slices. This is implemented with a Dynamic Graph Convolutional Neural Network (DGCNN).
 
     During training, all the spots are combined into one batch, so if there are $n_X$ spots in slice $X$ and $n_Y$ spots in slice $Y$, both slices are used in the network. The model learns spatial and expression embeddings, computes a probabilistic soft mapping
 

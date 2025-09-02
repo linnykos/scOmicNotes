@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>References – scOmicNotes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter9_spatial.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">scOmicNotes</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2_sequencing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3_rna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4_protein.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter5_epigenetics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter6_dna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter7_crispr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter8_lineage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter9_spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">‘Single-cell’ spatial transcriptomics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">References</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abdelaal2019comparison" class="csl-entry" role="listitem">
+Abdelaal, Tamim, Lieke Michielsen, Davy Cats, Dylan Hoogduin, Hailiang
+Mei, Marcel JT Reinders, and Ahmed Mahfouz. 2019. <span>“A Comparison of
+Automatic Cell Identification Methods for Single-Cell <span>RNA</span>
+Sequencing Data.”</span> <em>Genome Biology</em> 20 (1): 1–19.
+</div>
+<div id="ref-adams2022single" class="csl-entry" role="listitem">
+Adams, Levi, Min Kyung Song, Yoshiaki Tanaka, and Yoon-Seong Kim. 2022.
+<span>“Single-Nuclei Paired Multiomic Analysis of Young, Aged, and
+Parkinson’s Disease Human Midbrain Reveals Age-and Disease-Associated
+Glial Changes and Their Contribution to Parkinson’s Disease.”</span>
+<em>MedRxiv</em>, 2022–01.
+</div>
+<div id="ref-ahlmann2023comparison" class="csl-entry" role="listitem">
+Ahlmann-Eltze, Constantin, and Wolfgang Huber. 2023. <span>“Comparison
+of Transformations for Single-Cell RNA-Seq Data.”</span> <em>Nature
+Methods</em>, 1–8.
+</div>
+<div id="ref-aibar2017scenic" class="csl-entry" role="listitem">
+Aibar, Sara, Carmen Bravo González-Blas, Thomas Moerman, Vân Anh
+Huynh-Thu, Hana Imrichova, Gert Hulselmans, Florian Rambow, et al. 2017.
+<span>“SCENIC: Single-Cell Regulatory Network Inference and
+Clustering.”</span> <em>Nature Methods</em> 14 (11): 1083–86.
+</div>
+<div id="ref-almeida2021employing" class="csl-entry" role="listitem">
+Almeida, Nathalia, Matthew WH Chung, Elena M Drudi, Elise N Engquist,
+Eva Hamrud, Abigail Isaacson, Victoria SK Tsang, Fiona M Watt, and
+Francesca M Spagnoli. 2021. <span>“Employing Core Regulatory Circuits to
+Define Cell Identity.”</span> <em>The EMBO Journal</em> 40 (10):
+e106785.
+</div>
+<div id="ref-almet2021landscape" class="csl-entry" role="listitem">
+Almet, Axel A, Zixuan Cang, Suoqin Jin, and Qing Nie. 2021. <span>“The
+Landscape of Cell–Cell Communication Through Single-Cell
+Transcriptomics.”</span> <em>Current Opinion in Systems Biology</em> 26:
+12–23.
+</div>
+<div id="ref-alquicira2019scpred" class="csl-entry" role="listitem">
+Alquicira-Hernandez, Jose, Anuja Sathe, Hanlee P Ji, Quan Nguyen, and
+Joseph E Powell. 2019. <span>“scPred: Accurate Supervised Method for
+Cell-Type Classification from Single-Cell RNA-Seq Data.”</span>
+<em>Genome Biology</em> 20: 1–17.
+</div>
+<div id="ref-ancheta2024challenges" class="csl-entry" role="listitem">
+Ancheta, Sarah, Leah Dorman, Guillaume Le Treut, Abel Gurung, Loic Alain
+Royer, Alejandro Granados, and Merlin Lange. 2024. <span>“Challenges and
+Progress in RNA Velocity: Comparative Analysis Across Multiple
+Biological Contexts.”</span> <em>bioRxiv</em>, 2024–06.
+</div>
+<div id="ref-andreatta2021ucell" class="csl-entry" role="listitem">
+Andreatta, Massimo, and Santiago J Carmona. 2021. <span>“UCell: Robust
+and Scalable Single-Cell Gene Signature Scoring.”</span>
+<em>Computational and Structural Biotechnology Journal</em> 19: 3796–98.
+</div>
+<div id="ref-arabi2023brain" class="csl-entry" role="listitem">
+Arabi, Tarek Ziad, Aliyah Abdulmohsen Alabdulqader, Belal Nedal Sabbah,
+and Abderrahman Ouban. 2023. <span>“Brain-Inhabiting Bacteria and
+Neurodegenerative Diseases: The <span>‘Brain Microbiome’</span>
+Theory.”</span> <em>Frontiers in Aging Neuroscience</em> 15: 1240945.
+</div>
+<div id="ref-argelaguet2021computational" class="csl-entry" role="listitem">
+Argelaguet, Ricard, Anna SE Cuomo, Oliver Stegle, and John C Marioni.
+2021. <span>“Computational Principles and Challenges in Single-Cell Data
+Integration.”</span> <em>Nature Biotechnology</em> 39 (10): 1202–15.
+</div>
+<div id="ref-armingol2021deciphering" class="csl-entry" role="listitem">
+Armingol, Erick, Adam Officer, Olivier Harismendy, and Nathan E Lewis.
+2021. <span>“Deciphering Cell–Cell Interactions and Communication from
+Gene Expression.”</span> <em>Nature Reviews Genetics</em> 22 (2): 71–88.
+</div>
+<div id="ref-arora2022role" class="csl-entry" role="listitem">
+Arora, Ankita, Raeann Goering, Hei Yong G Lo, Joelle Lo, Charlie
+Moffatt, and J Matthew Taliaferro. 2022. <span>“The Role of Alternative
+Polyadenylation in the Regulation of Subcellular RNA
+Localization.”</span> <em>Frontiers in Genetics</em> 12: 818668.
+</div>
+<div id="ref-arora2018analysis" class="csl-entry" role="listitem">
+Arora, Sanjeev, Wei Hu, and Pravesh K Kothari. 2018. <span>“An Analysis
+of the t-Sne Algorithm for Data Visualization.”</span> In <em>Conference
+on Learning Theory</em>, 1455–62. PMLR.
+</div>
+<div id="ref-ashouri2023decoding" class="csl-entry" role="listitem">
+Ashouri, Arghavan, Chufan Zhang, and Federico Gaiti. 2023.
+<span>“Decoding Cancer Evolution: Integrating Genetic and Non-Genetic
+Insights.”</span> <em>Genes</em> 14 (10): 1856.
+</div>
+<div id="ref-ashuach2023multivi" class="csl-entry" role="listitem">
+Ashuach, Tal, Mariano I Gabitto, Rohan V Koodli, Giuseppe-Antonio Saldi,
+Michael I Jordan, and Nir Yosef. 2023. <span>“MultiVI: Deep Generative
+Model for the Integration of Multimodal Data.”</span> <em>Nature
+Methods</em>, 1–10.
+</div>
+<div id="ref-ashuach2022peakvi" class="csl-entry" role="listitem">
+Ashuach, Tal, Daniel A Reidenbach, Adam Gayoso, and Nir Yosef. 2022.
+<span>“PeakVI: A Deep Generative Model for Single-Cell Chromatin
+Accessibility Analysis.”</span> <em>Cell Reports Methods</em> 2 (3).
+</div>
+<div id="ref-avsec2021effective" class="csl-entry" role="listitem">
+Avsec, Žiga, Vikram Agarwal, Daniel Visentin, Joseph R Ledsam, Agnieszka
+Grabska-Barwinska, Kyle R Taylor, Yannis Assael, John Jumper, Pushmeet
+Kohli, and David R Kelley. 2021. <span>“Effective Gene Expression
+Prediction from Sequence by Integrating Long-Range Interactions.”</span>
+<em>Nature Methods</em> 18 (10): 1196–1203.
+</div>
+<div id="ref-badia2023gene" class="csl-entry" role="listitem">
+Badia-i-Mompel, Pau, Lorna Wessels, Sophia Müller-Dott, Rémi Trimbour,
+Ricardo O Ramirez Flores, Ricard Argelaguet, and Julio Saez-Rodriguez.
+2023. <span>“Gene Regulatory Network Inference in the Era of Single-Cell
+Multi-Omics.”</span> <em>Nature Reviews Genetics</em> 24 (11): 739–54.
+</div>
+<div id="ref-bae2022analysis" class="csl-entry" role="listitem">
+Bae, Taejeong, Liana Fasching, Yifan Wang, Joo Heon Shin, Milovan
+Suvakov, Yeongjun Jang, Scott Norton, et al. 2022. <span>“Analysis of
+Somatic Mutations in 131 Human Brains Reveals Aging-Associated
+Hypermutability.”</span> <em>Science</em> 377 (6605): 511–17.
+</div>
+<div id="ref-ballouz2019time" class="csl-entry" role="listitem">
+Ballouz, Sara, Alexander Dobin, and Jesse A Gillis. 2019. <span>“Is It
+Time to Change the Reference Genome?”</span> <em>Genome Biology</em> 20
+(1): 1–9.
+</div>
+<div id="ref-baran2019metacell" class="csl-entry" role="listitem">
+Baran, Yael, Akhiad Bercovich, Arnau Sebe-Pedros, Yaniv Lubling, Amir
+Giladi, Elad Chomsky, Zohar Meir, Michael Hoichman, Aviezer Lifshitz,
+and Amos Tanay. 2019. <span>“MetaCell: Analysis of Single-Cell
+<span>RNA</span>-Seq Data Using k-Nn Graph Partitions.”</span>
+<em>Genome Biology</em> 20 (1): 1–19.
+</div>
+<div id="ref-barry2021exploiting" class="csl-entry" role="listitem">
+Barry, Ciarrah, Junxi Liu, Rebecca Richmond, Martin K Rutter, Deborah A
+Lawlor, Frank Dudbridge, and Jack Bowden. 2021. <span>“Exploiting
+Collider Bias to Apply Two-Sample Summary Data Mendelian Randomization
+Methods to One-Sample Individual Level Data.”</span> <em>PLoS
+Genetics</em> 17 (8): e1009703.
+</div>
+<div id="ref-barry2024exponential" class="csl-entry" role="listitem">
+Barry, Timothy, Kathryn Roeder, and Eugene Katsevich. 2024.
+<span>“Exponential Family Measurement Error Models for Single-Cell
+CRISPR Screens.”</span> <em>Biostatistics</em> 25 (4): 1254–72.
+</div>
+<div id="ref-barry2021sceptre" class="csl-entry" role="listitem">
+Barry, Timothy, Xuran Wang, John A Morris, Kathryn Roeder, and Eugene
+Katsevich. 2021. <span>“<span>SCEPTRE</span> Improves Calibration and
+Sensitivity in Single-Cell <span>CRISPR</span> Screen Analysis.”</span>
+<em>Genome Biology</em> 22 (1): 1–19.
+</div>
+<div id="ref-becht2019dimensionality" class="csl-entry" role="listitem">
+Becht, Etienne, Leland McInnes, John Healy, Charles-Antoine Dutertre,
+Immanuel WH Kwok, Lai Guan Ng, Florent Ginhoux, and Evan W Newell. 2019.
+<span>“Dimensionality Reduction for Visualizing Single-Cell Data Using
+<span>UMAP</span>.”</span> <em>Nature Biotechnology</em> 37 (1): 38.
+</div>
+<div id="ref-benjamini2001control" class="csl-entry" role="listitem">
+Benjamini, Yoav, and Daniel Yekutieli. 2001. <span>“The Control of the
+False Discovery Rate in Multiple Testing Under Dependency.”</span>
+<em>Annals of Statistics</em>, 1165–88.
+</div>
+<div id="ref-benner2016finemap" class="csl-entry" role="listitem">
+Benner, Christian, Chris CA Spencer, Aki S Havulinna, Veikko Salomaa,
+Samuli Ripatti, and Matti Pirinen. 2016. <span>“FINEMAP: Efficient
+Variable Selection Using Summary Data from Genome-Wide Association
+Studies.”</span> <em>Bioinformatics</em> 32 (10): 1493–1501.
+</div>
+<div id="ref-bilous2024building" class="csl-entry" role="listitem">
+Bilous, Mariia, Léonard Hérault, Aurélie AG Gabriel, Matei Teleman, and
+David Gfeller. 2024. <span>“Building and Analyzing Metacells in
+Single-Cell Genomics Data.”</span> <em>Molecular Systems Biology</em>,
+1–23.
+</div>
+<div id="ref-blanco2020bivalent" class="csl-entry" role="listitem">
+Blanco, Enrique, Mar González-Ramı́rez, Anna Alcaine-Colet, Sergi Aranda,
+and Luciano Di Croce. 2020. <span>“The Bivalent Genome:
+Characterization, Structure, and Regulation.”</span> <em>Trends in
+Genetics</em> 36 (2): 118–31.
+</div>
+<div id="ref-bock2022high" class="csl-entry" role="listitem">
+Bock, Christoph, Paul Datlinger, Florence Chardon, Matthew A Coelho,
+Matthew B Dong, Keith A Lawson, Tian Lu, et al. 2022.
+<span>“High-Content CRISPR Screening.”</span> <em>Nature Reviews Methods
+Primers</em> 2 (1): 1–23.
+</div>
+<div id="ref-bouzid2023clonal" class="csl-entry" role="listitem">
+Bouzid, Hind, Julia A Belk, Max Jan, Yanyan Qi, Chloé Sarnowski, Sara
+Wirth, Lisa Ma, et al. 2023. <span>“Clonal Hematopoiesis Is Associated
+with Protection from Alzheimer’s Disease.”</span> <em>Nature
+Medicine</em> 29 (7): 1662–70.
+</div>
+<div id="ref-boyeau2023empirical" class="csl-entry" role="listitem">
+Boyeau, Pierre, Jeffrey Regier, Adam Gayoso, Michael I Jordan, Romain
+Lopez, and Nir Yosef. 2023. <span>“An Empirical Bayes Method for
+Differential Expression Analysis of Single Cells with Deep Generative
+Models.”</span> <em>Proceedings of the National Academy of Sciences</em>
+120 (21): e2209124120.
+</div>
+<div id="ref-bravo2023scenic" class="csl-entry" role="listitem">
+Bravo González-Blas, Carmen, Seppe De Winter, Gert Hulselmans, Nikolai
+Hecker, Irina Matetovici, Valerie Christiaens, Suresh Poovathingal,
+Jasper Wouters, Sara Aibar, and Stein Aerts. 2023.
+<span>“<span>SCENIC+</span>: Single-Cell Multiomic Inference of
+Enhancers and Gene Regulatory Networks.”</span> <em>Nature Methods</em>
+20 (9): 1355–67.
+</div>
+<div id="ref-bruggeman2008using" class="csl-entry" role="listitem">
+Bruggeman-Everts, Fieke. 2008. <span>“Using Mouse Models to Identify the
+Molecular Mechanisms Mediating Gene by Environment Interactions in
+Depressive Illness.”</span> PhD thesis. <a href="https://www.researchgate.net/publication/233413663_Using_mouse_models_to_identify_the_molecular_mechanisms_mediating_gene_by_environment_interactions_in_depressive_illness">https://www.researchgate.net/publication/233413663_Using_mouse_models_to_identify_the_molecular_mechanisms_mediating_gene_by_environment_interactions_in_depressive_illness</a>.
+</div>
+<div id="ref-buccitelli2020mrnas" class="csl-entry" role="listitem">
+Buccitelli, Christopher, and Matthias Selbach. 2020. <span>“mRNAs,
+Proteins and the Emerging Principles of Gene Expression Control.”</span>
+<em>Nature Reviews Genetics</em> 21 (10): 630–44.
+</div>
+<div id="ref-buenrostro2015atac" class="csl-entry" role="listitem">
+Buenrostro, Jason D, Beijing Wu, Howard Y Chang, and William J
+Greenleaf. 2015. <span>“ATAC-Seq: A Method for Assaying Chromatin
+Accessibility Genome-Wide.”</span> <em>Current Protocols in Molecular
+Biology</em> 109 (1): 21–29.
+</div>
+<div id="ref-burgess2017interpreting" class="csl-entry" role="listitem">
+Burgess, Stephen, and Simon G Thompson. 2017. <span>“Interpreting
+Findings from Mendelian Randomization Using the MR-Egger Method.”</span>
+<em>European Journal of Epidemiology</em> 32: 377–89.
+</div>
+<div id="ref-butler2018integrating" class="csl-entry" role="listitem">
+Butler, Andrew, Paul Hoffman, Peter Smibert, Efthymia Papalexi, and
+Rahul Satija. 2018. <span>“Integrating Single-Cell Transcriptomic Data
+Across Different Conditions, Technologies, and Species.”</span>
+<em>Nature Biotechnology</em> 36 (5): 411–20.
+</div>
+<div id="ref-cai2022theoretical" class="csl-entry" role="listitem">
+Cai, T Tony, and Rong Ma. 2022. <span>“Theoretical Foundations of t-Sne
+for Visualizing High-Dimensional Clustered Data.”</span> <em>Journal of
+Machine Learning Research</em> 23 (301): 1–54.
+</div>
+<div id="ref-cang2023screening" class="csl-entry" role="listitem">
+Cang, Zixuan, Yanxiang Zhao, Axel A Almet, Adam Stabell, Raul Ramos,
+Maksim V Plikus, Scott X Atwood, and Qing Nie. 2023. <span>“Screening
+Cell-Cell Communication in Spatial Transcriptomics via Collective
+Optimal Transport.”</span> <em>Nature Methods</em>, 1–11.
+</div>
+<div id="ref-cannoodt2021spearheading" class="csl-entry" role="listitem">
+Cannoodt, Robrecht, Wouter Saelens, Louise Deconinck, and Yvan Saeys.
+2021. <span>“Spearheading Future Omics Analyses Using Dyngen, a
+Multi-Modal Simulator of Single Cells.”</span> <em>Nature
+Communications</em> 12 (1): 3942.
+</div>
+<div id="ref-cao2022manifold" class="csl-entry" role="listitem">
+Cao, Kai, Yiguang Hong, and Lin Wan. 2022. <span>“Manifold Alignment for
+Heterogeneous Single-Cell Multi-Omics Data Integration Using
+Pamona.”</span> <em>Bioinformatics</em> 38 (1): 211–19.
+</div>
+<div id="ref-cao2021umi" class="csl-entry" role="listitem">
+Cao, Yingying, Simo Kitanovski, Ralf Küppers, and Daniel Hoffmann. 2021.
+<span>“UMI or Not UMI, That Is the Question for scRNA-Seq
+Zero-Inflation.”</span> <em>Nature Biotechnology</em>, 1–2.
+</div>
+<div id="ref-cao2022multi" class="csl-entry" role="listitem">
+Cao, Zhi-Jie, and Ge Gao. 2022. <span>“Multi-Omics Single-Cell Data
+Integration and Regulatory Inference with Graph-Linked
+Embedding.”</span> <em>Nature Biotechnology</em> 40 (10): 1458–66.
+</div>
+<div id="ref-carbonetto2021non" class="csl-entry" role="listitem">
+Carbonetto, Peter, Abhishek Sarkar, Zihao Wang, and Matthew Stephens.
+2021. <span>“Non-Negative Matrix Factorization Algorithms Greatly
+Improve Topic Model Fits.”</span> <em>arXiv Preprint
+arXiv:2105.13440</em>.
+</div>
+<div id="ref-cha2020single" class="csl-entry" role="listitem">
+Cha, Junha, and Insuk Lee. 2020. <span>“Single-Cell Network Biology for
+Resolving Cellular Heterogeneity in Human Diseases.”</span>
+<em>Experimental &amp; Molecular Medicine</em> 52 (11): 1798–808.
+</div>
+<div id="ref-chang2024droplet" class="csl-entry" role="listitem">
+Chang, Lei, Yang Xie, Brett Taylor, Zhaoning Wang, Jiachen Sun, Ethan J
+Armand, Shreya Mishra, et al. 2024. <span>“Droplet Hi-c Enables
+Scalable, Single-Cell Profiling of Chromatin Architecture in
+Heterogeneous Tissues.”</span> <em>Nature Biotechnology</em>, 1–14.
+</div>
+<div id="ref-chari2023specious" class="csl-entry" role="listitem">
+Chari, Tara, and Lior Pachter. 2023. <span>“The Specious Art of
+Single-Cell Genomics.”</span> <em>PLOS Computational Biology</em> 19
+(8): e1011288.
+</div>
+<div id="ref-chen2024simba" class="csl-entry" role="listitem">
+Chen, Huidong, Jayoung Ryu, Michael E Vinyard, Adam Lerer, and Luca
+Pinello. 2024. <span>“SIMBA: Single-Cell Embedding Along with
+Features.”</span> <em>Nature Methods</em> 21 (6): 1003–13.
+</div>
+<div id="ref-chen2015alternative" class="csl-entry" role="listitem">
+Chen, J, and WA Weiss. 2015. <span>“Alternative Splicing in Cancer:
+Implications for Biology and Therapy.”</span> <em>Oncogene</em> 34 (1):
+1–14.
+</div>
+<div id="ref-chen2015spatially" class="csl-entry" role="listitem">
+Chen, Kok Hao, Alistair N Boettiger, Jeffrey R Moffitt, Siyuan Wang, and
+Xiaowei Zhuang. 2015. <span>“Spatially Resolved, Highly Multiplexed RNA
+Profiling in Single Cells.”</span> <em>Science</em> 348 (6233): aaa6090.
+</div>
+<div id="ref-chen2023integration" class="csl-entry" role="listitem">
+Chen, Shuxiao, Bokai Zhu, Sijia Huang, John W Hickey, Kevin Z Lin,
+Michael Snyder, William J Greenleaf, Garry P Nolan, Nancy R Zhang, and
+Zongming Ma. 2024. <span>“Integration of Spatial and Single-Cell Data
+Across Modalities with Weakly Linked Features.”</span> <em>Nature
+Biotechnology</em> 42 (7): 1096–106.
+</div>
+<div id="ref-chen2018umi" class="csl-entry" role="listitem">
+Chen, Wenan, Yan Li, John Easton, David Finkelstein, Gang Wu, and Xiang
+Chen. 2018. <span>“<span>UMI</span>-Count Modeling and Differential
+Expression Analysis for Single-Cell <span>RNA</span> Sequencing.”</span>
+<em>Genome Biology</em> 19 (1): 70.
+</div>
+<div id="ref-chen2024benchmarking" class="csl-entry" role="listitem">
+Chen, Xin, Li Tai Fang, Zhong Chen, Wanqiu Chen, Bin Zhu, Hongjin Wu,
+Malcom Moos Jr, et al. 2024. <span>“A Benchmarking Study of Copy Number
+Variation Inference Methods Using Single-Cell RNA-Sequencing
+Data.”</span> <em>bioRxiv</em>, 2024–09.
+</div>
+<div id="ref-cheng2023massively" class="csl-entry" role="listitem">
+Cheng, Junyun, Gaole Lin, Tianhao Wang, Yunzhu Wang, Wenbo Guo, Jie
+Liao, Penghui Yang, et al. 2023. <span>“Massively Parallel CRISPR-Based
+Genetic Perturbation Screening at Single-Cell Resolution.”</span>
+<em>Advanced Science</em> 10 (4): 2204484.
+</div>
+<div id="ref-chintalaphani2021update" class="csl-entry" role="listitem">
+Chintalaphani, Sanjog R, Sandy S Pineda, Ira W Deveson, and Kishore R
+Kumar. 2021. <span>“An Update on the Neurological Short Tandem Repeat
+Expansion Disorders and the Emergence of Long-Read Sequencing
+Diagnostics.”</span> <em>Acta Neuropathologica Communications</em> 9
+(1): 98.
+</div>
+<div id="ref-claringbould2021enhancers" class="csl-entry" role="listitem">
+Claringbould, Annique, and Judith B Zaugg. 2021. <span>“Enhancers in
+Disease: Molecular Basis and Emerging Treatment Strategies.”</span>
+<em>Trends in Molecular Medicine</em> 27 (11): 1060–73.
+</div>
+<div id="ref-clifton2023stalign" class="csl-entry" role="listitem">
+Clifton, Kalen, Manjari Anant, Gohta Aihara, Lyla Atta, Osagie K
+Aimiuwu, Justus M Kebschull, Michael I Miller, Daniel Tward, and Jean
+Fan. 2023. <span>“STalign: Alignment of Spatial Transcriptomics Data
+Using Diffeomorphic Metric Mapping.”</span> <em>Nature
+Communications</em> 14 (1): 8123.
+</div>
+<div id="ref-cobos2023effective" class="csl-entry" role="listitem">
+Cobos, Francisco Avila, Mohammad Javad Najaf Panah, Jessica Epps,
+Xiaochen Long, Tsz-Kwong Man, Hua-Sheng Chiu, Elad Chomsky, et al. 2023.
+<span>“Effective Methods for Bulk RNA-Seq Deconvolution Using scnRNA-Seq
+Transcriptomes.”</span> <em>Genome Biology</em> 24 (1): 177.
+</div>
+<div id="ref-concordet2018crispor" class="csl-entry" role="listitem">
+Concordet, Jean-Paul, and Maximilian Haeussler. 2018. <span>“CRISPOR:
+Intuitive Guide Selection for CRISPR/Cas9 Genome Editing Experiments and
+Screens.”</span> <em>Nucleic Acids Research</em> 46 (W1): W242–45.
+</div>
+<div id="ref-dal2017single" class="csl-entry" role="listitem">
+Dal Molin, Alessandra, Giacomo Baruzzo, and Barbara Di Camillo. 2017.
+<span>“Single-Cell <span>RNA</span>-Sequencing: Assessment of
+Differential Expression Analysis Methods.”</span> <em>Frontiers in
+Genetics</em> 8: 62.
+</div>
+<div id="ref-das2022differential" class="csl-entry" role="listitem">
+Das, Samarendra, Anil Rai, and Shesh N Rai. 2022. <span>“Differential
+Expression Analysis of Single-Cell Rna-Seq Data: Current Statistical
+Approaches and Outstanding Challenges.”</span> <em>Entropy</em> 24 (7):
+995.
+</div>
+<div id="ref-datlinger2017pooled" class="csl-entry" role="listitem">
+Datlinger, Paul, André F Rendeiro, Christian Schmidl, Thomas
+Krausgruber, Peter Traxler, Johanna Klughammer, Linda C Schuster, Amelie
+Kuchler, Donat Alpar, and Christoph Bock. 2017. <span>“Pooled CRISPR
+Screening with Single-Cell Transcriptome Readout.”</span> <em>Nature
+Methods</em> 14 (3): 297–301.
+</div>
+<div id="ref-demetci2022scot" class="csl-entry" role="listitem">
+Demetci, Pinar, Rebecca Santorella, Björn Sandstede, William Stafford
+Noble, and Ritambhara Singh. 2022. <span>“SCOT: Single-Cell Multi-Omics
+Alignment with Optimal Transport.”</span> <em>Journal of Computational
+Biology</em> 29 (1): 3–18.
+</div>
+<div id="ref-denisenko2020systematic" class="csl-entry" role="listitem">
+Denisenko, Elena, Belinda B Guo, Matthew Jones, Rui Hou, Leanne De Kock,
+Timo Lassmann, Daniel Poppe, et al. 2020. <span>“Systematic Assessment
+of Tissue Dissociation and Storage Biases in Single-Cell and
+Single-Nucleus RNA-Seq Workflows.”</span> <em>Genome Biology</em> 21
+(1): 1–25.
+</div>
+<div id="ref-ding2020systematic" class="csl-entry" role="listitem">
+Ding, Jiarui, Xian Adiconis, Sean K Simmons, Monika S Kowalczyk, Cynthia
+C Hession, Nemanja D Marjanovic, Travis K Hughes, et al. 2020.
+<span>“Systematic Comparison of Single-Cell and Single-Nucleus
+RNA-Sequencing Methods.”</span> <em>Nature Biotechnology</em> 38 (6):
+737–46.
+</div>
+<div id="ref-dinh2016density" class="csl-entry" role="listitem">
+Dinh, Laurent, Jascha Sohl-Dickstein, and Samy Bengio. 2016.
+<span>“Density Estimation Using Real Nvp.”</span> <em>arXiv Preprint
+arXiv:1605.08803</em>.
+</div>
+<div id="ref-dixit2016perturb" class="csl-entry" role="listitem">
+Dixit, Atray, Oren Parnas, Biyu Li, Jenny Chen, Charles P Fulco, Livnat
+Jerby-Arnon, Nemanja D Marjanovic, et al. 2016. <span>“Perturb-Seq:
+Dissecting Molecular Circuits with Scalable Single-Cell RNA Profiling of
+Pooled Genetic Screens.”</span> <em>Cell</em> 167 (7): 1853–66.
+</div>
+<div id="ref-dong2020sccnv" class="csl-entry" role="listitem">
+Dong, Xiao, Lei Zhang, Xiaoxiao Hao, Tao Wang, and Jan Vijg. 2020.
+<span>“SCCNV: A Software Tool for Identifying Copy Number Variation from
+Single-Cell Whole-Genome Sequencing.”</span> <em>Frontiers in
+Genetics</em> 11: 505441.
+</div>
+<div id="ref-doss2025mosaicism" class="csl-entry" role="listitem">
+Doss, Rose M, Susana Lopez-Ignacio, Anna Dischler, Laurel Hiatt, Harriet
+Dashnow, Martin W Breuss, and Caroline M Dias. 2025. <span>“Mosaicism in
+Short Tandem Repeat Disorders: A Clinical Perspective.”</span>
+<em>Genes</em> 16 (2): 216.
+</div>
+<div id="ref-duan2023spatially" class="csl-entry" role="listitem">
+Duan, Honglin, Tao Cheng, and Hui Cheng. 2023. <span>“Spatially Resolved
+Transcriptomics: Advances and Applications.”</span> <em>Blood
+Science</em> 5 (1): 1–14.
+</div>
+<div id="ref-ea2015contribution" class="csl-entry" role="listitem">
+Ea, Vuthy, Marie-Odile Baudement, Annick Lesne, and Thierry Forné. 2015.
+<span>“Contribution of Topological Domains and Loop Formation to 3D
+Chromatin Organization.”</span> <em>Genes</em> 6 (3): 734–50.
+</div>
+<div id="ref-edrisi2023accurate" class="csl-entry" role="listitem">
+Edrisi, Mohammadamin, Xiru Huang, Huw A Ogilvie, and Luay Nakhleh. 2023.
+<span>“Accurate Integration of Single-Cell DNA and RNA for Analyzing
+Intratumor Heterogeneity Using MaCroDNA.”</span> <em>Nature
+Communications</em> 14 (1): 8262.
+</div>
+<div id="ref-efremova2020cellphonedb" class="csl-entry" role="listitem">
+Efremova, Mirjana, Miquel Vento-Tormo, Sarah A Teichmann, and Roser
+Vento-Tormo. 2020. <span>“CellPhoneDB: Inferring Cell–Cell Communication
+from Combined Expression of Multi-Subunit Ligand–Receptor
+Complexes.”</span> <em>Nature Protocols</em> 15 (4): 1484–1506.
+</div>
+<div id="ref-efron2002empirical" class="csl-entry" role="listitem">
+Efron, Bradley, and Robert Tibshirani. 2002. <span>“Empirical Bayes
+Methods and False Discovery Rates for Microarrays.”</span> <em>Genetic
+Epidemiology</em> 23 (1): 70–86.
+</div>
+<div id="ref-eisenstein2020secret" class="csl-entry" role="listitem">
+Eisenstein, Michael. 2020. <span>“The Secret Life of Cells.”</span>
+<em>Nature Methods</em> 17: 7–10.
+</div>
+<div id="ref-elhaik2022principal" class="csl-entry" role="listitem">
+Elhaik, Eran. 2022. <span>“Principal Component Analyses (PCA)-Based
+Findings in Population Genetic Studies Are Highly Biased and Must Be
+Reevaluated.”</span> <em>Scientific Reports</em> 12 (1): 14683.
+</div>
+<div id="ref-ergen2024consensus" class="csl-entry" role="listitem">
+Ergen, Can, Galen Xing, Chenling Xu, Martin Kim, Michael Jayasuriya,
+Erin McGeever, Angela Oliveira Pisco, Aaron Streets, and Nir Yosef.
+2024. <span>“Consensus Prediction of Cell Type Labels in Single-Cell
+Data with popV.”</span> <em>Nature Genetics</em>, 1–8.
+</div>
+<div id="ref-erickson2022spatially" class="csl-entry" role="listitem">
+Erickson, Andrew, Mengxiao He, Emelie Berglund, Maja Marklund, Reza
+Mirzazadeh, Niklas Schultz, Linda Kvastad, et al. 2022. <span>“Spatially
+Resolved Clonal Copy Number Alterations in Benign and Malignant
+Tissue.”</span> <em>Nature</em> 608 (7922): 360–67.
+</div>
+<div id="ref-esposito2019hacking" class="csl-entry" role="listitem">
+Esposito, Roberta, Núria Bosch, Andrés Lanzós, Taisia Polidori, Carlos
+Pulido-Quetglas, and Rory Johnson. 2019. <span>“Hacking the Cancer
+Genome: Profiling Therapeutically Actionable Long Non-Coding RNAs Using
+CRISPR-Cas9 Screening.”</span> <em>Cancer Cell</em> 35 (4): 545–57.
+</div>
+<div id="ref-figiel2024clinical" class="csl-entry" role="listitem">
+Figiel, Sandy, Anthony Bates, David A Braun, Renu Eapen, Markus
+Eckstein, Brandon J Manley, Matthew I Milowsky, et al. 2024.
+<span>“Clinical Implications of Basic Research: Exploring the
+Transformative Potential of Spatial’omics in Uro-Oncology.”</span>
+<em>European Urology</em>.
+</div>
+<div id="ref-fleck2023inferring" class="csl-entry" role="listitem">
+Fleck, Jonas Simon, Sophie Martina Johanna Jansen, Damian Wollny, Fides
+Zenk, Makiko Seimiya, Akanksha Jain, Ryoko Okamoto, et al. 2023.
+<span>“Inferring and Perturbing Cell Fate Regulomes in Human Brain
+Organoids.”</span> <em>Nature</em> 621 (7978): 365–72.
+</div>
+<div id="ref-fornes2020jaspar" class="csl-entry" role="listitem">
+Fornes, Oriol, Jaime A Castro-Mondragon, Aziz Khan, Robin Van der Lee,
+Xi Zhang, Phillip A Richmond, Bhavi P Modi, et al. 2020. <span>“JASPAR
+2020: Update of the Open-Access Database of Transcription Factor Binding
+Profiles.”</span> <em>Nucleic Acids Research</em> 48 (D1): D87–92.
+</div>
+<div id="ref-fotsing2019impact" class="csl-entry" role="listitem">
+Fotsing, Stephanie Feupe, Jonathan Margoliash, Catherine Wang, Shubham
+Saini, Richard Yanicky, Sharona Shleizer-Burko, Alon Goren, and Melissa
+Gymrek. 2019. <span>“The Impact of Short Tandem Repeat Variation on Gene
+Expression.”</span> <em>Nature Genetics</em> 51 (11): 1652–59.
+</div>
+<div id="ref-fu2023emerging" class="csl-entry" role="listitem">
+Fu, Aikun, Bingqing Yao, Tingting Dong, and Shang Cai. 2023.
+<span>“Emerging Roles of Intratumor Microbiota in Cancer
+Metastasis.”</span> <em>Trends in Cell Biology</em> 33 (7): 583–93.
+</div>
+<div id="ref-gabbutt2022fluctuating" class="csl-entry" role="listitem">
+Gabbutt, Calum, Ryan O. Schenck, Daniel J. Weisenberger, Christopher
+Kimberley, Alison Berner, Jacob Househam, Eszter Lakatos, et al. 2022.
+<span>“Fluctuating Methylation Clocks for Cell Lineage Tracing at High
+Temporal Resolution in Human Tissues.”</span> <em>Nature
+Biotechnology</em> 40 (5): 720–30.
+</div>
+<div id="ref-gao2021delineating" class="csl-entry" role="listitem">
+Gao, Ruli, Shanshan Bai, Ying C Henderson, Yiyun Lin, Aislyn Schalck,
+Yun Yan, Tapsi Kumar, et al. 2021. <span>“Delineating Copy Number and
+Clonal Substructure in Human Tumors from Single-Cell
+Transcriptomes.”</span> <em>Nature Biotechnology</em> 39 (5): 599–608.
+</div>
+<div id="ref-garbulowski2024genespider2" class="csl-entry" role="listitem">
+Garbulowski, Mateusz, Thomas Hillerton, Daniel Morgan, Deniz Seçilmiş,
+Lisbet Sonnhammer, Andreas Tjärnberg, Torbjörn EM Nordling, and Erik LL
+Sonnhammer. 2024. <span>“GeneSPIDER2: Large Scale GRN Simulation and
+Benchmarking with Perturbed Single-Cell Data.”</span> <em>NAR Genomics
+and Bioinformatics</em> 6 (3): lqae121.
+</div>
+<div id="ref-garg2021computational" class="csl-entry" role="listitem">
+Garg, Shilpa. 2021. <span>“Computational Methods for Chromosome-Scale
+Haplotype Reconstruction.”</span> <em>Genome Biology</em> 22 (1): 101.
+</div>
+<div id="ref-garrison2012haplotype" class="csl-entry" role="listitem">
+Garrison, Erik, and Gabor Marth. 2012. <span>“Haplotype-Based Variant
+Detection from Short-Read Sequencing.”</span> <em>arXiv Preprint
+arXiv:1207.3907</em>.
+</div>
+<div id="ref-gasperini2019genome" class="csl-entry" role="listitem">
+Gasperini, Molly, Andrew J Hill, José L McFaline-Figueroa, Beth Martin,
+Seungsoo Kim, Melissa D Zhang, Dana Jackson, et al. 2019. <span>“A
+Genome-Wide Framework for Mapping Gene Regulation via Cellular Genetic
+Screens.”</span> <em>Cell</em> 176 (1): 377–90.
+</div>
+<div id="ref-gauba2021immunomodulation" class="csl-entry" role="listitem">
+Gauba, Kavya, Shruti Gupta, Jyoti Shekhawat, Praveen Sharma, Dharmveer
+Yadav, and Mithu Banerjee. 2021. <span>“Immunomodulation by Epigenome
+Alterations in Mycobacterium Tuberculosis Infection.”</span>
+<em>Tuberculosis</em> 128: 102077.
+</div>
+<div id="ref-gawad2016single" class="csl-entry" role="listitem">
+Gawad, Charles, Winston Koh, and Stephen R Quake. 2016.
+<span>“Single-Cell Genome Sequencing: Current State of the
+Science.”</span> <em>Nature Reviews Genetics</em> 17 (3): 175–88.
+</div>
+<div id="ref-ge2019polygenic" class="csl-entry" role="listitem">
+Ge, Tian, Chia-Yen Chen, Yang Ni, Yen-Chen Anne Feng, and Jordan W
+Smoller. 2019. <span>“Polygenic Prediction via Bayesian Regression and
+Continuous Shrinkage Priors.”</span> <em>Nature Communications</em> 10
+(1): 1776.
+</div>
+<div id="ref-ghojogh2021factor" class="csl-entry" role="listitem">
+Ghojogh, Benyamin, Ali Ghodsi, Fakhri Karray, and Mark Crowley. 2021.
+<span>“Factor Analysis, Probabilistic Principal Component Analysis,
+Variational Inference, and Variational Autoencoder: Tutorial and
+Survey.”</span> <em>arXiv Preprint arXiv:2101.00734</em>.
+</div>
+<div id="ref-glancy2024bivalent" class="csl-entry" role="listitem">
+Glancy, Eleanor, Natalie Choy, and Melanie A Eckersley-Maslin. 2024.
+<span>“Bivalent Chromatin: A Developmental Balancing Act Tipped in
+Cancer.”</span> <em>Biochemical Society Transactions</em> 52 (1):
+217–29.
+</div>
+<div id="ref-gohil2021applying" class="csl-entry" role="listitem">
+Gohil, Satyen H, J Bryan Iorgulescu, David A Braun, Derin B Keskin, and
+Kenneth J Livak. 2021. <span>“Applying High-Dimensional Single-Cell
+Technologies to the Analysis of Cancer Immunotherapy.”</span> <em>Nature
+Reviews Clinical Oncology</em> 18 (4): 244–56.
+</div>
+<div id="ref-golub1999molecular" class="csl-entry" role="listitem">
+Golub, Todd R, Donna K Slonim, Pablo Tamayo, Christine Huard, Michelle
+Gaasenbeek, Jill P Mesirov, Hilary Coller, et al. 1999. <span>“Molecular
+Classification of Cancer: Class Discovery and Class Prediction by Gene
+Expression Monitoring.”</span> <em>Science</em> 286 (5439): 531–37.
+</div>
+<div id="ref-gong2021cobolt" class="csl-entry" role="listitem">
+Gong, Boying, Yun Zhou, and Elizabeth Purdom. 2021. <span>“Cobolt:
+Integrative Analysis of Multimodal Single-Cell Sequencing Data.”</span>
+<em>Genome Biology</em> 22: 1–21.
+</div>
+<div id="ref-gordeeva2021benchmarking" class="csl-entry" role="listitem">
+Gordeeva, Veronika, Elena Sharova, Konstantin Babalyan, Rinat Sultanov,
+Vadim M Govorun, and Georgij Arapidi. 2021. <span>“Benchmarking Germline
+CNV Calling Tools from Exome Sequencing Data.”</span> <em>Scientific
+Reports</em> 11 (1): 14416.
+</div>
+<div id="ref-grishkevich2014gene" class="csl-entry" role="listitem">
+Grishkevich, Vladislav, and Itai Yanai. 2014. <span>“Gene Length and
+Expression Level Shape Genomic Novelties.”</span> <em>Genome
+Research</em> 24 (9): 1497–1503.
+</div>
+<div id="ref-gulati2020single" class="csl-entry" role="listitem">
+Gulati, Gunsagar S, Shaheen S Sikandar, Daniel J Wesche, Anoop
+Manjunath, Anjan Bharadwaj, Mark J Berger, Francisco Ilagan, et al.
+2020. <span>“Single-Cell Transcriptional Diversity Is a Hallmark of
+Developmental Potential.”</span> <em>Science</em> 367 (6476): 405–11.
+</div>
+<div id="ref-gupta2022single" class="csl-entry" role="listitem">
+Gupta, Chirag, Jielin Xu, Ting Jin, Saniya Khullar, Xiaoyu Liu, Sayali
+Alatkar, Feixiong Cheng, and Daifeng Wang. 2022. <span>“Single-Cell
+Network Biology Characterizes Cell Type Gene Regulation for Drug
+Repurposing and Phenotype Prediction in Alzheimer’s Disease.”</span>
+<em>PLOS Computational Biology</em> 18 (7): e1010287.
+</div>
+<div id="ref-habib2007analysis" class="csl-entry" role="listitem">
+Habib, Naomi. 2007. <em>Analysis of DNA Motifs Based on a Novel Motif
+Comparison Method</em>. Hebrew University of Jerusalem.
+</div>
+<div id="ref-hafemeister2019normalization" class="csl-entry" role="listitem">
+Hafemeister, Christoph, and Rahul Satija. 2019. <span>“Normalization and
+Variance Stabilization of Single-Cell <span class="nocase">RNA-seq</span> Data Using Regularized Negative Binomial
+Regression.”</span> <em>Genome Biology</em> 20 (1): 1–15.
+</div>
+<div id="ref-haghverdi2015diffusion" class="csl-entry" role="listitem">
+Haghverdi, Laleh, Florian Buettner, and Fabian J Theis. 2015.
+<span>“Diffusion Maps for High-Dimensional Single-Cell Analysis of
+Differentiation Data.”</span> <em>Bioinformatics</em> 31 (18): 2989–98.
+</div>
+<div id="ref-haghverdi2018batch" class="csl-entry" role="listitem">
+Haghverdi, Laleh, Aaron TL Lun, Michael D Morgan, and John C Marioni.
+2018. <span>“Batch Effects in Single-Cell <span>RNA</span>-Sequencing
+Data Are Corrected by Matching Mutual Nearest Neighbors.”</span>
+<em>Nature Biotechnology</em> 36 (5): 421–27.
+</div>
+<div id="ref-hamma2006pseudouridine" class="csl-entry" role="listitem">
+Hamma, Tomoko, and Adrian R Ferré-D’Amaré. 2006. <span>“Pseudouridine
+Synthases.”</span> <em>Chemistry &amp; Biology</em> 13 (11): 1125–35.
+</div>
+<div id="ref-hannan2018tandem" class="csl-entry" role="listitem">
+Hannan, Anthony J. 2018. <span>“Tandem Repeats Mediating Genetic
+Plasticity in Health and Disease.”</span> <em>Nature Reviews
+Genetics</em> 19 (5): 286–98.
+</div>
+<div id="ref-hansson2023blood" class="csl-entry" role="listitem">
+Hansson, Oskar, Kaj Blennow, Henrik Zetterberg, and Jeffrey Dage. 2023.
+<span>“Blood Biomarkers for Alzheimer’s Disease in Clinical Practice and
+Trials.”</span> <em>Nature Aging</em> 3 (5): 506–19.
+</div>
+<div id="ref-hao2020integrated" class="csl-entry" role="listitem">
+Hao, Yuhan, Stephanie Hao, Erica Andersen-Nissen, William M Mauck,
+Shiwei Zheng, Andrew Butler, Maddie Jane Lee, et al. 2021.
+<span>“Integrated Analysis of Multimodal Single-Cell Data.”</span>
+<em>Cell</em> 184 (13): 3573–87.
+</div>
+<div id="ref-haard2023long" class="csl-entry" role="listitem">
+Hård, Joanna, Jeff E Mold, Jesper Eisfeldt, Christian Tellgren-Roth,
+Susana Häggqvist, Ignas Bunikis, Orlando Contreras-Lopez, et al. 2023.
+<span>“Long-Read Whole-Genome Analysis of Human Single Cells.”</span>
+<em>Nature Communications</em> 14 (1): 5164.
+</div>
+<div id="ref-hartman2024comparative" class="csl-entry" role="listitem">
+Hartman, Austin, and Rahul Satija. 2024. <span>“Comparative Analysis of
+Multiplexed in Situ Gene Expression Profiling Technologies.”</span>
+<em>bioRxiv</em>, 2024–01.
+</div>
+<div id="ref-hartwig2016two" class="csl-entry" role="listitem">
+Hartwig, Fernando Pires, Neil Martin Davies, Gibran Hemani, and George
+Davey Smith. 2016. <span>“Two-Sample Mendelian Randomization: Avoiding
+the Downsides of a Powerful, Widely Applicable but Potentially Fallible
+Technique.”</span> <em>International Journal of Epidemiology</em>.
+Oxford University Press.
+</div>
+<div id="ref-he2021nebula" class="csl-entry" role="listitem">
+He, Liang, Jose Davila-Velderrain, Tomokazu S Sumida, David A Hafler,
+Manolis Kellis, and Alexander M Kulminski. 2021.
+<span>“<span>NEBULA</span> Is a Fast Negative Binomial Mixed Model for
+Differential or Co-Expression Analysis of Large-Scale Multi-Subject
+Single-Cell Data.”</span> <em>Communications Biology</em> 4 (1): 629.
+</div>
+<div id="ref-he2024starfysh" class="csl-entry" role="listitem">
+He, Siyu, Yinuo Jin, Achille Nazaret, Lingting Shi, Xueer Chen, Sham
+Rampersaud, Bahawar S Dhillon, et al. 2024. <span>“Starfysh Integrates
+Spatial Transcriptomic and Histologic Data to Reveal Heterogeneous
+Tumor–Immune Hubs.”</span> <em>Nature Biotechnology</em>, 1–13.
+</div>
+<div id="ref-he2022ghostknockoff" class="csl-entry" role="listitem">
+He, Zihuai, Linxi Liu, Michael E Belloy, Yann Le Guen, Aaron Sossin,
+Xiaoxia Liu, Xinran Qi, et al. 2022. <span>“GhostKnockoff Inference
+Empowers Identification of Putative Causal Variants in Genome-Wide
+Association Studies.”</span> <em>Nature Communications</em> 13 (1):
+7209.
+</div>
+<div id="ref-heinz2010simple" class="csl-entry" role="listitem">
+Heinz, Sven, Christopher Benner, Nathanael Spann, Eric Bertolino, Yin C
+Lin, Peter Laslo, Jason X Cheng, Cornelis Murre, Harinder Singh, and
+Christopher K Glass. 2010. <span>“Simple Combinations of
+Lineage-Determining Transcription Factors Prime Cis-Regulatory Elements
+Required for Macrophage and b Cell Identities.”</span> <em>Molecular
+Cell</em> 38 (4): 576–89.
+</div>
+<div id="ref-hernandez2019genomics" class="csl-entry" role="listitem">
+Hernández-Beeftink, Tamara, Beatriz Guillen-Guio, Jesús Villar, and
+Carlos Flores. 2019. <span>“Genomics and the Acute Respiratory Distress
+Syndrome: Current and Future Directions.”</span> <em>International
+Journal of Molecular Sciences</em> 20 (16): 4004.
+</div>
+<div id="ref-hernando2019ageing" class="csl-entry" role="listitem">
+Hernando-Herraez, Irene, Brendan Evano, Thomas Stubbs, Pierre-Henri
+Commere, Marc Jan Bonder, Stephen Clark, Simon Andrews, Shahragim
+Tajbakhsh, and Wolf Reik. 2019. <span>“Ageing Affects DNA Methylation
+Drift and Transcriptional Cell-to-Cell Variability in Mouse Muscle Stem
+Cells.”</span> <em>Nature Communications</em> 10 (1): 4361.
+</div>
+<div id="ref-heumos2023best" class="csl-entry" role="listitem">
+Heumos, Lukas, Anna C Schaar, Christopher Lance, Anastasia Litinetskaya,
+Felix Drost, Luke Zappia, Malte D Lücken, et al. 2023. <span>“Best
+Practices for Single-Cell Analysis Across Modalities.”</span> <em>Nature
+Reviews Genetics</em> 24 (8): 550–72.
+</div>
+<div id="ref-hormozdiari2014identifying" class="csl-entry" role="listitem">
+Hormozdiari, Farhad, Emrah Kostem, Eun Yong Kang, Bogdan Pasaniuc, and
+Eleazar Eskin. 2014. <span>“Identifying Causal Variants at Loci with
+Multiple Signals of Association.”</span> In <em>Proceedings of the 5th
+ACM Conference on Bioinformatics, Computational Biology, and Health
+Informatics</em>, 610–11.
+</div>
+<div id="ref-hou2020systematic" class="csl-entry" role="listitem">
+Hou, Wenpin, Zhicheng Ji, Hongkai Ji, and Stephanie C Hicks. 2020.
+<span>“A Systematic Evaluation of Single-Cell
+<span>RNA</span>-Sequencing Imputation Methods.”</span> <em>Genome
+Biology</em> 21 (1): 1–30.
+</div>
+<div id="ref-hu2024cellwalker2" class="csl-entry" role="listitem">
+Hu, Zhirui, Pawel F Przytycki, and Katherine S Pollard. 2024.
+<span>“CellWalker2: Multi-Omic Discovery of Hierarchical Cell Type
+Relationships and Their Associations with Genomic Annotations.”</span>
+<em>bioRxiv</em>.
+</div>
+<div id="ref-huang2022towards" class="csl-entry" role="listitem">
+Huang, Haiyang, Yingfan Wang, Cynthia Rudin, and Edward P Browne. 2022.
+<span>“Towards a Comprehensive Evaluation of Dimension Reduction Methods
+for Transcriptomic Data Visualization.”</span> <em>Communications
+Biology</em> 5 (1): 719.
+</div>
+<div id="ref-ito2022factors" class="csl-entry" role="listitem">
+Ito, Shinsuke, Nando Dulal Das, Takashi Umehara, and Haruhiko Koseki.
+2022. <span>“Factors and Mechanisms That Influence Chromatin-Mediated
+Enhancer–Promoter Interactions and Transcriptional Regulation.”</span>
+<em>Cancers</em> 14 (21): 5404.
+</div>
+<div id="ref-jaakkola2017comparison" class="csl-entry" role="listitem">
+Jaakkola, Maria K, Fatemeh Seyednasrollah, Arfa Mehmood, and Laura L
+Elo. 2017. <span>“Comparison of Methods to Detect Differentially
+Expressed Genes Between Single-Cell Populations.”</span> <em>Briefings
+in Bioinformatics</em> 18 (5): 735–43.
+</div>
+<div id="ref-jaiswal2014age" class="csl-entry" role="listitem">
+Jaiswal, Siddhartha, Pierre Fontanillas, Jason Flannick, Alisa Manning,
+Peter V Grauman, Brenton G Mar, R Coleman Lindsley, et al. 2014.
+<span>“Age-Related Clonal Hematopoiesis Associated with Adverse
+Outcomes.”</span> <em>New England Journal of Medicine</em> 371 (26):
+2488–98.
+</div>
+<div id="ref-jiang2022statistics" class="csl-entry" role="listitem">
+Jiang, Ruochen, Tianyi Sun, Dongyuan Song, and Jingyi Jessica Li. 2022.
+<span>“Statistics or Biology: The Zero-Inflation Controversy about
+scRNA-Seq Data.”</span> <em>Genome Biology</em> 23 (1): 31.
+</div>
+<div id="ref-jiang2017scale" class="csl-entry" role="listitem">
+Jiang, Yuchao, Nancy R Zhang, and Mingyao Li. 2017. <span>“SCALE:
+Modeling Allele-Specific Gene Expression by Single-Cell RNA
+Sequencing.”</span> <em>Genome Biology</em> 18: 1–15.
+</div>
+<div id="ref-jin2021inference" class="csl-entry" role="listitem">
+Jin, Suoqin, Christian F Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul
+Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V Plikus, and Qing Nie.
+2021. <span>“Inference and Analysis of Cell-Cell Communication Using
+CellChat.”</span> <em>Nature Communications</em> 12 (1): 1088.
+</div>
+<div id="ref-johnson2022embedr" class="csl-entry" role="listitem">
+Johnson, Eric M, William Kath, and Madhav Mani. 2022.
+<span>“<span>EMBEDR</span>: Distinguishing Signal from Noise in
+Single-Cell Omics Data.”</span> <em>Patterns</em> 3 (3).
+</div>
+<div id="ref-jumper2021highly" class="csl-entry" role="listitem">
+Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael
+Figurnov, Olaf Ronneberger, Kathryn Tunyasuvunakool, et al. 2021.
+<span>“Highly Accurate Protein Structure Prediction with
+AlphaFold.”</span> <em>Nature</em> 596 (7873): 583–89.
+</div>
+<div id="ref-junttila2022benchmarking" class="csl-entry" role="listitem">
+Junttila, Sini, Joahnnes Smolander, and Laura L Elo. 2022.
+<span>“Benchmarking Methods for Detecting Differential States Between
+Conditions from Multi-Subject Single-Cell <span>RNA</span>-Seq
+Data.”</span> <em>Briefings in Bioinformatics</em> 23 (5): bbac286.
+</div>
+<div id="ref-karamveer2024approaches" class="csl-entry" role="listitem">
+Karamveer, and Yasin Uzun. 2024. <span>“Approaches for Benchmarking
+Single-Cell Gene Regulatory Network Methods.”</span> <em>Bioinformatics
+and Biology Insights</em> 18: 11779322241287120.
+</div>
+<div id="ref-kennedy2022genetic" class="csl-entry" role="listitem">
+Kennedy, Hannah L, Lisa Dinkler, Martin A Kennedy, Cynthia M Bulik, and
+Jennifer Jordan. 2022. <span>“How Genetic Analysis May Contribute to the
+Understanding of Avoidant/Restrictive Food Intake Disorder
+(ARFID).”</span> <em>Journal of Eating Disorders</em> 10 (1): 53.
+</div>
+<div id="ref-kent1979multivariate" class="csl-entry" role="listitem">
+Kent, JT, John Bibby, and KV Mardia. 1979. <em>Multivariate
+Analysis</em>. Academic Press Amsterdam.
+</div>
+<div id="ref-kepchia2020diverse" class="csl-entry" role="listitem">
+Kepchia, Devin, Ling Huang, Richard Dargusch, Robert A Rissman, Maxim N
+Shokhirev, Wolfgang Fischer, and David Schubert. 2020. <span>“Diverse
+Proteins Aggregate in Mild Cognitive Impairment and Alzheimer’s Disease
+Brain.”</span> <em>Alzheimer’s Research &amp; Therapy</em> 12: 1–20.
+</div>
+<div id="ref-khan2022crispr" class="csl-entry" role="listitem">
+Khan, Faiza Shafique, Farhan Goher, Dapeng Zhang, Peng Shi, Zhiying Li,
+Yin Min Htwe, and Yong Wang. 2022. <span>“Is CRISPR/Cas9 a Way Forward
+to Fast-Track Genetic Improvement in Commercial Palms? Prospects and
+Limits.”</span> <em>Frontiers in Plant Science</em> 13: 1042828.
+</div>
+<div id="ref-kharchenko2014bayesian" class="csl-entry" role="listitem">
+Kharchenko, Peter V, Lev Silberstein, and David T Scadden. 2014.
+<span>“Bayesian Approach to Single-Cell Differential Expression
+Analysis.”</span> <em>Nature Methods</em> 11 (7): 740.
+</div>
+<div id="ref-khatri2022uncertainty" class="csl-entry" role="listitem">
+Khatri, Robin, and Stefan Bonn. 2022. <span>“Uncertainty Estimation for
+Single-Cell Label Transfer.”</span> In <em>Conformal and Probabilistic
+Prediction with Applications</em>, 109–28. PMLR.
+</div>
+<div id="ref-kiessling2024spatial" class="csl-entry" role="listitem">
+Kiessling, Paul, and Christoph Kuppe. 2024. <span>“Spatial Multi-Omics:
+Novel Tools to Study the Complexity of Cardiovascular Diseases.”</span>
+<em>Genome Medicine</em> 16 (1): 14.
+</div>
+<div id="ref-kim2023gene" class="csl-entry" role="listitem">
+Kim, Daniel, Andy Tran, Hani Jieun Kim, Yingxin Lin, Jean Yee Hwa Yang,
+and Pengyi Yang. 2023. <span>“Gene Regulatory Network Reconstruction:
+Harnessing the Power of Single-Cell Multi-Omic Data.”</span> <em>NPJ
+Systems Biology and Applications</em> 9 (1): 51.
+</div>
+<div id="ref-kim2017dna" class="csl-entry" role="listitem">
+Kim, Mirang, and Joseph Costello. 2017. <span>“<span>DNA</span>
+Methylation: An Epigenetic Mark of Cellular Memory.”</span>
+<em>Experimental &amp; Molecular Medicine</em> 49 (4): e322–22.
+</div>
+<div id="ref-kim2020demystifying" class="csl-entry" role="listitem">
+Kim, Tae Hyun, Xiang Zhou, and Mengjie Chen. 2020. <span>“Demystifying
+<span>‘Drop-Outs’</span> in Single-Cell UMI Data.”</span> <em>Genome
+Biology</em> 21 (1): 196.
+</div>
+<div id="ref-kim2023single" class="csl-entry" role="listitem">
+Kim, Yoon-Seob, Jinyong Choi, and Sug Hyung Lee. 2023.
+<span>“Single-Cell and Spatial Sequencing Application in
+Pathology.”</span> <em>Journal of Pathology and Translational
+Medicine</em> 57 (1): 43–51.
+</div>
+<div id="ref-kobyzev2020normalizing" class="csl-entry" role="listitem">
+Kobyzev, Ivan, Simon JD Prince, and Marcus A Brubaker. 2020.
+<span>“Normalizing Flows: An Introduction and Review of Current
+Methods.”</span> <em>IEEE Transactions on Pattern Analysis and Machine
+Intelligence</em> 43 (11): 3964–79.
+</div>
+<div id="ref-korsunsky2019fast" class="csl-entry" role="listitem">
+Korsunsky, Ilya, Nghia Millard, Jean Fan, Kamil Slowikowski, Fan Zhang,
+Kevin Wei, Yuriy Baglaenko, Michael Brenner, Po-ru Loh, and Soumya
+Raychaudhuri. 2019. <span>“Fast, Sensitive and Accurate Integration of
+Single-Cell Data with Harmony.”</span> <em>Nature Methods</em>, 1–8.
+</div>
+<div id="ref-kuhn2021moving" class="csl-entry" role="listitem">
+Kuhn, Maria, António J Santinha, and Randall J Platt. 2021.
+<span>“Moving from in Vitro to in Vivo CRISPR Screens.”</span> <em>Gene
+and Genome Editing</em> 2: 100008.
+</div>
+<div id="ref-kunkle2019genetic" class="csl-entry" role="listitem">
+Kunkle, Brian W, Benjamin Grenier-Boley, Rebecca Sims, Joshua C Bis,
+Vincent Damotte, Adam C Naj, Anne Boland, et al. 2019. <span>“Genetic
+Meta-Analysis of Diagnosed Alzheimer’s Disease Identifies New Risk Loci
+and Implicates a<span class="math inline"><em>β</em></span>, Tau,
+Immunity and Lipid Processing.”</span> <em>Nature Genetics</em> 51 (3):
+414–30.
+</div>
+<div id="ref-la2018rna" class="csl-entry" role="listitem">
+La Manno, Gioele, Ruslan Soldatov, Amit Zeisel, Emelie Braun, Hannah
+Hochgerner, Viktor Petukhov, Katja Lidschreiber, et al. 2018.
+<span>“<span>RNA</span> Velocity of Single Cells.”</span>
+<em>Nature</em> 560 (7719): 494–98.
+</div>
+<div id="ref-lahnemann2020eleven" class="csl-entry" role="listitem">
+Lahnemann, David, Johannes Koster, Ewa Szczurek, Davis J McCarthy,
+Stephanie C Hicks, Mark D Robinson, Catalina A Vallejos, et al. 2020.
+<span>“Eleven Grand Challenges in Single-Cell Data Science.”</span>
+<em>Genome Biology</em> 21 (1): 1–35.
+</div>
+<div id="ref-lance2022multimodal" class="csl-entry" role="listitem">
+Lance, Christopher, Malte D Luecken, Daniel B Burkhardt, Robrecht
+Cannoodt, Pia Rautenstrauch, Anna Laddach, Aidyn Ubingazhibov, et al.
+2022. <span>“Multimodal Single Cell Data Integration Challenge: Results
+and Lessons Learned.”</span> <em>BioRxiv</em>, 2022–04.
+</div>
+<div id="ref-lause2021analytic" class="csl-entry" role="listitem">
+Lause, Jan, Philipp Berens, and Dmitry Kobak. 2021. <span>“Analytic
+Pearson Residuals for Normalization of Single-Cell RNA-Seq UMI
+Data.”</span> <em>Genome Biology</em> 22: 1–20.
+</div>
+<div id="ref-lause2024art" class="csl-entry" role="listitem">
+———. 2024. <span>“The Art of Seeing the Elephant in the Room: 2D
+Embeddings of Single-Cell Data Do Make Sense.”</span> <em>bioRxiv</em>.
+</div>
+<div id="ref-leblanc2023major" class="csl-entry" role="listitem">
+Leblanc, Francis JA, and Guillaume Lettre. 2023. <span>“Major Cell-Types
+in Multiomic Single-Nucleus Datasets Impact Statistical Modeling of
+Links Between Regulatory Sequences and Target Genes.”</span>
+<em>Scientific Reports</em> 13 (1): 3924.
+</div>
+<div id="ref-lee2024profiling" class="csl-entry" role="listitem">
+Lee, Colin YC, James McCaffrey, Dominic McGovern, and Menna R
+Clatworthy. 2024. <span>“Profiling Immune Cell Tissue Niches in the
+Spatial-Omics Era.”</span> <em>Journal of Allergy and Clinical
+Immunology</em>.
+</div>
+<div id="ref-lei2021applications" class="csl-entry" role="listitem">
+Lei, Yalan, Rong Tang, Jin Xu, Wei Wang, Bo Zhang, Jiang Liu, Xianjun
+Yu, and Si Shi. 2021. <span>“Applications of Single-Cell Sequencing in
+Cancer Research: Progress and Perspectives.”</span> <em>Journal of
+Hematology &amp; Oncology</em> 14 (1): 91.
+</div>
+<div id="ref-leiz2021technologies" class="csl-entry" role="listitem">
+Leiz, Janna, Maria Rutkiewicz, Carmen Birchmeier, Udo Heinemann, and Kai
+M Schmidt-Ott. 2021. <span>“Technologies for Profiling the Impact of
+Genomic Variants on Transcription Factor Binding.”</span>
+<em>Medizinische Genetik</em> 33 (2): 147–55.
+</div>
+<div id="ref-leung2021full" class="csl-entry" role="listitem">
+Leung, Szi Kay, Aaron R Jeffries, Isabel Castanho, Ben T Jordan, Karen
+Moore, Jonathan P Davies, Emma L Dempster, et al. 2021.
+<span>“Full-Length Transcript Sequencing of Human and Mouse Cerebral
+Cortex Identifies Widespread Isoform Diversity and Alternative
+Splicing.”</span> <em>Cell Reports</em> 37 (7).
+</div>
+<div id="ref-li2024santo" class="csl-entry" role="listitem">
+Li, Haoyang, Yingxin Lin, Wenjia He, Wenkai Han, Xiaopeng Xu, Chencheng
+Xu, Elva Gao, Hongyu Zhao, and Xin Gao. 2024. <span>“SANTO: A
+Coarse-to-Fine Alignment and Stitching Method for Spatial Omics.”</span>
+<em>Nature Communications</em> 15 (1): 6048.
+</div>
+<div id="ref-li2024dissecting" class="csl-entry" role="listitem">
+Li, Jingyi Jessica, Heather J Zhou, Peter J Bickel, and Xin Tong. 2024.
+<span>“Dissecting Gene Expression Heterogeneity: Generalized Pearson
+Correlation Squares and the k-Lines Clustering Algorithm.”</span>
+<em>Journal of the American Statistical Association</em>, 1–14.
+</div>
+<div id="ref-li2022population" class="csl-entry" role="listitem">
+Li, Lei, Yumei Li, Xudong Zou, Fuduan Peng, Ya Cui, Eric J Wagner, and
+Wei Li. 2022. <span>“Population-Scale Genetic Control of Alternative
+Polyadenylation and Its Association with Human Diseases.”</span>
+<em>Quantitative Biology</em> 10 (1): 44–54.
+</div>
+<div id="ref-li2021genetically" class="csl-entry" role="listitem">
+Li, Xintao, Shi Peng, Bo Guan, Songwen Chen, Genqing Zhou, Yong Wei,
+Chao Gong, et al. 2021. <span>“Genetically Determined Inflammatory
+Biomarkers and the Risk of Heart Failure: A Mendelian Randomization
+Study.”</span> <em>Frontiers in Cardiovascular Medicine</em> 8: 734400.
+</div>
+<div id="ref-li2021large" class="csl-entry" role="listitem">
+Li, Yumei, Xinzhou Ge, Fanglue Peng, Wei Li, and Jingyi Jessica Li.
+2022. <span>“Exaggerated False Positives by Popular Differential
+Expression Methods When Analyzing Human Population Samples.”</span>
+<em>Genome Biology</em> 23 (1): 1–13.
+</div>
+<div id="ref-li2023spatialdm" class="csl-entry" role="listitem">
+Li, Zhuoxuan, Tianjie Wang, Pentao Liu, and Yuanhua Huang. 2023.
+<span>“SpatialDM for Rapid Identification of Spatially Co-Expressed
+Ligand–Receptor and Revealing Cell–Cell Communication Patterns.”</span>
+<em>Nature Communications</em> 14 (1): 3995.
+</div>
+<div id="ref-liao2021uncovering" class="csl-entry" role="listitem">
+Liao, Jie, Xiaoyan Lu, Xin Shao, Ling Zhu, and Xiaohui Fan. 2021.
+<span>“Uncovering an Organ’s Molecular Architecture at Single-Cell
+Resolution by Spatially Resolved Transcriptomics.”</span> <em>Trends in
+Biotechnology</em> 39 (1): 43–58.
+</div>
+<div id="ref-lim2024advances" class="csl-entry" role="listitem">
+Lim, Jongsu, Chanho Park, Minjae Kim, Hyukhee Kim, Junil Kim, and
+Dong-Sung Lee. 2024. <span>“Advances in Single-Cell Omics and Multiomics
+for High-Resolution Molecular Profiling.”</span> <em>Experimental &amp;
+Molecular Medicine</em> 56 (3): 515–26.
+</div>
+<div id="ref-lin2022esvd" class="csl-entry" role="listitem">
+Lin, Kevin Z, Yixuan Qiu, and Kathryn Roeder. 2022. <span>“<span class="nocase">eSVD</span>: Cohort-Level Differential Expression in
+Multi-Individual Single-Cell <span>RNA</span>-Seq Data Using
+Exponential-Family Embeddings.”</span> <em>(In Preparation)</em>.
+</div>
+<div id="ref-lin2023esvd" class="csl-entry" role="listitem">
+———. 2024. <span>“<span class="nocase">eSVD-DE</span>: Cohort-Wide
+Differential Expression in Single-Cell <span>RNA</span>-Seq Data Using
+Exponential-Family Embeddings.”</span> <em>BMC Bioinformatics</em> 25
+(1): 113.
+</div>
+<div id="ref-lin2022nested" class="csl-entry" role="listitem">
+Lin, Xueqiu, Yanxia Liu, Shuai Liu, Xiang Zhu, Lingling Wu, Yanyu Zhu,
+Dehua Zhao, et al. 2022. <span>“Nested Epistasis Enhancer Networks for
+Robust Genome Regulation.”</span> <em>Science</em> 377 (6610): 1077–85.
+</div>
+<div id="ref-liu2021dna" class="csl-entry" role="listitem">
+Liu, Hanqing, Jingtian Zhou, Wei Tian, Chongyuan Luo, Anna Bartlett,
+Andrew Aldridge, Jacinta Lucero, et al. 2021. <span>“<span>DNA</span>
+Methylation Atlas of the Mouse Brain at Single-Cell Resolution.”</span>
+<em>Nature</em> 598 (7879): 120–28.
+</div>
+<div id="ref-liu2023differential" class="csl-entry" role="listitem">
+Liu, Jiayi, Anat Kreimer, and Wei Vivian Li. 2023. <span>“Differential
+Variability Analysis of Single-Cell Gene Expression Data.”</span>
+<em>Briefings in Bioinformatics</em> 24 (5): bbad294.
+</div>
+<div id="ref-liu2021seeing" class="csl-entry" role="listitem">
+Liu, Ning, Wai Yee Low, Hamid Alinejad-Rokny, Stephen Pederson, Timothy
+Sadlon, Simon Barry, and James Breen. 2021. <span>“Seeing the Forest
+Through the Trees: Prioritising Potentially Functional Interactions from
+Hi-c.”</span> <em>Epigenetics &amp; Chromatin</em> 14 (1): 41.
+</div>
+<div id="ref-liu2022idesc" class="csl-entry" role="listitem">
+Liu, Yunqing, Jiayi Zhao, Taylor S Adams, Ningya Wang, Jonas C Schupp,
+Weimiao Wu, John E McDonough, et al. 2023. <span>“<span class="nocase">iDESC</span>: Identifying Differential Expression in
+Single-Cell <span>RNA</span> Sequencing Data with Multiple
+Subjects.”</span> <em>BMC Bioinformatics</em> 24 (1): 318.
+</div>
+<div id="ref-loers2024single" class="csl-entry" role="listitem">
+Loers, Jens Uwe, and Vanessa Vermeirssen. 2024. <span>“A Single-Cell
+Multimodal View on Gene Regulatory Network Inference from
+Transcriptomics and Chromatin Accessibility Data.”</span> <em>Briefings
+in Bioinformatics</em> 25 (5): bbae382.
+</div>
+<div id="ref-longo2021integrating" class="csl-entry" role="listitem">
+Longo, Sophia K, Margaret G Guo, Andrew L Ji, and Paul A Khavari. 2021.
+<span>“Integrating Single-Cell and Spatial Transcriptomics to Elucidate
+Intercellular Tissue Dynamics.”</span> <em>Nature Reviews Genetics</em>
+22 (10): 627–44.
+</div>
+<div id="ref-lopes2021gene" class="csl-entry" role="listitem">
+Lopes, Inês, Gulam Altab, Priyanka Raina, and JoãO Pedro De Magalhães.
+2021. <span>“Gene Size Matters: An Analysis of Gene Length in the Human
+Genome.”</span> <em>Frontiers in Genetics</em> 12: 559998.
+</div>
+<div id="ref-lopez2018deep" class="csl-entry" role="listitem">
+Lopez, Romain, Jeffrey Regier, Michael B Cole, Michael I Jordan, and Nir
+Yosef. 2018. <span>“Deep Generative Modeling for Single-Cell
+Transcriptomics.”</span> <em>Nature Methods</em> 15 (12): 1053.
+</div>
+<div id="ref-lotfollahi2022mapping" class="csl-entry" role="listitem">
+Lotfollahi, Mohammad, Mohsen Naghipourfar, Malte D Luecken, Matin
+Khajavi, Maren Büttner, Marco Wagenstetter, Žiga Avsec, et al. 2022.
+<span>“Mapping Single-Cell Data to Reference Atlases by Transfer
+Learning.”</span> <em>Nature Biotechnology</em> 40 (1): 121–30.
+</div>
+<div id="ref-lotfollahi2019scgen" class="csl-entry" role="listitem">
+Lotfollahi, Mohammad, F Alexander Wolf, and Fabian J Theis. 2019.
+<span>“scGen Predicts Single-Cell Perturbation Responses.”</span>
+<em>Nature Methods</em> 16 (8): 715–21.
+</div>
+<div id="ref-love2014moderated" class="csl-entry" role="listitem">
+Love, Michael I, Wolfgang Huber, and Simon Anders. 2014.
+<span>“Moderated Estimation of Fold Change and Dispersion for
+<span>RNA</span>-Seq Data with <span>DESeq2</span>.”</span> <em>Genome
+Biology</em> 15 (12): 550.
+</div>
+<div id="ref-luecken2022benchmarking" class="csl-entry" role="listitem">
+Luecken, Malte D, Maren Büttner, Kridsadakorn Chaichoompu, Anna Danese,
+Marta Interlandi, Michaela F Müller, Daniel C Strobl, et al. 2022.
+<span>“Benchmarking Atlas-Level Data Integration in Single-Cell
+Genomics.”</span> <em>Nature Methods</em> 19 (1): 41–50.
+</div>
+<div id="ref-luecken2019current" class="csl-entry" role="listitem">
+Luecken, Malte D, and Fabian J Theis. 2019. <span>“Current Best
+Practices in Single-Cell <span>RNA</span>-Seq Analysis: A
+Tutorial.”</span> <em>Molecular Systems Biology</em> 15 (6): e8746.
+</div>
+<div id="ref-ma2024principled" class="csl-entry" role="listitem">
+Ma, Rong, Eric D Sun, David Donoho, and James Zou. 2024.
+<span>“Principled and Interpretable Alignability Testing and Integration
+of Single-Cell Data.”</span> <em>Proceedings of the National Academy of
+Sciences</em> 121 (10): e2313719121.
+</div>
+<div id="ref-ma2020chromatin" class="csl-entry" role="listitem">
+Ma, Sai, Bing Zhang, Lindsay M LaFave, Andrew S Earl, Zachary Chiang,
+Yan Hu, Jiarui Ding, et al. 2020. <span>“Chromatin Potential Identified
+by Shared Single-Cell Profiling of <span>RNA</span> and
+Chromatin.”</span> <em>Cell</em> 183 (4): 1103–16.
+</div>
+<div id="ref-ma2020integrative1" class="csl-entry" role="listitem">
+Ma, Ying, Shiquan Sun, Xuequn Shang, Evan T Keller, Mengjie Chen, and
+Xiang Zhou. 2020. <span>“Integrative Differential Expression and Gene
+Set Enrichment Analysis Using Summary Statistics for <span class="nocase">scRNA</span>-Seq Studies.”</span> <em>Nature
+Communications</em> 11 (1): 1–13.
+</div>
+<div id="ref-macrae2023regulation" class="csl-entry" role="listitem">
+Macrae, Trisha A, Julie Fothergill-Robinson, and Miguel Ramalho-Santos.
+2023. <span>“Regulation, Functions and Transmission of Bivalent
+Chromatin During Mammalian Development.”</span> <em>Nature Reviews
+Molecular Cell Biology</em> 24 (1): 6–26.
+</div>
+<div id="ref-maden2023challenges" class="csl-entry" role="listitem">
+Maden, Sean K, Sang Ho Kwon, Louise A Huuki-Myers, Leonardo
+Collado-Torres, Stephanie C Hicks, and Kristen R Maynard. 2023.
+<span>“Challenges and Opportunities to Computationally Deconvolve
+Heterogeneous Tissue with Varying Cell Sizes Using Single-Cell
+RNA-Sequencing Datasets.”</span> <em>Genome Biology</em> 24 (1): 288.
+</div>
+<div id="ref-mai2023transcriptome" class="csl-entry" role="listitem">
+Mai, Jialin, Mingming Lu, Qianwen Gao, Jingyao Zeng, and Jingfa Xiao.
+2023. <span>“Transcriptome-Wide Association Studies: Recent Advances in
+Methods, Applications and Available Databases.”</span>
+<em>Communications Biology</em> 6 (1): 899.
+</div>
+<div id="ref-mansisidor2022chromatin" class="csl-entry" role="listitem">
+Mansisidor, Andrés R, and Viviana I Risca. 2022. <span>“Chromatin
+Accessibility: Methods, Mechanisms, and Biological Insights.”</span>
+<em>Nucleus</em> 13 (1): 238–78.
+</div>
+<div id="ref-mao2017heritability" class="csl-entry" role="listitem">
+Mao, Yanfei, Jose Ramon Botella, and Jian-Kang Zhu. 2017.
+<span>“Heritability of Targeted Gene Modifications Induced by
+Plant-Optimized CRISPR Systems.”</span> <em>Cellular and Molecular Life
+Sciences</em> 74 (6): 1075–93.
+</div>
+<div id="ref-marine2020non" class="csl-entry" role="listitem">
+Marine, Jean-Christophe, Sarah-Jane Dawson, and Mark A Dawson. 2020.
+<span>“Non-Genetic Mechanisms of Therapeutic Resistance in
+Cancer.”</span> <em>Nature Reviews Cancer</em> 20 (12): 743–56.
+</div>
+<div id="ref-martens2024modeling" class="csl-entry" role="listitem">
+Martens, Laura D, David S Fischer, Vicente A Yépez, Fabian J Theis, and
+Julien Gagneur. 2024. <span>“Modeling Fragment Counts Improves
+Single-Cell ATAC-Seq Analysis.”</span> <em>Nature Methods</em> 21 (1):
+28–31.
+</div>
+<div id="ref-martignano2021nanopore" class="csl-entry" role="listitem">
+Martignano, Filippo, Uday Munagala, Stefania Crucitta, Alessandra
+Mingrino, Roberto Semeraro, Marzia Del Re, Iacopo Petrini, Alberto Magi,
+and Silvestro G Conticello. 2021. <span>“Nanopore Sequencing from Liquid
+Biopsy: Analysis of Copy Number Variations from Cell-Free DNA of Lung
+Cancer Patients.”</span> <em>Molecular Cancer</em> 20: 1–6.
+</div>
+<div id="ref-martin2019clinical" class="csl-entry" role="listitem">
+Martin, Alicia R, Masahiro Kanai, Yoichiro Kamatani, Yukinori Okada,
+Benjamin M Neale, and Mark J Daly. 2019. <span>“Clinical Use of Current
+Polygenic Risk Scores May Exacerbate Health Disparities.”</span>
+<em>Nature Genetics</em> 51 (4): 584–91.
+</div>
+<div id="ref-masood2024evaluation" class="csl-entry" role="listitem">
+Masood, Daniall, Luyao Ren, Cu Nguyen, Francesco G Brundu, Lily Zheng,
+Yongmei Zhao, Erich Jaeger, et al. 2024. <span>“Evaluation of Somatic
+Copy Number Variation Detection by NGS Technologies and Bioinformatics
+Tools on a Hyper-Diploid Cancer Genome.”</span> <em>Genome Biology</em>
+25 (1): 163.
+</div>
+<div id="ref-mattick2023long" class="csl-entry" role="listitem">
+Mattick, John S, Paulo P Amaral, Piero Carninci, Susan Carpenter, Howard
+Y Chang, Ling-Ling Chen, Runsheng Chen, et al. 2023. <span>“Long
+Non-Coding RNAs: Definitions, Functions, Challenges and
+Recommendations.”</span> <em>Nature Reviews Molecular Cell Biology</em>
+24 (6): 430–47.
+</div>
+<div id="ref-mcginnis2019doubletfinder" class="csl-entry" role="listitem">
+McGinnis, Christopher S, Lyndsay M Murrow, and Zev J Gartner. 2019.
+<span>“DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing
+Data Using Artificial Nearest Neighbors.”</span> <em>Cell Systems</em> 8
+(4): 329–37.
+</div>
+<div id="ref-mckenna2010genome" class="csl-entry" role="listitem">
+McKenna, Aaron, Matthew Hanna, Eric Banks, Andrey Sivachenko, Kristian
+Cibulskis, Andrew Kernytsky, Kiran Garimella, et al. 2010. <span>“The
+Genome Analysis Toolkit: A MapReduce Framework for Analyzing
+Next-Generation DNA Sequencing Data.”</span> <em>Genome Research</em> 20
+(9): 1297–1303.
+</div>
+<div id="ref-mclean2010great" class="csl-entry" role="listitem">
+McLean, Cory Y, Dave Bristor, Michael Hiller, Shoa L Clarke, Bruce T
+Schaar, Craig B Lowe, Aaron M Wenger, and Gill Bejerano. 2010.
+<span>“GREAT Improves Functional Interpretation of Cis-Regulatory
+Regions.”</span> <em>Nature Biotechnology</em> 28 (5): 495–501.
+</div>
+<div id="ref-miao2021multi" class="csl-entry" role="listitem">
+Miao, Zhen, Benjamin D Humphreys, Andrew P McMahon, and Junhyong Kim.
+2021. <span>“Multiomics Integration in the Age of Million Single Cell
+Data.”</span> <em>Nature Reviews Nephrology</em> 17 (11): 710–24.
+</div>
+<div id="ref-miao2024uniform" class="csl-entry" role="listitem">
+Miao, Zhen, and Junhyong Kim. 2024. <span>“Uniform Quantification of
+Single-Nucleus ATAC-Seq Data with Paired-Insertion Counting (PIC) and a
+Model-Based Insertion Rate Estimator.”</span> <em>Nature Methods</em> 21
+(1): 32–36.
+</div>
+<div id="ref-michielsen2023single" class="csl-entry" role="listitem">
+Michielsen, Lieke, Mohammad Lotfollahi, Daniel Strobl, Lisa Sikkema,
+Marcel JT Reinders, Fabian J Theis, and Ahmed Mahfouz. 2023.
+<span>“Single-Cell Reference Mapping to Construct and Extend Cell-Type
+Hierarchies.”</span> <em>NAR Genomics and Bioinformatics</em> 5 (3):
+lqad070.
+</div>
+<div id="ref-mignone2002untranslated" class="csl-entry" role="listitem">
+Mignone, Flavio, Carmela Gissi, Sabino Liuni, and Graziano Pesole. 2002.
+<span>“Untranslated Regions of mRNAs.”</span> <em>Genome Biology</em> 3:
+1–10.
+</div>
+<div id="ref-mihaylova2017benign" class="csl-entry" role="listitem">
+Mihaylova, M, R Staneva, D Toncheva, M Pancheva, and S Hadjidekova.
+2017. <span>“Benign, Pathogenic and Copy Number Variations of Unknown
+Clinical Significance in Patients with Congenital Malformations and
+Developmental Delay.”</span> <em>Balkan Journal of Medical Genetics:
+BJMG</em> 20 (1): 5.
+</div>
+<div id="ref-milholland2017differences" class="csl-entry" role="listitem">
+Milholland, Brandon, Xiao Dong, Lei Zhang, Xiaoxiao Hao, Yousin Suh, and
+Jan Vijg. 2017. <span>“Differences Between Germline and Somatic Mutation
+Rates in Humans and Mice.”</span> <em>Nature Communications</em> 8 (1):
+15183.
+</div>
+<div id="ref-moerman2019grnboost2" class="csl-entry" role="listitem">
+Moerman, Thomas, Sara Aibar Santos, Carmen Bravo González-Blas, Jaak
+Simm, Yves Moreau, Jan Aerts, and Stein Aerts. 2019. <span>“GRNBoost2
+and Arboreto: Efficient and Scalable Inference of Gene Regulatory
+Networks.”</span> <em>Bioinformatics</em> 35 (12): 2159–61.
+</div>
+<div id="ref-moffitt2018molecular" class="csl-entry" role="listitem">
+Moffitt, Jeffrey R, Dhananjay Bambah-Mukku, Stephen W Eichhorn, Eric
+Vaughn, Karthik Shekhar, Julio D Perez, Nimrod D Rubinstein, et al.
+2018. <span>“Molecular, Spatial, and Functional Single-Cell Profiling of
+the Hypothalamic Preoptic Region.”</span> <em>Science</em> 362 (6416):
+eaau5324.
+</div>
+<div id="ref-molbert2023adjustments" class="csl-entry" role="listitem">
+Mölbert, Carla, and Laleh Haghverdi. 2023. <span>“Adjustments to the
+Reference Dataset Design Improve Cell Type Label Transfer.”</span>
+<em>Frontiers in Bioinformatics</em> 3: 1150099.
+</div>
+<div id="ref-mubeen2022influence" class="csl-entry" role="listitem">
+Mubeen, Sarah, Alpha Tom Kodamullil, Martin Hofmann-Apitius, and Daniel
+Domingo-Fernández. 2022. <span>“On the Influence of Several Factors on
+Pathway Enrichment Analysis.”</span> <em>Briefings in
+Bioinformatics</em> 23 (3): bbac143.
+</div>
+<div id="ref-neufeld2022inference" class="csl-entry" role="listitem">
+Neufeld, Anna, Lucy L Gao, Joshua Popp, Alexis Battle, and Daniela
+Witten. 2022. <span>“Inference After Latent Variable Estimation for
+Single-Cell RNA Sequencing Data.”</span> <em>arXiv Preprint
+arXiv:2207.00554</em>.
+</div>
+<div id="ref-ng2021cascading" class="csl-entry" role="listitem">
+Ng, Bernard, William Casazza, Nam Hee Kim, Chendi Wang, Farnush Farhadi,
+Shinya Tasaki, David A Bennett, Philip L De Jager, Christopher Gaiteri,
+and Sara Mostafavi. 2021. <span>“Cascading Epigenomic Analysis for
+Identifying Disease Genes from the Regulatory Landscape of GWAS
+Variants.”</span> <em>PLoS Genetics</em> 17 (11): e1009918.
+</div>
+<div id="ref-ng2017xqtl" class="csl-entry" role="listitem">
+Ng, Bernard, Charles C White, Hans-Ulrich Klein, Solveig K Sieberts,
+Cristin McCabe, Ellis Patrick, Jishu Xu, et al. 2017. <span>“An xQTL Map
+Integrates the Genetic Architecture of the Human Brain’s Transcriptome
+and Epigenome.”</span> <em>Nature Neuroscience</em> 20 (10): 1418–26.
+</div>
+<div id="ref-nguyen2023benchmarking" class="csl-entry" role="listitem">
+Nguyen, Hai CT, Bukyung Baik, Sora Yoon, Taesung Park, and Dougu Nam.
+2023. <span>“Benchmarking Integration of Single-Cell Differential
+Expression.”</span> <em>Nature Communications</em> 14 (1): 1570.
+</div>
+<div id="ref-nguyen2024fourteen" class="csl-entry" role="listitem">
+Nguyen, Hung, Ha Nguyen, Duc Tran, Sorin Draghici, and Tin Nguyen. 2024.
+<span>“Fourteen Years of Cellular Deconvolution: Methodology,
+Applications, Technical Evaluation and Outstanding Challenges.”</span>
+<em>Nucleic Acids Research</em> 52 (9): 4761–83.
+</div>
+<div id="ref-niazi2023rna" class="csl-entry" role="listitem">
+Niazi, Sarfaraz K. 2023. <span>“RNA Therapeutics: A Healthcare Paradigm
+Shift.”</span> <em>Biomedicines</em> 11 (5): 1275.
+</div>
+<div id="ref-novembre2008genes" class="csl-entry" role="listitem">
+Novembre, John, Toby Johnson, Katarzyna Bryc, Zoltán Kutalik, Adam R
+Boyko, Adam Auton, Amit Indap, et al. 2008. <span>“Genes Mirror
+Geography Within Europe.”</span> <em>Nature</em> 456 (7218): 98–101.
+</div>
+<div id="ref-pan2019similarities" class="csl-entry" role="listitem">
+Pan, Bohu, Rebecca Kusko, Wenming Xiao, Yuanting Zheng, Zhichao Liu,
+Chunlin Xiao, Sugunadevi Sakkiah, et al. 2019. <span>“Similarities and
+Differences Between Variants Called with Human Reference Genome HG19 or
+HG38.”</span> <em>BMC Bioinformatics</em> 20 (2): 17–29.
+</div>
+<div id="ref-park2023spatial" class="csl-entry" role="listitem">
+Park, Han-Eol, Song Hyun Jo, Rosalind H Lee, Christian P Macks, Taeyun
+Ku, Jihwan Park, Chung Whan Lee, Junho K Hur, and Chang Ho Sohn. 2023.
+<span>“Spatial Transcriptomics: Technical Aspects of Recent Developments
+and Their Applications in Neuroscience and Cancer Research.”</span>
+<em>Advanced Science</em> 10 (16): 2206939.
+</div>
+<div id="ref-peng2021cell" class="csl-entry" role="listitem">
+Peng, Minshi, Brie Wamsley, Andrew G Elkins, Daniel M Geschwind, Yuting
+Wei, and Kathryn Roeder. 2021. <span>“Cell Type Hierarchy Reconstruction
+via Reconciliation of Multi-Resolution Cluster Tree.”</span>
+<em>bioRxiv</em>.
+</div>
+<div id="ref-pratapa2020benchmarking" class="csl-entry" role="listitem">
+Pratapa, Aditya, Amogh P Jalihal, Jeffrey N Law, Aditya Bharadwaj, and
+TM Murali. 2020. <span>“Benchmarking Algorithms for Gene Regulatory
+Network Inference from Single-Cell Transcriptomic Data.”</span>
+<em>Nature Methods</em> 17 (2): 147–54.
+</div>
+<div id="ref-prater2024all" class="csl-entry" role="listitem">
+Prater, Katherine E, and Kevin Z Lin. 2024. <span>“All the Single Cells:
+Single-Cell Transcriptomics/Epigenomics Experimental Design and Analysis
+Considerations for Glial Biologists.”</span> <em>Glia</em>.
+</div>
+<div id="ref-prive2020ldpred2" class="csl-entry" role="listitem">
+Privé, Florian, Julyan Arbel, and Bjarni J Vilhjálmsson. 2020.
+<span>“LDpred2: Better, Faster, Stronger.”</span>
+<em>Bioinformatics</em> 36 (22-23): 5424–31.
+</div>
+<div id="ref-qian2022scinsight" class="csl-entry" role="listitem">
+Qian, Kun, Shiwei Fu, Hongwei Li, and Wei Vivian Li. 2022.
+<span>“scINSIGHT for Interpreting Single-Cell Gene Expression from
+Biologically Heterogeneous Data.”</span> <em>Genome Biology</em> 23 (1):
+1–23.
+</div>
+<div id="ref-rademacher2024comparison" class="csl-entry" role="listitem">
+Rademacher, Anne, Alik Huseynov, Michele Bortolomeazzi, Sina Jasmin
+Wille, Sabrina Schumacher, Pooja Sant, Denise Keitel, et al. 2024.
+<span>“Comparison of Spatial Transcriptomics Technologies Using Tumor
+Cryosections.”</span> <em>bioRxiv</em>, 2024–04.
+</div>
+<div id="ref-risso2014normalization" class="csl-entry" role="listitem">
+Risso, Davide, John Ngai, Terence P Speed, and Sandrine Dudoit. 2014.
+<span>“Normalization of <span>RNA</span>-Seq Data Using Factor Analysis
+of Control Genes or Samples.”</span> <em>Nature Biotechnology</em> 32
+(9): 896–902.
+</div>
+<div id="ref-robinson2007moderated" class="csl-entry" role="listitem">
+Robinson, Mark D, and Gordon K Smyth. 2007. <span>“Moderated Statistical
+Tests for Assessing Differences in Tag Abundance.”</span>
+<em>Bioinformatics</em> 23 (21): 2881–87.
+</div>
+<div id="ref-robles2021allele" class="csl-entry" role="listitem">
+Robles-Espinoza, Carla Daniela, Pejman Mohammadi, Ximena Bonilla, and
+Maria Gutierrez-Arcelus. 2021. <span>“Allele-Specific Expression:
+Applications in Cancer and Technical Considerations.”</span> <em>Current
+Opinion in Genetics &amp; Development</em> 66: 10–19.
+</div>
+<div id="ref-rusilowicz2022protein" class="csl-entry" role="listitem">
+Rusilowicz-Jones, Emma V, Sylvie Urbé, and Michael J Clague. 2022.
+<span>“Protein Degradation on the Global Scale.”</span> <em>Molecular
+Cell</em> 82 (8): 1414–23.
+</div>
+<div id="ref-saelens2019comparison" class="csl-entry" role="listitem">
+Saelens, Wouter, Robrecht Cannoodt, Helena Todorov, and Yvan Saeys.
+2019. <span>“A Comparison of Single-Cell Trajectory Inference
+Methods.”</span> <em>Nature Biotechnology</em> 37 (5): 547–54.
+</div>
+<div id="ref-salzberg2018open" class="csl-entry" role="listitem">
+Salzberg, Steven L. 2018. <span>“Open Questions: How Many Genes Do We
+Have?”</span> <em>BMC Biology</em> 16 (1): 94.
+</div>
+<div id="ref-sanderson2022mendelian" class="csl-entry" role="listitem">
+Sanderson, Eleanor, M Maria Glymour, Michael V Holmes, Hyunseung Kang,
+Jean Morrison, Marcus R Munafò, Tom Palmer, et al. 2022.
+<span>“Mendelian Randomization.”</span> <em>Nature Reviews Methods
+Primers</em> 2 (1): 6.
+</div>
+<div id="ref-sarkar2021separating" class="csl-entry" role="listitem">
+Sarkar, Abhishek, and Matthew Stephens. 2021. <span>“Separating
+Measurement and Expression Models Clarifies Confusion in Single Cell
+<span>RNA</span>-Seq Analysis.”</span> <em>Nature Genetics</em> 53 (6):
+770–77.
+</div>
+<div id="ref-sasse2023benchmarking" class="csl-entry" role="listitem">
+Sasse, Alexander, Bernard Ng, Anna E Spiro, Shinya Tasaki, David A
+Bennett, Christopher Gaiteri, Philip L De Jager, Maria Chikina, and Sara
+Mostafavi. 2023. <span>“Benchmarking of Deep Neural Networks for
+Predicting Personal Gene Expression from DNA Sequence Highlights
+Shortcomings.”</span> <em>Nature Genetics</em> 55 (12): 2060–64.
+</div>
+<div id="ref-sato2018cell" class="csl-entry" role="listitem">
+Sato, Yuma, Shumpei Watanabe, Yoshinari Fukuda, Takao Hashiguchi, Yusuke
+Yanagi, and Shinji Ohno. 2018. <span>“Cell-to-Cell Measles Virus Spread
+Between Human Neurons Is Dependent on Hemagglutinin and Hyperfusogenic
+Fusion Protein.”</span> <em>Journal of Virology</em> 92 (6): 10–1128.
+</div>
+<div id="ref-saunders2023embryo" class="csl-entry" role="listitem">
+Saunders, Lauren M, Sanjay R Srivatsan, Madeleine Duran, Michael W
+Dorrity, Brent Ewing, Tor H Linbo, Jay Shendure, et al. 2023.
+<span>“Embryo-Scale Reverse Genetics at Single-Cell Resolution.”</span>
+<em>Nature</em> 623 (7988): 782–91.
+</div>
+<div id="ref-schaff2024clonal" class="csl-entry" role="listitem">
+Schaff, Dylan L, Aria J Fasse, Phoebe E White, Robert J Vander Velde,
+and Sydney M Shaffer. 2024. <span>“Clonal Differences Underlie Variable
+Responses to Sequential and Prolonged Treatment.”</span> <em>Cell
+Systems</em> 15 (3): 213–26.
+</div>
+<div id="ref-schefzik2021fast" class="csl-entry" role="listitem">
+Schefzik, Roman, Julian Flesch, and Angela Goncalves. 2021. <span>“Fast
+Identification of Differential Distributions in Single-Cell
+<span>RNA</span>-Sequencing Data with <span class="nocase">waddR</span>.”</span> <em>Bioinformatics</em> 37 (19):
+3204–11.
+</div>
+<div id="ref-schep2017chromvar" class="csl-entry" role="listitem">
+Schep, Alicia N, Beijing Wu, Jason D Buenrostro, and William J
+Greenleaf. 2017. <span>“<span class="nocase">chromVAR</span>: Inferring
+Transcription-Factor-Associated Accessibility from Single-Cell
+Epigenomic Data.”</span> <em>Nature Methods</em> 14 (10): 975–78.
+</div>
+<div id="ref-schnitzler2024convergence" class="csl-entry" role="listitem">
+Schnitzler, Gavin R, Helen Kang, Shi Fang, Ramcharan S Angom, Vivian S
+Lee-Kim, X Rosa Ma, Ronghao Zhou, et al. 2024. <span>“Convergence of
+Coronary Artery Disease Genes onto Endothelial Cell Programs.”</span>
+<em>Nature</em> 626 (8000): 799–807.
+</div>
+<div id="ref-schott2024open" class="csl-entry" role="listitem">
+Schott, Marie, Daniel León-Periñán, Elena Splendiani, Leon Strenger, Jan
+Robin Licha, Tancredi Massimo Pentimalli, Simon Schallenberg, et al.
+2024. <span>“Open-ST: High-Resolution Spatial Transcriptomics in
+3D.”</span> <em>Cell</em> 187 (15): 3953–72.
+</div>
+<div id="ref-setty2019characterization" class="csl-entry" role="listitem">
+Setty, Manu, Vaidotas Kiseliovas, Jacob Levine, Adam Gayoso, Linas
+Mazutis, and Dana Pe’er. 2019. <span>“Characterization of Cell Fate
+Probabilities in Single-Cell Data with <span>Palantir</span>.”</span>
+<em>Nature Biotechnology</em> 37 (4): 451–60.
+</div>
+<div id="ref-shalek2017single" class="csl-entry" role="listitem">
+Shalek, Alex K, and Mikael Benson. 2017. <span>“Single-Cell Analyses to
+Tailor Treatments.”</span> <em>Science Translational Medicine</em> 9
+(408): eaan4730.
+</div>
+<div id="ref-shang2023micrornas" class="csl-entry" role="listitem">
+Shang, Renfu, Seungjae Lee, Gayan Senavirathne, and Eric C Lai. 2023.
+<span>“microRNAs in Action: Biogenesis, Function and Regulation.”</span>
+<em>Nature Reviews Genetics</em> 24 (12): 816–33.
+</div>
+<div id="ref-sheth2024mapping" class="csl-entry" role="listitem">
+Sheth, Maya U, Wei-Lin Qiu, X Rosa Ma, Andreas R Gschwind, Evelyn
+Jagoda, Anthony S Tan, Hjörleifur Einarsson, et al. 2024. <span>“Mapping
+Enhancer-Gene Regulatory Interactions from Single-Cell Data.”</span>
+<em>bioRxiv</em>, 2024–11.
+</div>
+<div id="ref-siersbaek2014molecular" class="csl-entry" role="listitem">
+Siersbæk, Rasmus, Songjoon Baek, Atefeh Rabiee, Ronni Nielsen, Sofie
+Traynor, Nicholas Clark, Albin Sandelin, et al. 2014. <span>“Molecular
+Architecture of Transcription Factor Hotspots in Early
+Adipogenesis.”</span> <em>Cell Reports</em> 7 (5): 1434–42.
+</div>
+<div id="ref-siletti2023transcriptomic" class="csl-entry" role="listitem">
+Siletti, Kimberly, Rebecca Hodge, Alejandro Mossi Albiach, Ka Wai Lee,
+Song-Lin Ding, Lijuan Hu, Peter Lönnerberg, et al. 2023.
+<span>“Transcriptomic Diversity of Cell Types Across the Adult Human
+Brain.”</span> <em>Science</em> 382 (6667): eadd7046.
+</div>
+<div id="ref-da2021principles" class="csl-entry" role="listitem">
+Silva, Paulo FL da, and Björn Schumacher. 2021. <span>“Principles of the
+Molecular and Cellular Mechanisms of Aging.”</span> <em>Journal of
+Investigative Dermatology</em> 141 (4): 951–60.
+</div>
+<div id="ref-singh2021detecting" class="csl-entry" role="listitem">
+Singh, Ashish Kumar, Maren Fridtjofsen Olsen, Liss Anne Solberg Lavik,
+Trine Vold, Finn Drabløs, and Wenche Sjursen. 2021. <span>“Detecting
+Copy Number Variation in Next Generation Sequencing Data from Diagnostic
+Gene Panels.”</span> <em>BMC Medical Genomics</em> 14 (1): 214.
+</div>
+<div id="ref-song2023clusterde" class="csl-entry" role="listitem">
+Song, Dongyuan, Kexin Li, Xinzhou Ge, and Jingyi Jessica Li. 2023.
+<span>“ClusterDE: A Post-Clustering Differential Expression (DE) Method
+Robust to False-Positive Inflation Caused by Double Dipping.”</span>
+<em>Research Square</em>.
+</div>
+<div id="ref-squair2021confronting" class="csl-entry" role="listitem">
+Squair, Jordan W, Matthieu Gautier, Claudi Kathe, Mark A Anderson,
+Nicholas D James, Thomas H Hutson, Rémi Hudelle, et al. 2021.
+<span>“Confronting False Discoveries in Single-Cell Differential
+Expression.”</span> <em>Nature Communications</em> 12 (1): 5692.
+</div>
+<div id="ref-statello2021gene" class="csl-entry" role="listitem">
+Statello, Luisa, Chun-Jie Guo, Ling-Ling Chen, and Maite Huarte. 2021.
+<span>“Gene Regulation by Long Non-Coding RNAs and Its Biological
+Functions.”</span> <em>Nature Reviews Molecular Cell Biology</em> 22
+(2): 96–118.
+</div>
+<div id="ref-steele2022signatures" class="csl-entry" role="listitem">
+Steele, Christopher D, Ammal Abbasi, SM Ashiqul Islam, Amy L Bowes,
+Azhar Khandekar, Kerstin Haase, Shadi Hames-Fathi, et al. 2022.
+<span>“Signatures of Copy Number Alterations in Human Cancer.”</span>
+<em>Nature</em> 606 (7916): 984–91.
+</div>
+<div id="ref-stegle2010bayesian" class="csl-entry" role="listitem">
+Stegle, Oliver, Leopold Parts, Richard Durbin, and John Winn. 2010.
+<span>“A Bayesian Framework to Account for Complex Non-Genetic Factors
+in Gene Expression Levels Greatly Increases Power in eQTL
+Studies.”</span> <em>PLoS Computational Biology</em> 6 (5): e1000770.
+</div>
+<div id="ref-steinbach2017pten" class="csl-entry" role="listitem">
+Steinbach, Nicole. 2017. <em>PTEN Affects Gene Expression and Histone
+Modifications and Plays a Role in the Regulation of Transcription</em>.
+Columbia University.
+</div>
+<div id="ref-stephenson2021single" class="csl-entry" role="listitem">
+Stephenson, Emily, Gary Reynolds, Rachel A Botting, Fernando J
+Calero-Nieto, Michael D Morgan, Zewen Kelvin Tuong, Karsten Bach, et al.
+2021. <span>“Single-Cell Multi-Omics Analysis of the Immune Response in
+COVID-19.”</span> <em>Nature Medicine</em> 27 (5): 904–16.
+</div>
+<div id="ref-stock2024topological" class="csl-entry" role="listitem">
+Stock, Marco, Niclas Popp, Jonathan Fiorentino, and Antonio Scialdone.
+2024. <span>“Topological Benchmarking of Algorithms to Infer Gene
+Regulatory Networks from Single-Cell RNA-Seq Data.”</span>
+<em>Bioinformatics</em>, btae267.
+</div>
+<div id="ref-street2018slingshot" class="csl-entry" role="listitem">
+Street, Kelly, Davide Risso, Russell B Fletcher, Diya Das, John Ngai,
+Nir Yosef, Elizabeth Purdom, and Sandrine Dudoit. 2018.
+<span>“Slingshot: Cell Lineage and Pseudotime Inference for Single-Cell
+Transcriptomics.”</span> <em>BMC Genomics</em> 19 (1): 477.
+</div>
+<div id="ref-stuart2019comprehensive" class="csl-entry" role="listitem">
+Stuart, Tim, Andrew Butler, Paul Hoffman, Christoph Hafemeister,
+Efthymia Papalexi, William M Mauck III, Yuhan Hao, Marlon Stoeckius,
+Peter Smibert, and Rahul Satija. 2019. <span>“Comprehensive Integration
+of Single-Cell Data.”</span> <em>Cell</em> 177 (7): 1888–1902.
+</div>
+<div id="ref-subramanian2005gene" class="csl-entry" role="listitem">
+Subramanian, Aravind, Pablo Tamayo, Vamsi K Mootha, Sayan Mukherjee,
+Benjamin L Ebert, Michael A Gillette, Amanda Paulovich, et al. 2005.
+<span>“Gene Set Enrichment Analysis: A Knowledge-Based Approach for
+Interpreting Genome-Wide Expression Profiles.”</span> <em>Proceedings of
+the National Academy of Sciences</em> 102 (43): 15545–50.
+</div>
+<div id="ref-svensson2020droplet" class="csl-entry" role="listitem">
+Svensson, Valentine. 2020. <span>“Droplet scRNA-Seq Is Not
+Zero-Inflated.”</span> <em>Nature Biotechnology</em> 38 (2): 147–50.
+</div>
+<div id="ref-svensson2021reply" class="csl-entry" role="listitem">
+———. 2021. <span>“Reply to: UMI or Not UMI, That Is the Question for
+scRNA-Seq Zero-Inflation.”</span> <em>Nature Biotechnology</em> 39 (2):
+160–60.
+</div>
+<div id="ref-swaminath2024use" class="csl-entry" role="listitem">
+Swaminath, Sharmada, and Alistair B Russell. 2024. <span>“The Use of
+Single-Cell RNA-Seq to Study Heterogeneity at Varying Levels of
+Virus–Host Interactions.”</span> <em>PLoS Pathogens</em> 20 (1):
+e1011898.
+</div>
+<div id="ref-sznajder2019short" class="csl-entry" role="listitem">
+Sznajder, Łukasz J, and Maurice S Swanson. 2019. <span>“Short Tandem
+Repeat Expansions and RNA-Mediated Pathogenesis in Myotonic
+Dystrophy.”</span> <em>International Journal of Molecular Sciences</em>
+20 (13): 3365.
+</div>
+<div id="ref-tang2023modelling" class="csl-entry" role="listitem">
+Tang, Wenhao, Andreas Christ Sølvsten Jørgensen, Samuel Marguerat,
+Philipp Thomas, and Vahid Shahrezaei. 2023. <span>“Modelling Capture
+Efficiency of Single Cell RNA-Sequencing Data Improves Inference of
+Transcriptome-Wide Burst Kinetics.”</span> <em>bioRxiv</em>, 2023–03.
+</div>
+<div id="ref-tangherloni2019genhap" class="csl-entry" role="listitem">
+Tangherloni, Andrea, Simone Spolaor, Leonardo Rundo, Marco S Nobile,
+Paolo Cazzaniga, Giancarlo Mauri, Pietro Liò, Ivan Merelli, and Daniela
+Besozzi. 2019. <span>“GenHap: A Novel Computational Method Based on
+Genetic Algorithms for Haplotype Assembly.”</span> <em>BMC
+Bioinformatics</em> 20: 1–14.
+</div>
+<div id="ref-tanudisastro2024sequencing" class="csl-entry" role="listitem">
+Tanudisastro, Hope A, Ira W Deveson, Harriet Dashnow, and Daniel G
+MacArthur. 2024. <span>“Sequencing and Characterizing Short Tandem
+Repeats in the Human Genome.”</span> <em>Nature Reviews Genetics</em> 25
+(7): 460–75.
+</div>
+<div id="ref-taylor2008apoptosis" class="csl-entry" role="listitem">
+Taylor, Rebecca C, Sean P Cullen, and Seamus J Martin. 2008.
+<span>“Apoptosis: Controlled Demolition at the Cellular Level.”</span>
+<em>Nature Reviews Molecular Cell Biology</em> 9 (3): 231–41.
+</div>
+<div id="ref-teichmann2020method" class="csl-entry" role="listitem">
+Teichmann, Sarah, and Mirjana Efremova. 2020. <span>“Method of the Year
+2019: Single-Cell Multimodal Omics.”</span> <em>Nature Methods</em> 17
+(1): 2020.
+</div>
+<div id="ref-theunissen2024uncertainty" class="csl-entry" role="listitem">
+Theunissen, Lauren, Thomas Mortier, Yvan Saeys, and Willem Waegeman.
+2024. <span>“Uncertainty-Aware Single-Cell Annotation with a
+Hierarchical Reject Option.”</span> <em>Bioinformatics</em> 40 (3):
+btae128.
+</div>
+<div id="ref-tibshirani2005sparsity" class="csl-entry" role="listitem">
+Tibshirani, Robert, Michael Saunders, Saharon Rosset, Ji Zhu, and Keith
+Knight. 2005. <span>“Sparsity and Smoothness via the Fused
+Lasso.”</span> <em>Journal of the Royal Statistical Society Series B:
+Statistical Methodology</em> 67 (1): 91–108.
+</div>
+<div id="ref-tipping1999probabilistic" class="csl-entry" role="listitem">
+Tipping, Michael E, and Christopher M Bishop. 1999. <span>“Probabilistic
+Principal Component Analysis.”</span> <em>Journal of the Royal
+Statistical Society: Series B (Statistical Methodology)</em> 61 (3):
+611–22.
+</div>
+<div id="ref-townes2019feature" class="csl-entry" role="listitem">
+Townes, F William, Stephanie C Hicks, Martin J Aryee, and Rafael A
+Irizarry. 2019. <span>“Feature Selection and Dimension Reduction for
+Single-Cell <span class="nocase">RNA-seq</span> Based on a Multinomial
+Model.”</span> <em>Genome Biology</em> 20 (1): 1–16.
+</div>
+<div id="ref-traag2019louvain" class="csl-entry" role="listitem">
+Traag, Vincent A, Ludo Waltman, and Nees Jan Van Eck. 2019. <span>“From
+Louvain to Leiden: Guaranteeing Well-Connected Communities.”</span>
+<em>Scientific Reports</em> 9 (1): 1–12.
+</div>
+<div id="ref-tran2020benchmark" class="csl-entry" role="listitem">
+Tran, Hoa Thi Nhu, Kok Siong Ang, Marion Chevrier, Xiaomeng Zhang,
+Nicole Yee Shin Lee, Michelle Goh, and Jinmiao Chen. 2020. <span>“A
+Benchmark of Batch-Effect Correction Methods for Single-Cell
+<span>RNA</span> Sequencing Data.”</span> <em>Genome Biology</em> 21
+(1): 1–32.
+</div>
+<div id="ref-trapnell2014dynamics" class="csl-entry" role="listitem">
+Trapnell, Cole, Davide Cacchiarelli, Jonna Grimsby, Prapti Pokharel,
+Shuqiang Li, Michael Morse, Niall J Lennon, Kenneth J Livak, Tarjei S
+Mikkelsen, and John L Rinn. 2014. <span>“The Dynamics and Regulators of
+Cell Fate Decisions Are Revealed by Pseudotemporal Ordering of Single
+Cells.”</span> <em>Nature Biotechnology</em> 32 (4): 381.
+</div>
+<div id="ref-trapp2021profiling" class="csl-entry" role="listitem">
+Trapp, Alexandre, Csaba Kerepesi, and Vadim N Gladyshev. 2021.
+<span>“Profiling Epigenetic Age in Single Cells.”</span> <em>Nature
+Aging</em> 1 (12): 1189–1201.
+</div>
+<div id="ref-valecha2022somatic" class="csl-entry" role="listitem">
+Valecha, Monica, and David Posada. 2022. <span>“Somatic Variant Calling
+from Single-Cell DNA Sequencing Data.”</span> <em>Computational and
+Structural Biotechnology Journal</em> 20: 2978–85.
+</div>
+<div id="ref-van2018recovering" class="csl-entry" role="listitem">
+Van Dijk, David, Roshan Sharma, Juozas Nainys, Kristina Yim, Pooja
+Kathail, Ambrose J Carr, Cassandra Burdziak, et al. 2018.
+<span>“Recovering Gene Interactions from Single-Cell Data Using Data
+Diffusion.”</span> <em>Cell</em> 174 (3): 716–29.
+</div>
+<div id="ref-verbanck2018detection" class="csl-entry" role="listitem">
+Verbanck, Marie, Chia-Yen Chen, Benjamin Neale, and Ron Do. 2018.
+<span>“Detection of Widespread Horizontal Pleiotropy in Causal
+Relationships Inferred from Mendelian Randomization Between Complex
+Traits and Diseases.”</span> <em>Nature Genetics</em> 50 (5): 693–98.
+</div>
+<div id="ref-verschoor2015introduction" class="csl-entry" role="listitem">
+Verschoor, Chris P, Alina Lelic, Jonathan L Bramson, and Dawn ME
+Bowdish. 2015. <span>“An Introduction to Automated Flow Cytometry Gating
+Tools and Their Implementation.”</span> <em>Frontiers in Immunology</em>
+6: 380.
+</div>
+<div id="ref-von2015microglial" class="csl-entry" role="listitem">
+Von Bernhardi, Rommy, Laura Eugenı́n-von Bernhardi, and Jaime Eugenı́n.
+2015. <span>“Microglial Cell Dysregulation in Brain Aging and
+Neurodegeneration.”</span> <em>Frontiers in Aging Neuroscience</em> 7:
+124.
+</div>
+<div id="ref-wainberg2019opportunities" class="csl-entry" role="listitem">
+Wainberg, Michael, Nasa Sinnott-Armstrong, Nicholas Mancuso, Alvaro N
+Barbeira, David A Knowles, David Golan, Raili Ermel, et al. 2019.
+<span>“Opportunities and Challenges for Transcriptome-Wide Association
+Studies.”</span> <em>Nature Genetics</em> 51 (4): 592–99.
+</div>
+<div id="ref-wall2003haplotype" class="csl-entry" role="listitem">
+Wall, Jeffrey D, and Jonathan K Pritchard. 2003. <span>“Haplotype Blocks
+and Linkage Disequilibrium in the Human Genome.”</span> <em>Nature
+Reviews Genetics</em> 4 (8): 587–97.
+</div>
+<div id="ref-wang2020simple" class="csl-entry" role="listitem">
+Wang, Gao, Abhishek Sarkar, Peter Carbonetto, and Matthew Stephens.
+2020. <span>“A Simple New Approach to Variable Selection in Regression,
+with Application to Genetic Fine Mapping.”</span> <em>Journal of the
+Royal Statistical Society Series B: Statistical Methodology</em> 82 (5):
+1273–1300.
+</div>
+<div id="ref-wang2023dictys" class="csl-entry" role="listitem">
+Wang, Lingfei, Nikolaos Trasanidis, Ting Wu, Guanlan Dong, Michael Hu,
+Daniel E Bauer, and Luca Pinello. 2023. <span>“Dictys: Dynamic Gene
+Regulatory Network Dissects Developmental Continuum with Single-Cell
+Multiomics.”</span> <em>Nature Methods</em> 20: 1368–78.
+</div>
+<div id="ref-wang2022methods" class="csl-entry" role="listitem">
+Wang, Qingbo S, and Hailiang Huang. 2022. <span>“Methods for Statistical
+Fine-Mapping and Their Applications to Auto-Immune Diseases.”</span> In
+<em>Seminars in Immunopathology</em>, 44:101–13. 1. Springer.
+</div>
+<div id="ref-wang2021pipeline" class="csl-entry" role="listitem">
+Wang, Tao, Yongzhuang Liu, Junpeng Ruan, Xianjun Dong, Yadong Wang, and
+Jiajie Peng. 2021. <span>“A Pipeline for RNA-Seq Based eQTL Analysis
+with Automated Quality Control Procedures.”</span> <em>BMC
+Bioinformatics</em> 22: 1–18.
+</div>
+<div id="ref-wang2019comparative" class="csl-entry" role="listitem">
+Wang, Tianyu, Boyang Li, Craig E Nelson, and Sheida Nabavi. 2019.
+<span>“Comparative Analysis of Differential Gene Expression Analysis
+Tools for Single-Cell <span>RNA</span> Sequencing Data.”</span> <em>BMC
+Bioinformatics</em> 20 (1): 1–16.
+</div>
+<div id="ref-wang2024casi" class="csl-entry" role="listitem">
+Wang, Yizhuo, Christopher R Flowers, Michael Wang, Xuelin Huang, and
+Ziyi Li. 2024. <span>“CASi: A Framework for Cross-Timepoint Analysis of
+Single-Cell RNA Sequencing Data.”</span> <em>Scientific Reports</em> 14
+(1): 10633.
+</div>
+<div id="ref-wang2002precision" class="csl-entry" role="listitem">
+Wang, Yulei, Chih Long Liu, John D Storey, Robert J Tibshirani, Daniel
+Herschlag, and Patrick O Brown. 2002. <span>“Precision and Functional
+Specificity in mRNA Decay.”</span> <em>Proceedings of the National
+Academy of Sciences</em> 99 (9): 5860–65.
+</div>
+<div id="ref-wei2019genome" class="csl-entry" role="listitem">
+Wei, Lai, Derek Lee, Cheuk-Ting Law, Misty Shuo Zhang, Jialing Shen, Don
+Wai-Ching Chin, Allen Zhang, et al. 2019. <span>“Genome-Wide CRISPR/Cas9
+Library Screening Identified PHGDH as a Critical Driver for Sorafenib
+Resistance in HCC.”</span> <em>Nature Communications</em> 10 (1): 4681.
+</div>
+<div id="ref-weinreb2020lineage" class="csl-entry" role="listitem">
+Weinreb, Caleb, Alejo Rodriguez-Fraticelli, Fernando D Camargo, and
+Allon M Klein. 2020. <span>“Lineage Tracing on Transcriptional
+Landscapes Links State to Fate During Differentiation.”</span>
+<em>Science</em> 367 (6479).
+</div>
+<div id="ref-wen2022single" class="csl-entry" role="listitem">
+Wen, Lu, Guoqiang Li, Tao Huang, Wei Geng, Hao Pei, Jialiang Yang, Miao
+Zhu, et al. 2022. <span>“Single-Cell Technologies: From Research to
+Application.”</span> <em>The Innovation</em> 3 (6).
+</div>
+<div id="ref-williams2022introduction" class="csl-entry" role="listitem">
+Williams, Cameron G, Hyun Jae Lee, Takahiro Asatsuma, Roser Vento-Tormo,
+and Ashraful Haque. 2022. <span>“An Introduction to Spatial
+Transcriptomics for Biomedical Research.”</span> <em>Genome
+Medicine</em> 14 (1): 68.
+</div>
+<div id="ref-wolf2019paga" class="csl-entry" role="listitem">
+Wolf, F Alexander, Fiona K Hamey, Mireya Plass, Jordi Solana, Joakim S
+Dahlin, Berthold Göttgens, Nikolaus Rajewsky, Lukas Simon, and Fabian J
+Theis. 2019. <span>“PAGA: Graph Abstraction Reconciles Clustering with
+Trajectory Inference Through a Topology Preserving Map of Single
+Cells.”</span> <em>Genome Biology</em> 20 (1): 59.
+</div>
+<div id="ref-wong2020towards" class="csl-entry" role="listitem">
+Wong, Karen HY, Walfred Ma, Chun-Yu Wei, Erh-Chan Yeh, Wan-Jia Lin, Elin
+HF Wang, Jen-Ping Su, et al. 2020. <span>“Towards a Reference Genome
+That Captures Global Genetic Diversity.”</span> <em>Nature
+Communications</em> 11 (1): 5482.
+</div>
+<div id="ref-wright2023native" class="csl-entry" role="listitem">
+Wright, Shannon E, and Peter K Todd. 2023. <span>“Native Functions of
+Short Tandem Repeats.”</span> <em>Elife</em> 12: e84043.
+</div>
+<div id="ref-wu2021babel" class="csl-entry" role="listitem">
+Wu, Kevin E, Kathryn E Yost, Howard Y Chang, and James Zou. 2021.
+<span>“<span>BABEL</span> Enables Cross-Modality Translation Between
+Multiomic Profiles at Single-Cell Resolution.”</span> <em>Proceedings of
+the National Academy of Sciences</em> 118 (15).
+</div>
+<div id="ref-xi2021benchmarking" class="csl-entry" role="listitem">
+Xi, Nan Miles, and Jingyi Jessica Li. 2021. <span>“Benchmarking
+Computational Doublet-Detection Methods for Single-Cell RNA Sequencing
+Data.”</span> <em>Cell Systems</em> 12 (2): 176–94.
+</div>
+<div id="ref-xia2024statistical" class="csl-entry" role="listitem">
+Xia, Lucy, Christy Lee, and Jingyi Jessica Li. 2024. <span>“Statistical
+Method scDEED for Detecting Dubious 2D Single-Cell Embeddings and
+Optimizing t-SNE and UMAP Hyperparameters.”</span> <em>Nature
+Communications</em> 15 (1): 1753.
+</div>
+<div id="ref-xie2023robust" class="csl-entry" role="listitem">
+Xie, Fangming, Ethan J Armand, Zizhen Yao, Hanqing Liu, Anna Bartlett, M
+Margarita Behrens, Yang Eric Li, et al. 2023. <span>“Robust
+Enhancer-Gene Regulation Identified by Single-Cell Transcriptomes and
+Epigenomes.”</span> <em>Cell Genomics</em> 3 (7).
+</div>
+<div id="ref-xing2020secnvs" class="csl-entry" role="listitem">
+Xing, Yue, Alan R Dabney, Xiao Li, Guosong Wang, Clare A Gill, and
+Claudio Casola. 2020. <span>“SECNVs: A Simulator of Copy Number Variants
+and Whole-Exome Sequences from Reference Genomes.”</span> <em>Frontiers
+in Genetics</em> 11: 82.
+</div>
+<div id="ref-xu2021probabilistic" class="csl-entry" role="listitem">
+Xu, Chenling, Romain Lopez, Edouard Mehlman, Jeffrey Regier, Michael I
+Jordan, and Nir Yosef. 2021. <span>“Probabilistic Harmonization and
+Annotation of Single-Cell Transcriptomics Data with Deep Generative
+Models.”</span> <em>Molecular Systems Biology</em> 17 (1): e9620.
+</div>
+<div id="ref-xu2022diagonal" class="csl-entry" role="listitem">
+Xu, Yang, and Rachel Patton McCord. 2022. <span>“Diagonal Integration of
+Multimodal Single-Cell Data: Potential Pitfalls and Paths
+Forward.”</span> <em>Nature Communications</em> 13 (1): 3505.
+</div>
+<div id="ref-yang2023carma" class="csl-entry" role="listitem">
+Yang, Zikun, Chen Wang, Linxi Liu, Atlas Khan, Annie Lee, Badri
+Vardarajan, Richard Mayeux, Krzysztof Kiryluk, and Iuliana Ionita-Laza.
+2023. <span>“CARMA Is a New Bayesian Model for Fine-Mapping in
+Genome-Wide Association Meta-Analyses.”</span> <em>Nature Genetics</em>
+55 (6): 1057–65.
+</div>
+<div id="ref-yao2024scalable" class="csl-entry" role="listitem">
+Yao, Douglas, Loic Binan, Jon Bezney, Brooke Simonton, Jahanara
+Freedman, Chris J Frangieh, Kushal Dey, et al. 2024. <span>“Scalable
+Genetic Screening for Regulatory Circuits Using Compressed
+Perturb-Seq.”</span> <em>Nature Biotechnology</em> 42 (8): 1282–95.
+</div>
+<div id="ref-yazar2022single" class="csl-entry" role="listitem">
+Yazar, Seyhan, Jose Alquicira-Hernandez, Kristof Wing, Anne Senabouth, M
+Grace Gordon, Stacey Andersen, Qinyi Lu, et al. 2022. <span>“Single-Cell
+<span class="nocase">eQTL</span> Mapping Identifies Cell Type-Specific
+Genetic Control of Autoimmune Disease.”</span> <em>Science</em> 376
+(6589): eabf3041.
+</div>
+<div id="ref-young2020soupx" class="csl-entry" role="listitem">
+Young, Matthew D, and Sam Behjati. 2020. <span>“SoupX Removes Ambient
+RNA Contamination from Droplet-Based Single-Cell RNA Sequencing
+Data.”</span> <em>Gigascience</em> 9 (12): giaa151.
+</div>
+<div id="ref-yu2022perturbnet" class="csl-entry" role="listitem">
+Yu, Hengshi, and Joshua D Welch. 2022. <span>“Perturbnet Predicts
+Single-Cell Responses to Unseen Chemical and Genetic
+Perturbations.”</span> <em>BioRxiv</em>, 2022–07.
+</div>
+<div id="ref-yu2023scone" class="csl-entry" role="listitem">
+Yu, Lei, Xinlei Wang, Quanhua Mu, Sindy Sing Ting Tam, Danson Shek Chun
+Loi, Aden KY Chan, Wai Sang Poon, et al. 2023. <span>“scONE-Seq: A
+Single-Cell Multi-Omics Method Enables Simultaneous Dissection of
+Phenotype and Genotype Heterogeneity from Frozen Tumors.”</span>
+<em>Science Advances</em> 9 (1): eabp8901.
+</div>
+<div id="ref-yu2022benchmarking" class="csl-entry" role="listitem">
+Yu, Lijia, Yue Cao, Jean YH Yang, and Pengyi Yang. 2022.
+<span>“Benchmarking Clustering Algorithms on Estimating the Number of
+Cell Types from Single-Cell RNA-Sequencing Data.”</span> <em>Genome
+Biology</em> 23 (1): 49.
+</div>
+<div id="ref-yuan2024inferring" class="csl-entry" role="listitem">
+Yuan, Qiuyue, and Zhana Duren. 2024. <span>“Inferring Gene Regulatory
+Networks from Single-Cell Multiome Data Using Atlas-Scale External
+Data.”</span> <em>Nature Biotechnology</em>, 1–11.
+</div>
+<div id="ref-zeng2022cell" class="csl-entry" role="listitem">
+Zeng, Hongkui. 2022. <span>“What Is a Cell Type and How to Define
+It?”</span> <em>Cell</em> 185 (15): 2739–55.
+</div>
+<div id="ref-zhang2019comprehensively" class="csl-entry" role="listitem">
+Zhang, Le, Wanyu Bai, Na Yuan, and Zhenglin Du. 2019.
+<span>“Comprehensively Benchmarking Applications for Detecting Copy
+Number Variation.”</span> <em>PLoS Computational Biology</em> 15 (5):
+e1007069.
+</div>
+<div id="ref-zhang2022polygenic" class="csl-entry" role="listitem">
+Zhang, Martin Jinye, Kangcheng Hou, Kushal K Dey, Saori Sakaue, Karthik
+A Jagadeesh, Kathryn Weinand, Aris Taychameekiatchai, et al. 2022.
+<span>“Polygenic Enrichment Distinguishes Disease Associations of
+Individual Cells in Single-Cell RNA-Seq Data.”</span> <em>Nature
+Genetics</em> 54 (10): 1572–80.
+</div>
+<div id="ref-zhang2023molecularly" class="csl-entry" role="listitem">
+Zhang, Meng, Xingjie Pan, Won Jung, Aaron Halpern, Stephen W Eichhorn,
+Zhiyun Lei, Limor Cohen, et al. 2023. <span>“A Molecularly Defined and
+Spatially Resolved Cell Atlas of the Whole Mouse Brain.”</span>
+<em>bioRxiv</em>, 2023–03.
+</div>
+<div id="ref-zhang2021individual" class="csl-entry" role="listitem">
+Zhang, Mengqi, Si Liu, Zhen Miao, Fang Han, Raphael Gottardo, and Wei
+Sun. 2022. <span>“<span>IDEAS</span>: Individual Level Differential
+Expression Analysis for Single-Cell <span>RNA</span>-Seq Data.”</span>
+<em>Genome Biology</em> 23 (1): 1–17.
+</div>
+<div id="ref-zhang2024transcriptional" class="csl-entry" role="listitem">
+Zhang, Qiuyu, Wenjie Cao, Jiaqi Wang, Yihao Yin, Rui Sun, Zunyi Tian,
+Yuhan Hu, Yalan Tan, and Ben-gong Zhang. 2024. <span>“Transcriptional
+Bursting Dynamics in Gene Expression.”</span> <em>Frontiers in
+Genetics</em> 15: 1451461.
+</div>
+<div id="ref-zhang2022multimodal" class="csl-entry" role="listitem">
+Zhang, Ran, Laetitia Meng-Papaxanthos, Jean-philippe Vert, and William
+Stafford Noble. 2022. <span>“Multimodal Single-Cell Translation and
+Alignment with Semi-Supervised Learning.”</span> <em>Journal of
+Computational Biology</em> 29 (11): 1198–1212.
+</div>
+<div id="ref-zhang2020review" class="csl-entry" role="listitem">
+Zhang, Shixiong, Xiangtao Li, Qiuzhen Lin, and Ka-Chun Wong. 2020.
+<span>“Review of Single-Cell <span>RNA</span>-Seq Data Clustering for
+Cell Type Identification and Characterization.”</span> <em>arXiv
+Preprint arXiv:2001.01006</em>.
+</div>
+<div id="ref-zhang2019linear" class="csl-entry" role="listitem">
+Zhang, Xinyuan, Yanqiu Feng, Wufan Chen, Xin Li, Andreia V Faria,
+Qianjin Feng, and Susumu Mori. 2019. <span>“Linear Registration of Brain
+Mri Using Knowledge-Based Multiple Intermediator Libraries.”</span>
+<em>Frontiers in Neuroscience</em> 13: 909.
+</div>
+<div id="ref-zhang2023robust" class="csl-entry" role="listitem">
+Zhang, Yifan, Duc Tran, Tin Nguyen, Sergiu M Dascalu, and Frederick C
+Harris Jr. 2023. <span>“A Robust and Accurate Single-Cell Data
+Trajectory Inference Method Using Ensemble Pseudotime.”</span> <em>BMC
+Bioinformatics</em> 24 (1): 55.
+</div>
+<div id="ref-zhang2021epigenetic" class="csl-entry" role="listitem">
+Zhang, Ying, and Marc-André Sirard. 2021. <span>“Epigenetic Inheritance
+of Acquired Traits Through DNA Methylation.”</span> <em>Animal
+Frontiers</em> 11 (6): 19–27.
+</div>
+<div id="ref-zhang2020combat" class="csl-entry" role="listitem">
+Zhang, Yuqing, Giovanni Parmigiani, and W Evan Johnson. 2020.
+<span>“ComBat-Seq: Batch Effect Adjustment for RNA-Seq Count
+Data.”</span> <em>NAR Genomics and Bioinformatics</em> 2 (3): lqaa078.
+</div>
+<div id="ref-zhang2024recovery" class="csl-entry" role="listitem">
+Zhang, Zhaojun, Divij Mathew, Tristan L Lim, Kaishu Mason, Clara Morral
+Martinez, Sijia Huang, E John Wherry, et al. 2024. <span>“Recovery of
+Biological Signals Lost in Single-Cell Batch Integration with
+CellANOVA.”</span> <em>Nature Biotechnology</em>, 1–17.
+</div>
+<div id="ref-zhang2023scmomat" class="csl-entry" role="listitem">
+Zhang, Ziqi, Haoran Sun, Ragunathan Mariappan, Xi Chen, Xinyu Chen, Mika
+S Jain, Mirjana Efremova, Sarah A Teichmann, Vaibhav Rajan, and Xiuwei
+Zhang. 2023. <span>“scMoMaT Jointly Performs Single Cell Mosaic
+Integration and Multi-Modal Bio-Marker Detection.”</span> <em>Nature
+Communications</em> 14 (1): 384.
+</div>
+<div id="ref-zhang2022scdart" class="csl-entry" role="listitem">
+Zhang, Ziqi, Chengkai Yang, and Xiuwei Zhang. 2022. <span>“scDART:
+Integrating Unmatched scRNA-Seq and scATAC-Seq Data and Learning
+Cross-Modality Relationship Simultaneously.”</span> <em>Genome
+Biology</em> 23 (1): 139.
+</div>
+<div id="ref-zhao2024systematic" class="csl-entry" role="listitem">
+Zhao, Ruzhang, Jiuyao Lu, Weiqiang Zhou, Ni Zhao, and Hongkai Ji. 2024.
+<span>“A Systematic Evaluation of Highly Variable Gene Selection Methods
+for Single-Cell RNA-Sequencing.”</span> <em>bioRxiv</em>, 2024–08.
+</div>
+<div id="ref-zhou2024analysis" class="csl-entry" role="listitem">
+Zhou, Jessica L, Karthik Guruvayurappan, Shushan Toneyan, Hsiuyi V Chen,
+Aaron R Chen, Peter Koo, and Graham McVicker. 2024. <span>“Analysis of
+Single-Cell CRISPR Perturbations Indicates That Enhancers Predominantly
+Act Multiplicatively.”</span> <em>Cell Genomics</em> 4 (11).
+</div>
+<div id="ref-zhou2023spatial" class="csl-entry" role="listitem">
+Zhou, Ran, Gaoxia Yang, Yan Zhang, and Yuan Wang. 2023. <span>“Spatial
+Transcriptomics in Development and Disease.”</span> <em>Molecular
+Biomedicine</em> 4 (1): 32.
+</div>
+<div id="ref-zhou2024scpredixcan" class="csl-entry" role="listitem">
+Zhou, Yichao, Temidayo Adeluwa, Lisha Zhu, Sofia Salazar, Sarah Sumner,
+Hyunki Kim, Saideep Gona, et al. 2024. <span>“scPrediXcan Integrates
+Advances in Deep Learning and Single-Cell Data into a Powerful
+Cell-Type–Specific Transcriptome-Wide Association Study
+Framework.”</span> <em>bioRxiv</em>, 2024–11.
+</div>
+<div id="ref-zhou2023new" class="csl-entry" role="listitem">
+Zhou, Yifan, Kaixuan Luo, Lifan Liang, Mengjie Chen, and Xin He. 2023.
+<span>“A New Bayesian Factor Analysis Method Improves Detection of Genes
+and Biological Processes Affected by Perturbations in Single-Cell CRISPR
+Screening.”</span> <em>Nature Methods</em> 20 (11): 1693–703.
+</div>
+<div id="ref-zhou2024genetics" class="csl-entry" role="listitem">
+Zhou, Yi, Hongjun Song, and Guo-li Ming. 2024. <span>“Genetics of Human
+Brain Development.”</span> <em>Nature Reviews Genetics</em> 25 (1):
+26–45.
+</div>
+<div id="ref-zhu2021robust" class="csl-entry" role="listitem">
+Zhu, Bokai, Shuxiao Chen, Yunhao Bai, Han Chen, Nilanjan Mukherjee,
+Gustavo Vazquez, David R McIlwain, et al. 2021. <span>“Robust
+Single-Cell Matching and Multi-Modal Analysis Using Shared and Distinct
+Features Reveals Orchestrated Immune Responses.”</span>
+<em>bioRxiv</em>.
+</div>
+<div id="ref-zhu2021joint" class="csl-entry" role="listitem">
+Zhu, Chenxu, Yanxiao Zhang, Yang Eric Li, Jacinta Lucero, M Margarita
+Behrens, and Bing Ren. 2021. <span>“Joint Profiling of Histone
+Modifications and Transcriptome in Single Cells from Mouse
+Brain.”</span> <em>Nature Methods</em>, 1–10.
+</div>
+<div id="ref-zhuang2019development" class="csl-entry" role="listitem">
+Zhuang, Yonghua, Kristen Wade, Laura M Saba, and Katerina Kechris. 2019.
+<span>“Development of a Tissue Augmented Bayesian Model for Expression
+Quantitative Trait Loci Analysis.”</span> <em>Mathematical Biosciences
+and Engineering: MBE</em> 17 (1): 122.
+</div>
+<div id="ref-von2022multiomic" class="csl-entry" role="listitem">
+Ziegler, Lukas M von, Amalia Floriou-Servou, Rebecca Waag, Rebecca R Das
+Gupta, Oliver Sturman, Katharina Gapp, Christina A Maat, et al. 2022.
+<span>“Multiomic Profiling of the Acute Stress Response in the Mouse
+Hippocampus.”</span> <em>Nature Communications</em> 13 (1): 1824.
+</div>
+<div id="ref-zou2022fine" class="csl-entry" role="listitem">
+Zou, Yuxin, Peter Carbonetto, Gao Wang, and Matthew Stephens. 2022.
+<span>“Fine-Mapping from Summary Data with the <span>‘Sum of Single
+Effects’</span> Model.”</span> <em>PLoS Genetics</em> 18 (7): e1010299.
+</div>
+<div id="ref-zverinova2022variant" class="csl-entry" role="listitem">
+Zverinova, Stepanka, and Victor Guryev. 2022. <span>“Variant Calling:
+Considerations, Practices, and Developments.”</span> <em>Human
+Mutation</em> 43 (8): 976–85.
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter9_spatial.html" class="pagination-link" aria-label="'Single-cell' spatial transcriptomics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">‘Single-cell’ spatial transcriptomics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

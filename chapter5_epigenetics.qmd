@@ -33,7 +33,6 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 
 -   **DNA Accessibility**: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we'll focus on this chapter.)
 
-
 -   **DNA Methylation**[^chapter5_epigenetics-1]: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See @fig-methylation1-1 and @fig-methylation1-2.
 
 [^chapter5_epigenetics-1]: The technology to measure this at single-cell resolution is still being developed (see snmC-seq2 @liu2021dna), and is particularly interesting due to methylation's relation to cellular memory @kim2017dna and molecular clocks @hernando2019ageing; @trapp2021profiling; @gabbutt2022fluctuating.
@@ -47,7 +46,6 @@ Epigenetics encompasses a vast array of molecular mechanisms that regulate gene 
 :::
 
 -   **Hi-C and Genome Organization**[^chapter5_epigenetics-2]: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See @fig-hic1-1 and @fig-hic1-2.
-
 
 [^chapter5_epigenetics-2]: See Droplet-HiC @chang2024droplet for an example of single-cell Hi-C.
 
@@ -203,7 +201,7 @@ Peak-calling is the computational process of identifying regions of open chromat
 :::
 
 **Further reading.**\
-See @mansisidor2022chromatin, @miao2021multi, @teichmann2020method for an in-depth dive on the biological insights from this omic (among many, many review papers). Two things are of note: 1) modeling scATAC-seq data is not as straight-forward as scRNA-seq (see @miao2024uniform, @martens2024modeling), 2) almost all the scRNA-seq methods we have discussed in [Chapter 2](chapter2.qmd) and [Chapter 3](chapter3.qmd) have a counterpart developed specifically to model scATAC-seq data. For example, peakVI @ashuach2022peakvi is a commonly used method to compute the low-dimensional embedding for scATAC-seq data.
+See @mansisidor2022chromatin, @miao2021multi, @teichmann2020method for an in-depth dive on the biological insights from this omic (among many, many review papers). Two things are of note: 1) modeling scATAC-seq data is not as straight-forward as scRNA-seq (see @miao2024uniform, @martens2024modeling), 2) almost all the scRNA-seq methods we have discussed in [Chapter 2](chapter2_sequencing.qmd) and [Chapter 3](chapter3_rna.qmd) have a counterpart developed specifically to model scATAC-seq data. For example, peakVI @ashuach2022peakvi is a commonly used method to compute the low-dimensional embedding for scATAC-seq data.
 
 ## ChromVAR: The most commonly used method to assess binding regions
 
@@ -394,9 +392,7 @@ $$
     \end{aligned}
 $$
 
-       
 where $\lambda_{\mathcal{G}}$ and $\lambda_{D}$ are hyperparameters.
-
 
 ::: block
 ![From @cao2022multi.](fig/chap5/glue.png){#fig-glue2 width="100%" fig-align="center"}
@@ -671,4 +667,3 @@ Also, note that there are some network methods that have nodes for each genomic 
 ::: block
 ![From @chen2024simba](fig/chap5/simba.png){#fig-simba width="100%" fig-align="center"}
 :::
-

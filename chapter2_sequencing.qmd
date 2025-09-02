@@ -145,11 +145,11 @@ Other categories, such as xenografts, organoids, and co-culture systems, also pl
 
 Normalization is a critical step in the analysis of single-cell sequencing data, addressing the technical variability introduced by differences in sequencing depth across cells. Sequencing depth refers to the total number of reads obtained for each cell, which can vary due to technical factors like library preparation or instrument sensitivity. Without normalization, cells with higher sequencing depth might appear to express more genes simply because of greater read coverage, not biological differences. Normalization methods aim to make gene expression counts comparable across cells by adjusting for these differences, ensuring that downstream analyses reflect true biological variation rather than technical artifacts. This step is foundational for accurate clustering, differential expression analysis, and other interpretative tasks in single-cell studies.
 
-It has been known for a long time that when dealing with count data, proper normalization is foundational to properly doing meaningful inference. See [@risso2014normalization]. As we will see in [Chapter 3](chapter3_tech.qmd), sequencing technologies cannot control how many reads (i.e., "counts") are sequenced from each cell -- this depends on the biochemistry efficency. Also, larger cells typically have more reads (which is itself a confounder) [@maden2023challenges]. We will describe normalization in more detail in @sec-normalization.
+It has been known for a long time that when dealing with count data, proper normalization is foundational to properly doing meaningful inference. See [@risso2014normalization]. As we will see in [Chapter 3](chapter3_rna.qmd), sequencing technologies cannot control how many reads (i.e., "counts") are sequenced from each cell -- this depends on the biochemistry efficency. Also, larger cells typically have more reads (which is itself a confounder) [@maden2023challenges]. We will describe normalization in more detail in @sec-normalization.
 
 ## The typical workflow for any sc-seq data
 
-We will now describe the common steps at the start of a single-cell sequencing computational workflow (i.e., the steps that happen after the data has been collected and been aggregated into a matrix). More details about the downstream steps will be discussed in detail in [Chapter 3](chapter3.qmd). See [@luecken2019current; @heumos2023best] for fantastic tutorials on best practices (among many). I'll like to plug my own paper about best practices [@prater2024all].
+We will now describe the common steps at the start of a single-cell sequencing computational workflow (i.e., the steps that happen after the data has been collected and been aggregated into a matrix). More details about the downstream steps will be discussed in detail in [Chapter 3](chapter3_rna.qmd). See [@luecken2019current; @heumos2023best] for fantastic tutorials on best practices (among many). I'll like to plug my own paper about best practices [@prater2024all].
 
 ::: block
 ![Abridged and typical workflow of a sc-seq dataset. [@luecken2019current]](fig/chap2/workflow.png){#fig-workflow width="100%" fig-align="center"}
@@ -159,7 +159,7 @@ For additional reference: See <https://www.sc-best-practices.org/> and <https://
 
 ### (Optional) Ambient reads
 
-(This step will make more sense once you know a bit about how scRNA-seq data is generated, see [Chapter 3](chapter3_tech.qmd).)
+(This step will make more sense once you know a bit about how scRNA-seq data is generated, see [Chapter 3](chapter3_rna.qmd).)
 
 Ambient reads and doublets (see @fig-ambient) are common technical artifacts in single-cell sequencing data that can distort biological interpretations if left unaddressed. Ambient reads arise from background RNA that is captured during sequencing but does not originate from the cell being analyzed. These reads can falsely inflate gene expression levels, particularly for highly abundant transcripts. Detecting and mitigating these artifacts is an optional but valuable step in data preprocessing, as it improves the overall quality and biological relevance of downstream analyses.
 
@@ -444,7 +444,7 @@ Hence, it is possible to "remove" batch effects because: 1) it's a constant "shi
 :::
 
 ::: block2
-**Remark (The term "batch" is very overloaded).** There are many steps during a single-cell analysis (see [Chapter 3](chapter3_tech.qmd)). These are some of the things a "batch" could refer to: 1) cells processed together during droplet/gem formation, 2) cells processed during during PCR amplification, 3) cells processed together during sequencing (this is most common usage of the word "batch"), 4) cells processed using different protocols, 5) cells processed by different labs, 6) cells of different donors/organisms, among many more. (The first three steps are similar in "resolution," but the last three are more "coarse" in how a batch is defined.)
+**Remark (The term "batch" is very overloaded).** There are many steps during a single-cell analysis (see [Chapter 3](chapter3_rna.qmd)). These are some of the things a "batch" could refer to: 1) cells processed together during droplet/gem formation, 2) cells processed during during PCR amplification, 3) cells processed together during sequencing (this is most common usage of the word "batch"), 4) cells processed using different protocols, 5) cells processed by different labs, 6) cells of different donors/organisms, among many more. (The first three steps are similar in "resolution," but the last three are more "coarse" in how a batch is defined.)
 
 *Technically*, the statistical logic of most batch-correction methods isn't suitable for trying to align cells from different donors/organisms since in this setting, the "batches" are based on biology, not a technical artifact. For example, the differences between cells from two donors could be much more complicated than simply cells in two different sequencing batches.
 
@@ -543,4 +543,4 @@ See the `Seurat::RunUMAP` function, illustrated in @fig-umap. The resulting visu
 
 Because visualizing high-dimensional data will always be a need, and there's never going to be an "optimal" way to do it, the visualization method of choice is going to change based on the community's desires every 5-10 years. While currently UMAP is king (which dethroned t-SNE, who was the previous king), there's definitely methods trying to dethrone UMAP. The method I've seen the most popularity to dethrone UMAP so far is PaCMAP, but as of 2024-25, UMAP is still by far the most common visualization method. See [@huang2022towards] for a broad benchmarking of such methods.
 
-There are two lines of work I'll mention that might be of interest for the statistical students. One is developing methods to assess how "distorted" the visualization is, see [@johnson2022embedr; @xia2024statistical]. Another is to trying to prove (using a formal statistical model) how well these visualization methods actually "cluster" the cells, see [@arora2018analysis; @cai2022theoretical]. ::::::::::::::::::::::::::::::::::::::::
+There are two lines of work I'll mention that might be of interest for the statistical students. One is developing methods to assess how "distorted" the visualization is, see [@johnson2022embedr; @xia2024statistical]. Another is to trying to prove (using a formal statistical model) how well these visualization methods actually "cluster" the cells, see [@arora2018analysis; @cai2022theoretical].

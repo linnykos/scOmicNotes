@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; ‘Single-cell’ DNA – scOmicNotes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter7_crispr.html" rel="next">
+<link href="./chapter5_epigenetics.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter6_dna.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">scOmicNotes</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2_sequencing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3_rna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4_protein.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter5_epigenetics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter6_dna.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter7_crispr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter8_lineage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter9_spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">‘Single-cell’ spatial transcriptomics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-genetics_basics" id="toc-sec-genetics_basics" class="nav-link active" data-scroll-target="#sec-genetics_basics"><span class="header-section-number">7.1</span> Genetics 101</a>
+  <ul>
+  <li><a href="#tissues-used-for-dna-sequencing" id="toc-tissues-used-for-dna-sequencing" class="nav-link" data-scroll-target="#tissues-used-for-dna-sequencing"><span class="header-section-number">7.1.0.1</span> Tissues Used for DNA Sequencing</a></li>
+  <li><a href="#gene-architecture-and-functional-elements" id="toc-gene-architecture-and-functional-elements" class="nav-link" data-scroll-target="#gene-architecture-and-functional-elements"><span class="header-section-number">7.1.0.2</span> Gene Architecture and Functional Elements</a></li>
+  <li><a href="#protein-coding-and-noncoding-regions-of-the-genome" id="toc-protein-coding-and-noncoding-regions-of-the-genome" class="nav-link" data-scroll-target="#protein-coding-and-noncoding-regions-of-the-genome"><span class="header-section-number">7.1.0.3</span> Protein-Coding and Noncoding Regions of the Genome</a></li>
+  <li><a href="#exploring-genomic-annotations-the-ucsc-genome-browser." id="toc-exploring-genomic-annotations-the-ucsc-genome-browser." class="nav-link" data-scroll-target="#exploring-genomic-annotations-the-ucsc-genome-browser."><span class="header-section-number">7.1.0.4</span> Exploring Genomic Annotations: The UCSC Genome Browser.</a></li>
+  </ul></li>
+  <li><a href="#sec-gwas" id="toc-sec-gwas" class="nav-link" data-scroll-target="#sec-gwas"><span class="header-section-number">7.2</span> A brief blurb about GWAS</a>
+  <ul>
+  <li><a href="#fine-mapping-and-other-methods-to-get-more-causal-variants." id="toc-fine-mapping-and-other-methods-to-get-more-causal-variants." class="nav-link" data-scroll-target="#fine-mapping-and-other-methods-to-get-more-causal-variants."><span class="header-section-number">7.2.0.1</span> Fine mapping and other methods to get more ``causal’’ variants.</a></li>
+  <li><a href="#some-videos-to-look-at-for-fun." id="toc-some-videos-to-look-at-for-fun." class="nav-link" data-scroll-target="#some-videos-to-look-at-for-fun."><span class="header-section-number">7.2.0.2</span> Some videos to look at for fun.</a></li>
+  <li><a href="#sec-structural_variation_overview" id="toc-sec-structural_variation_overview" class="nav-link" data-scroll-target="#sec-structural_variation_overview"><span class="header-section-number">7.2.1</span> Before we get too far, a quick note about the types of genetic variations</a></li>
+  <li><a href="#a-brief-note-about-the-igv" id="toc-a-brief-note-about-the-igv" class="nav-link" data-scroll-target="#a-brief-note-about-the-igv"><span class="header-section-number">7.2.2</span> A brief note about the IGV</a></li>
+  <li><a href="#if-you-thought-scrna-seq-data-was-complicated" id="toc-if-you-thought-scrna-seq-data-was-complicated" class="nav-link" data-scroll-target="#if-you-thought-scrna-seq-data-was-complicated"><span class="header-section-number">7.2.3</span> If you thought scRNA-seq data was complicated…</a></li>
+  </ul></li>
+  <li><a href="#as-an-aside-does-my-dna-mutate-over-my-life" id="toc-as-an-aside-does-my-dna-mutate-over-my-life" class="nav-link" data-scroll-target="#as-an-aside-does-my-dna-mutate-over-my-life"><span class="header-section-number">7.3</span> … As an aside: Does my DNA mutate over my life?</a></li>
+  <li><a href="#sec-single_cell_eqtl" id="toc-sec-single_cell_eqtl" class="nav-link" data-scroll-target="#sec-single_cell_eqtl"><span class="header-section-number">7.4</span> Studying Single-Cell eQTL</a>
+  <ul>
+  <li><a href="#performing-your-own-eqtl." id="toc-performing-your-own-eqtl." class="nav-link" data-scroll-target="#performing-your-own-eqtl."><span class="header-section-number">7.4.0.1</span> Performing your own eQTL.</a></li>
+  <li><a href="#what-are-on-earth-are-these-genetic-ancestry-and-unmeasured-confounders" id="toc-what-are-on-earth-are-these-genetic-ancestry-and-unmeasured-confounders" class="nav-link" data-scroll-target="#what-are-on-earth-are-these-genetic-ancestry-and-unmeasured-confounders"><span class="header-section-number">7.4.0.2</span> What are on earth are these “genetic ancestry” and “unmeasured confounders”?</a></li>
+  <li><a href="#challenges-of-learning-eqtls-epistasis-and-pleiotropy." id="toc-challenges-of-learning-eqtls-epistasis-and-pleiotropy." class="nav-link" data-scroll-target="#challenges-of-learning-eqtls-epistasis-and-pleiotropy."><span class="header-section-number">7.4.0.3</span> Challenges of learning eQTLs: Epistasis and pleiotropy.</a></li>
+  <li><a href="#by-the-way-eqtl-is-not-the-only-type-of-qtl" id="toc-by-the-way-eqtl-is-not-the-only-type-of-qtl" class="nav-link" data-scroll-target="#by-the-way-eqtl-is-not-the-only-type-of-qtl"><span class="header-section-number">7.4.0.4</span> By the Way, eQTL Is Not the Only Type of QTL!</a></li>
+  <li><a href="#by-the-way-llms-are-also-in-this-race." id="toc-by-the-way-llms-are-also-in-this-race." class="nav-link" data-scroll-target="#by-the-way-llms-are-also-in-this-race."><span class="header-section-number">7.4.0.5</span> By the way… LLMs are also in this race.</a></li>
+  </ul></li>
+  <li><a href="#other-very-large-areas-of-cell-biology-that-perform-multi-omic-analyses-involving-genetics" id="toc-other-very-large-areas-of-cell-biology-that-perform-multi-omic-analyses-involving-genetics" class="nav-link" data-scroll-target="#other-very-large-areas-of-cell-biology-that-perform-multi-omic-analyses-involving-genetics"><span class="header-section-number">7.5</span> Other (very large areas of cell biology) that perform multi-omic analyses involving genetics</a></li>
+  <li><a href="#sec-dna_structural_variation" id="toc-sec-dna_structural_variation" class="nav-link" data-scroll-target="#sec-dna_structural_variation"><span class="header-section-number">7.6</span> Structural variation: Focusing on copy number variation</a>
+  <ul>
+  <li><a href="#importance-of-cnvs." id="toc-importance-of-cnvs." class="nav-link" data-scroll-target="#importance-of-cnvs."><span class="header-section-number">7.6.0.1</span> Importance of CNVs.</a></li>
+  <li><a href="#sequencing-based-technologies-for-cnv-detection-and-single-cell-variations" id="toc-sequencing-based-technologies-for-cnv-detection-and-single-cell-variations" class="nav-link" data-scroll-target="#sequencing-based-technologies-for-cnv-detection-and-single-cell-variations"><span class="header-section-number">7.6.0.2</span> Sequencing-based technologies for CNV detection, and single-cell variations</a></li>
+  <li><a href="#computational-steps-in-cnv-analysis" id="toc-computational-steps-in-cnv-analysis" class="nav-link" data-scroll-target="#computational-steps-in-cnv-analysis"><span class="header-section-number">7.6.0.3</span> Computational Steps in CNV Analysis</a></li>
+  <li><a href="#why-are-hidden-markov-models-hmms-so-popular-for-copy-number-analysis" id="toc-why-are-hidden-markov-models-hmms-so-popular-for-copy-number-analysis" class="nav-link" data-scroll-target="#why-are-hidden-markov-models-hmms-so-popular-for-copy-number-analysis"><span class="header-section-number">7.6.0.4</span> Why are Hidden Markov Models (HMMs) so popular for copy-number analysis?</a></li>
+  <li><a href="#sec-reference_genome" id="toc-sec-reference_genome" class="nav-link" data-scroll-target="#sec-reference_genome"><span class="header-section-number">7.6.1</span> A quick note on the reference genome</a></li>
+  <li><a href="#challenges-of-collecting-single-cell-dna-sequencing-data" id="toc-challenges-of-collecting-single-cell-dna-sequencing-data" class="nav-link" data-scroll-target="#challenges-of-collecting-single-cell-dna-sequencing-data"><span class="header-section-number">7.6.2</span> Challenges of collecting “single-cell DNA” sequencing data</a></li>
+  <li><a href="#studying-single-cell-copy-number-variation-using-scrna-seq-data" id="toc-studying-single-cell-copy-number-variation-using-scrna-seq-data" class="nav-link" data-scroll-target="#studying-single-cell-copy-number-variation-using-scrna-seq-data"><span class="header-section-number">7.6.3</span> Studying single-cell copy-number variation using scRNA-seq data</a>
+  <ul class="collapse">
+  <li><a href="#a-typical-choice-copykat." id="toc-a-typical-choice-copykat." class="nav-link" data-scroll-target="#a-typical-choice-copykat."><span class="header-section-number">7.6.3.1</span> A typical choice: CopyKAT.</a></li>
+  <li><a href="#a-brief-note-about-other-approaches." id="toc-a-brief-note-about-other-approaches." class="nav-link" data-scroll-target="#a-brief-note-about-other-approaches."><span class="header-section-number">7.6.3.2</span> A brief note about other approaches.</a></li>
+  </ul></li>
+  <li><a href="#other-fascinating-research-on-structural-variation-short-tandem-repeats" id="toc-other-fascinating-research-on-structural-variation-short-tandem-repeats" class="nav-link" data-scroll-target="#other-fascinating-research-on-structural-variation-short-tandem-repeats"><span class="header-section-number">7.6.4</span> Other fascinating research on structural variation: Short tandem repeats</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-genetics_basics" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-genetics_basics"><span class="header-section-number">7.1</span> Genetics 101</h2>
+<p>Understanding the fundamental concepts of genetics is essential for studying genomic variation, including copy-number variations (CNVs) and single nucleotide polymorphisms (SNPs). This section provides an overview of genetic architecture, SNPs and their detection, commonly sequenced tissues, and genome annotation resources such as the UCSC Genome Browser.</p>
+<p><strong>Single Nucleotide Polymorphisms (SNPs) and Their Detection.</strong></p>
+<p>A single nucleotide polymorphism (SNP) is a variation at a single base pair position in the genome that is present in a significant fraction of the population. SNPs are the most common type of genetic variation and can have functional consequences depending on their location. When an SNP occurs within a coding region, it may alter the resulting protein sequence if it leads to an amino acid substitution (nonsynonymous SNP) or have no effect if the change is synonymous. SNPs in noncoding regions can impact gene regulation by affecting transcription factor binding sites, splicing efficiency, or untranslated regions (UTRs). Since you have “two copies” of each of your 23 chromosomes, this means SNP data is a data matrix of <span class="math inline">\(n\)</span> people by <span class="math inline">\(p\)</span> SNP regions (think of a couple million – more on this technicality later), where each value is <span class="math inline">\(\{0,1,2\}\)</span>, see <a href="#fig-snp" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>. Typically, the major allele is defined as “0”, and a “1” or “2” means if how many copies of the minor allele do you have.</p>
+<div class="block">
+<div id="fig-snp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/snp1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>SNPs are detected using high-throughput sequencing technologies, primarily whole-genome sequencing (WGS) and whole-exome sequencing (WES). In these approaches, DNA is extracted from a biological sample, fragmented, and sequenced to generate short or long reads. The raw sequencing reads are then aligned to a reference genome, and variant calling algorithms such as those implemented in <code>GATK</code> <span class="citation" data-cites="mckenna2010genome">(<a href="references.html#ref-mckenna2010genome" role="doc-biblioref">McKenna et al. 2010</a>)</span>, <code>bcftools</code>, and <code>FreeBayes</code> <span class="citation" data-cites="garrison2012haplotype">(<a href="references.html#ref-garrison2012haplotype" role="doc-biblioref">Garrison and Marth 2012</a>)</span> identify SNPs by comparing observed nucleotide differences to the reference sequence. (See <span class="citation" data-cites="zverinova2022variant">Zverinova and Guryev (<a href="references.html#ref-zverinova2022variant" role="doc-biblioref">2022</a>)</span> for a overview). The sequencing depth, or coverage, at a given genomic position determines the confidence in an SNP call, with higher coverage reducing the likelihood of sequencing errors.</p>
+<section id="tissues-used-for-dna-sequencing" class="level4" data-number="7.1.0.1">
+<h4 data-number="7.1.0.1" class="anchored" data-anchor-id="tissues-used-for-dna-sequencing"><span class="header-section-number">7.1.0.1</span> Tissues Used for DNA Sequencing</h4>
+<p>The choice of tissue for sequencing depends on the research objective. In population genetics and germline variant studies, DNA is typically extracted from peripheral blood or saliva, as these sources provide a reliable representation of an individual’s inherited genome. For cancer studies and somatic mutation analysis, tumor biopsies and matched normal tissue (such as blood or adjacent non-tumor tissue) are commonly sequenced to distinguish acquired mutations from germline variants. Additionally, single-cell sequencing has enabled the study of genetic heterogeneity within complex tissues, allowing researchers to profile CNVs and SNPs in individual cells from a given sample.</p>
+</section>
+<section id="gene-architecture-and-functional-elements" class="level4" data-number="7.1.0.2">
+<h4 data-number="7.1.0.2" class="anchored" data-anchor-id="gene-architecture-and-functional-elements"><span class="header-section-number">7.1.0.2</span> Gene Architecture and Functional Elements</h4>
+<p>The structure of a gene consists of multiple regions that contribute to its regulation, transcription, and translation. A gene typically includes a promoter region, which contains binding sites for transcription factors and RNA polymerase, playing a crucial role in gene expression regulation. The transcription start site (TSS) marks the beginning of RNA synthesis. The gene body consists of exons, which encode protein sequences, and introns, which are transcribed but spliced out during mRNA processing. The untranslated regions (UTRs), found at the 5’ and 3’ ends of the mature mRNA, influence mRNA stability, localization, and translation efficiency. Alternative polyadenylation (APA) sites within the 3’ UTR can affect transcript stability and cellular localization, providing an additional layer of post-transcriptional regulation.</p>
+<p>Splicing is a critical process that removes introns from pre-mRNA and joins exons to form a mature transcript. Alternative splicing allows a single gene to produce multiple transcript isoforms, greatly expanding the diversity of the proteome. Mutations or polymorphisms in splicing regulatory elements can disrupt normal splicing patterns, leading to disease-associated transcript variants.</p>
+</section>
+<section id="protein-coding-and-noncoding-regions-of-the-genome" class="level4" data-number="7.1.0.3">
+<h4 data-number="7.1.0.3" class="anchored" data-anchor-id="protein-coding-and-noncoding-regions-of-the-genome"><span class="header-section-number">7.1.0.3</span> Protein-Coding and Noncoding Regions of the Genome</h4>
+<p>The human genome consists of approximately 3 billion base pairs, yet only a small fraction of this sequence directly encodes proteins. Protein-coding genes occupy approximately 1–2% of the genome, corresponding to around 20,000 protein-coding genes. However, these genes are distributed across the genome, with some regions containing high gene density while others are gene-poor. Despite the low proportion of protein-coding DNA, the noncoding genome plays an essential role in gene regulation, chromatin organization, and cellular function. Noncoding regions include promoters, enhancers, silencers, insulators, and noncoding RNAs (such as microRNAs and long noncoding RNAs) that modulate gene expression. SNPs can lie in any of the regions, see <a href="#fig-gene-snp" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>.</p>
+<div class="block">
+<div id="fig-gene-snp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gene-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/gene_snp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gene-snp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: From https://www.biointeractive.org/sites/default/files/media/file/2020-02/MappingGenesSNP-StudentHO-act.pdf.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="exploring-genomic-annotations-the-ucsc-genome-browser." class="level4" data-number="7.1.0.4">
+<h4 data-number="7.1.0.4" class="anchored" data-anchor-id="exploring-genomic-annotations-the-ucsc-genome-browser."><span class="header-section-number">7.1.0.4</span> Exploring Genomic Annotations: The UCSC Genome Browser.</h4>
+<p>The UCSC Genome Browser is a widely used web-based platform that provides interactive visualization of genomic annotations, including gene structures, SNP locations, and regulatory elements. Researchers use the UCSC Genome Browser to explore gene architecture, examine conservation across species, and analyze experimental data such as RNA-seq and ChIP-seq tracks. The browser integrates multiple annotation tracks that display exon-intron boundaries, transcription factor binding sites, chromatin accessibility, and population-level variant frequencies. By selecting relevant tracks, users can assess how SNPs or CNVs may influence gene function and expression.</p>
+<p>See <a href="#fig-ucsc1" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>, <a href="#fig-ucsc2" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>, and <a href="#fig-ucsc3" class="quarto-xref">Figure&nbsp;<span>7.5</span></a> for an example of how to use the UCSC browser.</p>
+<div class="block">
+<div id="fig-ucsc1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ucsc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/ucsc1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ucsc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: All from <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr19%3A44905796%2D44909393&amp;hgsid=1906883924_WxRmL3T84AjPZVHeWbs1xUmoHbMh" class="uri">https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr19%3A44905796%2D44909393&amp;hgsid=1906883924_WxRmL3T84AjPZVHeWbs1xUmoHbMh</a>. (Top): Viewing the entire APOE gene (notice that the scale is roughly 1 kb of basepairs).
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ucsc2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ucsc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/ucsc2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ucsc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: (Middle): Zoomed in, scale of roughly 20 base pairs, where you can see the specific DNA sequence now. This is the base-pair sequence of the reference genome (here, hg38) from the 5’-to-3’ side of the DNA.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-ucsc3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ucsc3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/ucsc3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ucsc3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: (Bottom): Zoomed out, scale of roughly 100 kb base pairs, where you can see many other genes.
+</figcaption>
+</figure>
+</div>
+</div>
+<p><a href="#fig-ucsc4" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> demonstrates that you can tell which <code>side</code> of the chromsome the DNA is on. Why are there <code>sides</code>? Remember that transcription <em>always</em> goes from the 5’ end to 3’ end<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, see <a href="#fig-5-to-3-1" class="quarto-xref">Figure&nbsp;<span>7.7</span></a>, <a href="#fig-5-to-3-2" class="quarto-xref">Figure&nbsp;<span>7.8</span></a>, <a href="#fig-5-to-3-3" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>. mRNA is single-stranded, so you need to know which strand the DNA template is from.</p>
+<div class="block">
+<div id="fig-ucsc4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ucsc4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/ucsc4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ucsc4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: From <a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr17%3A42949714%2D43219946&amp;hgsid=2455618569_zy3DGTfK35AuV9F01AQaA81TBr0x" class="uri">https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr17%3A42949714%2D43219946&amp;hgsid=2455618569_zy3DGTfK35AuV9F01AQaA81TBr0x</a>. Notice that unlike <a href="#fig-ucsc1" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> where the APOE gene has arrows (in the intron regions) pointing right, the arrows for the BRAC1 gene has arrows pointing left. This means the BRAC1 gene is on the 3’-to-5’ side of the genome.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-5-to-3-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-to-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/5-to-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-to-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.7: (Top): From <a href="https://en.wikipedia.org/wiki/Directionality_(molecular_biology)" class="uri">https://en.wikipedia.org/wiki/Directionality_(molecular_biology)</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-5-to-3-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-to-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/gene_side2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-to-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: (Bottom Left) From <a href="https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html" class="uri">https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-5-to-3-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-to-3-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/gene_side1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-to-3-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: (Bottom Right) From <a href="https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html" class="uri">https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-gwas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-gwas"><span class="header-section-number">7.2</span> A brief blurb about GWAS</h2>
+<p>Genome-wide association studies (GWAS) analyze genetic variation across a population to identify single nucleotide polymorphisms (SNPs) associated with a phenotype of interest. The data consist of <span class="math inline">\(n\)</span> donors, each genotyped at <span class="math inline">\(p\)</span> SNPs, where <span class="math inline">\(p\)</span> typically ranges from hundreds of thousands to millions. To enhance statistical power, imputation is commonly performed to infer unobserved genotypes based on reference panels, effectively increasing the number of analyzed SNPs. The association of each SNP with the phenotype is tested using regression models, often accounting for population stratification and relatedness through principal components or mixed models, see <a href="#fig-gwas" class="quarto-xref">Figure&nbsp;<span>7.10</span></a>. The results are visualized in a Manhattan plot, where each SNP’s <span class="math inline">\(-\log_{10}(p)\)</span> value is plotted against its genomic position, highlighting loci with strong associations as peaks above the genome-wide significance threshold, see <a href="#fig-manhattan" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>. See <a href="https://i2pc.es/coss/Docencia/statisticalHelper/GWAS.pdf" class="uri">https://i2pc.es/coss/Docencia/statisticalHelper/GWAS.pdf</a> for the basics of a GWAS analysis.</p>
+<div class="block">
+<div id="fig-gwas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gwas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/gwas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gwas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.10: From <a href="https://en.wikipedia.org/wiki/Genome-wide_association_study" class="uri">https://en.wikipedia.org/wiki/Genome-wide_association_study</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-manhattan" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-manhattan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/manhattan.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manhattan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.11: From <span class="citation" data-cites="kunkle2019genetic">Kunkle et al. (<a href="references.html#ref-kunkle2019genetic" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<section id="fine-mapping-and-other-methods-to-get-more-causal-variants." class="level4" data-number="7.2.0.1">
+<h4 data-number="7.2.0.1" class="anchored" data-anchor-id="fine-mapping-and-other-methods-to-get-more-causal-variants."><span class="header-section-number">7.2.0.1</span> Fine mapping and other methods to get more ``causal’’ variants.</h4>
+<p>Due to linkage disequilibrium (LD) and other factors, genetic variants are often highly correlated across a chromosome, leading to clusters of significant SNPs in GWAS results. Fine-mapping aims to disentangle these associations by leveraging LD patterns to identify the variants most likely to be causal. This is typically done using Bayesian or probabilistic approaches that assign posterior inclusion probabilities (PIPs) to SNPs, quantifying their likelihood of being causal, as illustrated in <a href="#fig-pip" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>. Methods such as CAVIAR <span class="citation" data-cites="hormozdiari2014identifying">Hormozdiari et al. (<a href="references.html#ref-hormozdiari2014identifying" role="doc-biblioref">2014</a>)</span>, SuSiE <span class="citation" data-cites="wang2020simple">G. Wang et al. (<a href="references.html#ref-wang2020simple" role="doc-biblioref">2020</a>)</span>, and FINEMAP <span class="citation" data-cites="benner2016finemap">Benner et al. (<a href="references.html#ref-benner2016finemap" role="doc-biblioref">2016</a>)</span> integrate GWAS summary statistics with LD information to refine candidate variants. For some alternatives that are more causal in statistical flavor, see GhostKnockoff <span class="citation" data-cites="he2022ghostknockoff">He et al. (<a href="references.html#ref-he2022ghostknockoff" role="doc-biblioref">2022</a>)</span>. The impact of fine-mapping can be seen in <a href="#fig-carma" class="quarto-xref">Figure&nbsp;<span>7.13</span></a>, where prioritization of variants reduces uncertainty and improves biological interpretability.</p>
+<div class="block">
+<div id="fig-pip" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/pip.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.12: From <span class="citation" data-cites="wang2022methods">Q. S. Wang and Huang (<a href="references.html#ref-wang2022methods" role="doc-biblioref">2022</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-carma" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-carma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/carma.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: From <span class="citation" data-cites="yang2023carma">Yang et al. (<a href="references.html#ref-yang2023carma" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="some-videos-to-look-at-for-fun." class="level4" data-number="7.2.0.2">
+<h4 data-number="7.2.0.2" class="anchored" data-anchor-id="some-videos-to-look-at-for-fun."><span class="header-section-number">7.2.0.2</span> Some videos to look at for fun.</h4>
+<ul>
+<li>“How They Caught The Golden State Killer” (Veritasium): <a href="https://www.youtube.com/watch?v=KT18KJouHWg" class="uri">https://www.youtube.com/watch?v=KT18KJouHWg</a></li>
+</ul>
+</section>
+<section id="sec-structural_variation_overview" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="sec-structural_variation_overview"><span class="header-section-number">7.2.1</span> Before we get too far, a quick note about the types of genetic variations</h3>
+<p>Genetic variation arises from different types of mutations and structural alterations in the genome. See <a href="#fig-genetic-variation1" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> and <a href="#fig-structural-variation" class="quarto-xref">Figure&nbsp;<span>7.16</span></a>.</p>
+<ul>
+<li><strong>Single Nucleotide Variant (SNV):</strong> A single base change in the DNA sequence, which can be synonymous, missense, or nonsense depending on its impact on protein coding.<br>
+</li>
+<li><strong>Insertions and Deletions (Indels):</strong> The addition or removal of a small segment of DNA, which can cause frameshift mutations if they occur in coding regions.<br>
+</li>
+<li><strong>Inversions:</strong> A segment of DNA is reversed within the chromosome, potentially disrupting gene function or regulation.<br>
+</li>
+<li><strong>Tandem Repeats:</strong> Short DNA sequences repeated in succession, which can expand in diseases like Huntington’s. You’re usually think of a very short sequence (10 base pairs or less) that are repeating very often.<br>
+</li>
+<li><strong>Copy Number Variations (CNVs):</strong> Large duplications or deletions of genomic regions, affecting gene dosage and expression. You’re usually thinking of a very long segment of the chromosome, ranging to 1000 to millions of base pairs that are repeated.<br>
+</li>
+<li><strong>Translocations:</strong> The exchange of genetic material between non-homologous chromosomes, which can lead to fusion genes and genomic instability.</li>
+</ul>
+<div class="block">
+<div id="fig-genetic-variation1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genetic-variation1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/genetic-variation1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genetic-variation1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-genetic-variation2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genetic-variation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/genetic-variation2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genetic-variation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: From <a href="https://sangerinstitute.blog/2023/05/10/a-representative-reference-genome/" class="uri">https://sangerinstitute.blog/2023/05/10/a-representative-reference-genome/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-structural-variation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-structural-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/structural-variation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-structural-variation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.16: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-genetic-variation3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genetic-variation3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/genetic-variation3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genetic-variation3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.17: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-genetic-variation4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genetic-variation4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/genetic-variation4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genetic-variation4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.18: From <a href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation" class="uri">https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="a-brief-note-about-the-igv" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="a-brief-note-about-the-igv"><span class="header-section-number">7.2.2</span> A brief note about the IGV</h3>
+<p>The Integrative Genomics Viewer (IGV) is a powerful tool for visualizing raw sequencing reads in a genomic context through pileup plots. See <a href="#fig-snp-calling" class="quarto-xref">Figure&nbsp;<span>7.19</span></a> for what a “pileup” is. IGV allows users to examine aligned reads against a reference genome, displaying key features such as exons and introns of annotated genes, as well as the reference sequence itself. Individual sequencing reads are shown with base-level resolution, highlighting mismatches to the reference, including SNPs, small insertions and deletions, and structural variations such as inversions. IGV also marks sequencing errors with quality scores, enabling users to assess confidence in variant calls. By interactively navigating across genomic regions, zooming in on loci of interest, and customizing track displays, IGV facilitates the interpretation of raw sequencing data with high precision. See <a href="#fig-igv1-top" class="quarto-xref">Figure&nbsp;<span>7.20</span></a> and <a href="#fig-igv1-bottom" class="quarto-xref">Figure&nbsp;<span>7.21</span></a> as an example.<br>
+The IGV (depending on the version and settings) can also show insertions and deletions (see <a href="#fig-igv3" class="quarto-xref">Figure&nbsp;<span>7.22</span></a>), as well as inversions.</p>
+<div class="block">
+<div id="fig-snp-calling" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-snp-calling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/snp-calling.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-snp-calling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.19: From <a href="https://online.stat.psu.edu/stat555/node/106/" class="uri">https://online.stat.psu.edu/stat555/node/106/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-igv1-top" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-igv1-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/igv1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-igv1-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.20: Top: From <a href="https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf" class="uri">https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf</a>. The top panel shows which chromosome we’re looking at and how many base pairs our viewer is showing. The middle two rows of panel are reads (in this particular example) from one of two long-read technologies. The bottom row shows the intron/exon regions of genes in this region.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-igv1-bottom" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-igv1-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/igv2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-igv1-bottom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.21: Bottom: From <a href="https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/" class="uri">https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/</a>. This shows an explicit colored callout of the SNPs relative to the reference genome.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-igv3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-igv3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/igv3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-igv3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.22: From <a href="https://www.pacb.com/blog/igv-3-improves-support-pacbio-long-reads/" class="uri">https://www.pacb.com/blog/igv-3-improves-support-pacbio-long-reads/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="if-you-thought-scrna-seq-data-was-complicated" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="if-you-thought-scrna-seq-data-was-complicated"><span class="header-section-number">7.2.3</span> If you thought scRNA-seq data was complicated…</h3>
+<p>While single-cell RNA-seq presents significant analytical challenges, studying genetics—particularly large-scale genome-wide association studies (GWAS) and population genetics—introduces an entirely new set of complexities:</p>
+<ul>
+<li><p><strong>Linkage disequilibrium and evolutionary constraints:</strong><br>
+Unlike scRNA-seq, where gene expression is not typically inherited (and hence, why we can still do incredible genomic analyses with samples from very few people), genetic variants are often inherited together due to <em>linkage disequilibrium</em> (LD). This means that interpreting the effect of a single variant requires understanding its entire haplotype structure. Additionally, selective pressures shape the distribution of variants across populations, making genetic associations highly context-dependent.</p></li>
+<li><p><strong>Structural variation beyond SNPs:</strong><br>
+scRNA-seq primarily deals with gene expression counts, but genetic variation extends beyond single nucleotide polymorphisms (SNPs). <em>Structural variations</em>, such as <em>short tandem repeats (STRs)</em> and <em>copy number variations (CNVs)</em>, can have significant functional consequences yet are much harder to detect and analyze (see <a href="./chapter6_dna.html">Chapter 6</a>).</p></li>
+<li><p><strong>Reference genome challenges:</strong><br>
+While single-cell studies align reads to a standard reference genome, genetic studies must carefully consider <em>population-specific variation</em> and potential biases in reference genomes. Reference panels are crucial for variant calling, yet no reference is truly comprehensive, leading to systematic errors in certain populations. See <a href="./chapter6_dna.html">Chapter 6</a>.</p></li>
+<li><p><strong>Necessity of imputation:</strong><br>
+Unlike transcriptomics, where missing values are typically ignored, genetic studies require <em>imputation</em> to infer unobserved variants, ensuring more comprehensive variant coverage. Genotyping arrays typically measure around 500,000 to 1,000,000 SNPs directly, but many common genetic variants remain untyped. Imputation leverages linkage disequilibrium (LD) patterns and large reference panels, such as 1000 Genomes or UK Biobank, to predict genotypes at millions of additional loci. After imputation, the number of SNPs analyzed can increase to 10–50 million, greatly enhancing the resolution of downstream association studies. Tools such as the Michigan Imputation Server and Beagle facilitate this process, albeit with a significant increase in computational complexity.</p></li>
+<li><p><strong>Massive dataset sizes and privacy constraints</strong>:<br>
+Single-cell datasets typically contain tens to hundreds of thousands of cells, but genetic datasets can involve millions of individuals (e.g., UK BioBank). This introduces logistical challenges in data storage, processing, and access control, as genetic data must be handled under strict privacy regulations.<br>
+For this reason, many methods that analyze genetics (DNA) have to be designed to accommodate using the summary statistics of a study. As one example (among many), see <span class="citation" data-cites="zou2022fine">Zou et al. (<a href="references.html#ref-zou2022fine" role="doc-biblioref">2022</a>)</span>, which extends SuSIE <span class="citation" data-cites="wang2020simple">G. Wang et al. (<a href="references.html#ref-wang2020simple" role="doc-biblioref">2020</a>)</span> to handle only summary statistics.<br>
+Typically, these methods using summary statistics are “meta-analyses,” which combine many cohorts (which contain different people from different populations) to (hopefully) increase the overall statistical power.</p></li>
+<li><p><strong>Increased bioinformatics and computation demands</strong>:<br>
+scRNA-seq pipelines rely on well-established tools for alignment, quantification, and clustering, but genetic studies demand a broader and more complex bioinformatics workflow, including variant calling, quality control, imputation, GWAS modeling, and fine-mapping. Analyzing genetic data often requires specialized HPC environments due to the scale of computations.</p></li>
+</ul>
+</section>
+</section>
+<section id="as-an-aside-does-my-dna-mutate-over-my-life" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="as-an-aside-does-my-dna-mutate-over-my-life"><span class="header-section-number">7.3</span> … As an aside: Does my DNA mutate over my life?</h2>
+<p>Somatic mutations – those arising in non-germline cells – accumulate throughout an individual’s lifetime and are key contributors to genetic mosaicism. Studies indicate that somatic mutations can occur at every stage of development and continue to arise during adulthood, driven by normal cell division, environmental insults, and other factors.<br>
+Importantly, research has shown that even healthy tissues, such as blood or brain, may harbor these post-zygotic changes that were not inherited from parental genomes.<br>
+The frequency of somatic mutations tends to increase with age, as documented in hematopoietic cells and other tissues where clonal expansions of mutated cells have been observed <a href="#fig-somatic-mutations" class="quarto-xref">Figure&nbsp;<span>7.23</span></a>.<br>
+In some individuals, the accumulation of such changes remains relatively modest, whereas in others, especially at older ages, hypermutability or clonal dominance may emerge, potentially affecting organ function or predisposing to disease, see more details in <span class="citation" data-cites="bae2022analysis">Bae et al. (<a href="references.html#ref-bae2022analysis" role="doc-biblioref">2022</a>)</span>. These findings highlight that our DNA, far from being static, undergoes changes over time that can have significant biological consequences. See <span class="citation" data-cites="milholland2017differences">Milholland et al. (<a href="references.html#ref-milholland2017differences" role="doc-biblioref">2017</a>)</span> for studies of the mutation rate.</p>
+<div class="block">
+<div id="fig-somatic-mutations" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-somatic-mutations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/somatic-mutations.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-somatic-mutations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.23: From <span class="citation" data-cites="jaiswal2014age">Jaiswal et al. (<a href="references.html#ref-jaiswal2014age" role="doc-biblioref">2014</a>)</span>. The y-axis is a number between 0 and 1 (1 being 100%), denoting the percentage of people in that age bracket that have a mutation in hematologic cancer-related genes. For example, in the age bracket of 100–108 years old, 5 of 17 people (i.e., 29%) of people had a mutation.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>The importance of studying somatic mutations lies in understanding both normal physiology and disease pathogenesis.<br>
+While many somatic variants are functionally silent, others can affect cell growth, alter gene expression in critical pathways, or provide selective advantages to clones. Tracking these mutations illuminates how tissues develop, age, and sometimes transition to pre-malignant or malignant states.<br>
+Moreover, the detection of specific mutation profiles in otherwise healthy tissue can serve as an early biomarker for conditions such as cancer and neurodegenerative disorders, and may also provide insights into the process of brain development and function, see potential evidence in <span class="citation" data-cites="bouzid2023clonal">Bouzid et al. (<a href="references.html#ref-bouzid2023clonal" role="doc-biblioref">2023</a>)</span>.<br>
+Thus, clarifying how frequently somatic mutations arise and determining how these mutations shape cellular behavior form a vital cornerstone for medical research and potential future therapies.</p>
+</section>
+<section id="sec-single_cell_eqtl" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-single_cell_eqtl"><span class="header-section-number">7.4</span> Studying Single-Cell eQTL</h2>
+<p>Expression Quantitative Trait Loci (eQTL) analysis is a fundamental approach for linking genetic variation to gene expression levels, offering insights into how genetic differences influence transcriptomic regulation, see <a href="#fig-eqtl" class="quarto-xref">Figure&nbsp;<span>7.24</span></a>. Traditional eQTL studies rely on bulk RNA sequencing data, which averages gene expression across many cells within a tissue. However, with the advent of single-cell RNA sequencing (scRNA-seq), researchers can now perform single-cell eQTL (sc-eQTL) analyses, enabling the detection of genetic effects on gene expression at a much finer resolution.</p>
+<div class="block">
+<div id="fig-eqtl" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eqtl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/eqtl.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eqtl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.24: From <span class="citation" data-cites="zhuang2019development">Zhuang et al. (<a href="references.html#ref-zhuang2019development" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>One of the key advantages of sc-eQTL analysis is its ability to account for cellular heterogeneity, a limitation in bulk RNA-seq studies. Different cell types within a tissue can have distinct gene regulatory mechanisms, and bulk eQTL studies may obscure these effects by averaging signals across cell populations. Single-cell approaches, in contrast, allow researchers to stratify eQTL analysis by cell type, uncovering cell-type-specific regulatory interactions that may be masked in bulk data. Additionally, sc-eQTL studies enable the exploration of dynamic regulatory effects in response to stimuli, capturing transient gene expression changes driven by genetic variants (see Figure 4 of <span class="citation" data-cites="yazar2022single">Yazar et al. (<a href="references.html#ref-yazar2022single" role="doc-biblioref">2022</a>)</span>).<br>
+Beyond identifying associations between SNPs and gene expression, eQTL analysis can provide insights into enhancer regulation by determining whether an enhancer region containing a SNP is linked to gene expression changes at a target gene, see <a href="#fig-gwas-atac" class="quarto-xref">Figure&nbsp;<span>7.25</span></a>. This is particularly useful for understanding non-coding regulatory elements that may influence disease risk.</p>
+<p>Compared to genome-wide association studies (GWAS), which identify statistical associations between SNPs and phenotypic traits without necessarily indicating causality, eQTL studies provide functional insights into how genetic variation affects transcriptional regulation. However, eQTL analyses alone cannot establish direct causal relationships, unlike CRISPR-based perturbation approaches such as knockouts or CRISPR interference (CRISPRi), which can experimentally validate whether a SNP within a regulatory region directly modulates gene expression. See <a href="#fig-eqtl-gwas" class="quarto-xref">Figure&nbsp;<span>7.26</span></a>.</p>
+<div class="block">
+<div id="fig-gwas-atac" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gwas-atac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/gwas-atac.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gwas-atac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.25: From <span class="citation" data-cites="sheth2024mapping">Sheth et al. (<a href="references.html#ref-sheth2024mapping" role="doc-biblioref">2024</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-eqtl-gwas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eqtl-gwas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/eqtl-gwas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eqtl-gwas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.26: From <span class="citation" data-cites="sheth2024mapping">Sheth et al. (<a href="references.html#ref-sheth2024mapping" role="doc-biblioref">2024</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>The process of conducting sc-eQTL analysis involves several computational steps. First, scRNA-seq data is preprocessed to correct for technical noise and batch effects, often using normalization methods tailored for sparse single-cell data. Next, genetic variants are genotyped using whole-genome sequencing (WGS) or genotype imputation from single-nucleotide polymorphism (SNP) arrays. Gene expression values and genetic variants are then correlated to identify eQTLs, typically using linear mixed models or Bayesian approaches that account for population structure and technical confounders. Because single-cell datasets are noisier and lower in coverage compared to bulk sequencing, careful modeling of dropout effects and overdispersion in expression data is essential.</p>
+<section id="performing-your-own-eqtl." class="level4" data-number="7.4.0.1">
+<h4 data-number="7.4.0.1" class="anchored" data-anchor-id="performing-your-own-eqtl."><span class="header-section-number">7.4.0.1</span> Performing your own eQTL.</h4>
+<p>At a high level, methods to perform GWAS (or fine-mapping, or other follow-up downstream analyses to hone in on more likely causal variants, mentioned in [Section @ref(sec-gwas)]) are sometimes repurposed for an eQTL analyses. Typically, you have genetic information of each donor and then scRNA-seq from these same donors. Then, you process the scRNA-seq data to focus on one particular cell-type in your eQTL analysis. To do this, you take all the gene expression (across many donors, but for just one cell type) to from pseudo-bulk gene expressions (one expression profile per donor), and then perform the following regression. See <a href="https://rpubs.com/MajstorMaestro/349118" class="uri">https://rpubs.com/MajstorMaestro/349118</a> or papers like <span class="citation" data-cites="wang2021pipeline">T. Wang et al. (<a href="references.html#ref-wang2021pipeline" role="doc-biblioref">2021</a>)</span> to see how to perform an eQTL analyses. (These are not for single-cell variations.)</p>
+<p>Here are some additional details. The following procedure is used in many papers, such as <span class="citation" data-cites="yazar2022single">Yazar et al. (<a href="references.html#ref-yazar2022single" role="doc-biblioref">2022</a>)</span>. To perform sc-eQTL mapping for a specific cell type, expression levels are aggregated using a pseudobulk approach, and associations between genotype and expression are tested while controlling for confounding factors.</p>
+<p>Consider a cohort of <span class="math inline">\(n\)</span> individuals, each providing scRNA-seq data. Let <span class="math inline">\(G_i\)</span> represent the genotype at a given SNP for individual <span class="math inline">\(i\)</span>, encoded as the minor allele count (0, 1, or 2 under an additive model). Let <span class="math inline">\(Y_i^{\text{bulk}}\)</span> denote the pseudobulk expression level of a gene of interest for individual <span class="math inline">\(i\)</span>, obtained by summing or averaging expression across cells of the target type. We model the pseudobulk expression as: <span class="math display">\[
+Y_i^{\text{bulk}} = \beta_0 + \beta_1 G_i + \gamma^\top C_i + u_i + \epsilon_i,
+\]</span> where <span class="math inline">\(\beta_1\)</span> quantifies the eQTL effect, <span class="math inline">\(C_i\)</span> represents individual-level covariates such as age, sex, genetic ancestry principal components (PCs), and batch effects, <span class="math inline">\(u_i\)</span> is a random effect capturing inter-individual variation, and <span class="math inline">\(\epsilon_i\)</span> is the residual error. (Here, you’re thinking of <span class="math inline">\(Y_i\)</span> as a gene, and <span class="math inline">\(G_i\)</span> is any SNP that is close to the gene, and we’ll elect a particular SNP as the eQTL hit (until we do a follow-up fine-mapping analysis) based on which one is the most significant.) To reduce technical and biological confounding, we incorporate Probabilistic Estimation of Expression Residuals (PEER) factors <span class="citation" data-cites="stegle2010bayesian">Stegle et al. (<a href="references.html#ref-stegle2010bayesian" role="doc-biblioref">2010</a>)</span>, which model hidden confounders affecting gene expression. PEER decomposes expression variation into structured components, allowing removal of unwanted effects such as batch effects, library size, and latent population structure.</p>
+<p>Beyond standard eQTL detection, we perform conditional cis-eQTL analysis to identify secondary genetic variants affecting expression after accounting for the top associated SNP. Given an initially detected cis-eQTL variant <span class="math inline">\(G_i^{(1)}\)</span>, we extend the model: <span class="math display">\[
+Y_i^{\text{bulk}} = \beta_0 + \beta_1 G_i^{(1)} + \beta_2 G_i^{(2)} + \gamma^\top C_i + u_i + \epsilon_i,
+\]</span> where <span class="math inline">\(G_i^{(2)}\)</span> is an additional SNP in the cis-regulatory region of the gene. This analysis helps identify independent regulatory variants within the same locus.</p>
+</section>
+<section id="what-are-on-earth-are-these-genetic-ancestry-and-unmeasured-confounders" class="level4" data-number="7.4.0.2">
+<h4 data-number="7.4.0.2" class="anchored" data-anchor-id="what-are-on-earth-are-these-genetic-ancestry-and-unmeasured-confounders"><span class="header-section-number">7.4.0.2</span> What are on earth are these “genetic ancestry” and “unmeasured confounders”?</h4>
+<p>Genetic ancestry and unmeasured confounders are critical considerations in eQTL and GWAS study design. Most genetic studies are conducted in cohorts with limited ethnic diversity to reduce population structure effects, but even within homogeneous groups, subtle ancestry differences can confound associations if not properly controlled. Population stratification can create spurious correlations between genetic variants and gene expression (see <a href="#fig-genetic-pca" class="quarto-xref">Figure&nbsp;<span>7.27</span></a>), while technical artifacts, batch effects, and environmental influences add further noise. To address these issues, ancestry principal components (PCs) are included as covariates in GWAS to adjust for inherited population structure, while methods like PEER capture hidden confounders in eQTL studies. Controlling for these factors ensures that detected associations reflect true biological effects rather than artifacts of ancestry or study design.</p>
+<div class="block">
+<div id="fig-genetic-pca" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-genetic-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/genetic-pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-genetic-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.27: From <span class="citation" data-cites="novembre2008genes">Novembre et al. (<a href="references.html#ref-novembre2008genes" role="doc-biblioref">2008</a>)</span>. This is a very famous plot which shows that the leading two PCs based on SNPs shows a very high “visual correlation” with the donor’s ancestry. This adds some credence that there are genetic ancestry that should(?) be accounted for in a genetic analysis.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Be careful though! These are <em>unmeasured confounders</em> (i.e., you’re controlling for a covariate you didn’t actually measure). This naturally makes the procedure more vulnerable to “statistical tampering,” loosely speaking. How can you guarantee that two sensible researchers who define their unmeasured confounders slightly differently would yield similar biological results? See <span class="citation" data-cites="elhaik2022principal">Elhaik (<a href="references.html#ref-elhaik2022principal" role="doc-biblioref">2022</a>)</span> for a commentary particular to using PCA to define genetic structure. (My personal opinion: This paper isn’t about telling you to never use PCA – it’s more to give nuance on what you should be thinking about when you do.)</p>
+</section>
+<section id="challenges-of-learning-eqtls-epistasis-and-pleiotropy." class="level4" data-number="7.4.0.3">
+<h4 data-number="7.4.0.3" class="anchored" data-anchor-id="challenges-of-learning-eqtls-epistasis-and-pleiotropy."><span class="header-section-number">7.4.0.3</span> Challenges of learning eQTLs: Epistasis and pleiotropy.</h4>
+<p>Identifying eQTLs is complicated by epistasis and pleiotropy, which introduce nontrivial genetic interactions. Epistasis occurs when the effect of a SNP on gene expression depends on the presence of other genetic variants, making it difficult to model simple SNP-expression relationships, see <a href="#fig-epistasis" class="quarto-xref">Figure&nbsp;<span>7.28</span></a>. This can obscure true associations if not explicitly accounted for in statistical models. Pleiotropy, where a single SNP influences multiple genes or traits, further complicates eQTL discovery by creating indirect associations that may not reflect true causal regulatory relationships. These complexities highlight the challenge of interpreting eQTL results solely through single-variant associations, necessitating approaches that account for gene-gene and gene-environment interactions.</p>
+<div class="block">
+<div id="fig-epistasis" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-epistasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/epistasis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epistasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.28: From <a href="https://en.wikipedia.org/wiki/Epistasis" class="uri">https://en.wikipedia.org/wiki/Epistasis</a>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="by-the-way-eqtl-is-not-the-only-type-of-qtl" class="level4" data-number="7.4.0.4">
+<h4 data-number="7.4.0.4" class="anchored" data-anchor-id="by-the-way-eqtl-is-not-the-only-type-of-qtl"><span class="header-section-number">7.4.0.4</span> By the Way, eQTL Is Not the Only Type of QTL!</h4>
+<p>While eQTL studies focus on linking genetic variation to gene expression, quantitative trait locus (QTL) mapping extends beyond transcriptomics to investigate various molecular and phenotypic traits. In addition to eQTLs, other types of QTLs provide insights into the genetic regulation of different cellular processes.</p>
+<p>One important class of QTLs is splicing QTLs (sQTLs), which identify genetic variants that influence alternative splicing patterns. These variants may affect exon inclusion, intron retention, or alternative polyadenylation sites, ultimately leading to differences in transcript isoforms. Splicing QTL studies are particularly relevant in diseases where aberrant splicing plays a critical role, such as neurological disorders and cancer.</p>
+<p>Another type is chromatin accessibility QTLs (caQTLs), which link genetic variants to changes in chromatin openness, often measured using ATAC-seq. These QTLs help identify regulatory elements such as enhancers and promoters that may be modulated by genetic variation, affecting transcription factor binding and downstream gene expression.</p>
+<p>Collectively, we call the set of all possible QTLs as xQTL, see <span class="citation" data-cites="ng2017xqtl">Ng et al. (<a href="references.html#ref-ng2017xqtl" role="doc-biblioref">2017</a>)</span>. (I know, this can sound like alphabet soup the very first time you learn about these.)</p>
+</section>
+<section id="by-the-way-llms-are-also-in-this-race." class="level4" data-number="7.4.0.5">
+<h4 data-number="7.4.0.5" class="anchored" data-anchor-id="by-the-way-llms-are-also-in-this-race."><span class="header-section-number">7.4.0.5</span> By the way… LLMs are also in this race.</h4>
+<p>Recent advances in large language models (LLMs) have enabled the prediction of gene expression directly from raw DNA sequences, leveraging architectures such as transformers, convolutional neural networks (CNNs), and recurrent neural networks (RNNs), see <a href="#fig-s2f1" class="quarto-xref">Figure&nbsp;<span>7.29</span></a> and <a href="#fig-s2f2" class="quarto-xref">Figure&nbsp;<span>7.30</span></a>. These models, trained on genomic sequences, learn complex regulatory grammar and sequence motifs to infer transcriptional activity. Unlike eQTL studies, which link genetic variants to expression using population-level variation, LLMs aim to predict expression from intrinsic sequence features, potentially identifying novel regulatory elements. This approach complements TWAS by offering a purely sequence-driven method to estimate gene expression, independent of population structure or linkage disequilibrium, enhancing our understanding of transcriptional regulation. See <span class="citation" data-cites="sasse2023benchmarking">Sasse et al. (<a href="references.html#ref-sasse2023benchmarking" role="doc-biblioref">2023</a>)</span> for an overview.</p>
+<div class="block">
+<div id="fig-s2f1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s2f1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/s2f1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s2f1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.29: (Left): From Enformer, <span class="citation" data-cites="avsec2021effective">Avsec et al. (<a href="references.html#ref-avsec2021effective" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-s2f2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s2f2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/s2f2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s2f2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.30: (Right): From <span class="citation" data-cites="sasse2023benchmarking">Sasse et al. (<a href="references.html#ref-sasse2023benchmarking" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="other-very-large-areas-of-cell-biology-that-perform-multi-omic-analyses-involving-genetics" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="other-very-large-areas-of-cell-biology-that-perform-multi-omic-analyses-involving-genetics"><span class="header-section-number">7.5</span> Other (very large areas of cell biology) that perform multi-omic analyses involving genetics</h2>
+<p>The following are some of gigantic areas of genetics which span multiple omics that I’m doing a disservice to by simply summarizing as bullet points. (We’ll discuss phylogenetics briefly in [Section @ref(sec-natural_lineage)], which is another massive area.) The point is – if you really want to study a human disease, you’ll eventually need to learn genetics at point in your career (even if it’s not directly during your PhD or post-doc). It’s almost inevitable.</p>
+<ul>
+<li><strong>Polygenic risk scores</strong>:<br>
+Polygenic risk scores (PRS) aim to quantify an individual’s genetic predisposition to a disease or trait by aggregating the effects of many common genetic variants identified from genome-wide association studies (GWAS). The biological goal of PRS is to develop predictive models that estimate disease susceptibility based on an individual’s genotype, providing a tool for early disease screening, personalized medicine, and risk stratification, see <a href="#fig-prs1" class="quarto-xref">Figure&nbsp;<span>7.31</span></a> and <a href="#fig-prs2" class="quarto-xref">Figure&nbsp;<span>7.32</span></a>. PRS is particularly useful in complex diseases, where multiple genetic variants contribute small additive effects to disease risk.</li>
+</ul>
+<p>PRS construction relies on large GWAS datasets that provide summary statistics on variant-trait associations. The scores are computed by summing the weighted effects of risk alleles across the genome, often using computational tools like LDpred <span class="citation" data-cites="prive2020ldpred2">Privé, Arbel, and Vilhjálmsson (<a href="references.html#ref-prive2020ldpred2" role="doc-biblioref">2020</a>)</span> and PRS-CS <span class="citation" data-cites="ge2019polygenic">Ge et al. (<a href="references.html#ref-ge2019polygenic" role="doc-biblioref">2019</a>)</span>. However, one of the biggest challenges in PRS research is population stratification and ethnicity bias. Since most GWAS studies have been conducted in individuals of European ancestry, PRS models trained on these datasets often fail to generalize well to non-European populations due to differences in allele frequencies and linkage disequilibrium (LD) patterns, see <a href="#fig-prs_ethnicity1" class="quarto-xref">Figure&nbsp;<span>7.33</span></a> and <a href="#fig-prs_ethnicity2" class="quarto-xref">Figure&nbsp;<span>7.34</span></a>. Addressing this computationally is a huge area of current research. For an example of PRS for single-cell data, see scDRS <span class="citation" data-cites="zhang2022polygenic">M. J. Zhang et al. (<a href="references.html#ref-zhang2022polygenic" role="doc-biblioref">2022</a>)</span>.</p>
+<div class="block">
+<div id="fig-prs1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/prs2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.31: (Left): From <span class="citation" data-cites="kennedy2022genetic">Kennedy et al. (<a href="references.html#ref-kennedy2022genetic" role="doc-biblioref">2022</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-prs2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/prs1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.32: (Right): From <span class="citation" data-cites="hernandez2019genomics">Hernández-Beeftink et al. (<a href="references.html#ref-hernandez2019genomics" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-prs_ethnicity1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prs_ethnicity1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/prs_ethnicity.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prs_ethnicity1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.33: (Left) From <span class="citation" data-cites="martin2019clinical">Martin et al. (<a href="references.html#ref-martin2019clinical" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-prs_ethnicity2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prs_ethnicity2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/linkeage-disequilibrium.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prs_ethnicity2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.34: (Right) From <span class="citation" data-cites="wall2003haplotype">Wall and Pritchard (<a href="references.html#ref-wall2003haplotype" role="doc-biblioref">2003</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Transcriptomic-wide association study (TWAS)</strong>: A Transcriptome-Wide Association Study (TWAS) aims to identify genes whose expression levels are associated with complex traits and diseases by integrating genome-wide association study (GWAS) data with transcriptomic data. The biological goal of TWAS is to bridge the gap between genetic variation and gene expression to prioritize candidate causal genes that might drive disease susceptibility. In a overly simplistic sense, you can think of the following: <span class="math display">\[
+\text{GWAS}: \quad \text{SNP} \;\rightarrow\; \text{Disease phenotype}\\
+\text{eQTL}: \quad \text{SNP} \;\rightarrow\; \text{Gene expression}\\
+\text{TWAS}: \quad \text{Genetically predicted gene expression} \;\rightarrow\; \text{Disease phenotype}
+\]</span> Unlike GWAS, which identifies loci associated with disease risk but does not directly implicate specific genes, TWAS infers putative gene-disease relationships by leveraging genetic regulation of gene expression. See <span class="citation" data-cites="mai2023transcriptome">Mai et al. (<a href="references.html#ref-mai2023transcriptome" role="doc-biblioref">2023</a>)</span> for an overview.</li>
+</ul>
+<p>The data required for TWAS includes GWAS summary statistics and expression quantitative trait loci (eQTL) datasets derived from bulk RNA-sequencing or single-cell RNA-sequencing studies. Typically, eQTL datasets are obtained from large-scale population-based biobanks like GTEx or UK Biobank. Common computational approaches used for TWAS include PrediXcan and FUSION, which estimate genetically predicted gene expression levels based on genotype data and test for associations with traits. However, TWAS has important caveats: it typically assume that genetically regulated gene expression effects are the primary driver of trait associations, which may not always be the case. Moreover, TWAS inherits any demographic limitations of GWAS and eQTL analyses, which means these results are often biased toward European ancestry populations due to data limitations. For an example of PRS for single-cell data, see scPredixcan <span class="citation" data-cites="zhou2024scpredixcan">Zhou et al. (<a href="references.html#ref-zhou2024scpredixcan" role="doc-biblioref">2024</a>)</span>.</p>
+<div class="block">
+<div id="fig-twas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-twas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/twas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-twas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.35: From <span class="citation" data-cites="wainberg2019opportunities">Wainberg et al. (<a href="references.html#ref-wainberg2019opportunities" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Mendelian randomization</strong>: Mendelian Randomization (MR) is a statistical approach used to infer causal relationships between an exposure (such as gene expression, biomarker levels, or lifestyle factors) and an outcome (such as disease risk) by leveraging genetic variants as instrumental variables. The biological goal of MR is to overcome confounding and reverse causation issues that plague observational studies, making it a powerful tool for identifying causal risk factors for diseases. MR is particularly useful in prioritizing drug targets, as it can provide evidence on whether modifying a specific biomarker or gene expression level is likely to have a therapeutic effect.</li>
+</ul>
+<p>MR studies require genetic association data from large GWAS and eQTL datasets to identify genetic instruments that are robustly associated with the exposure of interest. The commonly used computational tools for MR analysis include MR-Egger <span class="citation" data-cites="burgess2017interpreting">Burgess and Thompson (<a href="references.html#ref-burgess2017interpreting" role="doc-biblioref">2017</a>)</span>, MR-PRESSO <span class="citation" data-cites="verbanck2018detection">Verbanck et al. (<a href="references.html#ref-verbanck2018detection" role="doc-biblioref">2018</a>)</span>, and TwoSampleMR <span class="citation" data-cites="hartwig2016two">Hartwig et al. (<a href="references.html#ref-hartwig2016two" role="doc-biblioref">2016</a>)</span>, which help detect and correct for pleiotropy and other biases. However, MR has several limitations. First, the validity of MR results depends on the assumption that the chosen genetic variants only influence the outcome through the exposure and not through other pathways (i.e., no horizontal pleiotropy), see <a href="#fig-mr1" class="quarto-xref">Figure&nbsp;<span>7.36</span></a> and <a href="#fig-pleiotropy" class="quarto-xref">Figure&nbsp;<span>7.38</span></a>. Additionally, weak instrument bias can occur when genetic instruments have small effect sizes, reducing statistical power. Because many complex traits are influenced by highly pleiotropic variants and gene-environment interactions, refining MR methodologies and integrating multi-omics data remains an active area of research.</p>
+<div class="block">
+<div id="fig-mr1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/mr2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.36: From <span class="citation" data-cites="li2021genetically">Li et al. (<a href="references.html#ref-li2021genetically" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-mr2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/mr1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.37: From <span class="citation" data-cites="barry2021exploiting">Barry et al. (<a href="references.html#ref-barry2021exploiting" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-pleiotropy" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pleiotropy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/pleiotropy.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pleiotropy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.38: From <span class="citation" data-cites="sanderson2022mendelian">Sanderson et al. (<a href="references.html#ref-sanderson2022mendelian" role="doc-biblioref">2022</a>)</span> for different types of pleiotropy. See <a href="https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf" class="uri">https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf</a>, since it’s hard to access this paper directly.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="sec-dna_structural_variation" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sec-dna_structural_variation"><span class="header-section-number">7.6</span> Structural variation: Focusing on copy number variation</h2>
+<p>Copy Number Variation (CNV) refers to structural alterations in the genome that result in abnormal numbers of copies of one or more DNA segments. These can range from small events (a few hundred base pairs) to large events (millions of base pairs). CNVs can arise due to duplications, deletions, and, in rare cases, more complex rearrangements of genomic regions.</p>
+<div class="block">
+<div id="fig-cnv" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/cnv.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.39: From <a href="https://learngenomics.dev/docs/genomic-variation/copy-number-variation" class="uri">https://learngenomics.dev/docs/genomic-variation/copy-number-variation</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cnv_wes1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnv_wes1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/cnv_wes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnv_wes1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.40: From <span class="citation" data-cites="xing2020secnvs">Xing et al. (<a href="references.html#ref-xing2020secnvs" role="doc-biblioref">2020</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-cnv_wes2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnv_wes2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/cnv_wes2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnv_wes2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.41: From <span class="citation" data-cites="singh2021detecting">Singh et al. (<a href="references.html#ref-singh2021detecting" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<section id="importance-of-cnvs." class="level4" data-number="7.6.0.1">
+<h4 data-number="7.6.0.1" class="anchored" data-anchor-id="importance-of-cnvs."><span class="header-section-number">7.6.0.1</span> Importance of CNVs.</h4>
+<ul>
+<li><strong>Genetic diversity:</strong> CNVs are a major contributor to human genetic variation and can affect gene expression and phenotypic traits.</li>
+<li><strong>Disease relevance:</strong> CNVs have been implicated in cancers, developmental disorders, autoimmune diseases, and more.</li>
+<li><strong>Diagnostic value:</strong> Detection of CNVs can provide diagnostic and prognostic markers for clinical use.</li>
+</ul>
+<p>See <a href="#fig-copy-number-cancer" class="quarto-xref">Figure&nbsp;<span>7.42</span></a> on how copy number presents a strong signal in cancer. As an aside though, not all copy number events are necessarily deleterious. Copy number variation (depending on the region) can also be benign – see <span class="citation" data-cites="erickson2022spatially">Erickson et al. (<a href="references.html#ref-erickson2022spatially" role="doc-biblioref">2022</a>)</span>, <span class="citation" data-cites="mihaylova2017benign">Mihaylova et al. (<a href="references.html#ref-mihaylova2017benign" role="doc-biblioref">2017</a>)</span>.</p>
+<div class="block">
+<div id="fig-copy-number-cancer" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-copy-number-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/copy-number-cancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-copy-number-cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.42: From <span class="citation" data-cites="steele2022signatures">Steele et al. (<a href="references.html#ref-steele2022signatures" role="doc-biblioref">2022</a>)</span>. Each column is a different cancer, and ploidy is the “number of chromosomes” you have among the 23 pairs (so the baseline you should expect is 2 – one from your father, one from your mother). WGD here means <em>whole genome duplication</em>, so a value of 3 means one entire chromosome has been duplicated. The barplot at the top tells you how many “extra copies” cancer cells of a particular type have any chromosome, where the purple color means 1xWGD, meaning the cancer cell has one extra chromosome.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>In this set of notes, we focus on how CNVs are detected using sequencing data and the computational steps required to identify and interpret these variants.</p>
+</section>
+<section id="sequencing-based-technologies-for-cnv-detection-and-single-cell-variations" class="level4" data-number="7.6.0.2">
+<h4 data-number="7.6.0.2" class="anchored" data-anchor-id="sequencing-based-technologies-for-cnv-detection-and-single-cell-variations"><span class="header-section-number">7.6.0.2</span> Sequencing-based technologies for CNV detection, and single-cell variations</h4>
+<p>Single-cell sequencing of DNA enables the detection of copy-number variations (CNVs) at a single-cell resolution, offering insights into cellular heterogeneity, clonal evolution in cancer, and somatic mutations in various diseases. Unlike bulk sequencing, which averages signals across many cells, single-cell sequencing allows researchers to uncover rare and cell-specific genomic changes. The three main sequencing approaches—short-read sequencing, long-read sequencing, and whole-genome sequencing (WGS)—each have distinct advantages and challenges when applied to single-cell CNV detection.</p>
+<p><strong>Short-Read Sequencing (e.g.&nbsp;Illumina):</strong><br>
+Short-read sequencing, commonly used in single-cell DNA studies, generates high-throughput data with read lengths of 50–300 bp. Due to the limited DNA in single cells, whole-genome amplification (WGA) is required, introducing variability in coverage. This approach enables profiling of thousands to millions of cells, making it scalable for large studies. However, the short read length limits the resolution of large or complex CNVs, particularly in repetitive regions.</p>
+<p><strong>Long-Read Sequencing (e.g.&nbsp;PacBio, Oxford Nanopore):</strong><br>
+Long-read sequencing generates reads spanning several kilobases, allowing direct observation of large CNVs and structural rearrangements. Unlike short-read methods, long reads can span entire CNV breakpoints and enable haplotype phasing, providing insights into allele-specific genomic alterations. While lower in throughput, this approach improves the resolution of highly rearranged regions. See <a href="#fig-longread" class="quarto-xref">Figure&nbsp;<span>7.43</span></a>.</p>
+<div class="block">
+<div id="fig-longread" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-longread-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/longread.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longread-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.43: From <span class="citation" data-cites="garg2021computational">Garg (<a href="references.html#ref-garg2021computational" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>Whole Genome Sequencing (WGS) in General:</strong><br>
+Single-cell WGS provides an unbiased approach to detecting CNVs across the entire genome without prior assumptions about affected regions.<br>
+Because of the high cost of sequencing, single-cell WGS is often performed at relatively low coverage (e.g., 0.1–10x), which can impact the sensitivity and resolution of CNV detection. Additionally, single-cell WGS is prone to artifacts introduced by whole-genome amplification, sequencing errors, and allelic dropout events, necessitating advanced bioinformatics methods to correct for these biases.<br>
+WGS generates vast amounts of data, requiring significant computational resources and careful handling of sequencing artifacts, but remains the most comprehensive method for CNV analysis.</p>
+<p>The choice of sequencing technology depends on the research question, budget, and required resolution of CNV detection. To compare the three archetypical approaches:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 28%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Feature</strong></th>
+<th><strong>Short-Read</strong> (Illumina)</th>
+<th><strong>Long-Read</strong> (PacBio/Nanopore)</th>
+<th><strong>WGS</strong> (Whole-Genome)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Resolution</strong></td>
+<td>High for small CNVs</td>
+<td>High for large CNVs</td>
+<td>Genome-wide</td>
+</tr>
+<tr class="even">
+<td><strong>Scalability</strong></td>
+<td>High (many cells)</td>
+<td>Lower (limited throughput)</td>
+<td>Moderate</td>
+</tr>
+<tr class="odd">
+<td><strong>Cost</strong></td>
+<td>Lower per base</td>
+<td>Higher per base</td>
+<td>High for large cohorts</td>
+</tr>
+<tr class="even">
+<td><strong>Read Length</strong></td>
+<td>50–300 bp</td>
+<td>Thousands of bp</td>
+<td>Short or long reads</td>
+</tr>
+<tr class="odd">
+<td><strong>Biases</strong></td>
+<td>WGA bias</td>
+<td>Higher per-base error</td>
+<td>Amp. and dropout artifacts</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="computational-steps-in-cnv-analysis" class="level4" data-number="7.6.0.3">
+<h4 data-number="7.6.0.3" class="anchored" data-anchor-id="computational-steps-in-cnv-analysis"><span class="header-section-number">7.6.0.3</span> Computational Steps in CNV Analysis</h4>
+<p>The detection of copy-number variations (CNVs) from sequencing data requires multiple computational steps, each of which contributes to the accuracy and reliability of CNV calls. While some steps are essential, others are optional or depend on the specific research question and available data. The main stages of CNV detection include preprocessing and quality control, mapping to a reference genome, haplotype phasing, and variant calling.</p>
+<div class="block">
+<div id="fig-cnv_pipeline" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnv_pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/cnv_pipeline.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnv_pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.44: From <span class="citation" data-cites="dong2020sccnv">Dong et al. (<a href="references.html#ref-dong2020sccnv" role="doc-biblioref">2020</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Some note about terminology: germline and somatic describe the biological origin of CNVs, while karyotyping is a method for detecting CNVs (mainly large ones).<br>
+Germline CNVs are inherited variations present in all cells of the body, including reproductive cells (sperm and egg).<br>
+Somatic CNVs arise during a person’s lifetime and are not inherited; they occur in specific tissues, often as a result of disease processes such as cancer.</p>
+<ul>
+<li><p><strong>Preprocessing and Quality Control</strong>:<br>
+Before analyzing sequencing data for CNVs, raw sequencing reads must undergo quality control and preprocessing to remove technical artifacts and improve downstream analysis accuracy. The first step is a raw data quality check using tools such as <code>FastQC</code>, which assesses read quality, adapter contamination, and potential sequencing artifacts. If necessary, trimming and filtering may be applied to remove low-quality reads and adapter sequences, ensuring that only high-quality data is used for subsequent analysis. Although trimming and filtering are optional, they are often beneficial for improving read alignment and overall variant detection accuracy.</p></li>
+<li><p><strong>Mapping to a Reference Genome</strong>:<br>
+After preprocessing, sequencing reads must be aligned to a reference genome to determine their genomic positions. The choice of aligner depends on the sequencing technology used, with commonly used tools including <code>BWA</code> and <code>Bowtie2</code> for short-read sequencing and <code>minimap2</code> for long-read sequencing. Once aligned, the output is stored in a sorted and indexed <code>BAM</code> file, which serves as the primary input for CNV detection and other genomic analyses. Proper alignment is crucial, as errors in mapping can introduce biases in CNV calling.</p></li>
+<li><p><strong>Haplotype Phasing (Optional)</strong>:<br>
+Haplotype phasing is an optional but useful step in CNV analysis that determines which genetic variants co-occur on the same chromosome copy. In the context of CNV calling, phasing is particularly valuable when investigating whether duplications or deletions are located on the same haplotype. This information can provide insights into the inheritance patterns of CNVs and their potential functional effects. Tools such as <code>Whatshap</code> and <code>HapCUT2</code> can be used to perform haplotype phasing based on read alignment data, helping to refine CNV interpretation.</p></li>
+</ul>
+<div class="block">
+<div id="fig-phasing1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-phasing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/phasing1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phasing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.45: From <span class="citation" data-cites="garg2021computational">Garg (<a href="references.html#ref-garg2021computational" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-phasing2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-phasing2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/phasing2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phasing2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.46: From <span class="citation" data-cites="tangherloni2019genhap">Tangherloni et al. (<a href="references.html#ref-tangherloni2019genhap" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><p><strong>Variant Calling and CNV Detection Inputs</strong>:<br>
+CNV detection relies on multiple sources of information extracted from sequencing data. One key input is single nucleotide polymorphism (SNP) calls, which are generated using tools like <code>GATK</code> and <code>bcftools</code>. SNP data can aid CNV detection by identifying allele frequency shifts, refining CNV breakpoints, and confirming copy-number gains or losses. Additionally, read depth calculation is a fundamental step in CNV calling, as CNVs typically manifest as regions with increased or decreased sequencing coverage. Tools such as <code>CNVnator</code> for short-read sequencing and <code>deepTools</code> for depth-based analysis provide means to quantify read depth across genomic windows, facilitating CNV identification.</p></li>
+<li><p><strong>Copy number detection algorithms</strong>:<br>
+CNV detection methods broadly fall into two categories: window-based coverage analysis and event-based methods. In window-based approaches, the genome is partitioned into fixed-size bins (e.g., 1 kb or 10 kb), and read coverage within each bin is compared to an expected distribution. Hidden Markov models (HMMs) and segmentation algorithms are then used to identify regions with significantly higher or lower coverage, indicative of duplications or deletions. Event-based methods, in contrast, focus on identifying breakpoints in sequencing coverage or read-pair orientation, leveraging structural changes across multiple reads to confirm CNV events.</p></li>
+<li><p><strong>Establishing a “Control” Baseline</strong>:<br>
+To distinguish true CNVs from technical artifacts, a reference baseline is often established using a “panel of normals,” which consists of aggregated sequencing data from healthy individuals. This helps correct for systematic biases and variability in coverage. In cases where a matched normal sample from the same individual is available, such as in tumor-normal studies, it serves as an optimal reference for identifying somatic CNVs. Regions with significantly elevated or reduced coverage relative to the control are flagged as potential duplications or deletions.</p></li>
+</ul>
+<div class="block">
+<div id="fig-cnv_paired" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnv_paired-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/cnv_paired.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnv_paired-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.47: From <span class="citation" data-cites="martignano2021nanopore">Martignano et al. (<a href="references.html#ref-martignano2021nanopore" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Correcting biases and finalizing CNV calls</strong>:<br>
+Several sources of bias must be accounted for in CNV analysis to improve accuracy. GC content bias occurs because regions with extreme GC composition may be preferentially over- or under-sequenced, affecting coverage estimates. Batch effects arise due to differences in sequencing runs, library preparation protocols, or platform variability, necessitating normalization across datasets. Mappability issues, particularly in repetitive or low-complexity genomic regions, can lead to ambiguous read alignments and false-positive CNV calls. Many CNV detection pipelines incorporate bias correction strategies, such as GC normalization and read-depth smoothing, to improve reliability in final CNV calls.</li>
+</ul>
+<p>See <span class="citation" data-cites="masood2024evaluation">Masood et al. (<a href="references.html#ref-masood2024evaluation" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="zhang2019comprehensively">L. Zhang et al. (<a href="references.html#ref-zhang2019comprehensively" role="doc-biblioref">2019</a>)</span> for benchmarking across various methods for CNV.<br>
+See <span class="citation" data-cites="gordeeva2021benchmarking">Gordeeva et al. (<a href="references.html#ref-gordeeva2021benchmarking" role="doc-biblioref">2021</a>)</span> for a review on whole exome sequencing.</p>
+</section>
+<section id="why-are-hidden-markov-models-hmms-so-popular-for-copy-number-analysis" class="level4" data-number="7.6.0.4">
+<h4 data-number="7.6.0.4" class="anchored" data-anchor-id="why-are-hidden-markov-models-hmms-so-popular-for-copy-number-analysis"><span class="header-section-number">7.6.0.4</span> Why are Hidden Markov Models (HMMs) so popular for copy-number analysis?</h4>
+<p>Hidden Markov Models (HMMs) are widely used for estimating copy number variation (CNV) due to their ability to model the underlying genomic state as a latent discrete process while accounting for sequentially dependent and noisy measurements. CNV events manifest as <em>discrete changes in copy number along the genome</em>, making HMMs particularly well-suited since they scan the chromosome from left to right to detect abrupt state transitions. The hidden states represent the true underlying copy number, while the observed emissions correspond to probe intensities or read depths. The transition probabilities in HMMs enforce spatial coherence, preventing spurious fluctuations and improving robustness. Methods like the Viterbi algorithm<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> are especially appealing as they efficiently determine the most likely sequence of hidden states, thereby providing a globally optimal estimate of CNV breakpoints across the genome.</p>
+</section>
+<section id="sec-reference_genome" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="sec-reference_genome"><span class="header-section-number">7.6.1</span> A quick note on the reference genome</h3>
+<p>When doing structural variation analyses, there is an inherent question of “what genome are you comparing against.” This is natural, as CNV is (loosely speaking) about “deviations from the typical genome,” so we need to think hard about what we are referring to when we say “typical genome.”<br>
+While simplistic in explanation, there are multiple problems stemming from this pipeline. The main issue stems from the fallacy of this notion of a “reference” genome. As stated in <span class="citation" data-cites="ballouz2019time">Ballouz, Dobin, and Gillis (<a href="references.html#ref-ballouz2019time" role="doc-biblioref">2019</a>)</span>, there are many possible pitfalls of relying on a reference genome.</p>
+<p>As a quote from <span class="citation" data-cites="ballouz2019time">Ballouz, Dobin, and Gillis (<a href="references.html#ref-ballouz2019time" role="doc-biblioref">2019</a>)</span>:</p>
+<div class="block">
+<p>The reference genome is not a ‘healthy’ genome, ‘nor the most common, nor the longest, nor an ancestral haplotype’. Efforts to fix these ‘errors’ include adjusting alleles to the preferred or major allele or the use of targeted and ethnically matched genomes.</p>
+</div>
+<p>So really, the reference genome is simply an “addressing system” that many researchers can agree upon to get reproducible findings. Unsurprisingly, due to our understanding of CNV, we do not simply “count” how far along from the “start” of the chromosome we are (say, in terms of kb). This is because any CNV would shift our count. Instead we must first rely on a reference genome.</p>
+<p>Certainly, changing the reference genome can potentially change the results quite substantially. See papers such as <span class="citation" data-cites="pan2019similarities">Pan et al. (<a href="references.html#ref-pan2019similarities" role="doc-biblioref">2019</a>)</span> and <span class="citation" data-cites="wong2020towards">Wong et al. (<a href="references.html#ref-wong2020towards" role="doc-biblioref">2020</a>)</span>.</p>
+</section>
+<section id="challenges-of-collecting-single-cell-dna-sequencing-data" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="challenges-of-collecting-single-cell-dna-sequencing-data"><span class="header-section-number">7.6.2</span> Challenges of collecting “single-cell DNA” sequencing data</h3>
+<p>Single-cell DNA sequencing, whether whole-genome or whole-exome, must contend with the fact that each cell contains only two copies of the genome, making any loss of genetic material “permanent.” This inherently low starting material magnifies several issues:</p>
+<ul>
+<li><strong>Allele (locus) dropout:</strong> The random loss or failure to amplify one allele, resulting in incomplete or missing data for certain loci.<br>
+</li>
+<li><strong>Allelic imbalance:</strong> Unequal amplification efficiency of different alleles, which can skew variant calling and downstream analyses.<br>
+</li>
+<li><strong>Amplification error:</strong> The polymerase-mediated amplification steps can introduce additional errors or biases, confounding true biological variation.</li>
+</ul>
+<p>See <a href="#fig-single-cell-dna1" class="quarto-xref">Figure&nbsp;<span>7.48</span></a> and <a href="#fig-single-cell-dna2" class="quarto-xref">Figure&nbsp;<span>7.49</span></a> for examples, and the citations mentioned there. This is a rapidly evolving field. For an example of technology that is performing multiome sequencing of RNA and WGS DNA, see scONE-seq <span class="citation" data-cites="yu2023scone">Yu et al. (<a href="references.html#ref-yu2023scone" role="doc-biblioref">2023</a>)</span>. For an example of diagonal integration between scRNA-seq and scDNA-seq, see <span class="citation" data-cites="edrisi2023accurate">Edrisi et al. (<a href="references.html#ref-edrisi2023accurate" role="doc-biblioref">2023</a>)</span>. See <span class="citation" data-cites="haard2023long">Hård et al. (<a href="references.html#ref-haard2023long" role="doc-biblioref">2023</a>)</span> for how long-read sequencing is transforming the prospects of WGS DNA sequencing at single-cell resolution.</p>
+<div class="block">
+<div id="fig-single-cell-dna1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-cell-dna1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/single-cell-dna1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-cell-dna1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.48: From <span class="citation" data-cites="gawad2016single">Gawad, Koh, and Quake (<a href="references.html#ref-gawad2016single" role="doc-biblioref">2016</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-single-cell-dna2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-cell-dna2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/single-cell-dna2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-cell-dna2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.49: From <span class="citation" data-cites="valecha2022somatic">Valecha and Posada (<a href="references.html#ref-valecha2022somatic" role="doc-biblioref">2022</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="studying-single-cell-copy-number-variation-using-scrna-seq-data" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="studying-single-cell-copy-number-variation-using-scrna-seq-data"><span class="header-section-number">7.6.3</span> Studying single-cell copy-number variation using scRNA-seq data</h3>
+<section id="a-typical-choice-copykat." class="level4" data-number="7.6.3.1">
+<h4 data-number="7.6.3.1" class="anchored" data-anchor-id="a-typical-choice-copykat."><span class="header-section-number">7.6.3.1</span> A typical choice: CopyKAT.</h4>
+<p>Copy number karyotyping of aneuploid tumors (CopyKAT) <span class="citation" data-cites="gao2021delineating">Gao et al. (<a href="references.html#ref-gao2021delineating" role="doc-biblioref">2021</a>)</span> is a Bayesian segmentation approach designed to infer genomic copy number profiles from single-cell RNA sequencing (scRNA-seq) data. This method distinguishes aneuploid tumor cells from diploid stromal and immune cells, enabling the characterization of clonal substructure within tumors. CopyKAT operates by ordering genes based on genomic coordinates, defining diploid controls, segmenting chromosomal regions, and clustering cells into subpopulations based on their copy number profiles.</p>
+<div class="block">
+<div id="fig-copykat" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-copykat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/copykat.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-copykat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.50: From <span class="citation" data-cites="gao2021delineating">Gao et al. (<a href="references.html#ref-gao2021delineating" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<ul>
+<li><strong>Modeling scRNA-seq Data for Copy Number Estimation.</strong><br>
+Given a gene expression matrix <span class="math inline">\(X\)</span> with rows representing genes and columns representing cells, CopyKAT begins by transforming raw unique molecular identifier (UMI) counts to stabilize variance. The log-Freeman–Tukey transformation is applied:</li>
+</ul>
+<p><span class="math display">\[
+X' = \log\left(\sqrt{X} + \sqrt{X+1}\right)
+\]</span></p>
+<p>To smooth outliers and reduce noise, polynomial dynamic linear modeling (DLM) is applied, resulting in a denoised expression matrix that captures genomic trends while mitigating single-cell technical variability.</p>
+<ul>
+<li><strong>Identifying Diploid Control Cells.</strong><br>
+A subset of normal diploid cells is needed to define the baseline expression profile for copy number inference. CopyKAT achieves this through clustering of the cells into 6 clusters, and then a Gaussian mixture model (GMM) is performed for the median expression for a cluster<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. This GMM is used to determine a mixture of 3 Gaussians (to represent lower, baseline, or higher copy number.) The cluster with the lowest variance across genes in the GMM model is designated as the set of <em>confident diploid cells</em>, assuming their gene expression patterns reflect a neutral (2N) copy number state.</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Defining Copy Number Breakpoints.</strong><br>
+Chromosomal breakpoints are inferred through a Poisson-gamma model combined with Markov Chain Monte Carlo (MCMC) sampling.<br>
+As a side-note, MCMC methods are widely used in CNV analysis because CNV segmentation involves inferring hidden states (copy number gains/losses) from noisy data.<br>
+This is great for CNV analyses since the copy number state of a genomic window is dependent on the state of adjacent windows.<br>
+Determining where a CNV starts and ends involves estimating hidden parameters, such as segment boundaries and copy number values.<br>
+MCMC helps solve these problems by iteratively sampling from the posterior distribution of possible segmentations.</li>
+</ul>
+<p>To do this, CopyKAT first computes the median gene expression for each cluster of cells. Then, for a chromosome, it bins all the genes (in order along that chromosome), and models the median gene expression among all the genes in this bin with the model:</p>
+<p><span class="math display">\[
+X_{kj} \sim \text{Poisson}(\lambda_{kj}), \quad \lambda_{kj} \sim \text{Gamma}(\alpha_{kw}, \beta_{kw}), \quad \text{for bin $w$ containing gene $j$}
+\]</span></p>
+<p>where <span class="math inline">\(X_{kj}\)</span> represents the original gene counts for gene <span class="math inline">\(j\)</span> in cluster <span class="math inline">\(k\)</span>, and <span class="math inline">\(\alpha_{kw}\)</span> and <span class="math inline">\(\beta_{kw}\)</span> are parameters for this particular genomic bin <span class="math inline">\(w\)</span> (containing gene <span class="math inline">\(j\)</span>) and cell cluster. CopyKAT starts with bins with equal number of genes in this chromosome (again, in order along the chromosome).<br>
+The posterior mean for the genomic bin is computed, and a Kolmogorov–Smirnov (KS) test is used to determine if adjacent regions should be merged. The final breakpoints are determined iteratively by pooling results across single cells, establishing consensus boundaries of copy number variation.</p>
+<ul>
+<li><strong>Detecting Deviations from Controls.</strong><br>
+Once a reference baseline is established, CopyKAT computes relative gene expression deviations by subtracting the median expression values of the diploid control cells:</li>
+</ul>
+<p><span class="math display">\[
+Z_{ij} = X'_{ij} - \text{median}(X'_{\text{diploid},j})
+\]</span></p>
+<p>for cell <span class="math inline">\(i\)</span> and genomic segment <span class="math inline">\(j\)</span>, where the above median is across all the genes in the chromosome.<br>
+These deviations serve as the basis for segmenting chromosomal regions into three copy number states: loss, neutral, and gain.</p>
+<ul>
+<li><strong>Clustering Cells Based on Copy Number Profiles.</strong><br>
+Hierarchical clustering is applied to group cells based on their copy number profiles. The clustering is performed using Ward’s linkage and Euclidean distance. Two main clusters are identified: one representing normal diploid cells and the other capturing aneuploid tumor cells. Within the aneuploid cluster, further subdivision is performed to delineate distinct tumor subpopulations with unique copy number alterations.</li>
+</ul>
+</section>
+<section id="a-brief-note-about-other-approaches." class="level4" data-number="7.6.3.2">
+<h4 data-number="7.6.3.2" class="anchored" data-anchor-id="a-brief-note-about-other-approaches."><span class="header-section-number">7.6.3.2</span> A brief note about other approaches.</h4>
+<p>There are a lot of scRNA-seq methods to infer CNVs. See <span class="citation" data-cites="chen2024benchmarking">Chen et al. (<a href="references.html#ref-chen2024benchmarking" role="doc-biblioref">2024</a>)</span> for a benchmarking.</p>
+</section>
+</section>
+<section id="other-fascinating-research-on-structural-variation-short-tandem-repeats" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="other-fascinating-research-on-structural-variation-short-tandem-repeats"><span class="header-section-number">7.6.4</span> Other fascinating research on structural variation: Short tandem repeats</h3>
+<p>Short Tandem Repeats (STRs) are short, consecutive sequences of nucleotides, typically ranging from two to six base pairs, that are repeated multiple times in a head-to-tail fashion, see <a href="#fig-str-example1a" class="quarto-xref">Figure&nbsp;<span>7.51</span></a> and <a href="#fig-str-example1b" class="quarto-xref">Figure&nbsp;<span>7.52</span></a>. These repeated segments can vary in length among different individuals, making STRs a valuable marker for genetic identification and population studies. They occur throughout the genome and often exhibit high mutation rates, which contribute to genetic diversity, see <a href="#fig-str-range" class="quarto-xref">Figure&nbsp;<span>7.53</span></a>.</p>
+<div class="block">
+<div id="fig-str-example1a" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-example1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-example1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-example1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.51: From <a href="https://www.sciencedirect.com/topics/immunology-and-microbiology/short-tandem-repeat" class="uri">https://www.sciencedirect.com/topics/immunology-and-microbiology/short-tandem-repeat</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-example1b" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-example1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-function3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-example1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.52: From <a href="https://uoftmedicalgenomics.home.blog/2022/05/05/slipping-into-the-dna-architecture-of-tandem-repeat-expansion-disorders/" class="uri">https://uoftmedicalgenomics.home.blog/2022/05/05/slipping-into-the-dna-architecture-of-tandem-repeat-expansion-disorders/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-range" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-range.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.53: From <span class="citation" data-cites="chintalaphani2021update">Chintalaphani et al. (<a href="references.html#ref-chintalaphani2021update" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>STRs are biologically significant because they can influence gene expression and genomic stability. Changes in the number of repeat units can alter regulatory regions or disrupt coding sequences, leading to variations in protein function or levels of gene expression. In some cases, expanded STRs are associated with disease mechanisms, such as those underlying disorders like Huntington’s disease or Fragile X syndrome.</p>
+<p>Clinically, studying STRs can aid in understanding the genetic basis of certain disorders and in diagnosing conditions caused by abnormal repeat expansions, see <a href="#fig-str-disease1" class="quarto-xref">Figure&nbsp;<span>7.54</span></a>. One prominent example is Huntington’s disease, which results from expansions of a CAG repeat in the HTT gene, see <a href="#fig-str-hd" class="quarto-xref">Figure&nbsp;<span>7.56</span></a>. This leads to an elongated polyglutamine tract in the huntingtin protein, ultimately causing neuronal dysfunction and cell death. STR research, especially when coupled with single-cell sequencing approaches, has provided new perspectives on how expansions arise and progress at the cellular level. By revealing subtle, cell-to-cell differences in repeat length, researchers can better understand disease onset, severity, and variability in progression, opening up avenues for more targeted therapies and personalized disease management.</p>
+<div class="block">
+<div id="fig-str-disease1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-disease1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-disease1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-disease1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.54: From <span class="citation" data-cites="sznajder2019short">Sznajder and Swanson (<a href="references.html#ref-sznajder2019short" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-disease2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-disease2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-disease2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-disease2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.55: From <span class="citation" data-cites="doss2025mosaicism">Doss et al. (<a href="references.html#ref-doss2025mosaicism" role="doc-biblioref">2025</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-hd" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-hd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-hd.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-hd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.56: From <a href="https://dnascience.plos.org/2021/09/02/new-target-for-treating-huntingtons-disease-controlling-runaway-dna-repair/" class="uri">https://dnascience.plos.org/2021/09/02/new-target-for-treating-huntingtons-disease-controlling-runaway-dna-repair/</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Modern analyses of Short Tandem Repeats (STRs) increasingly utilize various forms of sequencing data to pinpoint the location of these repeats and assess their potential functional roles, see <a href="#fig-str-location" class="quarto-xref">Figure&nbsp;<span>7.57</span></a>. Whole-genome sequencing (WGS) and targeted sequencing are often employed to identify both the presence and exact length of STR loci. Using short-read sequencing, computational methods can detect the boundaries and expansions of repeats by aligning reads to a reference genome. This enables genome-wide surveys of repeats in large cohorts, allowing researchers to correlate specific repeat expansions or contractions with phenotypic traits or disease states, see <a href="#fig-str-function" class="quarto-xref">Figure&nbsp;<span>7.58</span></a>. In parallel, long-read sequencing platforms, such as those provided by Pacific Biosciences or Oxford Nanopore Technologies, facilitate the direct observation of longer repeats and complex regions that may be challenging to resolve with short reads, see <a href="#fig-longread2" class="quarto-xref">Figure&nbsp;<span>7.62</span></a>. By integrating data on the repeat location, length, and local genomic context, researchers can infer the putative functional impacts, such as disruptions to regulatory regions, alterations in protein-coding sequences, or other mechanisms by which STRs may influence gene expression and disease susceptibility, see <a href="#fig-str-gene-expression" class="quarto-xref">Figure&nbsp;<span>7.60</span></a>.</p>
+<div class="block">
+<div id="fig-str-location" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-location-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-location.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-location-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.57: From <span class="citation" data-cites="hannan2018tandem">Hannan (<a href="references.html#ref-hannan2018tandem" role="doc-biblioref">2018</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-function" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-function.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-function-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.58: From <span class="citation" data-cites="tanudisastro2024sequencing">Tanudisastro et al. (<a href="references.html#ref-tanudisastro2024sequencing" role="doc-biblioref">2024</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-function2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-function2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-function2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-function2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.59: From <span class="citation" data-cites="wright2023native">Wright and Todd (<a href="references.html#ref-wright2023native" role="doc-biblioref">2023</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-gene-expression" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-gene-expression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-gene-expression.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-gene-expression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.60: From <span class="citation" data-cites="fotsing2019impact">Fotsing et al. (<a href="references.html#ref-fotsing2019impact" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-str-gene-expression2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-str-gene-expression2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/str-gene-expression2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-str-gene-expression2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.61: From <span class="citation" data-cites="tanudisastro2024sequencing">Tanudisastro et al. (<a href="references.html#ref-tanudisastro2024sequencing" role="doc-biblioref">2024</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="block">
+<div id="fig-longread2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-longread2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap6/longread2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longread2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.62: From <span class="citation" data-cites="chintalaphani2021update">Chintalaphani et al. (<a href="references.html#ref-chintalaphani2021update" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Short Tandem Repeats (STRs) are a hot topic in current genomics research because of their significant variability, functional importance, and direct implications in numerous neurological and developmental disorders. While advances in sequencing technology have enhanced our ability to detect and quantify these repeats, understanding their mechanistic roles in disease remains challenging. One major gap is the development of computational methods that rigorously map variations in STR length and composition to downstream biological processes, enabling a causal understanding of how specific repeat expansions contribute to pathogenesis. (We’re scanning billions of base pairs for each person (and possibly each cell) to find these STRs!) Until more sophisticated analytical pipelines and larger, well-characterized datasets are available, significant questions remain about how best to translate STR findings into actionable clinical insights.</p>
+<p>See <span class="citation" data-cites="chintalaphani2021update">Chintalaphani et al. (<a href="references.html#ref-chintalaphani2021update" role="doc-biblioref">2021</a>)</span> for tables of which STRs have been discovered to be associated with which diseases. See <span class="citation" data-cites="tanudisastro2024sequencing">Tanudisastro et al. (<a href="references.html#ref-tanudisastro2024sequencing" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="hannan2018tandem">Hannan (<a href="references.html#ref-hannan2018tandem" role="doc-biblioref">2018</a>)</span> for more details on how STR occur, what their functional role is, and how they are studied.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-avsec2021effective" class="csl-entry" role="listitem">
+Avsec, Žiga, Vikram Agarwal, Daniel Visentin, Joseph R Ledsam, Agnieszka Grabska-Barwinska, Kyle R Taylor, Yannis Assael, John Jumper, Pushmeet Kohli, and David R Kelley. 2021. <span>“Effective Gene Expression Prediction from Sequence by Integrating Long-Range Interactions.”</span> <em>Nature Methods</em> 18 (10): 1196–1203.
+</div>
+<div id="ref-bae2022analysis" class="csl-entry" role="listitem">
+Bae, Taejeong, Liana Fasching, Yifan Wang, Joo Heon Shin, Milovan Suvakov, Yeongjun Jang, Scott Norton, et al. 2022. <span>“Analysis of Somatic Mutations in 131 Human Brains Reveals Aging-Associated Hypermutability.”</span> <em>Science</em> 377 (6605): 511–17.
+</div>
+<div id="ref-ballouz2019time" class="csl-entry" role="listitem">
+Ballouz, Sara, Alexander Dobin, and Jesse A Gillis. 2019. <span>“Is It Time to Change the Reference Genome?”</span> <em>Genome Biology</em> 20 (1): 1–9.
+</div>
+<div id="ref-barry2021exploiting" class="csl-entry" role="listitem">
+Barry, Ciarrah, Junxi Liu, Rebecca Richmond, Martin K Rutter, Deborah A Lawlor, Frank Dudbridge, and Jack Bowden. 2021. <span>“Exploiting Collider Bias to Apply Two-Sample Summary Data Mendelian Randomization Methods to One-Sample Individual Level Data.”</span> <em>PLoS Genetics</em> 17 (8): e1009703.
+</div>
+<div id="ref-benner2016finemap" class="csl-entry" role="listitem">
+Benner, Christian, Chris CA Spencer, Aki S Havulinna, Veikko Salomaa, Samuli Ripatti, and Matti Pirinen. 2016. <span>“FINEMAP: Efficient Variable Selection Using Summary Data from Genome-Wide Association Studies.”</span> <em>Bioinformatics</em> 32 (10): 1493–1501.
+</div>
+<div id="ref-bouzid2023clonal" class="csl-entry" role="listitem">
+Bouzid, Hind, Julia A Belk, Max Jan, Yanyan Qi, Chloé Sarnowski, Sara Wirth, Lisa Ma, et al. 2023. <span>“Clonal Hematopoiesis Is Associated with Protection from Alzheimer’s Disease.”</span> <em>Nature Medicine</em> 29 (7): 1662–70.
+</div>
+<div id="ref-burgess2017interpreting" class="csl-entry" role="listitem">
+Burgess, Stephen, and Simon G Thompson. 2017. <span>“Interpreting Findings from Mendelian Randomization Using the MR-Egger Method.”</span> <em>European Journal of Epidemiology</em> 32: 377–89.
+</div>
+<div id="ref-chen2024benchmarking" class="csl-entry" role="listitem">
+Chen, Xin, Li Tai Fang, Zhong Chen, Wanqiu Chen, Bin Zhu, Hongjin Wu, Malcom Moos Jr, et al. 2024. <span>“A Benchmarking Study of Copy Number Variation Inference Methods Using Single-Cell RNA-Sequencing Data.”</span> <em>bioRxiv</em>, 2024–09.
+</div>
+<div id="ref-chintalaphani2021update" class="csl-entry" role="listitem">
+Chintalaphani, Sanjog R, Sandy S Pineda, Ira W Deveson, and Kishore R Kumar. 2021. <span>“An Update on the Neurological Short Tandem Repeat Expansion Disorders and the Emergence of Long-Read Sequencing Diagnostics.”</span> <em>Acta Neuropathologica Communications</em> 9 (1): 98.
+</div>
+<div id="ref-dong2020sccnv" class="csl-entry" role="listitem">
+Dong, Xiao, Lei Zhang, Xiaoxiao Hao, Tao Wang, and Jan Vijg. 2020. <span>“SCCNV: A Software Tool for Identifying Copy Number Variation from Single-Cell Whole-Genome Sequencing.”</span> <em>Frontiers in Genetics</em> 11: 505441.
+</div>
+<div id="ref-doss2025mosaicism" class="csl-entry" role="listitem">
+Doss, Rose M, Susana Lopez-Ignacio, Anna Dischler, Laurel Hiatt, Harriet Dashnow, Martin W Breuss, and Caroline M Dias. 2025. <span>“Mosaicism in Short Tandem Repeat Disorders: A Clinical Perspective.”</span> <em>Genes</em> 16 (2): 216.
+</div>
+<div id="ref-edrisi2023accurate" class="csl-entry" role="listitem">
+Edrisi, Mohammadamin, Xiru Huang, Huw A Ogilvie, and Luay Nakhleh. 2023. <span>“Accurate Integration of Single-Cell DNA and RNA for Analyzing Intratumor Heterogeneity Using MaCroDNA.”</span> <em>Nature Communications</em> 14 (1): 8262.
+</div>
+<div id="ref-elhaik2022principal" class="csl-entry" role="listitem">
+Elhaik, Eran. 2022. <span>“Principal Component Analyses (PCA)-Based Findings in Population Genetic Studies Are Highly Biased and Must Be Reevaluated.”</span> <em>Scientific Reports</em> 12 (1): 14683.
+</div>
+<div id="ref-erickson2022spatially" class="csl-entry" role="listitem">
+Erickson, Andrew, Mengxiao He, Emelie Berglund, Maja Marklund, Reza Mirzazadeh, Niklas Schultz, Linda Kvastad, et al. 2022. <span>“Spatially Resolved Clonal Copy Number Alterations in Benign and Malignant Tissue.”</span> <em>Nature</em> 608 (7922): 360–67.
+</div>
+<div id="ref-fotsing2019impact" class="csl-entry" role="listitem">
+Fotsing, Stephanie Feupe, Jonathan Margoliash, Catherine Wang, Shubham Saini, Richard Yanicky, Sharona Shleizer-Burko, Alon Goren, and Melissa Gymrek. 2019. <span>“The Impact of Short Tandem Repeat Variation on Gene Expression.”</span> <em>Nature Genetics</em> 51 (11): 1652–59.
+</div>
+<div id="ref-gao2021delineating" class="csl-entry" role="listitem">
+Gao, Ruli, Shanshan Bai, Ying C Henderson, Yiyun Lin, Aislyn Schalck, Yun Yan, Tapsi Kumar, et al. 2021. <span>“Delineating Copy Number and Clonal Substructure in Human Tumors from Single-Cell Transcriptomes.”</span> <em>Nature Biotechnology</em> 39 (5): 599–608.
+</div>
+<div id="ref-garg2021computational" class="csl-entry" role="listitem">
+Garg, Shilpa. 2021. <span>“Computational Methods for Chromosome-Scale Haplotype Reconstruction.”</span> <em>Genome Biology</em> 22 (1): 101.
+</div>
+<div id="ref-garrison2012haplotype" class="csl-entry" role="listitem">
+Garrison, Erik, and Gabor Marth. 2012. <span>“Haplotype-Based Variant Detection from Short-Read Sequencing.”</span> <em>arXiv Preprint arXiv:1207.3907</em>.
+</div>
+<div id="ref-gawad2016single" class="csl-entry" role="listitem">
+Gawad, Charles, Winston Koh, and Stephen R Quake. 2016. <span>“Single-Cell Genome Sequencing: Current State of the Science.”</span> <em>Nature Reviews Genetics</em> 17 (3): 175–88.
+</div>
+<div id="ref-ge2019polygenic" class="csl-entry" role="listitem">
+Ge, Tian, Chia-Yen Chen, Yang Ni, Yen-Chen Anne Feng, and Jordan W Smoller. 2019. <span>“Polygenic Prediction via Bayesian Regression and Continuous Shrinkage Priors.”</span> <em>Nature Communications</em> 10 (1): 1776.
+</div>
+<div id="ref-gordeeva2021benchmarking" class="csl-entry" role="listitem">
+Gordeeva, Veronika, Elena Sharova, Konstantin Babalyan, Rinat Sultanov, Vadim M Govorun, and Georgij Arapidi. 2021. <span>“Benchmarking Germline CNV Calling Tools from Exome Sequencing Data.”</span> <em>Scientific Reports</em> 11 (1): 14416.
+</div>
+<div id="ref-hannan2018tandem" class="csl-entry" role="listitem">
+Hannan, Anthony J. 2018. <span>“Tandem Repeats Mediating Genetic Plasticity in Health and Disease.”</span> <em>Nature Reviews Genetics</em> 19 (5): 286–98.
+</div>
+<div id="ref-haard2023long" class="csl-entry" role="listitem">
+Hård, Joanna, Jeff E Mold, Jesper Eisfeldt, Christian Tellgren-Roth, Susana Häggqvist, Ignas Bunikis, Orlando Contreras-Lopez, et al. 2023. <span>“Long-Read Whole-Genome Analysis of Human Single Cells.”</span> <em>Nature Communications</em> 14 (1): 5164.
+</div>
+<div id="ref-hartwig2016two" class="csl-entry" role="listitem">
+Hartwig, Fernando Pires, Neil Martin Davies, Gibran Hemani, and George Davey Smith. 2016. <span>“Two-Sample Mendelian Randomization: Avoiding the Downsides of a Powerful, Widely Applicable but Potentially Fallible Technique.”</span> <em>International Journal of Epidemiology</em>. Oxford University Press.
+</div>
+<div id="ref-he2022ghostknockoff" class="csl-entry" role="listitem">
+He, Zihuai, Linxi Liu, Michael E Belloy, Yann Le Guen, Aaron Sossin, Xiaoxia Liu, Xinran Qi, et al. 2022. <span>“GhostKnockoff Inference Empowers Identification of Putative Causal Variants in Genome-Wide Association Studies.”</span> <em>Nature Communications</em> 13 (1): 7209.
+</div>
+<div id="ref-hernandez2019genomics" class="csl-entry" role="listitem">
+Hernández-Beeftink, Tamara, Beatriz Guillen-Guio, Jesús Villar, and Carlos Flores. 2019. <span>“Genomics and the Acute Respiratory Distress Syndrome: Current and Future Directions.”</span> <em>International Journal of Molecular Sciences</em> 20 (16): 4004.
+</div>
+<div id="ref-hormozdiari2014identifying" class="csl-entry" role="listitem">
+Hormozdiari, Farhad, Emrah Kostem, Eun Yong Kang, Bogdan Pasaniuc, and Eleazar Eskin. 2014. <span>“Identifying Causal Variants at Loci with Multiple Signals of Association.”</span> In <em>Proceedings of the 5th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics</em>, 610–11.
+</div>
+<div id="ref-jaiswal2014age" class="csl-entry" role="listitem">
+Jaiswal, Siddhartha, Pierre Fontanillas, Jason Flannick, Alisa Manning, Peter V Grauman, Brenton G Mar, R Coleman Lindsley, et al. 2014. <span>“Age-Related Clonal Hematopoiesis Associated with Adverse Outcomes.”</span> <em>New England Journal of Medicine</em> 371 (26): 2488–98.
+</div>
+<div id="ref-kennedy2022genetic" class="csl-entry" role="listitem">
+Kennedy, Hannah L, Lisa Dinkler, Martin A Kennedy, Cynthia M Bulik, and Jennifer Jordan. 2022. <span>“How Genetic Analysis May Contribute to the Understanding of Avoidant/Restrictive Food Intake Disorder (ARFID).”</span> <em>Journal of Eating Disorders</em> 10 (1): 53.
+</div>
+<div id="ref-kunkle2019genetic" class="csl-entry" role="listitem">
+Kunkle, Brian W, Benjamin Grenier-Boley, Rebecca Sims, Joshua C Bis, Vincent Damotte, Adam C Naj, Anne Boland, et al. 2019. <span>“Genetic Meta-Analysis of Diagnosed Alzheimer’s Disease Identifies New Risk Loci and Implicates a<span class="math inline">\(\beta\)</span>, Tau, Immunity and Lipid Processing.”</span> <em>Nature Genetics</em> 51 (3): 414–30.
+</div>
+<div id="ref-li2021genetically" class="csl-entry" role="listitem">
+Li, Xintao, Shi Peng, Bo Guan, Songwen Chen, Genqing Zhou, Yong Wei, Chao Gong, et al. 2021. <span>“Genetically Determined Inflammatory Biomarkers and the Risk of Heart Failure: A Mendelian Randomization Study.”</span> <em>Frontiers in Cardiovascular Medicine</em> 8: 734400.
+</div>
+<div id="ref-mai2023transcriptome" class="csl-entry" role="listitem">
+Mai, Jialin, Mingming Lu, Qianwen Gao, Jingyao Zeng, and Jingfa Xiao. 2023. <span>“Transcriptome-Wide Association Studies: Recent Advances in Methods, Applications and Available Databases.”</span> <em>Communications Biology</em> 6 (1): 899.
+</div>
+<div id="ref-martignano2021nanopore" class="csl-entry" role="listitem">
+Martignano, Filippo, Uday Munagala, Stefania Crucitta, Alessandra Mingrino, Roberto Semeraro, Marzia Del Re, Iacopo Petrini, Alberto Magi, and Silvestro G Conticello. 2021. <span>“Nanopore Sequencing from Liquid Biopsy: Analysis of Copy Number Variations from Cell-Free DNA of Lung Cancer Patients.”</span> <em>Molecular Cancer</em> 20: 1–6.
+</div>
+<div id="ref-martin2019clinical" class="csl-entry" role="listitem">
+Martin, Alicia R, Masahiro Kanai, Yoichiro Kamatani, Yukinori Okada, Benjamin M Neale, and Mark J Daly. 2019. <span>“Clinical Use of Current Polygenic Risk Scores May Exacerbate Health Disparities.”</span> <em>Nature Genetics</em> 51 (4): 584–91.
+</div>
+<div id="ref-masood2024evaluation" class="csl-entry" role="listitem">
+Masood, Daniall, Luyao Ren, Cu Nguyen, Francesco G Brundu, Lily Zheng, Yongmei Zhao, Erich Jaeger, et al. 2024. <span>“Evaluation of Somatic Copy Number Variation Detection by NGS Technologies and Bioinformatics Tools on a Hyper-Diploid Cancer Genome.”</span> <em>Genome Biology</em> 25 (1): 163.
+</div>
+<div id="ref-mckenna2010genome" class="csl-entry" role="listitem">
+McKenna, Aaron, Matthew Hanna, Eric Banks, Andrey Sivachenko, Kristian Cibulskis, Andrew Kernytsky, Kiran Garimella, et al. 2010. <span>“The Genome Analysis Toolkit: A MapReduce Framework for Analyzing Next-Generation DNA Sequencing Data.”</span> <em>Genome Research</em> 20 (9): 1297–1303.
+</div>
+<div id="ref-mihaylova2017benign" class="csl-entry" role="listitem">
+Mihaylova, M, R Staneva, D Toncheva, M Pancheva, and S Hadjidekova. 2017. <span>“Benign, Pathogenic and Copy Number Variations of Unknown Clinical Significance in Patients with Congenital Malformations and Developmental Delay.”</span> <em>Balkan Journal of Medical Genetics: BJMG</em> 20 (1): 5.
+</div>
+<div id="ref-milholland2017differences" class="csl-entry" role="listitem">
+Milholland, Brandon, Xiao Dong, Lei Zhang, Xiaoxiao Hao, Yousin Suh, and Jan Vijg. 2017. <span>“Differences Between Germline and Somatic Mutation Rates in Humans and Mice.”</span> <em>Nature Communications</em> 8 (1): 15183.
+</div>
+<div id="ref-ng2017xqtl" class="csl-entry" role="listitem">
+Ng, Bernard, Charles C White, Hans-Ulrich Klein, Solveig K Sieberts, Cristin McCabe, Ellis Patrick, Jishu Xu, et al. 2017. <span>“An xQTL Map Integrates the Genetic Architecture of the Human Brain’s Transcriptome and Epigenome.”</span> <em>Nature Neuroscience</em> 20 (10): 1418–26.
+</div>
+<div id="ref-novembre2008genes" class="csl-entry" role="listitem">
+Novembre, John, Toby Johnson, Katarzyna Bryc, Zoltán Kutalik, Adam R Boyko, Adam Auton, Amit Indap, et al. 2008. <span>“Genes Mirror Geography Within Europe.”</span> <em>Nature</em> 456 (7218): 98–101.
+</div>
+<div id="ref-pan2019similarities" class="csl-entry" role="listitem">
+Pan, Bohu, Rebecca Kusko, Wenming Xiao, Yuanting Zheng, Zhichao Liu, Chunlin Xiao, Sugunadevi Sakkiah, et al. 2019. <span>“Similarities and Differences Between Variants Called with Human Reference Genome HG19 or HG38.”</span> <em>BMC Bioinformatics</em> 20 (2): 17–29.
+</div>
+<div id="ref-prive2020ldpred2" class="csl-entry" role="listitem">
+Privé, Florian, Julyan Arbel, and Bjarni J Vilhjálmsson. 2020. <span>“LDpred2: Better, Faster, Stronger.”</span> <em>Bioinformatics</em> 36 (22-23): 5424–31.
+</div>
+<div id="ref-sanderson2022mendelian" class="csl-entry" role="listitem">
+Sanderson, Eleanor, M Maria Glymour, Michael V Holmes, Hyunseung Kang, Jean Morrison, Marcus R Munafò, Tom Palmer, et al. 2022. <span>“Mendelian Randomization.”</span> <em>Nature Reviews Methods Primers</em> 2 (1): 6.
+</div>
+<div id="ref-sasse2023benchmarking" class="csl-entry" role="listitem">
+Sasse, Alexander, Bernard Ng, Anna E Spiro, Shinya Tasaki, David A Bennett, Christopher Gaiteri, Philip L De Jager, Maria Chikina, and Sara Mostafavi. 2023. <span>“Benchmarking of Deep Neural Networks for Predicting Personal Gene Expression from DNA Sequence Highlights Shortcomings.”</span> <em>Nature Genetics</em> 55 (12): 2060–64.
+</div>
+<div id="ref-sheth2024mapping" class="csl-entry" role="listitem">
+Sheth, Maya U, Wei-Lin Qiu, X Rosa Ma, Andreas R Gschwind, Evelyn Jagoda, Anthony S Tan, Hjörleifur Einarsson, et al. 2024. <span>“Mapping Enhancer-Gene Regulatory Interactions from Single-Cell Data.”</span> <em>bioRxiv</em>, 2024–11.
+</div>
+<div id="ref-singh2021detecting" class="csl-entry" role="listitem">
+Singh, Ashish Kumar, Maren Fridtjofsen Olsen, Liss Anne Solberg Lavik, Trine Vold, Finn Drabløs, and Wenche Sjursen. 2021. <span>“Detecting Copy Number Variation in Next Generation Sequencing Data from Diagnostic Gene Panels.”</span> <em>BMC Medical Genomics</em> 14 (1): 214.
+</div>
+<div id="ref-steele2022signatures" class="csl-entry" role="listitem">
+Steele, Christopher D, Ammal Abbasi, SM Ashiqul Islam, Amy L Bowes, Azhar Khandekar, Kerstin Haase, Shadi Hames-Fathi, et al. 2022. <span>“Signatures of Copy Number Alterations in Human Cancer.”</span> <em>Nature</em> 606 (7916): 984–91.
+</div>
+<div id="ref-stegle2010bayesian" class="csl-entry" role="listitem">
+Stegle, Oliver, Leopold Parts, Richard Durbin, and John Winn. 2010. <span>“A Bayesian Framework to Account for Complex Non-Genetic Factors in Gene Expression Levels Greatly Increases Power in eQTL Studies.”</span> <em>PLoS Computational Biology</em> 6 (5): e1000770.
+</div>
+<div id="ref-sznajder2019short" class="csl-entry" role="listitem">
+Sznajder, Łukasz J, and Maurice S Swanson. 2019. <span>“Short Tandem Repeat Expansions and RNA-Mediated Pathogenesis in Myotonic Dystrophy.”</span> <em>International Journal of Molecular Sciences</em> 20 (13): 3365.
+</div>
+<div id="ref-tangherloni2019genhap" class="csl-entry" role="listitem">
+Tangherloni, Andrea, Simone Spolaor, Leonardo Rundo, Marco S Nobile, Paolo Cazzaniga, Giancarlo Mauri, Pietro Liò, Ivan Merelli, and Daniela Besozzi. 2019. <span>“GenHap: A Novel Computational Method Based on Genetic Algorithms for Haplotype Assembly.”</span> <em>BMC Bioinformatics</em> 20: 1–14.
+</div>
+<div id="ref-tanudisastro2024sequencing" class="csl-entry" role="listitem">
+Tanudisastro, Hope A, Ira W Deveson, Harriet Dashnow, and Daniel G MacArthur. 2024. <span>“Sequencing and Characterizing Short Tandem Repeats in the Human Genome.”</span> <em>Nature Reviews Genetics</em> 25 (7): 460–75.
+</div>
+<div id="ref-valecha2022somatic" class="csl-entry" role="listitem">
+Valecha, Monica, and David Posada. 2022. <span>“Somatic Variant Calling from Single-Cell DNA Sequencing Data.”</span> <em>Computational and Structural Biotechnology Journal</em> 20: 2978–85.
+</div>
+<div id="ref-verbanck2018detection" class="csl-entry" role="listitem">
+Verbanck, Marie, Chia-Yen Chen, Benjamin Neale, and Ron Do. 2018. <span>“Detection of Widespread Horizontal Pleiotropy in Causal Relationships Inferred from Mendelian Randomization Between Complex Traits and Diseases.”</span> <em>Nature Genetics</em> 50 (5): 693–98.
+</div>
+<div id="ref-wainberg2019opportunities" class="csl-entry" role="listitem">
+Wainberg, Michael, Nasa Sinnott-Armstrong, Nicholas Mancuso, Alvaro N Barbeira, David A Knowles, David Golan, Raili Ermel, et al. 2019. <span>“Opportunities and Challenges for Transcriptome-Wide Association Studies.”</span> <em>Nature Genetics</em> 51 (4): 592–99.
+</div>
+<div id="ref-wall2003haplotype" class="csl-entry" role="listitem">
+Wall, Jeffrey D, and Jonathan K Pritchard. 2003. <span>“Haplotype Blocks and Linkage Disequilibrium in the Human Genome.”</span> <em>Nature Reviews Genetics</em> 4 (8): 587–97.
+</div>
+<div id="ref-wang2020simple" class="csl-entry" role="listitem">
+Wang, Gao, Abhishek Sarkar, Peter Carbonetto, and Matthew Stephens. 2020. <span>“A Simple New Approach to Variable Selection in Regression, with Application to Genetic Fine Mapping.”</span> <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em> 82 (5): 1273–1300.
+</div>
+<div id="ref-wang2022methods" class="csl-entry" role="listitem">
+Wang, Qingbo S, and Hailiang Huang. 2022. <span>“Methods for Statistical Fine-Mapping and Their Applications to Auto-Immune Diseases.”</span> In <em>Seminars in Immunopathology</em>, 44:101–13. 1. Springer.
+</div>
+<div id="ref-wang2021pipeline" class="csl-entry" role="listitem">
+Wang, Tao, Yongzhuang Liu, Junpeng Ruan, Xianjun Dong, Yadong Wang, and Jiajie Peng. 2021. <span>“A Pipeline for RNA-Seq Based eQTL Analysis with Automated Quality Control Procedures.”</span> <em>BMC Bioinformatics</em> 22: 1–18.
+</div>
+<div id="ref-wong2020towards" class="csl-entry" role="listitem">
+Wong, Karen HY, Walfred Ma, Chun-Yu Wei, Erh-Chan Yeh, Wan-Jia Lin, Elin HF Wang, Jen-Ping Su, et al. 2020. <span>“Towards a Reference Genome That Captures Global Genetic Diversity.”</span> <em>Nature Communications</em> 11 (1): 5482.
+</div>
+<div id="ref-wright2023native" class="csl-entry" role="listitem">
+Wright, Shannon E, and Peter K Todd. 2023. <span>“Native Functions of Short Tandem Repeats.”</span> <em>Elife</em> 12: e84043.
+</div>
+<div id="ref-xing2020secnvs" class="csl-entry" role="listitem">
+Xing, Yue, Alan R Dabney, Xiao Li, Guosong Wang, Clare A Gill, and Claudio Casola. 2020. <span>“SECNVs: A Simulator of Copy Number Variants and Whole-Exome Sequences from Reference Genomes.”</span> <em>Frontiers in Genetics</em> 11: 82.
+</div>
+<div id="ref-yang2023carma" class="csl-entry" role="listitem">
+Yang, Zikun, Chen Wang, Linxi Liu, Atlas Khan, Annie Lee, Badri Vardarajan, Richard Mayeux, Krzysztof Kiryluk, and Iuliana Ionita-Laza. 2023. <span>“CARMA Is a New Bayesian Model for Fine-Mapping in Genome-Wide Association Meta-Analyses.”</span> <em>Nature Genetics</em> 55 (6): 1057–65.
+</div>
+<div id="ref-yazar2022single" class="csl-entry" role="listitem">
+Yazar, Seyhan, Jose Alquicira-Hernandez, Kristof Wing, Anne Senabouth, M Grace Gordon, Stacey Andersen, Qinyi Lu, et al. 2022. <span>“Single-Cell <span class="nocase">eQTL</span> Mapping Identifies Cell Type-Specific Genetic Control of Autoimmune Disease.”</span> <em>Science</em> 376 (6589): eabf3041.
+</div>
+<div id="ref-yu2023scone" class="csl-entry" role="listitem">
+Yu, Lei, Xinlei Wang, Quanhua Mu, Sindy Sing Ting Tam, Danson Shek Chun Loi, Aden KY Chan, Wai Sang Poon, et al. 2023. <span>“scONE-Seq: A Single-Cell Multi-Omics Method Enables Simultaneous Dissection of Phenotype and Genotype Heterogeneity from Frozen Tumors.”</span> <em>Science Advances</em> 9 (1): eabp8901.
+</div>
+<div id="ref-zhang2019comprehensively" class="csl-entry" role="listitem">
+Zhang, Le, Wanyu Bai, Na Yuan, and Zhenglin Du. 2019. <span>“Comprehensively Benchmarking Applications for Detecting Copy Number Variation.”</span> <em>PLoS Computational Biology</em> 15 (5): e1007069.
+</div>
+<div id="ref-zhang2022polygenic" class="csl-entry" role="listitem">
+Zhang, Martin Jinye, Kangcheng Hou, Kushal K Dey, Saori Sakaue, Karthik A Jagadeesh, Kathryn Weinand, Aris Taychameekiatchai, et al. 2022. <span>“Polygenic Enrichment Distinguishes Disease Associations of Individual Cells in Single-Cell RNA-Seq Data.”</span> <em>Nature Genetics</em> 54 (10): 1572–80.
+</div>
+<div id="ref-zhou2024scpredixcan" class="csl-entry" role="listitem">
+Zhou, Yichao, Temidayo Adeluwa, Lisha Zhu, Sofia Salazar, Sarah Sumner, Hyunki Kim, Saideep Gona, et al. 2024. <span>“scPrediXcan Integrates Advances in Deep Learning and Single-Cell Data into a Powerful Cell-Type–Specific Transcriptome-Wide Association Study Framework.”</span> <em>bioRxiv</em>, 2024–11.
+</div>
+<div id="ref-zhuang2019development" class="csl-entry" role="listitem">
+Zhuang, Yonghua, Kristen Wade, Laura M Saba, and Katerina Kechris. 2019. <span>“Development of a Tissue Augmented Bayesian Model for Expression Quantitative Trait Loci Analysis.”</span> <em>Mathematical Biosciences and Engineering: MBE</em> 17 (1): 122.
+</div>
+<div id="ref-zou2022fine" class="csl-entry" role="listitem">
+Zou, Yuxin, Peter Carbonetto, Gao Wang, and Matthew Stephens. 2022. <span>“Fine-Mapping from Summary Data with the <span>‘Sum of Single Effects’</span> Model.”</span> <em>PLoS Genetics</em> 18 (7): e1010299.
+</div>
+<div id="ref-zverinova2022variant" class="csl-entry" role="listitem">
+Zverinova, Stepanka, and Victor Guryev. 2022. <span>“Variant Calling: Considerations, Practices, and Developments.”</span> <em>Human Mutation</em> 43 (8): 976–85.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>See <a href="https://en.wikipedia.org/wiki/Directionality_(molecular_biology)" class="uri">https://en.wikipedia.org/wiki/Directionality_(molecular_biology)</a> and <a href="https://en.wikipedia.org/wiki/Sense_(molecular_biology)" class="uri">https://en.wikipedia.org/wiki/Sense_(molecular_biology)</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>To review, the Viterbi algorithm (<a href="https://en.wikipedia.org/wiki/Viterbi_algorithm" class="uri">https://en.wikipedia.org/wiki/Viterbi_algorithm</a>) outputs the most likely sequence of underlying copy number profiles across the chromosome given the sequencing reads of each bin.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This is their <code>baseline.norm.cl</code> function, see <a href="https://github.com/navinlabcode/copykat/blob/master/R/baseline.norm.cl.R" class="uri">https://github.com/navinlabcode/copykat/blob/master/R/baseline.norm.cl.R</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter5_epigenetics.html" class="pagination-link" aria-label="Single-cell epigenetics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter7_crispr.html" class="pagination-link" aria-label="Single-cell CRISPR editting">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
