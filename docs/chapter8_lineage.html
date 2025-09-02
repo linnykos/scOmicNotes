@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -256,7 +276,7 @@ window.Quarto = {
 <img src="fig/chap8/cancer_treatment1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.1: From .
+Figure&nbsp;7.1: From <span class="citation" data-cites="ashouri2023decoding">Ashouri, Zhang, and Gaiti (<a href="references.html#ref-ashouri2023decoding" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -268,7 +288,7 @@ Figure&nbsp;7.1: From .
 <img src="fig/chap8/cancer_treatment2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.2: From .
+Figure&nbsp;7.2: From <span class="citation" data-cites="marine2020non">Marine, Dawson, and Dawson (<a href="references.html#ref-marine2020non" role="doc-biblioref">2020</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -283,7 +303,7 @@ Figure&nbsp;7.2: From .
 <img src="fig/chap8/metastasis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.3: From .
+Figure&nbsp;7.3: From <span class="citation" data-cites="fu2023emerging">Fu et al. (<a href="references.html#ref-fu2023emerging" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -298,7 +318,7 @@ Figure&nbsp;7.3: From .
 <img src="fig/chap8/covid.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.4: From . You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
+Figure&nbsp;7.4: From <span class="citation" data-cites="stephenson2021single">Stephenson et al. (<a href="references.html#ref-stephenson2021single" role="doc-biblioref">2021</a>)</span>. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
 </figcaption>
 </figure>
 </div>
@@ -313,7 +333,7 @@ Figure&nbsp;7.4: From . You can see that at different stages of COVID, there is 
 <img src="fig/chap8/larry.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.5: From . This dataset was recorded longitudinally, with cells sequenced at Days 2, 4, and 6. The figure shows cells known to belong to different lineages, revealing that some lineages do not differentiate by Day 6, some differentiate into multiple cell types, and others differentiate into only one cell type.
+Figure&nbsp;7.5: From <span class="citation" data-cites="weinreb2020lineage">Weinreb et al. (<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref">2020</a>)</span>. This dataset was recorded longitudinally, with cells sequenced at Days 2, 4, and 6. The figure shows cells known to belong to different lineages, revealing that some lineages do not differentiate by Day 6, some differentiate into multiple cell types, and others differentiate into only one cell type.
 </figcaption>
 </figure>
 </div>
@@ -363,7 +383,7 @@ DNA methylation serves as another naturally occurring cellular barcode. Over tim
 <img src="fig/chap8/phylogenetic_goal1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phylogenetic-goal1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.7: From
+Figure&nbsp;7.7: From <span class="citation" data-cites="li2024reconstructing">Li et al. (<a href="references.html#ref-li2024reconstructing" role="doc-biblioref">2024</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -516,7 +536,7 @@ This creates barcodes as “genetic scars” in descendant cells. This dynamic a
 <img src="fig/chap8/larry-barcode.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.13: From , an example of static barcode.
+Figure&nbsp;7.13: From <span class="citation" data-cites="weinreb2020lineage">Weinreb et al. (<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref">2020</a>)</span>, an example of static barcode.
 </figcaption>
 </figure>
 </div>
@@ -528,7 +548,7 @@ Figure&nbsp;7.13: From , an example of static barcode.
 <img src="fig/chap8/cassiopeia_evolving.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.14: From , an example of evolving barcode.
+Figure&nbsp;7.14: From <span class="citation" data-cites="chan2019molecular">Chan et al. (<a href="references.html#ref-chan2019molecular" role="doc-biblioref">2019</a>)</span>, an example of evolving barcode.
 </figcaption>
 </figure>
 </div>
@@ -540,7 +560,7 @@ Figure&nbsp;7.14: From , an example of evolving barcode.
 <img src="fig/chap8/lineage-tech1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barcode3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.15: From .
+Figure&nbsp;7.15: From <span class="citation" data-cites="jones2023new">Jones, Yang, and Weissman (<a href="references.html#ref-jones2023new" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -554,7 +574,7 @@ Figure&nbsp;7.15: From .
 <img src="fig/chap8/lineage-application.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-application-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.16: From
+Figure&nbsp;7.16: From <span class="citation" data-cites="jones2023new">Jones, Yang, and Weissman (<a href="references.html#ref-jones2023new" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -566,7 +586,7 @@ Figure&nbsp;7.16: From
 <img src="fig/chap8/lineage-tech2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-tech2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.17: From
+Figure&nbsp;7.17: From <span class="citation" data-cites="vanhorn2021next">VanHorn and Morris (<a href="references.html#ref-vanhorn2021next" role="doc-biblioref">2021</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -608,7 +628,7 @@ This algorithm builds the tree top-down, repeatedly choosing the most “frequen
 <img src="fig/chap8/cassiopeia1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.18: From
+Figure&nbsp;7.18: From <span class="citation" data-cites="jones2020inference">Jones et al. (<a href="references.html#ref-jones2020inference" role="doc-biblioref">2020</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -620,7 +640,7 @@ Figure&nbsp;7.18: From
 <img src="fig/chap8/cassiopeia2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.19: From
+Figure&nbsp;7.19: From <span class="citation" data-cites="jones2020inference">Jones et al. (<a href="references.html#ref-jones2020inference" role="doc-biblioref">2020</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -677,7 +697,7 @@ Copy number alterations (CNAs) are a hallmark of many cancers and arise due to g
 <img src="fig/chap8/dna_phylogenetic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dna-phylogenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.21: From . Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we’re discussing in these notes.
+Figure&nbsp;7.21: From <span class="citation" data-cites="lu2025cancer">Lu (<a href="references.html#ref-lu2025cancer" role="doc-biblioref">2025</a>)</span>. Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we’re discussing in these notes.
 </figcaption>
 </figure>
 </div>
@@ -691,7 +711,7 @@ Figure&nbsp;7.21: From . Imagine we have longitudinal samples of a person. Those
 <img src="fig/chap8/dice.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dice1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.22: From
+Figure&nbsp;7.22: From <span class="citation" data-cites="weiner2025dice">Weiner and Bansal (<a href="references.html#ref-weiner2025dice" role="doc-biblioref">2025</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -703,7 +723,7 @@ Figure&nbsp;7.22: From
 <img src="fig/chap8/medicc2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dice2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.23: From
+Figure&nbsp;7.23: From <span class="citation" data-cites="kaufmann2022medicc2">Kaufmann et al. (<a href="references.html#ref-kaufmann2022medicc2" role="doc-biblioref">2022</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -762,9 +782,9 @@ There are two components to model the likelihood, one for the SNVs, one for the 
 \]</span><br>
 for each cell.</p></li>
 <li><p><strong>Simulated annealing</strong>:<br>
-Simulated annealing is a useful statistical technique for reconstructing a phylogenetic tree from single-cell DNA data because we want to search through a vast space of possible evolutionary histories<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Each candidate tree is defined by how individual copy number events and mutations are arranged and passed down through successive subclones.</p>
-<p>A naive or purely greedy search might easily get stuck in suboptimal solutions, given the noisy nature of single-cell data and the combinatorial explosion of possible trees. By gradually “cooling” the exploration of this space — starting from more random moves and then narrowing down to finer adjustments — simulated annealing helps ensure that the final solution is not merely a local optimum. In other words, this strategy balances the need for broad exploration early on with the requirement of a precise, fine-grained search later, thereby increasing the likelihood of discovering a high-probability lineage structure.</p></li>
+Simulated annealing is a useful statistical technique for reconstructing a phylogenetic tree from single-cell DNA data because we want to search through a vast space of possible evolutionary histories<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Each candidate tree is defined by how individual copy number events and mutations are arranged and passed down through successive subclones.</p></li>
 </ul>
+<p>A naive or purely greedy search might easily get stuck in suboptimal solutions, given the noisy nature of single-cell data and the combinatorial explosion of possible trees. By gradually “cooling” the exploration of this space — starting from more random moves and then narrowing down to finer adjustments — simulated annealing helps ensure that the final solution is not merely a local optimum. In other words, this strategy balances the need for broad exploration early on with the requirement of a precise, fine-grained search later, thereby increasing the likelihood of discovering a high-probability lineage structure.</p>
 <p>COMPASS employs a simulated annealing approach over the discrete space of trees:</p>
 <ol type="1">
 <li>Start with a random initial tree (random parent pointers, random SNV allocation, no CNAs).</li>
@@ -787,7 +807,7 @@ Simulated annealing is a useful statistical technique for reconstructing a phylo
 <img src="fig/chap8/compass.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.25: From .
+Figure&nbsp;7.25: From <span class="citation" data-cites="sollier2023compass">Sollier et al. (<a href="references.html#ref-sollier2023compass" role="doc-biblioref">2023</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -805,22 +825,75 @@ As we’ve mentioned, you can see in <a href="#fig-compass" class="quarto-xref">
 <img src="fig/chap8/cancer-phylogenetic-sc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer-phylogenetic-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.26: From . Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.
+Figure&nbsp;7.26: From <span class="citation" data-cites="erickson2022spatially">Erickson et al. (<a href="references.html#ref-erickson2022spatially" role="doc-biblioref">2022</a>)</span>. Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.
 </figcaption>
 </figure>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-ashouri2023decoding" class="csl-entry" role="listitem">
+Ashouri, Arghavan, Chufan Zhang, and Federico Gaiti. 2023. <span>“Decoding Cancer Evolution: Integrating Genetic and Non-Genetic Insights.”</span> <em>Genes</em> 14 (10): 1856.
+</div>
+<div id="ref-chan2019molecular" class="csl-entry" role="listitem">
+Chan, Michelle M, Zachary D Smith, Stefanie Grosswendt, Helene Kretzmer, Thomas M Norman, Britt Adamson, Marco Jost, et al. 2019. <span>“Molecular Recording of Mammalian Embryogenesis.”</span> <em>Nature</em> 570 (7759): 77–82.
+</div>
+<div id="ref-erickson2022spatially" class="csl-entry" role="listitem">
+Erickson, Andrew, Mengxiao He, Emelie Berglund, Maja Marklund, Reza Mirzazadeh, Niklas Schultz, Linda Kvastad, et al. 2022. <span>“Spatially Resolved Clonal Copy Number Alterations in Benign and Malignant Tissue.”</span> <em>Nature</em> 608 (7922): 360–67.
+</div>
+<div id="ref-fu2023emerging" class="csl-entry" role="listitem">
+Fu, Aikun, Bingqing Yao, Tingting Dong, and Shang Cai. 2023. <span>“Emerging Roles of Intratumor Microbiota in Cancer Metastasis.”</span> <em>Trends in Cell Biology</em> 33 (7): 583–93.
+</div>
+<div id="ref-jones2020inference" class="csl-entry" role="listitem">
+Jones, Matthew G, Alex Khodaverdian, Jeffrey J Quinn, Michelle M Chan, Jeffrey A Hussmann, Robert Wang, Chenling Xu, Jonathan S Weissman, and Nir Yosef. 2020. <span>“Inference of Single-Cell Phylogenies from Lineage Tracing Data Using Cassiopeia.”</span> <em>Genome Biology</em> 21 (1): 1–27.
+</div>
+<div id="ref-jones2023new" class="csl-entry" role="listitem">
+Jones, Matthew G, Dian Yang, and Jonathan S Weissman. 2023. <span>“New Tools for Lineage Tracing in Cancer in Vivo.”</span>
+</div>
+<div id="ref-kaufmann2022medicc2" class="csl-entry" role="listitem">
+Kaufmann, Tom L, Marina Petkovic, Thomas BK Watkins, Emma C Colliver, Sofya Laskina, Nisha Thapa, Darlan C Minussi, et al. 2022. <span>“MEDICC2: Whole-Genome Doubling Aware Copy-Number Phylogenies for Cancer Evolution.”</span> <em>Genome Biology</em> 23 (1): 241.
+</div>
+<div id="ref-kosicki2022cas9" class="csl-entry" role="listitem">
+Kosicki, Michael, Felicity Allen, Frances Steward, Kärt Tomberg, Yangyang Pan, and Allan Bradley. 2022. <span>“Cas9-Induced Large Deletions and Small Indels Are Controlled in a Convergent Fashion.”</span> <em>Nature Communications</em> 13 (1): 3422.
+</div>
+<div id="ref-li2024reconstructing" class="csl-entry" role="listitem">
+Li, Zizhang, Wenjing Yang, Peng Wu, Yuyan Shan, Xiaoyu Zhang, Feng Chen, Junnan Yang, and Jian-Rong Yang. 2024. <span>“Reconstructing Cell Lineage Trees with Genomic Barcoding: Approaches and Applications.”</span> <em>Journal of Genetics and Genomics</em> 51 (1): 35–47.
+</div>
+<div id="ref-lu2025cancer" class="csl-entry" role="listitem">
+Lu, Bingxin. 2025. <span>“Cancer Phylogenetic Inference Using Copy Number Alterations Detected from DNA Sequencing Data.”</span> <em>Cancer Pathogenesis and Therapy</em> 3 (01): 16–29.
+</div>
+<div id="ref-marine2020non" class="csl-entry" role="listitem">
+Marine, Jean-Christophe, Sarah-Jane Dawson, and Mark A Dawson. 2020. <span>“Non-Genetic Mechanisms of Therapeutic Resistance in Cancer.”</span> <em>Nature Reviews Cancer</em> 20 (12): 743–56.
+</div>
+<div id="ref-mcvey2008mmej" class="csl-entry" role="listitem">
+McVey, Mitch, and Sang Eun Lee. 2008. <span>“MMEJ Repair of Double-Strand Breaks (Director’s Cut): Deleted Sequences and Alternative Endings.”</span> <em>Trends in Genetics</em> 24 (11): 529–38.
+</div>
+<div id="ref-sollier2023compass" class="csl-entry" role="listitem">
+Sollier, Etienne, Jack Kuipers, Koichi Takahashi, Niko Beerenwinkel, and Katharina Jahn. 2023. <span>“COMPASS: Joint Copy Number and Mutation Phylogeny Reconstruction from Amplicon Single-Cell Sequencing Data.”</span> <em>Nature Communications</em> 14 (1): 4921.
+</div>
+<div id="ref-stephenson2021single" class="csl-entry" role="listitem">
+Stephenson, Emily, Gary Reynolds, Rachel A Botting, Fernando J Calero-Nieto, Michael D Morgan, Zewen Kelvin Tuong, Karsten Bach, et al. 2021. <span>“Single-Cell Multi-Omics Analysis of the Immune Response in COVID-19.”</span> <em>Nature Medicine</em> 27 (5): 904–16.
+</div>
+<div id="ref-vanhorn2021next" class="csl-entry" role="listitem">
+VanHorn, Sadie, and Samantha A Morris. 2021. <span>“Next-Generation Lineage Tracing and Fate Mapping to Interrogate Development.”</span> <em>Developmental Cell</em> 56 (1): 7–21.
+</div>
+<div id="ref-weiner2025dice" class="csl-entry" role="listitem">
+Weiner, Samson, and Mukul S Bansal. 2025. <span>“DICE: Fast and Accurate Distance-Based Reconstruction of Single-Cell Copy Number Phylogenies.”</span> <em>Life Science Alliance</em> 8 (3).
+</div>
+<div id="ref-weinreb2020lineage" class="csl-entry" role="listitem">
+Weinreb, Caleb, Alejo Rodriguez-Fraticelli, Fernando D Camargo, and Allon M Klein. 2020. <span>“Lineage Tracing on Transcriptional Landscapes Links State to Fate During Differentiation.”</span> <em>Science</em> 367 (6479).
+</div>
+</div>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>This is <em>NOT</em> about applying factorial twice. This means you’re taking the factorial where you only take every odd number.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Formally, you would also need to prove that all the unique <span class="math inline">\(n\)</span>-leaf trees formed this way from one particular <span class="math inline">\((n-1)\)</span>-leaf tree is distinct from any possible <span class="math inline">\(n\)</span>-leaf tree formed from a different <span class="math inline">\((n-1)\)</span>-leaf tree.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You can approximate <span class="math inline">\(n!\)</span> by <span class="math inline">\(n^n\)</span>. See <a href="https://en.wikipedia.org/wiki/Stirlings_approximation" class="uri">https://en.wikipedia.org/wiki/Stirlings_approximation</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>To quote <span class="citation" data-cites="jones2020inference">Jones et al. (<a href="references.html#ref-jones2020inference" role="doc-biblioref">2020</a>)</span>, “… the amount of missing data that is typical of lineage tracing experiments, which can be ‘heritable’ (resulting from either large Cas9-induced resections that remove target sites or transcriptional silencing) …” See <span class="citation" data-cites="kosicki2022cas9">Kosicki et al. (<a href="references.html#ref-kosicki2022cas9" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="mcvey2008mmej">McVey and Lee (<a href="references.html#ref-mcvey2008mmej" role="doc-biblioref">2008</a>)</span> for some additional context on how large deletions could happen.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>See <a href="https://en.wikipedia.org/wiki/Simulated_annealing" class="uri">https://en.wikipedia.org/wiki/Simulated_annealing</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
