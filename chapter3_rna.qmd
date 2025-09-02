@@ -11,6 +11,7 @@ format:
 execute:
   echo: false         # hide code by default
 bibliography: references.bib   # optional .bib file for citations
+---=
 ---
 
 ::: block2
@@ -68,40 +69,38 @@ Most of the statistical logic discussed for scRNA-seq will work for any other se
 ## How scRNA-seq works as a technology {#sec-chapter_3_tech}
 
 ::: block
-**Remark (Single-cell vs. single-nuclei).**
-While I use the word "cell," sometimes in certain biological tissues, the more accurate word is "nuclei." The computational methods for single-cell RNA-seq data (scRNA-seq) is essentially the same as single-nuclei RNA-seq data (snRNA-seq). What's different is the biological context. For instance, some biological processes happen only in the nucleus, so when you collect snRNA-seq data, you might be overly enriched to discover those processes. See [@denisenko2020systematic; @ding2020systematic] for example.
+**Remark (Single-cell vs. single-nuclei).** While I use the word "cell," sometimes in certain biological tissues, the more accurate word is "nuclei." The computational methods for single-cell RNA-seq data (scRNA-seq) is essentially the same as single-nuclei RNA-seq data (snRNA-seq). What's different is the biological context. For instance, some biological processes happen only in the nucleus, so when you collect snRNA-seq data, you might be overly enriched to discover those processes. See [@denisenko2020systematic; @ding2020systematic] for example.
 :::
 
-See @fig-10x-protocol for an illustration of how the 10x protocol works. We'll explain this next (and more importantly, *why* it's important for a statistician to know how single-cell sequencing works)[^1].
+See @fig-10x-protocol for an illustration of how the 10x protocol works. We'll explain this next (and more importantly, *why* it's important for a statistician to know how single-cell sequencing works)[^chapter3_rna-3].
 
-[^1]: See <https://www.youtube.com/watch?v=uFrrKHB9weY> for a useful overview this. If you are not overwhelmed by technical detail of barcoding technology, you might be interested to look at the 10x user guide (this one is specific to the 3' v4 chemistry, which is common currently, <https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide>).
+[^chapter3_rna-3]: See <https://cole-trapnell-lab.github.io/monocle3/docs/introduction/>.
 
 ::: block
 ![Illustration of the how scRNA-seq works (this is specific for 10x Chromium 3', but most single-cell protocols follow this rough strategy). [@swaminath2024use]](fig/chap3/10x-protocol.png){#fig-10x-protocol width="100%" fig-align="center"}
 :::
 
-1. **Tissue dissociation and cell isolation**: The tissue of interest is dissociated into a suspension of individual cells using enzymatic or mechanical methods. Single cells are isolated, often using fluorescence-activated cell sorting (FACS) or microfluidic techniques. This step is why some biological systems require "single-nuclei" instead of "single-cell."
+1.  **Tissue dissociation and cell isolation**: The tissue of interest is dissociated into a suspension of individual cells using enzymatic or mechanical methods. Single cells are isolated, often using fluorescence-activated cell sorting (FACS) or microfluidic techniques. This step is why some biological systems require "single-nuclei" instead of "single-cell."
 
 ::: block
-**Remark (Tissue dissociation is typically invasive).**
-The main non-invasive ways is through blood, skin, and urine/feces. Otherwise, unlike MRIs, this is not easy to access tissues in humans.
-Hence, human samples from most non-accessible biological systems (i.e., brain, lung, heart, etc.) are usually obtain with prior consent from donors after surgery, biopsy, transplant, etc.
+**Remark (Tissue dissociation is typically invasive).** The main non-invasive ways is through blood, skin, and urine/feces. Otherwise, unlike MRIs, this is not easy to access tissues in humans. Hence, human samples from most non-accessible biological systems (i.e., brain, lung, heart, etc.) are usually obtain with prior consent from donors after surgery, biopsy, transplant, etc.
 :::
 
-2. **Droplet formation**: Cells are encapsulated into tiny droplets along with barcoded beads. Each bead contains unique molecular identifiers (UMIs) and cell-specific barcodes to label RNA molecules from individual cells. This step is the how we can keep track and eventually figure out which data came from which cell.[^2]
+2.  **Droplet formation**: Cells are encapsulated into tiny droplets along with barcoded beads. Each bead contains unique molecular identifiers (UMIs) and cell-specific barcodes to label RNA molecules from individual cells. This step is the how we can keep track and eventually figure out which data came from which cell.[^chapter3_rna-4]
 
-[^2]: Note: I didn't talk about explicitly discuss multiplexing the samples here. See <https://www.10xgenomics.com/support/software/cell-ranger/latest/getting-started/cr-3p-what-is-cellplex>.
+[^chapter3_rna-4]: See <https://www.qiagen.com/us/resources/faq?id=06a192c2-e72d-42e8-9b40-3171e1eb4cb8>.
 
-3. **Cell lysis and RNA capture**: Cells are lysed within the droplets, and the released RNA molecules hybridize to oligonucleotides on the barcoded beads. This step ensures that all RNA from a single cell is tagged with the same cell-specific barcode.
+<!-- -->
+
+3.  **Cell lysis and RNA capture**: Cells are lysed within the droplets, and the released RNA molecules hybridize to oligonucleotides on the barcoded beads. This step ensures that all RNA from a single cell is tagged with the same cell-specific barcode.
 
 ::: block
-**Remark (Lysing prevents longitudinal profile).**
-This step is why, by default, scRNA-seq cannot do longitudinal experiments on literally the same cells. You have to destroy the cell to sequence it.
+**Remark (Lysing prevents longitudinal profile).** This step is why, by default, scRNA-seq cannot do longitudinal experiments on literally the same cells. You have to destroy the cell to sequence it.
 :::
 
-4. **Reverse transcription, cDNA synthesis, and PCR amplification**: The captured RNA is reverse-transcribed into complementary DNA (cDNA), incorporating the barcodes and UMIs to track the origin of each molecule. The cDNA is amplified via PCR to generate enough material for sequencing[^3]. UMIs help correct for amplification biases by identifying and collapsing duplicate reads from the same original RNA molecule. See @fig-umi1 for the benefit the UMI.
+4.  **Reverse transcription, cDNA synthesis, and PCR amplification**: The captured RNA is reverse-transcribed into complementary DNA (cDNA), incorporating the barcodes and UMIs to track the origin of each molecule. The cDNA is amplified via PCR to generate enough material for sequencing[^chapter3_rna-5]. UMIs help correct for amplification biases by identifying and collapsing duplicate reads from the same original RNA molecule. See @fig-umi1 for the benefit the UMI.
 
-[^3]: For more context about PCR, see: <https://www.youtube.com/watch?v=zaXKQ70q4KQ>.
+[^chapter3_rna-5]: For more context about PCR, see: <https://www.youtube.com/watch?v=zaXKQ70q4KQ>.
 
 ::: block
 ![Illustration of the importance of UMIs. From <https://help.geneiousbiologics.com/hc/en-us/articles/4781289585300-Understanding-Single-Cell-technologies-Barcodes-and-UMIs>.](fig/chap3/umi.png){#fig-umi1 width="100%" fig-align="center"}
@@ -112,49 +111,43 @@ This step is why, by default, scRNA-seq cannot do longitudinal experiments on li
 :::
 
 ::: block
-**Remark (The importance and impact of PCR).**
-Some biological modalities cannot be PCR'd reliably. This is why (as we'll see later in the course) certain omics are a *lot* harder to get data of at single-cell resolution. The PCR step is important because you can imagine it's *very* hard to sequence every fragment in a cell. There might be many fragments, but you won't be able to sequence many of them. By amplifying the content in a cell, we can more reliably sequence the contents in that cell. The UMIs become very important because we want to make sure our eventual gene expression counts are the fragments from the original cell, not counts due to PCR amplification.
+**Remark (The importance and impact of PCR).** Some biological modalities cannot be PCR'd reliably. This is why (as we'll see later in the course) certain omics are a *lot* harder to get data of at single-cell resolution. The PCR step is important because you can imagine it's *very* hard to sequence every fragment in a cell. There might be many fragments, but you won't be able to sequence many of them. By amplifying the content in a cell, we can more reliably sequence the contents in that cell. The UMIs become very important because we want to make sure our eventual gene expression counts are the fragments from the original cell, not counts due to PCR amplification.
 :::
 
-5. **Library preparation and high-throughput sequencing**: Amplified cDNA is fragmented (if necessary) and adapters are added to prepare the material for sequencing. These adapters are required for sequencing compatibility and indexing. The prepared library is sequenced on a next-generation sequencing platform[^4], generating short reads[^5] that include both the transcript sequence and the associated barcodes and UMIs
+5.  **Library preparation and high-throughput sequencing**: Amplified cDNA is fragmented (if necessary) and adapters are added to prepare the material for sequencing. These adapters are required for sequencing compatibility and indexing. The prepared library is sequenced on a next-generation sequencing platform[^chapter3_rna-6], generating short reads[^chapter3_rna-7] that include both the transcript sequence and the associated barcodes and UMIs
 
-[^4]: This can be a bit confusing. When we refer to the "10x machine" (e.g., the 10x Chromium platform, as described at <https://www.10xgenomics.com/products/universal-three-prime-gene-expression>), we are typically talking about the steps involved in droplet formation, cDNA synthesis. PCR and library preparation are usually not done in the 10x machine itself. Also, the resulting libraries are not sequenced on the 10x machine itself. Instead, sequencing is performed on a separate platform, such as an Illumina machine (e.g., see <https://www.illumina.com/systems/sequencing-platforms.html>).
+[^chapter3_rna-6]: This can be a bit confusing. When we refer to the "10x machine" (e.g., the 10x Chromium platform, as described at <https://www.10xgenomics.com/products/universal-three-prime-gene-expression>), we are typically talking about the steps involved in droplet formation, cDNA synthesis. PCR and library preparation are usually not done in the 10x machine itself. Also, the resulting libraries are not sequenced on the 10x machine itself. Instead, sequencing is performed on a separate platform, such as an Illumina machine (e.g., see <https://www.illumina.com/systems/sequencing-platforms.html>).
 
-[^5]: See <https://kb.10xgenomics.com/hc/en-us/articles/360000939852-What-is-the-difference-between-Single-Cell-3-and-5-Gene-Expression-libraries> and <https://kb.10xgenomics.com/hc/en-us/articles/218137123-What-is-the-expected-size-range-for-amplified-cDNA> for typical length of the cDNA fragment.
+[^chapter3_rna-7]: See <https://kb.10xgenomics.com/hc/en-us/articles/360000939852-What-is-the-difference-between-Single-Cell-3-and-5-Gene-Expression-libraries> and <https://kb.10xgenomics.com/hc/en-us/articles/218137123-What-is-the-expected-size-range-for-amplified-cDNA> for typical length of the cDNA fragment.
 
 ::: block2
-**Remark (The impact of "short reads").**
-Short reads, typically around 50-400 base pairs long[^6], are the output of most high-throughput sequencing platforms (i.e., a limitation of using Illumina sequencing, for example). While they provide highly accurate and cost-effective data, their limited length can pose challenges in resolving complex regions of the genome, such as repetitive sequences, or distinguishing between transcript isoforms in RNA-seq data. These limitations can obscure biological insights, particularly in applications requiring full-length transcript information or precise structural variation analysis.
+**Remark (The impact of "short reads").** Short reads, typically around 50-400 base pairs long[^chapter3_rna-8], are the output of most high-throughput sequencing platforms (i.e., a limitation of using Illumina sequencing, for example). While they provide highly accurate and cost-effective data, their limited length can pose challenges in resolving complex regions of the genome, such as repetitive sequences, or distinguishing between transcript isoforms in RNA-seq data. These limitations can obscure biological insights, particularly in applications requiring full-length transcript information or precise structural variation analysis.
 :::
 
-[^6]: Just to give you context, a "typical" gene is thousands of base pairs (it depends on if you're talking about the transcript itself, with or without introns, etc.) See [@lopes2021gene; @grishkevich2014gene; @leung2021full]. So what "short-read 3' RNA-sequencing" is referring to is that we only measure (roughly) 400 base pairs on the 3' side of the gene.
+[^chapter3_rna-8]: Just to give you context, a "typical" gene is thousands of base pairs (it depends on if you're talking about the transcript itself, with or without introns, etc.) See [@lopes2021gene; @grishkevich2014gene; @leung2021full]. So what "short-read 3' RNA-sequencing" is referring to is that we only measure (roughly) 400 base pairs on the 3' side of the gene.
 
 ::: block
-**Remark (Limitation of budget).**
-The sequencing step is a costly step (in terms of money) in a data generation process. The more money you spend, the more sequencing depth you can get. (Of course, this is also dictated by the number of cells in your experiment, the cell quality, the efficacy of the sequencing protocol, etc.) However, if you don't sequence using a large financial budget, then your count matrix $X$ will have even more 0's. This means you have less "resolution" to discover biological insights[^7].
+**Remark (Limitation of budget).** The sequencing step is a costly step (in terms of money) in a data generation process. The more money you spend, the more sequencing depth you can get. (Of course, this is also dictated by the number of cells in your experiment, the cell quality, the efficacy of the sequencing protocol, etc.) However, if you don't sequence using a large financial budget, then your count matrix $X$ will have even more 0's. This means you have less "resolution" to discover biological insights[^chapter3_rna-9].
 :::
 
-[^7]: See <https://satijalab.org/costpercell> (but most institutions publish their own rates. For example, see <https://www.bumc.bu.edu/microarray/pricing/> (for BU) and <https://cat.ucsf.edu/sequencing> (UCSF) for typical rates. For students who are not familiar with wet-lab experiments, a rough ballpark sense of cost is that a "reasonable" setting (i.e., sequencing depth of 20,000 reads per cell across 10,000 cells) costs about $2000. This is usually for just one sample (i.e., one tissue for one donor), so as your experiment involves more tissues or more donors, you multiply $2000 by the total number of samples you're thinking of. Remember, this is gets you a random set of 10,000 cells in the sample -- your biological question might only care about a small cell population among these 10,000 cells.
+[^chapter3_rna-9]: See <https://satijalab.org/costpercell> (but most institutions publish their own rates. For example, see <https://www.bumc.bu.edu/microarray/pricing/> (for BU) and <https://cat.ucsf.edu/sequencing> (UCSF) for typical rates. For students who are not familiar with wet-lab experiments, a rough ballpark sense of cost is that a "reasonable" setting (i.e., sequencing depth of 20,000 reads per cell across 10,000 cells) costs about \$2000. This is usually for just one sample (i.e., one tissue for one donor), so as your experiment involves more tissues or more donors, you multiply \$2000 by the total number of samples you're thinking of. Remember, this is gets you a random set of 10,000 cells in the sample -- your biological question might only care about a small cell population among these 10,000 cells.
 
-6. **Mapping and alignment**: Sequencing reads are mapped to a reference genome or transcriptome to identify the originating genes. UMIs are used to remove PCR duplicates, ensuring accurate quantification of transcripts. This is a classic bioinformatics task -- given a sequencing fragment (i.e., the literal basepair sequence) and a reference genome, figure out where in the reference genome this sequencing fragment should map to. If you are doing a typical 10x scRNA-seq experiment, the software to do this (made by 10x) is called CellRanger[^8].
+6.  **Mapping and alignment**: Sequencing reads are mapped to a reference genome or transcriptome to identify the originating genes. UMIs are used to remove PCR duplicates, ensuring accurate quantification of transcripts. This is a classic bioinformatics task -- given a sequencing fragment (i.e., the literal basepair sequence) and a reference genome, figure out where in the reference genome this sequencing fragment should map to. If you are doing a typical 10x scRNA-seq experiment, the software to do this (made by 10x) is called CellRanger[^chapter3_rna-10].
 
-[^8]: See <https://www.10xgenomics.com/support/software/cell-ranger/latest/algorithms-overview/cr-gex-algorithm> on how CellRanger works. See <https://www.10xgenomics.com/analysis-guides/quality-assessment-using-the-cell-ranger-web-summary> for the typical output of CellRanger. Importantly, usually only 60%-70% of the reads get mapped to the transcriptome (i.e., "genes"). So remember: 1) not all the 20,000 expected reads get mapped to the transcriptome, and 2) these are reads *before* you account for UMI duplicates. A reasonable ballpark is that 20,000 reads yields 4,000 UMIs, so this means in your scRNA-seq matrix, the total reads per cell is roughly 4,000 (across roughly 20,000 genes). See <https://cf.10xgenomics.com/samples/cell-exp/2.1.0/pbmc8k/pbmc8k_web_summary.html> for an example, or <https://www.10xgenomics.com/datasets> for other examples.
+[^chapter3_rna-10]: See <https://www.10xgenomics.com/support/software/cell-ranger/latest/algorithms-overview/cr-gex-algorithm> on how CellRanger works. See <https://www.10xgenomics.com/analysis-guides/quality-assessment-using-the-cell-ranger-web-summary> for the typical output of CellRanger. Importantly, usually only 60%-70% of the reads get mapped to the transcriptome (i.e., "genes"). So remember: 1) not all the 20,000 expected reads get mapped to the transcriptome, and 2) these are reads *before* you account for UMI duplicates. A reasonable ballpark is that 20,000 reads yields 4,000 UMIs, so this means in your scRNA-seq matrix, the total reads per cell is roughly 4,000 (across roughly 20,000 genes). See <https://cf.10xgenomics.com/samples/cell-exp/2.1.0/pbmc8k/pbmc8k_web_summary.html> for an example, or <https://www.10xgenomics.com/datasets> for other examples.
 
 ::: {#rem-biology_thrown .block}
-**Remark (A lot of fascinating biology is thrown out).**
-During the mapping and alignment step, many sequencing reads are often discarded because they do not align to the reference genome or transcriptome used in the analysis. This includes reads from bacteria and viruses, which could reveal insights into host-microbe interactions or infections [@arabi2023brain; @sato2018cell]. Similarly, long non-coding RNAs (lncRNAs) [@mattick2023long], genetic variation (including allele-specific expression) [@robles2021allele], alternative splicing [@chen2015alternative], and untranslated regions (UTRs) of mRNAs are frequently overlooked in standard analyses despite their crucial roles in gene regulation, transcript stability, and translation [@arora2022role]. While these regions and features are often excluded for simplicity or due to lack of annotation, they represent a wealth of biological information that could lead to fascinating discoveries if properly explored.
+**Remark (A lot of fascinating biology is thrown out).** During the mapping and alignment step, many sequencing reads are often discarded because they do not align to the reference genome or transcriptome used in the analysis. This includes reads from bacteria and viruses, which could reveal insights into host-microbe interactions or infections [@arabi2023brain; @sato2018cell]. Similarly, long non-coding RNAs (lncRNAs) [@mattick2023long], genetic variation (including allele-specific expression) [@robles2021allele], alternative splicing [@chen2015alternative], and untranslated regions (UTRs) of mRNAs are frequently overlooked in standard analyses despite their crucial roles in gene regulation, transcript stability, and translation [@arora2022role]. While these regions and features are often excluded for simplicity or due to lack of annotation, they represent a wealth of biological information that could lead to fascinating discoveries if properly explored.
 :::
 
 ::: {#rem-zero-inflation .block2}
-**Remark (Why zero-inflation is not currently as popular for scRNA-seq analyses).**
-As I mentioned in @sec-imputation, modeling zero-inflation is not very common anymore. (This is also why we typically do not use an imputation step beyond the usual dimension reduction.) This was shown for droplet-based sequencing protocols [@svensson2020droplet], alongside its replies and responses [@cao2021umi; @svensson2021reply]. You might also be interested as well to read more about where the 0's in a count matrix could come from during the entire sequencing protocol [@jiang2022statistics], and how UMIs have contributed to not needing to worry about zero-inflation as much anymore [@chen2018umi; @kim2020demystifying].
+**Remark (Why zero-inflation is not currently as popular for scRNA-seq analyses).** As I mentioned in @sec-imputation, modeling zero-inflation is not very common anymore. (This is also why we typically do not use an imputation step beyond the usual dimension reduction.) This was shown for droplet-based sequencing protocols [@svensson2020droplet], alongside its replies and responses [@cao2021umi; @svensson2021reply]. You might also be interested as well to read more about where the 0's in a count matrix could come from during the entire sequencing protocol [@jiang2022statistics], and how UMIs have contributed to not needing to worry about zero-inflation as much anymore [@chen2018umi; @kim2020demystifying].
 :::
-
 
 ## Clustering
 
 ::: block3
-**Input/Output.**  
+**Input/Output.**\
 The input to clustering is a normalized matrix $X\in \mathbb{R}^{n\times p}$ for $n$ cells and $p$ features (i.e., genes) and typically a clustering resolution, and the output is a partitioning of all the cells. That is, if there are estimated to be $K$ clusters, each cell is assigned to one of the $K$ clusters.
 :::
 
@@ -162,12 +155,12 @@ The input to clustering is a normalized matrix $X\in \mathbb{R}^{n\times p}$ for
 
 The concept of a "cell type" is foundational yet complex in biology. Historically, cell types have been defined by shared structural and functional characteristics, making them distinct from other cells in an organism. However, this simplicity belies a deeper challenge: what features truly define a cell type? Modern research has shown that cell types exhibit diverse properties across molecular (i.e., the mRNA fragments and proteins in the cell), morphological (i.e., the shape of the cell), spatial (i.e., where the cell is in the human body), ancestry (i.e., where the cell originated from), and functional (i.e., the purpose of this cell) dimensions, often making it difficult to draw clear boundaries. For example:
 
-- **Example of obvious distinctions**: Obvious differences in cells are often rooted in their structure and function. Heart muscle cells contract using striated fibers, while neurons transmit signals via dendrites and axons, making their structures and functions unmistakably distinct.
-- **Example of not-obvious distinctions**: Neurons in the brain have been categorized based on their shape, connectivity, and gene expression patterns, but these dimensions do not always align, leading to ambiguities in classification.
+-   **Example of obvious distinctions**: Obvious differences in cells are often rooted in their structure and function. Heart muscle cells contract using striated fibers, while neurons transmit signals via dendrites and axons, making their structures and functions unmistakably distinct.
+-   **Example of not-obvious distinctions**: Neurons in the brain have been categorized based on their shape, connectivity, and gene expression patterns, but these dimensions do not always align, leading to ambiguities in classification.
 
-For example, in many "atlas" projects (i.e., big scientific collaborators that aim to exhaustively profile many cells to understand the full diversity of cells), there is a very fundamental question: "How many cell types are there?" This is illustrated in @fig-atlas[^1], where after exhaustively profile 4 brains from multiple brain regions, the authors defined 31 "superclusters" (shown as different colors) that separate into 3313 "subclusters."
+For example, in many "atlas" projects (i.e., big scientific collaborators that aim to exhaustively profile many cells to understand the full diversity of cells), there is a very fundamental question: "How many cell types are there?" This is illustrated in @fig-atlas[^chapter3_rna-11], where after exhaustively profile 4 brains from multiple brain regions, the authors defined 31 "superclusters" (shown as different colors) that separate into 3313 "subclusters."
 
-[^1]: You'll notice the authors were very careful when using the word "cell type" in such papers for this very reason.
+[^chapter3_rna-11]: See <https://cole-trapnell-lab.github.io/monocle3/docs/introduction/>.
 
 ::: block
 ![From [@siletti2023transcriptomic].](fig/chap3/atlas.png){#fig-atlas width="100%" fig-align="center"}
@@ -180,8 +173,7 @@ Advances in single-cell transcriptomics have revolutionized how we define cell t
 :::
 
 ::: block2
-**Remark (Personal opinion: Being stunlocked on how to define "cell type" in your paper is the rite of passage to becoming a cell biologist).**
-The more you work closer to biology, the more you'll realize that answering "What is a cell type?" transforms from a seemingly useless pedagogical question into insanely difficult question that requires you to dig deep into biology. For instance, aging research is currently at the forefront of a lot of biomedical research. However, consider @fig-celltype_ex2. Does a cell switch it's "cell type" as we age? (Clearly, the answer must be "yes" to some degree, since all our cells originate from an embryo.) However, when we age from 70 to 80 years old, do our cells change their "cell type" as certain cells start losing their intended function? 
+**Remark (Personal opinion: Being stunlocked on how to define "cell type" in your paper is the rite of passage to becoming a cell biologist).** The more you work closer to biology, the more you'll realize that answering "What is a cell type?" transforms from a seemingly useless pedagogical question into insanely difficult question that requires you to dig deep into biology. For instance, aging research is currently at the forefront of a lot of biomedical research. However, consider @fig-celltype_ex2. Does a cell switch it's "cell type" as we age? (Clearly, the answer must be "yes" to some degree, since all our cells originate from an embryo.) However, when we age from 70 to 80 years old, do our cells change their "cell type" as certain cells start losing their intended function?
 
 The questions can get even crazier: Suppose I "discover a new cell type" in my high-profile scRNA-seq analysis. What does that mean? How do I convey to another researcher what defines this cell type? How am I confident that this "cell type" can be found in donors not in my dataset? (Our notation of cell type would be quite useless if it only existed in one donor or one dataset.)
 :::
@@ -200,47 +192,40 @@ Clustering is a central step in single-cell RNA-sequencing analysis, allowing re
 
 Louvain clustering is a graph-based community detection algorithm widely used in single-cell RNA-seq (scRNA-seq) analysis to group cells into clusters representing cell types or states. The algorithm operates on a nearest-neighbor graph constructed from the low-dimensional representation of the data, such as the first few principal components obtained via Principal Component Analysis (PCA). This methods needs one tuning parameter $\gamma$, which denotes the "resolution" of the method.
 
-- **Initialization (Graph construction)**:
-The first step in Louvain clustering is to construct a graph $G = (V, E)$, where:
- - $V$ represents the set of nodes (cells),
- - $E$ represents the edges between nodes, with weights $w_{ij}$ quantifying the similarity between cells $i$ and $j$.
+-   **Initialization (Graph construction)**: The first step in Louvain clustering is to construct a graph $G = (V, E)$, where:
+-   $V$ represents the set of nodes (cells),
+-   $E$ represents the edges between nodes, with weights $w_{ij}$ quantifying the similarity between cells $i$ and $j$.
 
 The edge weights $w_{ij}$ are typically computed using a similarity metric, such as Euclidean distance or cosine similarity, and thresholded to retain only the $k$-nearest neighbors for each node.
 
-- **The objective (Modularity optimization)**:
-The goal of Louvain clustering is to maximize the modularity $Q$ of the graph, defined as:
-$$
-Q = \frac{1}{2m} \sum_{i,j} \left( w_{ij} - \gamma \frac{k_i k_j}{2m} \right) \delta(c_i, c_j),
-$$
-where:
- - $w_{ij}$ is the weight of the edge between nodes $i$ and $j$,
- - $\gamma$ is the resolution of the desired clustering (a larger number means smaller cluster sizes),
- - $k_i = \sum_j w_{ij}$ is the sum of edge weights for node $i$,
- - $m = \frac{1}{2} \sum_{i,j} w_{ij}$ is the total weight of all edges in the graph,
- - $c_i$ is the community assignment for node $i$,
- - $\delta(c_i, c_j)$ is an indicator function that equals 1 if nodes $i$ and $j$ belong to the same community, and 0 otherwise.
+-   **The objective (Modularity optimization)**: The goal of Louvain clustering is to maximize the modularity $Q$ of the graph, defined as: $$
+    Q = \frac{1}{2m} \sum_{i,j} \left( w_{ij} - \gamma \frac{k_i k_j}{2m} \right) \delta(c_i, c_j),
+    $$ where:
+-   $w_{ij}$ is the weight of the edge between nodes $i$ and $j$,
+-   $\gamma$ is the resolution of the desired clustering (a larger number means smaller cluster sizes),
+-   $k_i = \sum_j w_{ij}$ is the sum of edge weights for node $i$,
+-   $m = \frac{1}{2} \sum_{i,j} w_{ij}$ is the total weight of all edges in the graph,
+-   $c_i$ is the community assignment for node $i$,
+-   $\delta(c_i, c_j)$ is an indicator function that equals 1 if nodes $i$ and $j$ belong to the same community, and 0 otherwise.
 
 The modularity measures the quality of a partition by comparing the observed edge weights within communities to those expected under a random graph with the same degree distribution. (Conceptually, you can see that $k_i k_j/(2m)$ represents the expected edge weight under a random graph model -- a sort of "background distribution" adjustment.)
 
-- **The estimation procedure (Iterative refinement)**:
-Louvain clustering proceeds iteratively:
- 1. Each node is initially assigned to its own community.
- 2. Nodes are moved to neighboring communities if this increases the modularity $Q$.
- 3. Communities are aggregated into "super-nodes," and the process repeats on the coarsened graph.
+-   **The estimation procedure (Iterative refinement)**: Louvain clustering proceeds iteratively:
+
+1.  Each node is initially assigned to its own community.
+2.  Nodes are moved to neighboring communities if this increases the modularity $Q$.
+3.  Communities are aggregated into "super-nodes," and the process repeats on the coarsened graph.
 
 The algorithm terminates when no further modularity improvement is possible.
 
-In the context of scRNA-seq, Louvain clustering is applied to the nearest-neighbor graph of cells constructed from their PCA embeddings. The resulting clusters correspond to groups of cells with similar gene expression profiles, often representing distinct cell types or states. This method is computationally efficient and well-suited for the large, sparse graphs typical of scRNA-seq data.
-Louvain clustering's modularity-based approach provides a flexible framework for uncovering cellular heterogeneity, making it a cornerstone of single-cell analysis pipelines.
+In the context of scRNA-seq, Louvain clustering is applied to the nearest-neighbor graph of cells constructed from their PCA embeddings. The resulting clusters correspond to groups of cells with similar gene expression profiles, often representing distinct cell types or states. This method is computationally efficient and well-suited for the large, sparse graphs typical of scRNA-seq data. Louvain clustering's modularity-based approach provides a flexible framework for uncovering cellular heterogeneity, making it a cornerstone of single-cell analysis pipelines.
 
 ::: block2
-**Remark (Leiden as an improvement over Louvain).**
-The Leiden algorithm [@traag2019louvain] improves upon Louvain by addressing issues of cluster quality and stability. While Louvain can produce disconnected or poorly connected clusters, Leiden guarantees that clusters are well-connected and more robust. This makes Leiden particularly suitable for high-dimensional and noisy datasets, such as those in single-cell RNA-seq analyses.
+**Remark (Leiden as an improvement over Louvain).** The Leiden algorithm [@traag2019louvain] improves upon Louvain by addressing issues of cluster quality and stability. While Louvain can produce disconnected or poorly connected clusters, Leiden guarantees that clusters are well-connected and more robust. This makes Leiden particularly suitable for high-dimensional and noisy datasets, such as those in single-cell RNA-seq analyses.
 :::
 
 ::: block2
-**Remark (You specify a resolution, not the number of clusters).**
-In many clustering algorithms, particularly graph-based methods like Louvain or Leiden, you specify a resolution parameter that influences the granularity of the clustering. A higher resolution typically results in more, smaller clusters, while a lower resolution produces fewer, larger clusters. The number of clusters is not fixed beforehand but emerges as a result of the resolution and the underlying structure of the data.
+**Remark (You specify a resolution, not the number of clusters).** In many clustering algorithms, particularly graph-based methods like Louvain or Leiden, you specify a resolution parameter that influences the granularity of the clustering. A higher resolution typically results in more, smaller clusters, while a lower resolution produces fewer, larger clusters. The number of clusters is not fixed beforehand but emerges as a result of the resolution and the underlying structure of the data.
 :::
 
 ### How to do this in practice
@@ -260,22 +245,19 @@ See the `Seurat::FindClusters` function, illustrated in @fig-cluster. The result
 :::
 
 ::: {#rem-cluster_exploratory .block}
-**Remark (Clustering is often an exploratory step, which then allows you focus on key populations of interest later on in your research project).**
-As you can see here, the clustering role (together with the previous visualization steps and the cell-type labeling to be discussed in @sec-celltype_labeling) is to provide you a high-level overview of what your dataset contains. After all, when you get a scRNA-seq data fresh out of a wetlab experiment, you don't actually know what kind of cells are in your dataset. (No dataset comes automatically labeled with cell types.) 
+**Remark (Clustering is often an exploratory step, which then allows you focus on key populations of interest later on in your research project).** As you can see here, the clustering role (together with the previous visualization steps and the cell-type labeling to be discussed in @sec-celltype_labeling) is to provide you a high-level overview of what your dataset contains. After all, when you get a scRNA-seq data fresh out of a wetlab experiment, you don't actually know what kind of cells are in your dataset. (No dataset comes automatically labeled with cell types.)
 
 Usually in your paper, after determining the clusters (and their cell types), you will spend a considerable portion of the paper going in-depth on just a few key cell types.
 :::
 
 ::: block2
-**Remark (Personal opinion: Make a bit too many clusters, and manually adjust/merge).**
-Starting with a higher number of clusters can capture finer granularity and prevent important subpopulations from being overlooked. You can then manually combine clusters based on biological knowledge or other criteria, ensuring the final groupings are both meaningful and interpretable.
+**Remark (Personal opinion: Make a bit too many clusters, and manually adjust/merge).** Starting with a higher number of clusters can capture finer granularity and prevent important subpopulations from being overlooked. You can then manually combine clusters based on biological knowledge or other criteria, ensuring the final groupings are both meaningful and interpretable.
 
 While this might seem sacrilegious to statistical hard-liners, the reality of scRNA-seq analyses is that: 1) you don't want technical artifacts (from sequencing) or numerical quirks (based on the literal computational method being used) to dictate certain cell clusters (sometimes certain clusters are way too small to be meaningful), and 2) for the reality mentioned in @rem-cluster_exploratory, it might not be great use to time to worry about the "perfect clustering straight out of a method." As long as you can justify your actions biologically, you'll be in good hands.
 :::
 
 ::: block
-**Remark (Personal opinion: If you're goal is to make an atlas, consider hierarchical clustering methods).**
-Recall @fig-celltype_ex1. If the goal of your project is to delineate all the different types of biological variation in your dataset, you're probably better off using a method that gives you a hierarchy of cell clusters (rather than one fixed clustering). Methods like PAGA [@wolf2019paga] and MRTree [@peng2021cell] are some (among many) that are useful for this exact task.
+**Remark (Personal opinion: If you're goal is to make an atlas, consider hierarchical clustering methods).** Recall @fig-celltype_ex1. If the goal of your project is to delineate all the different types of biological variation in your dataset, you're probably better off using a method that gives you a hierarchy of cell clusters (rather than one fixed clustering). Methods like PAGA [@wolf2019paga] and MRTree [@peng2021cell] are some (among many) that are useful for this exact task.
 :::
 
 ### A brief note on other approaches
@@ -304,8 +286,7 @@ See a review in [@bilous2024building].
 
 ## Differential expression
 
-Differential expression (DE) analysis, illustrated in @fig-de-illustration, aims to identify genes that are expressed at significantly different levels between two groups of cells. We will discuss two primary scenarios in the following section: 1) either where the groups are estimated from data, or 2) where the groups are determined by the experimental design.
-This comparison helps uncover genes that may play critical roles in the biological processes or phenotypic changes under investigation. In the context of single-cell RNA-seq, DE analysis must account for the unique challenges of sparsity and variability in the data. The primary goal is to highlight key molecular drivers of the experimental conditions, providing insights into underlying mechanisms or potential targets for therapeutic intervention. This analysis is foundational for linking cellular behavior to experimental manipulations or disease states.
+Differential expression (DE) analysis, illustrated in @fig-de-illustration, aims to identify genes that are expressed at significantly different levels between two groups of cells. We will discuss two primary scenarios in the following section: 1) either where the groups are estimated from data, or 2) where the groups are determined by the experimental design. This comparison helps uncover genes that may play critical roles in the biological processes or phenotypic changes under investigation. In the context of single-cell RNA-seq, DE analysis must account for the unique challenges of sparsity and variability in the data. The primary goal is to highlight key molecular drivers of the experimental conditions, providing insights into underlying mechanisms or potential targets for therapeutic intervention. This analysis is foundational for linking cellular behavior to experimental manipulations or disease states.
 
 ::: block
 ![Illustration of how to think about DE. From <https://www.sc-best-practices.org/conditions/differential_gene_expression.html>.](fig/chap3/de-illustration.png){#fig-de-illustration width="100%" fig-align="center"}
@@ -314,19 +295,15 @@ This comparison helps uncover genes that may play critical roles in the biologic
 See <https://www.sc-best-practices.org/conditions/differential_gene_expression.html> for more background.
 
 ::: block3
-**Input/Output.** 
-The input to differential expression is matrix $X\in \mathbb{R}^{n\times p}$ for $n$ cells and $p$ features (i.e., genes) split into two groups, and the output is two numbers per gene. One is the p-value for the gene (denoting how significant that gene deviates from the null distribution where there is no difference in the gene expression between the two groups. A smaller p-value denotes more evidence against the null), and the other is log fold change (denoting, roughly, how much larger the mean expression in one group is larger than the mean expression of the other group). The p-value is a number between $0$ and $1$, and the log-fold change is any real value where both the sign and magnitude are important.
+**Input/Output.** The input to differential expression is matrix $X\in \mathbb{R}^{n\times p}$ for $n$ cells and $p$ features (i.e., genes) split into two groups, and the output is two numbers per gene. One is the p-value for the gene (denoting how significant that gene deviates from the null distribution where there is no difference in the gene expression between the two groups. A smaller p-value denotes more evidence against the null), and the other is log fold change (denoting, roughly, how much larger the mean expression in one group is larger than the mean expression of the other group). The p-value is a number between $0$ and $1$, and the log-fold change is any real value where both the sign and magnitude are important.
 :::
 
 ::: block
-**Remark (Intent of Differential Expression Analysis).**
-The primary intent of differential expression (DE) analysis in single-cell RNA-seq is *not* usually to provide definitive evidence for interventions, such as proving a drug's efficacy. 
-Instead, DE in single-cell studies is often exploratory, aimed at uncovering basic biological insights. It addresses questions like, "We know there is a difference between these two conditions, but what is driving that difference at the cellular level?" The goal is to identify genes that exhibit meaningful changes in expression, contributing to our collective understanding of gene functions and their roles in cellular processes. These findings expand the compendium of knowledge that informs future experiments and hypotheses.
+**Remark (Intent of Differential Expression Analysis).** The primary intent of differential expression (DE) analysis in single-cell RNA-seq is *not* usually to provide definitive evidence for interventions, such as proving a drug's efficacy. Instead, DE in single-cell studies is often exploratory, aimed at uncovering basic biological insights. It addresses questions like, "We know there is a difference between these two conditions, but what is driving that difference at the cellular level?" The goal is to identify genes that exhibit meaningful changes in expression, contributing to our collective understanding of gene functions and their roles in cellular processes. These findings expand the compendium of knowledge that informs future experiments and hypotheses.
 :::
 
 ::: block2
-**Remark (Pleiotropy and the Need for Continued DE Analyses).**
-There are a ton of existing databases that document what the function of each gene is. For instance, you can see collections of genes (<https://www.genome.jp/kegg/kegg2.html> and <https://www.gsea-msigdb.org/gsea/msigdb>) or individual genes (<https://www.ncbi.nlm.nih.gov/gene> and <https://www.genecards.org/>). You might wonder -- given this wealth of knowledge, why bother do any more DE analyses on your own?
+**Remark (Pleiotropy and the Need for Continued DE Analyses).** There are a ton of existing databases that document what the function of each gene is. For instance, you can see collections of genes (<https://www.genome.jp/kegg/kegg2.html> and <https://www.gsea-msigdb.org/gsea/msigdb>) or individual genes (<https://www.ncbi.nlm.nih.gov/gene> and <https://www.genecards.org/>). You might wonder -- given this wealth of knowledge, why bother do any more DE analyses on your own?
 
 Pleiotropy, where a single gene influences multiple, seemingly unrelated biological processes, underscores the importance of continued differential expression (DE) analyses even in the presence of well-annotated pathways like KEGG. While these resources provide invaluable insights into known gene functions and pathways, they often fail to capture the full complexity of gene roles across diverse cellular contexts, conditions, or tissues. DE analysis allows us to uncover novel functions or unexpected roles for genes, especially in underexplored biological systems or conditions. Pleiotropic effects are context-dependent, and without systematically exploring gene expression across varied conditions, we risk oversimplifying or missing critical aspects of cellular and molecular biology.
 :::
@@ -335,15 +312,13 @@ Pleiotropy, where a single gene influences multiple, seemingly unrelated biologi
 
 So why is DE even an interesting problem? Couldn't we just use a t-test (parametric, asymptotic), Wilcoxon rank-sum test (nonparametric, asymptotic), or permutation test (nonparametric, exact)? Yes, you can.
 
-So why is there a huge field studying DE in genomics, and why are there so many methods? Ultimately, the focus is on achieving greater statistical power or applying the methods more broadly across diverse datasets and experimental conditions.
-It boils down to engineering the underlying statistical model to do the following two things effectively:
+So why is there a huge field studying DE in genomics, and why are there so many methods? Ultimately, the focus is on achieving greater statistical power or applying the methods more broadly across diverse datasets and experimental conditions. It boils down to engineering the underlying statistical model to do the following two things effectively:
 
-- **Extract the "meaningful" signal**: While we could run any of the aforementioned tests on the observed single-cell data, the results might be misleading due to the presence of unwanted covariates. For example, significant genes might simply reflect technical artifacts, such as the correlation between gene expression and the number of cells with non-zero counts for that gene.
+-   **Extract the "meaningful" signal**: While we could run any of the aforementioned tests on the observed single-cell data, the results might be misleading due to the presence of unwanted covariates. For example, significant genes might simply reflect technical artifacts, such as the correlation between gene expression and the number of cells with non-zero counts for that gene.
 
 As we've discussed, these are cases where *technical noise* (i.e., noise induced by the measurement or sequencing process, and theoretically removable with perfect technology) has not been properly accounted for. The challenge, then, is to design a statistical model that "removes" this noise, isolating the "meaningful" biological signal. Without this step, DE results may reflect experimental artifacts rather than true biological differences.
 
-- **Sharing information across genes to increase power, while controlling Type-1 error**: 
-Single-cell data is often much sparser than bulk sequencing data, leading to fewer detectable signals. This raises the question: can we pool information across genes to enhance the statistical power of our tests? For example, one might consider smoothing the expression matrix to reduce noise.
+-   **Sharing information across genes to increase power, while controlling Type-1 error**: Single-cell data is often much sparser than bulk sequencing data, leading to fewer detectable signals. This raises the question: can we pool information across genes to enhance the statistical power of our tests? For example, one might consider smoothing the expression matrix to reduce noise.
 
 (Recall that 70%+ of a single-cell dataset is 0's. This means you should expect little power by default. Hence, different DE methods deploy different strategies to improve the power as much as possible.)
 
@@ -360,57 +335,41 @@ Performing differential expression (DE) analysis between two data-driven groupin
 The Wilcoxon rank-sum test is a non-parametric statistical test used to assess whether the distributions of a gene's expression values differ significantly between two groups of cells. It is particularly well-suited for single-cell RNA-seq data that has been normalized, as it does not assume the data follows a specific distribution, such as normality. The test is based on the ranks of the data rather than the raw expression values, making it robust to outliers and noise.
 
 ::: block
-**Remark (Wilcoxon test after normalization and feature selection).**
-The test below is typically done after we've normalized and found HVGs. As we'll discuss in @sec-de_normalization-vs-count next, this is typically *before* we any imputation or PCA (and we are not worried about batch effects in this scenario).
+**Remark (Wilcoxon test after normalization and feature selection).** The test below is typically done after we've normalized and found HVGs. As we'll discuss in @sec-de_normalization-vs-count next, this is typically *before* we any imputation or PCA (and we are not worried about batch effects in this scenario).
 :::
 
 Below, we explain the Wilcoxon rank-sum test, generically applied to gene $j$ (i.e., the $j$-th column of the normalized scRNA-seq matrix $X$). We will slightly overload the notation just to keep the notation of the Wilcoxon test itself simple.
 
-- **Setting up the hypothesis**:
-Let the expression values in two groups of cells be $X_1, X_2, \ldots, X_m$ (group 1) and $Y_1, Y_2, \ldots, Y_n$ (group 2). The null and alternative hypotheses are:
-$$
-H_0: \text{The distributions of } X \text{ and } Y \text{ are identical.}
-$$
-$$
-H_a: \text{The distribution of } X \text{ is shifted relative to } Y.
-$$
+-   **Setting up the hypothesis**: Let the expression values in two groups of cells be $X_1, X_2, \ldots, X_m$ (group 1) and $Y_1, Y_2, \ldots, Y_n$ (group 2). The null and alternative hypotheses are: $$
+    H_0: \text{The distributions of } X \text{ and } Y \text{ are identical.}
+    $$ $$
+    H_a: \text{The distribution of } X \text{ is shifted relative to } Y.
+    $$
 
-- **Ranking the data**:
-All observations from both groups are combined and ranked from smallest to largest. Tied values are assigned the average of their ranks. Let $R(X_i)$ represent the rank of $X_i$ in the combined data.
+-   **Ranking the data**: All observations from both groups are combined and ranked from smallest to largest. Tied values are assigned the average of their ranks. Let $R(X_i)$ represent the rank of $X_i$ in the combined data.
 
-- **Test statistic**:
-The test statistic $W$ is calculated as the sum of ranks for one of the groups, typically group 1:
-$$
-W = \sum_{i=1}^m R(X_i).
-$$
-Under the null hypothesis, $W$ is expected to follow a known distribution based on the ranks.
+-   **Test statistic**: The test statistic $W$ is calculated as the sum of ranks for one of the groups, typically group 1: $$
+    W = \sum_{i=1}^m R(X_i).
+    $$ Under the null hypothesis, $W$ is expected to follow a known distribution based on the ranks.
 
-- **Expected Value and Variance Under $H_0$**:
-Under the null hypothesis, the expected value and variance of $W$ are given by:
-$$
-\mathbb{E}(W) = \frac{m(m + n + 1)}{2},
-$$
-$$
-\text{Var}(W) = \frac{mn(m + n + 1)}{12}.
-$$
+-   **Expected Value and Variance Under** $H_0$: Under the null hypothesis, the expected value and variance of $W$ are given by: $$
+    \mathbb{E}(W) = \frac{m(m + n + 1)}{2},
+    $$ $$
+    \text{Var}(W) = \frac{mn(m + n + 1)}{12}.
+    $$
 
-- **p-Value calculation**:
+-   **p-Value calculation**:
 
-The p-value is computed by comparing the observed $W$ to its null distribution. For large sample sizes, $W$ can be approximated by a normal distribution:
-$$
+The p-value is computed by comparing the observed $W$ to its null distribution. For large sample sizes, $W$ can be approximated by a normal distribution: $$
 Z = \frac{W - \mathbb{E}(W) }{\sqrt{\text{Var}(W)}}.
-$$
-The p-value is then derived from the standard normal distribution:
-$$
+$$ The p-value is then derived from the standard normal distribution: $$
 p = 2 \cdot P(Z > |z|),
-$$
-where $z$ is the observed value of $Z$.
+$$ where $z$ is the observed value of $Z$.
 
 In single-cell RNA-seq data, the Wilcoxon rank-sum test is used to compare the expression of each gene between two groups of cells, such as treated versus untreated cells or two clusters identified through clustering. Its non-parametric nature makes it robust to the sparsity and variability inherent in single-cell datasets, providing a reliable method for detecting genes with differential expression.
 
 ::: block2
-**Remark (Reminder: Invalid p-value in a literal statistical sense).**
-Since the cell groups were defined by clustering, you are likely to find significant genes regardless. This is the *"double-dipping"* phenomenon. After all, the cells were organized into separate clusters *because* there were differences between the two cell groups. 
+**Remark (Reminder: Invalid p-value in a literal statistical sense).** Since the cell groups were defined by clustering, you are likely to find significant genes regardless. This is the *"double-dipping"* phenomenon. After all, the cells were organized into separate clusters *because* there were differences between the two cell groups.
 
 Another way to describe this is that the null hypothesis is mis-calibrated. A typical Wilcoxon test is assuming under the null hypothesis that the two distributions $X$ and $Y$ are identical. This is *not* the case when you're applying a Wilcoxon test on two cell clusters. This results in p-values that are more significant than they are actually.
 
@@ -431,12 +390,7 @@ There are a few instances where you truly valid p-values. That is, you want a wa
 
 ### A brief note on other approaches
 
-There are an endless number of review and benchmarking papers for this topic. See [@das2022differential] for an overview of many methods, and [@dal2017single; @jaakkola2017comparison; @wang2019comparative; @li2021large] for benchmarkings.
-This will also help you get a sense of how diversity of DE methods.
-Note that all the methods we mentioned so far are about *differential mean* (i.e., there is a shift in the average expression, relative to the variance).
-There are also mentions dedicated to
-*differential variance* (see [@liu2023differential] for example) and
-*differential distribution* (see [@schefzik2021fast] for example).
+There are an endless number of review and benchmarking papers for this topic. See [@das2022differential] for an overview of many methods, and [@dal2017single; @jaakkola2017comparison; @wang2019comparative; @li2021large] for benchmarkings. This will also help you get a sense of how diversity of DE methods. Note that all the methods we mentioned so far are about *differential mean* (i.e., there is a shift in the average expression, relative to the variance). There are also mentions dedicated to *differential variance* (see [@liu2023differential] for example) and *differential distribution* (see [@schefzik2021fast] for example).
 
 ### (A brief reminder about multiple testing)
 
@@ -446,25 +400,21 @@ In many scientific studies, particularly in genomics and high-throughput experim
 
 The Benjamini-Hochberg (BH) procedure is a widely used method to control the False Discovery Rate (FDR), defined as the expected proportion of false positives among all significant results. The procedure is particularly suited for large-scale testing scenarios where identifying as many true positives as possible is critical, while still limiting false discoveries.
 
-- **Ordered p-values**:
-Let $p_1, p_2, \ldots, p_m$ represent the p-values for $m$ hypothesis tests. First, these p-values are ordered in ascending order:
-$$
-p_{(1)} \leq p_{(2)} \leq \cdots \leq p_{(m)}.
-$$
-The index $(i)$ denotes the position of the p-value in the sorted list.
+-   **Ordered p-values**: Let $p_1, p_2, \ldots, p_m$ represent the p-values for $m$ hypothesis tests. First, these p-values are ordered in ascending order: $$
+    p_{(1)} \leq p_{(2)} \leq \cdots \leq p_{(m)}.
+    $$ The index $(i)$ denotes the position of the p-value in the sorted list.
 
-- **Critical threshold**:
-For a chosen FDR level $\alpha$, the BH procedure identifies the largest $k$ such that:
-$$
-p_{(k)} \leq \frac{k}{m} \alpha.
-$$
-Here:
- - $k$ is the rank of the p-value,
- - $m$ is the total number of hypotheses tested,
- - $\alpha$ is the desired FDR threshold (e.g., 0.05).
+-   **Critical threshold**: For a chosen FDR level $\alpha$, the BH procedure identifies the largest $k$ such that: $$
+    p_{(k)} \leq \frac{k}{m} \alpha.
+    $$ Here:
 
-- **Significant results**:
-Once $k$ is identified, all hypotheses corresponding to $p_{(1)}, p_{(2)}, \ldots, p_{(k)}$ are considered significant. This ensures that the expected proportion of false discoveries among these selected hypotheses is controlled at $\alpha$.
+-   $k$ is the rank of the p-value,
+
+-   $m$ is the total number of hypotheses tested,
+
+-   $\alpha$ is the desired FDR threshold (e.g., 0.05).
+
+-   **Significant results**: Once $k$ is identified, all hypotheses corresponding to $p_{(1)}, p_{(2)}, \ldots, p_{(k)}$ are considered significant. This ensures that the expected proportion of false discoveries among these selected hypotheses is controlled at $\alpha$.
 
 The BH procedure achieves a balance between discovery and error control. Unlike family-wise error rate (FWER) methods such as Bonferroni, which aim to control the probability of any false positives, the BH method allows for a controlled proportion of false positives. This flexibility makes it more powerful in scenarios with a large number of tests, where the likelihood of finding true discoveries would otherwise be severely diminished.
 
@@ -492,48 +442,33 @@ Differential expression (DE) analysis in human cohorts introduces additional com
 
 The broad strategies are:
 
-1. **Pseudo-bulk analysis (the most common approach)**: 
-Pseudo-bulk analysis aggregates single-cell data from each individual into a "bulk" profile by summing or averaging gene expression counts across cells of the same type. This approach treats each individual as a unit of analysis, enabling the application of well-established bulk RNA-seq differential expression methods, such as edgeR [@robinson2007moderated] or DESeq2 [@love2014moderated]. (This methods were created for bulk-sequencing data.) By effectively reducing the dimensionality of the data, pseudo-bulk analysis accounts for inter-individual variability, which is critical in human cohorts. This method is particularly advantageous in case-control studies, where differences in gene expression between cases and controls can be analyzed while maintaining statistical power and controlling for confounders like age, sex, or sequencing depth.
+1.  **Pseudo-bulk analysis (the most common approach)**: Pseudo-bulk analysis aggregates single-cell data from each individual into a "bulk" profile by summing or averaging gene expression counts across cells of the same type. This approach treats each individual as a unit of analysis, enabling the application of well-established bulk RNA-seq differential expression methods, such as edgeR [@robinson2007moderated] or DESeq2 [@love2014moderated]. (This methods were created for bulk-sequencing data.) By effectively reducing the dimensionality of the data, pseudo-bulk analysis accounts for inter-individual variability, which is critical in human cohorts. This method is particularly advantageous in case-control studies, where differences in gene expression between cases and controls can be analyzed while maintaining statistical power and controlling for confounders like age, sex, or sequencing depth.
 
-Pseudo-bulk samples are created by aggregating single-cell gene expression data across cells within each sample/replicate/donor (depending on the context of the analysis). For donor $r$, the pseudo-bulk expression count $\tilde{X}_{rj}$ for gene $j$ is obtained by summing the observed counts across all $n_{r}$ cells belonging to that donor:
-$$
+Pseudo-bulk samples are created by aggregating single-cell gene expression data across cells within each sample/replicate/donor (depending on the context of the analysis). For donor $r$, the pseudo-bulk expression count $\tilde{X}_{rj}$ for gene $j$ is obtained by summing the observed counts across all $n_{r}$ cells belonging to that donor: $$
 \tilde{X}_{rj} = \sum_{i \in \text{donor }r} X_{ij},
-$$
-where $X_{ij}$ is the observed count for gene $j$ in cell $i$ that came from donor $r$. This aggregation reduces the sparsity inherent in single-cell data.
-Since some of the donors are "cases" and some are "controls", pseudob-bulking allowing the use of standard bulk RNA-seq differential expression methods while preserving biological replicate structure.
+$$ where $X_{ij}$ is the observed count for gene $j$ in cell $i$ that came from donor $r$. This aggregation reduces the sparsity inherent in single-cell data. Since some of the donors are "cases" and some are "controls", pseudob-bulking allowing the use of standard bulk RNA-seq differential expression methods while preserving biological replicate structure.
 
-2. **Mixture modeling**: 
-Mixture modeling is a more nuanced approach that acknowledges the heterogeneity within individual samples by modeling gene expression distributions across all cells. Instead of aggregating data, this approach identifies subpopulations of cells with distinct expression profiles and estimates the contribution of each subpopulation to the overall gene expression. In case-control studies, mixture models can distinguish changes in cellular composition (e.g., shifts in cell type proportions) from changes in gene expression within a given cell type. Mixture modeling is computationally intensive but offers a detailed view of the biological processes underlying disease states in human cohorts. This is mainly using the `lme4` R package (or packages that build upon this, like `MAST::zlm`), such as in [@liu2022idesc], or NEBULA [@he2021nebula].
+2.  **Mixture modeling**: Mixture modeling is a more nuanced approach that acknowledges the heterogeneity within individual samples by modeling gene expression distributions across all cells. Instead of aggregating data, this approach identifies subpopulations of cells with distinct expression profiles and estimates the contribution of each subpopulation to the overall gene expression. In case-control studies, mixture models can distinguish changes in cellular composition (e.g., shifts in cell type proportions) from changes in gene expression within a given cell type. Mixture modeling is computationally intensive but offers a detailed view of the biological processes underlying disease states in human cohorts. This is mainly using the `lme4` R package (or packages that build upon this, like `MAST::zlm`), such as in [@liu2022idesc], or NEBULA [@he2021nebula].
 
-Briefly, in its simplest form, a mixture model accounts for the hierarchical structure of the data, where cells are nested within donors. Consider a single gene $j$.
-The observed expression $X_{i(r),j}$ for cell $i$ from donor $r$ is modeled as:
-$$
+Briefly, in its simplest form, a mixture model accounts for the hierarchical structure of the data, where cells are nested within donors. Consider a single gene $j$. The observed expression $X_{i(r),j}$ for cell $i$ from donor $r$ is modeled as: $$
 X_{i(r),j} \sim P(X \mid \mu_r, \sigma^2),
-$$
-where $\mu_r$ is the donor-specific mean expression, and $\sigma^2$ captures the residual variability across cells within the donor. The donor-specific means $\mu_r$ are modeled as:
-$$
+$$ where $\mu_r$ is the donor-specific mean expression, and $\sigma^2$ captures the residual variability across cells within the donor. The donor-specific means $\mu_r$ are modeled as: $$
 \mu_r  \sim \mathcal{N}(\beta_0 + \beta_1 z_r, \tau^2),
-$$
-where $z_r$ is an indicator for case ($z_r = 1$) or control ($z_r = 0$) status, $\beta_1$ is the effect of the condition, and $\tau^2$ captures the variability in expression across donors.
-This hierarchical mixture approach explicitly separates within-donor variability from between-donor differences, ensuring that the analysis correctly attributes variability to its appropriate source.
+$$ where $z_r$ is an indicator for case ($z_r = 1$) or control ($z_r = 0$) status, $\beta_1$ is the effect of the condition, and $\tau^2$ captures the variability in expression across donors. This hierarchical mixture approach explicitly separates within-donor variability from between-donor differences, ensuring that the analysis correctly attributes variability to its appropriate source.
 
-3. **Distributional analysis**: Another strategy is to leverage the fact that you have a *distribution* of cells for each donor. Hence, you can compute the mean and variance of the gene expression for each donor, and compare the donors through their mean and variance. One example of this is eSVD-De [@lin2023esvd]. However, this can also be done fully non-parametrically, such as in IDEAS [@zhang2021individual].
+3.  **Distributional analysis**: Another strategy is to leverage the fact that you have a *distribution* of cells for each donor. Hence, you can compute the mean and variance of the gene expression for each donor, and compare the donors through their mean and variance. One example of this is eSVD-De [@lin2023esvd]. However, this can also be done fully non-parametrically, such as in IDEAS [@zhang2021individual].
 
 ### The standard procedure: DESeq2 (Pseudo-bulk analysis)
 
-DESeq2 [@love2014moderated] models read counts $X_{ij}$ for gene $j$ in sample $i$ using a negative binomial (NB) distribution[^1]:
-$$
+DESeq2 [@love2014moderated] models read counts $X_{ij}$ for gene $j$ in sample $i$ using a negative binomial (NB) distribution[^chapter3_rna-12]: $$
 X_{ij} \sim \text{NB}(\mu_{ij}, r_j),
-$$
-where $X_{ij}$ is the total counts in sample $i$ for gene $j$ (which is the sum across all the cells in sample $j$), and  $\mu_{ij} = s_i q_{ij}$. Here, $s_j$ is a normalization factor accounting for sequencing depth, and $q_{ij}$ represents the normalized mean expression for gene $j$ in sample $i$. The NB distribution's overdispersion is captured by $r_j$, which varies across genes.
+$$ where $X_{ij}$ is the total counts in sample $i$ for gene $j$ (which is the sum across all the cells in sample $j$), and $\mu_{ij} = s_i q_{ij}$. Here, $s_j$ is a normalization factor accounting for sequencing depth, and $q_{ij}$ represents the normalized mean expression for gene $j$ in sample $i$. The NB distribution's overdispersion is captured by $r_j$, which varies across genes.
 
-[^1]: What's in a name? The reason we call it a "negative" binomial distribution is because we think of the coin-flipping process for a NB random variable as: "How many tails do I get in order to get a certain number of heads (or example, 10 heads)"? Contrast this with a Binomial distribution, which asks "Among 10 coin flips, how many are heads?" A Binomial random variable has a bounded support, but a Negative Binomial does not. It's *not* called "Negative binomial" because the values are negative -- it's still a random variable of non-negative integers.
+[^chapter3_rna-12]: See <https://cole-trapnell-lab.github.io/monocle3/docs/introduction/>.
 
-The design matrix $Z$ specifies the $r$ covariates of the samples (one of which is the experimental condition). Then, the log of the normalized mean expression $q_{ij}$ is modeled as:
-$$
+The design matrix $Z$ specifies the $r$ covariates of the samples (one of which is the experimental condition). Then, the log of the normalized mean expression $q_{ij}$ is modeled as: $$
 \log q_{ij} = \sum_{r} Z_{ir} \beta_{jr},
-$$
-where $\beta_{ir}$ are coefficients relating the covariates to the gene expression.
+$$ where $\beta_{ir}$ are coefficients relating the covariates to the gene expression.
 
 Dispersion parameters $r_j$ are estimated using a shrinkage approach, where gene-wise estimates are pulled toward a trend fitted across genes with similar mean expression. Hypothesis testing for differential expression is based on Wald tests for the corresponding value of $\beta_{jr}$.
 
@@ -545,23 +480,20 @@ See [@squair2021confronting] and [@junttila2022benchmarking] for more references
 
 There are two fundamentally different approaches to performing differential expression (DE) analysis in single-cell RNA-seq data:
 
-1. **DE on the Original Count Data**: This approach involves applying statistical methods directly to the raw count data obtained from sequencing. It accounts for the inherent technical noise and sparsity characteristic of single-cell data by using models tailored to handle count distributions (e.g., negative binomial models). This method preserves the original variability and avoids introducing biases from data manipulation. Most of the different DE methods occur in this category (which we'll discuss more in @sec-de_cohort).
-   
+1.  **DE on the Original Count Data**: This approach involves applying statistical methods directly to the raw count data obtained from sequencing. It accounts for the inherent technical noise and sparsity characteristic of single-cell data by using models tailored to handle count distributions (e.g., negative binomial models). This method preserves the original variability and avoids introducing biases from data manipulation. Most of the different DE methods occur in this category (which we'll discuss more in @sec-de_cohort).
+
 ::: {#rem-de_guideline .block}
-**Remark (Personal guideline on when to use).**
-In general, a lot of biological replicates (see @sec-de_cohort) or have many covariates to adjust for, this is a more appealing option. Generally, you want to default to this option when you really want to have "valid" p-values (i.e., not just markers for convenient usage). That is, you expect your markers to be investigated in detail in followup work. This is because by modeling the original count nature, if you have an appropriate statistical model, you are more likely to have validity.
+**Remark (Personal guideline on when to use).** In general, a lot of biological replicates (see @sec-de_cohort) or have many covariates to adjust for, this is a more appealing option. Generally, you want to default to this option when you really want to have "valid" p-values (i.e., not just markers for convenient usage). That is, you expect your markers to be investigated in detail in followup work. This is because by modeling the original count nature, if you have an appropriate statistical model, you are more likely to have validity.
 :::
 
-2. **DE on Processed Data**: In this paradigm, the data undergoes preprocessing steps such as normalization, scaling, or transformation before DE analysis. Typically, when you're using strategy, most people defer to the Wilcoxon test.
-       
+2.  **DE on Processed Data**: In this paradigm, the data undergoes preprocessing steps such as normalization, scaling, or transformation before DE analysis. Typically, when you're using strategy, most people defer to the Wilcoxon test.
+
 ::: block
-**Remark (Personal guideline on when to use).**
-In general, this option is most appealing when you want something "quick and dirty," such as getting some interesting genes in a preliminary analysis to look at.
-This is because you're off-loading all your concerns about statistical modeling to how the data was processed (i.e., the normalization, batch correction, etc.).
+**Remark (Personal guideline on when to use).** In general, this option is most appealing when you want something "quick and dirty," such as getting some interesting genes in a preliminary analysis to look at. This is because you're off-loading all your concerns about statistical modeling to how the data was processed (i.e., the normalization, batch correction, etc.).
 :::
 
 **Caution on Processed Data**: Do not impute or denoise your data by pooling information across genes or cells prior to DE analysis -- unless you are fully aware of the consequences. Imputation or aggressive smoothing can introduce artificial correlations and inflate the signal, potentially leading to false positives and erroneous conclusions. This is because the "signal" from "true DE genes" is smoothed to impact the null genes. These processes can mask true biological variability and create spurious patterns that reflect the imputation model rather than the underlying biology. See @fig-de-imputed for an illustration of this. There *are* some exceptions of this though -- see eSVD-DE [@lin2023esvd] and lvm-DE [@boyeau2023empirical] for example.
-   
+
 ::: block
 ![(Left) DE using the raw or normalized counts, which is what you should use. (Right) DE using the smoothed counts where the data is "smoothed" across all the genes. [@prater2024all]](fig/chap3/de-imputed.png){#fig-de-imputed width="100%" fig-align="center"}
 :::
@@ -572,18 +504,14 @@ See [@nguyen2023benchmarking] for empirical evidence on how DE interacts with ba
 
 ### Pooling of overdispersion parameters is usually the most DE methods "share information across genes," if at all
 
-Most DE methods analyze one gene at a time, where each gene's analysis does not influence another gene. 
-As we mentioned above in @rem-de_guideline, we typically do not perform DE methods on the smoothed data. However, if any information is shared across genes, usually it is at most the overdispersion parameters $r_j$ that is often "averaged/shrunk" across all the genes. See DESeq2 [@love2014moderated].
+Most DE methods analyze one gene at a time, where each gene's analysis does not influence another gene. As we mentioned above in @rem-de_guideline, we typically do not perform DE methods on the smoothed data. However, if any information is shared across genes, usually it is at most the overdispersion parameters $r_j$ that is often "averaged/shrunk" across all the genes. See DESeq2 [@love2014moderated].
 
 ### "DE" for a continuous covariate
 
-As we'll see later in @sec-trajectory, sometimes you want to see if a gene is correlated with a continuous covariate (often the estimated developmental stage of a cell). 
-Typically, the way this is done is: fit a regression model (typically a form of GLM) to predict the continuous covariate based on a gene's expression, and then perform a hypothesis test on whether the gene was relevant for the prediction.
-See [@hou2023statistical] and its related papers for how methods do this.
+As we'll see later in @sec-trajectory, sometimes you want to see if a gene is correlated with a continuous covariate (often the estimated developmental stage of a cell). Typically, the way this is done is: fit a regression model (typically a form of GLM) to predict the continuous covariate based on a gene's expression, and then perform a hypothesis test on whether the gene was relevant for the prediction. See [@hou2023statistical] and its related papers for how methods do this.
 
 ::: block
-**Remark (Personal opinion: The distinct between categorical and continuous phenotypes).**
-If you study a **clinical** phenotype (typically about the organism or overall tissue), you typically want to treat the phenotype as binary (or categorical). After all, a doctor cannot declare someone to "kinda" have cancer. You either have it or you don't. (Think about how chaotic medication prescriptions, health insurance, follow-up treatments, etc. would be if doctors gave "kinda" assessments.) In medical practice, doctors are constantly updating the guidelines on how to diagnose samples accordingly discrete buckets of categorizations.
+**Remark (Personal opinion: The distinct between categorical and continuous phenotypes).** If you study a **clinical** phenotype (typically about the organism or overall tissue), you typically want to treat the phenotype as binary (or categorical). After all, a doctor cannot declare someone to "kinda" have cancer. You either have it or you don't. (Think about how chaotic medication prescriptions, health insurance, follow-up treatments, etc. would be if doctors gave "kinda" assessments.) In medical practice, doctors are constantly updating the guidelines on how to diagnose samples accordingly discrete buckets of categorizations.
 
 If you study a **basic biology** phenotype, you typically want to treat the phenotype as continuous variable. After all, nothing about a cell is ever discrete. Nothing is truly either "on" or "off", and most ways to understand cells is along a gradient. For example, if you study DNA damage, it's not very useful to simply know when a cell's DNA is damaged. (It probably always is -- however, most DNA damage present in a cell is probably minor and infrequent.)
 :::
@@ -593,8 +521,7 @@ If you study a **basic biology** phenotype, you typically want to treat the phen
 Pathway analysis is a critical step in single-cell RNA-sequencing studies, providing a systems-level understanding of the biological processes and pathways underlying gene expression changes. Tools like Gene Ontology (GO) and Gene Set Enrichment Analysis (GSEA) are commonly used to identify functional themes within a set of differentially expressed or highly variable genes. Gene Ontology categorizes genes into hierarchical groups based on their roles in biological processes, molecular functions, or cellular components, offering a structured framework for interpreting gene expression patterns. GSEA takes this further by testing whether predefined gene sets, representing pathways or functional categories, are enriched in a given cell cluster or condition. These approaches are particularly valuable in single-cell analysis, where individual genes may have noisy or sparse expression patterns. By focusing on groups of related genes, pathway analysis mitigates noise, enhances biological interpretability, and highlights broader functional insights that single genes alone may not reveal.
 
 ::: block3
-**Input/Output.** 
-The input to a pathway analysis is: 1) a vector of $p$ values, one for each gene, and 2) a database that contains many pathways (and which genes belong to that pathway). Importantly, this must be a *named* vector (i.e., you know which value corresponds to which gene). The output is one p-value per pathway which denotes how significant the genes in the pathway are *not* randomly distributed based on their value. That is, a significant pathway is one where many of genes are have simultaneously very large (or very small) values.
+**Input/Output.** The input to a pathway analysis is: 1) a vector of $p$ values, one for each gene, and 2) a database that contains many pathways (and which genes belong to that pathway). Importantly, this must be a *named* vector (i.e., you know which value corresponds to which gene). The output is one p-value per pathway which denotes how significant the genes in the pathway are *not* randomly distributed based on their value. That is, a significant pathway is one where many of genes are have simultaneously very large (or very small) values.
 :::
 
 ### The standard procedure: GSEA
@@ -603,30 +530,26 @@ Gene Set Enrichment Analysis (GSEA) is a widely used computational method design
 
 The goal of GSEA is to test whether a predefined gene set $S$, such as a pathway or functional group, is overrepresented among the genes most differentially expressed between two conditions. GSEA leverages ranked gene lists, focusing on the distribution of gene set members within the list to detect enrichment. See @fig-gsea1 for an illustration of how the method works visually.
 
-- **Input data**:
-GSEA requires the following inputs:
- 1. A ranked list of genes $G = \{g_1, g_2, \ldots, g_N\}$, sorted by their differential expression scores (e.g., fold change, t-statistics, or signal-to-noise ratio) between two conditions.
- 2. A predefined gene set $S \subseteq G$, typically representing a biological pathway, molecular function, or cellular process.
+-   **Input data**: GSEA requires the following inputs:
 
-- **The test statistic (Enrichment score, i.e., ES)**:
-The core of GSEA is the calculation of an enrichment score (ES), which reflects the degree to which the genes in $S$ are concentrated at the top (or bottom) of the ranked list $G$. The ES is computed by walking down the ranked list and increasing a running-sum statistic when encountering a gene in $S$, or decreasing it otherwise:
-$$
-\text{ES} = \max_k \left| P_S(k) - P_G(k) \right|,
-$$
-where:
- - $P_S(k)$: Cumulative sum of weights for genes in $S$ up to rank $k$.
- - $P_G(k)$: Cumulative sum of weights for all genes up to rank $k$.
+1.  A ranked list of genes $G = \{g_1, g_2, \ldots, g_N\}$, sorted by their differential expression scores (e.g., fold change, t-statistics, or signal-to-noise ratio) between two conditions.
+2.  A predefined gene set $S \subseteq G$, typically representing a biological pathway, molecular function, or cellular process.
+
+-   **The test statistic (Enrichment score, i.e., ES)**: The core of GSEA is the calculation of an enrichment score (ES), which reflects the degree to which the genes in $S$ are concentrated at the top (or bottom) of the ranked list $G$. The ES is computed by walking down the ranked list and increasing a running-sum statistic when encountering a gene in $S$, or decreasing it otherwise: $$
+    \text{ES} = \max_k \left| P_S(k) - P_G(k) \right|,
+    $$ where:
+-   $P_S(k)$: Cumulative sum of weights for genes in $S$ up to rank $k$.
+-   $P_G(k)$: Cumulative sum of weights for all genes up to rank $k$.
 
 The weights often depend on the absolute value of the gene's differential expression score, emphasizing genes with larger effects.
 
-- **The null distribution**:
-To assess the significance of the observed ES, GSEA employs a permutation-based strategy:
- 1. Permute the condition labels to generate randomized ranked lists.
- 2. Recalculate the ES for the gene set $S$ in each randomized list.
- 3. Compare the observed ES to the null distribution of ES values from the permutations to compute a p-value.
+-   **The null distribution**: To assess the significance of the observed ES, GSEA employs a permutation-based strategy:
 
-- **Multiple testing adjustment**:
-Since many gene sets are tested in a typical GSEA analysis, corrections for multiple hypothesis testing are essential. GSEA uses the false discovery rate (FDR) to control for false positives, reporting gene sets with significant enrichment after correction.
+1.  Permute the condition labels to generate randomized ranked lists.
+2.  Recalculate the ES for the gene set $S$ in each randomized list.
+3.  Compare the observed ES to the null distribution of ES values from the permutations to compute a p-value.
+
+-   **Multiple testing adjustment**: Since many gene sets are tested in a typical GSEA analysis, corrections for multiple hypothesis testing are essential. GSEA uses the false discovery rate (FDR) to control for false positives, reporting gene sets with significant enrichment after correction.
 
 ::: block
 ![The typical "random walk" illustration of a GSEA. [@subramanian2005gene]](fig/chap3/gsea1.png){#fig-gsea1 width="100%" fig-align="center"}
@@ -640,43 +563,26 @@ GSEA outputs enriched gene sets ranked by their statistical significance and dir
 
 Some advantages of GSEA:
 
-- **Sensitivity to Subtle Changes:** GSEA detects coordinated changes in groups of genes, even when individual genes show modest differential expression.
-- **Biological Context:** By focusing on gene sets, GSEA provides results that are easier to interpret in the context of known biological processes or pathways.
-- **Robustness:** GSEA is less affected by noise or variability in individual genes, as it aggregates signals across entire gene sets.
+-   **Sensitivity to Subtle Changes:** GSEA detects coordinated changes in groups of genes, even when individual genes show modest differential expression.
+-   **Biological Context:** By focusing on gene sets, GSEA provides results that are easier to interpret in the context of known biological processes or pathways.
+-   **Robustness:** GSEA is less affected by noise or variability in individual genes, as it aggregates signals across entire gene sets.
 
 Despite its strengths, GSEA has limitations:
 
-- **Gene Set Overlap:** Many gene sets share overlapping genes, complicating interpretation.
-- **Ranking Dependence:** Results depend heavily on the ranking metric used.
-- **Predefined Gene Sets:** GSEA relies on the quality and relevance of predefined gene sets, which may not fully capture novel or context-specific biology.
+-   **Gene Set Overlap:** Many gene sets share overlapping genes, complicating interpretation.
+-   **Ranking Dependence:** Results depend heavily on the ranking metric used.
+-   **Predefined Gene Sets:** GSEA relies on the quality and relevance of predefined gene sets, which may not fully capture novel or context-specific biology.
 
 ### A brief note on other approaches
 
-Extensions to GSEA address some of these issues, including pathway-specific weighting, time-series GSEA, and single-cell adaptations of the method. One example to illustrate this is iDEA [@ma2020integrative1]. These methods aren't hugely popular since this procedure is quite literally often one of the last stages of a single-cell analyses -- using a fancy method here usually requires you to have faith that every analyses beforehand was performed reliably. (For instance, if you don't think you performed batch correction properly, it doesn't matter if you use the fanciest variant of GSEA -- you'll probably still find nothing biologically relevant.)
-See [@mubeen2022influence] for an overview of many methods.
+Extensions to GSEA address some of these issues, including pathway-specific weighting, time-series GSEA, and single-cell adaptations of the method. One example to illustrate this is iDEA [@ma2020integrative1]. These methods aren't hugely popular since this procedure is quite literally often one of the last stages of a single-cell analyses -- using a fancy method here usually requires you to have faith that every analyses beforehand was performed reliably. (For instance, if you don't think you performed batch correction properly, it doesn't matter if you use the fanciest variant of GSEA -- you'll probably still find nothing biologically relevant.) See [@mubeen2022influence] for an overview of many methods.
 
 ### How to do this in practice
 
-The most popular package to perform a GSEA analysis is `clusterProfiler::gseGO`. See <https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html> for tutorials on how to do this. If you're working on human data, the database used for GSEA is often the `org.Hs.eg.db` package, see <https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html>.
-See the following code snippet and the outputs in @fig-gsea_ex1 and @fig-gsea_dotplot as an example.
+The most popular package to perform a GSEA analysis is `clusterProfiler::gseGO`. See <https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html> for tutorials on how to do this. If you're working on human data, the database used for GSEA is often the `org.Hs.eg.db` package, see <https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html>. See the following code snippet and the outputs in @fig-gsea_ex1 and @fig-gsea_dotplot as an example.
 
 ::: block2
-
-teststat_vec <- cluster2.markers$avg_log2FC
-names(teststat_vec) <- rownames(cluster2.markers)
-teststat_vec <- sort(teststat_vec, decreasing = TRUE)
-set.seed(10)
-gse <- clusterProfiler::gseGO(
-teststat_vec,
-ont = "BP", # what kind of pathways are you interested in
-keyType = "SYMBOL",
-OrgDb = "org.Hs.eg.db",
-pvalueCutoff = 1,       # p-value threshold for pathways
-minGSSize = 10,            # minimum gene set size
-maxGSSize = 500            # maximum gene set size
-)
-head(as.data.frame(gse))
-
+teststat_vec \<- cluster2.markers\$avg_log2FC names(teststat_vec) \<- rownames(cluster2.markers) teststat_vec \<- sort(teststat_vec, decreasing = TRUE) set.seed(10) gse \<- clusterProfiler::gseGO( teststat_vec, ont = "BP", \# what kind of pathways are you interested in keyType = "SYMBOL", OrgDb = "org.Hs.eg.db", pvalueCutoff = 1, \# p-value threshold for pathways minGSSize = 10, \# minimum gene set size maxGSSize = 500 \# maximum gene set size ) head(as.data.frame(gse))
 :::
 
 ::: block
@@ -696,16 +602,12 @@ head(as.data.frame(gse))
 Cell-type labeling is a critical step in single-cell RNA-sequencing analysis, where the goal is to assign meaningful biological identities to cell clusters or groups. Traditionally, this process relies on manual annotation using known marker genes, which can be time-consuming and subjective. Transfer learning has emerged as a powerful alternative, leveraging reference datasets with well-annotated cell types to predict labels for new datasets. By applying machine learning models trained on these references, transfer learning enables automated, scalable, and more consistent cell-type annotation. This approach is particularly valuable for studies with large datasets or when analyzing data from underexplored tissues or conditions. Despite its utility, challenges remain, such as aligning datasets across technical platforms or accounting for differences in cell-state diversity, but the method continues to refine and enhance the accuracy and efficiency of cell-type labeling.
 
 ::: block3
-**Input/Output.** 
-The input to cell-type labeling is two matrices, a reference dataset $X^{(\text{ref})} \in \mathbb{R}^{n_1\times p}$ for $n_1$ cells and $p$ features (i.e., genes)  where all $n_1$ cells are labeled (and hence, why it's called a "reference" dataset), and  another dataset which is unlabeled and is the interest of your study, $X^{(\text{target})} \in \mathbb{R}^{n_2\times p}$ for $n_2$ cells and the same $p$ features. If there are $K$ clusters in $X^{(\text{ref})}$, the goal is to label each of the $n_2$ cells in $X^{(\text{target})}$ with one (or more, or possible none) of the $K$ clusters.
+**Input/Output.** The input to cell-type labeling is two matrices, a reference dataset $X^{(\text{ref})} \in \mathbb{R}^{n_1\times p}$ for $n_1$ cells and $p$ features (i.e., genes) where all $n_1$ cells are labeled (and hence, why it's called a "reference" dataset), and another dataset which is unlabeled and is the interest of your study, $X^{(\text{target})} \in \mathbb{R}^{n_2\times p}$ for $n_2$ cells and the same $p$ features. If there are $K$ clusters in $X^{(\text{ref})}$, the goal is to label each of the $n_2$ cells in $X^{(\text{target})}$ with one (or more, or possible none) of the $K$ clusters.
 :::
 
 ### Strategy 1: Good'ol marker genes {#sec-marker_gene_labeling}
 
-Cell-type identification using marker genes is a typical choice in single-cell RNA-seq analysis. 
-This is typically performed after clustering cells into groups with similar gene expression profiles. 
-This process involves leveraging existing literature to associate marker genes identified for each cluster with known cell types. 
-While this approach requires significant manual effort and domain expertise -- making it a human-in-the-loop process -- this can be both its strength and its limitation. The manual aspect ensures transparency and allows researchers to contextualize results within the biology of the experiment, drawing on their understanding of the literature and experimental design. 
+Cell-type identification using marker genes is a typical choice in single-cell RNA-seq analysis. This is typically performed after clustering cells into groups with similar gene expression profiles. This process involves leveraging existing literature to associate marker genes identified for each cluster with known cell types. While this approach requires significant manual effort and domain expertise -- making it a human-in-the-loop process -- this can be both its strength and its limitation. The manual aspect ensures transparency and allows researchers to contextualize results within the biology of the experiment, drawing on their understanding of the literature and experimental design.
 
 Some drawbacks of this approach: 1) It can be labor-intensive, dependent on the quality of prior knowledge, and requires the data analyst to have quite some expertise with the biological system. After all, *you* will need to figure out the most reliable set of genes to use -- this will inevitably require you know have read quite a few papers to see which markers are commonly used by the community. 2) A more limiting drawback is that you will not be able to label "new" cell types in your dataset that do not have already established marker genes. After all, if you are "missing" the marker genes for a particular cell type, you might not even realize that that cell type is in your dataset.
 
@@ -725,30 +627,27 @@ Despite these challenges, this method remains the most widely used because it mi
 
 ### In relation to scoring a gene-set
 
-Recall in @sec-cell_filtering that we often create a score for the percentage of expression originating from the mitochondria genes for cell-filtering.
-The `Seurat::PercentageFeatureSet` function to do this does exactly what it sounds like -- it computes the percentage of counts originating from the genes in the gene set (relative to all the counts in the cell).
+Recall in @sec-cell_filtering that we often create a score for the percentage of expression originating from the mitochondria genes for cell-filtering. The `Seurat::PercentageFeatureSet` function to do this does exactly what it sounds like -- it computes the percentage of counts originating from the genes in the gene set (relative to all the counts in the cell).
 
 There are fancier methods to compute this enrichment score (i.e., a score where a higher number denotes that that gene set is "more active" in a cell). Two popular methods for this account for the "background distribution" (UCell, [@andreatta2021ucell]) or the gene regulatory network (AUCell, [@aibar2017scenic]).
 
 ### Strategy 2: Deploying a classifier/Transfer learning
 
-In the earlier days of single-cell analyses, there were quite a few methods that had you build a cell-type classifier on a reference dataset which had cell-type labels (typically developed by a large consortia, where you trust the cell-type labels) and you deploy the classifier on your dataset of interest. The classifier here predicts the cell type based on the gene expression.
-For instance, you can see [@abdelaal2019comparison] which has relevant references.
-While these are probably the most statistically transparent, it usually takes a bit of time to learn the details of these methods to understand how statistically sound they are.
+In the earlier days of single-cell analyses, there were quite a few methods that had you build a cell-type classifier on a reference dataset which had cell-type labels (typically developed by a large consortia, where you trust the cell-type labels) and you deploy the classifier on your dataset of interest. The classifier here predicts the cell type based on the gene expression. For instance, you can see [@abdelaal2019comparison] which has relevant references. While these are probably the most statistically transparent, it usually takes a bit of time to learn the details of these methods to understand how statistically sound they are.
 
 There are a few aspects of statistical interest in this direction:
 
-- Classification with abstain/rejection: It is possible to design a classifier with a "reject" or "abstain" option. This way, if the classifier is unsure about the cell type label, then it can refuse to give a cell-type prediction. For instance, see scPred [@alquicira2019scpred] and Hierarchical Reject [@theunissen2024uncertainty] for one way this can be done.
+-   Classification with abstain/rejection: It is possible to design a classifier with a "reject" or "abstain" option. This way, if the classifier is unsure about the cell type label, then it can refuse to give a cell-type prediction. For instance, see scPred [@alquicira2019scpred] and Hierarchical Reject [@theunissen2024uncertainty] for one way this can be done.
 
-- Conformal inference: Conformal inference is a large statistical theoretical field. Essentially, instead of predicting one cell type, the method returns a set of potential cell types. (This is a different way to design methods with an abstain option, since a cell with an empty prediction set would essentially "abstain.") See [@khatri2022uncertainty] for an example.
+-   Conformal inference: Conformal inference is a large statistical theoretical field. Essentially, instead of predicting one cell type, the method returns a set of potential cell types. (This is a different way to design methods with an abstain option, since a cell with an empty prediction set would essentially "abstain.") See [@khatri2022uncertainty] for an example.
 
-- Transfer learning: This is the more commonly option done nowadays in this category. The term "transfer learning" refers to training a classifier on the reference dataset and then slightly modifying it (i.e., "transfer") in order to your dataset of interest. Some examples of this is scArches [@lotfollahi2022mapping] and its extension in treeArches [@michielsen2023single].
+-   Transfer learning: This is the more commonly option done nowadays in this category. The term "transfer learning" refers to training a classifier on the reference dataset and then slightly modifying it (i.e., "transfer") in order to your dataset of interest. Some examples of this is scArches [@lotfollahi2022mapping] and its extension in treeArches [@michielsen2023single].
 
-Some drawbacks: The main drawback is due to batch effects. After all, "by definition," the dataset you're analyzing is very likely coming from a different research lab/consortium that produced the reference dataset. While statistical theory offers great ways to diagnose a classifer *assuming the training and test data originate from the same source*, it is much harder to take advantage of this statistical theory if you blatantly know this is not the case. 
+Some drawbacks: The main drawback is due to batch effects. After all, "by definition," the dataset you're analyzing is very likely coming from a different research lab/consortium that produced the reference dataset. While statistical theory offers great ways to diagnose a classifer *assuming the training and test data originate from the same source*, it is much harder to take advantage of this statistical theory if you blatantly know this is not the case.
 
 ### Strategy 3: Data integration
 
-Dataset integration has become a widely used approach for cell-type labeling, especially when marker genes are not readily available. This strategy involves integrating a new dataset with an existing reference, often using methods that align the datasets in a shared space.  Once integrated, cells in the new dataset are labeled based on their nearest neighbors in the reference. While this approach is powerful, it has limitations. A key advantage of this method is its visual interpretability; researchers can assess the alignment of the datasets in a low-dimensional embedding, adding a layer of protection against mislabeling or other errors. See @fig-chap3_integration for a schematic.
+Dataset integration has become a widely used approach for cell-type labeling, especially when marker genes are not readily available. This strategy involves integrating a new dataset with an existing reference, often using methods that align the datasets in a shared space. Once integrated, cells in the new dataset are labeled based on their nearest neighbors in the reference. While this approach is powerful, it has limitations. A key advantage of this method is its visual interpretability; researchers can assess the alignment of the datasets in a low-dimensional embedding, adding a layer of protection against mislabeling or other errors. See @fig-chap3_integration for a schematic.
 
 ::: block
 ![Illustration of how to conceptualize data integration. [@stuart2019comprehensive]](fig/chap3/integration.png){#fig-chap3_integration width="100%" fig-align="center"}
@@ -756,19 +655,19 @@ Dataset integration has become a widely used approach for cell-type labeling, es
 
 A few notes:
 
-- We sometimes use the verb "align" two datasets or "project" one dataset onto another. Note that we're just using these verbs conceptually, not in a literal statistical sense.
-- Many methods used for batch correction (see @sec-batch_correction) can be repurposed for this task.
-- Be warned though: integration can sometimes "collapse" distinct points in the data, potentially masking subtle differences or even preventing the discovery of new cell types. 
+-   We sometimes use the verb "align" two datasets or "project" one dataset onto another. Note that we're just using these verbs conceptually, not in a literal statistical sense.
+-   Many methods used for batch correction (see @sec-batch_correction) can be repurposed for this task.
+-   Be warned though: integration can sometimes "collapse" distinct points in the data, potentially masking subtle differences or even preventing the discovery of new cell types.
 
 For some canonical examples of these methods: Using CCA ([@butler2018integrating] and its followup, [@stuart2019comprehensive]), using cell-cell graphs (MNN [@haghverdi2018batch] and Harmony [@korsunsky2019fast]), and regression (COMBAT-seq [@zhang2020combat]). However, by far the most common way to do this currently is through deep-learning (which can be interpreted as a form of transfer learning, see scANVI [@xu2021probabilistic] for example).
 
 Just to give you small taste of some of these above methods:
 
-- **Anchor pairs via CCA**: [@stuart2019comprehensive] essentially is a 3 step process: 1) first find many pairs of cells (one in your dataset, one in the reference) that are similar based on CCA, and then 2) use those pairs of cells to learn a transformation on how to convert the cells in your dataset into the cells in the reference dataset. Then, apply this transformation to all cells in your dataset.
+-   **Anchor pairs via CCA**: [@stuart2019comprehensive] essentially is a 3 step process: 1) first find many pairs of cells (one in your dataset, one in the reference) that are similar based on CCA, and then 2) use those pairs of cells to learn a transformation on how to convert the cells in your dataset into the cells in the reference dataset. Then, apply this transformation to all cells in your dataset.
 
-- **Clustering and shrinking via Harmony**: [@korsunsky2019fast] essentially is a 2 step process: 1) first cluster all the cells in both datasets together (yours with the reference dataset), where you want a clustering where each cluster represents a good mixture of cells from each dataset, then 2) "shrink" all the cells in each cluster towards its cluster center. Essentially, you treat the differences between cluster as "biological signal," while the variability within a cluster as "technical noise."
+-   **Clustering and shrinking via Harmony**: [@korsunsky2019fast] essentially is a 2 step process: 1) first cluster all the cells in both datasets together (yours with the reference dataset), where you want a clustering where each cluster represents a good mixture of cells from each dataset, then 2) "shrink" all the cells in each cluster towards its cluster center. Essentially, you treat the differences between cluster as "biological signal," while the variability within a cluster as "technical noise."
 
-- **Deep-learning (i.e., a really fancy regression), via scANVI**: [@xu2021probabilistic] essentially use one framework to: 1) learn a way to project all the cells in both datasets into one low-dimensional space where the low-dimensional space is "independent" of the dataset label (i.e., given a cell's low-dimensional space, you can't predict which dataset the cell came from), and then 2) combine a cell's low-dimensional space with its dataset label to reconstruct the original gene expression (which is to ensure that the low-dimensional space was a meaningful representation).
+-   **Deep-learning (i.e., a really fancy regression), via scANVI**: [@xu2021probabilistic] essentially use one framework to: 1) learn a way to project all the cells in both datasets into one low-dimensional space where the low-dimensional space is "independent" of the dataset label (i.e., given a cell's low-dimensional space, you can't predict which dataset the cell came from), and then 2) combine a cell's low-dimensional space with its dataset label to reconstruct the original gene expression (which is to ensure that the low-dimensional space was a meaningful representation).
 
 ### How to do this in practice
 
@@ -776,20 +675,18 @@ There's not standardize way to do this, but I would personally recommend data in
 
 ### A brief note on other approaches
 
-See [@abdelaal2019comparison; @molbert2023adjustments] for benchmarking of cell-type labeling methods. 
+See [@abdelaal2019comparison; @molbert2023adjustments] for benchmarking of cell-type labeling methods.
 
-Note that cell-type labeling is popularly being integrating into web-based all-in-one (i.e., "one-stop-shop") platforms that automatically label your cells (see Azimuth (<https://azimuth.hubmapconsortium.org/>) and CellTypist (<https://www.celltypist.org/>) as an example). This is because cell-type labeling through writing your own code can be quite fickle that requires a lot of biological expertise to know what is "sensible", so it's beneficial to offload this concern to a platform.
-See [@tran2020benchmark; @luecken2022benchmarking; @lance2022multimodal] (among many) that benchmark the dataset integration methods.
+Note that cell-type labeling is popularly being integrating into web-based all-in-one (i.e., "one-stop-shop") platforms that automatically label your cells (see Azimuth (<https://azimuth.hubmapconsortium.org/>) and CellTypist (<https://www.celltypist.org/>) as an example). This is because cell-type labeling through writing your own code can be quite fickle that requires a lot of biological expertise to know what is "sensible", so it's beneficial to offload this concern to a platform. See [@tran2020benchmark; @luecken2022benchmarking; @lance2022multimodal] (among many) that benchmark the dataset integration methods.
 
 ::: block
-**Remark (The big challenges in cell-type integration).**
-Broadly speaking, there are three major challenges in cell-type integration:
+**Remark (The big challenges in cell-type integration).** Broadly speaking, there are three major challenges in cell-type integration:
 
-1. **How do you pick the appropriate reference dataset?**: [@molbert2023adjustments] discusses the impact of the reference dataset itself. (Of course, using a different reference dataset will change your cell type labeling, so it's important to plan beforehand how you will defend the critique of whether you even have an appropriate reference dataset.)
+1.  **How do you pick the appropriate reference dataset?**: [@molbert2023adjustments] discusses the impact of the reference dataset itself. (Of course, using a different reference dataset will change your cell type labeling, so it's important to plan beforehand how you will defend the critique of whether you even have an appropriate reference dataset.)
 
-2. **How "heavy-handed" do you want your integration to be?**: If you have longitudinal samples (i.e., tissue from the same donors at different points, say, based on followup visits after therapy), these samples might be on different sequencing batches. This presents a unique conundrum -- how can you differentiate between a "batch effect" and a "true biological effect due to different timepoints"? You might be interested to see papers such as CellANOVA for this [@zhang2024recovery]. Even if you don't have longitudinal samples, sometimes certain integration methods to overboard and merge *too much* together. For example, one of the reasons some researchers prefer reciprocal PCA to do integration (see <https://satijalab.org/seurat/articles/integration_rpca.html>) is precisely because it's more "conservative" (i.e., is less aggressive in trying to remove batch effects). How will you, as the data analyst, determine how much is too much?
+2.  **How "heavy-handed" do you want your integration to be?**: If you have longitudinal samples (i.e., tissue from the same donors at different points, say, based on followup visits after therapy), these samples might be on different sequencing batches. This presents a unique conundrum -- how can you differentiate between a "batch effect" and a "true biological effect due to different timepoints"? You might be interested to see papers such as CellANOVA for this [@zhang2024recovery]. Even if you don't have longitudinal samples, sometimes certain integration methods to overboard and merge *too much* together. For example, one of the reasons some researchers prefer reciprocal PCA to do integration (see <https://satijalab.org/seurat/articles/integration_rpca.html>) is precisely because it's more "conservative" (i.e., is less aggressive in trying to remove batch effects). How will you, as the data analyst, determine how much is too much?
 
-3. **How do you know if your dataset contains cell types not in the reference?**: If your dataset of interest has many cell types that aren't in the reference, your data integration method might unknowingly wipe all this signal away since it is doing its job -- it's trying to integrate the two datasets together, under the pretense that both datasets are "similar." This is where different methods start to exhibit different behavior. You might be interested in looking at methods such as popV [@ergen2024consensus] that try to build a "uncertainty score." (Many modern dataset integration methods now have this feature. However, you should always take these scores with a grain of salt since you can't be too sure how calibrated these scores are.) CASi [@wang2024casi] offers a different perspective on how to answer "in a longitudinal experiment, how do I even know if a new celltype emerges?"
+3.  **How do you know if your dataset contains cell types not in the reference?**: If your dataset of interest has many cell types that aren't in the reference, your data integration method might unknowingly wipe all this signal away since it is doing its job -- it's trying to integrate the two datasets together, under the pretense that both datasets are "similar." This is where different methods start to exhibit different behavior. You might be interested in looking at methods such as popV [@ergen2024consensus] that try to build a "uncertainty score." (Many modern dataset integration methods now have this feature. However, you should always take these scores with a grain of salt since you can't be too sure how calibrated these scores are.) CASi [@wang2024casi] offers a different perspective on how to answer "in a longitudinal experiment, how do I even know if a new celltype emerges?"
 
 My personal opinion? The best batch correction strategy is to do careful experimental design. One common strategy is to have a "control" tissue that you put into every sequencing run. That way, even across your different sequencing batches, you will have one set of cells that should be the same across every batch. This helps you get some additional clues on when a batch correction method is performing well.
 :::
@@ -810,11 +707,9 @@ The method begins by representing the gene expression profile of each cell as a 
 
 Next, Monocle constructs a Minimum Spanning Tree (MST) in this reduced space. Each cell is treated as a node, and edges represent transcriptional similarity between cells, with weights corresponding to distances in the reduced space. The MST serves as the backbone for the trajectory and is used to identify the longest connected path, representing the main pseudotemporal progression.
 
-Mathematically, pseudotime $\tau_i$ for a cell $i$ is defined along this trajectory as:
-$$
+Mathematically, pseudotime $\tau_i$ for a cell $i$ is defined along this trajectory as: $$
 \tau_i = \sum_{j=1}^{i} d(c_j, c_{j+1}),
-$$
-where $d(c_j, c_{j+1})$ is the geodesic distance between successive cells $c_j$ and $c_{j+1}$ along the path.
+$$ where $d(c_j, c_{j+1})$ is the geodesic distance between successive cells $c_j$ and $c_{j+1}$ along the path.
 
 ::: block
 ![From [@trapnell2014dynamics].](fig/chap3/monocle.png){#fig-monocle width="100%" fig-align="center"}
@@ -822,16 +717,15 @@ where $d(c_j, c_{j+1})$ is the geodesic distance between successive cells $c_j$ 
 
 ### How to do this in practice
 
-There is no standardized way for trajectory analysis. However, Monocle[^1] is quite popular because: 1) it was one of the first ways developed to do trajectory analyses, 2) it is quite modular (so different researchers can switch out specific aspects for another), 3) each step is quite transparent mathematically, and 4) the software is well maintained and runs reasonably quickly.
+There is no standardized way for trajectory analysis. However, Monocle[^chapter3_rna-13] is quite popular because: 1) it was one of the first ways developed to do trajectory analyses, 2) it is quite modular (so different researchers can switch out specific aspects for another), 3) each step is quite transparent mathematically, and 4) the software is well maintained and runs reasonably quickly.
 
-[^1]: See <https://cole-trapnell-lab.github.io/monocle3/docs/introduction/>.
+[^chapter3_rna-13]: See <https://cole-trapnell-lab.github.io/monocle3/docs/introduction/>.
 
 ### A highly active area of research: How much biology does your premise assume is true?
 
 Methods such as Monocle intrinsically assume that two cells in gene expression is a good proxy of both cells at a similar biological stage. In general, this is a *huge* assumption, and it has been shown to not hold in various settings. For instance, see [@saunders2023embryo], or multi-omics in [Chapter 5](chapter5.qmd) and lineage-tracing in [Chapter 8](chapter8.qmd). (It's possible that the transcriptome is not the most accurate omic to track cell development/response.)
 
-However, other methods based on the transcriptome could rely on different assumptions on how the biology relates to the math. Just to give some examples, Slingshot [@street2018slingshot] assumes the biological premise of Monocle *and* adds that the trajectory must be strictly branching. CytoTRACE [@gulati2020single] instead assumes that as cells develop, there are less genes that are expressed.
-RNA velocity methods such as velocyto [@la2018rna] assume there is spliced/unspliced relation in mRNA fragments that can be used to learn a cell's developmental stage, which offers a potentially more mechanistic perspective on how to learn the cell trajectories.
+However, other methods based on the transcriptome could rely on different assumptions on how the biology relates to the math. Just to give some examples, Slingshot [@street2018slingshot] assumes the biological premise of Monocle *and* adds that the trajectory must be strictly branching. CytoTRACE [@gulati2020single] instead assumes that as cells develop, there are less genes that are expressed. RNA velocity methods such as velocyto [@la2018rna] assume there is spliced/unspliced relation in mRNA fragments that can be used to learn a cell's developmental stage, which offers a potentially more mechanistic perspective on how to learn the cell trajectories.
 
 A brief note on other approaches: See [@saelens2019comparison; @cannoodt2021spearheading; @zhang2023robust] for large benchmarkings of various RNA velocity methods. See [@ancheta2024challenges] for a benchmarking specific to RNA velocity.
 
@@ -841,15 +735,14 @@ Trajectory inference is a challenging statistical problem because it combines el
 
 Several assumptions exacerbate the difficulty (see [@saelens2019comparison]):
 
-- **Unknown time and branching structure**: The exact ordering of cells and the number or nature of branches in the trajectory are unknown. Inferring these from noisy and sparse single-cell data is highly nontrivial.
-- **Assumption of a trajectory**: You are implicitly assuming that the data follows a trajectory, but not all biological processes have a well-defined or continuous progression. If the underlying process is more stochastic or does not follow a clear path, the trajectory inference may be misleading.
-- **Equal representation across pseudotime**: Many methods assume an approximately equal number of cells sampled across all stages of the trajectory, but real datasets often have uneven representation, which can bias the inferred pseudotime or branching structure.
+-   **Unknown time and branching structure**: The exact ordering of cells and the number or nature of branches in the trajectory are unknown. Inferring these from noisy and sparse single-cell data is highly nontrivial.
+-   **Assumption of a trajectory**: You are implicitly assuming that the data follows a trajectory, but not all biological processes have a well-defined or continuous progression. If the underlying process is more stochastic or does not follow a clear path, the trajectory inference may be misleading.
+-   **Equal representation across pseudotime**: Many methods assume an approximately equal number of cells sampled across all stages of the trajectory, but real datasets often have uneven representation, which can bias the inferred pseudotime or branching structure.
 
 ::: block2
-**Remark (Personal opinion: Lack of flushed-out statistical theory).**
-A typical statistical theorem goes: 1) I have a specific data model in mind that tells me how data is generated, 2) I have an specific aspect about this model that I do not get to observe, but I wish to estimate from data, and then 3) based on a novel estimator, I can prove that as I get more data, under some reasonable assumptions, I can estimate the unknown aspects better and better.
+**Remark (Personal opinion: Lack of flushed-out statistical theory).** A typical statistical theorem goes: 1) I have a specific data model in mind that tells me how data is generated, 2) I have an specific aspect about this model that I do not get to observe, but I wish to estimate from data, and then 3) based on a novel estimator, I can prove that as I get more data, under some reasonable assumptions, I can estimate the unknown aspects better and better.
 
-In general, I have *not* seen this convincingly been done at all for almost any trajectory analysis for single-cell methods. This is due to the complexity of the biological assumptions you have justify, all the modeling assumptions you have justify (shown above), *and then* all the crazy proof techniques you would need to carefully manage to show how you can cast a natively unsupervised statistical problem into a supervised one. 
+In general, I have *not* seen this convincingly been done at all for almost any trajectory analysis for single-cell methods. This is due to the complexity of the biological assumptions you have justify, all the modeling assumptions you have justify (shown above), *and then* all the crazy proof techniques you would need to carefully manage to show how you can cast a natively unsupervised statistical problem into a supervised one.
 
 This isn't to say trajectory methods are not trustworthy. Certainly, these methods have uncovered tremendous biological insights. My comment here is that a lot of our understanding of trajectory methods is driven by the biological context, not so much by our mathematical insight.
 :::
@@ -866,14 +759,13 @@ It's important to remember that scRNA-seq primarily focuses on associating gene 
 
 ### Translational limitation of scRNA-seq, and bulk deconvolution
 
-As we showed in the footnotes of @sec-chapter_3_tech, scRNA-seq is extremely expensive. This makes any scRNA-seq technology quite unlikely to become a routine tool in clinical settings like hospitals.
-This is one of the main appeals of bulk deconvolution methods (where you can estimate cell-type proportions for many tissues for many donors, see [@cobos2023effective; @nguyen2024fourteen; @maden2023challenges]), since bulk RNA sequencing is a lot cheaper than scRNA sequencing.
+As we showed in the footnotes of @sec-chapter_3_tech, scRNA-seq is extremely expensive. This makes any scRNA-seq technology quite unlikely to become a routine tool in clinical settings like hospitals. This is one of the main appeals of bulk deconvolution methods (where you can estimate cell-type proportions for many tissues for many donors, see [@cobos2023effective; @nguyen2024fourteen; @maden2023challenges]), since bulk RNA sequencing is a lot cheaper than scRNA sequencing.
 
 ### Not all RNA is mRNA
 
-If you have not studied biology before, it might shock you to realize that mRNA is only one specific type of RNA molecules. See @fig-rna-types for all the different types of mRNA molecules. mRNA is simply the only RNA molecules to become translated into proteins. In fact, this is only from 1%-5% of all RNA molecules in a cell[^2]. There is incredible biology being done to investigate the other roles of the other RNA molecules, for instance lncRNA [@statello2021gene] and microRNA [@shang2023micrornas].
+If you have not studied biology before, it might shock you to realize that mRNA is only one specific type of RNA molecules. See @fig-rna-types for all the different types of mRNA molecules. mRNA is simply the only RNA molecules to become translated into proteins. In fact, this is only from 1%-5% of all RNA molecules in a cell[^chapter3_rna-14]. There is incredible biology being done to investigate the other roles of the other RNA molecules, for instance lncRNA [@statello2021gene] and microRNA [@shang2023micrornas].
 
-[^2]: See <https://www.qiagen.com/us/resources/faq?id=06a192c2-e72d-42e8-9b40-3171e1eb4cb8>.
+[^chapter3_rna-14]: See <https://www.qiagen.com/us/resources/faq?id=06a192c2-e72d-42e8-9b40-3171e1eb4cb8>.
 
 ::: block
 ![From <https://www.youtube.com/watch?v=FThA4Vxs3v4>](fig/chap3/rna-types.png){#fig-rna-types width="100%" fig-align="center"}
@@ -888,22 +780,19 @@ To truly understand the complexity of cellular systems, we need to integrate inf
 :::
 
 ::: block2
-**Remark (Personal opinion: The abundance of computational tools for scRNA-seq doesn't necessarily reflect its importance as an omic, but rather its standardization and well-organized data structure).**
-The explosion of computational tools for scRNA-seq, particularly from 3' short-read technologies, is less about it being the most biologically critical modality and more about the ease of working with the data. The technology is highly standardized, producing consistent and structured outputs, such as count matrices, that are straightforward to analyze. This standardization has enabled rapid tool development and widespread adoption, creating a feedback loop where more tools emerge as the data becomes more accessible. See [@eisenstein2020secret] for an opinion piece.
+**Remark (Personal opinion: The abundance of computational tools for scRNA-seq doesn't necessarily reflect its importance as an omic, but rather its standardization and well-organized data structure).** The explosion of computational tools for scRNA-seq, particularly from 3' short-read technologies, is less about it being the most biologically critical modality and more about the ease of working with the data. The technology is highly standardized, producing consistent and structured outputs, such as count matrices, that are straightforward to analyze. This standardization has enabled rapid tool development and widespread adoption, creating a feedback loop where more tools emerge as the data becomes more accessible. See [@eisenstein2020secret] for an opinion piece.
 :::
 
 ::: block
-**Remark (The quadruple threat in cell biology).**
-Suppose you collect data, analyze it, and realize your findings don't align with current biological knowledge. Depending on your expertise, you might blame one of these four major aspects:
+**Remark (The quadruple threat in cell biology).** Suppose you collect data, analyze it, and realize your findings don't align with current biological knowledge. Depending on your expertise, you might blame one of these four major aspects:
 
-- **Your computational/statistical methods aren't good**: This is often the perspective of a computational/statistical person, where you blame the way you analyzed the data. This might imply there is room for better analytical tools.
+-   **Your computational/statistical methods aren't good**: This is often the perspective of a computational/statistical person, where you blame the way you analyzed the data. This might imply there is room for better analytical tools.
 
-- **You didn't collect data using the appropriate technology**: This is often the perspective of a bio-engineering person, where you blame the technology used or the omic being assayed. This might imply there's a better technology that can be developed to measure something much more directly relevant to your biological question.
+-   **You didn't collect data using the appropriate technology**: This is often the perspective of a bio-engineering person, where you blame the technology used or the omic being assayed. This might imply there's a better technology that can be developed to measure something much more directly relevant to your biological question.
 
-- **You didn't collect enough data from a diverse set of tissues/donors**:
-This is often the perspective of a large consortium, where you blame the limited number of samples being used to draw this conclusion. Perhaps by pooling together manpower, funding, and expertise, the collective group of researchers can have enough power to learn the desired biology.
+-   **You didn't collect enough data from a diverse set of tissues/donors**: This is often the perspective of a large consortium, where you blame the limited number of samples being used to draw this conclusion. Perhaps by pooling together manpower, funding, and expertise, the collective group of researchers can have enough power to learn the desired biology.
 
-- **The biology is much more complicated than you realize**: This is often the perspective of a biologist -- how are you so sure your finding isn't a fluke, but instead, it's biological novelty? Is there a biological premise on why your findings might be reflective of reality?
+-   **The biology is much more complicated than you realize**: This is often the perspective of a biologist -- how are you so sure your finding isn't a fluke, but instead, it's biological novelty? Is there a biological premise on why your findings might be reflective of reality?
 
 This is showcase: 1) the thrill and unending expanse of cell biology, and 2) cell biology is now so complicated that it is unrealistic to learn it all. We (as researchers) need to specialize in a particular area, gain a preliminary understanding of all the other aspects of cell biology, and find great collaborators who complement your own expertise. For instance, developing better computational methods is not very impactful if the community knows that the scientific limitation isn't the computational methods.
 :::
