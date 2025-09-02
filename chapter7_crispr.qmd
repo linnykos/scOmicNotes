@@ -35,6 +35,7 @@ In a typical CRISPR screen experiment (mainly a CRISPR knockout), a library of l
 
 **Typical components of a CRISPR mechanism.**
 
+<<<<<<< HEAD
 -   **Cas9 protein:** A DNA endonuclease that recognizes and cuts target DNA specified by the guide RNA; variations include nuclease-deactivated (dCas9) or nickase Cas9 for alternative applications. Other CRISPR-associated proteins like Cas12a (Cpf1), Cas13, or dCas9 (dead Cas9) can expand the range of target sequences, have different PAM requirements, or allow for gene regulation without cutting DNA.\
     Cas9 may bind sites with partial sequence complementarity, resulting in unintended cuts — this is called “off-target effects.” Various strategies (e.g., high-fidelity Cas9 variants, improved gRNA design) help minimize these effects.
 
@@ -406,3 +407,47 @@ Putting this all together, see @fig-perturbnet11 and @fig-perturbnet12.
 ::: block
 ![From @yu2022perturbnet. More details about how this works.](fig/chap7/perturbnet4.png){#fig-perturbnet12 width="100%" fig-align="center"}
 :::
+=======
+- **Cas9 protein:** A DNA endonuclease that recognizes and cuts target DNA specified by the guide RNA; variations include nuclease-deactivated (dCas9) or nickase Cas9 for alternative applications. Other CRISPR-associated proteins like Cas12a (Cpf1), Cas13, or dCas9 (dead Cas9) can expand the range of target sequences, have different PAM requirements, or allow for gene regulation without cutting DNA.  
+  Cas9 may bind sites with partial sequence complementarity, resulting in unintended cuts — this is called "off-target effects." Various strategies (e.g., high-fidelity Cas9 variants, improved gRNA design) help minimize these effects.
+
+- **Guide RNA (gRNA):** A customizable RNA sequence that directs Cas9 to the desired genomic locus; variations include single-guide RNA (sgRNA) and dual-RNA formats depending on the experimental design.  
+  To streamline CRISPR-Cas9 applications in genetic engineering, scientists have designed a synthetic fusion of crRNA and tracrRNA into a single-guide RNA (sgRNA). This chimeric RNA retains both the target-specific recognition (crRNA component) and Cas9-binding function (tracrRNA component) but simplifies the system by reducing the number of necessary molecules. sgRNAs are commonly used in research and therapeutic applications due to their ease of design and efficiency in genome editing.  
+    - **crRNA (CRISPR RNA):** A short RNA sequence that is complementary to the target DNA and provides sequence specificity for Cas9 binding. This is typically 20 nucleotides long.  
+    - **tracrRNA (Trans-activating CRISPR RNA):** A structural RNA that base-pairs with the crRNA and interacts with Cas9 to activate its nuclease function.  
+  In this system, the crRNA and tracrRNA must form a duplex to guide Cas9 to the target sequence, which then leads to DNA cleavage.  
+  Multiple guide RNAs can be delivered simultaneously to target different loci at once, enabling complex genome-scale screens or combinatorial gene perturbations. Computational tools help optimize sgRNA sequences to maximize on-target efficiency while minimizing off-target effects. Chemically modified guide RNAs can improve stability and efficiency in vivo.
+
+- **PAM (Protospacer Adjacent Motif):** A short DNA sequence adjacent to the target region that is essential for Cas9 to recognize and bind to DNA. The PAM sequence is typically "NGG" (where "N" represents any nucleotide, and "GG" is required). Without the correct PAM sequence, Cas9 cannot efficiently bind or cut the DNA, ensuring some level of specificity in genome editing. Different Cas9 variants have evolved or been engineered to recognize alternative PAM sequences, which offer broader targeting possibilities with reduced off-target effects. The cut typically happens 3 base pairs upstream of the PAM on the target strand (i.e., in the 5′ direction).
+
+- **Lentivirus:** Lentiviruses are widely used as viral vectors for delivering CRISPR components into cells (variations include different promoters, packaging systems, and envelope proteins to optimize transduction efficiency), particularly for experiments requiring stable and long-term expression of Cas9 and guide RNAs. Since many cell types are difficult to transfect using conventional methods, lentiviral transduction provides an efficient way to introduce CRISPR machinery into a broad range of cell types, including non-dividing and primary cells.  
+  What is delivered to cells? (See @fig-plasmid1–@fig-plasmid3 for the construction and architecture of the lentiviral vector.)  
+    - **Cas9 expression construct:** A lentiviral vector encoding the Cas9 nuclease under a suitable promoter. In some systems, inducible promoters (e.g., doxycycline-inducible) are used to control Cas9 activity.  
+    - **Guide RNA (gRNA) expression construct:** A separate lentiviral vector encoding the guide RNA sequence under a promoter to ensure efficient transcription.  
+    - **Selection markers:** Often, antibiotic resistance genes or fluorescent markers are included to facilitate selection of successfully transduced cells.  
+
+  Lentiviral delivery is essential for CRISPR applications due to its ability to stably integrate into the host genome, ensuring long-term expression of Cas9 and guide RNAs. This stability is particularly advantageous for genome-wide CRISPR knockout screens and lineage tracing experiments. Additionally, many cell types, such as primary cells, stem cells, and immune cells, are notoriously difficult to transfect[^1]; lentiviral transduction provides a more efficient and reliable alternative. See @fig-lentiviral1–@fig-lentiviral2 for how the gRNA can be injected into the cell, or if it's integrated into the DNA, how it "borrows" the cell's transcriptional machinery.
+
+::: block
+![*Top*: From @khan2022crispr.](fig/chap7/grna-construction.png){#fig-plasmid1 width="100%" fig-align="center"}
+:::
+
+::: block
+![*Bottom left*: <https://bpsbioscience.com/pd-1-crispr-cas9-lentivirus-integrating-78052>.](fig/chap7/plasmid.png){#fig-plasmid2 width="100%" fig-align="center"}
+:::
+
+::: block
+![*Bottom right*: From @mao2017heritability.](fig/chap7/plasmid2.png){#fig-plasmid3 width="100%" fig-align="center"}
+:::
+
+::: block
+![*Left*: <https://www.benchling.com/blog/how-to-synthesize-your-grnas-for-crispr>.](fig/chap7/plasmid-integration.png){#fig-lentiviral1 width="100%" fig-align="center"}
+:::
+
+::: block
+![*Right*: <https://bpsbioscience.com/lentiviruses?product_type_filter=5567>.](fig/chap7/lentiviral.png){#fig-lentiviral2 width="100%" fig-align="center"}
+:::
+
+[^1]: Transfection is the process of introducing foreign nucleic acids (such as DNA or RNA) into eukaryotic cells to manipulate gene expression or enable genetic modifications. It is commonly used in plasmid-based CRISPR applications. In opposition, transduction refers to the introduction of genetic material using viral vectors.
+
+>>>>>>> 1bd00352c0200b64b0ac3edb230ca1aa1aad83a8
