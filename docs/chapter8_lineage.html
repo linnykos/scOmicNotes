@@ -358,13 +358,9 @@ Figure&nbsp;7.6: From <a href="https://stemcellthailand.org/induced-pluripotent-
 <h2 data-number="7.2" class="anchored" data-anchor-id="sec-natural_lineage"><span class="header-section-number">7.2</span> Basis on how to infer history from cells naturally</h2>
 <p>Certain features in a cell’s genetic material serve as natural markers for tracing lineage. These features arise spontaneously or accumulate over time, and researchers can compare them across related cells to reconstruct branching histories.</p>
 <ul>
-<li><p><strong>Mitochondrial DNA (somatic mutations)</strong>:<br>
-Mitochondrial genomes can pick up small mutations as cells divide. (Note! There are a lot of types of other DNA in your cells beyond the typical DNA we think of in the 23 pairs of chromosomes. Your mitochondria has its own DNA.) By measuring these mutations, one can infer which cells share a common ancestor and roughly estimate how many divisions have occurred. However, because the mutation rate is not always high, it can be difficult to achieve fine-grained resolution.</p></li>
-<li><p><strong>DNA copy number</strong>:<br>
-Gains or losses in chromosome segments, known as copy number variations, can also serve as lineage markers. Though useful for distinguishing large-scale genomic shifts, such variations do not necessarily arise in a predictable manner. This makes it challenging to reproducibly track precise cell-to-cell histories.<br>
-For examples of bulk-DNA phylogenetic tree, see . This is a massive field, so one citation is not doing this field justice. We’ll see this more in <a href="#sec-dna_phylogenetic">Section 8.3</a>.</p></li>
-<li><p><strong>DNA methylation</strong>:<br>
-DNA methylation serves as another naturally occurring cellular barcode. Over time, cells acquire unique methylation patterns that reflect their lineage history. These epigenetic marks regulate gene expression and can be stably inherited through cell divisions. Because different tissues and cell types exhibit distinct methylation landscapes, analyzing these patterns can provide a historical record of a cell’s developmental path. However, while DNA methylation is useful for lineage tracing, its resolution is limited by the variability in methylation turnover rates and the difficulty of distinguishing cell-to-cell differences in a reproducible manner.</p></li>
+<li><p><strong>Mitochondrial DNA (somatic mutations)</strong>: Mitochondrial genomes can pick up small mutations as cells divide. (Note! There are a lot of types of other DNA in your cells beyond the typical DNA we think of in the 23 pairs of chromosomes. Your mitochondria has its own DNA.) By measuring these mutations, one can infer which cells share a common ancestor and roughly estimate how many divisions have occurred. However, because the mutation rate is not always high, it can be difficult to achieve fine-grained resolution.</p></li>
+<li><p><strong>DNA copy number</strong>: Gains or losses in chromosome segments, known as copy number variations, can also serve as lineage markers. Though useful for distinguishing large-scale genomic shifts, such variations do not necessarily arise in a predictable manner. This makes it challenging to reproducibly track precise cell-to-cell histories. For examples of bulk-DNA phylogenetic tree, see . This is a massive field, so one citation is not doing this field justice. We’ll see this more in <a href="#sec-dna_phylogenetic">Section 8.3</a>.</p></li>
+<li><p><strong>DNA methylation</strong>: DNA methylation serves as another naturally occurring cellular barcode. Over time, cells acquire unique methylation patterns that reflect their lineage history. These epigenetic marks regulate gene expression and can be stably inherited through cell divisions. Because different tissues and cell types exhibit distinct methylation landscapes, analyzing these patterns can provide a historical record of a cell’s developmental path. However, while DNA methylation is useful for lineage tracing, its resolution is limited by the variability in methylation turnover rates and the difficulty of distinguishing cell-to-cell differences in a reproducible manner.</p></li>
 </ul>
 <p>These naturally occurring barcodes, while informative, can be limiting in resolution. They may not mutate or appear frequently enough to trace detailed branching events. Additionally, reproducing the exact timing of such genetic changes in the wet lab can be difficult, making it hard to pinpoint when and how they impacted lineage formation.</p>
 </section>
@@ -516,8 +512,10 @@ Figure&nbsp;7.12: From <a href="https://calla.rnet.missouri.edu/cheng_courses/sl
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="sec-lentiviral_lineage"><span class="header-section-number">7.5.1</span> About the technology and application</h3>
 <p>Lentiviral approaches offer a more controlled way to label and track cell lineages. By inserting a known genetic barcode into cells, scientists can reliably follow how these labeled cells expand and diversify over time. See <a href="#fig-barcode1" class="quarto-xref">Figure&nbsp;<span>7.13</span></a>, <a href="#fig-barcode2" class="quarto-xref">Figure&nbsp;<span>7.14</span></a>, and <a href="#fig-barcode3" class="quarto-xref">Figure&nbsp;<span>7.15</span></a>.</p>
 <ul>
-<li><p><strong>In static lineage barcoding</strong>, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell’s DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.</p>
-<p>(This won’t be the focus of the following sections. In static lineage barcoding, there is no phylogenetic tree. All the cell lineage information is relative to when the lentivirus was introduced to your cells.)</p></li>
+<li><strong>In static lineage barcoding</strong>, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell’s DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.</li>
+</ul>
+<p>(This won’t be the focus of the following sections. In static lineage barcoding, there is no phylogenetic tree. All the cell lineage information is relative to when the lentivirus was introduced to your cells.)</p>
+<ul>
 <li><p><strong>In mutating barcoding</strong> (or also called evolving barcode), a guide RNA (via CRISPR-Cas9) can introduce variations sometimes into a transgene reporter (a gene artificially integrated into the cell’s DNA) at various target sites.<br>
 This creates barcodes as “genetic scars” in descendant cells. This dynamic approach can provide a richer record of how cells diverge and acquire distinct identities.</p>
 <p>(There’s a lot more complexity to this. Here are some concerns that are a bit easier to explain:</p>
@@ -606,21 +604,21 @@ Figure&nbsp;7.17: From <span class="citation" data-cites="vanhorn2021next">VanHo
 </div>
 <p>Cassiopeia offers a couple different ways to construct its trees. We highlight two of these options below.</p>
 <ul>
-<li><p><strong>Cassiopeia-ILP (Steiner Tree Formulation)</strong>:<br>
-First, Cassiopeia-ILP constructs a directed acyclic “potential graph” whose vertices represent all plausible ancestral states (including the <span class="math inline">\(n\)</span> observed leaves), and edges represent possible single-step mutations. The algorithm repeatedly merges pairs of nodes with a shared ancestor if they differ by a valid mutation, generating internal vertices. A user-defined parameter controls how large this potential graph may grow (to avoid excessive computational cost).</p>
-<p>Once the potential graph <span class="math inline">\(G\)</span> is built, the algorithm solves the <em>Steiner tree problem</em> on <span class="math inline">\(G\)</span> with a flow-based integer linear programming (ILP). The ILP ensures each observed cell is reached from the root (the unmutated state) by a minimal set of edges, minimizing the total number of mutation events. This method is exact but can be computationally slow for large <span class="math inline">\(n\)</span>.</p></li>
+<li><strong>Cassiopeia-ILP (Steiner Tree Formulation)</strong>:<br>
+First, Cassiopeia-ILP constructs a directed acyclic “potential graph” whose vertices represent all plausible ancestral states (including the <span class="math inline">\(n\)</span> observed leaves), and edges represent possible single-step mutations. The algorithm repeatedly merges pairs of nodes with a shared ancestor if they differ by a valid mutation, generating internal vertices. A user-defined parameter controls how large this potential graph may grow (to avoid excessive computational cost).</li>
 </ul>
+<p>Once the potential graph <span class="math inline">\(G\)</span> is built, the algorithm solves the <em>Steiner tree problem</em> on <span class="math inline">\(G\)</span> with a flow-based integer linear programming (ILP). The ILP ensures each observed cell is reached from the root (the unmutated state) by a minimal set of edges, minimizing the total number of mutation events. This method is exact but can be computationally slow for large <span class="math inline">\(n\)</span>.</p>
 <div class="block2">
 <p>The Steiner tree problem is a combinatorial optimization problem that seeks the shortest possible network connecting a given set of points (terminals) while allowing additional intermediate points (Steiner nodes) to reduce the total length. In the context of evolutionary biology and phylogenetics, the Steiner tree approach can be used to infer ancestral relationships by identifying the most parsimonious connections between observed species. The problem is NP-hard, meaning exact solutions are computationally infeasible for large datasets. However, various heuristic and approximation algorithms have been developed to efficiently construct near-optimal Steiner trees in practical applications.</p>
 <p>This is different from computing the minimal spanning tree because we don’t need the Steiner tree to include every node in <span class="math inline">\(G\)</span>. We just need it to contain the <span class="math inline">\(n\)</span> leaves (i.e., the cells we actually observed). There might be hypothetical intermediate nodes (i.e., ancestral cells) in <span class="math inline">\(G\)</span> that are not deemed necessary to be included in the output Steiner tree. See <a href="#fig-cassiopeia1" class="quarto-xref">Figure&nbsp;<span>7.18</span></a> and <a href="#fig-cassiopeia2" class="quarto-xref">Figure&nbsp;<span>7.19</span></a>.</p>
 </div>
 <p>(In short, you can imagine the first step of forming the potential graph <span class="math inline">\(G\)</span> is to limit the space of possible phylogenetic trees — the returned tree must be a tree formed by the edges in <span class="math inline">\(G\)</span>. Then, in the second step, we formulate an ILP reminiscent of the Steiner tree problem to find the most “appropriate” tree.)</p>
 <ul>
-<li><p><strong>Cassiopeia-Greedy</strong>:<br>
-This algorithm builds the tree top-down, repeatedly choosing the most “frequent” or highest-priority mutation (unmutated <span class="math inline">\(\to\)</span> indel) to partition the cells into two subsets: those that carry that mutation vs.&nbsp;those that do not (i.e., it’s “greedy”).</p>
-<p>Because CRISPR edits are irreversible, each multi-state site behaves effectively like a one-time event from an uncut state. Thus, one can treat each new indel as a potential splitting event. Cells with missing values at the chosen splitting site are assigned to whichever subset their non-missing edits best match. This step recurses until subsets become single cells or until all characters are used.</p>
-<p>Greedy is fast and scales to tens of thousands of cells, but may produce suboptimal solutions if extensive parallel evolution exists.</p></li>
+<li><strong>Cassiopeia-Greedy</strong>:<br>
+This algorithm builds the tree top-down, repeatedly choosing the most “frequent” or highest-priority mutation (unmutated <span class="math inline">\(\to\)</span> indel) to partition the cells into two subsets: those that carry that mutation vs.&nbsp;those that do not (i.e., it’s “greedy”).</li>
 </ul>
+<p>Because CRISPR edits are irreversible, each multi-state site behaves effectively like a one-time event from an uncut state. Thus, one can treat each new indel as a potential splitting event. Cells with missing values at the chosen splitting site are assigned to whichever subset their non-missing edits best match. This step recurses until subsets become single cells or until all characters are used.</p>
+<p>Greedy is fast and scales to tens of thousands of cells, but may produce suboptimal solutions if extensive parallel evolution exists.</p>
 <div class="block">
 <div id="fig-cassiopeia1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -757,8 +755,10 @@ two matrices <span class="math inline">\(X, Y \in \mathbb{Z}_+^{n \times d}\)</s
 </div>
 <p>Here are the overall ideas of COMPASS. Both total coverage (for copy number inference) and allele-specific coverage (for LOH and SNV calling) are going to be part of the likelihood to help model the likelihood of a particular tree (which will be used to determine the tree that best fits the data).</p>
 <ul>
-<li><p><strong>Model constraints</strong>:<br>
-COMPASS models four classes of mutations:</p>
+<li><strong>Model constraints</strong>:<br>
+COMPASS models four classes of mutations:<br>
+</li>
+</ul>
 <ol type="1">
 <li>SNVs, each occurring exactly once in the tree,<br>
 </li>
@@ -768,7 +768,8 @@ COMPASS models four classes of mutations:</p>
 </li>
 <li>CNLOH (copy-neutral LOH), which replaces one allele with another while keeping total copy number constant.</li>
 </ol>
-<p>Each region can undergo CNAs at most once per lineage. When subclones exhibit multiple consecutive CNAs in a region, COMPASS in practice uses a single-event approximation to avoid ambiguous high copy numbers. (This is a parsimonious principle, in some sense. We’re dramatically limiting the number of trees that are going to be considered with these constraints.)</p></li>
+<p>Each region can undergo CNAs at most once per lineage. When subclones exhibit multiple consecutive CNAs in a region, COMPASS in practice uses a single-event approximation to avoid ambiguous high copy numbers. (This is a parsimonious principle, in some sense. We’re dramatically limiting the number of trees that are going to be considered with these constraints.)</p>
+<ul>
 <li><p><strong>Coverage and allelic likelihoods</strong>:<br>
 There are two components to model the likelihood, one for the SNVs, one for the CNAs.</p>
 <ul>
