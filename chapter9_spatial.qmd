@@ -87,18 +87,18 @@ It's entirely possible that the cellular organization/dynamics on a 2D tissue sl
 
 ### Sequencing-based: Visium (10x)
 
-Visium by 10x Genomics is a widely used spot-based spatial transcriptomics technology. See @fig-visium-protocol for a cartoon on how it works. Visium captures transcriptomic information within predefined spatial spots on a tissue section, allowing for spatially resolved gene expression profiling. However, each spot is relatively large (usually around 55 µm in diameter), often encompassing multiple cells. To infer cellular composition within each spot, computational deconvolution methods are typically applied. In addition to transcriptomic data, Visium also provides an H&E (hematoxylin and eosin) stained image of the tissue, which is valuable for histological context, aiding in the interpretation of spatial gene expression patterns and tissue architecture. @fig-spatial-analyses provides examples of this spot-based spatial transcriptomics.
+Visium by 10x Genomics is a widely used spot-based spatial transcriptomics technology. See @fig-visium-protocol for a cartoon on how it works. Visium captures transcriptomic information within predefined spatial spots on a tissue section, allowing for spatially resolved gene expression profiling. However, each spot is relatively large (usually around 55 µm in diameter), often encompassing multiple cells. To infer cellular composition within each spot, computational deconvolution methods are typically applied. In addition to transcriptomic data, Visium also provides an H&E (hematoxylin and eosin) stained image of the tissue, which is valuable for histological context, aiding in the interpretation of spatial gene expression patterns and tissue architecture. @fig-visium-spots1 and @fig-visium-spots2 provide examples of this spot-based spatial transcriptomics.
 
 ::: block
 ![From @duan2023spatially](fig/chap9/visium_protocol.png){#fig-visium-protocol width="100%" fig-align="center"}
 :::
 
 ::: block
-![Left: From @kim2023single](fig/chap9/visium-spots2.png){#fig-spatial-analyses1 width="100%" fig-align="center"}
+![Left: From @kim2023single](fig/chap9/visium-spots2.png){#fig-visium-spots1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![Right: From <https://satijalab.org/seurat/articles/spatial_vignette>](fig/chap9/visium-spots.png){#fig-spatial-analyses2 width="100%" fig-align="center"}
+![Right: From <https://satijalab.org/seurat/articles/spatial_vignette>](fig/chap9/visium-spots.png){#fig-visium-spots2 width="100%" fig-align="center"}
 :::
 
 ### Sequencing-based: Visium HD (10x)
@@ -168,11 +168,11 @@ Once preprocessed, spatial transcriptomic data can be analyzed using various sta
 See @fig-spatial-analyses1, @fig-spatial-analyses2, @fig-spatial-analyses3, and @fig-spatial-analyses4 (and the papers these figures come from) for a broad overview of all the different types of analyses you can do with spatial transcriptomics.
 
 ::: block
-![Left: From <https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/>](fig/chap9/spatial-analyses.png){width="100%" fig-align="center"}
+![Left: From <https://geneviatechnologies.com/bioinformatics-analyses/spatial-transcriptomic-data-analysis/>](fig/chap9/spatial-analyses.png){#fig-spatial-analyses1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![Right: From @kiessling2024spatial](fig/chap9/spatial-analyses2.png){width="100%" fig-align="center"}
+![Right: From @kiessling2024spatial](fig/chap9/spatial-analyses2.png){#fig-spatial-analyses2 width="100%" fig-align="center"}
 :::
 
 ::: block
