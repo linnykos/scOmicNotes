@@ -14,10 +14,14 @@ book:
     - chapter4_protein.qmd
     - chapter5_epigenetics.qmd
 <<<<<<< HEAD
+<<<<<<< HEAD
     - chapter6_dna.qmd
     - chapter7_crispr.qmd
     - chapter8_lineage.qmd
     - chapter9_spatial.qmd
+=======
+    - chapter8_lineage.qmd
+>>>>>>> 84b7600d5159e099c748982f7f3d79cab9db2634
 =======
     - chapter8_lineage.qmd
 >>>>>>> 84b7600d5159e099c748982f7f3d79cab9db2634

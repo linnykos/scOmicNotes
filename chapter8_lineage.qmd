@@ -1,6 +1,10 @@
 ---
 title: "Single-cell lineage tracing"
+<<<<<<< HEAD
 subtitle: ""
+=======
+subtitle: "[]"
+>>>>>>> 84b7600d5159e099c748982f7f3d79cab9db2634
 format:
   html:
     toc: true
@@ -24,7 +28,10 @@ Moreover, understanding temporal dynamics can help us develop better interventio
 ::: block
 ![(Top) From @ashouri2023decoding.](fig/chap8/cancer_treatment1.png){#fig-cancer_treatment1 width="100%" fig-align="center"}
 :::
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84b7600d5159e099c748982f7f3d79cab9db2634
 ::: block
 ![(Bottom) From @marine2020non.](fig/chap8/cancer_treatment2.png){#fig-cancer_treatment2 width="100%" fig-align="center"}
 :::
@@ -56,6 +63,10 @@ Stem cells differentiate into specialized cell types following a tightly regulat
 ![From <https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/>.](fig/chap8/ipsc.png){#fig-ipsc width="100%" fig-align="center"}
 :::
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84b7600d5159e099c748982f7f3d79cab9db2634
 ## Basis on how to infer history from cells naturally {#sec-natural_lineage}
 
 Certain features in a cell’s genetic material serve as natural markers for tracing lineage. These features arise spontaneously or accumulate over time, and researchers can compare them across related cells to reconstruct branching histories.
