@@ -43,7 +43,7 @@ Splicing is a critical process that removes introns from pre-mRNA and joins exon
 The human genome consists of approximately 3 billion base pairs, yet only a small fraction of this sequence directly encodes proteins. Protein-coding genes occupy approximately 1–2% of the genome, corresponding to around 20,000 protein-coding genes. However, these genes are distributed across the genome, with some regions containing high gene density while others are gene-poor. Despite the low proportion of protein-coding DNA, the noncoding genome plays an essential role in gene regulation, chromatin organization, and cellular function. Noncoding regions include promoters, enhancers, silencers, insulators, and noncoding RNAs (such as microRNAs and long noncoding RNAs) that modulate gene expression. SNPs can lie in any of the regions, see @fig-gene-snp.
 
 ::: block
-![From https://www.biointeractive.org/sites/default/files/media/file/2020-02/MappingGenesSNP-StudentHO-act.pdf.](fig/chap6/gene_snp.png){#fig-gene-snp width="100%" fig-align="center"}
+![From <https://www.biointeractive.org/sites/default/files/media/file/2020-02/MappingGenesSNP-StudentHO-act.pdf>.](fig/chap6/gene_snp.png){#fig-gene-snp width="100%" fig-align="center"}
 :::
 
 #### Exploring Genomic Annotations: The UCSC Genome Browser.
