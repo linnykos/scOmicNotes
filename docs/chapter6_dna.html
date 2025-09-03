@@ -503,9 +503,9 @@ The IGV (depending on the version and settings) can also show insertions and del
 <li><p><strong>Linkage disequilibrium and evolutionary constraints:</strong><br>
 Unlike scRNA-seq, where gene expression is not typically inherited (and hence, why we can still do incredible genomic analyses with samples from very few people), genetic variants are often inherited together due to <em>linkage disequilibrium</em> (LD). This means that interpreting the effect of a single variant requires understanding its entire haplotype structure. Additionally, selective pressures shape the distribution of variants across populations, making genetic associations highly context-dependent.</p></li>
 <li><p><strong>Structural variation beyond SNPs:</strong><br>
-scRNA-seq primarily deals with gene expression counts, but genetic variation extends beyond single nucleotide polymorphisms (SNPs). <em>Structural variations</em>, such as <em>short tandem repeats (STRs)</em> and <em>copy number variations (CNVs)</em>, can have significant functional consequences yet are much harder to detect and analyze (see <a href="chapter6_structural_variation_overview.qmd">Chapter 6</a>).</p></li>
+scRNA-seq primarily deals with gene expression counts, but genetic variation extends beyond single nucleotide polymorphisms (SNPs). <em>Structural variations</em>, such as <em>short tandem repeats (STRs)</em> and <em>copy number variations (CNVs)</em>, can have significant functional consequences yet are much harder to detect and analyze (see <a href="./chapter6_dna.html">Chapter 6</a>).</p></li>
 <li><p><strong>Reference genome challenges:</strong><br>
-While single-cell studies align reads to a standard reference genome, genetic studies must carefully consider <em>population-specific variation</em> and potential biases in reference genomes. Reference panels are crucial for variant calling, yet no reference is truly comprehensive, leading to systematic errors in certain populations. See <a href="chapter6_reference_genome.qmd">Chapter 6</a>.</p></li>
+While single-cell studies align reads to a standard reference genome, genetic studies must carefully consider <em>population-specific variation</em> and potential biases in reference genomes. Reference panels are crucial for variant calling, yet no reference is truly comprehensive, leading to systematic errors in certain populations. See <a href="./chapter6_dna.html">Chapter 6</a>.</p></li>
 <li><p><strong>Necessity of imputation:</strong><br>
 Unlike transcriptomics, where missing values are typically ignored, genetic studies require <em>imputation</em> to infer unobserved variants, ensuring more comprehensive variant coverage. Genotyping arrays typically measure around 500,000 to 1,000,000 SNPs directly, but many common genetic variants remain untyped. Imputation leverages linkage disequilibrium (LD) patterns and large reference panels, such as 1000 Genomes or UK Biobank, to predict genotypes at millions of additional loci. After imputation, the number of SNPs analyzed can increase to 10–50 million, greatly enhancing the resolution of downstream association studies. Tools such as the Michigan Imputation Server and Beagle facilitate this process, albeit with a significant increase in computational complexity.</p></li>
 <li><p><strong>Massive dataset sizes and privacy constraints</strong>:<br>
@@ -783,9 +783,9 @@ WGS generates vast amounts of data, requiring significant computational resource
 <p>The choice of sequencing technology depends on the research question, budget, and required resolution of CNV detection. To compare the three archetypical approaches:</p>
 <table class="table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 25%">
-<col style="width: 31%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 28%">
 <col style="width: 23%">
 </colgroup>
 <thead>
@@ -959,6 +959,7 @@ X' = \log\left(\sqrt{X} + \sqrt{X+1}\right)
 <li><strong>Identifying Diploid Control Cells.</strong><br>
 A subset of normal diploid cells is needed to define the baseline expression profile for copy number inference. CopyKAT achieves this through clustering of the cells into 6 clusters, and then a Gaussian mixture model (GMM) is performed for the median expression for a cluster<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. This GMM is used to determine a mixture of 3 Gaussians (to represent lower, baseline, or higher copy number.) The cluster with the lowest variance across genes in the GMM model is designated as the set of <em>confident diploid cells</em>, assuming their gene expression patterns reflect a neutral (2N) copy number state.</li>
 </ul>
+<!-- -->
 <ul>
 <li><strong>Defining Copy Number Breakpoints.</strong><br>
 Chromosomal breakpoints are inferred through a Poisson-gamma model combined with Markov Chain Monte Carlo (MCMC) sampling.<br>
