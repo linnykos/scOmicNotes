@@ -22,7 +22,7 @@ Understanding the fundamental concepts of genetics is essential for studying gen
 A single nucleotide polymorphism (SNP) is a variation at a single base pair position in the genome that is present in a significant fraction of the population. SNPs are the most common type of genetic variation and can have functional consequences depending on their location. When an SNP occurs within a coding region, it may alter the resulting protein sequence if it leads to an amino acid substitution (nonsynonymous SNP) or have no effect if the change is synonymous. SNPs in noncoding regions can impact gene regulation by affecting transcription factor binding sites, splicing efficiency, or untranslated regions (UTRs). Since you have "two copies" of each of your 23 chromosomes, this means SNP data is a data matrix of $n$ people by $p$ SNP regions (think of a couple million -- more on this technicality later), where each value is $\{0,1,2\}$, see @fig-snp. Typically, the major allele is defined as "0", and a "1" or "2" means if how many copies of the minor allele do you have.
 
 ::: block
-![From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/snp1.png){#fig-snp width="100%" fig-align="center"}
+![**Single nucleotide variation (SNV) across individuals.** From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/snp1.png){#fig-snp width="100%" fig-align="center"}
 :::
 
 SNPs are detected using high-throughput sequencing technologies, primarily whole-genome sequencing (WGS) and whole-exome sequencing (WES). In these approaches, DNA is extracted from a biological sample, fragmented, and sequenced to generate short or long reads. The raw sequencing reads are then aligned to a reference genome, and variant calling algorithms such as those implemented in `GATK` [@mckenna2010genome], `bcftools`, and `FreeBayes` [@garrison2012haplotype] identify SNPs by comparing observed nucleotide differences to the reference sequence. (See @zverinova2022variant for a overview). The sequencing depth, or coverage, at a given genomic position determines the confidence in an SNP call, with higher coverage reducing the likelihood of sequencing errors.
@@ -42,7 +42,7 @@ Splicing is a critical process that removes introns from pre-mRNA and joins exon
 The human genome consists of approximately 3 billion base pairs, yet only a small fraction of this sequence directly encodes proteins. Protein-coding genes occupy approximately 1–2% of the genome, corresponding to around 20,000 protein-coding genes. However, these genes are distributed across the genome, with some regions containing high gene density while others are gene-poor. Despite the low proportion of protein-coding DNA, the noncoding genome plays an essential role in gene regulation, chromatin organization, and cellular function. Noncoding regions include promoters, enhancers, silencers, insulators, and noncoding RNAs (such as microRNAs and long noncoding RNAs) that modulate gene expression. SNPs can lie in any of the regions, see @fig-gene-snp.
 
 ::: block
-![From <https://www.biointeractive.org/sites/default/files/media/file/2020-02/MappingGenesSNP-StudentHO-act.pdf>.](fig/chap6/gene_snp.png){#fig-gene-snp width="100%" fig-align="center"}
+![**Effects of SNPs in coding, noncoding, and regulatory regions.** From <https://www.biointeractive.org/sites/default/files/media/file/2020-02/MappingGenesSNP-StudentHO-act.pdf>.](fig/chap6/gene_snp.png){#fig-gene-snp width="100%" fig-align="center"}
 :::
 
 #### Exploring Genomic Annotations: The UCSC Genome Browser.
@@ -52,15 +52,15 @@ The UCSC Genome Browser is a widely used web-based platform that provides intera
 See [@fig-ucsc1], [@fig-ucsc2], and [@fig-ucsc3] for an example of how to use the UCSC browser.
 
 ::: block
-![All from <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A44905796%2D44909393&hgsid=1906883924_WxRmL3T84AjPZVHeWbs1xUmoHbMh>. (Top): Viewing the entire APOE gene (notice that the scale is roughly 1 kb of basepairs).](fig/chap6/ucsc1.png){#fig-ucsc1 width="100%" fig-align="center"}
+![All from [UCSC Genome Browser](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A44905796%2D44909393&hgsid=1906883924_WxRmL3T84AjPZVHeWbs1xUmoHbMh): Viewing the entire APOE gene (notice that the scale is roughly 1 kb of basepairs).](fig/chap6/ucsc1.png){#fig-ucsc1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Middle): Zoomed in, scale of roughly 20 base pairs, where you can see the specific DNA sequence now. This is the base-pair sequence of the reference genome (here, hg38) from the 5'-to-3' side of the DNA.](fig/chap6/ucsc2.png){#fig-ucsc2 width="100%" fig-align="center"}
+![: Zoomed in, scale of roughly 20 base pairs, where you can see the specific DNA sequence now. This is the base-pair sequence of the reference genome (here, hg38) from the 5'-to-3' side of the DNA.](fig/chap6/ucsc2.png){#fig-ucsc2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Bottom): Zoomed out, scale of roughly 100 kb base pairs, where you can see many other genes.](fig/chap6/ucsc3.png){#fig-ucsc3 width="100%" fig-align="center"}
+![: Zoomed out, scale of roughly 100 kb base pairs, where you can see many other genes.](fig/chap6/ucsc3.png){#fig-ucsc3 width="100%" fig-align="center"}
 :::
 
 [@fig-ucsc4] demonstrates that you can tell which `side` of the chromsome the DNA is on. Why are there `sides`? Remember that transcription *always* goes from the 5' end to 3' end[^chapter6_dna-1], see [@fig-5-to-3-1], [@fig-5-to-3-2], [@fig-5-to-3-3]. mRNA is single-stranded, so you need to know which strand the DNA template is from.
@@ -68,19 +68,19 @@ See [@fig-ucsc1], [@fig-ucsc2], and [@fig-ucsc3] for an example of how to use th
 [^chapter6_dna-1]: See <https://en.wikipedia.org/wiki/Directionality_(molecular_biology)> and <https://en.wikipedia.org/wiki/Sense_(molecular_biology)>.
 
 ::: block
-![From <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A42949714%2D43219946&hgsid=2455618569_zy3DGTfK35AuV9F01AQaA81TBr0x>. Notice that unlike [@fig-ucsc1] where the APOE gene has arrows (in the intron regions) pointing right, the arrows for the BRAC1 gene has arrows pointing left. This means the BRAC1 gene is on the 3'-to-5' side of the genome.](fig/chap6/ucsc4.png){#fig-ucsc4 width="100%" fig-align="center"}
+![From [UCSC Genome Browser](https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A42949714%2D43219946&hgsid=2455618569_zy3DGTfK35AuV9F01AQaA81TBr0x). Notice that unlike [@fig-ucsc1] where the APOE gene has arrows (in the intron regions) pointing right, the arrows for the BRAC1 gene has arrows pointing left. This means the BRAC1 gene is on the 3'-to-5' side of the genome.](fig/chap6/ucsc4.png){#fig-ucsc4 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Top): From <https://en.wikipedia.org/wiki/Directionality_(molecular_biology)>.](fig/chap6/5-to-3.png){#fig-5-to-3-1 width="100%" fig-align="center"}
+![**Nucleotide structure showing 5′ to 3′ directionality.** From <https://en.wikipedia.org/wiki/Directionality_(molecular_biology)>.](fig/chap6/5-to-3.png){#fig-5-to-3-1 width="70%" fig-align="center"}
 :::
 
 ::: block
-![(Bottom Left) From <https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html>.](fig/chap6/gene_side2.png){#fig-5-to-3-2 width="100%" fig-align="center"}
+![ **Transcription: RNA synthesis from DNA template strand.** From <https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html>.](fig/chap6/gene_side2.png){#fig-5-to-3-2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Bottom Right) From <https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html>.](fig/chap6/gene_side1.png){#fig-5-to-3-3 width="100%" fig-align="center"}
+![ **Coding vs. template strand during transcription.** From <https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html>.](fig/chap6/gene_side1.png){#fig-5-to-3-3 width="100%" fig-align="center"}
 :::
 
 ## A brief blurb about GWAS {#sec-gwas}
@@ -88,23 +88,23 @@ See [@fig-ucsc1], [@fig-ucsc2], and [@fig-ucsc3] for an example of how to use th
 Genome-wide association studies (GWAS) analyze genetic variation across a population to identify single nucleotide polymorphisms (SNPs) associated with a phenotype of interest. The data consist of $n$ donors, each genotyped at $p$ SNPs, where $p$ typically ranges from hundreds of thousands to millions. To enhance statistical power, imputation is commonly performed to infer unobserved genotypes based on reference panels, effectively increasing the number of analyzed SNPs. The association of each SNP with the phenotype is tested using regression models, often accounting for population stratification and relatedness through principal components or mixed models, see [@fig-gwas]. The results are visualized in a Manhattan plot, where each SNP's $-\log_{10}(p)$ value is plotted against its genomic position, highlighting loci with strong associations as peaks above the genome-wide significance threshold, see [@fig-manhattan]. See <https://i2pc.es/coss/Docencia/statisticalHelper/GWAS.pdf> for the basics of a GWAS analysis.
 
 ::: block
-![From <https://en.wikipedia.org/wiki/Genome-wide_association_study>.](fig/chap6/gwas.png){#fig-gwas width="100%" fig-align="center"}
+![**GWAS plot: phenotype association with SNP alleles.** From <https://en.wikipedia.org/wiki/Genome-wide_association_study>.](fig/chap6/gwas.png){#fig-gwas width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @kunkle2019genetic.](fig/chap6/manhattan.png){#fig-manhattan width="100%" fig-align="center"}
+![**Manhattan plot of genome-wide SNP associations.** From @kunkle2019genetic.](fig/chap6/manhattan.png){#fig-manhattan width="100%" fig-align="center"}
 :::
 
-#### Fine mapping and other methods to get more \`\`causal'' variants.
+#### Fine mapping and other methods to get more "causal" variants.
 
 Due to linkage disequilibrium (LD) and other factors, genetic variants are often highly correlated across a chromosome, leading to clusters of significant SNPs in GWAS results. Fine-mapping aims to disentangle these associations by leveraging LD patterns to identify the variants most likely to be causal. This is typically done using Bayesian or probabilistic approaches that assign posterior inclusion probabilities (PIPs) to SNPs, quantifying their likelihood of being causal, as illustrated in [@fig-pip]. Methods such as CAVIAR @hormozdiari2014identifying, SuSiE @wang2020simple, and FINEMAP @benner2016finemap integrate GWAS summary statistics with LD information to refine candidate variants. For some alternatives that are more causal in statistical flavor, see GhostKnockoff @he2022ghostknockoff. The impact of fine-mapping can be seen in [@fig-carma], where prioritization of variants reduces uncertainty and improves biological interpretability.
 
 ::: block
-![From @wang2022methods.](fig/chap6/pip.png){#fig-pip width="100%" fig-align="center"}
+![**Fine-mapping: locus-level vs. variant-level interpretation.** From @wang2022methods.](fig/chap6/pip.png){#fig-pip width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @yang2023carma.](fig/chap6/carma.png){#fig-carma width="100%" fig-align="center"}
+![**Association vs. fine-mapping with CARMA (Z-scores and PIP).** From @yang2023carma.](fig/chap6/carma.png){#fig-carma width="100%" fig-align="center"}
 :::
 
 #### Some videos to look at for fun.
@@ -123,23 +123,23 @@ Genetic variation arises from different types of mutations and structural altera
 -   **Translocations:** The exchange of genetic material between non-homologous chromosomes, which can lead to fusion genes and genomic instability.
 
 ::: block
-![From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation1.png){#fig-genetic-variation1 width="100%" fig-align="center"}
+![**Types of genomic variation: insertion, SNV, deletion, tandem repeats.** From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation1.png){#fig-genetic-variation1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://sangerinstitute.blog/2023/05/10/a-representative-reference-genome/>.](fig/chap6/genetic-variation2.png){#fig-genetic-variation2 width="100%" fig-align="center"}
+![**Structural variation in genomes: deletion, inversion, duplication, insertion.** From <https://sangerinstitute.blog/2023/05/10/a-representative-reference-genome/>.](fig/chap6/genetic-variation2.png){#fig-genetic-variation2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/structural-variation.png){#fig-structural-variation width="100%" fig-align="center"}
+![**Chromosomal structural variants: deletion, duplication, inversion, insertion, translocation.** From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/structural-variation.png){#fig-structural-variation width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation3.png){#fig-genetic-variation3 width="100%" fig-align="center"}
+![**Counts of variant types in the human genome.** From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation3.png){#fig-genetic-variation3 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation4.png){#fig-genetic-variation4 width="100%" fig-align="center"}
+![**Proportion of variable vs. non-variable genome regions.** From <https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation>.](fig/chap6/genetic-variation4.png){#fig-genetic-variation4 width="100%" fig-align="center"}
 :::
 
 ### A brief note about the IGV
@@ -148,19 +148,19 @@ The Integrative Genomics Viewer (IGV) is a powerful tool for visualizing raw seq
 The IGV (depending on the version and settings) can also show insertions and deletions (see [@fig-igv3]), as well as inversions.
 
 ::: block
-![From <https://online.stat.psu.edu/stat555/node/106/>.](fig/chap6/snp-calling.png){#fig-snp-calling width="100%" fig-align="center"}
+![**Sequencing reads showing SNP detection.** From <https://online.stat.psu.edu/stat555/node/106/>.](fig/chap6/snp-calling.png){#fig-snp-calling width="100%" fig-align="center"}
 :::
 
 ::: block
-![Top: From <https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf>. The top panel shows which chromosome we're looking at and how many base pairs our viewer is showing. The middle two rows of panel are reads (in this particular example) from one of two long-read technologies. The bottom row shows the intron/exon regions of genes in this region.](fig/chap6/igv1.png){#fig-igv1-top width="100%" fig-align="center"}
+![ From <https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf>. The top panel shows which chromosome we're looking at and how many base pairs our viewer is showing. The middle two rows of panel are reads (in this particular example) from one of two long-read technologies. The bottom row shows the intron/exon regions of genes in this region.](fig/chap6/igv1.png){#fig-igv1-top width="100%" fig-align="center"}
 :::
 
 ::: block
-![Bottom: From <https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/>. This shows an explicit colored callout of the SNPs relative to the reference genome.](fig/chap6/igv2.png){#fig-igv1-bottom width="100%" fig-align="center"}
+![ From <https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/>. This shows an explicit colored callout of the SNPs relative to the reference genome.](fig/chap6/igv2.png){#fig-igv1-bottom width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://www.pacb.com/blog/igv-3-improves-support-pacbio-long-reads/>.](fig/chap6/igv3.png){#fig-igv3 width="100%" fig-align="center"}
+![**Visualization of structural variants (insertions and deletions) using PacBio long-read sequencing in IGV.** From <https://www.pacb.com/blog/igv-3-improves-support-pacbio-long-reads/>.](fig/chap6/igv3.png){#fig-igv3 width="100%" fig-align="center"}
 :::
 
 ### If you thought scRNA-seq data was complicated...
@@ -208,7 +208,7 @@ Thus, clarifying how frequently somatic mutations arise and determining how thes
 Expression Quantitative Trait Loci (eQTL) analysis is a fundamental approach for linking genetic variation to gene expression levels, offering insights into how genetic differences influence transcriptomic regulation, see [@fig-eqtl]. Traditional eQTL studies rely on bulk RNA sequencing data, which averages gene expression across many cells within a tissue. However, with the advent of single-cell RNA sequencing (scRNA-seq), researchers can now perform single-cell eQTL (sc-eQTL) analyses, enabling the detection of genetic effects on gene expression at a much finer resolution.
 
 ::: block
-![From @zhuang2019development.](fig/chap6/eqtl.png){#fig-eqtl width="100%" fig-align="center"}
+![**cis- vs. trans-eQTL effects of SNPs on gene expression.** From @zhuang2019development.](fig/chap6/eqtl.png){#fig-eqtl width="100%" fig-align="center"}
 :::
 
 One of the key advantages of sc-eQTL analysis is its ability to account for cellular heterogeneity, a limitation in bulk RNA-seq studies. Different cell types within a tissue can have distinct gene regulatory mechanisms, and bulk eQTL studies may obscure these effects by averaging signals across cell populations. Single-cell approaches, in contrast, allow researchers to stratify eQTL analysis by cell type, uncovering cell-type-specific regulatory interactions that may be masked in bulk data. Additionally, sc-eQTL studies enable the exploration of dynamic regulatory effects in response to stimuli, capturing transient gene expression changes driven by genetic variants (see Figure 4 of @yazar2022single).\
@@ -217,11 +217,11 @@ Beyond identifying associations between SNPs and gene expression, eQTL analysis 
 Compared to genome-wide association studies (GWAS), which identify statistical associations between SNPs and phenotypic traits without necessarily indicating causality, eQTL studies provide functional insights into how genetic variation affects transcriptional regulation. However, eQTL analyses alone cannot establish direct causal relationships, unlike CRISPR-based perturbation approaches such as knockouts or CRISPR interference (CRISPRi), which can experimentally validate whether a SNP within a regulatory region directly modulates gene expression. See [@fig-eqtl-gwas].
 
 ::: block
-![From @sheth2024mapping.](fig/chap6/gwas-atac.png){#fig-gwas-atac width="100%" fig-align="center"}
+![**GWAS fine-mapping with chromatin accessibility (ATAC-seq).** From @sheth2024mapping.](fig/chap6/gwas-atac.png){#fig-gwas-atac width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @sheth2024mapping.](fig/chap6/eqtl-gwas.png){#fig-eqtl-gwas width="100%" fig-align="center"}
+![**Benchmarking data sources: CRISPR, eQTL, GWAS (advantages/limitations).** From @sheth2024mapping.](fig/chap6/eqtl-gwas.png){#fig-eqtl-gwas width="100%" fig-align="center"}
 :::
 
 The process of conducting sc-eQTL analysis involves several computational steps. First, scRNA-seq data is preprocessed to correct for technical noise and batch effects, often using normalization methods tailored for sparse single-cell data. Next, genetic variants are genotyped using whole-genome sequencing (WGS) or genotype imputation from single-nucleotide polymorphism (SNP) arrays. Gene expression values and genetic variants are then correlated to identify eQTLs, typically using linear mixed models or Bayesian approaches that account for population structure and technical confounders. Because single-cell datasets are noisier and lower in coverage compared to bulk sequencing, careful modeling of dropout effects and overdispersion in expression data is essential.
@@ -255,7 +255,7 @@ Be careful though! These are *unmeasured confounders* (i.e., you're controlling 
 Identifying eQTLs is complicated by epistasis and pleiotropy, which introduce nontrivial genetic interactions. Epistasis occurs when the effect of a SNP on gene expression depends on the presence of other genetic variants, making it difficult to model simple SNP-expression relationships, see [@fig-epistasis]. This can obscure true associations if not explicitly accounted for in statistical models. Pleiotropy, where a single SNP influences multiple genes or traits, further complicates eQTL discovery by creating indirect associations that may not reflect true causal regulatory relationships. These complexities highlight the challenge of interpreting eQTL results solely through single-variant associations, necessitating approaches that account for gene-gene and gene-environment interactions.
 
 ::: block
-![From <https://en.wikipedia.org/wiki/Epistasis>](fig/chap6/epistasis.png){#fig-epistasis width="100%" fig-align="center"}
+![**Epistasis in coat color genetics (mouse Punnett square).** From <https://en.wikipedia.org/wiki/Epistasis>](fig/chap6/epistasis.png){#fig-epistasis width="100%" fig-align="center"}
 :::
 
 #### By the Way, eQTL Is Not the Only Type of QTL!
@@ -273,11 +273,11 @@ Collectively, we call the set of all possible QTLs as xQTL, see @ng2017xqtl. (I 
 Recent advances in large language models (LLMs) have enabled the prediction of gene expression directly from raw DNA sequences, leveraging architectures such as transformers, convolutional neural networks (CNNs), and recurrent neural networks (RNNs), see [@fig-s2f1] and [@fig-s2f2]. These models, trained on genomic sequences, learn complex regulatory grammar and sequence motifs to infer transcriptional activity. Unlike eQTL studies, which link genetic variants to expression using population-level variation, LLMs aim to predict expression from intrinsic sequence features, potentially identifying novel regulatory elements. This approach complements TWAS by offering a purely sequence-driven method to estimate gene expression, independent of population structure or linkage disequilibrium, enhancing our understanding of transcriptional regulation. See @sasse2023benchmarking for an overview.
 
 ::: block
-![(Left): From Enformer, @avsec2021effective.](fig/chap6/s2f1.png){#fig-s2f1 width="100%" fig-align="center"}
+![**Enformer deep learning model for DNA sequence to functional predictions.** From Enformer, @avsec2021effective.](fig/chap6/s2f1.png){#fig-s2f1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Right): From @sasse2023benchmarking.](fig/chap6/s2f2.png){#fig-s2f2 width="100%" fig-align="center"}
+![**Deep learning models predicting gene regulation from sequence (RNA-seq, ATAC-seq, ChIP-seq).** From @sasse2023benchmarking.](fig/chap6/s2f2.png){#fig-s2f2 width="100%" fig-align="center"}
 :::
 
 ## Other (very large areas of cell biology) that perform multi-omic analyses involving genetics
@@ -290,31 +290,37 @@ The following are some of gigantic areas of genetics which span multiple omics t
 PRS construction relies on large GWAS datasets that provide summary statistics on variant-trait associations. The scores are computed by summing the weighted effects of risk alleles across the genome, often using computational tools like LDpred @prive2020ldpred2 and PRS-CS @ge2019polygenic. However, one of the biggest challenges in PRS research is population stratification and ethnicity bias. Since most GWAS studies have been conducted in individuals of European ancestry, PRS models trained on these datasets often fail to generalize well to non-European populations due to differences in allele frequencies and linkage disequilibrium (LD) patterns, see [@fig-prs_ethnicity1] and [@fig-prs_ethnicity2]. Addressing this computationally is a huge area of current research. For an example of PRS for single-cell data, see scDRS @zhang2022polygenic.
 
 ::: block
-![(Left): From @kennedy2022genetic.](fig/chap6/prs2.png){#fig-prs1 width="100%" fig-align="center"}
+![**Polygenic risk score (PRS) development and stratification pipeline.** From @kennedy2022genetic.](fig/chap6/prs2.png){#fig-prs1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Right): From @hernandez2019genomics.](fig/chap6/prs1.png){#fig-prs2 width="100%" fig-align="center"}
+![**PRS scale illustrating low- vs. high-risk patients.** From @hernandez2019genomics.](fig/chap6/prs1.png){#fig-prs2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Left) From @martin2019clinical.](fig/chap6/prs_ethnicity.png){#fig-prs_ethnicity1 width="100%" fig-align="center"}
+![**Global representation in GWAS studies by ancestry.** From @martin2019clinical.](fig/chap6/prs_ethnicity.png){#fig-prs_ethnicity1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![(Right) From @wall2003haplotype.](fig/chap6/linkeage-disequilibrium.png){#fig-prs_ethnicity2 width="100%" fig-align="center"}
+![**LD structure differences across populations (European vs. African).** From @wall2003haplotype.](fig/chap6/linkeage-disequilibrium.png){#fig-prs_ethnicity2 width="100%" fig-align="center"}
 :::
 
--   **Transcriptomic-wide association study (TWAS)**: A Transcriptome-Wide Association Study (TWAS) aims to identify genes whose expression levels are associated with complex traits and diseases by integrating genome-wide association study (GWAS) data with transcriptomic data. The biological goal of TWAS is to bridge the gap between genetic variation and gene expression to prioritize candidate causal genes that might drive disease susceptibility. In a overly simplistic sense, you can think of the following: $$
-    \text{GWAS}: \quad \text{SNP} \;\rightarrow\; \text{Disease phenotype}\\
-    \text{eQTL}: \quad \text{SNP} \;\rightarrow\; \text{Gene expression}\\
-    \text{TWAS}: \quad \text{Genetically predicted gene expression} \;\rightarrow\; \text{Disease phenotype}
-    $$ Unlike GWAS, which identifies loci associated with disease risk but does not directly implicate specific genes, TWAS infers putative gene-disease relationships by leveraging genetic regulation of gene expression. See @mai2023transcriptome for an overview.
+-   **Transcriptomic-wide association study (TWAS)**: A Transcriptome-Wide Association Study (TWAS) aims to identify genes whose expression levels are associated with complex traits and diseases by integrating genome-wide association study (GWAS) data with transcriptomic data. The biological goal of TWAS is to bridge the gap between genetic variation and gene expression to prioritize candidate causal genes that might drive disease susceptibility. In a overly simplistic sense, you can think of the following: 
+  $$
+  \text{GWAS:} \quad \text{SNP} \;\rightarrow\; \text{Disease phenotype} 
+  $$
+  $$
+  \text{eQTL:} \quad \text{SNP} \;\rightarrow\; \text{Gene expression} 
+  $$
+  $$
+  \text{TWAS:} \quad \text{Genetically predicted gene expression} \;\rightarrow\; \text{Disease phenotype}
+  $$
+  Unlike GWAS, which identifies loci associated with disease risk but does not directly implicate specific genes, TWAS infers putative gene-disease relationships by leveraging genetic regulation of gene expression. See @mai2023transcriptome for an overview.
 
 The data required for TWAS includes GWAS summary statistics and expression quantitative trait loci (eQTL) datasets derived from bulk RNA-sequencing or single-cell RNA-sequencing studies. Typically, eQTL datasets are obtained from large-scale population-based biobanks like GTEx or UK Biobank. Common computational approaches used for TWAS include PrediXcan and FUSION, which estimate genetically predicted gene expression levels based on genotype data and test for associations with traits. However, TWAS has important caveats: it typically assume that genetically regulated gene expression effects are the primary driver of trait associations, which may not always be the case. Moreover, TWAS inherits any demographic limitations of GWAS and eQTL analyses, which means these results are often biased toward European ancestry populations due to data limitations. For an example of PRS for single-cell data, see scPredixcan @zhou2024scpredixcan.
 
 ::: block
-![From @wainberg2019opportunities.](fig/chap6/twas.png){#fig-twas width="100%" fig-align="center"}
+![**TWAS framework linking SNPs, gene expression, and traits.** From @wainberg2019opportunities.](fig/chap6/twas.png){#fig-twas width="100%" fig-align="center"}
 :::
 
 -   **Mendelian randomization**: Mendelian Randomization (MR) is a statistical approach used to infer causal relationships between an exposure (such as gene expression, biomarker levels, or lifestyle factors) and an outcome (such as disease risk) by leveraging genetic variants as instrumental variables. The biological goal of MR is to overcome confounding and reverse causation issues that plague observational studies, making it a powerful tool for identifying causal risk factors for diseases. MR is particularly useful in prioritizing drug targets, as it can provide evidence on whether modifying a specific biomarker or gene expression level is likely to have a therapeutic effect.
@@ -322,15 +328,15 @@ The data required for TWAS includes GWAS summary statistics and expression quant
 MR studies require genetic association data from large GWAS and eQTL datasets to identify genetic instruments that are robustly associated with the exposure of interest. The commonly used computational tools for MR analysis include MR-Egger @burgess2017interpreting, MR-PRESSO @verbanck2018detection, and TwoSampleMR @hartwig2016two, which help detect and correct for pleiotropy and other biases. However, MR has several limitations. First, the validity of MR results depends on the assumption that the chosen genetic variants only influence the outcome through the exposure and not through other pathways (i.e., no horizontal pleiotropy), see [@fig-mr1] and [@fig-pleiotropy]. Additionally, weak instrument bias can occur when genetic instruments have small effect sizes, reducing statistical power. Because many complex traits are influenced by highly pleiotropic variants and gene-environment interactions, refining MR methodologies and integrating multi-omics data remains an active area of research.
 
 ::: block
-![From @li2021genetically.](fig/chap6/mr2.png){#fig-mr1 width="100%" fig-align="center"}
+![**Mendelian randomization assumptions for causal inference.** From @li2021genetically.](fig/chap6/mr2.png){#fig-mr1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @barry2021exploiting.](fig/chap6/mr1.png){#fig-mr2 width="100%" fig-align="center"}
+![**Two-sample Mendelian randomization model (ratio estimate + IVW meta-analysis).** From @barry2021exploiting.](fig/chap6/mr1.png){#fig-mr2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @sanderson2022mendelian for different types of pleiotropy. See <https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf>, since it's hard to access this paper directly.](fig/chap6/pleiotropy.png){#fig-pleiotropy width="100%" fig-align="center"}
+![ From @sanderson2022mendelian for different types of pleiotropy. See <https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf>, since it's hard to access this paper directly.](fig/chap6/pleiotropy.png){#fig-pleiotropy width="100%" fig-align="center"}
 :::
 
 ## Structural variation: Focusing on copy number variation {#sec-dna_structural_variation}
@@ -338,15 +344,15 @@ MR studies require genetic association data from large GWAS and eQTL datasets to
 Copy Number Variation (CNV) refers to structural alterations in the genome that result in abnormal numbers of copies of one or more DNA segments. These can range from small events (a few hundred base pairs) to large events (millions of base pairs). CNVs can arise due to duplications, deletions, and, in rare cases, more complex rearrangements of genomic regions.
 
 ::: block
-![From <https://learngenomics.dev/docs/genomic-variation/copy-number-variation>.](fig/chap6/cnv.png){#fig-cnv width="100%" fig-align="center"}
+![**Copy number variation detection via read depth spikes.** From <https://learngenomics.dev/docs/genomic-variation/copy-number-variation>.](fig/chap6/cnv.png){#fig-cnv width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @xing2020secnvs.](fig/chap6/cnv_wes.png){#fig-cnv_wes1 width="100%" fig-align="center"}
+![**Reference vs. test genome alignment showing duplications and deletions (CNVs).** From @xing2020secnvs.](fig/chap6/cnv_wes.png){#fig-cnv_wes1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @singh2021detecting.](fig/chap6/cnv_wes2.png){#fig-cnv_wes2 width="100%" fig-align="center"}
+![**Coverage depth patterns revealing allele-specific CNVs.** From @singh2021detecting.](fig/chap6/cnv_wes2.png){#fig-cnv_wes2 width="100%" fig-align="center"}
 :::
 
 #### Importance of CNVs.
@@ -374,7 +380,7 @@ Short-read sequencing, commonly used in single-cell DNA studies, generates high-
 Long-read sequencing generates reads spanning several kilobases, allowing direct observation of large CNVs and structural rearrangements. Unlike short-read methods, long reads can span entire CNV breakpoints and enable haplotype phasing, providing insights into allele-specific genomic alterations. While lower in throughput, this approach improves the resolution of highly rearranged regions. See [@fig-longread].
 
 ::: block
-![From @garg2021computational.](fig/chap6/longread.png){#fig-longread width="100%" fig-align="center"}
+![**Sequencing technologies compared: short-read, long-read, ultra-long-read, BioNano, Hi-C.** From @garg2021computational.](fig/chap6/longread.png){#fig-longread width="100%" fig-align="center"}
 :::
 
 **Whole Genome Sequencing (WGS) in General:**\
@@ -397,7 +403,7 @@ The choice of sequencing technology depends on the research question, budget, an
 The detection of copy-number variations (CNVs) from sequencing data requires multiple computational steps, each of which contributes to the accuracy and reliability of CNV calls. While some steps are essential, others are optional or depend on the specific research question and available data. The main stages of CNV detection include preprocessing and quality control, mapping to a reference genome, haplotype phasing, and variant calling.
 
 ::: block
-![From @dong2020sccnv.](fig/chap6/cnv_pipeline.png){#fig-cnv_pipeline width="100%" fig-align="center"}
+![**SCCNV Normalization pipeline for CNV detection (depth, GC, amplification bias, smoothing).** From @dong2020sccnv.](fig/chap6/cnv_pipeline.png){#fig-cnv_pipeline width="100%" fig-align="center"}
 :::
 
 Some note about terminology: germline and somatic describe the biological origin of CNVs, while karyotyping is a method for detecting CNVs (mainly large ones).\
@@ -414,11 +420,11 @@ Somatic CNVs arise during a person’s lifetime and are not inherited; they occu
     Haplotype phasing is an optional but useful step in CNV analysis that determines which genetic variants co-occur on the same chromosome copy. In the context of CNV calling, phasing is particularly valuable when investigating whether duplications or deletions are located on the same haplotype. This information can provide insights into the inheritance patterns of CNVs and their potential functional effects. Tools such as `Whatshap` and `HapCUT2` can be used to perform haplotype phasing based on read alignment data, helping to refine CNV interpretation.
 
 ::: block
-![From @garg2021computational.](fig/chap6/phasing1.png){#fig-phasing1 width="100%" fig-align="center"}
+![**Molecular haplotyping techniques and phasing (MEC approaches).** From @garg2021computational.](fig/chap6/phasing1.png){#fig-phasing1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @tangherloni2019genhap.](fig/chap6/phasing2.png){#fig-phasing2 width="100%" fig-align="center"}
+![**Fragment matrix partitioning for haplotype reconstruction (wMEC).** From @tangherloni2019genhap.](fig/chap6/phasing2.png){#fig-phasing2 width="100%" fig-align="center"}
 :::
 
 -   **Variant Calling and CNV Detection Inputs**:\
@@ -431,7 +437,7 @@ Somatic CNVs arise during a person’s lifetime and are not inherited; they occu
     To distinguish true CNVs from technical artifacts, a reference baseline is often established using a "panel of normals," which consists of aggregated sequencing data from healthy individuals. This helps correct for systematic biases and variability in coverage. In cases where a matched normal sample from the same individual is available, such as in tumor-normal studies, it serves as an optimal reference for identifying somatic CNVs. Regions with significantly elevated or reduced coverage relative to the control are flagged as potential duplications or deletions.
 
 ::: block
-![From @martignano2021nanopore.](fig/chap6/cnv_paired.png){#fig-cnv_paired width="100%" fig-align="center"}
+![**CNV detection using NanoGLADIATOR: cancer vs. healthy cfDNA profiles in nocontrol mode (panel of normals) and paired mode (matched normal).** From @martignano2021nanopore.](fig/chap6/cnv_paired.png){#fig-cnv_paired width="100%" fig-align="center"}
 :::
 
 -   **Correcting biases and finalizing CNV calls**:\
@@ -454,7 +460,8 @@ While simplistic in explanation, there are multiple problems stemming from this 
 As a quote from @ballouz2019time:
 
 ::: block
-The reference genome is not a ‘healthy’ genome, ‘nor the most common, nor the longest, nor an ancestral haplotype’. Efforts to fix these ‘errors’ include adjusting alleles to the preferred or major allele or the use of targeted and ethnically matched genomes.
+**Remark: (The reference genome is not a ‘healthy’ genome, ‘nor the most common, nor the longest, nor an ancestral haplotype’.)**  
+ Efforts to fix these ‘errors’ include adjusting alleles to the preferred or major allele or the use of targeted and ethnically matched genomes.
 :::
 
 So really, the reference genome is simply an "addressing system" that many researchers can agree upon to get reproducible findings. Unsurprisingly, due to our understanding of CNV, we do not simply "count" how far along from the "start" of the chromosome we are (say, in terms of kb). This is because any CNV would shift our count. Instead we must first rely on a reference genome.
@@ -472,11 +479,11 @@ Single-cell DNA sequencing, whether whole-genome or whole-exome, must contend wi
 See [@fig-single-cell-dna1] and [@fig-single-cell-dna2] for examples, and the citations mentioned there. This is a rapidly evolving field. For an example of technology that is performing multiome sequencing of RNA and WGS DNA, see scONE-seq @yu2023scone. For an example of diagonal integration between scRNA-seq and scDNA-seq, see @edrisi2023accurate. See @haard2023long for how long-read sequencing is transforming the prospects of WGS DNA sequencing at single-cell resolution.
 
 ::: block
-![From @gawad2016single.](fig/chap6/single-cell-dna1.png){#fig-single-cell-dna1 width="100%" fig-align="center"}
+![**Amplification artifacts in single-cell sequencing: errors in assembly, CNV, and SNV detection.** From @gawad2016single.](fig/chap6/single-cell-dna1.png){#fig-single-cell-dna1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @valecha2022somatic.](fig/chap6/single-cell-dna2.png){#fig-single-cell-dna2 width="100%" fig-align="center"}
+![**Bulk vs. single-cell sequencing: allele dropout, imbalance, locus dropout, amplification error.** From @valecha2022somatic.](fig/chap6/single-cell-dna2.png){#fig-single-cell-dna2 width="100%" fig-align="center"}
 :::
 
 ### Studying single-cell copy-number variation using scRNA-seq data
@@ -486,7 +493,7 @@ See [@fig-single-cell-dna1] and [@fig-single-cell-dna2] for examples, and the ci
 Copy number karyotyping of aneuploid tumors (CopyKAT) @gao2021delineating is a Bayesian segmentation approach designed to infer genomic copy number profiles from single-cell RNA sequencing (scRNA-seq) data. This method distinguishes aneuploid tumor cells from diploid stromal and immune cells, enabling the characterization of clonal substructure within tumors. CopyKAT operates by ordering genes based on genomic coordinates, defining diploid controls, segmenting chromosomal regions, and clustering cells into subpopulations based on their copy number profiles.
 
 ::: block
-![From @gao2021delineating.](fig/chap6/copykat.png){#fig-copykat width="100%" fig-align="center"}
+![**Single-cell CNV inference workflow: normalization, baseline definition, segmentation, clustering.** From @gao2021delineating.](fig/chap6/copykat.png){#fig-copykat width="100%" fig-align="center"}
 :::
 
 -   **Modeling scRNA-seq Data for Copy Number Estimation.**\
@@ -543,15 +550,15 @@ There are a lot of scRNA-seq methods to infer CNVs. See @chen2024benchmarking fo
 Short Tandem Repeats (STRs) are short, consecutive sequences of nucleotides, typically ranging from two to six base pairs, that are repeated multiple times in a head-to-tail fashion, see [@fig-str-example1a] and [@fig-str-example1b]. These repeated segments can vary in length among different individuals, making STRs a valuable marker for genetic identification and population studies. They occur throughout the genome and often exhibit high mutation rates, which contribute to genetic diversity, see [@fig-str-range].
 
 ::: block
-![From <https://www.sciencedirect.com/topics/immunology-and-microbiology/short-tandem-repeat>.](fig/chap6/str-example1.png){#fig-str-example1a width="100%" fig-align="center"}
+![**Short tandem repeats (STRs): variation in repeat counts across individuals.** From <https://www.sciencedirect.com/topics/immunology-and-microbiology/short-tandem-repeat>.](fig/chap6/str-example1.png){#fig-str-example1a width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://uoftmedicalgenomics.home.blog/2022/05/05/slipping-into-the-dna-architecture-of-tandem-repeat-expansion-disorders/>.](fig/chap6/str-function3.png){#fig-str-example1b width="100%" fig-align="center"}
+![**Repeat expansion: increasing CAG repeats linked to earlier onset and greater severity.** From <https://uoftmedicalgenomics.home.blog/2022/05/05/slipping-into-the-dna-architecture-of-tandem-repeat-expansion-disorders/>.](fig/chap6/str-function3.png){#fig-str-example1b width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @chintalaphani2021update.](fig/chap6/str-range.png){#fig-str-range width="100%" fig-align="center"}
+![**Pathogenic vs. healthy repeat ranges across repeat expansion disorders.** From @chintalaphani2021update.](fig/chap6/str-range.png){#fig-str-range width="100%" fig-align="center"}
 :::
 
 STRs are biologically significant because they can influence gene expression and genomic stability. Changes in the number of repeat units can alter regulatory regions or disrupt coding sequences, leading to variations in protein function or levels of gene expression. In some cases, expanded STRs are associated with disease mechanisms, such as those underlying disorders like Huntington's disease or Fragile X syndrome.
@@ -559,41 +566,41 @@ STRs are biologically significant because they can influence gene expression and
 Clinically, studying STRs can aid in understanding the genetic basis of certain disorders and in diagnosing conditions caused by abnormal repeat expansions, see [@fig-str-disease1]. One prominent example is Huntington's disease, which results from expansions of a CAG repeat in the HTT gene, see [@fig-str-hd]. This leads to an elongated polyglutamine tract in the huntingtin protein, ultimately causing neuronal dysfunction and cell death. STR research, especially when coupled with single-cell sequencing approaches, has provided new perspectives on how expansions arise and progress at the cellular level. By revealing subtle, cell-to-cell differences in repeat length, researchers can better understand disease onset, severity, and variability in progression, opening up avenues for more targeted therapies and personalized disease management.
 
 ::: block
-![From @sznajder2019short.](fig/chap6/str-disease1.png){#fig-str-disease1 width="100%" fig-align="center"}
+![**Genomic locations of repeat expansions (promoter, UTR, intron, coding sequence).** From @sznajder2019short.](fig/chap6/str-disease1.png){#fig-str-disease1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @doss2025mosaicism.](fig/chap6/str-disease2.png){#fig-str-disease2 width="100%" fig-align="center"}
+![**Repeat expansion disorders mapped to STR locations in genome regions.** From @doss2025mosaicism.](fig/chap6/str-disease2.png){#fig-str-disease2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From <https://dnascience.plos.org/2021/09/02/new-target-for-treating-huntingtons-disease-controlling-runaway-dna-repair/>.](fig/chap6/str-hd.png){#fig-str-hd width="100%" fig-align="center"}
+![**Huntington’s disease: CAG repeat expansion alters protein structure and function.** From <https://dnascience.plos.org/2021/09/02/new-target-for-treating-huntingtons-disease-controlling-runaway-dna-repair/>.](fig/chap6/str-hd.png){#fig-str-hd width="100%" fig-align="center"}
 :::
 
 Modern analyses of Short Tandem Repeats (STRs) increasingly utilize various forms of sequencing data to pinpoint the location of these repeats and assess their potential functional roles, see [@fig-str-location]. Whole-genome sequencing (WGS) and targeted sequencing are often employed to identify both the presence and exact length of STR loci. Using short-read sequencing, computational methods can detect the boundaries and expansions of repeats by aligning reads to a reference genome. This enables genome-wide surveys of repeats in large cohorts, allowing researchers to correlate specific repeat expansions or contractions with phenotypic traits or disease states, see [@fig-str-function]. In parallel, long-read sequencing platforms, such as those provided by Pacific Biosciences or Oxford Nanopore Technologies, facilitate the direct observation of longer repeats and complex regions that may be challenging to resolve with short reads, see [@fig-longread2]. By integrating data on the repeat location, length, and local genomic context, researchers can infer the putative functional impacts, such as disruptions to regulatory regions, alterations in protein-coding sequences, or other mechanisms by which STRs may influence gene expression and disease susceptibility, see [@fig-str-gene-expression].
 
 ::: block
-![From @hannan2018tandem.](fig/chap6/str-location.png){#fig-str-location width="100%" fig-align="center"}
+![**Repeat expansion disorders across genome regions (5′ UTR, intron, exon, 3′ UTR) and resulting RNA/protein products.** From @hannan2018tandem.](fig/chap6/str-location.png){#fig-str-location width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @tanudisastro2024sequencing.](fig/chap6/str-function.png){#fig-str-function width="100%" fig-align="center"}
+![**Expanded STRs in promoters, enhancers, and splicing affecting gene regulation.** From @tanudisastro2024sequencing.](fig/chap6/str-function.png){#fig-str-function width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @wright2023native.](fig/chap6/str-function2.png){#fig-str-function2 width="100%" fig-align="center"}
+![**Pathogenic mechanisms of repeat expansions: chromatin, transcription, RNA processing, RAN translation, protein misfolding.** From @wright2023native.](fig/chap6/str-function2.png){#fig-str-function2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @fotsing2019impact.](fig/chap6/str-gene-expression.png){#fig-str-gene-expression width="100%" fig-align="center"}
+![**Association between STR length and gene expression across different loci.** From @fotsing2019impact.](fig/chap6/str-gene-expression.png){#fig-str-gene-expression width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @tanudisastro2024sequencing.](fig/chap6/str-gene-expression2.png){#fig-str-gene-expression2 width="100%" fig-align="center"}
+![**eSTR analysis pipeline: genotype STRs, profile expression/phenotype, identify expression-linked STRs.** From @tanudisastro2024sequencing.](fig/chap6/str-gene-expression2.png){#fig-str-gene-expression2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![From @chintalaphani2021update.](fig/chap6/longread2.png){#fig-longread2 width="100%" fig-align="center"}
+![**Sequencing technologies for STR detection: short-read, Nanopore, PacBio HiFi.** From @chintalaphani2021update.](fig/chap6/longread2.png){#fig-longread2 width="100%" fig-align="center"}
 :::
 
 Short Tandem Repeats (STRs) are a hot topic in current genomics research because of their significant variability, functional importance, and direct implications in numerous neurological and developmental disorders. While advances in sequencing technology have enhanced our ability to detect and quantify these repeats, understanding their mechanistic roles in disease remains challenging. One major gap is the development of computational methods that rigorously map variations in STR length and composition to downstream biological processes, enabling a causal understanding of how specific repeat expansions contribute to pathogenesis. (We're scanning billions of base pairs for each person (and possibly each cell) to find these STRs!) Until more sophisticated analytical pipelines and larger, well-characterized datasets are available, significant questions remain about how best to translate STR findings into actionable clinical insights.

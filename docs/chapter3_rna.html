@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Single-cell RNA-sequencing – scOmicNotes</title>
+<title>scOmicNotes - 4&nbsp; Single-cell RNA-sequencing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -52,29 +51,22 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./chapter4_protein.html" rel="next">
 <link href="./chapter2_sequencing.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,58 +75,29 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter3_rna.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter3_rna.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,7 +107,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">scOmicNotes</a> 
@@ -226,7 +189,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -318,9 +281,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <div class="block2">
 <p><strong>Personal opinion: Most methods for single-cell RNA-sequencing “generalize” to other modalities</strong></p>
@@ -345,7 +306,7 @@ window.Quarto = {
 <ul>
 <li><strong>Genome</strong>: The complete set of DNA in an organism, encompassing all of its genetic material, including coding genes, non-coding regions, and regulatory elements. The genome is the blueprint that defines the biological potential of the organism.<br>
 </li>
-<li><strong>Gene</strong>: A specific sequence within the genome that encodes a functional product, typically a protein or functional RNA. Genes include regions such as exons (coding sequences), introns (non-coding regions within a gene), and regulatory sequences (e.g., promoters and enhancers) that control gene expression. We will see more about the architecture of a gene in <a href="chapter6_dna.html#sec-genetics_basics" class="quarto-xref"><span>Section 7.1</span></a>.<br>
+<li><strong>Gene</strong>: A specific sequence within the genome that encodes a functional product, typically a protein or functional RNA. Genes include regions such as exons (coding sequences), introns (non-coding regions within a gene), and regulatory sequences (e.g., promoters and enhancers) that control gene expression. We will see more about the architecture of a gene in <a href="chapter6_dna.html#sec-genetics_basics"><span>Section&nbsp;7.1</span></a>.<br>
 </li>
 <li><strong>Intergenic region</strong>: The stretches of DNA between genes that do not directly code for proteins or RNA. Intergenic regions were once considered “junk DNA,” but they often contain regulatory elements, such as enhancers and silencers, that influence the expression of nearby or distant genes. These regions also play roles in chromatin organization and genome stability.</li>
 </ul></li>
@@ -371,16 +332,12 @@ window.Quarto = {
 <div class="block">
 <p><strong>Remark (Single-cell vs.&nbsp;single-nuclei).</strong> While I use the word “cell,” sometimes in certain biological tissues, the more accurate word is “nuclei.” The computational methods for single-cell RNA-seq data (scRNA-seq) is essentially the same as single-nuclei RNA-seq data (snRNA-seq). What’s different is the biological context. For instance, some biological processes happen only in the nucleus, so when you collect snRNA-seq data, you might be overly enriched to discover those processes. See <span class="citation" data-cites="denisenko2020systematic ding2020systematic">(<a href="references.html#ref-denisenko2020systematic" role="doc-biblioref">Denisenko et al. 2020</a>; <a href="references.html#ref-ding2020systematic" role="doc-biblioref">Ding et al. 2020</a>)</span> for example.</p>
 </div>
-<p>See <a href="#fig-10x-protocol" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> for an illustration of how the 10x protocol works. We’ll explain this next (and more importantly, <em>why</em> it’s important for a statistician to know how single-cell sequencing works)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>See <a href="#fig-10x-protocol">Figure&nbsp;<span>4.1</span></a> for an illustration of how the 10x protocol works. We’ll explain this next (and more importantly, <em>why</em> it’s important for a statistician to know how single-cell sequencing works)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <div class="block">
-<div id="fig-10x-protocol" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-10x-protocol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/10x-protocol.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-10x-protocol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Illustration of the how scRNA-seq works (this is specific for 10x Chromium 3’, but most single-cell protocols follow this rough strategy). <span class="citation" data-cites="swaminath2024use">(<a href="references.html#ref-swaminath2024use" role="doc-biblioref">Swaminath and Russell 2024</a>)</span>
-</figcaption>
+<div id="fig-10x-protocol" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/10x-protocol.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.1: Illustration of the how scRNA-seq works (this is specific for 10x Chromium 3’, but most single-cell protocols follow this rough strategy). <span class="citation" data-cites="swaminath2024use">(<a href="references.html#ref-swaminath2024use" role="doc-biblioref">Swaminath and Russell 2024</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -398,29 +355,21 @@ Figure&nbsp;4.1: Illustration of the how scRNA-seq works (this is specific for 1
 <p><strong>Remark (Lysing prevents longitudinal profile).</strong> This step is why, by default, scRNA-seq cannot do longitudinal experiments on literally the same cells. You have to destroy the cell to sequence it.</p>
 </div>
 <ol start="4" type="1">
-<li><strong>Reverse transcription, cDNA synthesis, and PCR amplification</strong>: The captured RNA is reverse-transcribed into complementary DNA (cDNA), incorporating the barcodes and UMIs to track the origin of each molecule. The cDNA is amplified via PCR to generate enough material for sequencing<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. UMIs help correct for amplification biases by identifying and collapsing duplicate reads from the same original RNA molecule. See <a href="#fig-umi1" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> for the benefit the UMI.</li>
+<li><strong>Reverse transcription, cDNA synthesis, and PCR amplification</strong>: The captured RNA is reverse-transcribed into complementary DNA (cDNA), incorporating the barcodes and UMIs to track the origin of each molecule. The cDNA is amplified via PCR to generate enough material for sequencing<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. UMIs help correct for amplification biases by identifying and collapsing duplicate reads from the same original RNA molecule. See <a href="#fig-umi1">Figure&nbsp;<span>4.2</span></a> for the benefit the UMI.</li>
 </ol>
 <div class="block">
-<div id="fig-umi1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-umi1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/umi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umi1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: Illustration of the importance of UMIs. From <a href="https://help.geneiousbiologics.com/hc/en-us/articles/4781289585300-Understanding-Single-Cell-technologies-Barcodes-and-UMIs" class="uri">https://help.geneiousbiologics.com/hc/en-us/articles/4781289585300-Understanding-Single-Cell-technologies-Barcodes-and-UMIs</a>.
-</figcaption>
+<div id="fig-umi1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/umi.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.2: Illustration of the importance of UMIs. From <a href="https://help.geneiousbiologics.com/hc/en-us/articles/4781289585300-Understanding-Single-Cell-technologies-Barcodes-and-UMIs" class="uri">https://help.geneiousbiologics.com/hc/en-us/articles/4781289585300-Understanding-Single-Cell-technologies-Barcodes-and-UMIs</a>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-umi2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-umi2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/barcode.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umi2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3: How the Poly(dT) on the 10x bead sequence binds to the Poly(A) tail at the 3’ end of an mRNA fragment. From <a href="https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide" class="uri">https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide</a>.
-</figcaption>
+<div id="fig-umi2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/barcode.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.3: How the Poly(dT) on the 10x bead sequence binds to the Poly(A) tail at the 3’ end of an mRNA fragment. From <a href="https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide" class="uri">https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -439,11 +388,11 @@ Figure&nbsp;4.3: How the Poly(dT) on the 10x bead sequence binds to the Poly(A) 
 <ol start="6" type="1">
 <li><strong>Mapping and alignment</strong>: Sequencing reads are mapped to a reference genome or transcriptome to identify the originating genes. UMIs are used to remove PCR duplicates, ensuring accurate quantification of transcripts. This is a classic bioinformatics task – given a sequencing fragment (i.e., the literal basepair sequence) and a reference genome, figure out where in the reference genome this sequencing fragment should map to. If you are doing a typical 10x scRNA-seq experiment, the software to do this (made by 10x) is called CellRanger<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</li>
 </ol>
-<div id="rem-biology_thrown" class="block proof remark">
-<p><span class="proof-title"><em>Remark 4.1</em>. </span><strong>Remark (A lot of fascinating biology is thrown out).</strong> During the mapping and alignment step, many sequencing reads are often discarded because they do not align to the reference genome or transcriptome used in the analysis. This includes reads from bacteria and viruses, which could reveal insights into host-microbe interactions or infections <span class="citation" data-cites="arabi2023brain sato2018cell">(<a href="references.html#ref-arabi2023brain" role="doc-biblioref">Arabi et al. 2023</a>; <a href="references.html#ref-sato2018cell" role="doc-biblioref">Sato et al. 2018</a>)</span>. Similarly, long non-coding RNAs (lncRNAs) <span class="citation" data-cites="mattick2023long">(<a href="references.html#ref-mattick2023long" role="doc-biblioref">Mattick et al. 2023</a>)</span>, genetic variation (including allele-specific expression) <span class="citation" data-cites="robles2021allele">(<a href="references.html#ref-robles2021allele" role="doc-biblioref">Robles-Espinoza et al. 2021</a>)</span>, alternative splicing <span class="citation" data-cites="chen2015alternative">(<a href="references.html#ref-chen2015alternative" role="doc-biblioref">J. Chen and Weiss 2015</a>)</span>, and untranslated regions (UTRs) of mRNAs are frequently overlooked in standard analyses despite their crucial roles in gene regulation, transcript stability, and translation <span class="citation" data-cites="arora2022role">(<a href="references.html#ref-arora2022role" role="doc-biblioref">Arora et al. 2022</a>)</span>. While these regions and features are often excluded for simplicity or due to lack of annotation, they represent a wealth of biological information that could lead to fascinating discoveries if properly explored.</p>
+<div id="rem-biology_thrown" class="block">
+<p><strong>Remark (A lot of fascinating biology is thrown out).</strong> During the mapping and alignment step, many sequencing reads are often discarded because they do not align to the reference genome or transcriptome used in the analysis. This includes reads from bacteria and viruses, which could reveal insights into host-microbe interactions or infections <span class="citation" data-cites="arabi2023brain sato2018cell">(<a href="references.html#ref-arabi2023brain" role="doc-biblioref">Arabi et al. 2023</a>; <a href="references.html#ref-sato2018cell" role="doc-biblioref">Sato et al. 2018</a>)</span>. Similarly, long non-coding RNAs (lncRNAs) <span class="citation" data-cites="mattick2023long">(<a href="references.html#ref-mattick2023long" role="doc-biblioref">Mattick et al. 2023</a>)</span>, genetic variation (including allele-specific expression) <span class="citation" data-cites="robles2021allele">(<a href="references.html#ref-robles2021allele" role="doc-biblioref">Robles-Espinoza et al. 2021</a>)</span>, alternative splicing <span class="citation" data-cites="chen2015alternative">(<a href="references.html#ref-chen2015alternative" role="doc-biblioref">J. Chen and Weiss 2015</a>)</span>, and untranslated regions (UTRs) of mRNAs are frequently overlooked in standard analyses despite their crucial roles in gene regulation, transcript stability, and translation <span class="citation" data-cites="arora2022role">(<a href="references.html#ref-arora2022role" role="doc-biblioref">Arora et al. 2022</a>)</span>. While these regions and features are often excluded for simplicity or due to lack of annotation, they represent a wealth of biological information that could lead to fascinating discoveries if properly explored.</p>
 </div>
-<div id="rem-zero-inflation" class="block2 proof remark">
-<p><span class="proof-title"><em>Remark 4.2</em>. </span><strong>Remark (Why zero-inflation is not currently as popular for scRNA-seq analyses).</strong> As I mentioned in <a href="chapter2_sequencing.html#sec-imputation" class="quarto-xref"><span>Section 3.3.13</span></a>, modeling zero-inflation is not very common anymore. (This is also why we typically do not use an imputation step beyond the usual dimension reduction.) This was shown for droplet-based sequencing protocols <span class="citation" data-cites="svensson2020droplet">(<a href="references.html#ref-svensson2020droplet" role="doc-biblioref">Svensson 2020</a>)</span>, alongside its replies and responses <span class="citation" data-cites="cao2021umi svensson2021reply">(<a href="references.html#ref-cao2021umi" role="doc-biblioref">Cao et al. 2021</a>; <a href="references.html#ref-svensson2021reply" role="doc-biblioref">Svensson 2021</a>)</span>. You might also be interested as well to read more about where the 0’s in a count matrix could come from during the entire sequencing protocol <span class="citation" data-cites="jiang2022statistics">(<a href="references.html#ref-jiang2022statistics" role="doc-biblioref">Jiang et al. 2022</a>)</span>, and how UMIs have contributed to not needing to worry about zero-inflation as much anymore <span class="citation" data-cites="chen2018umi kim2020demystifying">(<a href="references.html#ref-chen2018umi" role="doc-biblioref">W. Chen et al. 2018</a>; <a href="references.html#ref-kim2020demystifying" role="doc-biblioref">Kim, Zhou, and Chen 2020</a>)</span>.</p>
+<div id="rem-zero-inflation" class="block2">
+<p><strong>Remark (Why zero-inflation is not currently as popular for scRNA-seq analyses).</strong> As I mentioned in <a href="chapter2_sequencing.html#sec-imputation"><span>Section&nbsp;3.3.13</span></a>, modeling zero-inflation is not very common anymore. (This is also why we typically do not use an imputation step beyond the usual dimension reduction.) This was shown for droplet-based sequencing protocols <span class="citation" data-cites="svensson2020droplet">(<a href="references.html#ref-svensson2020droplet" role="doc-biblioref">Svensson 2020</a>)</span>, alongside its replies and responses <span class="citation" data-cites="cao2021umi svensson2021reply">(<a href="references.html#ref-cao2021umi" role="doc-biblioref">Cao et al. 2021</a>; <a href="references.html#ref-svensson2021reply" role="doc-biblioref">Svensson 2021</a>)</span>. You might also be interested as well to read more about where the 0’s in a count matrix could come from during the entire sequencing protocol <span class="citation" data-cites="jiang2022statistics">(<a href="references.html#ref-jiang2022statistics" role="doc-biblioref">Jiang et al. 2022</a>)</span>, and how UMIs have contributed to not needing to worry about zero-inflation as much anymore <span class="citation" data-cites="chen2018umi kim2020demystifying">(<a href="references.html#ref-chen2018umi" role="doc-biblioref">W. Chen et al. 2018</a>; <a href="references.html#ref-kim2020demystifying" role="doc-biblioref">Kim, Zhou, and Chen 2020</a>)</span>.</p>
 </div>
 </section>
 <section id="clustering" class="level2" data-number="4.3">
@@ -459,49 +408,37 @@ The input to clustering is a normalized matrix <span class="math inline">\(X\in 
 <li><strong>Example of obvious distinctions</strong>: Obvious differences in cells are often rooted in their structure and function. Heart muscle cells contract using striated fibers, while neurons transmit signals via dendrites and axons, making their structures and functions unmistakably distinct.</li>
 <li><strong>Example of not-obvious distinctions</strong>: Neurons in the brain have been categorized based on their shape, connectivity, and gene expression patterns, but these dimensions do not always align, leading to ambiguities in classification.</li>
 </ul>
-<p>For example, in many “atlas” projects (i.e., big scientific collaborators that aim to exhaustively profile many cells to understand the full diversity of cells), there is a very fundamental question: “How many cell types are there?” This is illustrated in <a href="#fig-atlas" class="quarto-xref">Figure&nbsp;<span>4.4</span></a><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, where after exhaustively profile 4 brains from multiple brain regions, the authors defined 31 “superclusters” (shown as different colors) that separate into 3313 “subclusters.”</p>
+<p>For example, in many “atlas” projects (i.e., big scientific collaborators that aim to exhaustively profile many cells to understand the full diversity of cells), there is a very fundamental question: “How many cell types are there?” This is illustrated in <a href="#fig-atlas">Figure&nbsp;<span>4.4</span></a><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, where after exhaustively profile 4 brains from multiple brain regions, the authors defined 31 “superclusters” (shown as different colors) that separate into 3313 “subclusters.”</p>
 <div class="block">
-<div id="fig-atlas" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-atlas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/atlas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atlas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.4: From <span class="citation" data-cites="siletti2023transcriptomic">(<a href="references.html#ref-siletti2023transcriptomic" role="doc-biblioref">Siletti et al. 2023</a>)</span>.
-</figcaption>
+<div id="fig-atlas" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/atlas.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.4: From <span class="citation" data-cites="siletti2023transcriptomic">(<a href="references.html#ref-siletti2023transcriptomic" role="doc-biblioref">Siletti et al. 2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
-<p>Advances in single-cell transcriptomics have revolutionized how we define cell types. By profiling thousands of genes simultaneously, researchers can cluster cells into groups based on gene expression patterns, creating detailed cell taxonomies. Yet, even this high-resolution approach raises questions about granularity—should closely related clusters represent distinct cell types or variations within the same type? Additionally, transcriptomic definitions often need validation through other modalities, such as spatial organization, connectivity, or functional roles. See <a href="#fig-celltype_ex1" class="quarto-xref">Figure&nbsp;<span>4.5</span></a> for illustrations of other biotechnology assays to define cell types. Despite these challenges, integrating these diverse perspectives is essential for understanding how cells contribute to the structure and function of tissues and organs in both health and disease.</p>
+<p>Advances in single-cell transcriptomics have revolutionized how we define cell types. By profiling thousands of genes simultaneously, researchers can cluster cells into groups based on gene expression patterns, creating detailed cell taxonomies. Yet, even this high-resolution approach raises questions about granularity—should closely related clusters represent distinct cell types or variations within the same type? Additionally, transcriptomic definitions often need validation through other modalities, such as spatial organization, connectivity, or functional roles. See <a href="#fig-celltype_ex1">Figure&nbsp;<span>4.5</span></a> for illustrations of other biotechnology assays to define cell types. Despite these challenges, integrating these diverse perspectives is essential for understanding how cells contribute to the structure and function of tissues and organs in both health and disease.</p>
 <div class="block">
-<div id="fig-celltype_ex1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-celltype_ex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/celltype_ex1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-celltype_ex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.5: Illustrating how to define cell types (in this case, specific to the brain). <span class="citation" data-cites="zeng2022cell">(<a href="references.html#ref-zeng2022cell" role="doc-biblioref">Zeng 2022</a>)</span>
-</figcaption>
+<div id="fig-celltype_ex1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/celltype_ex1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.5: Illustrating how to define cell types (in this case, specific to the brain). <span class="citation" data-cites="zeng2022cell">(<a href="references.html#ref-zeng2022cell" role="doc-biblioref">Zeng 2022</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 <div class="block2">
-<p><strong>Remark (Personal opinion: Being stunlocked on how to define “cell type” in your paper is the rite of passage to becoming a cell biologist).</strong> The more you work closer to biology, the more you’ll realize that answering “What is a cell type?” transforms from a seemingly useless pedagogical question into insanely difficult question that requires you to dig deep into biology. For instance, aging research is currently at the forefront of a lot of biomedical research. However, consider <a href="#fig-celltype_ex2" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>. Does a cell switch it’s “cell type” as we age? (Clearly, the answer must be “yes” to some degree, since all our cells originate from an embryo.) However, when we age from 70 to 80 years old, do our cells change their “cell type” as certain cells start losing their intended function?</p>
+<p><strong>Remark (Personal opinion: Being stunlocked on how to define “cell type” in your paper is the rite of passage to becoming a cell biologist).</strong> The more you work closer to biology, the more you’ll realize that answering “What is a cell type?” transforms from a seemingly useless pedagogical question into insanely difficult question that requires you to dig deep into biology. For instance, aging research is currently at the forefront of a lot of biomedical research. However, consider <a href="#fig-celltype_ex2">Figure&nbsp;<span>4.6</span></a>. Does a cell switch it’s “cell type” as we age? (Clearly, the answer must be “yes” to some degree, since all our cells originate from an embryo.) However, when we age from 70 to 80 years old, do our cells change their “cell type” as certain cells start losing their intended function?</p>
 <p>The questions can get even crazier: Suppose I “discover a new cell type” in my high-profile scRNA-seq analysis. What does that mean? How do I convey to another researcher what defines this cell type? How am I confident that this “cell type” can be found in donors not in my dataset? (Our notation of cell type would be quite useless if it only existed in one donor or one dataset.)</p>
 </div>
 <div class="block">
-<div id="fig-celltype_ex2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-celltype_ex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/celltype_ex2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-celltype_ex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.6: From <span class="citation" data-cites="zeng2022cell">(<a href="references.html#ref-zeng2022cell" role="doc-biblioref">Zeng 2022</a>)</span>.
-</figcaption>
+<div id="fig-celltype_ex2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/celltype_ex2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.6: From <span class="citation" data-cites="zeng2022cell">(<a href="references.html#ref-zeng2022cell" role="doc-biblioref">Zeng 2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
-<p>We will focus on how to cluster cells in the remainder of this section, but we’ll discuss how to label the clusters as “cell types” in <a href="#sec-celltype_labeling" class="quarto-xref"><span>Section 4.6</span></a>, and how to infer temporal relations in <a href="#sec-trajectory" class="quarto-xref"><span>Section 4.7</span></a>.</p>
+<p>We will focus on how to cluster cells in the remainder of this section, but we’ll discuss how to label the clusters as “cell types” in <a href="#sec-celltype_labeling"><span>Section&nbsp;4.6</span></a>, and how to infer temporal relations in <a href="#sec-trajectory"><span>Section&nbsp;4.7</span></a>.</p>
 </section>
 <section id="clustering-cells-into-cell-types-or-cell-states" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="clustering-cells-into-cell-types-or-cell-states"><span class="header-section-number">4.3.2</span> Clustering cells into cell types or cell states</h3>
@@ -547,53 +484,41 @@ Q = \frac{1}{2m} \sum_{i,j} \left( w_{ij} - \gamma \frac{k_i k_j}{2m} \right) \d
 </section>
 <section id="how-to-do-this-in-practice" class="level3" data-number="4.3.4">
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="how-to-do-this-in-practice"><span class="header-section-number">4.3.4</span> How to do this in practice</h3>
-<p>See the <code>Seurat::FindClusters</code> function, illustrated in <a href="#fig-cluster" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>. The resulting visualization is shown in <a href="#fig-cluster-fig1" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>.</p>
+<p>See the <code>Seurat::FindClusters</code> function, illustrated in <a href="#fig-cluster">Figure&nbsp;<span>4.7</span></a>. The resulting visualization is shown in <a href="#fig-cluster-fig1">Figure&nbsp;<span>4.8</span></a>.</p>
 <div class="block">
-<div id="fig-cluster" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/cluster.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.7: The Louvian clustering step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
-</figcaption>
+<div id="fig-cluster" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/cluster.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.7: The Louvian clustering step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-cluster-fig1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cluster-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/cluster-fig1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.8: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca", group.by = "RNA_snn_res.0.5")</code> (left) function to visualize the clusters.
-</figcaption>
+<div id="fig-cluster-fig1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/cluster-fig1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.8: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca", group.by = "RNA_snn_res.0.5")</code> (left) function to visualize the clusters.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-cluster-fig2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cluster-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/cluster-fig2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.9: Using the <code>Seurat::DimPlot(pbmc, reduction = "umap", group.by = "RNA_snn_res.0.5")</code> (right) function to visualize the clusters. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
-</figcaption>
+<div id="fig-cluster-fig2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/cluster-fig2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.9: Using the <code>Seurat::DimPlot(pbmc, reduction = "umap", group.by = "RNA_snn_res.0.5")</code> (right) function to visualize the clusters. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.</figcaption>
 </figure>
 </div>
 </div>
-<div id="rem-cluster_exploratory" class="block proof remark">
-<p><span class="proof-title"><em>Remark 4.3</em>. </span><strong>Remark (Clustering is often an exploratory step, which then allows you focus on key populations of interest later on in your research project).</strong> As you can see here, the clustering role (together with the previous visualization steps and the cell-type labeling to be discussed in <a href="#sec-celltype_labeling" class="quarto-xref"><span>Section 4.6</span></a>) is to provide you a high-level overview of what your dataset contains. After all, when you get a scRNA-seq data fresh out of a wetlab experiment, you don’t actually know what kind of cells are in your dataset. (No dataset comes automatically labeled with cell types.)</p>
+<div id="rem-cluster_exploratory" class="block">
+<p><strong>Remark (Clustering is often an exploratory step, which then allows you focus on key populations of interest later on in your research project).</strong> As you can see here, the clustering role (together with the previous visualization steps and the cell-type labeling to be discussed in <a href="#sec-celltype_labeling"><span>Section&nbsp;4.6</span></a>) is to provide you a high-level overview of what your dataset contains. After all, when you get a scRNA-seq data fresh out of a wetlab experiment, you don’t actually know what kind of cells are in your dataset. (No dataset comes automatically labeled with cell types.)</p>
 <p>Usually in your paper, after determining the clusters (and their cell types), you will spend a considerable portion of the paper going in-depth on just a few key cell types.</p>
 </div>
 <div class="block2">
 <p><strong>Remark (Personal opinion: Make a bit too many clusters, and manually adjust/merge).</strong> Starting with a higher number of clusters can capture finer granularity and prevent important subpopulations from being overlooked. You can then manually combine clusters based on biological knowledge or other criteria, ensuring the final groupings are both meaningful and interpretable.</p>
-<p>While this might seem sacrilegious to statistical hard-liners, the reality of scRNA-seq analyses is that: 1) you don’t want technical artifacts (from sequencing) or numerical quirks (based on the literal computational method being used) to dictate certain cell clusters (sometimes certain clusters are way too small to be meaningful), and 2) for the reality mentioned in <a href="#rem-cluster_exploratory" class="quarto-xref">Remark&nbsp;<span>4.3</span></a>, it might not be great use to time to worry about the “perfect clustering straight out of a method.” As long as you can justify your actions biologically, you’ll be in good hands.</p>
+<p>While this might seem sacrilegious to statistical hard-liners, the reality of scRNA-seq analyses is that: 1) you don’t want technical artifacts (from sequencing) or numerical quirks (based on the literal computational method being used) to dictate certain cell clusters (sometimes certain clusters are way too small to be meaningful), and 2) for the reality mentioned in <span class="citation" data-cites="rem-cluster_exploratory">(<a href="references.html#ref-rem-cluster_exploratory" role="doc-biblioref"><strong>rem-cluster_exploratory?</strong></a>)</span>, it might not be great use to time to worry about the “perfect clustering straight out of a method.” As long as you can justify your actions biologically, you’ll be in good hands.</p>
 </div>
 <div class="block">
-<p><strong>Remark (Personal opinion: If you’re goal is to make an atlas, consider hierarchical clustering methods).</strong> Recall <a href="#fig-celltype_ex1" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>. If the goal of your project is to delineate all the different types of biological variation in your dataset, you’re probably better off using a method that gives you a hierarchy of cell clusters (rather than one fixed clustering). Methods like PAGA <span class="citation" data-cites="wolf2019paga">(<a href="references.html#ref-wolf2019paga" role="doc-biblioref">Wolf et al. 2019</a>)</span> and MRTree <span class="citation" data-cites="peng2021cell">(<a href="references.html#ref-peng2021cell" role="doc-biblioref">Peng et al. 2021</a>)</span> are some (among many) that are useful for this exact task.</p>
+<p><strong>Remark (Personal opinion: If you’re goal is to make an atlas, consider hierarchical clustering methods).</strong> Recall <a href="#fig-celltype_ex1">Figure&nbsp;<span>4.5</span></a>. If the goal of your project is to delineate all the different types of biological variation in your dataset, you’re probably better off using a method that gives you a hierarchy of cell clusters (rather than one fixed clustering). Methods like PAGA <span class="citation" data-cites="wolf2019paga">(<a href="references.html#ref-wolf2019paga" role="doc-biblioref">Wolf et al. 2019</a>)</span> and MRTree <span class="citation" data-cites="peng2021cell">(<a href="references.html#ref-peng2021cell" role="doc-biblioref">Peng et al. 2021</a>)</span> are some (among many) that are useful for this exact task.</p>
 </div>
 </section>
 <section id="a-brief-note-on-other-approaches" class="level3" data-number="4.3.5">
@@ -606,28 +531,20 @@ Figure&nbsp;4.9: Using the <code>Seurat::DimPlot(pbmc, reduction = "umap", group
 </section>
 <section id="how-to-do-this-in-practice-1" class="level3" data-number="4.3.7">
 <h3 data-number="4.3.7" class="anchored" data-anchor-id="how-to-do-this-in-practice-1"><span class="header-section-number">4.3.7</span> How to do this in practice</h3>
-<p>The method I’ve seen most commonly used for this task is MetaCell <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span>. These metacells are constructed using a graph-based partitioning method that leverages k-nearest neighbor (K-nn) similarity graphs to identify groups of cells with highly similar gene expression profiles. By grouping cells into metacells, the method effectively reduces noise while preserving meaningful biological variance, allowing for robust and unbiased exploration of transcriptional states, gradients, and cell types. This is illustrated in <a href="#fig-metacell1" class="quarto-xref">Figure&nbsp;<span>4.10</span></a>.</p>
+<p>The method I’ve seen most commonly used for this task is MetaCell <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span>. These metacells are constructed using a graph-based partitioning method that leverages k-nearest neighbor (K-nn) similarity graphs to identify groups of cells with highly similar gene expression profiles. By grouping cells into metacells, the method effectively reduces noise while preserving meaningful biological variance, allowing for robust and unbiased exploration of transcriptional states, gradients, and cell types. This is illustrated in <a href="#fig-metacell1">Figure&nbsp;<span>4.10</span></a>.</p>
 <div class="block">
-<div id="fig-metacell1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-metacell1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/metacell1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metacell1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.10: Schematic of Metacell. <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span>
-</figcaption>
+<div id="fig-metacell1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/metacell1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.10: Schematic of Metacell. <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-metacell2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-metacell2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/metacell2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metacell2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.11: Visualization of the cells and their meta-cells. <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span>
-</figcaption>
+<div id="fig-metacell2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/metacell2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.11: Visualization of the cells and their meta-cells. <span class="citation" data-cites="baran2019metacell">(<a href="references.html#ref-baran2019metacell" role="doc-biblioref">Baran et al. 2019</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -639,16 +556,12 @@ Figure&nbsp;4.11: Visualization of the cells and their meta-cells. <span class="
 </section>
 <section id="differential-expression" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="differential-expression"><span class="header-section-number">4.4</span> Differential expression</h2>
-<p>Differential expression (DE) analysis, illustrated in <a href="#fig-de-illustration" class="quarto-xref">Figure&nbsp;<span>4.12</span></a>, aims to identify genes that are expressed at significantly different levels between two groups of cells. We will discuss two primary scenarios in the following section: 1) either where the groups are estimated from data, or 2) where the groups are determined by the experimental design. This comparison helps uncover genes that may play critical roles in the biological processes or phenotypic changes under investigation. In the context of single-cell RNA-seq, DE analysis must account for the unique challenges of sparsity and variability in the data. The primary goal is to highlight key molecular drivers of the experimental conditions, providing insights into underlying mechanisms or potential targets for therapeutic intervention. This analysis is foundational for linking cellular behavior to experimental manipulations or disease states.</p>
+<p>Differential expression (DE) analysis, illustrated in <a href="#fig-de-illustration">Figure&nbsp;<span>4.12</span></a>, aims to identify genes that are expressed at significantly different levels between two groups of cells. We will discuss two primary scenarios in the following section: 1) either where the groups are estimated from data, or 2) where the groups are determined by the experimental design. This comparison helps uncover genes that may play critical roles in the biological processes or phenotypic changes under investigation. In the context of single-cell RNA-seq, DE analysis must account for the unique challenges of sparsity and variability in the data. The primary goal is to highlight key molecular drivers of the experimental conditions, providing insights into underlying mechanisms or potential targets for therapeutic intervention. This analysis is foundational for linking cellular behavior to experimental manipulations or disease states.</p>
 <div class="block">
-<div id="fig-de-illustration" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-de-illustration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/de-illustration.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-illustration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.12: Illustration of how to think about DE. From <a href="https://www.sc-best-practices.org/conditions/differential_gene_expression.html" class="uri">https://www.sc-best-practices.org/conditions/differential_gene_expression.html</a>.
-</figcaption>
+<div id="fig-de-illustration" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/de-illustration.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.12: Illustration of how to think about DE. From <a href="https://www.sc-best-practices.org/conditions/differential_gene_expression.html" class="uri">https://www.sc-best-practices.org/conditions/differential_gene_expression.html</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -686,7 +599,7 @@ Figure&nbsp;4.12: Illustration of how to think about DE. From <a href="https://w
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="wilcoxon-rank-sum-test-for-differential-expression-testing"><span class="header-section-number">4.4.3</span> Wilcoxon Rank-Sum Test for Differential Expression Testing</h3>
 <p>The Wilcoxon rank-sum test is a non-parametric statistical test used to assess whether the distributions of a gene’s expression values differ significantly between two groups of cells. It is particularly well-suited for single-cell RNA-seq data that has been normalized, as it does not assume the data follows a specific distribution, such as normality. The test is based on the ranks of the data rather than the raw expression values, making it robust to outliers and noise.</p>
 <div class="block">
-<p><strong>Remark (Wilcoxon test after normalization and feature selection).</strong> The test below is typically done after we’ve normalized and found HVGs. As we’ll discuss in <a href="#sec-de_normalization-vs-count" class="quarto-xref"><span>Section 4.4.15</span></a> next, this is typically <em>before</em> we any imputation or PCA (and we are not worried about batch effects in this scenario).</p>
+<p><strong>Remark (Wilcoxon test after normalization and feature selection).</strong> The test below is typically done after we’ve normalized and found HVGs. As we’ll discuss in <a href="#sec-de_normalization-vs-count"><span>Section&nbsp;4.4.15</span></a> next, this is typically <em>before</em> we any imputation or PCA (and we are not worried about batch effects in this scenario).</p>
 </div>
 <p>Below, we explain the Wilcoxon rank-sum test, generically applied to gene <span class="math inline">\(j\)</span> (i.e., the <span class="math inline">\(j\)</span>-th column of the normalized scRNA-seq matrix <span class="math inline">\(X\)</span>). We will slightly overload the notation just to keep the notation of the Wilcoxon test itself simple.</p>
 <ul>
@@ -720,16 +633,12 @@ p = 2 \cdot P(Z &gt; |z|),
 </section>
 <section id="how-to-do-this-in-practice-2" class="level3" data-number="4.4.4">
 <h3 data-number="4.4.4" class="anchored" data-anchor-id="how-to-do-this-in-practice-2"><span class="header-section-number">4.4.4</span> How to do this in practice</h3>
-<p>See the <code>Seurat::FindMarkers</code> function, with more details described in <a href="https://satijalab.org/seurat/articles/de_vignette" class="uri">https://satijalab.org/seurat/articles/de_vignette</a>. This is illustrated in <a href="#fig-de" class="quarto-xref">Figure&nbsp;<span>4.13</span></a>.</p>
+<p>See the <code>Seurat::FindMarkers</code> function, with more details described in <a href="https://satijalab.org/seurat/articles/de_vignette" class="uri">https://satijalab.org/seurat/articles/de_vignette</a>. This is illustrated in <a href="#fig-de">Figure&nbsp;<span>4.13</span></a>.</p>
 <div class="block">
-<div id="fig-de" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-de-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/de.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.13: The differential expression step, where this example is done to find the “marker genes” for Cluster 2. By default, this is using the Wilcoxon test. You typically don’t need to run <code>logfc.threshold = 0, min.pct = 0, min.cells.feature = 0, min.cells.group = 0</code>. This is primarily done to ensure all the highly variable genes are tested. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> and <a href="https://satijalab.org/seurat/articles/de_vignette" class="uri">https://satijalab.org/seurat/articles/de_vignette</a>.
-</figcaption>
+<div id="fig-de" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/de.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.13: The differential expression step, where this example is done to find the “marker genes” for Cluster 2. By default, this is using the Wilcoxon test. You typically don’t need to run <code>logfc.threshold = 0, min.pct = 0, min.cells.feature = 0, min.cells.group = 0</code>. This is primarily done to ensure all the highly variable genes are tested. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> and <a href="https://satijalab.org/seurat/articles/de_vignette" class="uri">https://satijalab.org/seurat/articles/de_vignette</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -774,16 +683,12 @@ p_{(k)} \leq \frac{k}{m} \alpha.
 </section>
 <section id="the-volcano-plot" class="level3" data-number="4.4.11">
 <h3 data-number="4.4.11" class="anchored" data-anchor-id="the-volcano-plot"><span class="header-section-number">4.4.11</span> The volcano plot</h3>
-<p>A volcano plot is a scatterplot used in differential expression analysis to visualize the relationship between statistical significance and fold change for each gene. Genes are plotted with the magnitude of fold change on the x-axis and the negative logarithm of the p-value on the y-axis, making it easy to identify genes that are both significantly and highly differentially expressed. This intuitive layout highlights genes of interest as points far from the origin, often with up- and downregulated genes in separate clusters. See <a href="#fig-de-illustration" class="quarto-xref">Figure&nbsp;<span>4.12</span></a> for an example of a volcano plot, and <a href="#fig-de-fig" class="quarto-xref">Figure&nbsp;<span>4.14</span></a> on how to make one.</p>
+<p>A volcano plot is a scatterplot used in differential expression analysis to visualize the relationship between statistical significance and fold change for each gene. Genes are plotted with the magnitude of fold change on the x-axis and the negative logarithm of the p-value on the y-axis, making it easy to identify genes that are both significantly and highly differentially expressed. This intuitive layout highlights genes of interest as points far from the origin, often with up- and downregulated genes in separate clusters. See <a href="#fig-de-illustration">Figure&nbsp;<span>4.12</span></a> for an example of a volcano plot, and <a href="#fig-de-fig">Figure&nbsp;<span>4.14</span></a> on how to make one.</p>
 <div class="block">
-<div id="fig-de-fig" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-de-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/de-fig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.14: Using the <code>EnhancedVolcano::EnhancedVolcano(cluster2.markers, lab = rownames(cluster2.markers), x = 'avg_log2FC', y = 'p_val')</code> function to make the volcano plot. See the tutorial in <a href="https://bioconductor.org/packages/devel/bioc/vignettes/EnhancedVolcano/inst/doc/EnhancedVolcano.html" class="uri">https://bioconductor.org/packages/devel/bioc/vignettes/EnhancedVolcano/inst/doc/EnhancedVolcano.html</a>.
-</figcaption>
+<div id="fig-de-fig" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/de-fig.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.14: Using the <code>EnhancedVolcano::EnhancedVolcano(cluster2.markers, lab = rownames(cluster2.markers), x = 'avg_log2FC', y = 'p_val')</code> function to make the volcano plot. See the tutorial in <a href="https://bioconductor.org/packages/devel/bioc/vignettes/EnhancedVolcano/inst/doc/EnhancedVolcano.html" class="uri">https://bioconductor.org/packages/devel/bioc/vignettes/EnhancedVolcano/inst/doc/EnhancedVolcano.html</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -828,10 +733,10 @@ X_{ij} \sim \text{NB}(\mu_{ij}, r_j),
 <h3 data-number="4.4.15" class="anchored" data-anchor-id="sec-de_normalization-vs-count"><span class="header-section-number">4.4.15</span> Aside: DE testing on normalized vs.&nbsp;count data</h3>
 <p>There are two fundamentally different approaches to performing differential expression (DE) analysis in single-cell RNA-seq data:</p>
 <ol type="1">
-<li><strong>DE on the Original Count Data</strong>: This approach involves applying statistical methods directly to the raw count data obtained from sequencing. It accounts for the inherent technical noise and sparsity characteristic of single-cell data by using models tailored to handle count distributions (e.g., negative binomial models). This method preserves the original variability and avoids introducing biases from data manipulation. Most of the different DE methods occur in this category (which we’ll discuss more in <a href="#sec-de_cohort" class="quarto-xref"><span>Section 4.4.12</span></a>).</li>
+<li><strong>DE on the Original Count Data</strong>: This approach involves applying statistical methods directly to the raw count data obtained from sequencing. It accounts for the inherent technical noise and sparsity characteristic of single-cell data by using models tailored to handle count distributions (e.g., negative binomial models). This method preserves the original variability and avoids introducing biases from data manipulation. Most of the different DE methods occur in this category (which we’ll discuss more in <a href="#sec-de_cohort"><span>Section&nbsp;4.4.12</span></a>).</li>
 </ol>
-<div id="rem-de_guideline" class="block proof remark">
-<p><span class="proof-title"><em>Remark 4.4</em>. </span><strong>Remark (Personal guideline on when to use).</strong> In general, a lot of biological replicates (see <a href="#sec-de_cohort" class="quarto-xref"><span>Section 4.4.12</span></a>) or have many covariates to adjust for, this is a more appealing option. Generally, you want to default to this option when you really want to have “valid” p-values (i.e., not just markers for convenient usage). That is, you expect your markers to be investigated in detail in followup work. This is because by modeling the original count nature, if you have an appropriate statistical model, you are more likely to have validity.</p>
+<div id="rem-de_guideline" class="block">
+<p><strong>Remark (Personal guideline on when to use).</strong> In general, a lot of biological replicates (see <a href="#sec-de_cohort"><span>Section&nbsp;4.4.12</span></a>) or have many covariates to adjust for, this is a more appealing option. Generally, you want to default to this option when you really want to have “valid” p-values (i.e., not just markers for convenient usage). That is, you expect your markers to be investigated in detail in followup work. This is because by modeling the original count nature, if you have an appropriate statistical model, you are more likely to have validity.</p>
 </div>
 <ol start="2" type="1">
 <li><strong>DE on Processed Data</strong>: In this paradigm, the data undergoes preprocessing steps such as normalization, scaling, or transformation before DE analysis. Typically, when you’re using strategy, most people defer to the Wilcoxon test.</li>
@@ -839,16 +744,12 @@ X_{ij} \sim \text{NB}(\mu_{ij}, r_j),
 <div class="block">
 <p><strong>Remark (Personal guideline on when to use).</strong> In general, this option is most appealing when you want something “quick and dirty,” such as getting some interesting genes in a preliminary analysis to look at. This is because you’re off-loading all your concerns about statistical modeling to how the data was processed (i.e., the normalization, batch correction, etc.).</p>
 </div>
-<p><strong>Caution on Processed Data</strong>: Do not impute or denoise your data by pooling information across genes or cells prior to DE analysis – unless you are fully aware of the consequences. Imputation or aggressive smoothing can introduce artificial correlations and inflate the signal, potentially leading to false positives and erroneous conclusions. This is because the “signal” from “true DE genes” is smoothed to impact the null genes. These processes can mask true biological variability and create spurious patterns that reflect the imputation model rather than the underlying biology. See <a href="#fig-de-imputed" class="quarto-xref">Figure&nbsp;<span>4.15</span></a> for an illustration of this. There <em>are</em> some exceptions of this though – see eSVD-DE <span class="citation" data-cites="lin2023esvd">(<a href="references.html#ref-lin2023esvd" role="doc-biblioref">Lin, Qiu, and Roeder 2024</a>)</span> and lvm-DE <span class="citation" data-cites="boyeau2023empirical">(<a href="references.html#ref-boyeau2023empirical" role="doc-biblioref">Boyeau et al. 2023</a>)</span> for example.</p>
+<p><strong>Caution on Processed Data</strong>: Do not impute or denoise your data by pooling information across genes or cells prior to DE analysis – unless you are fully aware of the consequences. Imputation or aggressive smoothing can introduce artificial correlations and inflate the signal, potentially leading to false positives and erroneous conclusions. This is because the “signal” from “true DE genes” is smoothed to impact the null genes. These processes can mask true biological variability and create spurious patterns that reflect the imputation model rather than the underlying biology. See <a href="#fig-de-imputed">Figure&nbsp;<span>4.15</span></a> for an illustration of this. There <em>are</em> some exceptions of this though – see eSVD-DE <span class="citation" data-cites="lin2023esvd">(<a href="references.html#ref-lin2023esvd" role="doc-biblioref">Lin, Qiu, and Roeder 2024</a>)</span> and lvm-DE <span class="citation" data-cites="boyeau2023empirical">(<a href="references.html#ref-boyeau2023empirical" role="doc-biblioref">Boyeau et al. 2023</a>)</span> for example.</p>
 <div class="block">
-<div id="fig-de-imputed" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-de-imputed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/de-imputed.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-de-imputed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.15: (Left) DE using the raw or normalized counts, which is what you should use. (Right) DE using the smoothed counts where the data is “smoothed” across all the genes. <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span>
-</figcaption>
+<div id="fig-de-imputed" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/de-imputed.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.15: (Left) DE using the raw or normalized counts, which is what you should use. (Right) DE using the smoothed counts where the data is “smoothed” across all the genes. <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -857,11 +758,11 @@ Figure&nbsp;4.15: (Left) DE using the raw or normalized counts, which is what yo
 </section>
 <section id="pooling-of-overdispersion-parameters-is-usually-the-most-de-methods-share-information-across-genes-if-at-all" class="level3" data-number="4.4.16">
 <h3 data-number="4.4.16" class="anchored" data-anchor-id="pooling-of-overdispersion-parameters-is-usually-the-most-de-methods-share-information-across-genes-if-at-all"><span class="header-section-number">4.4.16</span> Pooling of overdispersion parameters is usually the most DE methods “share information across genes,” if at all</h3>
-<p>Most DE methods analyze one gene at a time, where each gene’s analysis does not influence another gene. As we mentioned above in <a href="#rem-de_guideline" class="quarto-xref">Remark&nbsp;<span>4.4</span></a>, we typically do not perform DE methods on the smoothed data. However, if any information is shared across genes, usually it is at most the overdispersion parameters <span class="math inline">\(r_j\)</span> that is often “averaged/shrunk” across all the genes. See DESeq2 <span class="citation" data-cites="love2014moderated">(<a href="references.html#ref-love2014moderated" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span>.</p>
+<p>Most DE methods analyze one gene at a time, where each gene’s analysis does not influence another gene. As we mentioned above in <span class="citation" data-cites="rem-de_guideline">(<a href="references.html#ref-rem-de_guideline" role="doc-biblioref"><strong>rem-de_guideline?</strong></a>)</span>, we typically do not perform DE methods on the smoothed data. However, if any information is shared across genes, usually it is at most the overdispersion parameters <span class="math inline">\(r_j\)</span> that is often “averaged/shrunk” across all the genes. See DESeq2 <span class="citation" data-cites="love2014moderated">(<a href="references.html#ref-love2014moderated" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span>.</p>
 </section>
 <section id="de-for-a-continuous-covariate" class="level3" data-number="4.4.17">
 <h3 data-number="4.4.17" class="anchored" data-anchor-id="de-for-a-continuous-covariate"><span class="header-section-number">4.4.17</span> “DE” for a continuous covariate</h3>
-<p>As we’ll see later in <a href="#sec-trajectory" class="quarto-xref"><span>Section 4.7</span></a>, sometimes you want to see if a gene is correlated with a continuous covariate (often the estimated developmental stage of a cell). Typically, the way this is done is: fit a regression model (typically a form of GLM) to predict the continuous covariate based on a gene’s expression, and then perform a hypothesis test on whether the gene was relevant for the prediction. See <span class="citation" data-cites="hou2023statistical">(<a href="references.html#ref-hou2023statistical" role="doc-biblioref">Hou et al. 2023</a>)</span> and its related papers for how methods do this.</p>
+<p>As we’ll see later in <a href="#sec-trajectory"><span>Section&nbsp;4.7</span></a>, sometimes you want to see if a gene is correlated with a continuous covariate (often the estimated developmental stage of a cell). Typically, the way this is done is: fit a regression model (typically a form of GLM) to predict the continuous covariate based on a gene’s expression, and then perform a hypothesis test on whether the gene was relevant for the prediction. See <span class="citation" data-cites="hou2023statistical">(<a href="references.html#ref-hou2023statistical" role="doc-biblioref">Hou et al. 2023</a>)</span> and its related papers for how methods do this.</p>
 <div class="block">
 <p><strong>Remark (Personal opinion: The distinct between categorical and continuous phenotypes).</strong> If you study a <strong>clinical</strong> phenotype (typically about the organism or overall tissue), you typically want to treat the phenotype as binary (or categorical). After all, a doctor cannot declare someone to “kinda” have cancer. You either have it or you don’t. (Think about how chaotic medication prescriptions, health insurance, follow-up treatments, etc. would be if doctors gave “kinda” assessments.) In medical practice, doctors are constantly updating the guidelines on how to diagnose samples accordingly discrete buckets of categorizations.</p>
 <p>If you study a <strong>basic biology</strong> phenotype, you typically want to treat the phenotype as continuous variable. After all, nothing about a cell is ever discrete. Nothing is truly either “on” or “off”, and most ways to understand cells is along a gradient. For example, if you study DNA damage, it’s not very useful to simply know when a cell’s DNA is damaged. (It probably always is – however, most DNA damage present in a cell is probably minor and infrequent.)</p>
@@ -877,7 +778,7 @@ Figure&nbsp;4.15: (Left) DE using the raw or normalized counts, which is what yo
 <section id="the-standard-procedure-gsea" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="the-standard-procedure-gsea"><span class="header-section-number">4.5.1</span> The standard procedure: GSEA</h3>
 <p>Gene Set Enrichment Analysis (GSEA) is a widely used computational method designed to determine whether predefined sets of genes exhibit statistically significant differences in expression between two biological states. Unlike single-gene analyses, which focus on individual genes, GSEA evaluates groups of related genes (gene sets) to identify coordinated changes in expression patterns. This approach provides a more systems-level understanding of the underlying biology, particularly in settings where individual genes show subtle expression changes.</p>
-<p>The goal of GSEA is to test whether a predefined gene set <span class="math inline">\(S\)</span>, such as a pathway or functional group, is overrepresented among the genes most differentially expressed between two conditions. GSEA leverages ranked gene lists, focusing on the distribution of gene set members within the list to detect enrichment. See <a href="#fig-gsea1" class="quarto-xref">Figure&nbsp;<span>4.16</span></a> for an illustration of how the method works visually.</p>
+<p>The goal of GSEA is to test whether a predefined gene set <span class="math inline">\(S\)</span>, such as a pathway or functional group, is overrepresented among the genes most differentially expressed between two conditions. GSEA leverages ranked gene lists, focusing on the distribution of gene set members within the list to detect enrichment. See <a href="#fig-gsea1">Figure&nbsp;<span>4.16</span></a> for an illustration of how the method works visually.</p>
 <ul>
 <li><strong>Input data</strong>: GSEA requires the following inputs:</li>
 </ul>
@@ -905,26 +806,18 @@ Figure&nbsp;4.15: (Left) DE using the raw or normalized counts, which is what yo
 <li><strong>Multiple testing adjustment</strong>: Since many gene sets are tested in a typical GSEA analysis, corrections for multiple hypothesis testing are essential. GSEA uses the false discovery rate (FDR) to control for false positives, reporting gene sets with significant enrichment after correction.</li>
 </ul>
 <div class="block">
-<div id="fig-gsea1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gsea1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/gsea1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gsea1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.16: The typical “random walk” illustration of a GSEA. <span class="citation" data-cites="subramanian2005gene">(<a href="references.html#ref-subramanian2005gene" role="doc-biblioref">Subramanian et al. 2005</a>)</span>
-</figcaption>
+<div id="fig-gsea1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/gsea1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.16: The typical “random walk” illustration of a GSEA. <span class="citation" data-cites="subramanian2005gene">(<a href="references.html#ref-subramanian2005gene" role="doc-biblioref">Subramanian et al. 2005</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-gsea2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gsea2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/gsea2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gsea2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.17: The typical “random walk” illustration of a GSEA. <span class="citation" data-cites="subramanian2005gene">(<a href="references.html#ref-subramanian2005gene" role="doc-biblioref">Subramanian et al. 2005</a>)</span>
-</figcaption>
+<div id="fig-gsea2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/gsea2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.17: The typical “random walk” illustration of a GSEA. <span class="citation" data-cites="subramanian2005gene">(<a href="references.html#ref-subramanian2005gene" role="doc-biblioref">Subramanian et al. 2005</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -948,43 +841,31 @@ Figure&nbsp;4.17: The typical “random walk” illustration of a GSEA. <span cl
 </section>
 <section id="how-to-do-this-in-practice-4" class="level3" data-number="4.5.3">
 <h3 data-number="4.5.3" class="anchored" data-anchor-id="how-to-do-this-in-practice-4"><span class="header-section-number">4.5.3</span> How to do this in practice</h3>
-<p>The most popular package to perform a GSEA analysis is <code>clusterProfiler::gseGO</code>. See <a href="https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html" class="uri">https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html</a> for tutorials on how to do this. If you’re working on human data, the database used for GSEA is often the <code>org.Hs.eg.db</code> package, see <a href="https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html" class="uri">https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html</a>. See the following code snippet and the outputs in <a href="#fig-gsea_ex1" class="quarto-xref">Figure&nbsp;<span>4.18</span></a> and <a href="#fig-gsea_dotplot" class="quarto-xref">Figure&nbsp;<span>4.20</span></a> as an example.</p>
+<p>The most popular package to perform a GSEA analysis is <code>clusterProfiler::gseGO</code>. See <a href="https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html" class="uri">https://yulab-smu.top/biomedical-knowledge-mining-book/clusterprofiler-go.html</a> for tutorials on how to do this. If you’re working on human data, the database used for GSEA is often the <code>org.Hs.eg.db</code> package, see <a href="https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html" class="uri">https://bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html</a>. See the following code snippet and the outputs in <a href="#fig-gsea_ex1">Figure&nbsp;<span>4.18</span></a> and <a href="#fig-gsea_dotplot">Figure&nbsp;<span>4.20</span></a> as an example.</p>
 <div class="block2">
 <p>teststat_vec &lt;- cluster2.markers$avg_log2FC names(teststat_vec) &lt;- rownames(cluster2.markers) teststat_vec &lt;- sort(teststat_vec, decreasing = TRUE) set.seed(10) gse &lt;- clusterProfiler::gseGO( teststat_vec, ont = “BP”, # what kind of pathways are you interested in keyType = “SYMBOL”, OrgDb = “org.Hs.eg.db”, pvalueCutoff = 1, # p-value threshold for pathways minGSSize = 10, # minimum gene set size maxGSSize = 500 # maximum gene set size ) head(as.data.frame(gse))</p>
 </div>
 <div class="block">
-<div id="fig-gsea_ex1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gsea_ex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/gsea_ex2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gsea_ex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.18: Output of <code>head(as.data.frame(gse))</code>
-</figcaption>
+<div id="fig-gsea_ex1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/gsea_ex2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.18: Output of <code>head(as.data.frame(gse))</code></figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-gsea_ex2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gsea_ex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/gsea_ex1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gsea_ex2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.19: Output of <code>head(as.data.frame(gse))</code>
-</figcaption>
+<div id="fig-gsea_ex2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/gsea_ex1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.19: Output of <code>head(as.data.frame(gse))</code></figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-gsea_dotplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gsea_dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/gsea_dotplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gsea_dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.20: Output of <code>clusterProfiler::dotplot(gse, showCategory=30)</code>
-</figcaption>
+<div id="fig-gsea_dotplot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/gsea_dotplot.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.20: Output of <code>clusterProfiler::dotplot(gse, showCategory=30)</code></figcaption>
 </figure>
 </div>
 </div>
@@ -1002,45 +883,33 @@ Figure&nbsp;4.20: Output of <code>clusterProfiler::dotplot(gse, showCategory=30)
 <p>Some drawbacks of this approach: 1) It can be labor-intensive, dependent on the quality of prior knowledge, and requires the data analyst to have quite some expertise with the biological system. After all, <em>you</em> will need to figure out the most reliable set of genes to use – this will inevitably require you know have read quite a few papers to see which markers are commonly used by the community. 2) A more limiting drawback is that you will not be able to label “new” cell types in your dataset that do not have already established marker genes. After all, if you are “missing” the marker genes for a particular cell type, you might not even realize that that cell type is in your dataset.</p>
 <p>Despite these challenges, this method remains the most widely used because it minimizes the risk of major errors going unnoticed, making it a reliable approach for annotating cell types.</p>
 <div class="block">
-<div id="fig-celltype" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-celltype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/celltype.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-celltype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.21: The cell-type labeling step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
-</figcaption>
+<div id="fig-celltype" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/celltype.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.21: The cell-type labeling step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-celltype-fig1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-celltype-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/tutorial_markers.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-celltype-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.22: The markers for various cell types in this system.
-</figcaption>
+<div id="fig-celltype-fig1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/tutorial_markers.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.22: The markers for various cell types in this system.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-celltype-fig2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-celltype-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/celltype-fig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-celltype-fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.23: Using the <code>DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + Seurat::NoLegend()</code> function to visualize the data with the cell-type labels. (By default, the “labels” come from <code>Seurat::Idents</code>, which is set to the latest clustering by default. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
-</figcaption>
+<div id="fig-celltype-fig2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/celltype-fig.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.23: Using the <code>DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + Seurat::NoLegend()</code> function to visualize the data with the cell-type labels. (By default, the “labels” come from <code>Seurat::Idents</code>, which is set to the latest clustering by default. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="in-relation-to-scoring-a-gene-set" class="level3" data-number="4.6.2">
 <h3 data-number="4.6.2" class="anchored" data-anchor-id="in-relation-to-scoring-a-gene-set"><span class="header-section-number">4.6.2</span> In relation to scoring a gene-set</h3>
-<p>Recall in <a href="chapter2_sequencing.html#sec-cell_filtering" class="quarto-xref"><span>Section 3.3.3</span></a> that we often create a score for the percentage of expression originating from the mitochondria genes for cell-filtering. The <code>Seurat::PercentageFeatureSet</code> function to do this does exactly what it sounds like – it computes the percentage of counts originating from the genes in the gene set (relative to all the counts in the cell).</p>
+<p>Recall in <a href="chapter2_sequencing.html#sec-cell_filtering"><span>Section&nbsp;3.3.3</span></a> that we often create a score for the percentage of expression originating from the mitochondria genes for cell-filtering. The <code>Seurat::PercentageFeatureSet</code> function to do this does exactly what it sounds like – it computes the percentage of counts originating from the genes in the gene set (relative to all the counts in the cell).</p>
 <p>There are fancier methods to compute this enrichment score (i.e., a score where a higher number denotes that that gene set is “more active” in a cell). Two popular methods for this account for the “background distribution” (UCell, <span class="citation" data-cites="andreatta2021ucell">(<a href="references.html#ref-andreatta2021ucell" role="doc-biblioref">Andreatta and Carmona 2021</a>)</span>) or the gene regulatory network (AUCell, <span class="citation" data-cites="aibar2017scenic">(<a href="references.html#ref-aibar2017scenic" role="doc-biblioref">Aibar et al. 2017</a>)</span>).</p>
 </section>
 <section id="strategy-2-deploying-a-classifiertransfer-learning" class="level3" data-number="4.6.3">
@@ -1056,23 +925,19 @@ Figure&nbsp;4.23: Using the <code>DimPlot(pbmc, reduction = "umap", label = TRUE
 </section>
 <section id="strategy-3-data-integration" class="level3" data-number="4.6.4">
 <h3 data-number="4.6.4" class="anchored" data-anchor-id="strategy-3-data-integration"><span class="header-section-number">4.6.4</span> Strategy 3: Data integration</h3>
-<p>Dataset integration has become a widely used approach for cell-type labeling, especially when marker genes are not readily available. This strategy involves integrating a new dataset with an existing reference, often using methods that align the datasets in a shared space. Once integrated, cells in the new dataset are labeled based on their nearest neighbors in the reference. While this approach is powerful, it has limitations. A key advantage of this method is its visual interpretability; researchers can assess the alignment of the datasets in a low-dimensional embedding, adding a layer of protection against mislabeling or other errors. See <a href="#fig-chap3_integration" class="quarto-xref">Figure&nbsp;<span>4.24</span></a> for a schematic.</p>
+<p>Dataset integration has become a widely used approach for cell-type labeling, especially when marker genes are not readily available. This strategy involves integrating a new dataset with an existing reference, often using methods that align the datasets in a shared space. Once integrated, cells in the new dataset are labeled based on their nearest neighbors in the reference. While this approach is powerful, it has limitations. A key advantage of this method is its visual interpretability; researchers can assess the alignment of the datasets in a low-dimensional embedding, adding a layer of protection against mislabeling or other errors. See <a href="#fig-chap3_integration">Figure&nbsp;<span>4.24</span></a> for a schematic.</p>
 <div class="block">
-<div id="fig-chap3_integration" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-chap3_integration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/integration.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chap3_integration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.24: Illustration of how to conceptualize data integration. <span class="citation" data-cites="stuart2019comprehensive">(<a href="references.html#ref-stuart2019comprehensive" role="doc-biblioref">Stuart et al. 2019</a>)</span>
-</figcaption>
+<div id="fig-chap3_integration" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/integration.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.24: Illustration of how to conceptualize data integration. <span class="citation" data-cites="stuart2019comprehensive">(<a href="references.html#ref-stuart2019comprehensive" role="doc-biblioref">Stuart et al. 2019</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 <p>A few notes:</p>
 <ul>
 <li>We sometimes use the verb “align” two datasets or “project” one dataset onto another. Note that we’re just using these verbs conceptually, not in a literal statistical sense.</li>
-<li>Many methods used for batch correction (see <a href="chapter2_sequencing.html#sec-batch_correction" class="quarto-xref"><span>Section 3.3.19</span></a>) can be repurposed for this task.</li>
+<li>Many methods used for batch correction (see <a href="chapter2_sequencing.html#sec-batch_correction"><span>Section&nbsp;3.3.19</span></a>) can be repurposed for this task.</li>
 <li>Be warned though: integration can sometimes “collapse” distinct points in the data, potentially masking subtle differences or even preventing the discovery of new cell types.</li>
 </ul>
 <p>For some canonical examples of these methods: Using CCA (<span class="citation" data-cites="butler2018integrating">(<a href="references.html#ref-butler2018integrating" role="doc-biblioref">Butler et al. 2018</a>)</span> and its followup, <span class="citation" data-cites="stuart2019comprehensive">(<a href="references.html#ref-stuart2019comprehensive" role="doc-biblioref">Stuart et al. 2019</a>)</span>), using cell-cell graphs (MNN <span class="citation" data-cites="haghverdi2018batch">(<a href="references.html#ref-haghverdi2018batch" role="doc-biblioref">Haghverdi et al. 2018</a>)</span> and Harmony <span class="citation" data-cites="korsunsky2019fast">(<a href="references.html#ref-korsunsky2019fast" role="doc-biblioref">Korsunsky et al. 2019</a>)</span>), and regression (COMBAT-seq <span class="citation" data-cites="zhang2020combat">(<a href="references.html#ref-zhang2020combat" role="doc-biblioref">Yuqing Zhang, Parmigiani, and Johnson 2020</a>)</span>). However, by far the most common way to do this currently is through deep-learning (which can be interpreted as a form of transfer learning, see scANVI <span class="citation" data-cites="xu2021probabilistic">(<a href="references.html#ref-xu2021probabilistic" role="doc-biblioref">Xu et al. 2021</a>)</span> for example).</p>
@@ -1085,7 +950,7 @@ Figure&nbsp;4.24: Illustration of how to conceptualize data integration. <span c
 </section>
 <section id="how-to-do-this-in-practice-5" class="level3" data-number="4.6.5">
 <h3 data-number="4.6.5" class="anchored" data-anchor-id="how-to-do-this-in-practice-5"><span class="header-section-number">4.6.5</span> How to do this in practice</h3>
-<p>There’s not standardize way to do this, but I would personally recommend data integration using Harmony, where you integrate your (unlabeled) dataset of interest with a reference dataset with cell-type labels. See <a href="chapter2_sequencing.html#sec-batch_correction" class="quarto-xref"><span>Section 3.3.19</span></a>.</p>
+<p>There’s not standardize way to do this, but I would personally recommend data integration using Harmony, where you integrate your (unlabeled) dataset of interest with a reference dataset with cell-type labels. See <a href="chapter2_sequencing.html#sec-batch_correction"><span>Section&nbsp;3.3.19</span></a>.</p>
 </section>
 <section id="a-brief-note-on-other-approaches-6" class="level3" data-number="4.6.6">
 <h3 data-number="4.6.6" class="anchored" data-anchor-id="a-brief-note-on-other-approaches-6"><span class="header-section-number">4.6.6</span> A brief note on other approaches</h3>
@@ -1110,21 +975,17 @@ Figure&nbsp;4.24: Illustration of how to conceptualize data integration. <span c
 </div>
 <section id="a-typical-choice-monocle" class="level3" data-number="4.7.1">
 <h3 data-number="4.7.1" class="anchored" data-anchor-id="a-typical-choice-monocle"><span class="header-section-number">4.7.1</span> A typical choice: Monocle</h3>
-<p>Monocle <span class="citation" data-cites="trapnell2014dynamics">(<a href="references.html#ref-trapnell2014dynamics" role="doc-biblioref">Trapnell et al. 2014</a>)</span> is a computational framework designed to infer the trajectory of single-cell gene expression profiles as they progress through a dynamic biological process, such as differentiation or reprogramming. It constructs a “pseudotime” ordering, which assigns a continuous value to each cell based on its transcriptional state, representing its progression along the biological process. This method is illustrated as a schematic in <a href="#fig-monocle" class="quarto-xref">Figure&nbsp;<span>4.25</span></a>.</p>
+<p>Monocle <span class="citation" data-cites="trapnell2014dynamics">(<a href="references.html#ref-trapnell2014dynamics" role="doc-biblioref">Trapnell et al. 2014</a>)</span> is a computational framework designed to infer the trajectory of single-cell gene expression profiles as they progress through a dynamic biological process, such as differentiation or reprogramming. It constructs a “pseudotime” ordering, which assigns a continuous value to each cell based on its transcriptional state, representing its progression along the biological process. This method is illustrated as a schematic in <a href="#fig-monocle">Figure&nbsp;<span>4.25</span></a>.</p>
 <p>The method begins by representing the gene expression profile of each cell as a point in a high-dimensional space <span class="math inline">\(\mathbb{R}^d\)</span>, where <span class="math inline">\(d\)</span> is the number of genes measured. To reduce noise and computational complexity, Monocle uses dimensionality reduction techniques, such as Independent Component Analysis (ICA), to project the data into a lower-dimensional space.</p>
 <p>Next, Monocle constructs a Minimum Spanning Tree (MST) in this reduced space. Each cell is treated as a node, and edges represent transcriptional similarity between cells, with weights corresponding to distances in the reduced space. The MST serves as the backbone for the trajectory and is used to identify the longest connected path, representing the main pseudotemporal progression.</p>
 <p>Mathematically, pseudotime <span class="math inline">\(\tau_i\)</span> for a cell <span class="math inline">\(i\)</span> is defined along this trajectory as: <span class="math display">\[
 \tau_i = \sum_{j=1}^{i} d(c_j, c_{j+1}),
 \]</span> where <span class="math inline">\(d(c_j, c_{j+1})\)</span> is the geodesic distance between successive cells <span class="math inline">\(c_j\)</span> and <span class="math inline">\(c_{j+1}\)</span> along the path.</p>
 <div class="block">
-<div id="fig-monocle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-monocle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/monocle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-monocle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.25: From <span class="citation" data-cites="trapnell2014dynamics">(<a href="references.html#ref-trapnell2014dynamics" role="doc-biblioref">Trapnell et al. 2014</a>)</span>.
-</figcaption>
+<div id="fig-monocle" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/monocle.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.25: From <span class="citation" data-cites="trapnell2014dynamics">(<a href="references.html#ref-trapnell2014dynamics" role="doc-biblioref">Trapnell et al. 2014</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -1159,7 +1020,7 @@ Figure&nbsp;4.25: From <span class="citation" data-cites="trapnell2014dynamics">
 <h2 data-number="4.8" class="anchored" data-anchor-id="sec-beyond_scrna"><span class="header-section-number">4.8</span> Concluding thoughts about scRNA-seq: Why bother with anything else?</h2>
 <section id="limited-biological-insights-from-scrna-seq-matrices" class="level3" data-number="4.8.1">
 <h3 data-number="4.8.1" class="anchored" data-anchor-id="limited-biological-insights-from-scrna-seq-matrices"><span class="header-section-number">4.8.1</span> Limited biological insights from scRNA-seq matrices</h3>
-<p>Recall <a href="#rem-biology_thrown" class="quarto-xref">Remark&nbsp;<span>4.1</span></a>, which highlights how much biological information is discarded during typical scRNA-seq workflows, particularly by tools like CellRanger. While the raw reads may contain rich and valuable insights – such as information on splicing, untranslated regions (UTRs), and alternative polyadenylation sites (APAs) – these are often overlooked in downstream analyses. If your analysis starts solely from the count matrix, you might miss significant aspects of cellular biology. For a broader perspective on what scRNA-seq still lacks, both biologically and methodologically, see review papers like <span class="citation" data-cites="lahnemann2020eleven">(<a href="references.html#ref-lahnemann2020eleven" role="doc-biblioref">Lahnemann et al. 2020</a>)</span>. Additionally, for those interested in computational challenges in single-cell analysis, resources like <a href="https://openproblems.bio/events/" class="uri">https://openproblems.bio/events/</a> provide an excellent starting point.</p>
+<p>Recall <span class="citation" data-cites="rem-biology_thrown">(<a href="references.html#ref-rem-biology_thrown" role="doc-biblioref"><strong>rem-biology_thrown?</strong></a>)</span>, which highlights how much biological information is discarded during typical scRNA-seq workflows, particularly by tools like CellRanger. While the raw reads may contain rich and valuable insights – such as information on splicing, untranslated regions (UTRs), and alternative polyadenylation sites (APAs) – these are often overlooked in downstream analyses. If your analysis starts solely from the count matrix, you might miss significant aspects of cellular biology. For a broader perspective on what scRNA-seq still lacks, both biologically and methodologically, see review papers like <span class="citation" data-cites="lahnemann2020eleven">(<a href="references.html#ref-lahnemann2020eleven" role="doc-biblioref">Lahnemann et al. 2020</a>)</span>. Additionally, for those interested in computational challenges in single-cell analysis, resources like <a href="https://openproblems.bio/events/" class="uri">https://openproblems.bio/events/</a> provide an excellent starting point.</p>
 </section>
 <section id="limited-biological-understanding-of-mrna-fragments" class="level3" data-number="4.8.2">
 <h3 data-number="4.8.2" class="anchored" data-anchor-id="limited-biological-understanding-of-mrna-fragments"><span class="header-section-number">4.8.2</span> Limited biological understanding of mRNA fragments</h3>
@@ -1167,36 +1028,28 @@ Figure&nbsp;4.25: From <span class="citation" data-cites="trapnell2014dynamics">
 </section>
 <section id="translational-limitation-of-scrna-seq-and-bulk-deconvolution" class="level3" data-number="4.8.3">
 <h3 data-number="4.8.3" class="anchored" data-anchor-id="translational-limitation-of-scrna-seq-and-bulk-deconvolution"><span class="header-section-number">4.8.3</span> Translational limitation of scRNA-seq, and bulk deconvolution</h3>
-<p>As we showed in the footnotes of <a href="#sec-chapter_3_tech" class="quarto-xref"><span>Section 4.2</span></a>, scRNA-seq is extremely expensive. This makes any scRNA-seq technology quite unlikely to become a routine tool in clinical settings like hospitals. This is one of the main appeals of bulk deconvolution methods (where you can estimate cell-type proportions for many tissues for many donors, see <span class="citation" data-cites="cobos2023effective nguyen2024fourteen maden2023challenges">(<a href="references.html#ref-cobos2023effective" role="doc-biblioref">Cobos et al. 2023</a>; <a href="references.html#ref-nguyen2024fourteen" role="doc-biblioref">H. Nguyen et al. 2024</a>; <a href="references.html#ref-maden2023challenges" role="doc-biblioref">Maden et al. 2023</a>)</span>), since bulk RNA sequencing is a lot cheaper than scRNA sequencing.</p>
+<p>As we showed in the footnotes of <a href="#sec-chapter_3_tech"><span>Section&nbsp;4.2</span></a>, scRNA-seq is extremely expensive. This makes any scRNA-seq technology quite unlikely to become a routine tool in clinical settings like hospitals. This is one of the main appeals of bulk deconvolution methods (where you can estimate cell-type proportions for many tissues for many donors, see <span class="citation" data-cites="cobos2023effective nguyen2024fourteen maden2023challenges">(<a href="references.html#ref-cobos2023effective" role="doc-biblioref">Cobos et al. 2023</a>; <a href="references.html#ref-nguyen2024fourteen" role="doc-biblioref">H. Nguyen et al. 2024</a>; <a href="references.html#ref-maden2023challenges" role="doc-biblioref">Maden et al. 2023</a>)</span>), since bulk RNA sequencing is a lot cheaper than scRNA sequencing.</p>
 </section>
 <section id="not-all-rna-is-mrna" class="level3" data-number="4.8.4">
 <h3 data-number="4.8.4" class="anchored" data-anchor-id="not-all-rna-is-mrna"><span class="header-section-number">4.8.4</span> Not all RNA is mRNA</h3>
-<p>If you have not studied biology before, it might shock you to realize that mRNA is only one specific type of RNA molecules. See <a href="#fig-rna-types" class="quarto-xref">Figure&nbsp;<span>4.26</span></a> for all the different types of mRNA molecules. mRNA is simply the only RNA molecules to become translated into proteins. In fact, this is only from 1%-5% of all RNA molecules in a cell<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. There is incredible biology being done to investigate the other roles of the other RNA molecules, for instance lncRNA <span class="citation" data-cites="statello2021gene">(<a href="references.html#ref-statello2021gene" role="doc-biblioref">Statello et al. 2021</a>)</span> and microRNA <span class="citation" data-cites="shang2023micrornas">(<a href="references.html#ref-shang2023micrornas" role="doc-biblioref">Shang et al. 2023</a>)</span>.</p>
+<p>If you have not studied biology before, it might shock you to realize that mRNA is only one specific type of RNA molecules. See <a href="#fig-rna-types">Figure&nbsp;<span>4.26</span></a> for all the different types of mRNA molecules. mRNA is simply the only RNA molecules to become translated into proteins. In fact, this is only from 1%-5% of all RNA molecules in a cell<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. There is incredible biology being done to investigate the other roles of the other RNA molecules, for instance lncRNA <span class="citation" data-cites="statello2021gene">(<a href="references.html#ref-statello2021gene" role="doc-biblioref">Statello et al. 2021</a>)</span> and microRNA <span class="citation" data-cites="shang2023micrornas">(<a href="references.html#ref-shang2023micrornas" role="doc-biblioref">Shang et al. 2023</a>)</span>.</p>
 <div class="block">
-<div id="fig-rna-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rna-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/rna-types.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rna-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.26: From <a href="https://www.youtube.com/watch?v=FThA4Vxs3v4" class="uri">https://www.youtube.com/watch?v=FThA4Vxs3v4</a>
-</figcaption>
+<div id="fig-rna-types" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/rna-types.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.26: From <a href="https://www.youtube.com/watch?v=FThA4Vxs3v4" class="uri">https://www.youtube.com/watch?v=FThA4Vxs3v4</a></figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="importance-of-other-omics" class="level3" data-number="4.8.5">
 <h3 data-number="4.8.5" class="anchored" data-anchor-id="importance-of-other-omics"><span class="header-section-number">4.8.5</span> Importance of other omics</h3>
-<p>To truly understand the complexity of cellular systems, we need to integrate information from multiple modalities. This idea can be illustrated by the “blind men and the elephant” analogy, <a href="#fig-elephant" class="quarto-xref">Figure&nbsp;<span>4.27</span></a>: each single-cell modality provides only a partial perspective of the whole, and no single technology can offer a complete picture. For instance, scRNA-seq captures transcriptional snapshots, while other methods focus on proteins, chromatin, or spatial organization. Combining these modalities is essential to gain a holistic view of cellular function and dynamics.</p>
+<p>To truly understand the complexity of cellular systems, we need to integrate information from multiple modalities. This idea can be illustrated by the “blind men and the elephant” analogy, <a href="#fig-elephant">Figure&nbsp;<span>4.27</span></a>: each single-cell modality provides only a partial perspective of the whole, and no single technology can offer a complete picture. For instance, scRNA-seq captures transcriptional snapshots, while other methods focus on proteins, chromatin, or spatial organization. Combining these modalities is essential to gain a holistic view of cellular function and dynamics.</p>
 <div class="block">
-<div id="fig-elephant" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap3/elephant.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.27: The “blind men and the elephant” analogy. Each omic gives you one perspective of the cell, and it’s important to put all these omics together to get the full picture.
-</figcaption>
+<div id="fig-elephant" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap3/elephant.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;4.27: The “blind men and the elephant” analogy. Each omic gives you one perspective of the cell, and it’s important to put all these omics together to get the full picture.</figcaption>
 </figure>
 </div>
 </div>
@@ -1215,7 +1068,7 @@ Figure&nbsp;4.27: The “blind men and the elephant” analogy. Each omic gives 
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-abdelaal2019comparison" class="csl-entry" role="listitem">
 Abdelaal, Tamim, Lieke Michielsen, Davy Cats, Dylan Hoogduin, Hailiang Mei, Marcel JT Reinders, and Ahmed Mahfouz. 2019. <span>“A Comparison of Automatic Cell Identification Methods for Single-Cell <span>RNA</span> Sequencing Data.”</span> <em>Genome Biology</em> 20 (1): 1–19.
 </div>
@@ -1508,418 +1361,251 @@ Zhang, Zhaojun, Divij Mathew, Tristan L Lim, Kaishu Mason, Clara Morral Martinez
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
       }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
+      return codeEl.innerText;
     }
   });
-  </script>
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter2_sequencing.html" class="pagination-link" aria-label="Single-cell sequencing">
+      <a href="./chapter2_sequencing.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Single-cell sequencing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter4_protein.html" class="pagination-link" aria-label="'Single-cell' proteomics">
+      <a href="./chapter4_protein.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

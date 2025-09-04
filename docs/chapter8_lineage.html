@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Single-cell lineage tracing – scOmicNotes</title>
+<title>scOmicNotes - 9&nbsp; Single-cell lineage tracing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -52,29 +51,22 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./chapter9_spatial.html" rel="next">
 <link href="./chapter7_crispr.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,58 +75,29 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter8_lineage.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter8_lineage.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Single-cell lineage tracing</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,7 +107,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">scOmicNotes</a> 
@@ -226,7 +189,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -277,98 +240,72 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <section id="why-are-we-interested-in-learning-temporal-dynamics" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="why-are-we-interested-in-learning-temporal-dynamics"><span class="header-section-number">9.1</span> Why are we interested in learning temporal dynamics?</h2>
 <p>Studying how cells change over time provides critical insight into the sequence of events driving biological processes. By observing changes in cell populations across multiple time points, researchers can pinpoint when specific transitions or bifurcations occur. Such temporal information reveals which factors influence a cell’s fate and how quickly new traits emerge.</p>
 <p>Moreover, understanding temporal dynamics can help us develop better interventions. If we can identify the earliest signs of disease or undesirable changes in cells, then targeted therapies can be designed to prevent or slow progression. Such strategies are especially powerful for complex, multi-stage diseases where later intervention might be less effective.</p>
 <ul>
-<li><strong>Cancer subclone evolution</strong>: Tumors consist of various subclones that compete and evolve. Observing which subclones become dominant over time helps illuminate how certain cells acquire and propagate new mutations, sometimes conferring resistance to treatments. See <a href="#fig-cancer_treatment1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> and <a href="#fig-cancer_treatment2" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>.</li>
+<li><strong>Cancer subclone evolution</strong>: Tumors consist of various subclones that compete and evolve. Observing which subclones become dominant over time helps illuminate how certain cells acquire and propagate new mutations, sometimes conferring resistance to treatments. See <a href="#fig-cancer_treatment1">Figure&nbsp;<span>9.1</span></a> and <a href="#fig-cancer_treatment2">Figure&nbsp;<span>9.2</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-cancer_treatment1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/cancer_treatment1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: (Top) From <span class="citation" data-cites="ashouri2023decoding">Ashouri, Zhang, and Gaiti (<a href="references.html#ref-ashouri2023decoding" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-cancer_treatment1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/cancer_treatment1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.1: (Top) From <span class="citation" data-cites="ashouri2023decoding">Ashouri, Zhang, and Gaiti (<a href="references.html#ref-ashouri2023decoding" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-cancer_treatment2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/cancer_treatment2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer_treatment2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: (Bottom) From <span class="citation" data-cites="marine2020non">Marine, Dawson, and Dawson (<a href="references.html#ref-marine2020non" role="doc-biblioref">2020</a>)</span>.
-</figcaption>
+<div id="fig-cancer_treatment2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/cancer_treatment2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.2: (Bottom) From <span class="citation" data-cites="marine2020non">Marine, Dawson, and Dawson (<a href="references.html#ref-marine2020non" role="doc-biblioref">2020</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Cancer metastasis</strong>: Cells that detach from the primary tumor site and successfully colonize new tissues undergo significant genetic and phenotypic changes. Understanding these changes in temporal sequence highlights the adaptations needed for invasion and survival in distant environments. See <a href="#fig-metastasis" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>.</li>
+<li><strong>Cancer metastasis</strong>: Cells that detach from the primary tumor site and successfully colonize new tissues undergo significant genetic and phenotypic changes. Understanding these changes in temporal sequence highlights the adaptations needed for invasion and survival in distant environments. See <a href="#fig-metastasis">Figure&nbsp;<span>9.3</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-metastasis" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/metastasis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-metastasis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.3: From <span class="citation" data-cites="fu2023emerging">Fu et al. (<a href="references.html#ref-fu2023emerging" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-metastasis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/metastasis.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.3: From <span class="citation" data-cites="fu2023emerging">Fu et al. (<a href="references.html#ref-fu2023emerging" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Disease progression</strong>: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See <a href="#fig-covid" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> for an example of this is investigated in COVID.</li>
+<li><strong>Disease progression</strong>: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See <a href="#fig-covid">Figure&nbsp;<span>9.4</span></a> for an example of this is investigated in COVID.</li>
 </ul>
 <div class="block">
-<div id="fig-covid" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/covid.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-covid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.4: From <span class="citation" data-cites="stephenson2021single">Stephenson et al. (<a href="references.html#ref-stephenson2021single" role="doc-biblioref">2021</a>)</span>. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.
-</figcaption>
+<div id="fig-covid" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/covid.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.4: From <span class="citation" data-cites="stephenson2021single">Stephenson et al. (<a href="references.html#ref-stephenson2021single" role="doc-biblioref">2021</a>)</span>. You can see that at different stages of COVID, there is a slightly different proportion of cell types that constitute the immune system.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Embryonic/organ development and cell fate</strong>: During embryonic development, cells undergo a series of tightly regulated fate decisions that determine their final identity. These decisions are influenced by both intrinsic genetic programs and extrinsic signaling cues from the surrounding environment. Understanding the temporal dynamics of these transitions allows researchers to uncover the molecular mechanisms guiding differentiation and tissue formation. By tracking how cells commit to specific lineages, we gain insight into how organs form or how “cells make decisions”. See <a href="#fig-larry" class="quarto-xref">Figure&nbsp;<span>9.5</span></a>.</li>
+<li><strong>Embryonic/organ development and cell fate</strong>: During embryonic development, cells undergo a series of tightly regulated fate decisions that determine their final identity. These decisions are influenced by both intrinsic genetic programs and extrinsic signaling cues from the surrounding environment. Understanding the temporal dynamics of these transitions allows researchers to uncover the molecular mechanisms guiding differentiation and tissue formation. By tracking how cells commit to specific lineages, we gain insight into how organs form or how “cells make decisions”. See <a href="#fig-larry">Figure&nbsp;<span>9.5</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-larry" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/larry.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-larry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.5: From <span class="citation" data-cites="weinreb2020lineage">Weinreb et al. (<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref">2020</a>)</span>. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What’s shown here are cells known to be in different lineages, but certain lineages don’t differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.
-</figcaption>
+<div id="fig-larry" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/larry.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.5: From <span class="citation" data-cites="weinreb2020lineage">Weinreb et al. (<a href="references.html#ref-weinreb2020lineage" role="doc-biblioref">2020</a>)</span>. This dataset is recorded longitudinally (i.e., cells were sequenced at Day 2, 4, and 6.) What’s shown here are cells known to be in different lineages, but certain lineages don’t differentiate by Day 6, differentiate into multiple cell types, or differentiate only into one cell type.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Stem cell research</strong>: Stem cells differentiate into specialized cell types following a tightly regulated timeline. Tracking these progressions uncovers the signals that guide each step and may inform regenerative medicine strategies for repairing damaged tissues. See <a href="#fig-ipsc" class="quarto-xref">Figure&nbsp;<span>9.6</span></a>.</li>
+<li><strong>Stem cell research</strong>: Stem cells differentiate into specialized cell types following a tightly regulated timeline. Tracking these progressions uncovers the signals that guide each step and may inform regenerative medicine strategies for repairing damaged tissues. See <a href="#fig-ipsc">Figure&nbsp;<span>9.6</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-ipsc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ipsc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/ipsc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ipsc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.6: From <a href="https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/" class="uri">https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/</a>.
-</figcaption>
+<div id="fig-ipsc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/ipsc.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.6: From <a href="https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/" class="uri">https://stemcellthailand.org/induced-pluripotent-stem-cells-ips-ipscs-hipscs/</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -394,22 +331,18 @@ DNA methylation serves as another naturally occurring cellular barcode. Over tim
 </section>
 <section id="reconstruction-phylogenetic-tree-from-sclt" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="reconstruction-phylogenetic-tree-from-sclt"><span class="header-section-number">9.4</span> Reconstruction phylogenetic tree from scLT</h2>
-<p>The goal in this section is to provide a high-level overview of how we can reconstruct phylogenetic trees from single-cell lineage tracing (scLT) dataset, if we are using mutating barcodes. Remember, in single-cell sequencing experiments, we never get to see anything “directly” aside from sequences (of RNA, DNA, etc.) So we need to “estimate” the phylogenetic tree itself using the barcode edits. See <a href="#fig-phylogenetic-goal1" class="quarto-xref">Figure&nbsp;<span>9.7</span></a> for a conceptual illustration of this problem.</p>
+<p>The goal in this section is to provide a high-level overview of how we can reconstruct phylogenetic trees from single-cell lineage tracing (scLT) dataset, if we are using mutating barcodes. Remember, in single-cell sequencing experiments, we never get to see anything “directly” aside from sequences (of RNA, DNA, etc.) So we need to “estimate” the phylogenetic tree itself using the barcode edits. See <a href="#fig-phylogenetic-goal1">Figure&nbsp;<span>9.7</span></a> for a conceptual illustration of this problem.</p>
 <div class="block">
-<div id="fig-phylogenetic-goal1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-phylogenetic-goal1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/phylogenetic_goal1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phylogenetic-goal1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.7: From
-</figcaption>
+<div id="fig-phylogenetic-goal1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/phylogenetic_goal1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.7: From </figcaption>
 </figure>
 </div>
 </div>
 <p>Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a <em>claudogram</em> (i.e., the edge lengths do not carry “time-information.” This is in contrast with a <em>phylogram</em>, where edge denote “amount of elapsed time since the branching event”). See <span class="quarto-unresolved-ref">?fig-tree1</span> and <span class="quarto-unresolved-ref">?fig-tree2</span>.</p>
 <div class="block">
-<p><img src="fig/chap8/tree.png" id="fig-tree1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From https://microbenotes.com/phylogenetic-tree/"> <img src="fig/chap8/cladogram.png" id="fig-tree2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From https://microbenotes.com/phylogenetic-tree/"></p>
+<p><img src="fig/chap8/tree.png" id="fig-tree1" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From https://microbenotes.com/phylogenetic-tree/"> <img src="fig/chap8/cladogram.png" id="fig-tree2" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From https://microbenotes.com/phylogenetic-tree/"></p>
 </div>
 <section id="brief-review-number-of-rooted-trees" class="level3" data-number="9.4.1">
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="brief-review-number-of-rooted-trees"><span class="header-section-number">9.4.1</span> Brief review: Number of rooted trees</h3>
@@ -421,14 +354,10 @@ Figure&nbsp;9.7: From
 <li><p><strong>Binary and rooted</strong>: Every one of the <span class="math inline">\(n-1\)</span> intermediate nodes has 2 children nodes. These children nodes could be one of the <span class="math inline">\(n\)</span> leaves or one of the other intermediate nodes. Furthermore, every node has a parent <em>except</em> one special node called the “root node.” You can think of the root node as the common (unobserved) ancestor that spawned all the <span class="math inline">\(n\)</span> cells.</p></li>
 </ul>
 <div class="block">
-<div id="fig-unrooted-rooted" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-unrooted-rooted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/unrooted-rooted.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unrooted-rooted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.8: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a>
-</figcaption>
+<div id="fig-unrooted-rooted" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/unrooted-rooted.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.8: From <a href="https://microbenotes.com/phylogenetic-tree/" class="uri">https://microbenotes.com/phylogenetic-tree/</a></figcaption>
 </figure>
 </div>
 </div>
@@ -468,36 +397,28 @@ T_3 &amp;= (2 \times 3 - 3) \times \underbrace{T_2}_{=1} = 3, \\
 T_4 &amp;= (2 \times 4 - 3) \times \underbrace{T_3}_{=3} = (2 \times 4 - 3) \times (2 \times 3 - 3) \times 1 = 15.
 \end{aligned}
 \]</span></p>
-<p>See <a href="#fig-tree-enumerate" class="quarto-xref">Figure&nbsp;<span>9.9</span></a> for the trees enumerated.<br>
+<p>See <a href="#fig-tree-enumerate">Figure&nbsp;<span>9.9</span></a> for the trees enumerated.<br>
 Using the base case <span class="math inline">\(T_2 = 1\)</span>, repeated application of this recurrence gives</p>
 <p><span class="math display">\[
 T_n = (2n - 3)!!.
 \]</span></p>
 <p>:::</p>
 <div class="block">
-<div id="fig-tree-enumerate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tree-enumerate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/tree-enumerate.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tree-enumerate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.9: From <a href="https://www.megasoftware.net/mega1_manual/Phylogeny.html" class="uri">https://www.megasoftware.net/mega1_manual/Phylogeny.html</a>
-</figcaption>
+<div id="fig-tree-enumerate" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/tree-enumerate.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.9: From <a href="https://www.megasoftware.net/mega1_manual/Phylogeny.html" class="uri">https://www.megasoftware.net/mega1_manual/Phylogeny.html</a></figcaption>
 </figure>
 </div>
 </div>
 <p>See (and related papers) for more context.<br>
-So… why is this result important? Observe that <span class="math inline">\(n!!\)</span> is <em>super exponential</em> (i.e., it grows faster than an exponential<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>). So if you have <span class="math inline">\(n=1000\)</span> cells, the number of possible trees you’ll try to enumerate is on the order of <span class="math inline">\(1000^{1000} = 10^{3000}\)</span>, which is way too many. See <a href="#fig-num-trees" class="quarto-xref">Figure&nbsp;<span>9.10</span></a>.</p>
+So… why is this result important? Observe that <span class="math inline">\(n!!\)</span> is <em>super exponential</em> (i.e., it grows faster than an exponential<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>). So if you have <span class="math inline">\(n=1000\)</span> cells, the number of possible trees you’ll try to enumerate is on the order of <span class="math inline">\(1000^{1000} = 10^{3000}\)</span>, which is way too many. See <a href="#fig-num-trees">Figure&nbsp;<span>9.10</span></a>.</p>
 <p>Therefore, when constructing phylogenetic trees, we need to be mathematically clever (probably with the help of some heuristic). Can we use some heuristic to drastically reduce the number of trees we’re going to even consider, and we can use our sequencing data of these <span class="math inline">\(n\)</span> cells to help us in this endeavor?</p>
 <div class="block">
-<div id="fig-num-trees" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-num-trees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/num_trees.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-num-trees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.10: From <a href="https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf" class="uri">https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf</a>
-</figcaption>
+<div id="fig-num-trees" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/num_trees.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.10: From <a href="https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf" class="uri">https://calla.rnet.missouri.edu/cheng_courses/slides9.pdf</a></figcaption>
 </figure>
 </div>
 </div>
@@ -528,31 +449,23 @@ This creates barcodes as “genetic scars” in descendant cells. This dynamic a
 </ol></li>
 </ul>
 <div class="block">
-<p><img src="fig/chap8/larry-barcode.png" id="fig-barcode1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From , an example of static barcode."> <img src="fig/chap8/cassiopeia_evolving.png" id="fig-barcode2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From , an example of evolving barcode."> <img src="fig/chap8/lineage-tech1.png" id="fig-barcode3" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From ."></p>
+<p><img src="fig/chap8/larry-barcode.png" id="fig-barcode1" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From , an example of static barcode."> <img src="fig/chap8/cassiopeia_evolving.png" id="fig-barcode2" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From , an example of evolving barcode."> <img src="fig/chap8/lineage-tech1.png" id="fig-barcode3" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From ."></p>
 </div>
 <p>See for fantastic overviews on both types of technologies.</p>
-<p>What can we do with this? As shown in <a href="#fig-lineage-application" class="quarto-xref">Figure&nbsp;<span>9.11</span></a>, in the cancer setting, we can use lineage barcoding to directly observe many qualities of cancer cells. See <a href="#fig-lineage-tech2" class="quarto-xref">Figure&nbsp;<span>9.12</span></a> for a broader overview of different technologies and what biological insights they can reveal (based on what kind of information we can reconstruct from the barcode).</p>
+<p>What can we do with this? As shown in <a href="#fig-lineage-application">Figure&nbsp;<span>9.11</span></a>, in the cancer setting, we can use lineage barcoding to directly observe many qualities of cancer cells. See <a href="#fig-lineage-tech2">Figure&nbsp;<span>9.12</span></a> for a broader overview of different technologies and what biological insights they can reveal (based on what kind of information we can reconstruct from the barcode).</p>
 <div class="block">
-<div id="fig-lineage-application" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lineage-application-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/lineage-application.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-application-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.11: From
-</figcaption>
+<div id="fig-lineage-application" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/lineage-application.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.11: From </figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-lineage-tech2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lineage-tech2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/lineage-tech2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineage-tech2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.12: From
-</figcaption>
+<div id="fig-lineage-tech2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/lineage-tech2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.12: From </figcaption>
 </figure>
 </div>
 </div>
@@ -587,7 +500,7 @@ This algorithm builds the tree top-down, repeatedly choosing the most “frequen
 <p>Greedy is fast and scales to tens of thousands of cells, but may produce suboptimal solutions if extensive parallel evolution exists.</p></li>
 </ul>
 <div class="block">
-<p><img src="fig/chap8/cassiopeia1.png" id="fig-cassiopeia1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"> <img src="fig/chap8/cassiopeia2.png" id="fig-cassiopeia2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"></p>
+<p><img src="fig/chap8/cassiopeia1.png" id="fig-cassiopeia1" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From"> <img src="fig/chap8/cassiopeia2.png" id="fig-cassiopeia2" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From"></p>
 </div>
 </section>
 <section id="some-implementation-notes" class="level3" data-number="9.5.4">
@@ -600,19 +513,15 @@ This algorithm builds the tree top-down, repeatedly choosing the most “frequen
 <section id="im-very-confused.-can-you-give-me-some-more-details" class="level3" data-number="9.5.5">
 <h3 data-number="9.5.5" class="anchored" data-anchor-id="im-very-confused.-can-you-give-me-some-more-details"><span class="header-section-number">9.5.5</span> I’m very confused. Can you give me some more details?</h3>
 <p>There’s a lot of moving components since the lineage barcode data for mutating barcodes is quite unlike anything else we’ve seen in this course so far. Let me go through an example from <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a> (the Cassiopeia tutorial itself) to tell you what the “input data” for Cassiopeia is. (Once you understand the input data and how it was preprocessed, it’ll become clear what the output is.)</p>
-<p>In a typical mutating lineage barcoding experiment, you get a bunch of gDNA or gRNA reads about the sequences of the barcodes that integrated into each cell. Then, you run bioinformatics code to align these sequences to a known reference genome to determine what happened at each target site of a cell’s barcode (i.e., did a mutation happen, if so, what was the insertion or deletion event, etc.). This is described in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>. The output of this is an allele table that might look like <a href="#fig-cassiopeia-bc1" class="quarto-xref">Figure&nbsp;<span>9.13</span></a>.</p>
+<p>In a typical mutating lineage barcoding experiment, you get a bunch of gDNA or gRNA reads about the sequences of the barcodes that integrated into each cell. Then, you run bioinformatics code to align these sequences to a known reference genome to determine what happened at each target site of a cell’s barcode (i.e., did a mutation happen, if so, what was the insertion or deletion event, etc.). This is described in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>. The output of this is an allele table that might look like <a href="#fig-cassiopeia-bc1">Figure&nbsp;<span>9.13</span></a>.</p>
 <div class="block">
-<div id="fig-cassiopeia-bc1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cassiopeia-bc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/cassiopeia_bc1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cassiopeia-bc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.13: From <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a>. We are showing 10 different integrated barcodes <code>intBC</code> (each with three target sites, <code>r1</code> to <code>r3</code>) for the cell with <code>RW.TTTGCGCCAAGAAAGG</code>.<br>
+<div id="fig-cassiopeia-bc1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/cassiopeia_bc1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.13: From <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html</a>. We are showing 10 different integrated barcodes <code>intBC</code> (each with three target sites, <code>r1</code> to <code>r3</code>) for the cell with <code>RW.TTTGCGCCAAGAAAGG</code>.<br>
 So you should expect every unique cell (i.e., unique <code>cellBC</code>) to have one or more integrated barcodes (for example, 10, as shown here). Furthermore, you hope that many different cells have the same integrated barcode, such as <code>CTAGGGCATCTACG</code>. (This is because you’re going to compare what happened at different target sites for cells that have the same integrated barcode to determine how these cells are related.)<br>
 For instance, in integrated barcode <code>CTAGGGCATCTACG</code>, we see at the first target site, <code>CCGAA[None]AAATG</code>, the <code>None</code> means there was no insertion or deletion event found at this site (relative to all the other sequences at the <code>r1</code> region of this integrated barcode in the other cells).<br>
-In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D]GGAGG</code>. This means at relative position 221 in this target site, there was a deletion that resulted in 1 base pair being deleted. (You can see in this screenshot that some of the deletion events can go up to 80+ base pairs, such as <code>TGGCG[86:81D]CTCTG</code>.) This large deletion event is okay (as long as it didn’t result in the deletion of a different target site) if the sequence alignment step could still determine that the flanking sequences to the deletion (in this case, <code>TGGCG</code> to the left and <code>CTCTG</code> to the right) still aligned to the reasonable positions to the target site for this barcode. Remember, <em>you</em> know what the full sequences of all these integrated barcodes are because these are all sequences you designed to be integrated into the cell’s DNA. See <code>PCT48.ref.fasta</code> in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>.
-</figcaption>
+In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D]GGAGG</code>. This means at relative position 221 in this target site, there was a deletion that resulted in 1 base pair being deleted. (You can see in this screenshot that some of the deletion events can go up to 80+ base pairs, such as <code>TGGCG[86:81D]CTCTG</code>.) This large deletion event is okay (as long as it didn’t result in the deletion of a different target site) if the sequence alignment step could still determine that the flanking sequences to the deletion (in this case, <code>TGGCG</code> to the left and <code>CTCTG</code> to the right) still aligned to the reasonable positions to the target site for this barcode. Remember, <em>you</em> know what the full sequences of all these integrated barcodes are because these are all sequences you designed to be integrated into the cell’s DNA. See <code>PCT48.ref.fasta</code> in <a href="https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html" class="uri">https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -631,25 +540,21 @@ In contrast, at the third target site <code>r3</code>, we see <code>ATTCG[221:1D
 <section id="about-the-technology-and-application" class="level3" data-number="9.6.1">
 <h3 data-number="9.6.1" class="anchored" data-anchor-id="about-the-technology-and-application"><span class="header-section-number">9.6.1</span> About the technology and application</h3>
 <p>One of the goals of why studying copy number variation in <a href="chapter6_dna.html#sec-dna_structural_variation">Section 8.3</a> was to understand cellular dynamics. So… how is this done?<br>
-Copy number alterations (CNAs) are a hallmark of many cancers and arise due to genomic instability within tumor cells (refer back to <a href="chapter6_dna.html#fig-copy-number-cancer" class="quarto-xref">Figure&nbsp;<span>7.42</span></a>). Because cancer is often driven by such genomic instabilities, CNAs serve as a natural “barcode” of lineage. By tracking which genes or regions of chromosomes have been duplicated or lost over time, researchers can infer how subclones evolve and expand. These aberrations not only reveal how aggressive a tumor might be, but can also hint at its capacity for metastasis. Indeed, it is quite common to see particular copy number events that are associated with advanced disease states or resistance to therapy.</p>
+Copy number alterations (CNAs) are a hallmark of many cancers and arise due to genomic instability within tumor cells (refer back to <a href="chapter6_dna.html#fig-copy-number-cancer">Figure&nbsp;<span>7.42</span></a>). Because cancer is often driven by such genomic instabilities, CNAs serve as a natural “barcode” of lineage. By tracking which genes or regions of chromosomes have been duplicated or lost over time, researchers can infer how subclones evolve and expand. These aberrations not only reveal how aggressive a tumor might be, but can also hint at its capacity for metastasis. Indeed, it is quite common to see particular copy number events that are associated with advanced disease states or resistance to therapy.</p>
 <p>Another key advantage of using CNAs in cancer research is the ability to reconstruct phylogenetic trees of tumor evolution at single-cell resolution. Traditional bulk sequencing can obscure the heterogeneity of a tumor by averaging out signals across thousands or millions of cells, making it difficult to identify rare but important subpopulations. By examining individual cells, we can trace how specific lineages emerged, which mutations or copy number changes appeared first, and how these have proliferated. This level of detail helps us pinpoint the subclones that might be the most aggressive or metastatic, and may reveal new therapeutic targets based on the genetic changes that drove each lineage.</p>
-<p>Furthermore, once a phylogenetic tree is built from copy number data, the specific chromosomal regions that underwent duplication or deletion can yield insight into the biology of the tumor. Some genomic loci harbor oncogenes or tumor suppressors, so gains or losses in these regions can be especially detrimental—or beneficial, from the tumor’s perspective. Such events might correlate with faster growth, immune evasion, or other clinically significant traits. By focusing on these recurrently altered regions, researchers and clinicians can identify potential biomarkers for prognosis or drug targets for personalized therapy. See <a href="#fig-dna-phylogenetic" class="quarto-xref">Figure&nbsp;<span>9.14</span></a> as an example of what this workflow looks like.</p>
+<p>Furthermore, once a phylogenetic tree is built from copy number data, the specific chromosomal regions that underwent duplication or deletion can yield insight into the biology of the tumor. Some genomic loci harbor oncogenes or tumor suppressors, so gains or losses in these regions can be especially detrimental—or beneficial, from the tumor’s perspective. Such events might correlate with faster growth, immune evasion, or other clinically significant traits. By focusing on these recurrently altered regions, researchers and clinicians can identify potential biomarkers for prognosis or drug targets for personalized therapy. See <a href="#fig-dna-phylogenetic">Figure&nbsp;<span>9.14</span></a> as an example of what this workflow looks like.</p>
 <div class="block">
-<div id="fig-dna-phylogenetic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-dna-phylogenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/dna_phylogenetic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dna-phylogenetic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.14: From . Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we’re discussing in these notes.
-</figcaption>
+<div id="fig-dna-phylogenetic" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/dna_phylogenetic.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.14: From . Imagine we have longitudinal samples of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree, which is the focus for the type of tree we’re discussing in these notes.</figcaption>
 </figure>
 </div>
 </div>
 <p>These output phylogenetic trees might look like the ones in <span class="quarto-unresolved-ref">?fig-dice1</span> and <span class="quarto-unresolved-ref">?fig-dice2</span>.<br>
 (As a sidenote: be sure to understand what the branch lengths mean in a phylogenetic tree. Here, these branch lengths denote the “distance” between two cells’ CNA profiles. (The longer the branch, the more it’s different.) Other methods use the branch length to denote time, i.e., the longer the branch, the more time has elapsed since the branching event. Most methods (in my experience) do not give you branch lengths relative to time, since this would require you (the data analyst) to provide the method with more biological information. For example, how fast do certain CNA events happen? You would need to provide this additional information to your phylogenetic method for it to know how to estimate branch lengths that denote time.)</p>
 <div class="block">
-<p><img src="fig/chap8/dice.png" id="fig-dice1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"> <img src="fig/chap8/medicc2.png" id="fig-dice2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"></p>
+<p><img src="fig/chap8/dice.png" id="fig-dice1" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From"> <img src="fig/chap8/medicc2.png" id="fig-dice2" class="img-fluid" style="width:100.0%" data-fig-align="center" alt="From"></p>
 </div>
 </section>
 <section id="sec-dna_phylogenetic" class="level3" data-number="9.6.2">
@@ -657,18 +562,14 @@ Figure&nbsp;9.14: From . Imagine we have longitudinal samples of a person. Those
 <p>COMPASS (Joint Copy Number and Mutation Phylogeny from Amplicon Single-Cell DNA Sequencing) is a probabilistic model designed to reconstruct a branching evolutionary tree of SNVs (single-nucleotide variants) <em>and</em> CNAs (copy number alterations) from single-cell DNA sequencing data. It accommodates both allele-specific copy number changes (loss, gain, copy-neutral loss of heterozygosity) and single-nucleotide events, all integrated into a single phylogenetic structure.</p>
 <p>(In COMPASS, there are meaningful branch lengths. The output is simply a cladogram.)</p>
 <div class="block">
-<div id="fig-compass-alg" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-compass-alg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/compass_alg.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compass-alg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.15: From .<br>
+<div id="fig-compass-alg" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/compass_alg.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.15: From .<br>
 Some basic terminology: 1) <strong>SNV (Single Nucleotide Variant):</strong> A change in a single nucleotide of the DNA sequence.<br>
 2) <strong>Loss:</strong> (Not shown in this figure) A deletion of one copy of a chromosomal region. For instance, in the usual 23 pairs of human chromosomes, one region could be deleted from one copy of Chromosome 1, while remaining intact on the other copy.<br>
 3) <strong>CNLOH (Copy-Neutral Loss of Heterozygosity):</strong> A copy number alteration that preserves the total number of chromosome copies but still removes heterozygosity. In other words, the cell ends up with the same number of copies overall, yet the two copies become identical (losing heterozygosity).<br>
-4) <strong>Gain:</strong> The opposite of a “loss.” This could involve duplicating a specific chromosomal region (thus elongating that chromosome) or duplicating the entire chromosome (leading to three copies of Chromosome 1, instead of the usual two).
-</figcaption>
+4) <strong>Gain:</strong> The opposite of a “loss.” This could involve duplicating a specific chromosomal region (thus elongating that chromosome) or duplicating the entire chromosome (leading to three copies of Chromosome 1, instead of the usual two).</figcaption>
 </figure>
 </div>
 </div>
@@ -723,16 +624,12 @@ Simulated annealing is a useful statistical technique for reconstructing a phylo
 </ul>
 <p>This EM routine is invoked each time we propose or accept a new tree in the simulated annealing.<br>
 (The EM algorithm is another useful statistical technique whenever you’re dealing with a model with unobserved variables. Here, our unobserved variable is whether or not a cell <span class="math inline">\(i\)</span> is attached to node <span class="math inline">\(k\)</span>.)</p>
-<p>See <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>9.16</span></a> for an illustration of what the results could look like.</p>
+<p>See <a href="#fig-compass">Figure&nbsp;<span>9.16</span></a> for an illustration of what the results could look like.</p>
 <div class="block">
-<div id="fig-compass" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-compass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/compass.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.16: From .
-</figcaption>
+<div id="fig-compass" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/compass.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.16: From .</figcaption>
 </figure>
 </div>
 </div>
@@ -740,23 +637,19 @@ Figure&nbsp;9.16: From .
 <section id="a-brief-note-on-other-approaches-1" class="level3" data-number="9.6.3">
 <h3 data-number="9.6.3" class="anchored" data-anchor-id="a-brief-note-on-other-approaches-1"><span class="header-section-number">9.6.3</span> A brief note on other approaches</h3>
 <p>So… what exactly are these trees good for?<br>
-As we’ve mentioned, you can see in <a href="#fig-compass" class="quarto-xref">Figure&nbsp;<span>9.16</span></a> that COMPASS is trying to learn the mutation event that happened at each node. (This gives us a clue on how deleterious the mutation event is. As a simple example, if there was a loss in copy number in a region that contains a cancer suppressive gene, we might expect rapid proliferation of this cancer cell.)</p>
-<p>On the other hand, what we will talk more about in <a href="./chapter9_spatial.html">Chapter 9</a> is combining these phylogenetic trees with spatial information about these cells. See <a href="#fig-cancer-phylogenetic-sc" class="quarto-xref">Figure&nbsp;<span>9.17</span></a>.</p>
+As we’ve mentioned, you can see in <a href="#fig-compass">Figure&nbsp;<span>9.16</span></a> that COMPASS is trying to learn the mutation event that happened at each node. (This gives us a clue on how deleterious the mutation event is. As a simple example, if there was a loss in copy number in a region that contains a cancer suppressive gene, we might expect rapid proliferation of this cancer cell.)</p>
+<p>On the other hand, what we will talk more about in <a href="./chapter9_spatial.html">Chapter 9</a> is combining these phylogenetic trees with spatial information about these cells. See <a href="#fig-cancer-phylogenetic-sc">Figure&nbsp;<span>9.17</span></a>.</p>
 <div class="block">
-<div id="fig-cancer-phylogenetic-sc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cancer-phylogenetic-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap8/cancer-phylogenetic-sc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cancer-phylogenetic-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.17: From . Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.
-</figcaption>
+<div id="fig-cancer-phylogenetic-sc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap8/cancer-phylogenetic-sc.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.17: From . Panel a is the copy number events for each cell (here, this is actually based on spatial transcriptomics), and panel b is the estimated phylogenetic tree. From the tree, they can look at the spatial position of each clone and literally see on the 2D tissue slice how cancer clones (potentially aggressively) expanded in this tissue slice. The phylogenetic information gave us clues on which cancer subclone originated from which.</figcaption>
 </figure>
 </div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-ashouri2023decoding" class="csl-entry" role="listitem">
 Ashouri, Arghavan, Chufan Zhang, and Federico Gaiti. 2023. <span>“Decoding Cancer Evolution: Integrating Genetic and Non-Genetic Insights.”</span> <em>Genes</em> 14 (10): 1856.
 </div>
@@ -788,418 +681,251 @@ Weinreb, Caleb, Alejo Rodriguez-Fraticelli, Fernando D Camargo, and Allon M Klei
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
       }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
+      return codeEl.innerText;
     }
   });
-  </script>
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter7_crispr.html" class="pagination-link" aria-label="Single-cell CRISPR editting">
+      <a href="./chapter7_crispr.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Single-cell CRISPR editting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter9_spatial.html" class="pagination-link" aria-label="'Single-cell' spatial transcriptomics">
+      <a href="./chapter9_spatial.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">‘Single-cell’ spatial transcriptomics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
