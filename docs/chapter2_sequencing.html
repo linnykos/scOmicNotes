@@ -300,29 +300,38 @@ window.Quarto = {
 <p>Let <span class="math inline">\(X \in \mathbb{R}^{n\times p}\)</span> denote the single-cell data matrix with <span class="math inline">\(n\)</span> cells (rows) and <span class="math inline">\(p\)</span> features (columns). In a single-cell RNA-seq data matrix, the <span class="math inline">\(p\)</span> features represent the <span class="math inline">\(p\)</span> genes.<br>
 Here are some basic statistics about these matrices (based mainly from my experience):</p>
 <ul>
-<li>For <span class="math inline">\(n\)</span>, we usually have 10,000 to 500,000 cells. These cells originate from a specific set of samples/donors/organisms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. See <a href="#fig-lupus" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> and <a href="#fig-zebrafish" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> for larger examples of single-cell datasets.<br>
+<li>For <span class="math inline">\(n\)</span>, we usually have 10,000 to 500,000 cells. These cells originate from a specific set of samples/donors/organisms<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. See <a href="#fig-lupus" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> and <a href="#fig-zebrafish" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> for larger examples of single-cell datasets.<br>
 </li>
 <li>For <span class="math inline">\(p\)</span>, we usually have about 30,000 genes (but as you’ll see, we usually limit the analysis to 2000 to 5000 genes chosen from this full set).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><br>
 </li>
-<li>In a typical scRNA-seq matrix, more than 70% of the elements are exactly 0. (And among the remaining 30%, typically half are exactly 1. The maximum count can be in the hundreds, i.e., the distribution is <em>extremely</em> right-skewed.) This is illustrated in <span class="quarto-unresolved-ref">?fig-count1</span> and <span class="quarto-unresolved-ref">?fig-count2</span>. We’ll see later in <span class="quarto-unresolved-ref">?sec-scrnaseq_tech</span> where these “counts” come from.</li>
+<li>In a typical scRNA-seq matrix, more than 70% of the elements are exactly 0. (And among the remaining 30%, typically half are exactly 1. The maximum count can be in the hundreds, i.e., the distribution is <em>extremely</em> right-skewed.) This is illustrated in <a href="#fig-count1" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> and <a href="#fig-count2" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>. We’ll see later in <span class="quarto-unresolved-ref">?sec-scrnaseq_tech</span> where these “counts” come from.</li>
 </ul>
 <p>Based on these observations, the negative binomial distribution is very commonly used.</p>
 <div class="block">
-<div>
-
+<div id="fig-count1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-count1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap2/count.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 77.7%;justify-content: center;">
-<p><img src="fig/chap2/count.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 22.3%;justify-content: center;">
-<p><img src="fig/chap2/nonzero_hist.png" class="img-fluid"></p>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Count matrix
+</figcaption>
+</figure>
 </div>
 </div>
-<p>Illustration of data from <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). <span class="citation" data-cites="satijalab_tutorial">(<a href="references.html#ref-satijalab_tutorial" role="doc-biblioref"><strong>satijalab_tutorial?</strong></a>)</span></p>
+<div class="block">
+<div id="fig-count2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-count2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap2/nonzero_hist.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Histogram of count distribution
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Illustration of data from <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). <span class="citation" data-cites="satijalab_tutorial">(<a href="references.html#ref-satijalab_tutorial" role="doc-biblioref"><strong>satijalab_tutorial?</strong></a>)</span> ::::</p>
 <p>The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.</p>
 <p>Let us focus on the count for cell <span class="math inline">\(i\)</span> and gene <span class="math inline">\(j\)</span>, i.e., the value <span class="math inline">\(X_{ij}\)</span>. The probability mass function (pmf) of the NB distribution for a random variable ( X_{ij} ) is given by:</p>
 <p><span id="eq-nb_1"><span class="math display">\[
@@ -383,7 +392,7 @@ plot(log10(overdispersion_vec[-c(1:5)]), log_likelihood[-c(1:5)])</code></pre>
 <img src="fig/chap2/negbinom_example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-negbinom_example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: (Left) Histogram of a dataset where the true mean is 1 and the overdispersion (i.e., <span class="math inline">\(\alpha = 1/r\)</span>) is 1000, where almost all the values are 0. Almost 100% of the values are 0 among all 10,000 samples. (Right) The log-likelihood of the overdispersion parameter on the <span class="math inline">\(\log_{10}\)</span> scale.
+Figure&nbsp;3.3: (Left) Histogram of a dataset where the true mean is 1 and the overdispersion (i.e., <span class="math inline">\(\alpha = 1/r\)</span>) is 1000, where almost all the values are 0. Almost 100% of the values are 0 among all 10,000 samples. (Right) The log-likelihood of the overdispersion parameter on the <span class="math inline">\(\log_{10}\)</span> scale.
 </figcaption>
 </figure>
 </div>
@@ -391,7 +400,7 @@ Figure&nbsp;3.1: (Left) Histogram of a dataset where the true mean is 1 and the 
 </section>
 <section id="remembering-that-these-cells-come-from-donorstissues" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="remembering-that-these-cells-come-from-donorstissues"><span class="header-section-number">3.1.1</span> Remembering that these cells come from donors/tissues!</h3>
-<p>The <span class="math inline">\(n\)</span> cells in our single-cell dataset originate from <span class="math inline">\(m\)</span> tissues/samples/donors/etc. That is, the cells are stratified (or hierarchically organized). Based on your scientific question of interest, this is a consideration you might want your analysis to take into account. In general, each of the <span class="math inline">\(n\)</span> cells in your single-cell dataset will have “metadata” (such as which sample the cell came from). See <a href="#fig-lupus" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> and <a href="#fig-zebrafish" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> as examples. We will see in <span class="quarto-unresolved-ref">?sec-de_cohort</span> on how some methods explicitly take into account this “hierarchical” structure of the data. However, most methods that are intended for cell lines or genetically-controlled scenarios do not focus on this hierarchical structure (since all the cell-lines or organisms are nearly identical).</p>
+<p>The <span class="math inline">\(n\)</span> cells in our single-cell dataset originate from <span class="math inline">\(m\)</span> tissues/samples/donors/etc. That is, the cells are stratified (or hierarchically organized). Based on your scientific question of interest, this is a consideration you might want your analysis to take into account. In general, each of the <span class="math inline">\(n\)</span> cells in your single-cell dataset will have “metadata” (such as which sample the cell came from). See <a href="#fig-lupus" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> and <a href="#fig-zebrafish" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> as examples. We will see in <a href="chapter3_rna.html#sec-de_cohort" class="quarto-xref"><span>Section 4.4.12</span></a> on how some methods explicitly take into account this “hierarchical” structure of the data. However, most methods that are intended for cell lines or genetically-controlled scenarios do not focus on this hierarchical structure (since all the cell-lines or organisms are nearly identical).</p>
 <div class="block">
 <div id="fig-lupus" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -399,7 +408,7 @@ Figure&nbsp;3.1: (Left) Histogram of a dataset where the true mean is 1 and the 
 <img src="fig/chap2/lupus.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lupus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: 982 individuals, from which roughly 1200 cells were sequenced from each (from the blood) to give rise to roughly <span class="math inline">\(n=1.27\)</span> million cells. <span class="citation" data-cites="yazar2022single">(<a href="references.html#ref-yazar2022single" role="doc-biblioref">Yazar et al. 2022</a>)</span>
+Figure&nbsp;3.4: 982 individuals, from which roughly 1200 cells were sequenced from each (from the blood) to give rise to roughly <span class="math inline">\(n=1.27\)</span> million cells. <span class="citation" data-cites="yazar2022single">(<a href="references.html#ref-yazar2022single" role="doc-biblioref">Yazar et al. 2022</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -411,7 +420,7 @@ Figure&nbsp;3.2: 982 individuals, from which roughly 1200 cells were sequenced f
 <img src="fig/chap2/zebrafish.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zebrafish-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: 1,223 zebrafish embryos, from which roughly 500 cells were sequenced from each to give rise to roughly <span class="math inline">\(n=1.25\)</span> million cells. <span class="citation" data-cites="saunders2023embryo">(<a href="references.html#ref-saunders2023embryo" role="doc-biblioref">Saunders et al. 2023</a>)</span>
+Figure&nbsp;3.5: 1,223 zebrafish embryos, from which roughly 500 cells were sequenced from each to give rise to roughly <span class="math inline">\(n=1.25\)</span> million cells. <span class="citation" data-cites="saunders2023embryo">(<a href="references.html#ref-saunders2023embryo" role="doc-biblioref">Saunders et al. 2023</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -440,7 +449,7 @@ Figure&nbsp;3.3: 1,223 zebrafish embryos, from which roughly 500 cells were sequ
 <img src="fig/chap2/workflow.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Abridged and typical workflow of a sc-seq dataset. <span class="citation" data-cites="luecken2019current">(<a href="references.html#ref-luecken2019current" role="doc-biblioref">Luecken and Theis 2019</a>)</span>
+Figure&nbsp;3.6: Abridged and typical workflow of a sc-seq dataset. <span class="citation" data-cites="luecken2019current">(<a href="references.html#ref-luecken2019current" role="doc-biblioref">Luecken and Theis 2019</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -449,7 +458,7 @@ Figure&nbsp;3.4: Abridged and typical workflow of a sc-seq dataset. <span class=
 <section id="optional-ambient-reads" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="optional-ambient-reads"><span class="header-section-number">3.3.1</span> (Optional) Ambient reads</h3>
 <p>(This step will make more sense once you know a bit about how scRNA-seq data is generated, see <a href="chapter3_tech.qmd">Chapter 3</a>.)</p>
-<p>Ambient reads and doublets (see <a href="#fig-ambient" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>) are common technical artifacts in single-cell sequencing data that can distort biological interpretations if left unaddressed. Ambient reads arise from background RNA that is captured during sequencing but does not originate from the cell being analyzed. These reads can falsely inflate gene expression levels, particularly for highly abundant transcripts. Detecting and mitigating these artifacts is an optional but valuable step in data preprocessing, as it improves the overall quality and biological relevance of downstream analyses.</p>
+<p>Ambient reads and doublets (see <a href="#fig-ambient" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>) are common technical artifacts in single-cell sequencing data that can distort biological interpretations if left unaddressed. Ambient reads arise from background RNA that is captured during sequencing but does not originate from the cell being analyzed. These reads can falsely inflate gene expression levels, particularly for highly abundant transcripts. Detecting and mitigating these artifacts is an optional but valuable step in data preprocessing, as it improves the overall quality and biological relevance of downstream analyses.</p>
 <div class="block">
 <div id="fig-ambient" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -457,7 +466,7 @@ Figure&nbsp;3.4: Abridged and typical workflow of a sc-seq dataset. <span class=
 <img src="fig/chap2/ambient.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ambient-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: Cartoon illustrating either ambient RNA or doublets. From <a href="https://www.10xgenomics.com/analysis-guides/introduction-to-ambient-rna-correction" class="uri">https://www.10xgenomics.com/analysis-guides/introduction-to-ambient-rna-correction</a>.
+Figure&nbsp;3.7: Cartoon illustrating either ambient RNA or doublets. From <a href="https://www.10xgenomics.com/analysis-guides/introduction-to-ambient-rna-correction" class="uri">https://www.10xgenomics.com/analysis-guides/introduction-to-ambient-rna-correction</a>.
 </figcaption>
 </figure>
 </div>
@@ -480,7 +489,7 @@ Figure&nbsp;3.5: Cartoon illustrating either ambient RNA or doublets. From <a hr
 </section>
 <section id="how-to-do-this-in-practice-1" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="how-to-do-this-in-practice-1"><span class="header-section-number">3.3.4</span> How to do this in practice</h3>
-<p>This is commonly using the <code>subset</code> function in R, where we commonly filter based on <code>nFeature_RNA</code> (i.e., the number of genes that are expressed in a cell) and <code>percent.mt</code> (i.e., the fraction of counts that are originating from mitochondrial genes). The latter is usually computed using <code>Seurat::PercentageFeatureSet</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. See <a href="#fig-filtering" class="quarto-xref">Figure&nbsp;<span>3.6</span></a> for an illustration. There is no commonly used threshold for these filters, but it typically depends on removing the extreme quantiles in your dataset. If this simple filter isn’t sophisticated enough to detect doublets (and you have good biological/technical reasons to suspect doublets, typically due to either the cell isolation or droplet formulation step), the doublet detection method I’ve seen used is DoubletFinder <span class="citation" data-cites="mcginnis2019doubletfinder">(<a href="references.html#ref-mcginnis2019doubletfinder" role="doc-biblioref">McGinnis, Murrow, and Gartner 2019</a>)</span>.</p>
+<p>This is commonly using the <code>subset</code> function in R, where we commonly filter based on <code>nFeature_RNA</code> (i.e., the number of genes that are expressed in a cell) and <code>percent.mt</code> (i.e., the fraction of counts that are originating from mitochondrial genes). The latter is usually computed using <code>Seurat::PercentageFeatureSet</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. See <a href="#fig-filtering" class="quarto-xref">Figure&nbsp;<span>3.8</span></a> for an illustration. There is no commonly used threshold for these filters, but it typically depends on removing the extreme quantiles in your dataset. If this simple filter isn’t sophisticated enough to detect doublets (and you have good biological/technical reasons to suspect doublets, typically due to either the cell isolation or droplet formulation step), the doublet detection method I’ve seen used is DoubletFinder <span class="citation" data-cites="mcginnis2019doubletfinder">(<a href="references.html#ref-mcginnis2019doubletfinder" role="doc-biblioref">McGinnis, Murrow, and Gartner 2019</a>)</span>.</p>
 <p><strong>Note</strong>: In <code>Seurat</code>, the cells are denoted as <em>columns</em> and features (such as genes) as <em>rows</em>. This is the transpose of the typical statistical notation.</p>
 <div class="block">
 <div id="fig-filtering" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -489,7 +498,7 @@ Figure&nbsp;3.5: Cartoon illustrating either ambient RNA or doublets. From <a hr
 <img src="fig/chap2/filtering.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-filtering-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.6: The filtering in the Seurat tutorial dataset goes from 2700 cells to 2638 cells. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.8: The filtering in the Seurat tutorial dataset goes from 2700 cells to 2638 cells. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -512,7 +521,7 @@ X_{ij} \leftarrow \log\Big(\frac{10,000 \cdot X_{ij}}{\sum_{j'=1}^{p}X_{ij'}}+1
 </section>
 <section id="how-to-do-this-in-practice-2" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="how-to-do-this-in-practice-2"><span class="header-section-number">3.3.7</span> How to do this in practice</h3>
-<p>See the <code>Seurat::LogNormalize</code> function, illustrated in <a href="#fig-normalize" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>.</p>
+<p>See the <code>Seurat::LogNormalize</code> function, illustrated in <a href="#fig-normalize" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>.</p>
 <div class="block">
 <div id="fig-normalize" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -520,7 +529,7 @@ X_{ij} \leftarrow \log\Big(\frac{10,000 \cdot X_{ij}}{\sum_{j'=1}^{p}X_{ij'}}+1
 <img src="fig/chap2/normalize.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: The normalization step in the Seurat tutorial. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.9: The normalization step in the Seurat tutorial. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -567,7 +576,7 @@ Z_{ij} = \frac{X_{ij} - \mu_j}{\sqrt{\hat{\sigma}_j^2}},
 </section>
 <section id="how-to-do-this-in-practice-3" class="level3" data-number="3.3.11">
 <h3 data-number="3.3.11" class="anchored" data-anchor-id="how-to-do-this-in-practice-3"><span class="header-section-number">3.3.11</span> How to do this in practice</h3>
-<p>See the <code>Seurat::FindVariableFeatures</code> function, illustrated in <a href="#fig-vst-selection" class="quarto-xref">Figure&nbsp;<span>3.8</span></a>.</p>
+<p>See the <code>Seurat::FindVariableFeatures</code> function, illustrated in <a href="#fig-vst-selection" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>.</p>
 <div class="block">
 <div id="fig-vst-selection" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -575,7 +584,7 @@ Z_{ij} = \frac{X_{ij} - \mu_j}{\sqrt{\hat{\sigma}_j^2}},
 <img src="fig/chap2/vst-selection.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vst-selection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.8: The feature selection step in the Seurat tutorial, which selects the highly variable 2000 genes (from the 13,714 genes sequenced). See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.10: The feature selection step in the Seurat tutorial, which selects the highly variable 2000 genes (from the 13,714 genes sequenced). See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -588,11 +597,11 @@ Figure&nbsp;3.8: The feature selection step in the Seurat tutorial, which select
 <section id="sec-imputation" class="level3" data-number="3.3.13">
 <h3 data-number="3.3.13" class="anchored" data-anchor-id="sec-imputation"><span class="header-section-number">3.3.13</span> (Optional) Imputation</h3>
 <p>Imputation refers to methods used to infer missing or undetected values in single-cell sequencing data, particularly addressing the zeros that dominate scRNA-seq datasets. Early in the development of single-cell technologies, these zeros were often attributed to “dropouts,” where lowly expressed genes failed to be captured due to technical limitations. Zero-inflated models were developed to distinguish between “true” biological zeros – where a gene is genuinely not expressed – and dropout zeros, filling in the latter to provide a more complete representation of gene expression. However, with advancements like unique molecular identifiers (UMIs), scRNA-seq data have become more reliable and less prone to dropout artifacts. As a result, the need for imputation has diminished, and modern workflows often bypass it entirely, favoring raw or minimally processed data that more accurately reflect true biological variation. Imputation remains an optional step, typically reserved for specific analyses where reconstructing missing data is critical. See <span class="citation" data-cites="hou2020systematic">(<a href="references.html#ref-hou2020systematic" role="doc-biblioref">Hou et al. 2020</a>)</span> for a review of many methods in this category.</p>
-<p>See <span class="citation" data-cites="kharchenko2014bayesian">(<a href="references.html#ref-kharchenko2014bayesian" role="doc-biblioref">Kharchenko, Silberstein, and Scadden 2014</a>)</span> for the landmark paper that originally discussed dropouts. However, see <span class="quarto-unresolved-ref">?rem-zero-inflation</span> for why these “dropouts” are no longer common to worry about in your single-cell analysis.</p>
+<p>See <span class="citation" data-cites="kharchenko2014bayesian">(<a href="references.html#ref-kharchenko2014bayesian" role="doc-biblioref">Kharchenko, Silberstein, and Scadden 2014</a>)</span> for the landmark paper that originally discussed dropouts. However, see <a href="chapter3_rna.html#rem-zero-inflation" class="quarto-xref">Remark&nbsp;<span>4.2</span></a> for why these “dropouts” are no longer common to worry about in your single-cell analysis.</p>
 </section>
 <section id="how-to-do-this-in-practice-4" class="level3" data-number="3.3.14">
 <h3 data-number="3.3.14" class="anchored" data-anchor-id="how-to-do-this-in-practice-4"><span class="header-section-number">3.3.14</span> How to do this in practice</h3>
-<p>I’ve see MAGIC (Markov Affinity-based Graph Imputation of Cells) <span class="citation" data-cites="van2018recovering">(<a href="references.html#ref-van2018recovering" role="doc-biblioref">Van Dijk et al. 2018</a>)</span> used quite often, if there’s a data imputation being performed. This method imputes missing gene expression values by leveraging similarities among cells using a graph-based approach. MAGIC constructs a nearest-neighbor graph where cells are nodes, and edges represent biological similarity. Through data diffusion, information is shared across similar cells to denoise and recover underlying gene expression patterns. See <a href="#fig-magic" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>.</p>
+<p>I’ve see MAGIC (Markov Affinity-based Graph Imputation of Cells) <span class="citation" data-cites="van2018recovering">(<a href="references.html#ref-van2018recovering" role="doc-biblioref">Van Dijk et al. 2018</a>)</span> used quite often, if there’s a data imputation being performed. This method imputes missing gene expression values by leveraging similarities among cells using a graph-based approach. MAGIC constructs a nearest-neighbor graph where cells are nodes, and edges represent biological similarity. Through data diffusion, information is shared across similar cells to denoise and recover underlying gene expression patterns. See <a href="#fig-magic" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>.</p>
 <div class="block">
 <div id="fig-magic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -600,7 +609,7 @@ Figure&nbsp;3.8: The feature selection step in the Seurat tutorial, which select
 <img src="fig/chap2/magic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-magic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.9: Schematic of the MAGIC method <span class="citation" data-cites="van2018recovering">(<a href="references.html#ref-van2018recovering" role="doc-biblioref">Van Dijk et al. 2018</a>)</span>.
+Figure&nbsp;3.11: Schematic of the MAGIC method <span class="citation" data-cites="van2018recovering">(<a href="references.html#ref-van2018recovering" role="doc-biblioref">Van Dijk et al. 2018</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -623,7 +632,7 @@ Figure&nbsp;3.9: Schematic of the MAGIC method <span class="citation" data-cites
 <img src="fig/chap2/pca-illustration1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-illustration1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.10: Illustration of the PCA of a <span class="math inline">\(p=2\)</span>-dimensional dataset reduced to one dimension (<span class="math inline">\(K=1\)</span>). (Left) Showing the maximization or minimization perspective of PCA.
+Figure&nbsp;3.12: Illustration of the PCA of a <span class="math inline">\(p=2\)</span>-dimensional dataset reduced to one dimension (<span class="math inline">\(K=1\)</span>). (Left) Showing the maximization or minimization perspective of PCA.
 </figcaption>
 </figure>
 </div>
@@ -635,7 +644,7 @@ Figure&nbsp;3.10: Illustration of the PCA of a <span class="math inline">\(p=2\)
 <img src="fig/chap2/pca-illustration2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-illustration2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.11: Showing how to interpret PCA as a matrix approximation. Here, the “component” is <span class="math inline">\(\hat{W}\)</span>, and the “loading” is <span class="math inline">\(\hat{Z}=X\hat{W}\)</span>.
+Figure&nbsp;3.13: Showing how to interpret PCA as a matrix approximation. Here, the “component” is <span class="math inline">\(\hat{W}\)</span>, and the “loading” is <span class="math inline">\(\hat{Z}=X\hat{W}\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -645,11 +654,11 @@ Figure&nbsp;3.11: Showing how to interpret PCA as a matrix approximation. Here, 
 <p><strong>Theorem (Equivalent formulations of PCA).</strong> Let <span class="math inline">\(X \in \mathbb{R}^{n\times p}\)</span> be a centered matrix ( i.e., <span class="math inline">\(\overline{X}_{\cdot j} = 0\)</span> for all <span class="math inline">\(j\in\{1,\ldots,p\}\)</span>) and <span class="math inline">\(K\)</span> be a pre-chosen latent dimensionality (such that <span class="math inline">\(k \ll p\)</span>). Let <span class="math inline">\(\hat{\Sigma} = X^\top X/n\)</span> denote the empircial covariance matrix.</p>
 <p>The following four estimated embeddings <span class="math inline">\(\hat{Z} \in \mathbb{R}^{n\times k}\)</span> are “equivalent.”</p>
 <ol type="1">
-<li><p><strong>Maximization of information captured by the covariance</strong> (shown in <a href="#fig-pca-illustration1" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> (left)): Define <span class="math inline">\(\hat{Z} = X\hat{W}\)</span> where <span id="eq-pca-maximize_variance"><span class="math display">\[
+<li><p><strong>Maximization of information captured by the covariance</strong> (shown in <a href="#fig-pca-illustration1" class="quarto-xref">Figure&nbsp;<span>3.12</span></a> (left)): Define <span class="math inline">\(\hat{Z} = X\hat{W}\)</span> where <span id="eq-pca-maximize_variance"><span class="math display">\[
 \hat{W} = \argmax_{W \in \mathbb{R}^{p\times K}}\tr\Big(W^\top \hat{\Sigma} W\Big),
 \quad \text{such that} \quad W^\top W = I_K.
 \tag{3.4}\]</span></span></p></li>
-<li><p><strong>Minimization of reconstruction error (via squared Euclidean loss)</strong> (shown in <a href="#fig-pca-illustration1" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> (left)): Define <span class="math inline">\(\hat{Z} = X \hat{W}\)</span> where <span id="eq-pca-minimize_reconstruction"><span class="math display">\[
+<li><p><strong>Minimization of reconstruction error (via squared Euclidean loss)</strong> (shown in <a href="#fig-pca-illustration1" class="quarto-xref">Figure&nbsp;<span>3.12</span></a> (left)): Define <span class="math inline">\(\hat{Z} = X \hat{W}\)</span> where <span id="eq-pca-minimize_reconstruction"><span class="math display">\[
 \hat{W} = \argmin_{W \in \mathbb{R}^{p\times K}}\frac{1}{n}\sum_{i=1}^{n}\Big\|X_{i\cdot} - WW^\top X_{i\cdot}\Big\|^2_F
 \quad \text{such that} \quad W^\top W = I_K.
 \tag{3.5}\]</span></span></p></li>
@@ -661,7 +670,7 @@ Figure&nbsp;3.11: Showing how to interpret PCA as a matrix approximation. Here, 
 <p>Notice that Formulation #3 is simply the sum of differences (not squared) since projections are non-expansive, so the interpoint Euclidean distances necessarily decrease. We are not accurately describing the identifiability conditions above to formalize what “equivalence” technically means.</p>
 <p>Some remarks:</p>
 <ul>
-<li><strong>Relation to eigen-decompositions</strong>: PCA is fundamentally tied to eigen-decompositions due to the Low-Rank Approximation theorem<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> (more formally, the Eckart-Young-Mirsky theorem). Specifically, <span class="math inline">\(\hat{W}\)</span> is the eigenvalues of <span class="math inline">\(\hat{\Sigma}\)</span>, the covariance matrix. See <a href="#fig-pca-illustration2" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> (right).</li>
+<li><strong>Relation to eigen-decompositions</strong>: PCA is fundamentally tied to eigen-decompositions due to the Low-Rank Approximation theorem<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> (more formally, the Eckart-Young-Mirsky theorem). Specifically, <span class="math inline">\(\hat{W}\)</span> is the eigenvalues of <span class="math inline">\(\hat{\Sigma}\)</span>, the covariance matrix. See <a href="#fig-pca-illustration2" class="quarto-xref">Figure&nbsp;<span>3.13</span></a> (right).</li>
 </ul>
 <p>(If you are familiar with how to manipulate eigen-decompositions, you can convince yourself that Formulation 2 is most directly related to the Low-Rank Approximation.)</p>
 <ul>
@@ -690,7 +699,7 @@ Figure&nbsp;3.11: Showing how to interpret PCA as a matrix approximation. Here, 
 </section>
 <section id="how-to-do-this-in-practice-5" class="level3" data-number="3.3.17">
 <h3 data-number="3.3.17" class="anchored" data-anchor-id="how-to-do-this-in-practice-5"><span class="header-section-number">3.3.17</span> How to do this in practice</h3>
-<p>See the <code>Seurat::RunPCA</code> function, illustrated in <a href="#fig-pca" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. The resulting visualization is shown in <a href="#fig-pca-fig" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
+<p>See the <code>Seurat::RunPCA</code> function, illustrated in <a href="#fig-pca" class="quarto-xref">Figure&nbsp;<span>3.14</span></a>. The resulting visualization is shown in <a href="#fig-pca-fig" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>.</p>
 <div class="block">
 <div id="fig-pca" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -698,7 +707,7 @@ Figure&nbsp;3.11: Showing how to interpret PCA as a matrix approximation. Here, 
 <img src="fig/chap2/pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.12: The PCA step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.14: The PCA step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -710,7 +719,7 @@ Figure&nbsp;3.12: The PCA step. See the tutorial in <a href="https://satijalab.o
 <img src="fig/chap2/pca-fig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.13: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca")</code> function to visualize the first two PCs. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.15: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca")</code> function to visualize the first two PCs. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -735,27 +744,35 @@ Figure&nbsp;3.13: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca")</code
 </section>
 <section id="sec-batch_correction" class="level3" data-number="3.3.19">
 <h3 data-number="3.3.19" class="anchored" data-anchor-id="sec-batch_correction"><span class="header-section-number">3.3.19</span> Batch correction/Covariate adjustment</h3>
-<p>Batch correction is a vital step in single-cell sequencing analysis that addresses technical variability introduced by differences in experimental conditions, such as processing time, reagent batches, or sequencing runs. These batch effects can obscure true biological signals and create artificial differences between groups of cells. Batch correction methods aim to align data from different batches while preserving meaningful biological variation. Techniques range from simple scaling adjustments to advanced algorithms that model batch effects explicitly. As single-cell studies increasingly combine datasets from multiple experiments or institutions, effective batch correction ensures that comparisons and integrative analyses reflect biological reality rather than technical artifacts. See <span class="quarto-unresolved-ref">?fig-batch1</span> for an illustration of this.</p>
-<p>We will talk about this a bit more when we discuss integration methods for cell-type labeling <span class="quarto-unresolved-ref">?sec-celltype_labeling</span>.</p>
+<p>Batch correction is a vital step in single-cell sequencing analysis that addresses technical variability introduced by differences in experimental conditions, such as processing time, reagent batches, or sequencing runs. These batch effects can obscure true biological signals and create artificial differences between groups of cells. Batch correction methods aim to align data from different batches while preserving meaningful biological variation. Techniques range from simple scaling adjustments to advanced algorithms that model batch effects explicitly. As single-cell studies increasingly combine datasets from multiple experiments or institutions, effective batch correction ensures that comparisons and integrative analyses reflect biological reality rather than technical artifacts. See <a href="#fig-batch1" class="quarto-xref">Figure&nbsp;<span>3.16</span></a> for an illustration of this.</p>
+<p>We will talk about this a bit more when we discuss integration methods for cell-type labeling <a href="chapter3_rna.html#sec-celltype_labeling" class="quarto-xref"><span>Section 4.6</span></a>.</p>
 <div class="block">
-<div>
-
+<div id="fig-batch1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-batch1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap2/batch1.png" id="fig-batch1" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:50.0%">
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="3">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="fig/chap2/batch1.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="fig/chap2/batch2.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="fig/chap2/batch3.png" class="img-fluid"></p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-batch1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.16
+</figcaption>
+</figure>
 </div>
 </div>
+<div class="block">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig/chap2/batch2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
 </div>
-<p>Illustration of what the goal of batch correction is. All these are UMAPs (see <a href="#sec-visualization" class="quarto-xref"><span>Section 3.3.23</span></a>). The top row colors cells by their batch, and the bottom row colors cells by cell type. (Left) Original data showing batch effects. (Middle) Intermediate processing. (Right) The batch-corrected data. <span class="citation" data-cites="tran2020benchmark">(<a href="references.html#ref-tran2020benchmark" role="doc-biblioref">Tran et al. 2020</a>)</span></p>
 </div>
+<div class="block">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig/chap2/batch3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<p>Illustration of what the goal of batch correction is. All these are UMAPs (see <a href="#sec-visualization" class="quarto-xref"><span>Section 3.3.23</span></a>). The top row colors cells by their batch, and the bottom row colors cells by cell type. (Left) Original data showing batch effects. (Middle) Intermediate processing. (Right) The batch-corrected data. <span class="citation" data-cites="tran2020benchmark">(<a href="references.html#ref-tran2020benchmark" role="doc-biblioref">Tran et al. 2020</a>)</span> ::::</p>
 <div class="block3">
 <p><strong>Input/Output.</strong> The input to batch correction is (1) either the normalized matrix <span class="math inline">\(X \in \mathbb{R}^{n\times p}\)</span> or the score matrix <span class="math inline">\(Z \in \mathbb{R}^{n\times k}\)</span> and (2) an categorical vector <span class="math inline">\(C \in \{1,\ldots,B\}^n\)</span> which denotes which cell belongs to which batch. (Certain batch correction methods might require more information.) In a literal sense, both <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span> are technically row-wise concatenations of many datasets.</p>
 </div>
@@ -781,7 +798,7 @@ Figure&nbsp;3.13: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca")</code
 </section>
 <section id="a-typical-choice-harmony" class="level3" data-number="3.3.21">
 <h3 data-number="3.3.21" class="anchored" data-anchor-id="a-typical-choice-harmony"><span class="header-section-number">3.3.21</span> A typical choice: Harmony</h3>
-<p>Harmony <span class="citation" data-cites="korsunsky2019fast">(<a href="references.html#ref-korsunsky2019fast" role="doc-biblioref">Korsunsky et al. 2019</a>)</span> is one of the most commonly used methods to integrate single-cell datasets from different experiments, technologies, or biological conditions into a shared low-dimensional embedding. The method begins with a principal component analysis (PCA) embedding and iteratively adjusts it to remove batch effects while preserving biological variation. Harmony groups cells into clusters using soft clustering, which assigns cells probabilistically to multiple clusters. These clusters account for technical and biological differences while capturing shared cell types and states. Correction factors are then computed for each cluster and applied to individual cells, ensuring that the final embedding reflects intrinsic cellular phenotypes without being confounded by dataset-specific biases. See <a href="#fig-harmony" class="quarto-xref">Figure&nbsp;<span>3.14</span></a>.</p>
+<p>Harmony <span class="citation" data-cites="korsunsky2019fast">(<a href="references.html#ref-korsunsky2019fast" role="doc-biblioref">Korsunsky et al. 2019</a>)</span> is one of the most commonly used methods to integrate single-cell datasets from different experiments, technologies, or biological conditions into a shared low-dimensional embedding. The method begins with a principal component analysis (PCA) embedding and iteratively adjusts it to remove batch effects while preserving biological variation. Harmony groups cells into clusters using soft clustering, which assigns cells probabilistically to multiple clusters. These clusters account for technical and biological differences while capturing shared cell types and states. Correction factors are then computed for each cluster and applied to individual cells, ensuring that the final embedding reflects intrinsic cellular phenotypes without being confounded by dataset-specific biases. See <a href="#fig-harmony" class="quarto-xref">Figure&nbsp;<span>3.17</span></a>.</p>
 <div class="block">
 <div id="fig-harmony" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -789,7 +806,7 @@ Figure&nbsp;3.13: Using the <code>Seurat::DimPlot(pbmc, reduction = "pca")</code
 <img src="fig/chap2/harmony.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-harmony-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.14: Schematic of the Harmony <span class="citation" data-cites="korsunsky2019fast">(<a href="references.html#ref-korsunsky2019fast" role="doc-biblioref">Korsunsky et al. 2019</a>)</span>.
+Figure&nbsp;3.17: Schematic of the Harmony <span class="citation" data-cites="korsunsky2019fast">(<a href="references.html#ref-korsunsky2019fast" role="doc-biblioref">Korsunsky et al. 2019</a>)</span>.
 </figcaption>
 </figure>
 </div>
@@ -836,8 +853,8 @@ C = \sum_{i,j} \left( - p_{ij} \log q_{ij} - (1 - p_{ij}) \log (1 - q_{ij}) \rig
 <p>UMAP excels at preserving local neighborhoods while maintaining some global structure, making it particularly effective for visualizing high-dimensional single-cell RNA-seq data. However, the resulting embeddings depend on hyperparameters (e.g., number of neighbors, minimum distance) and are not designed for quantitative analysis, as they do not preserve metric properties of the original data. See <a href="https://github.com/jlmelville/uwot" class="uri">https://github.com/jlmelville/uwot</a> for great in-depth discussions on UMAPs.</p>
 <div class="block">
 <p><strong>Remark (Yes, UMAPs are also a “dimension reduction,” but they serve a very different purpose).</strong> You can think of UMAPs as a very specific dimension reduction where <span class="math inline">\(k\)</span> is always 2 or 3. However, UMAPs serve a very different role – very few single-cell analyses relies on the UMAP coordinates, but many single-cell methods rely upon the low-dimensional vector <span class="math inline">\(Z_{i,\cdot}\in\mathbb{R}^k\)</span> from a dimension reduction method.</p>
-<p>The reason is that UMAPs are usually solely for visualizations and nothing else. There is almost no concrete relation between the distance between any two cells based on their UMAP coordinates and their true dissimilarity based on their gene expression profiles. The most common analogy is to think of visualizing the Earth on a 2D map, see <a href="#fig-world" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>. No matter how you try to draw the world on a sheet of paper, there’s always some unnatural distortion. If you interpret this map very literally, it seems like California is further away from Japan than Spain is, and Antartica is almost as large as all the other continents combined. The point is, every low-dimensional projection always sacrifices some aspects, and when you try projecting high-dimensional data to specifically only 2 dimensions, a lot of large-scale qualities “break.”</p>
-<p>See <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span> for more discussions about how to think about UMAPs, <a href="#fig-umap-example" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>. There’s a big debate on what is “acceptable” or “not acceptable” to infer from UMAPS. See <span class="citation" data-cites="chari2023specious lause2024art">(<a href="references.html#ref-chari2023specious" role="doc-biblioref">Chari and Pachter 2023</a>; <a href="references.html#ref-lause2024art" role="doc-biblioref">Lause, Berens, and Kobak 2024</a>)</span>, and a recent large controversy in genetics (<a href="https://www.science.org/content/article/huge-genome-study-confronted-concerns-over-race-analysis" class="uri">https://www.science.org/content/article/huge-genome-study-confronted-concerns-over-race-analysis</a>).</p>
+<p>The reason is that UMAPs are usually solely for visualizations and nothing else. There is almost no concrete relation between the distance between any two cells based on their UMAP coordinates and their true dissimilarity based on their gene expression profiles. The most common analogy is to think of visualizing the Earth on a 2D map, see <a href="#fig-world" class="quarto-xref">Figure&nbsp;<span>3.18</span></a>. No matter how you try to draw the world on a sheet of paper, there’s always some unnatural distortion. If you interpret this map very literally, it seems like California is further away from Japan than Spain is, and Antartica is almost as large as all the other continents combined. The point is, every low-dimensional projection always sacrifices some aspects, and when you try projecting high-dimensional data to specifically only 2 dimensions, a lot of large-scale qualities “break.”</p>
+<p>See <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span> for more discussions about how to think about UMAPs, <a href="#fig-umap-example" class="quarto-xref">Figure&nbsp;<span>3.19</span></a>. There’s a big debate on what is “acceptable” or “not acceptable” to infer from UMAPS. See <span class="citation" data-cites="chari2023specious lause2024art">(<a href="references.html#ref-chari2023specious" role="doc-biblioref">Chari and Pachter 2023</a>; <a href="references.html#ref-lause2024art" role="doc-biblioref">Lause, Berens, and Kobak 2024</a>)</span>, and a recent large controversy in genetics (<a href="https://www.science.org/content/article/huge-genome-study-confronted-concerns-over-race-analysis" class="uri">https://www.science.org/content/article/huge-genome-study-confronted-concerns-over-race-analysis</a>).</p>
 <p>My take: UMAPs are a useful visualization tool (in the sense that it’ll be ridiculous to claim we should never visualize our data, and we should just accept every visualization tool will have its own drawbacks). However, you should have quantitative metrics planned out prior to visualization so you’re not solely relying on UMAPs for your analysis. UMAPs are useful for giving you a sense of the data quality and broad cellular relations before investing time to carefully quantify the biology of interest. Your biological evidence should <em>not</em> solely rely on UMAPs.</p>
 </div>
 <div class="block">
@@ -847,7 +864,7 @@ C = \sum_{i,j} \left( - p_{ij} \log q_{ij} - (1 - p_{ij}) \log (1 - q_{ij}) \rig
 <img src="fig/chap2/world.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-world-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.15: Map of the world
+Figure&nbsp;3.18: Map of the world
 </figcaption>
 </figure>
 </div>
@@ -859,7 +876,7 @@ Figure&nbsp;3.15: Map of the world
 <img src="fig/chap2/umap-example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umap-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.16: (Top row): UMAP computed from 3 different random seeds, to illustrated the “arbitrary” nature of how large “continents” of cells relate to one another. (Bottom left): t-SNE, which often are a lot more “spread out” than UMAPs in terms of how separated the “continents” are. (Bottom right): PCA, which is reproducible (i.e., no unexplainable extrinsic randomness during the computation), statistically rigorous and transparent (i.e., we know how to mathematically interpret any pair of cells). However, unlike UMAP and t-SNE, we often need many PCs to appropriate represent the data, and we can only visualize 2 PCs at a time. <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span>
+Figure&nbsp;3.19: (Top row): UMAP computed from 3 different random seeds, to illustrated the “arbitrary” nature of how large “continents” of cells relate to one another. (Bottom left): t-SNE, which often are a lot more “spread out” than UMAPs in terms of how separated the “continents” are. (Bottom right): PCA, which is reproducible (i.e., no unexplainable extrinsic randomness during the computation), statistically rigorous and transparent (i.e., we know how to mathematically interpret any pair of cells). However, unlike UMAP and t-SNE, we often need many PCs to appropriate represent the data, and we can only visualize 2 PCs at a time. <span class="citation" data-cites="prater2024all">(<a href="references.html#ref-prater2024all" role="doc-biblioref">Prater and Lin 2024</a>)</span>
 </figcaption>
 </figure>
 </div>
@@ -871,7 +888,7 @@ Figure&nbsp;3.16: (Top row): UMAP computed from 3 different random seeds, to ill
 </section>
 <section id="how-to-do-this-in-practice-7" class="level3" data-number="3.3.26">
 <h3 data-number="3.3.26" class="anchored" data-anchor-id="how-to-do-this-in-practice-7"><span class="header-section-number">3.3.26</span> How to do this in practice</h3>
-<p>See the <code>Seurat::RunUMAP</code> function, illustrated in <a href="#fig-umap" class="quarto-xref">Figure&nbsp;<span>3.17</span></a>. The resulting visualization is shown in <a href="#fig-umap-fig" class="quarto-xref">Figure&nbsp;<span>3.18</span></a>.</p>
+<p>See the <code>Seurat::RunUMAP</code> function, illustrated in <a href="#fig-umap" class="quarto-xref">Figure&nbsp;<span>3.20</span></a>. The resulting visualization is shown in <a href="#fig-umap-fig" class="quarto-xref">Figure&nbsp;<span>3.21</span></a>.</p>
 <div class="block">
 <div id="fig-umap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -879,7 +896,7 @@ Figure&nbsp;3.16: (Top row): UMAP computed from 3 different random seeds, to ill
 <img src="fig/chap2/umap.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.17: The UMAP visualization step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.20: The UMAP visualization step. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -891,7 +908,7 @@ Figure&nbsp;3.17: The UMAP visualization step. See the tutorial in <a href="http
 <img src="fig/chap2/umap-fig.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umap-fig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.18: Using the <code>Seurat::DimPlot(pbmc, reduction = "umap")</code> function to visualize the first two PCs. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
+Figure&nbsp;3.21: Using the <code>Seurat::DimPlot(pbmc, reduction = "umap")</code> function to visualize the first two PCs. See the tutorial in <a href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html" class="uri">https://satijalab.org/seurat/articles/pbmc3k_tutorial.html</a>.
 </figcaption>
 </figure>
 </div>
@@ -1046,7 +1063,7 @@ Zhao, Ruzhang, Jiuyao Lu, Weiqiang Zhou, Ni Zhao, and Hongkai Ji. 2024. <span>�
 <hr>
 <ol>
 <li id="fn1"><p>You can have a simple hierarchical model in your head – each human donor contributes one (or more) tissue sample. Each tissue sample contains many cells.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>How many genes are there in the human body? This is not a well-defined questions. If you want to only ask about protein-coding genes, there’s probably about 24,000 of them <span class="citation" data-cites="salzberg2018open">(<a href="references.html#ref-salzberg2018open" role="doc-biblioref">Salzberg 2018</a>)</span>. However, most gene callers (such as CellRanger <a href="https://www.10xgenomics.com/support/software/cell-ranger/latest" class="uri">https://www.10xgenomics.com/support/software/cell-ranger/latest</a>, which is what we usually use for 10x single-cell data) also label genes that don’t translate. We’ll talk about this in <span class="quarto-unresolved-ref">?sec-beyond_scrna</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>How many genes are there in the human body? This is not a well-defined questions. If you want to only ask about protein-coding genes, there’s probably about 24,000 of them <span class="citation" data-cites="salzberg2018open">(<a href="references.html#ref-salzberg2018open" role="doc-biblioref">Salzberg 2018</a>)</span>. However, most gene callers (such as CellRanger <a href="https://www.10xgenomics.com/support/software/cell-ranger/latest" class="uri">https://www.10xgenomics.com/support/software/cell-ranger/latest</a>, which is what we usually use for 10x single-cell data) also label genes that don’t translate. We’ll talk about this in <a href="chapter3_rna.html#sec-beyond_scrna" class="quarto-xref"><span>Section 4.8</span></a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Typically, the feature selection step doesn’t use the normalized matrix even though normalization happens before feature selection. See <a href="https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995" class="uri">https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995</a>. This is because it’s preferable to normalize using <em>all</em> the reads, even from genes you don’t actually include in your analysis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>See <a href="https://en.wikipedia.org/wiki/Low-rank_approximation" class="uri">https://en.wikipedia.org/wiki/Low-rank_approximation</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Typically, the feature selection step doesn’t use the normalized matrix even though normalization happens before feature selection. See <a href="https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995" class="uri">https://github.com/satijalab/seurat/blob/ece572a/R/preprocessing.R#L3995</a>. This is because it’s preferable to normalize using <em>all</em> the reads, even from genes you don’t actually include in your analysis.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

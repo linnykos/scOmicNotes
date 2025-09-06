@@ -30,15 +30,15 @@ Here are some basic statistics about these matrices (based mainly from my experi
 
 Based on these observations, the negative binomial distribution is very commonly used.
 
-:::: block
-::: {layout-ncol="2"}
-![](fig/chap2/count.png){width="80%"}
-
-![](fig/chap2/nonzero_hist.png){width="23%"}
+::: block
+![Count matrix](fig/chap2/count.png){#fig-count1 width="100%" fig-align="center"}
 :::
 
-Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). [@satijalab_tutorial]
-::::
+::: block
+![Histogram of count distribution](fig/chap2/nonzero_hist.png){#fig-count2 width="100%" fig-align="center"}
+:::
+
+Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). [@satijalab_tutorial] ::::
 
 The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.
 
@@ -415,17 +415,19 @@ Batch correction is a vital step in single-cell sequencing analysis that address
 
 We will talk about this a bit more when we discuss integration methods for cell-type labeling @sec-celltype_labeling.
 
-:::: block
-::: {layout-ncol="3"}
-![](fig/chap2/batch1.png){width="100%"}
-
-![](fig/chap2/batch2.png){width="100%"}
-
-![](fig/chap2/batch3.png){width="100%"}
+::: block
+![](fig/chap2/batch1.png){#fig-batch1 width="50%" fig-align="center"}
 :::
 
-Illustration of what the goal of batch correction is. All these are UMAPs (see @sec-visualization). The top row colors cells by their batch, and the bottom row colors cells by cell type. (Left) Original data showing batch effects. (Middle) Intermediate processing. (Right) The batch-corrected data. [@tran2020benchmark]
-::::
+::: block
+![](fig/chap2/batch2.png){width="50%" fig-align="center"}
+:::
+
+::: block
+![](fig/chap2/batch3.png){width="50%" fig-align="center"}
+:::
+
+Illustration of what the goal of batch correction is. All these are UMAPs (see @sec-visualization). The top row colors cells by their batch, and the bottom row colors cells by cell type. (Left) Original data showing batch effects. (Middle) Intermediate processing. (Right) The batch-corrected data. [@tran2020benchmark] ::::
 
 ::: block3
 **Input/Output.** The input to batch correction is (1) either the normalized matrix $X \in \mathbb{R}^{n\times p}$ or the score matrix $Z \in \mathbb{R}^{n\times k}$ and (2) an categorical vector $C \in \{1,\ldots,B\}^n$ which denotes which cell belongs to which batch. (Certain batch correction methods might require more information.) In a literal sense, both $X$ and $Z$ are technically row-wise concatenations of many datasets.
