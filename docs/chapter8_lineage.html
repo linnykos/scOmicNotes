@@ -233,9 +233,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#why-are-we-interested-in-learning-temporal-dynamics" id="toc-why-are-we-interested-in-learning-temporal-dynamics" class="nav-link active" data-scroll-target="#why-are-we-interested-in-learning-temporal-dynamics"><span class="header-section-number">9.1</span> Why are we interested in learning temporal dynamics?</a></li>
-  <li><a href="#sec-natural_lineage" id="toc-sec-natural_lineage" class="nav-link" data-scroll-target="#sec-natural_lineage"><span class="header-section-number">9.2</span> Basis on how to infer history from cells naturally</a></li>
+  <li><a href="#sec-natural_lineage" id="toc-sec-natural_lineage" class="nav-link" data-scroll-target="#sec-natural_lineage"><span class="header-section-number">9.2</span> Basics of inferring lineage history from natural markers</a></li>
   <li><a href="#brief-aside-relation-to-snapshot-trajectory-inference" id="toc-brief-aside-relation-to-snapshot-trajectory-inference" class="nav-link" data-scroll-target="#brief-aside-relation-to-snapshot-trajectory-inference"><span class="header-section-number">9.3</span> Brief aside: Relation to “snapshot” trajectory inference</a></li>
-  <li><a href="#reconstruction-phylogenetic-tree-from-sclt" id="toc-reconstruction-phylogenetic-tree-from-sclt" class="nav-link" data-scroll-target="#reconstruction-phylogenetic-tree-from-sclt"><span class="header-section-number">9.4</span> Reconstruction phylogenetic tree from scLT</a></li>
+  <li><a href="#reconstructing-phylogenetic-tree-from-sclt" id="toc-reconstructing-phylogenetic-tree-from-sclt" class="nav-link" data-scroll-target="#reconstructing-phylogenetic-tree-from-sclt"><span class="header-section-number">9.4</span> Reconstructing phylogenetic tree from scLT</a></li>
   <li><a href="#lentiviral-lineage-tracing" id="toc-lentiviral-lineage-tracing" class="nav-link" data-scroll-target="#lentiviral-lineage-tracing"><span class="header-section-number">9.5</span> Lentiviral lineage tracing</a>
   <ul>
   <li><a href="#sec-lentiviral_lineage" id="toc-sec-lentiviral_lineage" class="nav-link" data-scroll-target="#sec-lentiviral_lineage"><span class="header-section-number">9.5.1</span> About the technology and application</a></li>
@@ -318,7 +318,7 @@ Figure&nbsp;9.3: From <span class="citation" data-cites="fu2023emerging">Fu et a
 </div>
 </div>
 <ul>
-<li><strong>Disease progression</strong>: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See <a href="#fig-covid" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> for an example of this is investigated in COVID.</li>
+<li><strong>Disease progression</strong>: Many diseases advance in stages, even beyond cancer, with cells accumulating subtle changes that eventually manifest as severe pathologies. Timing the acquisition of these changes reveals how early molecular events cascade into full-blown disease. See <a href="#fig-covid" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> for an example of this investigated in COVID.</li>
 </ul>
 <div class="block">
 <div id="fig-covid" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -364,11 +364,11 @@ Figure&nbsp;9.6: From <a href="https://stemcellthailand.org/induced-pluripotent-
 </div>
 </section>
 <section id="sec-natural_lineage" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="sec-natural_lineage"><span class="header-section-number">9.2</span> Basis on how to infer history from cells naturally</h2>
+<h2 data-number="9.2" class="anchored" data-anchor-id="sec-natural_lineage"><span class="header-section-number">9.2</span> Basics of inferring lineage history from natural markers</h2>
 <p>Certain features in a cell’s genetic material serve as natural markers for tracing lineage. These features arise spontaneously or accumulate over time, and researchers can compare them across related cells to reconstruct branching histories.</p>
 <ul>
-<li><p><strong>Mitochondrial DNA (somatic mutations)</strong>: Mitochondrial genomes can pick up small mutations as cells divide. (Note! There are a lot of types of other DNA in your cells beyond the typical DNA we think of in the 23 pairs of chromosomes. Your mitochondria has its own DNA.) By measuring these mutations, one can infer which cells share a common ancestor and roughly estimate how many divisions have occurred. However, because the mutation rate is not always high, it can be difficult to achieve fine-grained resolution.</p></li>
-<li><p><strong>DNA copy number</strong>: Gains or losses in chromosome segments, known as copy number variations, can also serve as lineage markers. Though useful for distinguishing large-scale genomic shifts, such variations do not necessarily arise in a predictable manner. This makes it challenging to reproducibly track precise cell-to-cell histories. For examples of bulk-DNA phylogenetic tree, see <span class="citation" data-cites="myers2019calder">Myers, Satas, and Raphael (<a href="references.html#ref-myers2019calder" role="doc-biblioref">2019</a>)</span>. This is a massive field, so one citation is not doing this field justice. We’ll see this more in <a href="#sec-dna_phylogenetic" class="quarto-xref"><span>Section 9.6.2</span></a>.</p></li>
+<li><p><strong>Mitochondrial DNA (somatic mutations)</strong>: Mitochondrial genomes can pick up small mutations as cells divide. (Note! In addition to the DNA contained in the 23 pairs of nuclear chromosomes, your cells also carry many other types of DNA. In particular, mitochondria have their own DNA.) By measuring these mutations, one can infer which cells share a common ancestor and roughly estimate how many divisions have occurred. However, because the mutation rate is not always high, it can be difficult to achieve fine-grained resolution.</p></li>
+<li><p><strong>DNA copy number</strong>: Gains or losses in chromosome segments, known as copy number variations, can also serve as lineage markers. Though useful for distinguishing large-scale genomic shifts, such variations do not necessarily arise in a predictable manner. This makes it challenging to reproducibly track precise cell-to-cell histories. For examples of bulk-DNA phylogenetic trees, see <span class="citation" data-cites="myers2019calder">Myers, Satas, and Raphael (<a href="references.html#ref-myers2019calder" role="doc-biblioref">2019</a>)</span>. This is a massive field, so one citation is not doing this field justice. We’ll see this more in <a href="#sec-dna_phylogenetic" class="quarto-xref"><span>Section 9.6.2</span></a>.</p></li>
 <li><p><strong>DNA methylation</strong>: DNA methylation serves as another naturally occurring cellular barcode. Over time, cells acquire unique methylation patterns that reflect their lineage history. These epigenetic marks regulate gene expression and can be stably inherited through cell divisions. Because different tissues and cell types exhibit distinct methylation landscapes, analyzing these patterns can provide a historical record of a cell’s developmental path. However, while DNA methylation is useful for lineage tracing, its resolution is limited by the variability in methylation turnover rates and the difficulty of distinguishing cell-to-cell differences in a reproducible manner.</p></li>
 </ul>
 <p>These naturally occurring barcodes, while informative, can be limiting in resolution. They may not mutate or appear frequently enough to trace detailed branching events. Additionally, reproducing the exact timing of such genetic changes in the wet lab can be difficult, making it hard to pinpoint when and how they impacted lineage formation.</p>
@@ -378,9 +378,9 @@ Figure&nbsp;9.6: From <a href="https://stemcellthailand.org/induced-pluripotent-
 <p>Snapshot-based methods, such as Monocle or Slingshot, rely on measuring gene expression states at a single time point (or a limited set of time points). They use computational models to infer the probable order and branching of cell fates based on these static profiles. While powerful, these methods rely on assumptions about the smoothness of transitions and may not capture rare events or subtle branching.</p>
 <p>Lineage tracing complements snapshot-based methods by providing a direct record of which cells arose from the same ancestor. By confirming or refining the trajectories suggested by computational approaches, lineage tracing can validate inferred timelines, reveal overlooked branches, and identify rare subpopulations that might be missed in snapshot data alone. This integration leads to a more complete picture of cell fate decisions and improves our ability to predict and potentially manipulate cellular transitions.</p>
 </section>
-<section id="reconstruction-phylogenetic-tree-from-sclt" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="reconstruction-phylogenetic-tree-from-sclt"><span class="header-section-number">9.4</span> Reconstruction phylogenetic tree from scLT</h2>
-<p>The goal in this section is to provide a high-level overview of how we can reconstruct phylogenetic trees from single-cell lineage tracing (scLT) dataset, if we are using mutating barcodes. Remember, in single-cell sequencing experiments, we never get to see anything “directly” aside from sequences (of RNA, DNA, etc.) So we need to “estimate” the phylogenetic tree itself using the barcode edits. See <a href="#fig-phylogenetic-goal1" class="quarto-xref">Figure&nbsp;<span>9.7</span></a> for a conceptual illustration of this problem.</p>
+<section id="reconstructing-phylogenetic-tree-from-sclt" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="reconstructing-phylogenetic-tree-from-sclt"><span class="header-section-number">9.4</span> Reconstructing phylogenetic tree from scLT</h2>
+<p>The goal in this section is to provide a high-level overview of how we can reconstruct phylogenetic trees from single-cell lineage tracing (scLT) datasets, if we are using mutating barcodes. Remember, in single-cell sequencing experiments, we never get to see anything “directly” aside from sequences (of RNA, DNA, etc.) So we need to “estimate” the phylogenetic tree itself using the barcode edits. See <a href="#fig-phylogenetic-goal1" class="quarto-xref">Figure&nbsp;<span>9.7</span></a> for a conceptual illustration of this problem.</p>
 <div class="block">
 <div id="fig-phylogenetic-goal1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -393,7 +393,7 @@ Figure&nbsp;9.7: From <span class="citation" data-cites="li2024reconstructing">L
 </figure>
 </div>
 </div>
-<p>Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a <em>claudogram</em>, i.e., the edge lengths do not carry “time-information”. This is in contrast with a <em>phylogram</em>, where edge denote “amount of elapsed time since the branching event”). See <a href="#fig-tree1" class="quarto-xref">Figure&nbsp;<span>9.8</span></a> and <a href="#fig-tree2" class="quarto-xref">Figure&nbsp;<span>9.9</span></a>.</p>
+<p>Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-tracing methods based on lentiviral barcodes return a <em>cladogram</em>, i.e., the edge lengths do not carry “time information”. This is in contrast with a <em>phylogram</em>, where edges denote “amount of elapsed time since the branching event”). See <a href="#fig-tree1" class="quarto-xref">Figure&nbsp;<span>9.8</span></a> and <a href="#fig-tree2" class="quarto-xref">Figure&nbsp;<span>9.9</span></a>.</p>
 <div class="block">
 <div id="fig-tree1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -483,7 +483,7 @@ Figure&nbsp;9.11: From <a href="https://www.megasoftware.net/mega1_manual/Phylog
 </figure>
 </div>
 </div>
-<p>See <span class="citation" data-cites="st2017shape">(<a href="references.html#ref-st2017shape" role="doc-biblioref"><strong>st2017shape?</strong></a>)</span> (and related papers) for more context.</p>
+<p>See <span class="citation" data-cites="st2017shape">St. John (<a href="references.html#ref-st2017shape" role="doc-biblioref">2017</a>)</span> (and related papers) for more context.</p>
 <p>So… why is this result important? Observe that <span class="math inline">\(n!!\)</span> is <em>super exponential</em> (i.e., it grows faster than an exponential<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>). So if you have <span class="math inline">\(n=1000\)</span> cells, the number of possible trees you’ll try to enumerate is on the order of <span class="math inline">\(1000^{1000} = 10^{3000}\)</span>, which is way too many. See <a href="#fig-num-trees" class="quarto-xref">Figure&nbsp;<span>9.12</span></a>. Therefore, when constructing phylogenetic trees, we need to be mathematically clever (probably with the help of some heuristic). Can we use some heuristic to drastically reduce the number of trees we’re going to even consider, and we can use our sequencing data of these <span class="math inline">\(n\)</span> cells to help us in this endeavor?</p>
 <div class="block">
 <div id="fig-num-trees" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -497,7 +497,7 @@ Figure&nbsp;9.12: From <a href="https://calla.rnet.missouri.edu/cheng_courses/sl
 </figure>
 </div>
 </div>
-<p><strong>Camin-Sokal maximum parsimony method.</strong> The Camin-Sokal maximum parsimony method is a phylogenetic reconstruction technique that aims to infer evolutionary relationships by minimizing the number of changes required to explain observed character states. (You’ll see this come up a <em>lot</em> when reading papers that reconstruct the phylogenetic tree from scLT data with mutating barcodes. You can think of this as the “baseline method” that every sc-phylogenetic method compares itself to.) This method assumes that character states can only evolve in one direction, meaning once a trait is gained, it cannot be lost. Given a set of taxa and their character states, the algorithm constructs a tree that explains these states with the fewest evolutionary steps. While this method is computationally efficient for small datasets, it may oversimplify biological reality by enforcing irreversible character changes, limiting its applicability in cases where traits can reappear or revert.</p>
+<p><strong>Camin-Sokal maximum parsimony method.</strong> The Camin-Sokal maximum parsimony method is a phylogenetic reconstruction technique that aims to infer evolutionary relationships by minimizing the number of changes required to explain observed character states. (You’ll see this come up a <em>lot</em> when reading papers that reconstruct the phylogenetic tree from scLT datasets with mutating barcodes. You can think of this as the “baseline method” that every sc-phylogenetic method compares itself to.) This method assumes that character states can only evolve in one direction, meaning once a trait is gained, it cannot be lost. Given a set of taxa and their character states, the algorithm constructs a tree that explains these states with the fewest evolutionary steps. While this method is computationally efficient for small datasets, it may oversimplify biological reality by enforcing irreversible character changes, limiting its applicability in cases where traits can reappear or revert.</p>
 </section>
 <section id="lentiviral-lineage-tracing" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="lentiviral-lineage-tracing"><span class="header-section-number">9.5</span> Lentiviral lineage tracing</h2>
@@ -508,7 +508,7 @@ Figure&nbsp;9.12: From <a href="https://calla.rnet.missouri.edu/cheng_courses/sl
 <li><p><strong>In static lineage barcoding</strong>, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell’s DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.</p>
 <p>(This won’t be the focus of the following sections. In static lineage barcoding, there is no phylogenetic tree. All the cell lineage information is relative to when the lentivirus was introduced to your cells.)</p></li>
 <li><p><strong>In mutating barcoding</strong> (or also called evolving barcode), a guide RNA (via CRISPR-Cas9) can introduce variations sometimes into a transgene reporter (a gene artificially integrated into the cell’s DNA) at various target sites. This creates barcodes as “genetic scars” in descendant cells. This dynamic approach can provide a richer record of how cells diverge and acquire distinct identities.</p>
-<p>(There’s a lot more complexity to this. Here are some concerns that are a bit easier to explain: 1) You need make sure the Cas9 protein is continually being expressed over the course of the experiment. 2) You need to make sure you have enough diversity in the genetic scars that it’s unlikely two unrelated cells happened to acquire the same set of scars. 3) These CRISPR double-stranded breaks can lead to sometimes large deletion events. If there’s not a lot of different locations the transgene was integrated into the genome, or if the target sites are too close, then the multiple target sites might be deleted at once<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.)</p></li>
+<p>(There’s a lot more complexity to this. Here are some concerns that are a bit easier to explain: 1) You need to make sure the Cas9 protein is continually being expressed over the course of the experiment. 2) You need to make sure you have enough diversity in the genetic scars that it’s unlikely two unrelated cells happened to acquire the same set of scars. 3) These CRISPR double-stranded breaks can lead to sometimes large deletion events. If there’s not a lot of different locations the transgene was integrated into the genome, or if the target sites are too close, then the multiple target sites might be deleted at once<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.)</p></li>
 </ul>
 <div class="block">
 <div id="fig-barcode1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -619,10 +619,7 @@ Figure&nbsp;9.19: From <span class="citation" data-cites="jones2020inference">Jo
 </figure>
 </div>
 </div>
-<div class="block">
-<p><img src="fig/chap8/cassiopeia1.png" id="fig-cassiopeia1" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"> <img src="fig/chap8/cassiopeia2.png" id="fig-cassiopeia2" class="img-fluid quarto-figure quarto-figure-center anchored" style="width:100.0%" alt="From"></p>
-</div>
-<p><strong>Some implementation notes:</strong></p>
+<p>Some implementation notes:</p>
 <ul>
 <li><em>Priors on Indel Frequencies.</em> Optionally, Cassiopeia can leverage empirical estimates of each indel’s probability to prioritize rare-but-frequent states (mitigating parallel evolution).</li>
 <li><em>Missing Data.</em> Both ILP and greedy approaches accommodate missing data by enumerating or heuristically assigning cells to the most compatible subset.</li>
@@ -825,6 +822,9 @@ Myers, Matthew A, Gryte Satas, and Benjamin J Raphael. 2019. <span>“CALDER: In
 <div id="ref-sollier2023compass" class="csl-entry" role="listitem">
 Sollier, Etienne, Jack Kuipers, Koichi Takahashi, Niko Beerenwinkel, and Katharina Jahn. 2023. <span>“COMPASS: Joint Copy Number and Mutation Phylogeny Reconstruction from Amplicon Single-Cell Sequencing Data.”</span> <em>Nature Communications</em> 14 (1): 4921.
 </div>
+<div id="ref-st2017shape" class="csl-entry" role="listitem">
+St. John, Katherine. 2017. <span>“The Shape of Phylogenetic Treespace.”</span> <em>Systematic Biology</em> 66 (1): e83–94.
+</div>
 <div id="ref-stephenson2021single" class="csl-entry" role="listitem">
 Stephenson, Emily, Gary Reynolds, Rachel A Botting, Fernando J Calero-Nieto, Michael D Morgan, Zewen Kelvin Tuong, Karsten Bach, et al. 2021. <span>“Single-Cell Multi-Omics Analysis of the Immune Response in COVID-19.”</span> <em>Nature Medicine</em> 27 (5): 904–16.
 </div>
@@ -849,7 +849,7 @@ Zhang, Xiaoli, Yirui Huang, Yajing Yang, Qi-En Wang, and Lang Li. 2024. <span>�
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>This is <em>NOT</em> about applying factorial twice. This means you’re taking the factorial where you only take every odd number.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>This does <em>NOT</em> mean applying factorial twice. This means you’re taking the factorial where you only take every odd number.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Formally, you would also need to prove that all the unique <span class="math inline">\(n\)</span>-leaf trees formed this way from one particular <span class="math inline">\((n-1)\)</span>-leaf tree is distinct from any possible <span class="math inline">\(n\)</span>-leaf tree formed from a different <span class="math inline">\((n-1)\)</span>-leaf tree.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You can approximate <span class="math inline">\(n!\)</span> by <span class="math inline">\(n^n\)</span>. See <a href="https://en.wikipedia.org/wiki/Stirlings_approximation" class="uri">https://en.wikipedia.org/wiki/Stirlings_approximation</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>To quote <span class="citation" data-cites="jones2020inference">Jones et al. (<a href="references.html#ref-jones2020inference" role="doc-biblioref">2020</a>)</span>, “… the amount of missing data that is typical of lineage tracing experiments, which can be ‘heritable’ (resulting from either large Cas9-induced resections that remove target sites or transcriptional silencing) …” See <span class="citation" data-cites="kosicki2022cas9">Kosicki et al. (<a href="references.html#ref-kosicki2022cas9" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="mcvey2008mmej">McVey and Lee (<a href="references.html#ref-mcvey2008mmej" role="doc-biblioref">2008</a>)</span> for some additional context on how large deletions could happen.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
