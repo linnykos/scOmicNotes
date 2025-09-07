@@ -431,6 +431,91 @@ A popular non-deep-learning approach is Weighted Nearest Neighbors (WNN) [@hao20
 ![From [@makrodimitris2024depth].](fig/chap4/poe.png){#fig-poe width="100%" fig-align="center"}
 :::
 
+### Correlation-based methods (i.e., "Intersection" of information) {#sec-intersection_tcca}
+
+Conceptually, you might appreciate that many of the methods described in @sec-union_totalvi are about the "union" of information, in the sense that you're trying to learn one singular embedding that could generate either modality, recall @rem-union. However, what if you wanted to learn what is the coordination between RNA and the cell surface markers? (That is, what if you don't care there's a lot of information unique to the cell surface markers -- you instead want to just focus on what aspects of the RNA can be recapitulated in the cell surface markers?) This is where we might instead re-envision the goal of the embedding entirely and consider methods such as Tilted-CCA ([@lin2023quantifying], see @fig-tcca).
+
+::: block
+![{ \small From [@lin2023quantifying]. (Panel A): The visualization of only the RNA or Protein modality, separately. (Panel C): A PCA of the combined information from the RNA and Protein modality. You can think of this as a "simple" version of Total-VI. (Panel F): Tilted-CCA to highlight only the biological signal shared between the RNA and Protein modalities.}](fig/chap4/tcca.png){#fig-tcca width="100%" fig-align="center"}
+:::
+
+**A brief review of CCA, to motivate Tilted-CCA.**  
+The goal of Canonical Correlation Analysis (CCA) in data analysis is to identify and quantify the shared variation between two datasets by finding linear combinations of variables in each dataset that are maximally correlated, thereby revealing underlying relationships and shared structures across different data modalities.
+
+::: {.block3}
+**Input/Output.** The input of CCA is two matrices, $X \in \mathbb{R}^{n \times p}$ and $Y \in \mathbb{R}^{n \times q}$ be two datasets measured on the same $n$ observations.
+The main output is $Z^{(1)}, Z^{(2)} \in \mathbb{R}^{n \times k}$, where $k \ll \min\{p,q\}$ (where there are $k$ latent dimensions), which are the pair of canonical score matrices. Each pair of columns from $Z^{(1)}$ and $Z^{(2)}$ (for example, the first column of $Z^{(1)}$ and the first column of $Z^{(2)}$) denote linear transformations (one applied to $X$, another applied to $Y$) the yields the highest correlation possible.
+:::
+
+Some brief description of the details: CCA seeks to identify linear projections of $X$ and $Y$ that are maximally correlated. Specifically, it finds vectors $u \in \mathbb{R}^{p}$ and $v \in \mathbb{R}^{q}$ that maximize the correlation between the canonical variables $Xu$ and $Yv$:
+$$
+\max_{u, v} \quad \frac{u^\top \Sigma_{XY} v}{\sqrt{u^\top \Sigma_{XX} u} \sqrt{v^\top \Sigma_{YY} v}}, \quad \text{such that}\quad \|u\|_2 = \|v\|_2 = 1,
+$$
+where $\Sigma_{XX}$, $\Sigma_{YY}$, and $\Sigma_{XY}$ are the covariance matrices of $X$, $Y$, and their cross-covariance, respectively. The solutions, known as \textbf{canonical scores}, form the matrices $Z^{(1)} = Xu \in \mathbb{R}^{n\times 1}$ and $Z^{(2)} = Yv \in \mathbb{R}^{n\times 1}$, where $u$ and $v$ contain the canonical weights ("loadings"). 
+This is for the first *pair* of canonical scores. To find the next pair of canonical scores, you perform the same optimization above but constrained that the next $u$ and $v$ are orthogonal to any of the preceding's $\{u,v\}$ pair of canonical scores.
+CCA is widely used for multimodal data integration, where it helps uncover shared structures between datasets by aligning their latent representations[^1]. The solution for this is based on a series of eigen-decompositions of $\Sigma_{XX}$, $\Sigma_{YY}$, and $\Sigma_{XY}$.
+  
+[^1]: I'm specifically being a bit coy with the details because the full explanation of CCA requires quite a lot of notation. I'm explaining the motivation of CCA where you iteratively solve for one pair of canonical score matrices at a time, but with a bit more notation, you can write down CCA in a more compact fashion
+
+### Brief description of Tilted-CCA
+
+Tilted-CCA is a bit convoluted to explain mathematically, but the goal is self-contained.
+
+::: {.block3}
+**Input/Output.** The input to Tilted-CCA is any multi-modal sequencing matrix: the normalized matrix $X \in \mathbb{R}^{n\times p}$ for $n$ cells and $p$ features, and another normalized matrix $Y \in \mathbb{R}^{n\times q}$ for $n$ cells and $q$ features, where, importantly, 1) the two matrices need to be already preprocessed and normalized, and 2) the same $n$ cells are measured in $X$ and $Y$ (i.e., paired data). The output is: $C, D^{(1)}, D^{(2)} \in \mathbb{R}^{n \times k}$, where $k \ll \min\{p,q\}$ (where there are $k$ latent dimensions). Here, $C$ denotes the "common" signal between $X$ and $Y$, while $D^{(1)}$ and $D^{(2)}$ denote the "modality-distinct" signal in only $X$ but not $Y$ (or vice versa, respectively). (Tilted-CCA can also output the "common" or "distinct" component of $X$ or $Y$.)
+:::
+
+It's easier to describe why a method like Tilted-CCA exists: CCA gives you two matrices ($Z^{(1)}$ and $Z^{(2)}$). Tilted-CCA aims to decompose $Z^{(1)}$ and $Z^{(2)}$ into *three* matrices, one for the common signal between $X$ and $Y$, and the two others for the unique signals in each modality. Essentially, Tilted-CCA defines the "signal" via geometric relations based on the nearest-neighbor graph of cells. It does the following four-step process:
+
+1. **Perform CCA**: Perform CCA on $X$ and $Y$ to obtain the two canonical score matrices, $Z^{(1)}$ and $Z^{(2)}$.
+2. **Learn the nearest-neighbor graphs**: Construct the nearest-neighbor graphs, one based on the leading principal components of $X$, and another based on the leading principal components of $Y$. This yields two graphs, $G^{(1)}$ and $G^{(2)}$ (among the $n$ cells).
+3. **Construct the common nearest-neighbor graph**: Based on $G^{(1)}$ and $G^{(2)}$, construct $G$ which denotes the common geometric patterns found in both $X$ and $Y$.
+4. **Decompose the canonical scores**: Based on $Z^{(1)}$ and $Z^{(2)}$ and the common graph $G$, learn a decomposition $Z^{(1)} = C+D^{(1)}$ and $Z^{(2)} = C+D^{(2)}$, where:  
+   1) $C$ contains the common geometric relations found in $G$, and  
+   2) $D^{(1)}$ and $D^{(2)}$ are orthogonal.
+
+---
+
+**A brief note on other approaches.**  
+There aren't too many methods in this category for single-cell analyses yet, but it's very common in broader computer science. CLIP [@radford2021learning] is a great example, where the goal is to learn how to jointly embed text and images, based on training data where each image has a caption. In the single-cell world, this task is sometimes called *translation* (not to be confused with the biological process of translation where mRNA gets translated into proteins). Here, "translation" means, "I want to *translate* the gene expression profile into the profile of a different modality." BABEL [@wu2021babel] is an example of this (but this is for RNA-ATAC data, which is the omic we will be discussing next chapter in @sec-chapter_5.)
+
+::: {#rem-union-intersection .block2}
+**Personal opinion: How do I tell if a multi-omic integration is doing the "union" or "intersection" of information?**  
+
+Suppose you have paired multi-omic data (like in CITE-seq), and you are thinking of creating an embedding that puts each cell into one low-dimensional space, using both modalities. How do you tell if your planned method is the "union" (like in @sec-union_totalvi) or the "intersection" (like in @sec-intersection_tcca)?  
+
+Broadly speaking, you want to ask yourself this loose conceptual question: Is your output embedding trying to preserve and aggregate all the biological signal across both modalities (i.e., envision a hoarder — someone not willing to let any biological information get thrown out), like in Total-VI? In that case, your method is more like a "union of information," where you're hoping to create one embedding that shows you "the best of both worlds" — regardless of which modality the signal is coming from, you want it in your embedding.  
+
+However, if your output embedding is purposefully trying to throw out biological signal such that the only signal remaining is specifically the ones that are shared between both modalities (i.e., envision the captain of a ship who wants the ship to go faster — someone willing to jettison anything overboard not essential), like in Tilted-CCA? In that case, your method is more like an "intersection of information," where you're hoping to only preserve the biological processes that affect both modalities. (If a process is specific to only the RNA and not the other omic, you don't mind throwing it out because it might not be relevant to your question of interest.)  
+
+In the end, it's all about the biology. What are you trying to understand from your data?
+:::
+
+If you are interested in the math, there are actually a lot of matrix decompositions of multi-modal data, but each does something slightly different. My dichotomy of "union" and "intersection" is (in reality) overly simplistic. If you read into other matrix factorizations for multi-modal data, such as JIVE [@lock2013joint], you'll need to think deeply about: 1) what the optimization problem is solving, and 2) how the optimization problem relates to the intended biology you're trying to learn.
+
+---
+
+## Note about the future: Intracellular proteins
+
+Single-cell RNA sequencing (scRNA-seq) and multimodal techniques such as CITE-seq have revolutionized our ability to profile cellular states, but they remain largely focused on transcriptomic and surface protein measurements. Measuring single-cell proteomics presents unique challenges compared to single-cell RNA sequencing (scRNA-seq), largely due to the fundamental differences in how proteins and nucleic acids are analyzed. Unlike RNA, which can be amplified exponentially using PCR, proteins cannot be amplified in a similar manner. This makes every step of protein analysis — cell lysis, protein extraction, digestion, and mass spectrometry detection — subject to losses that can't be recovered or compensated for by amplification. Additionally, most single-cell proteomic methods rely on well-characterized affinity reagents, typically antibodies, which come with limitations such as cross-reactivity and restricted target availability. Expanding the repertoire of affinity reagents, including recombinant antibody fragments and aptamers, is an ongoing effort to improve detection coverage and specificity. However, the need for high-quality reagents and complex conjugation strategies further complicates single-cell proteomics compared to the relatively straightforward barcoding and sequencing of mRNA. See [@bennett2023single] for a comprehensive review.
+
+Recent technological advances are making intracellular protein sequencing feasible. Methods such as NEAT-seq [@chen2022neat] and intranuclear CITE-seq [@chung2021joint] are extending antibody-based oligonucleotide tagging to nuclear proteins, enabling the simultaneous measurement of chromatin accessibility, RNA expression, and transcription factor abundance. These approaches help bridge the gap between transcriptional and proteomic data by directly quantifying regulatory proteins at the single-cell level. Additionally, mass spectrometry-based single-cell proteomics (scMS) is emerging as an alternative that does not rely on affinity reagents, allowing for unbiased proteomic profiling, including the identification of post-translational modifications.
+
+Looking ahead, efforts to integrate intracellular protein sequencing with existing multiomic platforms will likely transform our understanding of cellular regulation. This is often done by combining mass spectrometry with sequencing-based techniques, such as nanoSPLITS [@fulcher2024parallel], which enables parallel scRNA-seq and scMS from the same cell.
+
+(When we discuss spatial proteomics briefly along spatial transcriptomics later in the notes in @sec-chapter_9. See [@mund2022unbiased].)
+
+# Single-cell epigenetics {#sec-chapter_5}
+
+## Primer on the genome, epigenetics, and enhancers
+
+The genome is the complete set of DNA within an organism, encoding the instructions for life. While every cell in an organism typically contains the same genome, different cells exhibit distinct phenotypes and functions. This diversity arises not from changes in the underlying DNA sequence but from epigenetic regulation — heritable modifications that influence gene expression without altering the DNA itself. Epigenetics includes processes like DNA methylation, histone modification, and chromatin accessibility, all of which contribute to the dynamic regulation of gene activity in response to developmental cues and environmental signals.
+
+Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See @fig-enhancer-promoter to appreciate how complex this machinery is.
+
+
+
+
 [^1]: Each feature in the protein modality in CITE-seq data is often called ADT. It might sometimes be called a protein marker as well.  
 [^2]: Notice there is no "library size" for protein.  
 [^3]: Technically, $z_n$ is a Logistic Normal, which means it's a distribution over the simplex. See more details in <https://docs.scvi-tools.org/en/latest/user_guide/models/totalvi.html>.
