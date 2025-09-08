@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Single-cell epigenetics – scOmicNotes</title>
+<title>scOmicNotes - 6&nbsp; Single-cell epigenetics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -52,29 +51,22 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./chapter6_dna.html" rel="next">
 <link href="./chapter4_protein.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,58 +75,29 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter5_epigenetics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter5_epigenetics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,7 +107,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">scOmicNotes</a> 
@@ -226,7 +189,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -279,35 +242,25 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <section id="primer-on-the-genome-epigenetics-and-enhancers" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="primer-on-the-genome-epigenetics-and-enhancers"><span class="header-section-number">6.1</span> Primer on the genome, epigenetics, and enhancers</h2>
 <p>The genome is the complete set of DNA within an organism, encoding the instructions for life. While every cell in an organism typically contains the same genome, different cells exhibit distinct phenotypes and functions. This diversity arises not from changes in the underlying DNA sequence but from epigenetic regulation—heritable modifications that influence gene expression without altering the DNA itself. Epigenetics includes processes like DNA methylation, histone modification, and chromatin accessibility, all of which contribute to the dynamic regulation of gene activity in response to developmental cues and environmental signals.</p>
-<p>Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See <a href="#fig-enhancer-promoter1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> and <a href="#fig-enhancer-promoter2" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> to appreciate how complex this machinery is.</p>
+<p>Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See <a href="#fig-enhancer-promoter1">Figure&nbsp;<span>6.1</span></a> and <a href="#fig-enhancer-promoter2">Figure&nbsp;<span>6.2</span></a> to appreciate how complex this machinery is.</p>
 <div class="block">
-<div id="fig-enhancer-promoter1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-enhancer-promoter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/enhancer-promoter.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">Ito et al. (<a href="references.html#ref-ito2022factors" role="doc-biblioref">2022</a>)</span>.
-</figcaption>
+<div id="fig-enhancer-promoter1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/enhancer-promoter.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.1: From <span class="citation" data-cites="ito2022factors">Ito et al. (<a href="references.html#ref-ito2022factors" role="doc-biblioref">2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-enhancer-promoter2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-enhancer-promoter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/enhancer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-enhancer-promoter2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhancers">Claringbould and Zaugg (<a href="references.html#ref-claringbould2021enhancers" role="doc-biblioref">2021</a>)</span>.
-</figcaption>
+<div id="fig-enhancer-promoter2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/enhancer.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhancers">Claringbould and Zaugg (<a href="references.html#ref-claringbould2021enhancers" role="doc-biblioref">2021</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -317,219 +270,155 @@ Figure&nbsp;6.2: From <span class="citation" data-cites="claringbould2021enhance
 <p>Epigenetics encompasses a vast array of molecular mechanisms that regulate gene expression without altering the underlying DNA sequence. These mechanisms include modifications to DNA, RNA, chromatin, and the spatial organization of the genome, collectively forming a complex regulatory landscape. Below are some of the key modalities studied in epigenetics:</p>
 <ul>
 <li><p><strong>DNA Accessibility</strong>: Techniques like ATAC-seq and DNase-seq measure how accessible DNA is to transcription factors and other regulatory proteins. Accessible regions often overlap with promoters and enhancers, providing critical insights into gene regulation. (This is what we’ll focus on this chapter.)</p></li>
-<li><p><strong>DNA Methylation</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See <a href="#fig-methylation1-1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> and <a href="#fig-methylation1-2" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>.</p></li>
+<li><p><strong>DNA Methylation</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: This modification, typically at cytosines in CpG dinucleotides, is a key epigenetic mark associated with gene silencing. Tools like bisulfite sequencing are used to map methylation patterns across the genome, revealing their roles in development and disease. See <a href="#fig-methylation1-1">Figure&nbsp;<span>6.3</span></a> and <a href="#fig-methylation1-2">Figure&nbsp;<span>6.4</span></a>.</p></li>
 </ul>
 <div class="block">
-<div id="fig-methylation1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-methylation1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/methylation1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-methylation1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: From <span class="citation" data-cites="gauba2021immunomodulation">Gauba et al. (<a href="references.html#ref-gauba2021immunomodulation" role="doc-biblioref">2021</a>)</span>.
-</figcaption>
+<div id="fig-methylation1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/methylation1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.3: From <span class="citation" data-cites="gauba2021immunomodulation">Gauba et al. (<a href="references.html#ref-gauba2021immunomodulation" role="doc-biblioref">2021</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-methylation1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-methylation1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/methylation2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-methylation1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: From <span class="citation" data-cites="bruggeman2008using">Bruggeman-Everts (<a href="references.html#ref-bruggeman2008using" role="doc-biblioref">2008</a>)</span>.
-</figcaption>
+<div id="fig-methylation1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/methylation2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.4: From <span class="citation" data-cites="bruggeman2008using">Bruggeman-Everts (<a href="references.html#ref-bruggeman2008using" role="doc-biblioref">2008</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Hi-C and Genome Organization</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See <a href="#fig-hic1-1" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> and <a href="#fig-hic1-2" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</li>
+<li><strong>Hi-C and Genome Organization</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>: Hi-C measures chromatin interactions to reveal the three-dimensional structure of the genome. It uncovers features like topologically associating domains (TADs) and enhancer-promoter loops, which are crucial for understanding how spatial organization influences gene regulation. See <a href="#fig-hic1-1">Figure&nbsp;<span>6.5</span></a> and <a href="#fig-hic1-2">Figure&nbsp;<span>6.6</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-hic1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hic1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/hic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hic1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: From <span class="citation" data-cites="ea2015contribution">Ea et al. (<a href="references.html#ref-ea2015contribution" role="doc-biblioref">2015</a>)</span>.
-</figcaption>
+<div id="fig-hic1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/hic1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.5: From <span class="citation" data-cites="ea2015contribution">Ea et al. (<a href="references.html#ref-ea2015contribution" role="doc-biblioref">2015</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-hic1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hic1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/hic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hic1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.6: From <span class="citation" data-cites="liu2021seeing">N. Liu et al. (<a href="references.html#ref-liu2021seeing" role="doc-biblioref">2021</a>)</span>.
-</figcaption>
+<div id="fig-hic1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/hic2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.6: From <span class="citation" data-cites="liu2021seeing">N. Liu et al. (<a href="references.html#ref-liu2021seeing" role="doc-biblioref">2021</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Histone Modifications</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut &amp; Tag method are used to map these modifications and their role in gene expression at the bulk level. See <a href="#fig-histone1" class="quarto-xref">Figure&nbsp;<span>6.7</span></a> and <a href="#fig-histone2" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>.</li>
+<li><strong>Histone Modifications</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: Post-translational modifications, such as acetylation, methylation, and phosphorylation, occur on histone proteins and regulate chromatin structure. Techniques like ChIP-seq and the newer Cut &amp; Tag method are used to map these modifications and their role in gene expression at the bulk level. See <a href="#fig-histone1">Figure&nbsp;<span>6.7</span></a> and <a href="#fig-histone2">Figure&nbsp;<span>6.8</span></a>.</li>
 </ul>
 <div class="block">
-<div id="fig-histone1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-histone1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/histone1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histone1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.7: From <a href="https://opened.cuny.edu/courseware/lesson/684/student/?section=2" class="uri">https://opened.cuny.edu/courseware/lesson/684/student/?section=2</a>.
-</figcaption>
+<div id="fig-histone1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/histone1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.7: From <a href="https://opened.cuny.edu/courseware/lesson/684/student/?section=2" class="uri">https://opened.cuny.edu/courseware/lesson/684/student/?section=2</a>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-histone2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-histone2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/histone2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histone2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.8: From <span class="citation" data-cites="steinbach2017pten">Steinbach (<a href="references.html#ref-steinbach2017pten" role="doc-biblioref">2017</a>)</span>. (Note: This is an example of the “canonical” functions of common histone modifications. This is by no means exhaustive and guaranteed to hold true for all biological systems.)
-</figcaption>
+<div id="fig-histone2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/histone2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.8: From <span class="citation" data-cites="steinbach2017pten">Steinbach (<a href="references.html#ref-steinbach2017pten" role="doc-biblioref">2017</a>)</span>. (Note: This is an example of the “canonical” functions of common histone modifications. This is by no means exhaustive and guaranteed to hold true for all biological systems.)</figcaption>
 </figure>
 </div>
 </div>
-<p>Some of you might be interested: Personally, I think one of the fascinating concepts based on histone modifications is <em>bivalent chromatin</em> (essentially, chromatin that is wrapped in such a way that is simultaneously activated and silenced), see <a href="#fig-bivalent1-1" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> and <a href="#fig-bivalent1-2" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>. It’s a particularly curious phenomenon that entire labs dedicate themselves to studying. See <span class="citation" data-cites="blanco2020bivalent">Blanco et al. (<a href="references.html#ref-blanco2020bivalent" role="doc-biblioref">2020</a>)</span> for an overview why this mechanism might be “beneficial.”</p>
+<p>Some of you might be interested: Personally, I think one of the fascinating concepts based on histone modifications is <em>bivalent chromatin</em> (essentially, chromatin that is wrapped in such a way that is simultaneously activated and silenced), see <a href="#fig-bivalent1-1">Figure&nbsp;<span>6.9</span></a> and <a href="#fig-bivalent1-2">Figure&nbsp;<span>6.10</span></a>. It’s a particularly curious phenomenon that entire labs dedicate themselves to studying. See <span class="citation" data-cites="blanco2020bivalent">Blanco et al. (<a href="references.html#ref-blanco2020bivalent" role="doc-biblioref">2020</a>)</span> for an overview why this mechanism might be “beneficial.”</p>
 <div class="block">
-<div id="fig-bivalent1-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bivalent1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/bivalent1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bivalent1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.9: From <span class="citation" data-cites="macrae2023regulation">Macrae, Fothergill-Robinson, and Ramalho-Santos (<a href="references.html#ref-macrae2023regulation" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-bivalent1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/bivalent1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.9: From <span class="citation" data-cites="macrae2023regulation">Macrae, Fothergill-Robinson, and Ramalho-Santos (<a href="references.html#ref-macrae2023regulation" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-bivalent1-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bivalent1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/bivalent2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bivalent1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.10: From <span class="citation" data-cites="glancy2024bivalent">Glancy, Choy, and Eckersley-Maslin (<a href="references.html#ref-glancy2024bivalent" role="doc-biblioref">2024</a>)</span>.
-</figcaption>
+<div id="fig-bivalent1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/bivalent2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.10: From <span class="citation" data-cites="glancy2024bivalent">Glancy, Choy, and Eckersley-Maslin (<a href="references.html#ref-glancy2024bivalent" role="doc-biblioref">2024</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>RNA Modifications (m6A and Pseudouridine)</strong>: Modifications like N6-methyladenosine (m6A) and pseudouridine occur on RNA molecules and are involved in processes like splicing, translation, and mRNA decay. See <a href="#fig-pseudouridine" class="quarto-xref">Figure&nbsp;<span>6.11</span></a> for what pseudouridine is, i.e., “a rotation of the uridine molecule.” These modifications add an epitranscriptomic layer to gene regulation.</li>
+<li><strong>RNA Modifications (m6A and Pseudouridine)</strong>: Modifications like N6-methyladenosine (m6A) and pseudouridine occur on RNA molecules and are involved in processes like splicing, translation, and mRNA decay. See <a href="#fig-pseudouridine">Figure&nbsp;<span>6.11</span></a> for what pseudouridine is, i.e., “a rotation of the uridine molecule.” These modifications add an epitranscriptomic layer to gene regulation.</li>
 </ul>
 <div class="block">
-<div id="fig-pseudouridine" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pseudouridine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/pseudouridine.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pseudouridine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.11: From <span class="citation" data-cites="hamma2006pseudouridine">Hamma and Ferré-D’Amaré (<a href="references.html#ref-hamma2006pseudouridine" role="doc-biblioref">2006</a>)</span> about pseudouridine.
-</figcaption>
+<div id="fig-pseudouridine" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/pseudouridine.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.11: From <span class="citation" data-cites="hamma2006pseudouridine">Hamma and Ferré-D’Amaré (<a href="references.html#ref-hamma2006pseudouridine" role="doc-biblioref">2006</a>)</span> about pseudouridine.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Untranslated Regions (UTRs)</strong>: Before talking about UTRs, it’s probably good to review what an mRNA fragment “looks like” at the different stages of transcription and translation, see <a href="#fig-utr1" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation (<a href="#fig-utr2" class="quarto-xref">Figure&nbsp;<span>6.13</span></a> and <a href="#fig-utr3" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>).</li>
+<li><strong>Untranslated Regions (UTRs)</strong>: Before talking about UTRs, it’s probably good to review what an mRNA fragment “looks like” at the different stages of transcription and translation, see <a href="#fig-utr1">Figure&nbsp;<span>6.12</span></a>. The 5′ and 3′ UTRs contain regulatory elements that influence mRNA stability, localization, and translation efficiency. The 3′ UTR, in particular, serves as a binding platform for RNA-binding proteins and microRNAs, providing an additional layer of post-transcriptional gene regulation (<a href="#fig-utr2">Figure&nbsp;<span>6.13</span></a> and <a href="#fig-utr3">Figure&nbsp;<span>6.14</span></a>).</li>
 </ul>
 <div class="block">
-<div id="fig-utr1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-utr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/utr2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-utr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.12: From <span class="citation" data-cites="niazi2023rna">Niazi (<a href="references.html#ref-niazi2023rna" role="doc-biblioref">2023</a>)</span>. Notice the splicing (i.e., “removal” of the introns – see <em>Alternative Splicing</em> below) and that the protein-coding region is <em>not</em> the only part of the mRNA transcript – there are also the UTRs and poly-A tail. <strong>NOTE</strong>: The transcription start site (TSS) is <em>not</em> the same place as the promoter. The promoter is usually an un-transcribed region upstream of the TSS, while the TSS is where transcription actually starts.
-</figcaption>
+<div id="fig-utr1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/utr2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.12: From <span class="citation" data-cites="niazi2023rna">Niazi (<a href="references.html#ref-niazi2023rna" role="doc-biblioref">2023</a>)</span>. Notice the splicing (i.e., “removal” of the introns – see <em>Alternative Splicing</em> below) and that the protein-coding region is <em>not</em> the only part of the mRNA transcript – there are also the UTRs and poly-A tail. <strong>NOTE</strong>: The transcription start site (TSS) is <em>not</em> the same place as the promoter. The promoter is usually an un-transcribed region upstream of the TSS, while the TSS is where transcription actually starts.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-utr2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-utr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/utr1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-utr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.13: From <span class="citation" data-cites="mignone2002untranslated">Mignone et al. (<a href="references.html#ref-mignone2002untranslated" role="doc-biblioref">2002</a>)</span>.
-</figcaption>
+<div id="fig-utr2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/utr1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.13: From <span class="citation" data-cites="mignone2002untranslated">Mignone et al. (<a href="references.html#ref-mignone2002untranslated" role="doc-biblioref">2002</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-utr3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-utr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/utr3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-utr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.14: From <a href="https://www.cambio.co.uk/9/257/applications/methods/in-vitro-transcription/mrna-therapeutics/" class="uri">https://www.cambio.co.uk/9/257/applications/methods/in-vitro-transcription/mrna-therapeutics/</a>.
-</figcaption>
+<div id="fig-utr3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/utr3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.14: From <a href="https://www.cambio.co.uk/9/257/applications/methods/in-vitro-transcription/mrna-therapeutics/" class="uri">https://www.cambio.co.uk/9/257/applications/methods/in-vitro-transcription/mrna-therapeutics/</a>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Alternative Splicing</strong>: This post-transcriptional process generates multiple mRNA isoforms from the same gene, expanding the proteomic diversity, see <a href="#fig-alternativesplicing1" class="quarto-xref">Figure&nbsp;<span>6.15</span></a>. <strong>This is a combinatorial explosion of isoforms.</strong> While not traditionally classified as epigenetic, splicing often intersects with chromatin modifications and RNA-binding proteins, blurring the lines between transcriptional and post-transcriptional regulation.</li>
+<li><strong>Alternative Splicing</strong>: This post-transcriptional process generates multiple mRNA isoforms from the same gene, expanding the proteomic diversity, see <a href="#fig-alternativesplicing1">Figure&nbsp;<span>6.15</span></a>. <strong>This is a combinatorial explosion of isoforms.</strong> While not traditionally classified as epigenetic, splicing often intersects with chromatin modifications and RNA-binding proteins, blurring the lines between transcriptional and post-transcriptional regulation.</li>
 </ul>
 <div class="block">
-<div id="fig-alternativesplicing1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-alternativesplicing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/alternativesplicing1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alternativesplicing1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.15: From <span class="citation" data-cites="chen2015alternative">J. Chen and Weiss (<a href="references.html#ref-chen2015alternative" role="doc-biblioref">2015</a>)</span>.
-</figcaption>
+<div id="fig-alternativesplicing1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/alternativesplicing1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.15: From <span class="citation" data-cites="chen2015alternative">J. Chen and Weiss (<a href="references.html#ref-chen2015alternative" role="doc-biblioref">2015</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <ul>
-<li><strong>Alternative Polyadenylation (APA)</strong>: APA generates transcript isoforms with different 3′ ends, affecting mRNA stability, localization, and translation, see <a href="#fig-apa1" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>. By selecting distinct cleavage sites, APA alters the <em>3′ UTR length</em> without affecting the poly-A tail itself, thereby modulating interactions with regulatory factors such as microRNAs and RNA-binding proteins.</li>
+<li><strong>Alternative Polyadenylation (APA)</strong>: APA generates transcript isoforms with different 3′ ends, affecting mRNA stability, localization, and translation, see <a href="#fig-apa1">Figure&nbsp;<span>6.16</span></a>. By selecting distinct cleavage sites, APA alters the <em>3′ UTR length</em> without affecting the poly-A tail itself, thereby modulating interactions with regulatory factors such as microRNAs and RNA-binding proteins.</li>
 </ul>
 <div class="block">
-<div id="fig-apa1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-apa1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/apa1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-apa1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.16: From <span class="citation" data-cites="li2022population">L. Li et al. (<a href="references.html#ref-li2022population" role="doc-biblioref">2022</a>)</span>.
-</figcaption>
+<div id="fig-apa1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/apa1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.16: From <span class="citation" data-cites="li2022population">L. Li et al. (<a href="references.html#ref-li2022population" role="doc-biblioref">2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <p>Efforts like the ENCODE project (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7061942/" class="uri">https://pmc.ncbi.nlm.nih.gov/articles/PMC7061942/</a>) have systematically mapped these modalities across cell types and tissues, creating a comprehensive resource for understanding genome function. ENCODE has provided invaluable datasets on DNA accessibility, histone modifications, and RNA-binding proteins, enabling researchers to uncover how epigenetic and transcriptomic layers work together to drive cellular processes.</p>
 <p>Finally, tools like MPRA (Massively Parallel Reporter Assays) are revolutionizing how we study enhancers and regulatory sequences. MPRA allows researchers to test thousands of DNA fragments for their regulatory activity, providing functional validation for epigenetic marks. This growing zoo of modalities continues to expand our understanding of how the genome is dynamically regulated in health and disease.</p>
-<p>See <a href="#fig-epigenetic2-1" class="quarto-xref">Figure&nbsp;<span>6.17</span></a> and <a href="#fig-epigenetic2-2" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> for some courageous figures that try to display multiple types of epigenetic modifications all at once. See <span class="citation" data-cites="lim2024advances">Lim et al. (<a href="references.html#ref-lim2024advances" role="doc-biblioref">2024</a>)</span> for a broad overview about the different types of technologies to sequence different omics and layers of epigenetics, and how they are getting computationally put together.</p>
+<p>See <a href="#fig-epigenetic2-1">Figure&nbsp;<span>6.17</span></a> and <a href="#fig-epigenetic2-2">Figure&nbsp;<span>6.18</span></a> for some courageous figures that try to display multiple types of epigenetic modifications all at once. See <span class="citation" data-cites="lim2024advances">Lim et al. (<a href="references.html#ref-lim2024advances" role="doc-biblioref">2024</a>)</span> for a broad overview about the different types of technologies to sequence different omics and layers of epigenetics, and how they are getting computationally put together.</p>
 <div class="block">
-<div id="fig-epigenetic2-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-epigenetic2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/epigenetic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epigenetic2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.17: From <a href="https://www.sc-best-practices.org/chromatin_accessibility/introduction.html" class="uri">https://www.sc-best-practices.org/chromatin_accessibility/introduction.html</a>.
-</figcaption>
+<div id="fig-epigenetic2-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/epigenetic2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.17: From <a href="https://www.sc-best-practices.org/chromatin_accessibility/introduction.html" class="uri">https://www.sc-best-practices.org/chromatin_accessibility/introduction.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-epigenetic2-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-epigenetic2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/epigenetic3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-epigenetic2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.18: From <a href="https://www.whatisepigenetics.com/type-2-diabetes-mellitus-and-epigenetics" class="uri">https://www.whatisepigenetics.com/type-2-diabetes-mellitus-and-epigenetics</a>.
-</figcaption>
+<div id="fig-epigenetic2-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/epigenetic3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.18: From <a href="https://www.whatisepigenetics.com/type-2-diabetes-mellitus-and-epigenetics" class="uri">https://www.whatisepigenetics.com/type-2-diabetes-mellitus-and-epigenetics</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -563,16 +452,12 @@ Figure&nbsp;6.18: From <a href="https://www.whatisepigenetics.com/type-2-diabete
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="primer-on-chromatin-accessibility-and-peaks"><span class="header-section-number">6.4.1</span> Primer on chromatin accessibility and “peaks”</h3>
 <p>Chromatin accessibility refers to the degree to which DNA is physically accessible to regulatory proteins such as transcription factors, RNA polymerase, and other elements of the transcriptional machinery. In eukaryotic cells, DNA is wrapped around histone proteins to form chromatin, which can exist in a <em>closed</em> or <em>open</em> state. Open chromatin regions are more likely to contain active regulatory elements such as promoters and enhancers, while closed chromatin regions are generally associated with transcriptional repression. Profiling chromatin accessibility provides insights into which regulatory elements are active in a given cell state, offering a complementary perspective to RNA-seq data.</p>
 <p>In single-cell ATAC-seq experiments, accessible chromatin regions are identified as <em>peaks</em>, which represent DNA regions where the transposase enzyme preferentially inserts sequencing adapters. These peaks correspond to genomic loci where nucleosomes are absent or displaced, indicating active regulatory sites. Peaks are typically mapped to gene promoters, enhancers, or other functional elements to infer regulatory activity. By integrating chromatin accessibility with gene expression data from the same cells, 10x Multiome enables researchers to connect regulatory regions with their target genes, uncovering how chromatin structure influences transcriptional programs and cell fate decisions.</p>
-<p>The resulting data often looks like <a href="#fig-track-data-peak" class="quarto-xref">Figure&nbsp;<span>6.19</span></a>, where, for each genomic region, you can define “peaks” where there are regions of accessible DNA.</p>
+<p>The resulting data often looks like <a href="#fig-track-data-peak">Figure&nbsp;<span>6.19</span></a>, where, for each genomic region, you can define “peaks” where there are regions of accessible DNA.</p>
 <div class="block">
-<div id="fig-track-data-peak" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-track-data-peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/track-data-peak.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-track-data-peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.19: From <a href="https://stuartlab.org/signac/articles/mouse_brain_vignette" class="uri">https://stuartlab.org/signac/articles/mouse_brain_vignette</a>. The gray bars on the bottom (i.e., “Peaks”) are derived based on the tracks shown up top (in different colors, based on the average accessibility at each base pair of the reference DNA for different cells of various cell types). The blue horizon bar (i.e., “Genes”) tells you roughly where the introns and exons of a particular gene is.
-</figcaption>
+<div id="fig-track-data-peak" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/track-data-peak.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.19: From <a href="https://stuartlab.org/signac/articles/mouse_brain_vignette" class="uri">https://stuartlab.org/signac/articles/mouse_brain_vignette</a>. The gray bars on the bottom (i.e., “Peaks”) are derived based on the tracks shown up top (in different colors, based on the average accessibility at each base pair of the reference DNA for different cells of various cell types). The blue horizon bar (i.e., “Genes”) tells you roughly where the introns and exons of a particular gene is.</figcaption>
 </figure>
 </div>
 </div>
@@ -581,26 +466,18 @@ Figure&nbsp;6.19: From <a href="https://stuartlab.org/signac/articles/mouse_brai
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="brief-description-of-the-technology"><span class="header-section-number">6.4.2</span> Brief description of the technology</h3>
 <p>The following are the high-level steps involved in performing single-cell multiome sequencing using the 10x Genomics Multiome ATAC + Gene Expression platform:</p>
 <div class="block">
-<div id="fig-atac-left" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-atac-left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/atac2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atac-left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.20: From <span class="citation" data-cites="buenrostro2015atac">Buenrostro et al. (<a href="references.html#ref-buenrostro2015atac" role="doc-biblioref">2015</a>)</span>.
-</figcaption>
+<div id="fig-atac-left" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/atac2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.20: From <span class="citation" data-cites="buenrostro2015atac">Buenrostro et al. (<a href="references.html#ref-buenrostro2015atac" role="doc-biblioref">2015</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-atac-right" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-atac-right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/atac1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atac-right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.21: From <a href="https://www.quickbiology.com/ngs-services/atac-seq-service" class="uri">https://www.quickbiology.com/ngs-services/atac-seq-service</a>.
-</figcaption>
+<div id="fig-atac-right" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/atac1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.21: From <a href="https://www.quickbiology.com/ngs-services/atac-seq-service" class="uri">https://www.quickbiology.com/ngs-services/atac-seq-service</a>.</figcaption>
 </figure>
 </div>
 </div>
@@ -627,16 +504,12 @@ The prepared RNA and ATAC libraries are sequenced on an Illumina platform, typic
 Sequencing reads are mapped to the genome, with RNA reads assigned to transcripts and ATAC reads aligned to open chromatin regions. Barcode information is used to link the RNA and chromatin profiles back to individual cells, enabling multi-modal analyses.</li>
 </ol>
 <p><strong>Brief note about peak-calling.</strong><br>
-Peak-calling is the computational process of identifying regions of open chromatin from ATAC-seq data, where transposase insertion events are enriched. These peaks represent accessible regulatory elements such as promoters, enhancers, and transcription factor binding sites. Peak-calling algorithms, such as MACS2 or the cellranger-atac pipeline (see <a href="#fig-peak-calling" class="quarto-xref">Figure&nbsp;<span>6.22</span></a>), detect significant enrichments in sequencing reads while accounting for background noise and sequencing biases. In single-cell ATAC-seq, peak-calling is often performed at the population level or adapted to sparse single-cell data by aggregating similar cells. Accurate peak-calling is essential for interpreting chromatin accessibility patterns and linking regulatory regions to gene expression.</p>
+Peak-calling is the computational process of identifying regions of open chromatin from ATAC-seq data, where transposase insertion events are enriched. These peaks represent accessible regulatory elements such as promoters, enhancers, and transcription factor binding sites. Peak-calling algorithms, such as MACS2 or the cellranger-atac pipeline (see <a href="#fig-peak-calling">Figure&nbsp;<span>6.22</span></a>), detect significant enrichments in sequencing reads while accounting for background noise and sequencing biases. In single-cell ATAC-seq, peak-calling is often performed at the population level or adapted to sparse single-cell data by aggregating similar cells. Accurate peak-calling is essential for interpreting chromatin accessibility patterns and linking regulatory regions to gene expression.</p>
 <div class="block">
-<div id="fig-peak-calling" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-peak-calling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/peak-calling.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peak-calling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.22: From <a href="https://www.10xgenomics.com/support/software/cell-ranger-arc/latest/algorithms-overview/algorithms-overview" class="uri">https://www.10xgenomics.com/support/software/cell-ranger-arc/latest/algorithms-overview/algorithms-overview</a>. You can see that ATAC-seq measures these DNA fragments, and a “peak” is a computational object that denotes a high concentration of overlapping fragments.
-</figcaption>
+<div id="fig-peak-calling" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/peak-calling.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.22: From <a href="https://www.10xgenomics.com/support/software/cell-ranger-arc/latest/algorithms-overview/algorithms-overview" class="uri">https://www.10xgenomics.com/support/software/cell-ranger-arc/latest/algorithms-overview/algorithms-overview</a>. You can see that ATAC-seq measures these DNA fragments, and a “peak” is a computational object that denotes a high concentration of overlapping fragments.</figcaption>
 </figure>
 </div>
 </div>
@@ -647,33 +520,25 @@ See <span class="citation" data-cites="mansisidor2022chromatin">Mansisidor and R
 <section id="chromvar-the-most-commonly-used-method-to-assess-binding-regions" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="chromvar-the-most-commonly-used-method-to-assess-binding-regions"><span class="header-section-number">6.5</span> ChromVAR: The most commonly used method to assess binding regions</h2>
 <p>ChromVAR (short for Chromatin Variability Across Regions, <span class="citation" data-cites="schep2017chromvar">Schep et al. (<a href="references.html#ref-schep2017chromvar" role="doc-biblioref">2017</a>)</span>) is a computational tool designed to analyze chromatin accessibility data, such as those generated from ATAC-seq or single-cell ATAC-seq experiments. Its primary goal is to quantify variability in chromatin accessibility across predefined genomic regions, such as transcription factor binding motifs or enhancers, and link these patterns to regulatory factors that drive cell state differences.</p>
-<p><strong>What the heck is a motif?</strong> A <strong>motif</strong> is a short, recurring DNA sequence pattern that is recognized and bound by specific transcription factors (TFs) to regulate gene expression, see <a href="#fig-motif" class="quarto-xref">Figure&nbsp;<span>6.23</span></a>. These motifs are typically found in promoters, enhancers, and other regulatory regions of the genome. Motifs are often represented as <em>position weight matrices (PWMs)</em>, which describe the probability of observing each nucleotide (A, T, C, G) at a given position in the sequence. Identifying motif enrichment in chromatin accessibility data helps infer which transcription factors are active in a given cell type or condition. ChromVAR leverages these motifs to assess whether specific transcription factors are driving chromatin accessibility changes, providing insights into cell-type-specific regulatory programs.</p>
+<p><strong>What the heck is a motif?</strong> A <strong>motif</strong> is a short, recurring DNA sequence pattern that is recognized and bound by specific transcription factors (TFs) to regulate gene expression, see <a href="#fig-motif">Figure&nbsp;<span>6.23</span></a>. These motifs are typically found in promoters, enhancers, and other regulatory regions of the genome. Motifs are often represented as <em>position weight matrices (PWMs)</em>, which describe the probability of observing each nucleotide (A, T, C, G) at a given position in the sequence. Identifying motif enrichment in chromatin accessibility data helps infer which transcription factors are active in a given cell type or condition. ChromVAR leverages these motifs to assess whether specific transcription factors are driving chromatin accessibility changes, providing insights into cell-type-specific regulatory programs.</p>
 <div class="block">
-<div id="fig-motif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-motif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/motif.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-motif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.23: From <span class="citation" data-cites="habib2007analysis">Habib (<a href="references.html#ref-habib2007analysis" role="doc-biblioref">2007</a>)</span>.
-</figcaption>
+<div id="fig-motif" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/motif.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.23: From <span class="citation" data-cites="habib2007analysis">Habib (<a href="references.html#ref-habib2007analysis" role="doc-biblioref">2007</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
-<p><strong>Sidenote about motifs.</strong> If you work on scATAC-seq or ChIP-seq data long enough, you’ll eventually need to learn about: 1) how to detect potential binding sites in your data, and 2) how to find a database of “known” motifs. For the first point, HOMER <span class="citation" data-cites="heinz2010simple">Heinz et al. (<a href="references.html#ref-heinz2010simple" role="doc-biblioref">2010</a>)</span> is a <em>very</em> common bioinformatics tool. It takes in a bunch of DNA regions, and then finds DNA motifs that are significantly enriched as well as which potential TF might match those motifs, see <a href="#fig-homer" class="quarto-xref">Figure&nbsp;<span>6.24</span></a>. For the second point, JASPAR is one of the more common databases of TFs, see <a href="https://jaspar.elixir.no/" class="uri">https://jaspar.elixir.no/</a> and <span class="citation" data-cites="fornes2020jaspar">Fornes et al. (<a href="references.html#ref-fornes2020jaspar" role="doc-biblioref">2020</a>)</span>. In R, the Bioconductor package is called <code>JASPAR2020</code>.</p>
+<p><strong>Sidenote about motifs.</strong> If you work on scATAC-seq or ChIP-seq data long enough, you’ll eventually need to learn about: 1) how to detect potential binding sites in your data, and 2) how to find a database of “known” motifs. For the first point, HOMER <span class="citation" data-cites="heinz2010simple">Heinz et al. (<a href="references.html#ref-heinz2010simple" role="doc-biblioref">2010</a>)</span> is a <em>very</em> common bioinformatics tool. It takes in a bunch of DNA regions, and then finds DNA motifs that are significantly enriched as well as which potential TF might match those motifs, see <a href="#fig-homer">Figure&nbsp;<span>6.24</span></a>. For the second point, JASPAR is one of the more common databases of TFs, see <a href="https://jaspar.elixir.no/" class="uri">https://jaspar.elixir.no/</a> and <span class="citation" data-cites="fornes2020jaspar">Fornes et al. (<a href="references.html#ref-fornes2020jaspar" role="doc-biblioref">2020</a>)</span>. In R, the Bioconductor package is called <code>JASPAR2020</code>.</p>
 <div class="block">
-<div id="fig-homer" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-homer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/homer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.24: From <a href="http://homer.ucsd.edu/homer//motif/motifFinding.html" class="uri">http://homer.ucsd.edu/homer//motif/motifFinding.html</a>.
-</figcaption>
+<div id="fig-homer" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/homer.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.24: From <a href="http://homer.ucsd.edu/homer//motif/motifFinding.html" class="uri">http://homer.ucsd.edu/homer//motif/motifFinding.html</a>.</figcaption>
 </figure>
 </div>
 </div>
-<p><strong>Details of ChromVAR.</strong> ChromVAR works by computing <strong>deviation scores</strong>, which measure how much the accessibility of a given set of regions (e.g., those containing a specific transcription factor motif) varies across cells or samples. This enables the identification of transcription factors that are likely active and driving regulatory differences within the dataset. See <a href="#fig-chromvar" class="quarto-xref">Figure&nbsp;<span>6.25</span></a>.</p>
+<p><strong>Details of ChromVAR.</strong> ChromVAR works by computing <strong>deviation scores</strong>, which measure how much the accessibility of a given set of regions (e.g., those containing a specific transcription factor motif) varies across cells or samples. This enables the identification of transcription factors that are likely active and driving regulatory differences within the dataset. See <a href="#fig-chromvar">Figure&nbsp;<span>6.25</span></a>.</p>
 <div class="block3">
 <p><strong>Input/Output.</strong> The input for a ChromVAR analysis is: 1) <span class="math inline">\(\in \mathbb{Z}_{+}^{n \times p}\)</span> for the <span class="math inline">\(n\)</span> cells and <span class="math inline">\(p\)</span> peaks, 2) the specific locations of the <span class="math inline">\(p\)</span> peaks along the reference genome (for example, in humans, this could be the <code>hg38</code> reference genome, and in R, this is typically managed by the <code>GenomicRanges</code> BioConductor package, and 3) a database of TF motifs, such as JASPAR. (*Technically*), you don’t actually pass Item #2 or #3 as input. ChromVAR already expects you to have matched peaks to motifs using some method, for instance, <code>motifmatchr</code>. This matching is where, technically, Item #2 and #3 are used.) The output is then a new matrix <span class="math inline">\(Y \in \mathbb{R}^{n\times d}\)</span> where <span class="math inline">\(d\)</span> is the number of TFs, and entry <span class="math inline">\(Y_{ij}\)</span> denotes the excess variability of the TF <span class="math inline">\(j\)</span>’s accessibility in cell <span class="math inline">\(i\)</span>, relative to a set of “background” DNA regions that have similar qualities as TF <span class="math inline">\(j\)</span>.</p>
 </div>
@@ -699,21 +564,17 @@ A_{ik} = \sum_{j \in S_k} X_{ij},
 \]</span></p>
 <p>where <span class="math inline">\(\mathbb{E}[A_{ik}]\)</span> and <span class="math inline">\(\text{SD}[A_{ik}]\)</span> are the expected mean and standard deviation of the accessibility for motif <span class="math inline">\(k\)</span> under the background model. This matrix <span class="math inline">\(Y\)</span> (over all the cells and all motifs) is the output.</p>
 <div class="block">
-<div id="fig-chromvar" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-chromvar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/chromvar.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chromvar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.25: From <span class="citation" data-cites="schep2017chromvar">Schep et al. (<a href="references.html#ref-schep2017chromvar" role="doc-biblioref">2017</a>)</span>
-</figcaption>
+<div id="fig-chromvar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/chromvar.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.25: From <span class="citation" data-cites="schep2017chromvar">Schep et al. (<a href="references.html#ref-schep2017chromvar" role="doc-biblioref">2017</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="sec-atac_integration" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="sec-atac_integration"><span class="header-section-number">6.6</span> Deep-learning integration and translation of RNA and ATAC</h2>
-<p>Single-cell multi-omic data integration is challenging due to the lack of one-to-one correspondence between cells across different assays. While many experimental technologies allow simultaneous measurement of multiple omics modalities (e.g., RNA and chromatin accessibility), most single-cell datasets include only one modality. This creates the challenge of integrating data from different omics layers with distinct feature spaces (e.g., genes in scRNA-seq vs.&nbsp;chromatin regions in scATAC-seq). We call this <em>diagonal integration</em> since we simultaneously have different cells in each dataset <em>and</em> different features (since these are two different omics). See <a href="#fig-integration-types" class="quarto-xref">Figure&nbsp;<span>6.26</span></a>.</p>
+<p>Single-cell multi-omic data integration is challenging due to the lack of one-to-one correspondence between cells across different assays. While many experimental technologies allow simultaneous measurement of multiple omics modalities (e.g., RNA and chromatin accessibility), most single-cell datasets include only one modality. This creates the challenge of integrating data from different omics layers with distinct feature spaces (e.g., genes in scRNA-seq vs.&nbsp;chromatin regions in scATAC-seq). We call this <em>diagonal integration</em> since we simultaneously have different cells in each dataset <em>and</em> different features (since these are two different omics). See <a href="#fig-integration-types">Figure&nbsp;<span>6.26</span></a>.</p>
 <p>Our goal can be thought of as one of two things (which are essentially equivalent):</p>
 <ul>
 <li><p><strong>Matching</strong>: How do we match a cell in the first omic to the “best” corresponding cell in the second omic, so we can “pretend” we were able able to sequence paired multi-omic data?</p></li>
@@ -721,14 +582,10 @@ Figure&nbsp;6.25: From <span class="citation" data-cites="schep2017chromvar">Sch
 </ul>
 <p>Upon first glance, it seems surprising that anyone can do you anything at all.</p>
 <div class="block">
-<div id="fig-integration-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-integration-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/integration-types.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-integration-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.26: From <span class="citation" data-cites="argelaguet2021computational">Argelaguet et al. (<a href="references.html#ref-argelaguet2021computational" role="doc-biblioref">2021</a>)</span>.
-</figcaption>
+<div id="fig-integration-types" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/integration-types.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.26: From <span class="citation" data-cites="argelaguet2021computational">Argelaguet et al. (<a href="references.html#ref-argelaguet2021computational" role="doc-biblioref">2021</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -757,14 +614,10 @@ W_c(\mu, \nu) = \min_{\mathbf{G} \in \Pi(\mu, \nu)} \sum_{i=1}^{n} \sum_{j=1}^{m
 \]</span></p>
 <p>where <span class="math inline">\(L(D^X_{ik}, D^Y_{jl})\)</span> quantifies how much the transport plan distorts local geometric structures. SCOT uses this framework to learn an alignment between single-cell datasets by computing the optimal <span class="math inline">\(\mathbf{G}\)</span>, followed by a barycentric projection to bring the datasets into a common space.</p>
 <div class="block">
-<div id="fig-glue" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-glue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/scot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.27: From <span class="citation" data-cites="demetci2022scot">Demetci et al. (<a href="references.html#ref-demetci2022scot" role="doc-biblioref">2022</a>)</span>.
-</figcaption>
+<div id="fig-glue" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/scot.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.27: From <span class="citation" data-cites="demetci2022scot">Demetci et al. (<a href="references.html#ref-demetci2022scot" role="doc-biblioref">2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -776,7 +629,7 @@ You’re really driving in the dark with these approaches since you’re blindly
 </section>
 <section id="strategy-2-leveraging-more-biological-information-for-diagonal-integration" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="strategy-2-leveraging-more-biological-information-for-diagonal-integration"><span class="header-section-number">6.6.2</span> Strategy 2: Leveraging more biological information for diagonal integration</h3>
-<p>Unlike the methods in <a href="#sec-diagonal_integration_unsupervised" class="quarto-xref"><span>Section 6.6.1</span></a>, what if you <em>do</em> have biological insights about how the two omics are related? Then certainly, you should be able to perform a much more powerful diagonal integration if your biological insights are correct.</p>
+<p>Unlike the methods in <a href="#sec-diagonal_integration_unsupervised"><span>Section&nbsp;6.6.1</span></a>, what if you <em>do</em> have biological insights about how the two omics are related? Then certainly, you should be able to perform a much more powerful diagonal integration if your biological insights are correct.</p>
 <p><strong>A typical choice: GLUE.</strong><br>
 Graph-Linked Unified Embedding (GLUE), as the name suggests, everages prior biological knowledge to construct a <em>guidance graph</em>, where nodes represent features (e.g., genes or ATAC peaks) and edges represent regulatory interactions (e.g., enhancer-promoter links) <span class="citation" data-cites="cao2022multi">Z.-J. Cao and Gao (<a href="references.html#ref-cao2022multi" role="doc-biblioref">2022</a>)</span>. This graph links omics-specific feature spaces, enabling joint learning of regulatory relationships and cell embeddings. By combining the guidance graph with observed data, GLUE infers regulatory interactions in a Bayesian-like manner. This enables the identification of cis-regulatory relationships, such as enhancer-gene links, and provides insights into transcription factor (TF) activity.</p>
 <div class="block3">
@@ -832,14 +685,10 @@ q_{\text{encoder }k}(u_i | x^{(k)}_i) = \text{N}(\text{some mean}, \text{some co
 \]</span></p>
 <p>where <span class="math inline">\(\lambda_{\mathcal{G}}\)</span> and <span class="math inline">\(\lambda_{D}\)</span> are hyperparameters.</p>
 <div class="block">
-<div id="fig-glue2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-glue2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/glue.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-glue2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.28: From <span class="citation" data-cites="cao2022multi">Z.-J. Cao and Gao (<a href="references.html#ref-cao2022multi" role="doc-biblioref">2022</a>)</span>.
-</figcaption>
+<div id="fig-glue2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/glue.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.28: From <span class="citation" data-cites="cao2022multi">Z.-J. Cao and Gao (<a href="references.html#ref-cao2022multi" role="doc-biblioref">2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -849,45 +698,33 @@ There are fewer methods in this category, and these methods are a lot harder for
 </section>
 <section id="dont-forget-about-all-the-usual-multi-modal-integration-methods" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="dont-forget-about-all-the-usual-multi-modal-integration-methods"><span class="header-section-number">6.6.3</span> Don’t forget about all the usual multi-modal integration methods!</h3>
-<p>Don’t forget that, similar to how there’s a TotalVI for CITE-seq data, there are <em>a lot</em> of vertical integration methods for RNA-ATAC multiome data. See the end of <span class="quarto-unresolved-ref">?sec-union_totalvi</span> for some benchmarking papers. I’ve seen a couple more often than others: WNN <span class="citation" data-cites="hao2020integrated">Hao et al. (<a href="references.html#ref-hao2020integrated" role="doc-biblioref">2021</a>)</span> and MultiVI <span class="citation" data-cites="ashuach2023multivi">Ashuach et al. (<a href="references.html#ref-ashuach2023multivi" role="doc-biblioref">2023</a>)</span> (see <a href="#fig-multivi" class="quarto-xref">Figure&nbsp;<span>6.29</span></a>, a deep-learning method).</p>
+<p>Don’t forget that, similar to how there’s a TotalVI for CITE-seq data, there are <em>a lot</em> of vertical integration methods for RNA-ATAC multiome data. See the end of <span class="quarto-unresolved-ref">?sec-union_totalvi</span> for some benchmarking papers. I’ve seen a couple more often than others: WNN <span class="citation" data-cites="hao2020integrated">Hao et al. (<a href="references.html#ref-hao2020integrated" role="doc-biblioref">2021</a>)</span> and MultiVI <span class="citation" data-cites="ashuach2023multivi">Ashuach et al. (<a href="references.html#ref-ashuach2023multivi" role="doc-biblioref">2023</a>)</span> (see <a href="#fig-multivi">Figure&nbsp;<span>6.29</span></a>, a deep-learning method).</p>
 <div class="block">
-<div id="fig-multivi" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-multivi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/multivi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multivi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.29: From <span class="citation" data-cites="ashuach2023multivi">Ashuach et al. (<a href="references.html#ref-ashuach2023multivi" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-multivi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/multivi.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.29: From <span class="citation" data-cites="ashuach2023multivi">Ashuach et al. (<a href="references.html#ref-ashuach2023multivi" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <p><strong>Translation between omics.</strong><br>
-A related task in paired multiome data is: given the RNA profile, can we use translate this into the ATAC profile, and vice versa? At a high level, this is not too different from using an integration of paired multiome data. You simply use one omic’s encoder, and then another omic’s decoder. There are some important engineering differences to facilitate this idea. You can see Polarbear (<span class="citation" data-cites="zhang2022multimodal">R. Zhang et al. (<a href="references.html#ref-zhang2022multimodal" role="doc-biblioref">2022</a>)</span>, see <a href="#fig-polarbear" class="quarto-xref">Figure&nbsp;<span>6.30</span></a>) and BABEL <span class="citation" data-cites="wu2021babel">Wu et al. (<a href="references.html#ref-wu2021babel" role="doc-biblioref">2021</a>)</span> for examples.</p>
+A related task in paired multiome data is: given the RNA profile, can we use translate this into the ATAC profile, and vice versa? At a high level, this is not too different from using an integration of paired multiome data. You simply use one omic’s encoder, and then another omic’s decoder. There are some important engineering differences to facilitate this idea. You can see Polarbear (<span class="citation" data-cites="zhang2022multimodal">R. Zhang et al. (<a href="references.html#ref-zhang2022multimodal" role="doc-biblioref">2022</a>)</span>, see <a href="#fig-polarbear">Figure&nbsp;<span>6.30</span></a>) and BABEL <span class="citation" data-cites="wu2021babel">Wu et al. (<a href="references.html#ref-wu2021babel" role="doc-biblioref">2021</a>)</span> for examples.</p>
 <div class="block">
-<div id="fig-polarbear" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-polarbear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/polarbear.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polarbear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.30: From <span class="citation" data-cites="zhang2022multimodal">R. Zhang et al. (<a href="references.html#ref-zhang2022multimodal" role="doc-biblioref">2022</a>)</span>.
-</figcaption>
+<div id="fig-polarbear" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/polarbear.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.30: From <span class="citation" data-cites="zhang2022multimodal">R. Zhang et al. (<a href="references.html#ref-zhang2022multimodal" role="doc-biblioref">2022</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
-<p>Returning back to the idea of “union” or “intersection” of information in <span class="quarto-unresolved-ref">?rem-union-intersection</span>, the ability to translate from one omic to another necessarily means you are conceptually more focused on learning the “intersection” of information.</p>
+<p>Returning back to the idea of “union” or “intersection” of information in <span class="citation" data-cites="rem-union-intersection">(<a href="references.html#ref-rem-union-intersection" role="doc-biblioref"><strong>rem-union-intersection?</strong></a>)</span>, the ability to translate from one omic to another necessarily means you are conceptually more focused on learning the “intersection” of information.</p>
 <p><strong>Mosaic integration.</strong><br>
-What if you have many omics across many datasets, and some of your datasets are paired? We usually call this <em>mosaic integration</em>, where we essentially are “putting the mosaic together” using puzzle pieces of different datasets. In this task, we often have some mixture of paired multiome datasets and some single-omic datasets. See <a href="#fig-scmomat" class="quarto-xref">Figure&nbsp;<span>6.31</span></a> for an example. Two methods to look at as an example of this are scMoMaT <span class="citation" data-cites="zhang2023scmomat">Z. Zhang et al. (<a href="references.html#ref-zhang2023scmomat" role="doc-biblioref">2023</a>)</span> and Cobalt <span class="citation" data-cites="gong2021cobolt">Gong, Zhou, and Purdom (<a href="references.html#ref-gong2021cobolt" role="doc-biblioref">2021</a>)</span>.</p>
+What if you have many omics across many datasets, and some of your datasets are paired? We usually call this <em>mosaic integration</em>, where we essentially are “putting the mosaic together” using puzzle pieces of different datasets. In this task, we often have some mixture of paired multiome datasets and some single-omic datasets. See <a href="#fig-scmomat">Figure&nbsp;<span>6.31</span></a> for an example. Two methods to look at as an example of this are scMoMaT <span class="citation" data-cites="zhang2023scmomat">Z. Zhang et al. (<a href="references.html#ref-zhang2023scmomat" role="doc-biblioref">2023</a>)</span> and Cobalt <span class="citation" data-cites="gong2021cobolt">Gong, Zhou, and Purdom (<a href="references.html#ref-gong2021cobolt" role="doc-biblioref">2021</a>)</span>.</p>
 <div class="block">
-<div id="fig-scmomat" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-scmomat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/scmomat.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scmomat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.31: From <span class="citation" data-cites="zhang2023scmomat">Z. Zhang et al. (<a href="references.html#ref-zhang2023scmomat" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-scmomat" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/scmomat.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.31: From <span class="citation" data-cites="zhang2023scmomat">Z. Zhang et al. (<a href="references.html#ref-zhang2023scmomat" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -895,35 +732,27 @@ Figure&nbsp;6.31: From <span class="citation" data-cites="zhang2023scmomat">Z. Z
 </section>
 <section id="brief-aside-transcription-factors" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="brief-aside-transcription-factors"><span class="header-section-number">6.7</span> Brief aside: Transcription factors</h2>
-<p>Transcription factors (TFs) are proteins that regulate gene expression by binding to specific DNA sequences, often within promoters or enhancers, to activate or repress transcription, see <a href="#fig-transcription-factor" class="quarto-xref">Figure&nbsp;<span>6.32</span></a>. They play a crucial role in controlling cellular identity, development, and response to environmental signals. TFs recognize distinct motifs, short DNA sequence patterns, and their binding can be influenced by chromatin accessibility, co-factors, and post-translational modifications. Some TFs act as pioneer factors, capable of binding to condensed chromatin and initiating the process of opening DNA for transcriptional activation. By integrating chromatin accessibility data with known TF motifs, methods like ChromVAR can infer which TFs are actively shaping regulatory landscapes in different cell states.</p>
+<p>Transcription factors (TFs) are proteins that regulate gene expression by binding to specific DNA sequences, often within promoters or enhancers, to activate or repress transcription, see <a href="#fig-transcription-factor">Figure&nbsp;<span>6.32</span></a>. They play a crucial role in controlling cellular identity, development, and response to environmental signals. TFs recognize distinct motifs, short DNA sequence patterns, and their binding can be influenced by chromatin accessibility, co-factors, and post-translational modifications. Some TFs act as pioneer factors, capable of binding to condensed chromatin and initiating the process of opening DNA for transcriptional activation. By integrating chromatin accessibility data with known TF motifs, methods like ChromVAR can infer which TFs are actively shaping regulatory landscapes in different cell states.</p>
 <p>This TFs will play a big role in the next section, when we start discussing gene regulatory networks.</p>
 <div class="block">
-<div id="fig-transcription-factor" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-transcription-factor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/transcription-factor2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transcription-factor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.32: (Top): From <span class="citation" data-cites="leiz2021technologies">Leiz et al. (<a href="references.html#ref-leiz2021technologies" role="doc-biblioref">2021</a>)</span>.<br>
+<div id="fig-transcription-factor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/transcription-factor2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.32: (Top): From <span class="citation" data-cites="leiz2021technologies">Leiz et al. (<a href="references.html#ref-leiz2021technologies" role="doc-biblioref">2021</a>)</span>.<br>
 (Bottom left): From <a href="https://en.wikipedia.org/wiki/Transcription_factor" class="uri">https://en.wikipedia.org/wiki/Transcription_factor</a>.<br>
-(Bottom right): From <a href="https://digfir-published.macmillanusa.com/life11e/life11e_ch16_11.html" class="uri">https://digfir-published.macmillanusa.com/life11e/life11e_ch16_11.html</a>.
-</figcaption>
+(Bottom right): From <a href="https://digfir-published.macmillanusa.com/life11e/life11e_ch16_11.html" class="uri">https://digfir-published.macmillanusa.com/life11e/life11e_ch16_11.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 </section>
 <section id="gene-regulatory-networks-grn" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="gene-regulatory-networks-grn"><span class="header-section-number">6.8</span> Gene regulatory networks (GRN)</h2>
-<p>Gene regulatory networks (GRNs) describe the intricate interactions between genes, transcription factors, enhancers, and other regulatory elements that control gene expression. Understanding these networks is critical for deciphering how normal cellular functions are maintained and how dysregulation leads to disease. In the context of single-cell and multi-omics data, GRNs provide a framework for linking chromatin accessibility, transcription factor activity, and gene expression dynamics to uncover the molecular basis of health and disease. See <a href="#fig-grn-intro1" class="quarto-xref">Figure&nbsp;<span>6.33</span></a> for the overarching theme of GRNs, where you might start building a GRN via a simple gene co-expression analysis (i.e., “connecting” genes that are correlated), but then later start leveraging biological insights (i.e., which genes are transcription factors, and where TFs bind to accessible chromatin regions, etc.) in later steps.</p>
+<p>Gene regulatory networks (GRNs) describe the intricate interactions between genes, transcription factors, enhancers, and other regulatory elements that control gene expression. Understanding these networks is critical for deciphering how normal cellular functions are maintained and how dysregulation leads to disease. In the context of single-cell and multi-omics data, GRNs provide a framework for linking chromatin accessibility, transcription factor activity, and gene expression dynamics to uncover the molecular basis of health and disease. See <a href="#fig-grn-intro1">Figure&nbsp;<span>6.33</span></a> for the overarching theme of GRNs, where you might start building a GRN via a simple gene co-expression analysis (i.e., “connecting” genes that are correlated), but then later start leveraging biological insights (i.e., which genes are transcription factors, and where TFs bind to accessible chromatin regions, etc.) in later steps.</p>
 <div class="block">
-<div id="fig-grn-intro1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grn-intro1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/grn-intro1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grn-intro1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.33: From <span class="citation" data-cites="badia2023gene">Badia-i-Mompel et al. (<a href="references.html#ref-badia2023gene" role="doc-biblioref">2023</a>)</span>
-</figcaption>
+<div id="fig-grn-intro1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/grn-intro1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.33: From <span class="citation" data-cites="badia2023gene">Badia-i-Mompel et al. (<a href="references.html#ref-badia2023gene" role="doc-biblioref">2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -932,71 +761,51 @@ Figure&nbsp;6.33: From <span class="citation" data-cites="badia2023gene">Badia-i
 <h3 data-number="6.8.1" class="anchored" data-anchor-id="first-how-we-understand-the-elements-that-control-a-gene"><span class="header-section-number">6.8.1</span> First: How we understand the elements that control a gene?</h3>
 <p>A gene’s expression is governed by multiple regulatory elements, including promoters, enhancers, and transcription factors. Promoters serve as the binding sites for RNA polymerase and general transcription factors, initiating transcription. Enhancers, often located far from the gene they regulate, recruit transcription factors and co-activators to increase transcriptional output.</p>
 <p>Typically, a GRN falls into two types: 1) how do TFs bind to certain enhancer regions that cause a change in the downstream gene’s expression, or 2) how do enhancer regions themselves open and close to regulate a downstream gene’s expression. (I know, this is about to get a bit wonky.)</p>
-<p><a href="#fig-linked-peak-schematic" class="quarto-xref">Figure&nbsp;<span>6.34</span></a> shows the overall schematic of how to link enhancers (i.e., a peak region, sometimes also called a cis-regulatory element, CRE) to its target gene. See <a href="#fig-linked-peak" class="quarto-xref">Figure&nbsp;<span>6.35</span></a> for how results for linked-peaks is often reported, where the “height” of the arc is the p-value about testing if a peak is linked to a particular gene. See <a href="https://stuartlab.org/signac/articles/pbmc_multiomic" class="uri">https://stuartlab.org/signac/articles/pbmc_multiomic</a> and <a href="https://www.archrproject.com/bookdown/peak2genelinkage-with-archr.html" class="uri">https://www.archrproject.com/bookdown/peak2genelinkage-with-archr.html</a> for examples of how to do this analysis in practice. You can also check out <a href="https://singlecell.broadinstitute.org/single_cell/features/2024-11-21-visualize-and-filter-multiome-atac-data" class="uri">https://singlecell.broadinstitute.org/single_cell/features/2024-11-21-visualize-and-filter-multiome-atac-data</a> for web portals for this.</p>
+<p><a href="#fig-linked-peak-schematic">Figure&nbsp;<span>6.34</span></a> shows the overall schematic of how to link enhancers (i.e., a peak region, sometimes also called a cis-regulatory element, CRE) to its target gene. See <a href="#fig-linked-peak">Figure&nbsp;<span>6.35</span></a> for how results for linked-peaks is often reported, where the “height” of the arc is the p-value about testing if a peak is linked to a particular gene. See <a href="https://stuartlab.org/signac/articles/pbmc_multiomic" class="uri">https://stuartlab.org/signac/articles/pbmc_multiomic</a> and <a href="https://www.archrproject.com/bookdown/peak2genelinkage-with-archr.html" class="uri">https://www.archrproject.com/bookdown/peak2genelinkage-with-archr.html</a> for examples of how to do this analysis in practice. You can also check out <a href="https://singlecell.broadinstitute.org/single_cell/features/2024-11-21-visualize-and-filter-multiome-atac-data" class="uri">https://singlecell.broadinstitute.org/single_cell/features/2024-11-21-visualize-and-filter-multiome-atac-data</a> for web portals for this.</p>
 <div class="block">
-<div id="fig-linked-peak-schematic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-linked-peak-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/linked-peak-schematic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linked-peak-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.34: (Left): From <span class="citation" data-cites="xie2023robust">Xie et al. (<a href="references.html#ref-xie2023robust" role="doc-biblioref">2023</a>)</span>. (Right): From <span class="citation" data-cites="leblanc2023major">Leblanc and Lettre (<a href="references.html#ref-leblanc2023major" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-linked-peak-schematic" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/linked-peak-schematic1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.34: (Left): From <span class="citation" data-cites="xie2023robust">Xie et al. (<a href="references.html#ref-xie2023robust" role="doc-biblioref">2023</a>)</span>. (Right): From <span class="citation" data-cites="leblanc2023major">Leblanc and Lettre (<a href="references.html#ref-leblanc2023major" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-linked-peak" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-linked-peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/linked-peak1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linked-peak-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.35: (Left): From <span class="citation" data-cites="adams2022single">Adams et al. (<a href="references.html#ref-adams2022single" role="doc-biblioref">2022</a>)</span>.<br>
-(Right): From <span class="citation" data-cites="ma2020chromatin">Ma et al. (<a href="references.html#ref-ma2020chromatin" role="doc-biblioref">2020</a>)</span>. (These types of plots usually focus on one particular element. When you see these plots, it’s not usually immediately obvious if the plots are showing if: 1) a gene is being regulated by many CREs, or if 2) a CRE regulates many genes.)
-</figcaption>
+<div id="fig-linked-peak" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/linked-peak1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.35: (Left): From <span class="citation" data-cites="adams2022single">Adams et al. (<a href="references.html#ref-adams2022single" role="doc-biblioref">2022</a>)</span>.<br>
+(Right): From <span class="citation" data-cites="ma2020chromatin">Ma et al. (<a href="references.html#ref-ma2020chromatin" role="doc-biblioref">2020</a>)</span>. (These types of plots usually focus on one particular element. When you see these plots, it’s not usually immediately obvious if the plots are showing if: 1) a gene is being regulated by many CREs, or if 2) a CRE regulates many genes.)</figcaption>
 </figure>
 </div>
 </div>
 <p><strong>TF footprints.</strong><br>
-TF footprinting is a computational approach used to infer transcription factor (TF) binding at specific genomic loci by analyzing patterns of chromatin accessibility at single-nucleotide resolution, often using ATAC-seq or DNase-seq data, see <a href="#fig-tf-footprint" class="quarto-xref">Figure&nbsp;<span>6.36</span></a>. Unlike ChromVAR, which assesses motif activity by quantifying motif accessibility variation across cells or conditions, footprinting explicitly identifies regions where TFs are bound by detecting protected sites flanked by regions of high accessibility. This provides direct evidence of TF occupancy, distinguishing between motif presence and actual binding, thereby refining motif enrichment results from ChromVAR and uncovering context-specific regulatory interactions. See <a href="https://www.archrproject.com/bookdown/footprinting-with-archr.html" class="uri">https://www.archrproject.com/bookdown/footprinting-with-archr.html</a> and <a href="https://stuartlab.org/signac/1.2.0/articles/footprint" class="uri">https://stuartlab.org/signac/1.2.0/articles/footprint</a> for more details.</p>
+TF footprinting is a computational approach used to infer transcription factor (TF) binding at specific genomic loci by analyzing patterns of chromatin accessibility at single-nucleotide resolution, often using ATAC-seq or DNase-seq data, see <a href="#fig-tf-footprint">Figure&nbsp;<span>6.36</span></a>. Unlike ChromVAR, which assesses motif activity by quantifying motif accessibility variation across cells or conditions, footprinting explicitly identifies regions where TFs are bound by detecting protected sites flanked by regions of high accessibility. This provides direct evidence of TF occupancy, distinguishing between motif presence and actual binding, thereby refining motif enrichment results from ChromVAR and uncovering context-specific regulatory interactions. See <a href="https://www.archrproject.com/bookdown/footprinting-with-archr.html" class="uri">https://www.archrproject.com/bookdown/footprinting-with-archr.html</a> and <a href="https://stuartlab.org/signac/1.2.0/articles/footprint" class="uri">https://stuartlab.org/signac/1.2.0/articles/footprint</a> for more details.</p>
 <div class="block">
-<div id="fig-tf-footprint" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tf-footprint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/tf_footprint1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tf-footprint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.36: (Left) From <span class="citation" data-cites="siersbaek2014molecular">Siersbæk et al. (<a href="references.html#ref-siersbaek2014molecular" role="doc-biblioref">2014</a>)</span>.<br>
-(Right) From <a href="https://www.archrproject.com/bookdown/footprinting-with-archr.html" class="uri">https://www.archrproject.com/bookdown/footprinting-with-archr.html</a>.
-</figcaption>
+<div id="fig-tf-footprint" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/tf_footprint1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.36: (Left) From <span class="citation" data-cites="siersbaek2014molecular">Siersbæk et al. (<a href="references.html#ref-siersbaek2014molecular" role="doc-biblioref">2014</a>)</span>.<br>
+(Right) From <a href="https://www.archrproject.com/bookdown/footprinting-with-archr.html" class="uri">https://www.archrproject.com/bookdown/footprinting-with-archr.html</a>.</figcaption>
 </figure>
 </div>
 </div>
 <p><strong>A conceptual way to understand our goal.</strong><br>
-What we are hoping to do is to, essentially, learn the relations peaks and genes across <em>all</em> the peaks and genes. By doing this, we can piece together a graph, which becomes our GRN. See <a href="#fig-grn-intro3" class="quarto-xref">Figure&nbsp;<span>6.37</span></a>.</p>
+What we are hoping to do is to, essentially, learn the relations peaks and genes across <em>all</em> the peaks and genes. By doing this, we can piece together a graph, which becomes our GRN. See <a href="#fig-grn-intro3">Figure&nbsp;<span>6.37</span></a>.</p>
 <div class="block">
-<div id="fig-grn-intro3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grn-intro3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/grn-intro3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grn-intro3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.37: From <span class="citation" data-cites="kim2023gene">D. Kim et al. (<a href="references.html#ref-kim2023gene" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-grn-intro3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/grn-intro3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.37: From <span class="citation" data-cites="kim2023gene">D. Kim et al. (<a href="references.html#ref-kim2023gene" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
-<p>If you are interested in GRNs (which is popular topic for more statistical/computation-leaning students), be aware that there are almost an endless list of GRN methods, see <a href="#fig-grn-table" class="quarto-xref">Figure&nbsp;<span>6.38</span></a>. As we will discuss in <a href="#sec-grn_crazy" class="quarto-xref"><span>Section 6.10</span></a>, it is a nontrivial research question to even know “which method works the best.”</p>
+<p>If you are interested in GRNs (which is popular topic for more statistical/computation-leaning students), be aware that there are almost an endless list of GRN methods, see <a href="#fig-grn-table">Figure&nbsp;<span>6.38</span></a>. As we will discuss in <a href="#sec-grn_crazy"><span>Section&nbsp;6.10</span></a>, it is a nontrivial research question to even know “which method works the best.”</p>
 <div class="block">
-<div id="fig-grn-table" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grn-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/grn_table.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grn-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.38: From <span class="citation" data-cites="loers2024single">Loers and Vermeirssen (<a href="references.html#ref-loers2024single" role="doc-biblioref">2024</a>)</span>. This is the list for methods at the time of the authors’ writing for multi-omic GRNs. If you include the methods that were designed for solely scRNA-seq, the list becomes unbelievably long.
-</figcaption>
+<div id="fig-grn-table" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/grn_table.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.38: From <span class="citation" data-cites="loers2024single">Loers and Vermeirssen (<a href="references.html#ref-loers2024single" role="doc-biblioref">2024</a>)</span>. This is the list for methods at the time of the authors’ writing for multi-omic GRNs. If you include the methods that were designed for solely scRNA-seq, the list becomes unbelievably long.</figcaption>
 </figure>
 </div>
 </div>
@@ -1005,16 +814,12 @@ Figure&nbsp;6.38: From <span class="citation" data-cites="loers2024single">Loers
 <h3 data-number="6.8.2" class="anchored" data-anchor-id="grns-between-genes-and-tfs"><span class="header-section-number">6.8.2</span> GRNs between genes and TFs</h3>
 <p>Transcription factors serve as key regulators in GRNs by binding to DNA motifs and either activating or repressing gene expression. The strength and specificity of TF-gene interactions are influenced by chromatin accessibility, cooperative binding with other TFs, and post-translational modifications. The advantage of using GRNs that only model TFs and their target genes (which could involve other TFs) is that the graph is much more manageable to think about. Here, the peaks (measuring regions of chromatin accessibility) allow you to determine: 1) how a TF might bind a peak, and 2) how that peak might influence a gene. All the peaks nearby a gene get “merged” in the modeling as one element altogether.</p>
 <p><strong>A typical choice: Pando.</strong><br>
-Pando <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span> infers GRNs by modeling the relationship between gene expression, transcription factor (TF) activity, and chromatin accessibility using a regression-based framework. See <a href="#fig-pando" class="quarto-xref">Figure&nbsp;<span>6.39</span></a>.</p>
+Pando <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span> infers GRNs by modeling the relationship between gene expression, transcription factor (TF) activity, and chromatin accessibility using a regression-based framework. See <a href="#fig-pando">Figure&nbsp;<span>6.39</span></a>.</p>
 <div class="block">
-<div id="fig-pando" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pando-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/pando1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pando-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.39: From <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span>
-</figcaption>
+<div id="fig-pando" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/pando1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.39: From <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -1032,20 +837,16 @@ It selects peaks that overlap TF binding motifs and computes correlations betwee
 Pando fits a regression model for each target gene <span class="math inline">\(g_i\)</span>, estimating the relationship between gene expression and TF activity at its regulatory regions. The general model is: <span id="eq-pando"><span class="math display">\[
 g_i \approx \sum_{j} \beta_j (TF_j \circ P_j)
 \tag{6.1}\]</span></span> where <span class="math inline">\(TF_j\)</span> is the expression of transcription factor <span class="math inline">\(j\)</span> (i.e., this is another gene’s expression, but this particular gene is deemed a transcription factor based on a database), <span class="math inline">\(P_j\)</span> is the accessibility of the associated peaks, <span class="math inline">\(\circ\)</span> represents an interaction term (which can be additive, multiplicative, or both), and <span class="math inline">\(\beta_j\)</span> denotes the inferred regulatory coefficient. By default, Pando fits a linear regression (i.e., generalized linear model for the Gaussian family), where the all the involved data (i.e., gene expression, transcription factor, etc.) has been already log-normalized.</p>
-<p>(Yes – this is as straightforward statistically as it gets. More on this later in <a href="#sec-grn_crazy" class="quarto-xref"><span>Section 6.10</span></a>.)</p></li>
+<p>(Yes – this is as straightforward statistically as it gets. More on this later in <a href="#sec-grn_crazy"><span>Section&nbsp;6.10</span></a>.)</p></li>
 <li><p><strong>Statistical Filtering and Adjustment</strong>:<br>
 Pando applies a multiple-testing correction (e.g., false discovery rate (FDR) adjustment) to the estimated coefficients from the linear regression and removes insignificant regulatory interactions. The resulting network consists of target genes, TF regulators, and their associated regulatory elements, allowing for further functional analyses.</p></li>
 </ol>
-<p>See <a href="#fig-pando-graph" class="quarto-xref">Figure&nbsp;<span>6.40</span></a> for an example of the resulting graph (subsetted to a particular TF).</p>
+<p>See <a href="#fig-pando-graph">Figure&nbsp;<span>6.40</span></a> for an example of the resulting graph (subsetted to a particular TF).</p>
 <div class="block">
-<div id="fig-pando-graph" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pando-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/pando_graph.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pando-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.40: From <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span>. This is the sub-network focusing on the TF GLI3 and all its downstream TFs (other named genes) and other genes (in gray circles).
-</figcaption>
+<div id="fig-pando-graph" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/pando_graph.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.40: From <span class="citation" data-cites="fleck2023inferring">Fleck et al. (<a href="references.html#ref-fleck2023inferring" role="doc-biblioref">2023</a>)</span>. This is the sub-network focusing on the TF GLI3 and all its downstream TFs (other named genes) and other genes (in gray circles).</figcaption>
 </figure>
 </div>
 </div>
@@ -1054,16 +855,12 @@ Figure&nbsp;6.40: From <span class="citation" data-cites="fleck2023inferring">Fl
 <h3 data-number="6.8.3" class="anchored" data-anchor-id="grns-between-genes-enhancers-and-tfs"><span class="header-section-number">6.8.3</span> GRNs between genes, enhancers, and TFs</h3>
 <p>If you want “higher resolution” and want to model the specific interactions between particular peaks and their intermediary role between the TF and gene, you might instead want to use a GRN that models the interactions between all 3 elements – TFs, the peaks, and the target genes. (Recall, even though you might only be modeling the 2000 highly variable genes with many a couple hundred TFs, you have on the order of 300,000 peaks. So these graphs are incomprehensibly large, to the point you need to think carefully about why you want to learn such a large graph in the first place.)</p>
 <p><strong>A typical choice: SCENIC+.</strong><br>
-SCENIC+ <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span> infers enhancer-driven gene regulatory networks (eGRNs) by integrating transcription factor (TF) binding motifs, chromatin accessibility, and gene expression data. See the workflow in <a href="#fig-scenic" class="quarto-xref">Figure&nbsp;<span>6.41</span></a>.</p>
+SCENIC+ <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span> infers enhancer-driven gene regulatory networks (eGRNs) by integrating transcription factor (TF) binding motifs, chromatin accessibility, and gene expression data. See the workflow in <a href="#fig-scenic">Figure&nbsp;<span>6.41</span></a>.</p>
 <div class="block">
-<div id="fig-scenic" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-scenic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/scenic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scenic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.41: From <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span>.
-</figcaption>
+<div id="fig-scenic" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/scenic.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.41: From <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -1087,30 +884,22 @@ The next step links candidate enhancers to their target genes using correlation-
 <li><p><strong>eRegulon Construction</strong>:<br>
 False discovery rate (FDR) correction is used to filter spurious TF-enhancer-gene associations. The final GRN consists of enhancer-driven regulons (eRegulons), where each TF is linked to a set of enhancer regions and target genes. The regulatory directionality (activation/repression) is inferred using correlation measures.</p></li>
 </ul>
-<p>See <a href="#fig-scenic-graph" class="quarto-xref">Figure&nbsp;<span>6.42</span></a> for an example of the resulting graph (subsetted to a particular TF).</p>
+<p>See <a href="#fig-scenic-graph">Figure&nbsp;<span>6.42</span></a> for an example of the resulting graph (subsetted to a particular TF).</p>
 <div class="block">
-<div id="fig-scenic-graph" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-scenic-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/scenic_graph.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scenic-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.42: From <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span>. This is the sub-network focusing particular TFs (all named in larger text), as well as the CREs (in diamonds) and other target genes (in circles, named with smaller text.)
-</figcaption>
+<div id="fig-scenic-graph" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/scenic_graph.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.42: From <span class="citation" data-cites="bravo2023scenic">Bravo González-Blas et al. (<a href="references.html#ref-bravo2023scenic" role="doc-biblioref">2023</a>)</span>. This is the sub-network focusing particular TFs (all named in larger text), as well as the CREs (in diamonds) and other target genes (in circles, named with smaller text.)</figcaption>
 </figure>
 </div>
 </div>
 <p><strong>A brief note about other methods.</strong><br>
-Most GRNs fall in this category nowadays. You can see LINGER (see <a href="#fig-linger" class="quarto-xref">Figure&nbsp;<span>6.43</span></a>), which basically follows the same logic as in SCENIC+ but instead uses a deep-learning approach to predict relations between TFs and enhancers on target genes, as one of many examples.</p>
+Most GRNs fall in this category nowadays. You can see LINGER (see <a href="#fig-linger">Figure&nbsp;<span>6.43</span></a>), which basically follows the same logic as in SCENIC+ but instead uses a deep-learning approach to predict relations between TFs and enhancers on target genes, as one of many examples.</p>
 <div class="block">
-<div id="fig-linger" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-linger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/linger.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.43: From <span class="citation" data-cites="yuan2024inferring">Yuan and Duren (<a href="references.html#ref-yuan2024inferring" role="doc-biblioref">2024</a>)</span>.
-</figcaption>
+<div id="fig-linger" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/linger.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.43: From <span class="citation" data-cites="yuan2024inferring">Yuan and Duren (<a href="references.html#ref-yuan2024inferring" role="doc-biblioref">2024</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -1126,22 +915,18 @@ Since the gene network, in principle, encapsulates how events unfold in a cell, 
 <li><p><strong>Potential therapeutic targets (Biological)</strong>:<br>
 If you knew how the genomic cascade works, then <em>hypothetically</em>, you have roadmap on which genomic region to edit. This is basically the start of the motivation of CRISPR knockouts – if I knew how a particular transcription factor influences many downstream genes, then if I silence or knock out the particular gene producing that TF, then I could manipulate a lot of the transcriptomic activity (and allegedly, a lot of proteomics and biological processes). So the GRN gives me a roadmap on which TF might be a good candidate to knock out in order to prevent any deleterious pathways from activating.</p></li>
 <li><p><strong>Understanding the functional impact of SNPs in non-coding regions (Computational, Biological)</strong>:<br>
-This will be a much bigger theme when we discuss SNPs in the next chapter, <a href="chapter6_dna.html#sec-genetics_basics" class="quarto-xref"><span>Section 7.1</span></a>. Most of our SNPs are in non-coding regions, and we <em>know</em> that many of these SNPs have some potential effect on a disease from GWAS studies. However, it’s hard to know <em>why</em> these SNPs have a regulatory effect. By learning a GRN, we learn how different enhancer regions affect genes, so we might suspect that if a particular genetic variation lies in that enhancer region, the role of that SNP <em>might</em> be to impact that regulatory effect. (Technically, you need to do a massively parallelized report assay (MPRA, a different wetlab experiment) to actually demonstrate that the SNP <em>actually</em> impacts regulation. We’ll discuss this more later in <a href="chapter6_dna.html#sec-genetics_basics" class="quarto-xref"><span>Section 7.1</span></a>.)</p></li>
+This will be a much bigger theme when we discuss SNPs in the next chapter, <a href="chapter6_dna.html#sec-genetics_basics"><span>Section&nbsp;7.1</span></a>. Most of our SNPs are in non-coding regions, and we <em>know</em> that many of these SNPs have some potential effect on a disease from GWAS studies. However, it’s hard to know <em>why</em> these SNPs have a regulatory effect. By learning a GRN, we learn how different enhancer regions affect genes, so we might suspect that if a particular genetic variation lies in that enhancer region, the role of that SNP <em>might</em> be to impact that regulatory effect. (Technically, you need to do a massively parallelized report assay (MPRA, a different wetlab experiment) to actually demonstrate that the SNP <em>actually</em> impacts regulation. We’ll discuss this more later in <a href="chapter6_dna.html#sec-genetics_basics"><span>Section&nbsp;7.1</span></a>.)</p></li>
 <li><p><strong>Cellular memory (Biological)</strong>:<br>
-There is a long history of trying to understand if GRNs contribute to the “memory” of a cell. After all, you might ask about: if I stimulate a cell, if a cell is infected by a pathogen, etc., after this event subsides, does the cell “remember” what it just went through? There is no “brain” for the cell, so either you think: 1) cells are Markovian in some sense – they no memory of how it interacted with its environment, or 2) there is some long-term way for cells to alter something about itself to contribute to “memory.” This gets pretty fascinating biologically pretty quick. How would a cell even store memory? It’s likely not through the DNA is you don’t expect cells to naturally acquire many mutations in the DNA over time (hold that thought when we discuss <a href="chapter6_dna.html#sec-dna_structural_variation" class="quarto-xref"><span>Section 7.6</span></a>). It’s likely not through the mRNA or proteins since both degrade, either on the time-scale of hours <span class="citation" data-cites="wang2002precision">Y. Wang et al. (<a href="references.html#ref-wang2002precision" role="doc-biblioref">2002</a>)</span> or a couple days <span class="citation" data-cites="rusilowicz2022protein">Rusilowicz-Jones, Urbé, and Clague (<a href="references.html#ref-rusilowicz2022protein" role="doc-biblioref">2022</a>)</span>, respectively. Then, we turn to possibly something epigenetic. After all, DNA methylation can be inherited from one generation to another (not just on the cell level, but also on the organism level) <span class="citation" data-cites="zhang2021epigenetic">Y. Zhang and Sirard (<a href="references.html#ref-zhang2021epigenetic" role="doc-biblioref">2021</a>)</span>. So it is possible that GRNs (not quite about DNA methylation, but still epigenetic in flavor) are also stable enough (without extreme external stimuli) that they hold information about a cell’s memory? This is the premise of a lot of basic biology interest in GRNs, see <span class="citation" data-cites="almeida2021employing">Almeida et al. (<a href="references.html#ref-almeida2021employing" role="doc-biblioref">2021</a>)</span> for example. For instance, there is preliminary evidence that stress changes the GRN of certain brain cells <span class="citation" data-cites="von2022multiomic">Ziegler et al. (<a href="references.html#ref-von2022multiomic" role="doc-biblioref">2022</a>)</span>. See <span class="citation" data-cites="cha2020single">Cha and Lee (<a href="references.html#ref-cha2020single" role="doc-biblioref">2020</a>)</span> for a review of GRN in relation to diseases, or a focus on Alzheimer’s disease <span class="citation" data-cites="gupta2022single">Gupta et al. (<a href="references.html#ref-gupta2022single" role="doc-biblioref">2022</a>)</span>.</p></li>
+There is a long history of trying to understand if GRNs contribute to the “memory” of a cell. After all, you might ask about: if I stimulate a cell, if a cell is infected by a pathogen, etc., after this event subsides, does the cell “remember” what it just went through? There is no “brain” for the cell, so either you think: 1) cells are Markovian in some sense – they no memory of how it interacted with its environment, or 2) there is some long-term way for cells to alter something about itself to contribute to “memory.” This gets pretty fascinating biologically pretty quick. How would a cell even store memory? It’s likely not through the DNA is you don’t expect cells to naturally acquire many mutations in the DNA over time (hold that thought when we discuss <a href="chapter6_dna.html#sec-dna_structural_variation"><span>Section&nbsp;7.6</span></a>). It’s likely not through the mRNA or proteins since both degrade, either on the time-scale of hours <span class="citation" data-cites="wang2002precision">Y. Wang et al. (<a href="references.html#ref-wang2002precision" role="doc-biblioref">2002</a>)</span> or a couple days <span class="citation" data-cites="rusilowicz2022protein">Rusilowicz-Jones, Urbé, and Clague (<a href="references.html#ref-rusilowicz2022protein" role="doc-biblioref">2022</a>)</span>, respectively. Then, we turn to possibly something epigenetic. After all, DNA methylation can be inherited from one generation to another (not just on the cell level, but also on the organism level) <span class="citation" data-cites="zhang2021epigenetic">Y. Zhang and Sirard (<a href="references.html#ref-zhang2021epigenetic" role="doc-biblioref">2021</a>)</span>. So it is possible that GRNs (not quite about DNA methylation, but still epigenetic in flavor) are also stable enough (without extreme external stimuli) that they hold information about a cell’s memory? This is the premise of a lot of basic biology interest in GRNs, see <span class="citation" data-cites="almeida2021employing">Almeida et al. (<a href="references.html#ref-almeida2021employing" role="doc-biblioref">2021</a>)</span> for example. For instance, there is preliminary evidence that stress changes the GRN of certain brain cells <span class="citation" data-cites="von2022multiomic">Ziegler et al. (<a href="references.html#ref-von2022multiomic" role="doc-biblioref">2022</a>)</span>. See <span class="citation" data-cites="cha2020single">Cha and Lee (<a href="references.html#ref-cha2020single" role="doc-biblioref">2020</a>)</span> for a review of GRN in relation to diseases, or a focus on Alzheimer’s disease <span class="citation" data-cites="gupta2022single">Gupta et al. (<a href="references.html#ref-gupta2022single" role="doc-biblioref">2022</a>)</span>.</p></li>
 </ul>
 <p><strong>Brief note about transcriptomic bursting.</strong><br>
-Gene expression is inherently stochastic, occurring in bursts rather than as a continuous process, due to the random activation and inactivation of transcriptional machinery. This transcriptomic bursting means that the expression levels of individual genes fluctuate over time, making it unreliable to infer stable co-expression patterns from a single time point, see <a href="#fig-bursting" class="quarto-xref">Figure&nbsp;<span>6.44</span></a>. Instead of focusing on transient expression snapshots, studying gene regulatory networks (GRNs) provides a more robust framework for understanding gene interactions over longer timescales. GRNs capture how transcription factors (TFs) regulate target genes by binding to enhancer regions, establishing regulatory relationships that persist beyond momentary transcriptional fluctuations. By analyzing GRNs, researchers can infer the underlying structure of transcriptional control, allowing for a deeper understanding of cellular processes that remain stable despite the randomness. See <span class="citation" data-cites="tang2023modelling">Tang et al. (<a href="references.html#ref-tang2023modelling" role="doc-biblioref">2023</a>)</span> for an overview of modeling transcriptomic bursting from single-cell data.</p>
+Gene expression is inherently stochastic, occurring in bursts rather than as a continuous process, due to the random activation and inactivation of transcriptional machinery. This transcriptomic bursting means that the expression levels of individual genes fluctuate over time, making it unreliable to infer stable co-expression patterns from a single time point, see <a href="#fig-bursting">Figure&nbsp;<span>6.44</span></a>. Instead of focusing on transient expression snapshots, studying gene regulatory networks (GRNs) provides a more robust framework for understanding gene interactions over longer timescales. GRNs capture how transcription factors (TFs) regulate target genes by binding to enhancer regions, establishing regulatory relationships that persist beyond momentary transcriptional fluctuations. By analyzing GRNs, researchers can infer the underlying structure of transcriptional control, allowing for a deeper understanding of cellular processes that remain stable despite the randomness. See <span class="citation" data-cites="tang2023modelling">Tang et al. (<a href="references.html#ref-tang2023modelling" role="doc-biblioref">2023</a>)</span> for an overview of modeling transcriptomic bursting from single-cell data.</p>
 <div class="block">
-<div id="fig-bursting" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bursting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/bursting2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bursting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.44: (Top) From <span class="citation" data-cites="zhang2024transcriptional">Q. Zhang et al. (<a href="references.html#ref-zhang2024transcriptional" role="doc-biblioref">2024</a>)</span>. (The figure shows that on average, transcription starts and stops on the time-scale of hours in humans.)<br>
-(Bottom) From <span class="citation" data-cites="jiang2017scale">Jiang, Zhang, and Li (<a href="references.html#ref-jiang2017scale" role="doc-biblioref">2017</a>)</span>.
-</figcaption>
+<div id="fig-bursting" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/bursting2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.44: (Top) From <span class="citation" data-cites="zhang2024transcriptional">Q. Zhang et al. (<a href="references.html#ref-zhang2024transcriptional" role="doc-biblioref">2024</a>)</span>. (The figure shows that on average, transcription starts and stops on the time-scale of hours in humans.)<br>
+(Bottom) From <span class="citation" data-cites="jiang2017scale">Jiang, Zhang, and Li (<a href="references.html#ref-jiang2017scale" role="doc-biblioref">2017</a>)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -1160,16 +945,12 @@ Which cells did you use to train the GRN? Did you use cells of many different ce
 <p><em>Sidenote 1</em>: Even if you wanted to interpret your GRN with no time context, you’ll be in trouble. First, you need variation in your data to learn GRNs. (If all your cells literally had the same expression in RNA and ATAC, you would no ability to learn the GRN.) So you <em>must</em> have some variation among your cells. So the real question is: is that variation due to some underlying biological dynamics?</p>
 <p><em>Sidenote 2</em>: This means you should be aware of Simpson’s paradox<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> when working with GRNs. See <span class="citation" data-cites="li2024dissecting">J. J. Li et al. (<a href="references.html#ref-li2024dissecting" role="doc-biblioref">2024</a>)</span> for a cell-biology specific example of Simpon’s paradox.</p></li>
 </ul>
-<p>As a sidenote, it is important that different methods assume (by default) a different distance between a peak and its regulated gene, see <a href="#fig-peak-gene-length" class="quarto-xref">Figure&nbsp;<span>6.45</span></a>. Also note that this distance isn’t even necessarily distance (since often, you might expect more enhancers to be upstream of a gene’s TSS than downstream). Also, the way different methods “weigh” the total regulatory effect of all the CREs on a gene might differ.</p>
+<p>As a sidenote, it is important that different methods assume (by default) a different distance between a peak and its regulated gene, see <a href="#fig-peak-gene-length">Figure&nbsp;<span>6.45</span></a>. Also note that this distance isn’t even necessarily distance (since often, you might expect more enhancers to be upstream of a gene’s TSS than downstream). Also, the way different methods “weigh” the total regulatory effect of all the CREs on a gene might differ.</p>
 <div class="block">
-<div id="fig-peak-gene-length" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-peak-gene-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/peak-gene-length.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peak-gene-length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.45: From <span class="citation" data-cites="loers2024single">Loers and Vermeirssen (<a href="references.html#ref-loers2024single" role="doc-biblioref">2024</a>)</span>
-</figcaption>
+<div id="fig-peak-gene-length" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/peak-gene-length.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.45: From <span class="citation" data-cites="loers2024single">Loers and Vermeirssen (<a href="references.html#ref-loers2024single" role="doc-biblioref">2024</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -1183,17 +964,13 @@ Unlike a clinical trial, in single-cell biology, we are measuring everything at 
 <p>Even if you retort and set up a longitudinal CRISPR experiment, since you have to kill (lyse) the cell to sequence it, you can only get longitudinal information about the overall petri dish, not longitudinal information about specific cells. (Technically, this aspect isn’t the worst limitation. After all, in an observational study, if you analyze enough people, you can know if a drug caused a change in someone’s blood pressure even if you didn’t measure someone’s blood pressure before they took the drug. <em>However</em>, in our single-cell context, since we can never observe <em>both</em> pre-treatment and post-treatment, it is hard to stratify the “treatment effect” of a CRISPR knockout, unless you’re working with a mostly homogeneous cell line where there’s basically no variation among the cells.</p></li>
 <li><p><strong>Are we really learning causal effects if we don’t know all the middle-men in transcription?</strong><br>
 Even if you say that a particular TF “causes” a change in downstream gene’s expression, does this <em>really</em> make sense unless you are honing in on the specific pathway and mechanisms? After all, the grand holy grail of cell biology is to articulate the specific set of events. If your hard work of causal inference is only amounts to stating two things are causally related, but you are not able to say explicitly how (in a bio-mechanistic sense), is your finding advancing biology, or is it just a slight improvement in the statistics?</p>
-<p>See <a href="#fig-apoptosis" class="quarto-xref">Figure&nbsp;<span>6.46</span></a> for an example of the type of mechanisms a cell biologists wants to uncover at the end of the day. It’s a very literal sequence of events of how certain biological processes unfold.</p></li>
+<p>See <a href="#fig-apoptosis">Figure&nbsp;<span>6.46</span></a> for an example of the type of mechanisms a cell biologists wants to uncover at the end of the day. It’s a very literal sequence of events of how certain biological processes unfold.</p></li>
 </ul>
 <div class="block">
-<div id="fig-apoptosis" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-apoptosis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/apoptosis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-apoptosis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.46: From <span class="citation" data-cites="taylor2008apoptosis">Taylor, Cullen, and Martin (<a href="references.html#ref-taylor2008apoptosis" role="doc-biblioref">2008</a>)</span>
-</figcaption>
+<div id="fig-apoptosis" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/apoptosis.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.46: From <span class="citation" data-cites="taylor2008apoptosis">Taylor, Cullen, and Martin (<a href="references.html#ref-taylor2008apoptosis" role="doc-biblioref">2008</a>)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -1209,22 +986,18 @@ Despite this shortcomings of existing GRNs, technological limitations have never
 </div>
 <p><strong>A brief note on related topics.</strong><br>
 See <span class="citation" data-cites="loers2024single">Loers and Vermeirssen (<a href="references.html#ref-loers2024single" role="doc-biblioref">2024</a>)</span> and <span class="citation" data-cites="kim2023gene">D. Kim et al. (<a href="references.html#ref-kim2023gene" role="doc-biblioref">2023</a>)</span> for <em>fantastic</em> overviews on GRNs learned from multi-omic data. Remember that GRNs have existed way before paired multiome data has been around. See <span class="citation" data-cites="karamveer2024approaches">Karamveer and Uzun (<a href="references.html#ref-karamveer2024approaches" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="stock2024topological">Stock et al. (<a href="references.html#ref-stock2024topological" role="doc-biblioref">2024</a>)</span> for overviews not specific to learning GRNs from multi-omic data. See <span class="citation" data-cites="garbulowski2024genespider2">Garbulowski et al. (<a href="references.html#ref-garbulowski2024genespider2" role="doc-biblioref">2024</a>)</span>, <span class="citation" data-cites="cannoodt2021spearheading">Cannoodt et al. (<a href="references.html#ref-cannoodt2021spearheading" role="doc-biblioref">2021</a>)</span>, <span class="citation" data-cites="pratapa2020benchmarking">Pratapa et al. (<a href="references.html#ref-pratapa2020benchmarking" role="doc-biblioref">2020</a>)</span> for an example of how to synthetically generate a gene regulatory network and the corresponding scRNA-seq data (to benchmark methods).</p>
-<p>Also, note that there are some network methods that have nodes for each genomic feature <em>and</em> cells, see <a href="#fig-simba" class="quarto-xref">Figure&nbsp;<span>6.47</span></a>. Some example of methods are SIMBA <span class="citation" data-cites="chen2024simba">H. Chen et al. (<a href="references.html#ref-chen2024simba" role="doc-biblioref">2024</a>)</span> and CellWalker2 <span class="citation" data-cites="hu2024cellwalker2">Hu, Przytycki, and Pollard (<a href="references.html#ref-hu2024cellwalker2" role="doc-biblioref">2024</a>)</span>.</p>
+<p>Also, note that there are some network methods that have nodes for each genomic feature <em>and</em> cells, see <a href="#fig-simba">Figure&nbsp;<span>6.47</span></a>. Some example of methods are SIMBA <span class="citation" data-cites="chen2024simba">H. Chen et al. (<a href="references.html#ref-chen2024simba" role="doc-biblioref">2024</a>)</span> and CellWalker2 <span class="citation" data-cites="hu2024cellwalker2">Hu, Przytycki, and Pollard (<a href="references.html#ref-hu2024cellwalker2" role="doc-biblioref">2024</a>)</span>.</p>
 <div class="block">
-<div id="fig-simba" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-simba-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="fig/chap5/simba.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simba-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.47: From <span class="citation" data-cites="chen2024simba">H. Chen et al. (<a href="references.html#ref-chen2024simba" role="doc-biblioref">2024</a>)</span>
-</figcaption>
+<div id="fig-simba" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="fig/chap5/simba.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.47: From <span class="citation" data-cites="chen2024simba">H. Chen et al. (<a href="references.html#ref-chen2024simba" role="doc-biblioref">2024</a>)</span></figcaption>
 </figure>
 </div>
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-adams2022single" class="csl-entry" role="listitem">
 Adams, Levi, Min Kyung Song, Yoshiaki Tanaka, and Yoon-Seong Kim. 2022. <span>“Single-Nuclei Paired Multiomic Analysis of Young, Aged, and Parkinson’s Disease Human Midbrain Reveals Age-and Disease-Associated Glial Changes and Their Contribution to Parkinson’s Disease.”</span> <em>MedRxiv</em>, 2022–01.
 </div>
@@ -1491,418 +1264,251 @@ Ziegler, Lukas M von, Amalia Floriou-Servou, Rebecca Waag, Rebecca R Das Gupta, 
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
       }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
+      return codeEl.innerText;
     }
   });
-  </script>
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter4_protein.html" class="pagination-link" aria-label="'Single-cell' proteomics">
+      <a href="./chapter4_protein.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter6_dna.html" class="pagination-link" aria-label="'Single-cell' DNA">
+      <a href="./chapter6_dna.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">‘Single-cell’ DNA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
