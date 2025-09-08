@@ -93,7 +93,7 @@ Conceptually, this is our goal in a cartoon setting. (Technically, most lineage-
 
 The issue is that there is an *explosion* of possible trees. Let's establish some ground rules. We will only talk about fully connected, binary, rooted trees where the $n$ nodes are the leaves.
 
--   **$n$ leaves**: The $n$ cells we observed are set to be leaves (sometimes called terminal nodes). (After all, we sequence all the cells at once, so we don't actually observe the "parent" cell that divided to yield the two daughter cells we sequenced. Remember, over time, cells undergo mitosis to split into 2 cells.)
+-   $n$ leaves: The $n$ cells we observed are set to be leaves (sometimes called terminal nodes). (After all, we sequence all the cells at once, so we don't actually observe the "parent" cell that divided to yield the two daughter cells we sequenced. Remember, over time, cells undergo mitosis to split into 2 cells.)
 
 -   **Fully connected and directed**: All $n$ leaves are connected by one graph. These $n$ nodes are connected by $n-1$ intermediate (unobserved) nodes.
 
@@ -122,7 +122,7 @@ $$ {#eq-double-factorial}
 
 via induction.
 
-**Base Case ($n=2$)**: For $n=2$, there is exactly one fully resolved rooted tree, consisting of a root node with two children (the two labeled leaves). Hence,
+**Base Case (**$n=2$): For $n=2$, there is exactly one fully resolved rooted tree, consisting of a root node with two children (the two labeled leaves). Hence,
 
 $$
 T_2 = 1.
@@ -138,8 +138,7 @@ To form an $n$-leaf tree from a $(n-1)$-leaf tree, we consider a particular $(n-
 
 $$
 T_n = (2n - 3) \times T_{n-1}.
-$$
-For example, this means
+$$ For example, this means
 
 $$
 \begin{aligned}
@@ -161,7 +160,7 @@ $$
 ![From <https://www.megasoftware.net/mega1_manual/Phylogeny.html>](fig/chap8/tree-enumerate.png){#fig-tree-enumerate width="100%" fig-align="center"}
 :::
 
-See @st2017shape (and related papers) for more context. 
+See @st2017shape (and related papers) for more context.
 
 So... why is this result important? Observe that $n!!$ is *super exponential* (i.e., it grows faster than an exponential[^chapter8_lineage-3]). So if you have $n=1000$ cells, the number of possible trees you'll try to enumerate is on the order of $1000^{1000} = 10^{3000}$, which is way too many. See @fig-num-trees. Therefore, when constructing phylogenetic trees, we need to be mathematically clever (probably with the help of some heuristic). Can we use some heuristic to drastically reduce the number of trees we're going to even consider, and we can use our sequencing data of these $n$ cells to help us in this endeavor?
 
@@ -179,7 +178,7 @@ So... why is this result important? Observe that $n!!$ is *super exponential* (i
 
 Lentiviral approaches offer a more controlled way to label and track cell lineages. By inserting a known genetic barcode into cells, scientists can reliably follow how these labeled cells expand and diversify over time. See @fig-barcode1, @fig-barcode2, and @fig-barcode3.
 
--   **In static lineage barcoding**, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell's DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.  
+-   **In static lineage barcoding**, a lentivirus delivers a stable transgene (for example, GFP or RFP) containing a unique sequence in its untranslated region (UTR) to be integrated into the cell's DNA. All progeny of an infected cell inherit this same sequence, making it straightforward to group related cells.
 
     (This won't be the focus of the following sections. In static lineage barcoding, there is no phylogenetic tree. All the cell lineage information is relative to when the lentivirus was introduced to your cells.)
 
@@ -220,7 +219,7 @@ For more reading on this technology, see @li2024reconstructing, @vanhorn2021next
 In many CRISPR-lineage systems, each target site transitions exactly once from unedited to some specific indel state, and cannot revert (i.e., irreversible). This constraint helps reduce the multi-state problem to something akin to a binary "perfect phylogeny" assumption. However, real data can deviate from a true perfect phylogeny due to parallel evolution of the same indel or missing data.
 
 ::: block3
-**Input/Output.** The input to Cassiopeia is the $\{\texttt{NA}, 0, 1, 2, \ldots\} \in \mathbb{R}^{n \times m}$ matrix of $n$ cells and $m$ possible target sites (i.e., Cas9-induced heritable insertions or deletions happened, also called indels). This is sometimes called the "character matrix". Here, `NA` refers to "missing" (sometimes encoded as $-1$ instead). `0` refers to the baseline sequence (i.e., unedited). Any positive integer ($1, 2, \ldots$) denotes a categorical variable, that is, the type of indel mutation that happened at this site.  
+**Input/Output.** The input to Cassiopeia is the $\{\texttt{NA}, 0, 1, 2, \ldots\} \in \mathbb{R}^{n \times m}$ matrix of $n$ cells and $m$ possible target sites (i.e., Cas9-induced heritable insertions or deletions happened, also called indels). This is sometimes called the "character matrix". Here, `NA` refers to "missing" (sometimes encoded as $-1$ instead). `0` refers to the baseline sequence (i.e., unedited). Any positive integer ($1, 2, \ldots$) denotes a categorical variable, that is, the type of indel mutation that happened at this site.
 
 The output is a phylogenetic tree that is rooted binary where each of the $n$ sequenced cells is a leaf, but this tree does not contain any temporal information about how "far in the past" the cell divisions happened (i.e., it's a cladogram, not a phylogram).
 
@@ -260,17 +259,12 @@ Some implementation notes:
 -   *Priors on Indel Frequencies.* Optionally, Cassiopeia can leverage empirical estimates of each indel's probability to prioritize rare-but-frequent states (mitigating parallel evolution).
 -   *Missing Data.* Both ILP and greedy approaches accommodate missing data by enumerating or heuristically assigning cells to the most compatible subset.
 
-**I'm very confused. Can you give me some more details?**
-There's a lot of moving components since the lineage barcode data for mutating barcodes is quite unlike anything else we've seen in this course so far. Let me go through an example from <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html> (the Cassiopeia tutorial itself) to tell you what the "input data" for Cassiopeia is. (Once you understand the input data and how it was preprocessed, it'll become clear what the output is.)
+**I'm very confused. Can you give me some more details?** There's a lot of moving components since the lineage barcode data for mutating barcodes is quite unlike anything else we've seen in this course so far. Let me go through an example from <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html> (the Cassiopeia tutorial itself) to tell you what the "input data" for Cassiopeia is. (Once you understand the input data and how it was preprocessed, it'll become clear what the output is.)
 
 In a typical mutating lineage barcoding experiment, you get a bunch of gDNA or gRNA reads about the sequences of the barcodes that integrated into each cell. Then, you run bioinformatics code to align these sequences to a known reference genome to determine what happened at each target site of a cell's barcode (i.e., did a mutation happen, if so, what was the insertion or deletion event, etc.). This is described in <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html>. The output of this is an allele table that might look like @fig-cassiopeia-bc1.
 
 ::: block
-![From <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html>. We are showing 10 different integrated barcodes `intBC` (each with three target sites, `r1` to `r3`) for the cell with `RW.TTTGCGCCAAGAAAGG`.
-So you should expect every unique cell (i.e., unique `cellBC`) to have one or more integrated barcodes (for example, 10, as shown here). Furthermore, you hope that many different cells have the same integrated barcode, such as `CTAGGGCATCTACG`. (This is because you're going to compare what happened at different target sites for cells that have the same integrated barcode to determine how these cells are related.)
-For instance, in integrated barcode `CTAGGGCATCTACG`, we see at the first target site, `CCGAA[None]AAATG`, the `None` means there was no insertion or deletion event found at this site (relative to all the other sequences at the `r1` region of this integrated barcode in the other cells).
-In contrast, at the third target site `r3`, we see `ATTCG[221:1D]GGAGG`. This means at relative position 221 in this target site, there was a deletion that resulted in 1 base pair being deleted. (You can see in this screenshot that some of the deletion events can go up to 80+ base pairs, such as `TGGCG[86:81D]CTCTG`.) This large deletion event is okay (as long as it didn't result in the deletion of a different target site) if the sequence alignment step could still determine that the flanking sequences to the deletion (in this case, `TGGCG` to the left and `CTCTG` to the right) still aligned to the reasonable positions to the target site for this barcode. Remember, *you* know what the full sequences of all these integrated barcodes are because these are all sequences you designed to be integrated into the cell's DNA.
-See `PCT48.ref.fasta` in <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html>.](fig/chap8/cassiopeia_bc1.png){#fig-cassiopeia-bc1 width="100%" fig-align="center"}
+![From <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/reconstruct.html>. We are showing 10 different integrated barcodes `intBC` (each with three target sites, `r1` to `r3`) for the cell with `RW.TTTGCGCCAAGAAAGG`. So you should expect every unique cell (i.e., unique `cellBC`) to have one or more integrated barcodes (for example, 10, as shown here). Furthermore, you hope that many different cells have the same integrated barcode, such as `CTAGGGCATCTACG`. (This is because you're going to compare what happened at different target sites for cells that have the same integrated barcode to determine how these cells are related.) For instance, in integrated barcode `CTAGGGCATCTACG`, we see at the first target site, `CCGAA[None]AAATG`, the `None` means there was no insertion or deletion event found at this site (relative to all the other sequences at the `r1` region of this integrated barcode in the other cells). In contrast, at the third target site `r3`, we see `ATTCG[221:1D]GGAGG`. This means at relative position 221 in this target site, there was a deletion that resulted in 1 base pair being deleted. (You can see in this screenshot that some of the deletion events can go up to 80+ base pairs, such as `TGGCG[86:81D]CTCTG`.) This large deletion event is okay (as long as it didn't result in the deletion of a different target site) if the sequence alignment step could still determine that the flanking sequences to the deletion (in this case, `TGGCG` to the left and `CTCTG` to the right) still aligned to the reasonable positions to the target site for this barcode. Remember, *you* know what the full sequences of all these integrated barcodes are because these are all sequences you designed to be integrated into the cell's DNA. See `PCT48.ref.fasta` in <https://cassiopeia-lineage.readthedocs.io/en/latest/notebooks/preprocess.html>.](fig/chap8/cassiopeia_bc1.png){#fig-cassiopeia-bc1 width="100%" fig-align="center"}
 :::
 
 After you've processed all the sequencing reads (also known as the FASTQ files) into this allele table, you're almost done. You still need to convert this into a form used by Cassiopeia. This is done by Cassiopeia's `convert_alleletable_to_character_matrix` function. Let's take a look at the output in @fig-cassiopeia-bc2 to appreciate what it's doing.[^chapter8_lineage-5]
@@ -301,8 +295,7 @@ Furthermore, once a phylogenetic tree is built from copy number data, the specif
 ![From @lu2025cancer. Imagine we have longitudinal samples (bottom left) of a person. Those tissue samples get single-cell sequenced. Then a variant calling happens, and then we want to learn a clone tree (right middle), which is the focus for the type of tree we're discussing in these notes.](fig/chap8/dna_phylogenetic.png){#fig-dna-phylogenetic width="100%" fig-align="center"}
 :::
 
-These output phylogenetic trees might look like the ones in @fig-dice1 and @fig-dice2.
-(As a sidenote: be sure to understand what the branch lengths mean in a phylogenetic tree. Here, these branch lengths denote the "distance" between two cells' CNA profiles. The longer the branch, the more it's different. Other methods use the branch length to denote time, i.e., the longer the branch, the more time has elapsed since the branching event. Most methods (in my experience) do not give you branch lengths relative to time, since this would require you (the data analyst) to provide the method with more biological information. For example, how fast do certain CNA events happen? You would need to provide this additional information to your phylogenetic method for it to know how to estimate branch lengths that denote time.)
+These output phylogenetic trees might look like the ones in @fig-dice1 and @fig-dice2. (As a sidenote: be sure to understand what the branch lengths mean in a phylogenetic tree. Here, these branch lengths denote the "distance" between two cells' CNA profiles. The longer the branch, the more it's different. Other methods use the branch length to denote time, i.e., the longer the branch, the more time has elapsed since the branching event. Most methods (in my experience) do not give you branch lengths relative to time, since this would require you (the data analyst) to provide the method with more biological information. For example, how fast do certain CNA events happen? You would need to provide this additional information to your phylogenetic method for it to know how to estimate branch lengths that denote time.)
 
 ::: block
 ![From @weiner2025dice.](fig/chap8/dice.png){#fig-dice1 width="100%" fig-align="center"}
@@ -312,16 +305,13 @@ These output phylogenetic trees might look like the ones in @fig-dice1 and @fig-
 ![From @kaufmann2022medicc2.](fig/chap8/medicc2.png){#fig-dice2 width="100%" fig-align="center"}
 :::
 
-
 ### COMPASS, for scDNA copy number: Illustrating a probabilistic approach {#sec-dna_phylogenetic}
 
 COMPASS (Joint Copy Number and Mutation Phylogeny from Amplicon Single-Cell DNA Sequencing) (@sollier2023compass) is a probabilistic model designed to reconstruct a branching evolutionary tree of SNVs (single-nucleotide variants) *and* CNAs (copy number alterations) from single-cell DNA sequencing data. It accommodates both allele-specific copy number changes (loss, gain, copy-neutral loss of heterozygosity) and single-nucleotide events, all integrated into a single phylogenetic structure. (In COMPASS, there are meaningful branch lengths. The output is simply a cladogram.)
 
 ::: block
-![From @sollier2023compass.
-Some basic terminology: 1) **SNV (Single Nucleotide Variant):** A change in a single nucleotide of the DNA sequence. 2) **Loss:** (Not shown in this figure) A deletion of one copy of a chromosomal region. For instance, in the usual 23 pairs of human chromosomes, one region could be deleted from one copy of Chromosome 1, while remaining intact on the other copy. 3) **CNLOH (Copy-Neutral Loss of Heterozygosity):** A copy number alteration that preserves the total number of chromosome copies but still removes heterozygosity. In other words, the cell ends up with the same number of copies overall, yet the two copies become identical (losing heterozygosity). 4) **Gain:** The opposite of a "loss." This could involve duplicating a specific chromosomal region (thus elongating that chromosome) or duplicating the entire chromosome (leading to three copies of Chromosome 1, instead of the usual two).](fig/chap8/compass_alg.png){#fig-compass-alg width="100%" fig-align="center"}
+![From @sollier2023compass. Some basic terminology: 1) **SNV (Single Nucleotide Variant):** A change in a single nucleotide of the DNA sequence. 2) **Loss:** (Not shown in this figure) A deletion of one copy of a chromosomal region. For instance, in the usual 23 pairs of human chromosomes, one region could be deleted from one copy of Chromosome 1, while remaining intact on the other copy. 3) **CNLOH (Copy-Neutral Loss of Heterozygosity):** A copy number alteration that preserves the total number of chromosome copies but still removes heterozygosity. In other words, the cell ends up with the same number of copies overall, yet the two copies become identical (losing heterozygosity). 4) **Gain:** The opposite of a "loss." This could involve duplicating a specific chromosomal region (thus elongating that chromosome) or duplicating the entire chromosome (leading to three copies of Chromosome 1, instead of the usual two).](fig/chap8/compass_alg.png){#fig-compass-alg width="100%" fig-align="center"}
 :::
-
 
 ::: block3
 **Input/Output.** The input to COMPASS is 1) $D \in \mathbb{Z}_+^{n \times d}$ denoting the total read count per DNA region (among $d$ regions) for each of the $n$ cells, and 2) two matrices $X, Y \in \mathbb{Z}_+^{n \times d}$ denoting the number of DNA reads containing each SNV (among $d$ SNVs) among the $n$ cells. For example, let $X_{ij}$ denote the number of DNA reads from cell $i$ that contained the major allele (i.e., "reference") for SNV $j$, and $Y_{ij}$ denote likewise but for the minor allele (i.e., "alternative") for SNV $j$.
@@ -331,7 +321,7 @@ The output is a cladogram among the $n$ cells. More specifically, COMPASS output
 
 Here are the overall ideas of COMPASS. Both total coverage (for copy number inference) and allele-specific coverage (for LOH and SNV calling) are going to be part of the likelihood to help model the likelihood of a particular tree (which will be used to determine the tree that best fits the data).
 
--   **Model constraints**: COMPASS models four classes of mutations: 1)  SNVs, each occurring exactly once in the tree, 2)  Loss, which removes one copy of an allele in a region, 3)  Gain, which increases the copy number of a region, and 4)  CNLOH (copy-neutral LOH), which replaces one allele with another while keeping total copy number constant.
+-   **Model constraints**: COMPASS models four classes of mutations: 1) SNVs, each occurring exactly once in the tree, 2) Loss, which removes one copy of an allele in a region, 3) Gain, which increases the copy number of a region, and 4) CNLOH (copy-neutral LOH), which replaces one allele with another while keeping total copy number constant.
 
     Each region can undergo CNAs at most once per lineage. When subclones exhibit multiple consecutive CNAs in a region, COMPASS in practice uses a single-event approximation to avoid ambiguous high copy numbers. (This is a parsimonious principle, in some sense. We're dramatically limiting the number of trees that are going to be considered with these constraints.)
 
@@ -344,7 +334,7 @@ Here are the overall ideas of COMPASS. Both total coverage (for copy number infe
 -   **Cell-to-node assignments**: (Here, "node" refers to a mutation event, which are internal nodes in our tree.) COMPASS marginalizes over cell attachments to genotype nodes. Let $\pi_k$ be a prior probability that any cell is attached to node $k$. The algorithm thus sums $\sum_{k} \pi_k \, \prod_{i=1}^{p} P(\text{region reads}|\dots) \,\prod_{i=1}^{d} P(\text{allelic reads}|\dots)$ for each cell.
 
 -   **Simulated annealing**: Simulated annealing is a useful statistical technique for reconstructing a phylogenetic tree from single-cell DNA data because we want to search through a vast space of possible evolutionary histories[^chapter8_lineage-6]. Each candidate tree is defined by how individual copy number events and mutations are arranged and passed down through successive subclones. A naive or purely greedy search might easily get stuck in suboptimal solutions, given the noisy nature of single-cell data and the combinatorial explosion of possible trees. By gradually "cooling" the exploration of this space — starting from more random moves and then narrowing down to finer adjustments — simulated annealing helps ensure that the final solution is not merely a local optimum. In other words, this strategy balances the need for broad exploration early on with the requirement of a precise, fine-grained search later, thereby increasing the likelihood of discovering a high-probability lineage structure.
-    
+
     COMPASS employs a simulated annealing approach over the discrete space of trees:
 
     1.  Start with a random initial tree (random parent pointers, random SNV allocation, no CNAs).\

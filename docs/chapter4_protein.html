@@ -2,16 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<<<<<<< HEAD
-<meta name="generator" content="quarto-1.3.353">
-=======
-<meta name="generator" content="quarto-1.5.57">
->>>>>>> wenbin
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>scOmicNotes - 5&nbsp; ‘Single-cell’ proteomics</title>
+<title>5&nbsp; ‘Single-cell’ proteomics – scOmicNotes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -28,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,26 +52,29 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./chapter5_epigenetics.html" rel="next">
 <link href="./chapter3_rna.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<<<<<<< HEAD
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-=======
-<link href="site_libs/bootstrap/bootstrap-364982630eef5352dd1537128a8ed5cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
->>>>>>> 229df1401f112c7d5a264d22efe80820754759f7
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,8 +83,10 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -121,18 +123,18 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter4_protein.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">'Single-cell' proteomics</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter4_protein.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">‘Single-cell’ proteomics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -142,7 +144,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">scOmicNotes</a> 
@@ -224,7 +226,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -284,33 +286,47 @@ window.Quarto = {
   </div>
   
 
+
 </header>
+
 
 <section id="review-of-the-central-dogma" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="review-of-the-central-dogma"><span class="header-section-number">5.1</span> Review of the central dogma</h2>
-<p>The central dogma of molecular biology outlines the flow of genetic information within a cell: DNA is transcribed into RNA, and RNA is then translated into protein (see <a href="#fig-ap-biology">Figure&nbsp;<span>5.1</span></a>). Specifically, coding genes in DNA are transcribed into messenger RNA (mRNA), which serves as a template for protein synthesis. During translation, mRNA sequences are read in sets of three nucleotides, known as codons, each corresponding to a specific amino acid. These amino acids are then linked together to form proteins, which carry out a vast array of functions within the cell. While this process provides a foundational framework, it is a dramatic over-simplification. As we’ll explore later in the course, the correlation between a gene and its corresponding protein levels is often surprisingly low, highlighting the complexity of gene expression regulation.</p>
+<p>The central dogma of molecular biology outlines the flow of genetic information within a cell: DNA is transcribed into RNA, and RNA is then translated into protein (see <a href="#fig-ap-biology" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>). Specifically, coding genes in DNA are transcribed into messenger RNA (mRNA), which serves as a template for protein synthesis. During translation, mRNA sequences are read in sets of three nucleotides, known as codons, each corresponding to a specific amino acid. These amino acids are then linked together to form proteins, which carry out a vast array of functions within the cell. While this process provides a foundational framework, it is a dramatic over-simplification. As we’ll explore later in the course, the correlation between a gene and its corresponding protein levels is often surprisingly low, highlighting the complexity of gene expression regulation.</p>
 <div class="block">
-<div id="fig-ap-biology" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fig/chap4/ap-biology.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.1: What I call the ``AP Biology textbook’’ figure. Screenshot taken from <a href="https://www.slideshare.net/slideshow/lecture-on-dna-to-proteins-the-central-dogma-of-molecular-biology/38811421" class="uri">https://www.slideshare.net/slideshow/lecture-on-dna-to-proteins-the-central-dogma-of-molecular-biology/38811421</a>.</figcaption>
+<div id="fig-ap-biology" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ap-biology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap4/ap-biology.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ap-biology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: What I call the ``AP Biology textbook’’ figure. Screenshot taken from <a href="https://www.slideshare.net/slideshow/lecture-on-dna-to-proteins-the-central-dogma-of-molecular-biology/38811421" class="uri">https://www.slideshare.net/slideshow/lecture-on-dna-to-proteins-the-central-dogma-of-molecular-biology/38811421</a>.
+</figcaption>
 </figure>
 </div>
 </div>
 <p>Understanding proteins is crucial because they are the primary effectors of cellular function. Most cellular activities — whether structural, enzymatic, or signaling—are mediated by proteins. While RNA intermediates, such as mRNA, play important roles in carrying genetic information, the majority of RNA fragments never leave the cell, with a few exceptions like extracellular RNA in communication. Proteins, however, directly influence both intracellular processes and extracellular interactions. Given the weak correlation between genes and proteins and the central role proteins play in biological function, studying proteins arguably provides a more direct and meaningful insight into cellular and organismal behavior. This dual perspective on the central dogma will frame much of our exploration in this course.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="block">
-<div id="fig-gene-protein-correlation" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fig/chap4/gene-protein-correlation.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.2: From <span class="citation" data-cites="buccitelli2020mrnas">Buccitelli and Selbach (<a href="references.html#ref-buccitelli2020mrnas" role="doc-biblioref">2020</a>)</span>.</figcaption>
+<div id="fig-gene-protein-correlation" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gene-protein-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap4/gene-protein-correlation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gene-protein-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: From <span class="citation" data-cites="buccitelli2020mrnas">Buccitelli and Selbach (<a href="references.html#ref-buccitelli2020mrnas" role="doc-biblioref">2020</a>)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-gene-expression-control" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fig/chap4/gene-expression-control.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.3: From <span class="citation" data-cites="buccitelli2020mrnas">Buccitelli and Selbach (<a href="references.html#ref-buccitelli2020mrnas" role="doc-biblioref">2020</a>)</span>.</figcaption>
+<div id="fig-gene-expression-control" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gene-expression-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap4/gene-expression-control.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gene-expression-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: From <span class="citation" data-cites="buccitelli2020mrnas">Buccitelli and Selbach (<a href="references.html#ref-buccitelli2020mrnas" role="doc-biblioref">2020</a>)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -319,21 +335,29 @@ window.Quarto = {
 <h2 data-number="5.2" class="anchored" data-anchor-id="other-ways-to-study-proteins-that-were-not-going-to-discuss-here"><span class="header-section-number">5.2</span> Other ways to study proteins that we’re not going to discuss here</h2>
 <section id="so-you-heard-about-alphafold" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="so-you-heard-about-alphafold"><span class="header-section-number">5.2.1</span> So You Heard About AlphaFold…</h3>
-<p>AlphaFold (see <a href="#fig-alphafold">Figure&nbsp;<span>5.4</span></a>) represents a revolutionary advancement in computational biology, designed to predict the three-dimensional structure of proteins from their amino acid sequences<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Historically, determining protein shapes required experimental techniques like X-ray crystallography, cryo-electron microscopy (EM) (see <a href="#fig-cryo-em">Figure&nbsp;<span>5.5</span></a>), or nuclear magnetic resonance (NMR), which are resource-intensive and time-consuming. AlphaFold uses deep learning and structural biology insights to achieve high accuracy.<br>
+<p>AlphaFold (see <a href="#fig-alphafold" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>) represents a revolutionary advancement in computational biology, designed to predict the three-dimensional structure of proteins from their amino acid sequences<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Historically, determining protein shapes required experimental techniques like X-ray crystallography, cryo-electron microscopy (EM) (see <a href="#fig-cryo-em" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>), or nuclear magnetic resonance (NMR), which are resource-intensive and time-consuming. AlphaFold uses deep learning and structural biology insights to achieve high accuracy.<br>
 However, significant challenges remain. There are still many open questions on how specific genetic modifications impact protein folding, how proteins dynamically change their conformation, or how they interact with other molecules such as DNA or other proteins. Additionally, ongoing developments in using large language models are showing promise in predicting not only shape but also potential functions directly from amino acid sequences.</p>
 <div class="block">
-<div id="fig-alphafold" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fig/chap4/alphafold.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.4: From <span class="citation" data-cites="jumper2021highly">Jumper et al. (<a href="references.html#ref-jumper2021highly" role="doc-biblioref">2021</a>)</span>.</figcaption>
+<div id="fig-alphafold" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alphafold-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap4/alphafold.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alphafold-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: From <span class="citation" data-cites="jumper2021highly">Jumper et al. (<a href="references.html#ref-jumper2021highly" role="doc-biblioref">2021</a>)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="block">
-<div id="fig-cryo-em" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="fig/chap4/cryo-em.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.5: From <a href="https://myscope.training/CRYO_Introducing_Single_Particle_Analysis" class="uri">https://myscope.training/CRYO_Introducing_Single_Particle_Analysis</a>, as an example of what cryo-EM data “looks like,” just to give you a brief glimpse on how people study protein structure.</figcaption>
+<div id="fig-cryo-em" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cryo-em-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="fig/chap4/cryo-em.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cryo-em-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: From <a href="https://myscope.training/CRYO_Introducing_Single_Particle_Analysis" class="uri">https://myscope.training/CRYO_Introducing_Single_Particle_Analysis</a>, as an example of what cryo-EM data “looks like,” just to give you a brief glimpse on how people study protein structure.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -521,7 +545,7 @@ Figure&nbsp;5.16: (Right): From DCA <span class="citation" data-cites="eraslan20
 <li><p><strong>Minimizing a “deterministic” loss</strong>: As illustrated in <a href="#fig-dca1-1" class="quarto-xref">Figure&nbsp;<span>5.15</span></a> and <a href="#fig-dca1-2" class="quarto-xref">Figure&nbsp;<span>5.16</span></a>, most AEs typically try to minimize the reconstruction loss (i.e., the difference between the original input and the final output). We’ll see how this changes when we discuss VAEs.</p></li>
 <li><p><strong>Compression of information</strong>: As opposed to most NN architectures, in AEs, the number of units in each layer is smaller than the original dimension (typically called “compression” or “bottleneck”), exemplified in <a href="#fig-dca1-1" class="quarto-xref">Figure&nbsp;<span>5.15</span></a> and <a href="#fig-dca1-2" class="quarto-xref">Figure&nbsp;<span>5.16</span></a>. In most other NN architectures (e.g., GANs, Convolution NN, Recurrent NN’s), the number of units typically grows. The latent representation for a cell with expression <span class="math inline">\(X_i \in \mathbb{R}^{p}\)</span> will be called <span class="math inline">\(Z_i \in \mathbb{R}^{K}\)</span> where <span class="math inline">\(K \ll p\)</span>.</p></li>
 <li><p><strong>Unsupervised setting</strong>: As opposed to most NN architectures, AEs are meant for the unsupervised setting. Unsurprisingly, since most of the statistical theory for NNs is for the supervised setting, our understanding of AEs is much more limited compared to that for other NN architectures.</p></li>
-<li><p><strong>Relation to PCA</strong>: AEs are most similar to PCAs by understanding the reconstruction perspective of PCA <span class="quarto-unresolved-ref">?eq-pca-minimize_reconstruction</span>. PCA uses: 1) linear functions to encode and decode the data, and 2) sets the decoder to be exactly the “inverse” of the encoder. In AEs, we can: 1) use non-linear functions (such as ReLU) for more complex transformations of the data, and 2) allow the decoder to be different from the encoder. (The reason why the second point might seem useful will become clear when we explain VAEs below.)</p></li>
+<li><p><strong>Relation to PCA</strong>: AEs are most similar to PCAs by understanding the reconstruction perspective of PCA <a href="chapter2_sequencing.html#eq-pca-minimize_reconstruction" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>. PCA uses: 1) linear functions to encode and decode the data, and 2) sets the decoder to be exactly the “inverse” of the encoder. In AEs, we can: 1) use non-linear functions (such as ReLU) for more complex transformations of the data, and 2) allow the decoder to be different from the encoder. (The reason why the second point might seem useful will become clear when we explain VAEs below.)</p></li>
 </ul>
 </section>
 <section id="sec-vae" class="level3" data-number="5.5.2">
@@ -661,7 +685,7 @@ Unfortunately, <a href="#eq-vae_objective" class="quarto-xref">Equation&nbsp;<sp
 </ul>
 <p>The modular nature of VAEs allows for modifications, such as changing the structure of the encoder/decoder or altering the prior distribution, making them highly adaptable to different data types and tasks, including the integration of multimodal single-cell data like CITE-seq, as we will see soon in <a href="#sec-union_totalvi" class="quarto-xref"><span>Section 5.6.1</span></a>.</p>
 <p>scVI (single-cell Variational Inference) is a specialized implementation of a Variational Autoencoder (VAE) tailored to single-cell RNA-seq data. It models the observed count data as being drawn from a negative binomial (NB) distribution, allowing it to account for the overdispersion inherent in single-cell data. The framework is designed to simultaneously capture the low-dimensional latent structure of the data and model the technical variability associated with sequencing, such as differences in library sizes.</p>
-<p>Like a generic VAE, scVI consists of an encoder and a decoder. The encoder maps the observed gene expression counts ( X ) into a latent space ( Z ), capturing the underlying biological variation. The decoder reconstructs the counts ( X ) from ( Z ), but in scVI, this reconstruction explicitly models count data using the negative binomial distribution: [ X_{ij} (<em>{ij}, r_j), ] where ( </em>{ij} ) is the mean expression for gene ( j ) in cell ( i ), and ( r_j ) is the dispersion parameter for cell ( i ).</p>
+<p>Like a generic VAE, scVI consists of an encoder and a decoder. The encoder maps the observed gene expression counts ( X ) into a latent space ( Z ), capturing the underlying biological variation. The decoder reconstructs the counts ( X ) from ( Z ), but in scVI, this reconstruction explicitly models count data using the negative binomial distribution: [ X_{ij} (, r_j), ] where (* ) is the mean expression for gene ( j ) in cell ( i ), and ( r_j ) is the dispersion parameter for cell ( i ).</p>
 <p>The latent space ( Z ) represents a compressed, biologically meaningful representation of each cell, and it is regularized to follow a standard Gaussian prior ( p(Z) = (0, I) ). The overall loss function to be minimized is the evidence lower bound (ELBO): <span class="math display">\[
 \begin{align*}
 \mathcal{L}(\text{encoder}, \text{decoder}; X_{1:n}) &amp;=
@@ -722,7 +746,7 @@ Figure&nbsp;5.24: (Bottom) The UMAP after a method (WNN in this case) integrates
 </div>
 </div>
 <p>Your first thought might be to simply perform PCA on the entire single-cell sequencing (i.e., one big PCA on all the 2000+ highly variable genes, and 100-ish proteins). However, this might not work as you might hope, since this wouldn’t account for the different scales and sparsities of RNA and ADT signals. That is, the RNA-dominated gene expression data could overwhelm the smaller protein feature set. This addresses the core challenge in simply combining modalities — differences in dimensionality, normalization, and noise — so that a single embedding captures both transcriptomic and proteomic variation while preserving each modality’s unique biological signal.</p>
-<p>We will mention this concept of integration between two omics more in <span class="quarto-unresolved-ref">?sec-atac_integration</span> when we talk about 10x multiome (RNA &amp; ATAC). For now though, we will focus on TotalVI, which is one of the most common ways to achieve this goal for CITE-seq data.</p>
+<p>We will mention this concept of integration between two omics more in <a href="chapter5_epigenetics.html#sec-atac_integration" class="quarto-xref"><span>Section 6.6</span></a> when we talk about 10x multiome (RNA &amp; ATAC). For now though, we will focus on TotalVI, which is one of the most common ways to achieve this goal for CITE-seq data.</p>
 <section id="sec-union_totalvi" class="level3" data-number="5.6.1">
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="sec-union_totalvi"><span class="header-section-number">5.6.1</span> TotalVI (and other methods for the “union” of information)</h3>
 <div class="block3">
@@ -790,7 +814,7 @@ p_{\text{decoders}}(x_n, y_n | z_n, \ell_n, \beta_n)
 <p>the latent embedding <span class="math inline">\(z_n\)</span> is used to generate both the RNA <span class="math inline">\(x_n\)</span> and protein <span class="math inline">\(y_n\)</span>. Intuitively, <span class="math inline">\(z_n\)</span> likely contains more information than either <span class="math inline">\(x_n\)</span> or <span class="math inline">\(y_n\)</span> alone. The goal of TotalVI is to create one big atlas that provides a bird’s-eye view of all the sources of variation in the data — some originating from RNA, others from protein.</p>
 </div>
 <p><strong>A brief note on other approaches.</strong><br>
-A popular non-deep-learning approach is Weighted Nearest Neighbors (WNN) <span class="citation" data-cites="hao2020integrated">(<a href="references.html#ref-hao2020integrated" role="doc-biblioref"><strong>hao2020integrated?</strong></a>)</span> (shown in <a href="#fig-wnn_separate-1" class="quarto-xref">Figure&nbsp;<span>5.23</span></a> and <a href="#fig-wnn_separate-2" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>). More generally, methods for joint embeddings of multimodal data are discussed in <span class="citation" data-cites="wang2024progress">(<a href="references.html#ref-wang2024progress" role="doc-biblioref"><strong>wang2024progress?</strong></a>)</span>, <span class="citation" data-cites="brombacher2022performance">(<a href="references.html#ref-brombacher2022performance" role="doc-biblioref"><strong>brombacher2022performance?</strong></a>)</span>, and <span class="citation" data-cites="makrodimitris2024depth">(<a href="references.html#ref-makrodimitris2024depth" role="doc-biblioref"><strong>makrodimitris2024depth?</strong></a>)</span>. Deep learning dominates this field, with differences in how architectures and losses manage information flow. See <a href="#fig-poe" class="quarto-xref">Figure&nbsp;<span>5.27</span></a>.</p>
+A popular non-deep-learning approach is Weighted Nearest Neighbors (WNN) <span class="citation" data-cites="hao2020integrated">(<a href="references.html#ref-hao2020integrated" role="doc-biblioref">Hao et al. 2021</a>)</span> (shown in <a href="#fig-wnn_separate-1" class="quarto-xref">Figure&nbsp;<span>5.23</span></a> and <a href="#fig-wnn_separate-2" class="quarto-xref">Figure&nbsp;<span>5.24</span></a>). More generally, methods for joint embeddings of multimodal data are discussed in <span class="citation" data-cites="wang2024progress">(<a href="references.html#ref-wang2024progress" role="doc-biblioref"><strong>wang2024progress?</strong></a>)</span>, <span class="citation" data-cites="brombacher2022performance">(<a href="references.html#ref-brombacher2022performance" role="doc-biblioref"><strong>brombacher2022performance?</strong></a>)</span>, and <span class="citation" data-cites="makrodimitris2024depth">(<a href="references.html#ref-makrodimitris2024depth" role="doc-biblioref"><strong>makrodimitris2024depth?</strong></a>)</span>. Deep learning dominates this field, with differences in how architectures and losses manage information flow. See <a href="#fig-poe" class="quarto-xref">Figure&nbsp;<span>5.27</span></a>.</p>
 <div class="block">
 <div id="fig-poe" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -849,7 +873,7 @@ The goal of Canonical Correlation Analysis (CCA) in data analysis is to identify
 </ol>
 <hr>
 <p><strong>A brief note on other approaches.</strong><br>
-There aren’t too many methods in this category for single-cell analyses yet, but it’s very common in broader computer science. CLIP <span class="citation" data-cites="radford2021learning">(<a href="references.html#ref-radford2021learning" role="doc-biblioref"><strong>radford2021learning?</strong></a>)</span> is a great example, where the goal is to learn how to jointly embed text and images, based on training data where each image has a caption. In the single-cell world, this task is sometimes called <em>translation</em> (not to be confused with the biological process of translation where mRNA gets translated into proteins). Here, “translation” means, “I want to <em>translate</em> the gene expression profile into the profile of a different modality.” BABEL <span class="citation" data-cites="wu2021babel">(<a href="references.html#ref-wu2021babel" role="doc-biblioref"><strong>wu2021babel?</strong></a>)</span> is an example of this (but this is for RNA-ATAC data, which is the omic we will be discussing next chapter in <a href="#sec-chapter_5" class="quarto-xref"><span>Chapter 6</span></a>.)</p>
+There aren’t too many methods in this category for single-cell analyses yet, but it’s very common in broader computer science. CLIP <span class="citation" data-cites="radford2021learning">(<a href="references.html#ref-radford2021learning" role="doc-biblioref"><strong>radford2021learning?</strong></a>)</span> is a great example, where the goal is to learn how to jointly embed text and images, based on training data where each image has a caption. In the single-cell world, this task is sometimes called <em>translation</em> (not to be confused with the biological process of translation where mRNA gets translated into proteins). Here, “translation” means, “I want to <em>translate</em> the gene expression profile into the profile of a different modality.” BABEL <span class="citation" data-cites="wu2021babel">(<a href="references.html#ref-wu2021babel" role="doc-biblioref">Wu et al. 2021</a>)</span> is an example of this (but this is for RNA-ATAC data, which is the omic we will be discussing next chapter in <a href="#sec-chapter_5" class="quarto-xref"><span>Chapter 6</span></a>.)</p>
 <div id="rem-union-intersection" class="block2 proof remark">
 <p><span class="proof-title"><em>Remark 5.3</em>. </span><strong>Personal opinion: How do I tell if a multi-omic integration is doing the “union” or “intersection” of information?</strong></p>
 <p>Suppose you have paired multi-omic data (like in CITE-seq), and you are thinking of creating an embedding that puts each cell into one low-dimensional space, using both modalities. How do you tell if your planned method is the “union” (like in <a href="#sec-union_totalvi" class="quarto-xref"><span>Section 5.6.1</span></a>) or the “intersection” (like in <a href="#sec-intersection_tcca" class="quarto-xref"><span>Section 5.6.2</span></a>)?</p>
@@ -876,12 +900,21 @@ There aren’t too many methods in this category for single-cell analyses yet, b
 <p>Enhancers play a critical role in this regulatory landscape. These are DNA sequences that, while not coding for proteins themselves, can dramatically increase the transcription of target genes. Enhancers act by binding specific transcription factors, proteins that recognize and attach to DNA sequences to regulate gene expression. Some transcription factors require assistance from chaperone proteins, which ensure their proper folding and functionality, or pioneer proteins, which can access and open tightly packed chromatin to allow other factors to bind. This interplay highlights the complexity of the regulatory machinery that governs cellular function. See <span class="quarto-unresolved-ref">?fig-enhancer-promoter</span> to appreciate how complex this machinery is.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-buccitelli2020mrnas" class="csl-entry" role="listitem">
 Buccitelli, Christopher, and Matthias Selbach. 2020. <span>“mRNAs, Proteins and the Emerging Principles of Gene Expression Control.”</span> <em>Nature Reviews Genetics</em> 21 (10): 630–44.
 </div>
+<div id="ref-hao2020integrated" class="csl-entry" role="listitem">
+Hao, Yuhan, Stephanie Hao, Erica Andersen-Nissen, William M Mauck, Shiwei Zheng, Andrew Butler, Maddie Jane Lee, et al. 2021. <span>“Integrated Analysis of Multimodal Single-Cell Data.”</span> <em>Cell</em> 184 (13): 3573–87.
+</div>
 <div id="ref-jumper2021highly" class="csl-entry" role="listitem">
 Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Olaf Ronneberger, Kathryn Tunyasuvunakool, et al. 2021. <span>“Highly Accurate Protein Structure Prediction with AlphaFold.”</span> <em>Nature</em> 596 (7873): 583–89.
+</div>
+<div id="ref-lotfollahi2019scgen" class="csl-entry" role="listitem">
+Lotfollahi, Mohammad, F Alexander Wolf, and Fabian J Theis. 2019. <span>“scGen Predicts Single-Cell Perturbation Responses.”</span> <em>Nature Methods</em> 16 (8): 715–21.
+</div>
+<div id="ref-wu2021babel" class="csl-entry" role="listitem">
+Wu, Kevin E, Kathryn E Yost, Howard Y Chang, and James Zou. 2021. <span>“<span>BABEL</span> Enables Cross-Modality Translation Between Multiomic Profiles at Single-Cell Resolution.”</span> <em>Proceedings of the National Academy of Sciences</em> 118 (15).
 </div>
 </div>
 </section>
@@ -897,7 +930,7 @@ Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Ola
 <li id="fn6"><p>Notice there is no “library size” for protein.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>Technically, <span class="math inline">\(z_n\)</span> is a Logistic Normal, which means it’s a distribution over the simplex. See more details in <a href="https://docs.scvi-tools.org/en/latest/user_guide/models/totalvi.html" class="uri">https://docs.scvi-tools.org/en/latest/user_guide/models/totalvi.html</a>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>It’s not too important to understand what this means, but you can see <span class="citation" data-cites="kingma2019introduction">(<a href="references.html#ref-kingma2019introduction" role="doc-biblioref"><strong>kingma2019introduction?</strong></a>)</span> for a formal definition.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Some details about this “complicated math”: The MAP is generally intractable to compute due to a very annoying normalization constant. So instead of computing MAP directly, we maximize the ELBO, which is a lower-bound of the likelihood. This is really the same trick used in deriving the EM algorithm. See <a href="https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29" class="uri">https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29</a> or <span class="citation" data-cites="lotfollahi2019scgen">(<a href="references.html#ref-lotfollahi2019scgen" role="doc-biblioref"><strong>lotfollahi2019scgen?</strong></a>)</span> for a derivation of the ELBO, and <span class="citation" data-cites="kingma2013auto">(<a href="references.html#ref-kingma2013auto" role="doc-biblioref"><strong>kingma2013auto?</strong></a>)</span> for the formal objective function.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Some details about this “complicated math”: The MAP is generally intractable to compute due to a very annoying normalization constant. So instead of computing MAP directly, we maximize the ELBO, which is a lower-bound of the likelihood. This is really the same trick used in deriving the EM algorithm. See <a href="https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29" class="uri">https://towardsdatascience.com/bayesian-inference-problem-mcmc-and-variational-inference-25a8aa9bce29</a> or <span class="citation" data-cites="lotfollahi2019scgen">(<a href="references.html#ref-lotfollahi2019scgen" role="doc-biblioref">Lotfollahi, Wolf, and Theis 2019</a>)</span> for a derivation of the ELBO, and <span class="citation" data-cites="kingma2013auto">(<a href="references.html#ref-kingma2013auto" role="doc-biblioref"><strong>kingma2013auto?</strong></a>)</span> for the formal objective function.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>Each feature in the protein modality in CITE-seq data is often called ADT. It might sometimes be called a protein marker as well.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>Notice there is no “library size” for protein.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>Technically, <span class="math inline">\(z_n\)</span> is a Logistic Normal, which means it’s a distribution over the simplex. See more details in <a href="https://docs.scvi-tools.org/en/latest/user_guide/models/totalvi.html" class="uri">https://docs.scvi-tools.org/en/latest/user_guide/models/totalvi.html</a>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -907,384 +940,242 @@ Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Ola
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-<<<<<<< HEAD
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
       };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-=======
+      if (contentFn) {
+        config.content = contentFn;
       }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      });
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1292,199 +1183,175 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
->>>>>>> wenbin
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter3_rna.html" class="pagination-link">
+      <a href="./chapter3_rna.html" class="pagination-link" aria-label="Single-cell RNA-sequencing">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Single-cell RNA-sequencing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter5_epigenetics.html" class="pagination-link">
+      <a href="./chapter5_epigenetics.html" class="pagination-link" aria-label="Single-cell epigenetics">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Single-cell epigenetics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

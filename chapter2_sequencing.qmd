@@ -31,14 +31,12 @@ Here are some basic statistics about these matrices (based mainly from my experi
 Based on these observations, the negative binomial distribution is very commonly used.
 
 ::: block
-![Count matrix](fig/chap2/count.png){#fig-count1 width="100%" fig-align="center"}
+![Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix](fig/chap2/count.png){#fig-count1 width="100%" fig-align="center"}
 :::
 
 ::: block
-![Histogram of count distribution](fig/chap2/nonzero_hist.png){#fig-count2 width="100%" fig-align="center"}
+![Histogram of percentage of cells with non-zero counts for each gene of the dataset shown in @fig-count1](fig/chap2/nonzero_hist.png){#fig-count2 width="100%" fig-align="center"}
 :::
-
-Illustration of data from <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html> showing a snippet of the count matrix (left) or percentage of cells with non-zero counts for each gene (right). [@satijalab_tutorial] ::::
 
 The negative binomial (NB) distribution is a widely used model in single-cell RNA-seq analysis due to its ability to handle overdispersion, which is common in gene expression data. Overdispersion occurs when the variance of the data exceeds the mean, a phenomenon that cannot be captured by the Poisson distribution. The NB distribution introduces an additional parameter to model this extra variability, making it more flexible for single-cell data.
 

@@ -76,11 +76,11 @@ See [@fig-ucsc1], [@fig-ucsc2], and [@fig-ucsc3] for an example of how to use th
 :::
 
 ::: block
-![ **Transcription: RNA synthesis from DNA template strand.** From <https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html>.](fig/chap6/gene_side2.png){#fig-5-to-3-2 width="100%" fig-align="center"}
+![**Transcription: RNA synthesis from DNA template strand.** From <https://www.columbia.edu/cu/biology/courses/c2005/lectures/lec13_10.html>.](fig/chap6/gene_side2.png){#fig-5-to-3-2 width="100%" fig-align="center"}
 :::
 
 ::: block
-![ **Coding vs. template strand during transcription.** From <https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html>.](fig/chap6/gene_side1.png){#fig-5-to-3-3 width="100%" fig-align="center"}
+![**Coding vs. template strand during transcription.** From <https://sandwalk.blogspot.com/2007/03/gene-and-transcription-orientation.html>.](fig/chap6/gene_side1.png){#fig-5-to-3-3 width="100%" fig-align="center"}
 :::
 
 ## A brief blurb about GWAS {#sec-gwas}
@@ -152,11 +152,11 @@ The IGV (depending on the version and settings) can also show insertions and del
 :::
 
 ::: block
-![ From <https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf>. The top panel shows which chromosome we're looking at and how many base pairs our viewer is showing. The middle two rows of panel are reads (in this particular example) from one of two long-read technologies. The bottom row shows the intron/exon regions of genes in this region.](fig/chap6/igv1.png){#fig-igv1-top width="100%" fig-align="center"}
+![From <https://www.pacb.com/wp-content/uploads/Tech-Comparison-STRC-Pileup.pdf>. The top panel shows which chromosome we're looking at and how many base pairs our viewer is showing. The middle two rows of panel are reads (in this particular example) from one of two long-read technologies. The bottom row shows the intron/exon regions of genes in this region.](fig/chap6/igv1.png){#fig-igv1-top width="100%" fig-align="center"}
 :::
 
 ::: block
-![ From <https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/>. This shows an explicit colored callout of the SNPs relative to the reference genome.](fig/chap6/igv2.png){#fig-igv1-bottom width="100%" fig-align="center"}
+![From <https://www.hammerlab.org/2015/01/23/faster-pileup-loading-with-bai-indices/>. This shows an explicit colored callout of the SNPs relative to the reference genome.](fig/chap6/igv2.png){#fig-igv1-bottom width="100%" fig-align="center"}
 :::
 
 ::: block
@@ -305,17 +305,13 @@ PRS construction relies on large GWAS datasets that provide summary statistics o
 ![**LD structure differences across populations (European vs. African).** From @wall2003haplotype.](fig/chap6/linkeage-disequilibrium.png){#fig-prs_ethnicity2 width="100%" fig-align="center"}
 :::
 
--   **Transcriptomic-wide association study (TWAS)**: A Transcriptome-Wide Association Study (TWAS) aims to identify genes whose expression levels are associated with complex traits and diseases by integrating genome-wide association study (GWAS) data with transcriptomic data. The biological goal of TWAS is to bridge the gap between genetic variation and gene expression to prioritize candidate causal genes that might drive disease susceptibility. In a overly simplistic sense, you can think of the following: 
-  $$
-  \text{GWAS:} \quad \text{SNP} \;\rightarrow\; \text{Disease phenotype} 
-  $$
-  $$
-  \text{eQTL:} \quad \text{SNP} \;\rightarrow\; \text{Gene expression} 
-  $$
-  $$
-  \text{TWAS:} \quad \text{Genetically predicted gene expression} \;\rightarrow\; \text{Disease phenotype}
-  $$
-  Unlike GWAS, which identifies loci associated with disease risk but does not directly implicate specific genes, TWAS infers putative gene-disease relationships by leveraging genetic regulation of gene expression. See @mai2023transcriptome for an overview.
+-   **Transcriptomic-wide association study (TWAS)**: A Transcriptome-Wide Association Study (TWAS) aims to identify genes whose expression levels are associated with complex traits and diseases by integrating genome-wide association study (GWAS) data with transcriptomic data. The biological goal of TWAS is to bridge the gap between genetic variation and gene expression to prioritize candidate causal genes that might drive disease susceptibility. In a overly simplistic sense, you can think of the following: $$
+      \text{GWAS:} \quad \text{SNP} \;\rightarrow\; \text{Disease phenotype} 
+      $$ $$
+      \text{eQTL:} \quad \text{SNP} \;\rightarrow\; \text{Gene expression} 
+      $$ $$
+      \text{TWAS:} \quad \text{Genetically predicted gene expression} \;\rightarrow\; \text{Disease phenotype}
+      $$ Unlike GWAS, which identifies loci associated with disease risk but does not directly implicate specific genes, TWAS infers putative gene-disease relationships by leveraging genetic regulation of gene expression. See @mai2023transcriptome for an overview.
 
 The data required for TWAS includes GWAS summary statistics and expression quantitative trait loci (eQTL) datasets derived from bulk RNA-sequencing or single-cell RNA-sequencing studies. Typically, eQTL datasets are obtained from large-scale population-based biobanks like GTEx or UK Biobank. Common computational approaches used for TWAS include PrediXcan and FUSION, which estimate genetically predicted gene expression levels based on genotype data and test for associations with traits. However, TWAS has important caveats: it typically assume that genetically regulated gene expression effects are the primary driver of trait associations, which may not always be the case. Moreover, TWAS inherits any demographic limitations of GWAS and eQTL analyses, which means these results are often biased toward European ancestry populations due to data limitations. For an example of PRS for single-cell data, see scPredixcan @zhou2024scpredixcan.
 
@@ -336,7 +332,7 @@ MR studies require genetic association data from large GWAS and eQTL datasets to
 :::
 
 ::: block
-![ From @sanderson2022mendelian for different types of pleiotropy. See <https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf>, since it's hard to access this paper directly.](fig/chap6/pleiotropy.png){#fig-pleiotropy width="100%" fig-align="center"}
+![From @sanderson2022mendelian for different types of pleiotropy. See <https://jean997.github.io/pages/papers/s43586-021-00092-5.pdf>, since it's hard to access this paper directly.](fig/chap6/pleiotropy.png){#fig-pleiotropy width="100%" fig-align="center"}
 :::
 
 ## Structural variation: Focusing on copy number variation {#sec-dna_structural_variation}
@@ -391,7 +387,7 @@ WGS generates vast amounts of data, requiring significant computational resource
 The choice of sequencing technology depends on the research question, budget, and required resolution of CNV detection. To compare the three archetypical approaches:
 
 | **Feature** | **Short-Read** (Illumina) | **Long-Read** (PacBio/Nanopore) | **WGS** (Whole-Genome) |
-|-----------------|------------------|---------------------|-----------------|
+|------------------|------------------|--------------------|------------------|
 | **Resolution** | High for small CNVs | High for large CNVs | Genome-wide |
 | **Scalability** | High (many cells) | Lower (limited throughput) | Moderate |
 | **Cost** | Lower per base | Higher per base | High for large cohorts |
@@ -460,8 +456,8 @@ While simplistic in explanation, there are multiple problems stemming from this 
 As a quote from @ballouz2019time:
 
 ::: block
-**Remark: (The reference genome is not a ‘healthy’ genome, ‘nor the most common, nor the longest, nor an ancestral haplotype’.)**  
- Efforts to fix these ‘errors’ include adjusting alleles to the preferred or major allele or the use of targeted and ethnically matched genomes.
+**Remark: (The reference genome is not a ‘healthy’ genome, ‘nor the most common, nor the longest, nor an ancestral haplotype’.)**\
+Efforts to fix these ‘errors’ include adjusting alleles to the preferred or major allele or the use of targeted and ethnically matched genomes.
 :::
 
 So really, the reference genome is simply an "addressing system" that many researchers can agree upon to get reproducible findings. Unsurprisingly, due to our understanding of CNV, we do not simply "count" how far along from the "start" of the chromosome we are (say, in terms of kb). This is because any CNV would shift our count. Instead we must first rely on a reference genome.
